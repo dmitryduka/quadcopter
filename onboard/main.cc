@@ -102,6 +102,18 @@ template<int P, int Q> inline int scale(int x) { return (x * P) >> log_<Q>::valu
 
 static int off(int x) { return 0; }
 
+class base {
+public:
+    virtual int f() { return 0; }
+};
+
+class foo : public base {
+public:
+    virtual int f() { return -1; }
+};
+
+void test(base& b) { b.f(); }
+
 //===================MAIN==============================//
 
 int main()
@@ -110,6 +122,9 @@ int main()
     leds(0x42); delay(8333333);
     leds(0x24); delay(8333333);
     leds(0x18); delay(8333333);
+
+    foo f;
+    test(f);
 
     int xo = 0,
 	yo = 0,

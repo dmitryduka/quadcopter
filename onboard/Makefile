@@ -5,11 +5,12 @@ LD   = $(XTOOLS_LOCATION)/x-tools/mips-unknown-elf/bin/mips-unknown-elf-ld
 CC   = $(XTOOLS_LOCATION)/x-tools/mips-unknown-elf/bin/mips-unknown-elf-g++
 DUMP = $(XTOOLS_LOCATION)/x-tools/mips-unknown-elf/bin/mips-unknown-elf-objdump
 
-CCOPTS = -O3
+CCOPTS = -O3 -fno-inline -fno-exceptions -fno-rtti
+LDOPTS =  -Ttext=0x00000000
 
 all: startup
 	$(CC) -c $(CCOPTS) -o main.o main.cc
-	$(LD) -o main -Ttext=0x00000000 startup.o main.o
+	$(LD) -o main $(LDOPTS) startup.o main.o
 	$(DUMP) -C -Dz --section=.text main > program-objdump.txt
 	./objdump_convert program-objdump.txt program.txt
 
