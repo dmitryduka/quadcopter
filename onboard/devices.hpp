@@ -1,7 +1,7 @@
 #ifndef DEVICES_HPP
 #define DEVICES_HPP
 
-#include "ct-utility.hpp"
+#define DEFINE_EXTERNAL_DEVICE(NAME, ADDR) volatile int * const NAME = reinterpret_cast<volatile int * const>(ADDR);
 
 /* Accelerometer */
 DEFINE_EXTERNAL_DEVICE(ACC_DATA_X,	0x00000000);
@@ -29,6 +29,9 @@ const int ENGINE_THRUST_RANGE_HIGH = 512;
 const int CPU_FREQUENCY_HZ = 100000000;
 
 //===============FUNCTION DEFINITIONS==================//
+
+/* Clamp value */
+inline int clamp(int x, int low, int high) { return (x >= low && x <= high) ? x : ((x < low) ? low : high); }
 
 static void leds(int l) { *LED_ADDR = l & 0xFF; }
 

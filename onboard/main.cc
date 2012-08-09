@@ -16,7 +16,7 @@ static void led_startup() {
 }
 
 //===================MAIN==============================//
-int main()
+extern"C" int entry()
 {
     led_startup();
     MemoryManagerInit();
