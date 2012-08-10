@@ -265,11 +265,13 @@ public:
 	/* Some i2c code here */
 	/* ... */
 	/* Current implementation */
+	SystemRegistry::set(SystemRegistry::ACCELEROMETER1_X, *((int *)ACC_DATA_X));
+	SystemRegistry::set(SystemRegistry::ACCELEROMETER1_Y, *((int *)ACC_DATA_Y));	
 	/* Example code . Tasks timing goes here */
-	scheduler->addTask(new I2C_Write_Task(0x01), (CPU_FREQUENCY_HZ / 50000) * 1);
+	/*scheduler->addTask(new I2C_Write_Task(0x01), (CPU_FREQUENCY_HZ / 50000) * 1);
 	scheduler->addTask(new I2C_Write_Task(0x55), (CPU_FREQUENCY_HZ / 50000) * 2);
 	scheduler->addTask(new I2C_Write_Task(0xAA), (CPU_FREQUENCY_HZ / 50000) * 3);
-	scheduler->addTask(new I2C_Read_Task(SystemRegistry::value(SystemRegistry::ACCELEROMETER1_X)), (CPU_FREQUENCY_HZ / 50000) * 4);
+	scheduler->addTask(new I2C_Read_Task(SystemRegistry::value(SystemRegistry::ACCELEROMETER1_X)), (CPU_FREQUENCY_HZ / 50000) * 4);*/
     }
 };
 
@@ -290,6 +292,8 @@ public:
 	int E2 = throttle - SystemRegistry::value(SystemRegistry::PID_CORRECTION_Y);
 	int E3 = throttle - SystemRegistry::value(SystemRegistry::PID_CORRECTION_X);
 	int E4 = throttle + SystemRegistry::value(SystemRegistry::PID_CORRECTION_Y);
+	eng_ctrl(E1, E3, ENGINES_13_ADDR);
+	eng_ctrl(E2, E4, ENGINES_24_ADDR);
     }
 };
 
