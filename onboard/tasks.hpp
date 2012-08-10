@@ -79,8 +79,9 @@ private:
 	int queueNo = 0;
 	unsigned long long minimumExecuteAt = 0xFFFFFFFFFFFFFFFFul;
 	Task** queues[QUEUES_COUNT] = {&continuousTasks.tasks, &oneShotTasks.tasks};
+	Task* queue = 0;
 	for(int i = 0; i < QUEUES_COUNT; ++i) {
-	    Task* queue = *(queues[i]);
+	    queue = *(queues[i]);
 	    if(queue) {
 		Task* cur = queue;
 		while(cur) {
@@ -93,9 +94,13 @@ private:
 		}
 	    }
 	}
-	nextTask.task = nextTaskCandidate;
-	nextTask.time = minimumExecuteAt;
-	nextTask.queue = queueNo;
+	return setNextTask(nextTaskCandidate, queue);
+    }
+
+    void setNextTask(Task* t, Task* list) {
+	nextTask.task = t;
+	nextTask.time = t->executeAt;
+	nextTask.queue = (list == continuousTasks.tasks) ? CONTINUOUS_QUEUE : ONE_SHOT_QUEUE;
     }
 
     /* Adds Task t to the list */
@@ -106,19 +111,17 @@ private:
         Task* last = list;
         /* First task */
 	if(!last) {
-	    list = t;
-	    last = list;
-	    nextTask.task = last;
-	    nextTask.time = delay;
-	    if(list == continuousTasks.tasks) nextTask.queue = CONTINUOUS_QUEUE;
-	    else nextTask.queue = ONE_SHOT_QUEUE;
-	    return;
-	} else /* go to the end of the linked list */
+	    last = list = t;
+	    return setNextTask(t, list);
+	} else {
+	    /* go to the end of the linked list. 
+	    TODO: Scheduler should know about the last task in both linked lists */
 	    while(last->nextTask) last = last->nextTask;
+	    last->nextTask = t;
+	}
 	
-	last->nextTask = t;
 	/* update next task */
-	selectNextTask();
+	if(t->executeAt < nextTask.time) return setNextTask(t, list);
     }
 public:
     TaskScheduler() : continuousTasks{0, 0}, oneShotTasks{0, 0}, nextTask{0, 0, 0} {}
@@ -126,13 +129,11 @@ public:
 
     void start() {
 	forever {
-	    if(RTC() > 72000000) break;
 	    if(RTC() >= nextTask.time) {
 		nextTask.task->start();
-		nextTask.task->executeAt += nextTask.task->interval;
-		selectNextTask();
-		/* Remove task if it is of OneShotTask type */
 		if(nextTask.queue == ONE_SHOT_QUEUE) removeTask(nextTask.task);
+		else nextTask.task->executeAt += nextTask.task->interval;
+		selectNextTask();
 	    }
 	}
     }
