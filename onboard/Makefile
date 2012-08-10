@@ -8,7 +8,8 @@ DUMP = $(XTOOLS_LOCATION)/$(XTOOLS_TRIPLE)/bin/$(XTOOLS_TRIPLE)-objdump
 READELF = $(XTOOLS_LOCATION)/$(XTOOLS_TRIPLE)/bin/$(XTOOLS_TRIPLE)-readelf
 STRIP = $(XTOOLS_LOCATION)/$(XTOOLS_TRIPLE)/bin/$(XTOOLS_TRIPLE)-strip
 
-CCOPTS = -std=c++11 -O3 -fno-inline -fno-exceptions -fno-rtti
+# Optimizing for speed is actually optimizing for size in our case
+CCOPTS = -std=c++11 -Os -fno-inline -fno-exceptions -fno-rtti
 LDOPTS = -Ttext=0x00000000
 
 all: startup
