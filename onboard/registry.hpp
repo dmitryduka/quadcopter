@@ -51,7 +51,7 @@ public:
 	*SR = this; 
     }
 
-    static int	value(Value v) { return (*SR)->values[v]; }
+    static int& value(Value v) { return (*SR)->values[v]; }
     static void set(Value v, int value) { (*SR)->values[v] = value; }
 };
 
