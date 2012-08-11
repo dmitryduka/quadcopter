@@ -6,19 +6,21 @@ template<int N>
 class moving_average
 {
 public:
-    moving_average() : num_samples_(0), total_(0) { 
-	for(int i = 0; i < N; ++i) samples_[i] = 0;
+    moving_average() : num_samples_(0), total_(0) {
+        for (int i = 0; i < N; ++i) samples_[i] = 0;
     }
 
     moving_average& operator()(int sample) {
         int& oldest = samples_[num_samples_++];
-        if(num_samples_ == N) num_samples_ = 0;
+        if (num_samples_ == N) num_samples_ = 0;
         total_ += sample - oldest;
         oldest = sample;
         return *this;
     }
 
-    operator int() const { return total_ >> log_<N>::value; }
+    operator int() const {
+        return total_ >> log_<N>::value;
+    }
 
 private:
     int samples_[N];

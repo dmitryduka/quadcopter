@@ -31,11 +31,21 @@ const int CPU_FREQUENCY_HZ = 100000000;
 //===============FUNCTION DEFINITIONS==================//
 
 /* Clamp value */
-inline int clamp(int x, int low, int high) { return (x >= low && x <= high) ? x : ((x < low) ? low : high); }
+inline int clamp(int x, int low, int high) {
+    return (x >= low && x <= high) ? x : ((x < low) ? low : high);
+}
 
-static void leds(int l) { *LED_ADDR = l & 0xFF; }
+static void leds(int l) {
+    *LED_ADDR = l & 0xFF;
+}
 
-static void delay(int value) {  do { asm(""); value--;  } while(value); }
+static void delay(int value) {
+    do {
+        asm("");
+        value--;
+    }
+    while (value);
+}
 
 static void eng_ctrl(int v2, int v1, volatile int* ENGINE)
 {
@@ -48,19 +58,21 @@ static int adc_read(int ch)
 {
     int r = -1;
     *ADC_ADDR = ch;
-    while(r < 0) r = *ADC_ADDR;
+    while (r < 0) r = *ADC_ADDR;
     return r;
 }
 
 static void wait4event()
 {
     //wait for event
-    while(*EVENTS_ADDR == 0) { }
+    while (*EVENTS_ADDR == 0) { }
     *EVENTS_ADDR = 1;
     return;
 }
 
 /* Read 2 words for RTC */
-static long long RTC() { return *(long long *)RTC_ADDR; }
+static long long RTC() {
+    return *(long long *)RTC_ADDR;
+}
 
 #endif

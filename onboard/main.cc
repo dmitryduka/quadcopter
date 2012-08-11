@@ -9,13 +9,13 @@
 //===============FUNCTION DEFINITIONS==================//
 
 static void led_startup() {
-    for(int i = 0; i < 8; ++i) {
-	leds(1 << i);
-	delay(2000000);
+    for (int i = 0; i < 8; ++i) {
+        leds(1 << i);
+        delay(2000000);
     }
-    for(int i = 0; i < 8; ++i) {
-	leds(0x80 >> i);
-	delay(2000000);
+    for (int i = 0; i < 8; ++i) {
+        leds(0x80 >> i);
+        delay(2000000);
     }
 }
 

@@ -2,7 +2,7 @@
 // Statically-allocated memory manager
 //
 // by Eli Bendersky (eliben@gmail.com)
-//  
+//
 // This code is in the public domain.
 //----------------------------------------------------------------
 #include "memmgr.h"
@@ -41,9 +41,9 @@ MemoryManager::mem_header_t* MemoryManager::get_mem_from_pool(unsigned int nquan
 
 
 // Allocations are done in 'quantas' of header size.
-// The search for a free block of adequate size begins at the point 'freep' 
+// The search for a free block of adequate size begins at the point 'freep'
 // where the last block was found.
-// If a too-big block is found, it is split and the tail is returned (this 
+// If a too-big block is found, it is split and the tail is returned (this
 // way the header of the original needs only to have its size adjusted).
 // The pointer returned to the user points to the free space within the block,
 // which begins one quanta after the header.
@@ -72,7 +72,7 @@ void* MemoryManager::alloc(unsigned int nbytes) {
                 // its prev's next to its next
                 prevp->s.next = p->s.next;
             } else {
-        	// too big
+                // too big
                 p->s.size -= nquantas;
                 p += p->s.size;
                 p->s.size = nquantas;
@@ -96,7 +96,7 @@ void* MemoryManager::alloc(unsigned int nbytes) {
 }
 
 
-// Scans the free list, starting at freep, looking the the place to insert the 
+// Scans the free list, starting at freep, looking the the place to insert the
 // free block. This is either between two existing blocks or at the end of the
 // list. In any case, if the block being freed is adjacent to either neighbor,
 // the adjacent blocks are combined.
@@ -111,9 +111,9 @@ void MemoryManager::free(void* ap) {
     // address, increasing order)
     for (p = freep; !(block > p && block < p->s.next); p = p->s.next)
     {
-        // Since the free list is circular, there is one link where a 
-        // higher-addressed block points to a lower-addressed block. 
-        // This condition checks if the block should be actually 
+        // Since the free list is circular, there is one link where a
+        // higher-addressed block points to a lower-addressed block.
+        // This condition checks if the block should be actually
         // inserted between them
         if (p >= p->s.next && (block > p || block < p->s.next)) break;
     }
@@ -135,5 +135,9 @@ void MemoryManager::free(void* ap) {
     freep = p;
 }
 
-void* operator new(unsigned int size) { return (*MM)->alloc(size); }
-void operator delete(void * addr) { (*MM)->free(addr); }
+void* operator new(unsigned int size) {
+    return (*MM)->alloc(size);
+}
+void operator delete(void * addr) {
+    (*MM)->free(addr);
+}
