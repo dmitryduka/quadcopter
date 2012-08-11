@@ -27,7 +27,8 @@ protected:
 public:
     friend class TaskScheduler;
 
-    Task() : executeAt(0), interval(0), nextTask(0) {}
+    Task() : executeAt(0), interval(0), nextTask(0) {
+    }
     virtual void start() {}
 };
 
@@ -52,16 +53,8 @@ class OneShotTask : public Task {};
 class TaskScheduler {
 private:
     /* 1st queue */
-    struct {
-        Task*	tasks;
-        int	count;
-    } continuousTasks;
-
-    /* 2st queue */
-    struct {
-        Task*	tasks;
-        int	count;
-    } oneShotTasks;
+    Task*	continuousTasks;
+    Task*	oneShotTasks;
 
     enum Queues { CONTINUOUS_QUEUE= 0, ONE_SHOT_QUEUE, QUEUES_COUNT };
 
@@ -78,29 +71,31 @@ private:
 	Task* nextTaskCandidate = 0; 
 	int queueNo = 0;
 	unsigned long long minimumExecuteAt = 0xFFFFFFFFFFFFFFFFul;
-	Task** queues[QUEUES_COUNT] = {&continuousTasks.tasks, &oneShotTasks.tasks};
+	Task** queues[QUEUES_COUNT] = {&continuousTasks, &oneShotTasks};
 	Task* queue = 0;
 	for(int i = 0; i < QUEUES_COUNT; ++i) {
-	    queue = *(queues[i]);
-	    if(queue) {
-		Task* cur = queue;
+	    Task* q = *(queues[i]);
+	    if(q) {
+		Task* cur = q;
 		while(cur) {
+		    /* exclude current task */
 		    if(cur->executeAt < minimumExecuteAt) {
 			nextTaskCandidate = cur;
 			minimumExecuteAt = cur->executeAt;
-			queueNo = i;
+			queue = q;
 		    }
 		    cur = cur->nextTask;
 		}
 	    }
 	}
+	
 	return setNextTask(nextTaskCandidate, queue);
     }
 
     void setNextTask(Task* t, Task* list) {
 	nextTask.task = t;
 	nextTask.time = t->executeAt;
-	nextTask.queue = (list == continuousTasks.tasks) ? CONTINUOUS_QUEUE : ONE_SHOT_QUEUE;
+	nextTask.queue = (list == continuousTasks) ? CONTINUOUS_QUEUE : ONE_SHOT_QUEUE;
     }
 
     /* Adds Task t to the list */
@@ -111,23 +106,21 @@ private:
         Task* last = list;
         /* First task */
 	if(!last) {
-	    last = list = t;
-	    return setNextTask(t, list);
+	    last = t;
+	    list = t;
 	} else {
 	    /* go to the end of the linked list. 
 	    TODO: Scheduler should know about the last task in both linked lists */
 	    while(last->nextTask) last = last->nextTask;
 	    last->nextTask = t;
 	}
-	
-	/* update next task */
-	if(t->executeAt < nextTask.time) return setNextTask(t, list);
     }
 public:
-    TaskScheduler() : continuousTasks{0, 0}, oneShotTasks{0, 0}, nextTask{0, 0, 0} {}
+    TaskScheduler() : continuousTasks(0), oneShotTasks(0), nextTask{0, 0, 0} {}
     ~TaskScheduler() { }
 
     void start() {
+        selectNextTask();
 	forever {
 	    if(RTC() >= nextTask.time) {
 		nextTask.task->start();
@@ -139,14 +132,12 @@ public:
     }
 
     ContinuousTask*	addTask(ContinuousTask* t, int delay) { 
-	addTask(continuousTasks.tasks, t, delay);
-	continuousTasks.count++;
+	addTask(continuousTasks, t, delay);
 	return t; 
     }
 
     OneShotTask*	addTask(OneShotTask* t, int delay) { 
-	addTask(oneShotTasks.tasks, t, delay);
-	oneShotTasks.count++; 
+	addTask(oneShotTasks, t, delay);
 	return t; 
     }
 
@@ -154,7 +145,7 @@ public:
     void		removeTask(Task* t) {
 	/* Look in both queues */
 	int queueNo = -1;
-	Task** queues[2] = {&continuousTasks.tasks, &oneShotTasks.tasks};
+	Task** queues[2] = {&continuousTasks, &oneShotTasks};
 	/* Find previous task */
 	for(int i = 0; i < QUEUES_COUNT; ++i) {
 	    Task* queue = *(queues[i]);
@@ -167,8 +158,7 @@ public:
 		} else {
 		    Task* prev = queue;
 		    /* Go through the linked list */
-		    while(prev->nextTask && (prev->nextTask != t))
-			prev = prev->nextTask;
+		    while(prev->nextTask && (prev->nextTask != t)) prev = prev->nextTask;
 		    /* Not found this task (so move to the next queue or end searching), or ... */
 		    if(prev->nextTask != t) continue;
 		    else {
@@ -182,9 +172,6 @@ public:
 		}
 	    }
 	}
-
-	if(queueNo == CONTINUOUS_QUEUE) continuousTasks.count--;
-	else if(queueNo == ONE_SHOT_QUEUE) oneShotTasks.count--;
 
 	/* Delete task anyway */
 	delete t;
@@ -266,13 +253,13 @@ public:
 	/* Some i2c code here */
 	/* ... */
 	/* Current implementation */
-	SystemRegistry::set(SystemRegistry::ACCELEROMETER1_X, *((int *)ACC_DATA_X));
-	SystemRegistry::set(SystemRegistry::ACCELEROMETER1_Y, *((int *)ACC_DATA_Y));	
+	SystemRegistry::set(SystemRegistry::ACCELEROMETER1_X, *(ACC_DATA_X));
+	SystemRegistry::set(SystemRegistry::ACCELEROMETER1_Y, *(ACC_DATA_Y));
 	/* Example code . Tasks timing goes here */
-	/*scheduler->addTask(new I2C_Write_Task(0x01), (CPU_FREQUENCY_HZ / 50000) * 1);
+	scheduler->addTask(new I2C_Write_Task(0x01), (CPU_FREQUENCY_HZ / 50000) * 1);
 	scheduler->addTask(new I2C_Write_Task(0x55), (CPU_FREQUENCY_HZ / 50000) * 2);
 	scheduler->addTask(new I2C_Write_Task(0xAA), (CPU_FREQUENCY_HZ / 50000) * 3);
-	scheduler->addTask(new I2C_Read_Task(SystemRegistry::value(SystemRegistry::ACCELEROMETER1_X)), (CPU_FREQUENCY_HZ / 50000) * 4);*/
+	scheduler->addTask(new I2C_Read_Task(SystemRegistry::value(SystemRegistry::ACCELEROMETER1_X)), (CPU_FREQUENCY_HZ / 50000) * 4);
     }
 };
 
