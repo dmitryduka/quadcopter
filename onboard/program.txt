@@ -193,9 +193,9 @@
   27bd0018  // 27c:	 addiu	sp,sp,24
 
 // 00000280 <entry>:
-  27bdfb70  // 280:	 addiu	sp,sp,-1168
-  afb00488  // 284:	 sw	s0,1160(sp)
-  afbf048c  // 288:	 sw	ra,1164(sp)
+  27bdfd70  // 280:	 addiu	sp,sp,-656
+  afb00288  // 284:	 sw	s0,648(sp)
+  afbf028c  // 288:	 sw	ra,652(sp)
   0c000030  // 28c:	 jal	c0 <led_startup()>
   27b00010  // 290:	 addiu	s0,sp,16
   0c000317  // 294:	 jal	c5c <MemoryManager::MemoryManager()>
@@ -203,9 +203,9 @@
   3c028000  // 29c:	 lui	v0,0x8000
   ac500000  // 2a0:	 sw	s0,0(v0)
   0c0001f5  // 2a4:	 jal	7d4 <TaskScheduler::TaskScheduler()>
-  27a4046c  // 2a8:	 addiu	a0,sp,1132
+  27a4026c  // 2a8:	 addiu	a0,sp,620
   0c0000de  // 2ac:	 jal	378 <SystemRegistry::SystemRegistry()>
-  27a40420  // 2b0:	 addiu	a0,sp,1056
+  27a40220  // 2b0:	 addiu	a0,sp,544
   0c000398  // 2b4:	 jal	e60 <operator new(unsigned int)>
   24040024  // 2b8:	 li	a0,36
   00408021  // 2bc:	 move	s0,v0
@@ -214,7 +214,7 @@
   02002821  // 2c8:	 move	a1,s0
   24060032  // 2cc:	 li	a2,50
   0c0001fd  // 2d0:	 jal	7f4 <TaskScheduler::addTask(ContinuousTask*, int)>
-  27a4046c  // 2d4:	 addiu	a0,sp,1132
+  27a4026c  // 2d4:	 addiu	a0,sp,620
   0c000398  // 2d8:	 jal	e60 <operator new(unsigned int)>
   24040014  // 2dc:	 li	a0,20
   00408021  // 2e0:	 move	s0,v0
@@ -223,7 +223,7 @@
   02002821  // 2ec:	 move	a1,s0
   24060064  // 2f0:	 li	a2,100
   0c0001fd  // 2f4:	 jal	7f4 <TaskScheduler::addTask(ContinuousTask*, int)>
-  27a4046c  // 2f8:	 addiu	a0,sp,1132
+  27a4026c  // 2f8:	 addiu	a0,sp,620
   0c000398  // 2fc:	 jal	e60 <operator new(unsigned int)>
   24040014  // 300:	 li	a0,20
   00408021  // 304:	 move	s0,v0
@@ -232,18 +232,18 @@
   02002821  // 310:	 move	a1,s0
   24060064  // 314:	 li	a2,100
   0c0001fd  // 318:	 jal	7f4 <TaskScheduler::addTask(ContinuousTask*, int)>
-  27a4046c  // 31c:	 addiu	a0,sp,1132
+  27a4026c  // 31c:	 addiu	a0,sp,620
   0c000398  // 320:	 jal	e60 <operator new(unsigned int)>
   24040014  // 324:	 li	a0,20
   00408021  // 328:	 move	s0,v0
   0c000295  // 32c:	 jal	a54 <EnginesUpdateTask::EnginesUpdateTask()>
   00402021  // 330:	 move	a0,v0
-  27a4046c  // 334:	 addiu	a0,sp,1132
+  27a4026c  // 334:	 addiu	a0,sp,620
   02002821  // 338:	 move	a1,s0
   0c0001fd  // 33c:	 jal	7f4 <TaskScheduler::addTask(ContinuousTask*, int)>
   240601b8  // 340:	 li	a2,440
   0c000231  // 344:	 jal	8c4 <TaskScheduler::start()>
-  27a4046c  // 348:	 addiu	a0,sp,1132
+  27a4026c  // 348:	 addiu	a0,sp,620
 
 // 0000034c <Task::start()>:
   03e00008  // 34c:	 jr	ra
@@ -877,12 +877,12 @@
   ac800004  // c4c:	 sw	zero,4(a0)
   ac800008  // c50:	 sw	zero,8(a0)
   03e00008  // c54:	 jr	ra
-  ac80040c  // c58:	 sw	zero,1036(a0)
+  ac80020c  // c58:	 sw	zero,524(a0)
 
 // 00000c5c <MemoryManager::MemoryManager()>:
   ac800008  // c5c:	 sw	zero,8(a0)
   08000312  // c60:	 j	c48 <MemoryManager::init()>
-  ac80040c  // c64:	 sw	zero,1036(a0)
+  ac80020c  // c64:	 sw	zero,524(a0)
 
 // 00000c68 <MemoryManager::free(void*)>:
   8c820008  // c68:	 lw	v0,8(a0)
@@ -941,10 +941,10 @@
   10400002  // d34:	 beqz	v0,d40 <MemoryManager::get_mem_from_pool(unsigned int)+0x20>
   00808021  // d38:	 move	s0,a0
   24050010  // d3c:	 li	a1,16
-  8e02040c  // d40:	 lw	v0,1036(s0)
+  8e02020c  // d40:	 lw	v0,524(s0)
   000588c0  // d44:	 sll	s1,a1,0x3
   02221821  // d48:	 addu	v1,s1,v0
-  2c630401  // d4c:	 sltiu	v1,v1,1025
+  2c630201  // d4c:	 sltiu	v1,v1,513
   1060000d  // d50:	 beqz	v1,d88 <MemoryManager::get_mem_from_pool(unsigned int)+0x68>
   24420008  // d54:	 addiu	v0,v0,8
   02021021  // d58:	 addu	v0,s0,v0
@@ -952,10 +952,10 @@
   02002021  // d60:	 move	a0,s0
   0c00031a  // d64:	 jal	c68 <MemoryManager::free(void*)>
   2445000c  // d68:	 addiu	a1,v0,12
-  8e02040c  // d6c:	 lw	v0,1036(s0)
+  8e02020c  // d6c:	 lw	v0,524(s0)
   00000000  // d70:	 nop
   00518821  // d74:	 addu	s1,v0,s1
-  ae11040c  // d78:	 sw	s1,1036(s0)
+  ae11020c  // d78:	 sw	s1,524(s0)
   8e020008  // d7c:	 lw	v0,8(s0)
   08000363  // d80:	 j	d8c <MemoryManager::get_mem_from_pool(unsigned int)+0x6c>
   00000000  // d84:	 nop
