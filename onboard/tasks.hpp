@@ -16,8 +16,8 @@ class Task;
 */
 class Task {
 private:
-    long long		executeAt;
-    long long		interval;
+    unsigned int		executeAt;
+    unsigned int		interval;
 
     Task*		nextTask;
 protected:
@@ -29,8 +29,7 @@ protected:
 public:
     friend class TaskScheduler;
 
-    Task() : executeAt(0), interval(0), nextTask(0) {
-    }
+    Task() : executeAt(0), interval(0), nextTask(0) { }
     virtual void start() {}
 };
 
@@ -63,16 +62,19 @@ private:
     /* holds a task to be executed */
     struct {
         Task*		task;
-        long long	time;
+        unsigned int	time;
         int		queue;
     }		nextTask;
 
+    int count;
+    bool debug;
+
     /* Sets nextTask */
-    void selectNextTask() {
+    void selectNextTask(unsigned int rtc) {
         /* find a task with minimum executeAt time */
         Task* nextTaskCandidate = 0;
         int queueNo = 0;
-        unsigned long long minimumExecuteAt = 0xFFFFFFFFFFFFFFFFul;
+        unsigned int minimumExecuteAt = 0xFFFFFFFF;
         Task** queues[QUEUES_COUNT] = {&continuousTasks, &oneShotTasks};
         Task* queue = 0;
         for (int i = 0; i < QUEUES_COUNT; ++i) {
@@ -81,16 +83,15 @@ private:
                 Task* cur = q;
                 while (cur) {
                     /* exclude current task */
-                    if (cur->executeAt < minimumExecuteAt) {
+                    if (cur->executeAt - rtc < minimumExecuteAt) {
                         nextTaskCandidate = cur;
-                        minimumExecuteAt = cur->executeAt;
+                        minimumExecuteAt = cur->executeAt - rtc;
                         queue = q;
                     }
                     cur = cur->nextTask;
                 }
             }
         }
-
         return setNextTask(nextTaskCandidate, queue);
     }
 
@@ -104,7 +105,8 @@ private:
     void addTask(Task*& list, Task* t, int delay) {
         t->setScheduler(this);
         t->interval = delay;
-        t->executeAt = RTC() + delay;
+        int rtc = RTC();
+        t->executeAt = rtc + delay;
         Task* last = list;
         /* First task */
         if (!last) {
@@ -116,19 +118,23 @@ private:
             while (last->nextTask) last = last->nextTask;
             last->nextTask = t;
         }
+        count++;
     }
 public:
-    TaskScheduler() : continuousTasks(0), oneShotTasks(0), nextTask {0, 0, 0} {}
+    TaskScheduler() : continuousTasks(0), oneShotTasks(0), nextTask {0, 0, 0}, count(0), debug(false) {}
     ~TaskScheduler() { }
 
     void start() {
-        selectNextTask();
+        selectNextTask(0);
         forever {
-            if (RTC() >= nextTask.time) {
+            unsigned int rtc = RTC();
+            /* Check if RTC value is equal or higher than nextTask' execution time,
+            accounting that they could be on different sides of RTC overflow */
+            if (rtc >= nextTask.time && (rtc - nextTask.time) < MAX_TASK_INTERVAL_TICKS) {
                 nextTask.task->start();
                 if (nextTask.queue == ONE_SHOT_QUEUE) removeTask(nextTask.task);
-                else nextTask.task->executeAt += nextTask.task->interval;
-                selectNextTask();
+                else nextTask.task->executeAt = rtc + nextTask.task->interval;
+                selectNextTask(rtc);
             }
         }
     }
@@ -175,6 +181,7 @@ public:
             }
         }
 
+        count--;
         /* Delete task anyway */
         delete t;
     }
@@ -194,12 +201,15 @@ public:
 */
 class HorizontalStabilizationTask : public ContinuousTask {
 private:
-    static const unsigned int Kp = 180;
-    static const unsigned int Kd = 2100;
+    static const unsigned int Kp = 160;
+    static const unsigned int Ki = 3;
+    static const unsigned int Kd = 300;
 
-    int xo, yo;
+    static const unsigned int I_MAX = 2000;
+
+    int ix, iy, ox, oy;
 public:
-    HorizontalStabilizationTask() : xo(0), yo(0) {}
+    HorizontalStabilizationTask() : ix(0), iy(0), ox(0), oy(0) {}
     virtual void start() {
         int ACC_X = SystemRegistry::value(SystemRegistry::ACCELEROMETER1_X);
         int ACC_Y = SystemRegistry::value(SystemRegistry::ACCELEROMETER1_Y);
@@ -212,57 +222,72 @@ public:
         int py = y - SystemRegistry::value(SystemRegistry::DESIRED_Y);
 
         /* D term */
-        /* Current implementation */
-        int dx = x - xo;
-        int dy = y - yo;
-        /* Use this later */
-        //int dx = SystemRegistry::value(SystemRegistry::GYRO_X);
-        //int dy = SystemRegistry::value(SystemRegistry::GYRO_Y);
+        int gx = SystemRegistry::value(SystemRegistry::GYRO_X);
+        int gy = SystemRegistry::value(SystemRegistry::GYRO_Y);
 
-        xo = x;
-        yo = y;
+        int dx = - (gx + gy);
+        int dy = gx - gy;
 
-        SystemRegistry::set(SystemRegistry::PID_CORRECTION_X, scale<Kp, 1024>(px) + scale<Kd, 1024>(dx));
-        SystemRegistry::set(SystemRegistry::PID_CORRECTION_Y, scale<Kp, 1024>(py) + scale<Kd, 1024>(dy));
+        /* I term */
+        if ((x ^ ox) >> 31) ix = 0;
+        else if (ix < I_MAX) ix += x;
+        if ((y ^ oy) >> 31) iy = 0;
+        else if (iy < I_MAX) iy += y;
+
+        ox = x;
+        oy = y;
+
+        SystemRegistry::set(SystemRegistry::PID_CORRECTION_X, 	scale<Kp, 1024>(px) +
+                            scale<Ki, 1024>(ix) +
+                            scale<Kd, 1024>(dx));
+        SystemRegistry::set(SystemRegistry::PID_CORRECTION_Y,	scale<Kp, 1024>(py) +
+                            scale<Ki, 1024>(iy) +
+                            scale<Kd, 1024>(dy));
     }
 };
 
 /* Updates the SystemRegistry with new data from the IMU */
 class IMUUpdateTask : public ContinuousTask {
-private:
-    class I2C_Write_Task : public OneShotTask {
-    private:
-        int byte;
-    public:
-        I2C_Write_Task(int b) : byte(b) {}
-        virtual void start() {
-            /* while(1) { ensure that the device is ready } */
-            /* write the value */
-        }
-    };
-
-    class I2C_Read_Task : public OneShotTask {
-    private:
-        int& value;
-    public:
-        I2C_Read_Task(int& val) : value(val) {}
-        virtual void start() {
-            /* while(1) { ensure that the device is ready } */
-            /* read the value */
-        }
-    };
 public:
+    /* Whole operation takes ~400us, so no need for separate I2C tasks */
     virtual void start() {
-        /* Some i2c code here */
-        /* ... */
-        /* Current implementation */
-        SystemRegistry::set(SystemRegistry::ACCELEROMETER1_X, *(ACC_DATA_X));
-        SystemRegistry::set(SystemRegistry::ACCELEROMETER1_Y, *(ACC_DATA_Y));
-        /* Example code . Tasks timing goes here */
-        scheduler->addTask(new I2C_Write_Task(0x01), (CPU_FREQUENCY_HZ / 50000) * 1);
-        scheduler->addTask(new I2C_Write_Task(0x55), (CPU_FREQUENCY_HZ / 50000) * 2);
-        scheduler->addTask(new I2C_Write_Task(0xAA), (CPU_FREQUENCY_HZ / 50000) * 3);
-        scheduler->addTask(new I2C_Read_Task(SystemRegistry::value(SystemRegistry::ACCELEROMETER1_X)), (CPU_FREQUENCY_HZ / 50000) * 4);
+        i2c_start();
+        i2c_io(0x1D0);  //MPU6050 ADDR
+        i2c_io(0x13B);  //Accel
+        i2c_stop();
+
+        i2c_start();
+        i2c_io(0x1D1);
+        int ax  = 0xFF & i2c_io(0x0FF);
+        int axL = 0xFF & i2c_io(0x0FF);
+        int ay  = 0xFF & i2c_io(0x0FF);
+        int ayL = 0xFF & i2c_io(0x0FF);
+        int az  = 0xFF & i2c_io(0x0FF);
+        int azL = 0xFF & i2c_io(0x0FF);
+        i2c_io(0x0FF);
+        i2c_io(0x0FF);
+
+        int gx  = 0xFF & i2c_io(0x0FF);
+        int gxL = 0xFF & i2c_io(0x0FF);
+        int gy  = 0xFF & i2c_io(0x0FF);
+        int gyL = 0xFF & i2c_io(0x0FF);
+        int gz  = 0xFF & i2c_io(0x0FF);
+        int gzL = 0xFF & i2c_io(0x1FF);
+        i2c_stop();
+
+        ax = sign_extend((ax << 8) | axL);
+        ay = sign_extend((ay << 8) | ayL);
+        az = sign_extend((az << 8) | azL);
+        gx = sign_extend((gx << 8) | gxL);
+        gy = sign_extend((gy << 8) | gyL);
+        gz = sign_extend((gz << 8) | gzL);
+
+        SystemRegistry::set(SystemRegistry::ACCELEROMETER1_X, ax);
+        SystemRegistry::set(SystemRegistry::ACCELEROMETER1_Y, ay);
+        SystemRegistry::set(SystemRegistry::ACCELEROMETER1_Z, az);
+        SystemRegistry::set(SystemRegistry::GYRO_X, gx);
+        SystemRegistry::set(SystemRegistry::GYRO_Y, gy);
+        SystemRegistry::set(SystemRegistry::GYRO_Z, gz);
     }
 };
 

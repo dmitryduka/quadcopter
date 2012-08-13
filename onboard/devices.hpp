@@ -7,6 +7,8 @@
 DEFINE_EXTERNAL_DEVICE(ACC_DATA_X,	0x00000000);
 DEFINE_EXTERNAL_DEVICE(ACC_DATA_Y,	0x00000004);
 DEFINE_EXTERNAL_DEVICE(ACC_DATA_Z,	0x00000008);
+
+/* ADC */
 DEFINE_EXTERNAL_DEVICE(ADC_ADDR,	0x0000000C);
 
 /* Engines */
@@ -15,6 +17,9 @@ DEFINE_EXTERNAL_DEVICE(ENGINES_24_ADDR,	0x00000014);
 
 /* LED */
 DEFINE_EXTERNAL_DEVICE(LED_ADDR,	0x00000018);
+
+/* I2C */
+DEFINE_EXTERNAL_DEVICE(I2C_ADDR,	0x0000001C);
 
 /* EVENTS */
 DEFINE_EXTERNAL_DEVICE(EVENTS_ADDR,	0x00000020);
@@ -25,8 +30,13 @@ DEFINE_EXTERNAL_DEVICE(RTC_ADDR,	0x00000030);
 const int ENGINE_THRUST_RANGE_LOW = 0;
 const int ENGINE_THRUST_RANGE_HIGH = 512;
 
+
 /* System settings */
-const int CPU_FREQUENCY_HZ = 100000000;
+const unsigned int CPU_FREQUENCY_HZ = 50000000;
+const unsigned int MAX_TASK_INTERVAL_TICKS = CPU_FREQUENCY_HZ * 60; // once in a minute
+
+const unsigned int MPU6050_ADDR = 0x1D0;
+
 
 //===============FUNCTION DEFINITIONS==================//
 
@@ -42,9 +52,8 @@ static void leds(int l) {
 static void delay(int value) {
     do {
         asm("");
-        value--;
     }
-    while (value);
+    while (value--);
 }
 
 static void eng_ctrl(int v2, int v1, volatile int* ENGINE)
@@ -71,8 +80,49 @@ static void wait4event()
 }
 
 /* Read 2 words for RTC */
-static long long RTC() {
-    return *(long long *)RTC_ADDR;
+static unsigned RTC() {
+    return *RTC_ADDR;
+}
+
+static void i2c_start()
+{
+    *I2C_ADDR = 0x000400FF;
+    while (*I2C_ADDR < 0);
+}
+
+static void i2c_stop() {
+    *I2C_ADDR = 0x000100FF;
+    while (*I2C_ADDR < 0);
+}
+
+static int i2c_io(int b) {
+    b &= 0x1FF;
+    *I2C_ADDR = 0x00020000 | b;
+    while (*I2C_ADDR < 0);
+    return *I2C_ADDR;
+}
+
+void mpu6050_write(int reg, int byte)
+{
+    i2c_start();
+    i2c_io(MPU6050_ADDR);
+    i2c_io(0x100 | reg);
+    i2c_io(0x100 | byte);
+    i2c_stop();
+}
+
+int sign_extend(int halfword)
+{
+    return  ((halfword & 0xFFFF) >> 15) ? (0xFFFF0000 | halfword) : halfword;
+}
+
+void mpu6050_init() {
+    /* TODO: no magic values */
+    mpu6050_write(0x1A, 0x03); //Low-pass ON
+    mpu6050_write(0x1B, 0x18); //GYRO_CONFIG: +-2000 dps range
+    mpu6050_write(0x1C, 0x18); //ACC_CONFIG: +-16g range
+    mpu6050_write(0x6B, 0x00); //Sleep disable
+    delay(40000);
 }
 
 #endif

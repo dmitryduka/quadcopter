@@ -30,6 +30,7 @@ public:
         COMPASS_Y,
         COMPASS_Z,
         /* Barometer */
+        TEMPERATURE,
         ALTIMETER,
         /* Throttle */
         THROTTLE,
