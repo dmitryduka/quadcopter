@@ -66,9 +66,6 @@ private:
         int		queue;
     }		nextTask;
 
-    int count;
-    bool debug;
-
     /* Sets nextTask */
     void selectNextTask(unsigned int rtc) {
         /* find a task with minimum executeAt time */
@@ -118,10 +115,9 @@ private:
             while (last->nextTask) last = last->nextTask;
             last->nextTask = t;
         }
-        count++;
     }
 public:
-    TaskScheduler() : continuousTasks(0), oneShotTasks(0), nextTask {0, 0, 0}, count(0), debug(false) {}
+    TaskScheduler() : continuousTasks(0), oneShotTasks(0), nextTask {0, 0, 0} {}
     ~TaskScheduler() { }
 
     void start() {
@@ -181,7 +177,6 @@ public:
             }
         }
 
-        count--;
         /* Delete task anyway */
         delete t;
     }
