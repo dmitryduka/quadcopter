@@ -11,11 +11,11 @@
 static void led_startup() {
     for (int i = 0; i < 8; ++i) {
         leds(1 << i);
-        delay(2000000);
+        delay(200ms);
     }
     for (int i = 0; i < 8; ++i) {
         leds(0x80 >> i);
-        delay(2000000);
+        delay(200ms);
     }
 }
 
@@ -27,10 +27,10 @@ extern"C" int entry()
     TaskScheduler scheduler;
     SystemRegistry registry;
 
-    scheduler.addTask(new HorizontalStabilizationTask, 50);
-    scheduler.addTask(new IMUUpdateTask, 100);
-    scheduler.addTask(new ThrottleADCTask, 100);
-    scheduler.addTask(new EnginesUpdateTask, 440);
+    scheduler.addTask(new HorizontalStabilizationTask, 50hz);
+    scheduler.addTask(new IMUUpdateTask, 100hz);
+    scheduler.addTask(new ThrottleADCTask, 100hz);
+    scheduler.addTask(new EnginesUpdateTask, 440hz);
 
     /* Forever */
     scheduler.start();
