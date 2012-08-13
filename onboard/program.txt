@@ -202,7 +202,7 @@
   02002021  // 298:	 move	a0,s0
   27a4046c  // 29c:	 addiu	a0,sp,1132
   0c0001f1  // 2a0:	 jal	7c4 <TaskScheduler::TaskScheduler()>
-  ac10f000  // 2a4:	 sw	s0,-4096(zero)
+  ac10f800  // 2a4:	 sw	s0,-2048(zero)
   0c0000dd  // 2a8:	 jal	374 <SystemRegistry::SystemRegistry()>
   27a40420  // 2ac:	 addiu	a0,sp,1056
   0c000394  // 2b0:	 jal	e50 <operator new(unsigned int)>
@@ -261,10 +261,10 @@
 
 // 00000374 <SystemRegistry::SystemRegistry()>:
   03e00008  // 374:	 jr	ra
-  ac04f004  // 378:	 sw	a0,-4092(zero)
+  ac04f804  // 378:	 sw	a0,-2044(zero)
 
 // 0000037c <SystemRegistry::value(SystemRegistry::Value)>:
-  8c02f004  // 37c:	 lw	v0,-4092(zero)
+  8c02f804  // 37c:	 lw	v0,-2044(zero)
   00042080  // 380:	 sll	a0,a0,0x2
   03e00008  // 384:	 jr	ra
   00441021  // 388:	 addu	v0,v0,a0
@@ -306,7 +306,7 @@
   27bd0028  // 410:	 addiu	sp,sp,40
 
 // 00000414 <SystemRegistry::set(SystemRegistry::Value, int)>:
-  8c02f004  // 414:	 lw	v0,-4092(zero)
+  8c02f804  // 414:	 lw	v0,-2044(zero)
   00042080  // 418:	 sll	a0,a0,0x2
   00442021  // 41c:	 addu	a0,v0,a0
   03e00008  // 420:	 jr	ra
@@ -1014,13 +1014,13 @@
 
 // 00000e50 <operator new(unsigned int)>:
   00802821  // e50:	 move	a1,a0
-  8c04f000  // e54:	 lw	a0,-4096(zero)
+  8c04f800  // e54:	 lw	a0,-2048(zero)
   08000364  // e58:	 j	d90 <MemoryManager::alloc(unsigned int)>
   00000000  // e5c:	 nop
 
 // 00000e60 <operator delete(void*)>:
   00802821  // e60:	 move	a1,a0
-  8c04f000  // e64:	 lw	a0,-4096(zero)
+  8c04f800  // e64:	 lw	a0,-2048(zero)
   08000316  // e68:	 j	c58 <MemoryManager::free(void*)>
   00000000  // e6c:	 nop
 
