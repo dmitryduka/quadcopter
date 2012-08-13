@@ -1,0 +1,42 @@
+
+// main:     file format elf32-bigmips
+
+
+// Disassembly of section .rodata:
+
+// 00000008 <vtable for HorizontalStabilizationTask>:
+  00000000  //   8:	 nop
+  00000000  //   c:	 nop
+  00000328  //  10:	 0x328
+  00000000  //  14:	 nop
+
+// 00000018 <vtable for Task>:
+  00000000  //  18:	 nop
+  00000000  //  1c:	 nop
+  00000320  //  20:	 0x320
+  00000000  //  24:	 nop
+
+// 00000028 <vtable for ContinuousTask>:
+  00000000  //  28:	 nop
+  00000000  //  2c:	 nop
+  00000320  //  30:	 0x320
+  00000000  //  34:	 nop
+
+// 00000038 <vtable for IMUUpdateTask>:
+  00000000  //  38:	 nop
+  00000000  //  3c:	 nop
+  000004f0  //  40:	 0x4f0
+  00000000  //  44:	 nop
+
+// 00000048 <vtable for ThrottleADCTask>:
+  00000000  //  48:	 nop
+  00000000  //  4c:	 nop
+  00000468  //  50:	 0x468
+  00000000  //  54:	 nop
+
+// 00000058 <vtable for EnginesUpdateTask>:
+  00000000  //  58:	 nop
+  00000000  //  5c:	 nop
+  00000490  //  60:	 0x490
+  00000000  //  64:	 nop
+

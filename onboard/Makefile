@@ -20,6 +20,7 @@ all: startup
 	$(DUMP) -C -Dz --section=.rodata main > program-data.txt
 	$(READELF) -a main > program-elf.txt
 	./objdump_convert program-objdump.txt program.txt
+	./objdump_convert program-data.txt data.txt
 
 startup:
 	$(AS) -mips1 -o startup.o startup.S
