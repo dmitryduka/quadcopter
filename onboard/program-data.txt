@@ -7,35 +7,35 @@ Disassembly of section .rodata:
 00000008 <vtable for HorizontalStabilizationTask>:
    8:	00000000 	nop
    c:	00000000 	nop
-  10:	0000033c 	0x33c
+  10:	00000340 	sll	zero,zero,0xd
   14:	00000000 	nop
 
 00000018 <vtable for Task>:
   18:	00000000 	nop
   1c:	00000000 	nop
-  20:	00000334 	0x334
+  20:	00000338 	0x338
   24:	00000000 	nop
 
 00000028 <vtable for ContinuousTask>:
   28:	00000000 	nop
   2c:	00000000 	nop
-  30:	00000334 	0x334
+  30:	00000338 	0x338
   34:	00000000 	nop
 
 00000038 <vtable for IMUUpdateTask>:
   38:	00000000 	nop
   3c:	00000000 	nop
-  40:	00000504 	0x504
+  40:	00000508 	0x508
   44:	00000000 	nop
 
 00000048 <vtable for ThrottleADCTask>:
   48:	00000000 	nop
   4c:	00000000 	nop
-  50:	0000047c 	0x47c
+  50:	00000480 	sll	zero,zero,0x12
   54:	00000000 	nop
 
 00000058 <vtable for EnginesUpdateTask>:
   58:	00000000 	nop
   5c:	00000000 	nop
-  60:	000004a4 	0x4a4
+  60:	000004a8 	0x4a8
   64:	00000000 	nop

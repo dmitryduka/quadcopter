@@ -152,645 +152,646 @@
   24420001  // 1f8:	 addiu	v0,v0,1
   1444fff9  // 1fc:	 bne	v0,a0,1e4 <entry+0x54>
   00451807  // 200:	 srav	v1,a1,v0
-  27bdfef8  // 204:	 addiu	sp,sp,-264
-  afb00100  // 208:	 sw	s0,256(sp)
-  27b00010  // 20c:	 addiu	s0,sp,16
-  afbf0104  // 210:	 sw	ra,260(sp)
-  0c00024f  // 214:	 jal	93c <MemoryManager::MemoryManager()>
-  02002021  // 218:	 move	a0,s0
-  3c028000  // 21c:	 lui	v0,0x8000
-  27a300a0  // 220:	 addiu	v1,sp,160
-  ac500000  // 224:	 sw	s0,0(v0)
-  24040024  // 228:	 li	a0,36
-  afa000ec  // 22c:	 sw	zero,236(sp)
-  afa000f0  // 230:	 sw	zero,240(sp)
-  afa000f4  // 234:	 sw	zero,244(sp)
-  afa000f8  // 238:	 sw	zero,248(sp)
-  afa000fc  // 23c:	 sw	zero,252(sp)
-  0c0002da  // 240:	 jal	b68 <operator new(unsigned int)>
-  ac430004  // 244:	 sw	v1,4(v0)
-  3c030000  // 248:	 lui	v1,0x0
-  24630010  // 24c:	 addiu	v1,v1,16
-  27a400ec  // 250:	 addiu	a0,sp,236
-  3c07000f  // 254:	 lui	a3,0xf
-  00802821  // 258:	 move	a1,a0
-  ac430000  // 25c:	 sw	v1,0(v0)
-  00403021  // 260:	 move	a2,v0
-  24e74240  // 264:	 addiu	a3,a3,16960
-  ac400004  // 268:	 sw	zero,4(v0)
-  ac400008  // 26c:	 sw	zero,8(v0)
-  ac40000c  // 270:	 sw	zero,12(v0)
-  ac400014  // 274:	 sw	zero,20(v0)
-  ac400018  // 278:	 sw	zero,24(v0)
-  ac40001c  // 27c:	 sw	zero,28(v0)
-  0c0001ee  // 280:	 jal	7b8 <TaskScheduler::addTask(Task*&, Task*, int)>
-  ac400020  // 284:	 sw	zero,32(v0)
-  0c0002da  // 288:	 jal	b68 <operator new(unsigned int)>
-  24040014  // 28c:	 li	a0,20
-  3c030000  // 290:	 lui	v1,0x0
-  24630040  // 294:	 addiu	v1,v1,64
-  27a400ec  // 298:	 addiu	a0,sp,236
-  3c100007  // 29c:	 lui	s0,0x7
-  00802821  // 2a0:	 move	a1,a0
-  ac430000  // 2a4:	 sw	v1,0(v0)
-  00403021  // 2a8:	 move	a2,v0
-  3607a120  // 2ac:	 ori	a3,s0,0xa120
-  ac400004  // 2b0:	 sw	zero,4(v0)
-  ac400008  // 2b4:	 sw	zero,8(v0)
-  0c0001ee  // 2b8:	 jal	7b8 <TaskScheduler::addTask(Task*&, Task*, int)>
-  ac40000c  // 2bc:	 sw	zero,12(v0)
-  0c0002da  // 2c0:	 jal	b68 <operator new(unsigned int)>
-  24040014  // 2c4:	 li	a0,20
-  3c030000  // 2c8:	 lui	v1,0x0
-  24630050  // 2cc:	 addiu	v1,v1,80
-  27a400ec  // 2d0:	 addiu	a0,sp,236
-  00802821  // 2d4:	 move	a1,a0
-  ac430000  // 2d8:	 sw	v1,0(v0)
-  00403021  // 2dc:	 move	a2,v0
-  3607a120  // 2e0:	 ori	a3,s0,0xa120
-  ac400004  // 2e4:	 sw	zero,4(v0)
-  ac400008  // 2e8:	 sw	zero,8(v0)
-  0c0001ee  // 2ec:	 jal	7b8 <TaskScheduler::addTask(Task*&, Task*, int)>
-  ac40000c  // 2f0:	 sw	zero,12(v0)
-  0c0002da  // 2f4:	 jal	b68 <operator new(unsigned int)>
-  24040014  // 2f8:	 li	a0,20
-  3c030000  // 2fc:	 lui	v1,0x0
-  27a400ec  // 300:	 addiu	a0,sp,236
-  24630060  // 304:	 addiu	v1,v1,96
-  3c070001  // 308:	 lui	a3,0x1
-  00802821  // 30c:	 move	a1,a0
-  ac400004  // 310:	 sw	zero,4(v0)
-  ac400008  // 314:	 sw	zero,8(v0)
-  ac40000c  // 318:	 sw	zero,12(v0)
-  ac430000  // 31c:	 sw	v1,0(v0)
-  00403021  // 320:	 move	a2,v0
-  0c0001ee  // 324:	 jal	7b8 <TaskScheduler::addTask(Task*&, Task*, int)>
-  34e7bbe4  // 328:	 ori	a3,a3,0xbbe4
-  0c000201  // 32c:	 jal	804 <TaskScheduler::start()>
-  27a400ec  // 330:	 addiu	a0,sp,236
+  27bdfd78  // 204:	 addiu	sp,sp,-648
+  afb00280  // 208:	 sw	s0,640(sp)
+  afbf0284  // 20c:	 sw	ra,644(sp)
+  0c00004e  // 210:	 jal	138 <mpu6050_init()>
+  27b00010  // 214:	 addiu	s0,sp,16
+  0c000250  // 218:	 jal	940 <MemoryManager::MemoryManager()>
+  02002021  // 21c:	 move	a0,s0
+  3c028000  // 220:	 lui	v0,0x8000
+  27a30220  // 224:	 addiu	v1,sp,544
+  ac500000  // 228:	 sw	s0,0(v0)
+  24040024  // 22c:	 li	a0,36
+  afa0026c  // 230:	 sw	zero,620(sp)
+  afa00270  // 234:	 sw	zero,624(sp)
+  afa00274  // 238:	 sw	zero,628(sp)
+  afa00278  // 23c:	 sw	zero,632(sp)
+  afa0027c  // 240:	 sw	zero,636(sp)
+  0c0002db  // 244:	 jal	b6c <operator new(unsigned int)>
+  ac430004  // 248:	 sw	v1,4(v0)
+  3c030000  // 24c:	 lui	v1,0x0
+  24630010  // 250:	 addiu	v1,v1,16
+  27a4026c  // 254:	 addiu	a0,sp,620
+  3c07000f  // 258:	 lui	a3,0xf
+  00802821  // 25c:	 move	a1,a0
+  ac430000  // 260:	 sw	v1,0(v0)
+  00403021  // 264:	 move	a2,v0
+  24e74240  // 268:	 addiu	a3,a3,16960
+  ac400004  // 26c:	 sw	zero,4(v0)
+  ac400008  // 270:	 sw	zero,8(v0)
+  ac40000c  // 274:	 sw	zero,12(v0)
+  ac400014  // 278:	 sw	zero,20(v0)
+  ac400018  // 27c:	 sw	zero,24(v0)
+  ac40001c  // 280:	 sw	zero,28(v0)
+  0c0001ef  // 284:	 jal	7bc <TaskScheduler::addTask(Task*&, Task*, int)>
+  ac400020  // 288:	 sw	zero,32(v0)
+  0c0002db  // 28c:	 jal	b6c <operator new(unsigned int)>
+  24040014  // 290:	 li	a0,20
+  3c030000  // 294:	 lui	v1,0x0
+  24630040  // 298:	 addiu	v1,v1,64
+  27a4026c  // 29c:	 addiu	a0,sp,620
+  3c100007  // 2a0:	 lui	s0,0x7
+  00802821  // 2a4:	 move	a1,a0
+  ac430000  // 2a8:	 sw	v1,0(v0)
+  00403021  // 2ac:	 move	a2,v0
+  3607a120  // 2b0:	 ori	a3,s0,0xa120
+  ac400004  // 2b4:	 sw	zero,4(v0)
+  ac400008  // 2b8:	 sw	zero,8(v0)
+  0c0001ef  // 2bc:	 jal	7bc <TaskScheduler::addTask(Task*&, Task*, int)>
+  ac40000c  // 2c0:	 sw	zero,12(v0)
+  0c0002db  // 2c4:	 jal	b6c <operator new(unsigned int)>
+  24040014  // 2c8:	 li	a0,20
+  3c030000  // 2cc:	 lui	v1,0x0
+  24630050  // 2d0:	 addiu	v1,v1,80
+  27a4026c  // 2d4:	 addiu	a0,sp,620
+  00802821  // 2d8:	 move	a1,a0
+  ac430000  // 2dc:	 sw	v1,0(v0)
+  00403021  // 2e0:	 move	a2,v0
+  3607a120  // 2e4:	 ori	a3,s0,0xa120
+  ac400004  // 2e8:	 sw	zero,4(v0)
+  ac400008  // 2ec:	 sw	zero,8(v0)
+  0c0001ef  // 2f0:	 jal	7bc <TaskScheduler::addTask(Task*&, Task*, int)>
+  ac40000c  // 2f4:	 sw	zero,12(v0)
+  0c0002db  // 2f8:	 jal	b6c <operator new(unsigned int)>
+  24040014  // 2fc:	 li	a0,20
+  3c030000  // 300:	 lui	v1,0x0
+  27a4026c  // 304:	 addiu	a0,sp,620
+  24630060  // 308:	 addiu	v1,v1,96
+  3c070001  // 30c:	 lui	a3,0x1
+  00802821  // 310:	 move	a1,a0
+  ac400004  // 314:	 sw	zero,4(v0)
+  ac400008  // 318:	 sw	zero,8(v0)
+  ac40000c  // 31c:	 sw	zero,12(v0)
+  ac430000  // 320:	 sw	v1,0(v0)
+  00403021  // 324:	 move	a2,v0
+  0c0001ef  // 328:	 jal	7bc <TaskScheduler::addTask(Task*&, Task*, int)>
+  34e7bbe4  // 32c:	 ori	a3,a3,0xbbe4
+  0c000202  // 330:	 jal	808 <TaskScheduler::start()>
+  27a4026c  // 334:	 addiu	a0,sp,620
 
-// 00000334 <Task::start()>:
-  03e00008  // 334:	 jr	ra
-  00000000  // 338:	 nop
+// 00000338 <Task::start()>:
+  03e00008  // 338:	 jr	ra
+  00000000  // 33c:	 nop
 
-// 0000033c <HorizontalStabilizationTask::start()>:
-  3c028000  // 33c:	 lui	v0,0x8000
-  27bdfff8  // 340:	 addiu	sp,sp,-8
-  8c420004  // 344:	 lw	v0,4(v0)
-  00000000  // 348:	 nop
-  8c460000  // 34c:	 lw	a2,0(v0)
-  8c430004  // 350:	 lw	v1,4(v0)
-  8c4a0044  // 354:	 lw	t2,68(v0)
-  00c32823  // 358:	 subu	a1,a2,v1
-  8c490048  // 35c:	 lw	t1,72(v0)
-  00c31821  // 360:	 addu	v1,a2,v1
-  8c460018  // 364:	 lw	a2,24(v0)
-  8c42001c  // 368:	 lw	v0,28(v0)
-  00aa5023  // 36c:	 subu	t2,a1,t2
-  00c25821  // 370:	 addu	t3,a2,v0
-  00c24023  // 374:	 subu	t0,a2,v0
-  8c82001c  // 378:	 lw	v0,28(a0)
-  00694823  // 37c:	 subu	t1,v1,t1
-  00a21026  // 380:	 xor	v0,a1,v0
-  04410003  // 384:	 bgez	v0,394 <HorizontalStabilizationTask::start()+0x58>
-  000b5823  // 388:	 negu	t3,t3
-  080000eb  // 38c:	 j	3ac <HorizontalStabilizationTask::start()+0x70>
-  ac800014  // 390:	 sw	zero,20(a0)
-  8c820014  // 394:	 lw	v0,20(a0)
-  00000000  // 398:	 nop
-  2c4607d0  // 39c:	 sltiu	a2,v0,2000
-  10c00002  // 3a0:	 beqz	a2,3ac <HorizontalStabilizationTask::start()+0x70>
-  00451021  // 3a4:	 addu	v0,v0,a1
-  ac820014  // 3a8:	 sw	v0,20(a0)
-  8c820020  // 3ac:	 lw	v0,32(a0)
-  00000000  // 3b0:	 nop
-  00621026  // 3b4:	 xor	v0,v1,v0
-  04410003  // 3b8:	 bgez	v0,3c8 <HorizontalStabilizationTask::start()+0x8c>
-  00000000  // 3bc:	 nop
-  080000f8  // 3c0:	 j	3e0 <HorizontalStabilizationTask::start()+0xa4>
-  ac800018  // 3c4:	 sw	zero,24(a0)
-  8c820018  // 3c8:	 lw	v0,24(a0)
-  00000000  // 3cc:	 nop
-  2c4607d0  // 3d0:	 sltiu	a2,v0,2000
-  10c00002  // 3d4:	 beqz	a2,3e0 <HorizontalStabilizationTask::start()+0xa4>
-  00431021  // 3d8:	 addu	v0,v0,v1
-  ac820018  // 3dc:	 sw	v0,24(a0)
-  ac85001c  // 3e0:	 sw	a1,28(a0)
-  240500a0  // 3e4:	 li	a1,160
-  01450018  // 3e8:	 mult	t2,a1
-  ac830020  // 3ec:	 sw	v1,32(a0)
-  24030003  // 3f0:	 li	v1,3
-  3c068000  // 3f4:	 lui	a2,0x8000
-  8cc70004  // 3f8:	 lw	a3,4(a2)
-  00001012  // 3fc:	 mflo	v0
-  00025283  // 400:	 sra	t2,v0,0xa
-  8c820014  // 404:	 lw	v0,20(a0)
-  00000000  // 408:	 nop
-  00620018  // 40c:	 mult	v1,v0
-  00006012  // 410:	 mflo	t4
-  000c1283  // 414:	 sra	v0,t4,0xa
-  01425021  // 418:	 addu	t2,t2,v0
-  2402012c  // 41c:	 li	v0,300
-  01620018  // 420:	 mult	t3,v0
-  00006012  // 424:	 mflo	t4
-  000c5a83  // 428:	 sra	t3,t4,0xa
-  014b5021  // 42c:	 addu	t2,t2,t3
-  01250018  // 430:	 mult	t1,a1
-  acea003c  // 434:	 sw	t2,60(a3)
-  8c840018  // 438:	 lw	a0,24(a0)
-  8cc70004  // 43c:	 lw	a3,4(a2)
-  00003012  // 440:	 mflo	a2
-  00062a83  // 444:	 sra	a1,a2,0xa
-  00000000  // 448:	 nop
-  00640018  // 44c:	 mult	v1,a0
-  00003012  // 450:	 mflo	a2
-  00061a83  // 454:	 sra	v1,a2,0xa
-  00a32021  // 458:	 addu	a0,a1,v1
-  01020018  // 45c:	 mult	t0,v0
-  00001812  // 460:	 mflo	v1
-  afa30000  // 464:	 sw	v1,0(sp)
-  00031a83  // 468:	 sra	v1,v1,0xa
-  00831021  // 46c:	 addu	v0,a0,v1
-  ace20040  // 470:	 sw	v0,64(a3)
-  03e00008  // 474:	 jr	ra
-  27bd0008  // 478:	 addiu	sp,sp,8
+// 00000340 <HorizontalStabilizationTask::start()>:
+  3c028000  // 340:	 lui	v0,0x8000
+  27bdfff8  // 344:	 addiu	sp,sp,-8
+  8c420004  // 348:	 lw	v0,4(v0)
+  00000000  // 34c:	 nop
+  8c460000  // 350:	 lw	a2,0(v0)
+  8c430004  // 354:	 lw	v1,4(v0)
+  8c4a0044  // 358:	 lw	t2,68(v0)
+  00c32823  // 35c:	 subu	a1,a2,v1
+  8c490048  // 360:	 lw	t1,72(v0)
+  00c31821  // 364:	 addu	v1,a2,v1
+  8c460018  // 368:	 lw	a2,24(v0)
+  8c42001c  // 36c:	 lw	v0,28(v0)
+  00aa5023  // 370:	 subu	t2,a1,t2
+  00c25821  // 374:	 addu	t3,a2,v0
+  00c24023  // 378:	 subu	t0,a2,v0
+  8c82001c  // 37c:	 lw	v0,28(a0)
+  00694823  // 380:	 subu	t1,v1,t1
+  00a21026  // 384:	 xor	v0,a1,v0
+  04410003  // 388:	 bgez	v0,398 <HorizontalStabilizationTask::start()+0x58>
+  000b5823  // 38c:	 negu	t3,t3
+  080000ec  // 390:	 j	3b0 <HorizontalStabilizationTask::start()+0x70>
+  ac800014  // 394:	 sw	zero,20(a0)
+  8c820014  // 398:	 lw	v0,20(a0)
+  00000000  // 39c:	 nop
+  2c4607d0  // 3a0:	 sltiu	a2,v0,2000
+  10c00002  // 3a4:	 beqz	a2,3b0 <HorizontalStabilizationTask::start()+0x70>
+  00451021  // 3a8:	 addu	v0,v0,a1
+  ac820014  // 3ac:	 sw	v0,20(a0)
+  8c820020  // 3b0:	 lw	v0,32(a0)
+  00000000  // 3b4:	 nop
+  00621026  // 3b8:	 xor	v0,v1,v0
+  04410003  // 3bc:	 bgez	v0,3cc <HorizontalStabilizationTask::start()+0x8c>
+  00000000  // 3c0:	 nop
+  080000f9  // 3c4:	 j	3e4 <HorizontalStabilizationTask::start()+0xa4>
+  ac800018  // 3c8:	 sw	zero,24(a0)
+  8c820018  // 3cc:	 lw	v0,24(a0)
+  00000000  // 3d0:	 nop
+  2c4607d0  // 3d4:	 sltiu	a2,v0,2000
+  10c00002  // 3d8:	 beqz	a2,3e4 <HorizontalStabilizationTask::start()+0xa4>
+  00431021  // 3dc:	 addu	v0,v0,v1
+  ac820018  // 3e0:	 sw	v0,24(a0)
+  ac85001c  // 3e4:	 sw	a1,28(a0)
+  240500a0  // 3e8:	 li	a1,160
+  01450018  // 3ec:	 mult	t2,a1
+  ac830020  // 3f0:	 sw	v1,32(a0)
+  24030003  // 3f4:	 li	v1,3
+  3c068000  // 3f8:	 lui	a2,0x8000
+  8cc70004  // 3fc:	 lw	a3,4(a2)
+  00001012  // 400:	 mflo	v0
+  00025283  // 404:	 sra	t2,v0,0xa
+  8c820014  // 408:	 lw	v0,20(a0)
+  00000000  // 40c:	 nop
+  00620018  // 410:	 mult	v1,v0
+  00006012  // 414:	 mflo	t4
+  000c1283  // 418:	 sra	v0,t4,0xa
+  01425021  // 41c:	 addu	t2,t2,v0
+  2402012c  // 420:	 li	v0,300
+  01620018  // 424:	 mult	t3,v0
+  00006012  // 428:	 mflo	t4
+  000c5a83  // 42c:	 sra	t3,t4,0xa
+  014b5021  // 430:	 addu	t2,t2,t3
+  01250018  // 434:	 mult	t1,a1
+  acea003c  // 438:	 sw	t2,60(a3)
+  8c840018  // 43c:	 lw	a0,24(a0)
+  8cc70004  // 440:	 lw	a3,4(a2)
+  00003012  // 444:	 mflo	a2
+  00062a83  // 448:	 sra	a1,a2,0xa
+  00000000  // 44c:	 nop
+  00640018  // 450:	 mult	v1,a0
+  00003012  // 454:	 mflo	a2
+  00061a83  // 458:	 sra	v1,a2,0xa
+  00a32021  // 45c:	 addu	a0,a1,v1
+  01020018  // 460:	 mult	t0,v0
+  00001812  // 464:	 mflo	v1
+  afa30000  // 468:	 sw	v1,0(sp)
+  00031a83  // 46c:	 sra	v1,v1,0xa
+  00831021  // 470:	 addu	v0,a0,v1
+  ace20040  // 474:	 sw	v0,64(a3)
+  03e00008  // 478:	 jr	ra
+  27bd0008  // 47c:	 addiu	sp,sp,8
 
-// 0000047c <ThrottleADCTask::start()>:
-  24020002  // 47c:	 li	v0,2
-  ac02000c  // 480:	 sw	v0,12(zero)
-  8c02000c  // 484:	 lw	v0,12(zero)
-  00000000  // 488:	 nop
-  0440fffd  // 48c:	 bltz	v0,484 <ThrottleADCTask::start()+0x8>
-  3c038000  // 490:	 lui	v1,0x8000
-  8c630004  // 494:	 lw	v1,4(v1)
-  00021083  // 498:	 sra	v0,v0,0x2
-  03e00008  // 49c:	 jr	ra
-  ac620038  // 4a0:	 sw	v0,56(v1)
+// 00000480 <ThrottleADCTask::start()>:
+  24020002  // 480:	 li	v0,2
+  ac02000c  // 484:	 sw	v0,12(zero)
+  8c02000c  // 488:	 lw	v0,12(zero)
+  00000000  // 48c:	 nop
+  0440fffd  // 490:	 bltz	v0,488 <ThrottleADCTask::start()+0x8>
+  3c038000  // 494:	 lui	v1,0x8000
+  8c630004  // 498:	 lw	v1,4(v1)
+  00021083  // 49c:	 sra	v0,v0,0x2
+  03e00008  // 4a0:	 jr	ra
+  ac620038  // 4a4:	 sw	v0,56(v1)
 
-// 000004a4 <EnginesUpdateTask::start()>:
-  27bdffe0  // 4a4:	 addiu	sp,sp,-32
-  3c028000  // 4a8:	 lui	v0,0x8000
-  afbf001c  // 4ac:	 sw	ra,28(sp)
-  afb10018  // 4b0:	 sw	s1,24(sp)
-  afb00014  // 4b4:	 sw	s0,20(sp)
-  8c430004  // 4b8:	 lw	v1,4(v0)
-  00000000  // 4bc:	 nop
-  8c620038  // 4c0:	 lw	v0,56(v1)
-  8c66003c  // 4c4:	 lw	a2,60(v1)
-  8c650040  // 4c8:	 lw	a1,64(v1)
-  00462021  // 4cc:	 addu	a0,v0,a2
-  00458823  // 4d0:	 subu	s1,v0,a1
-  00458021  // 4d4:	 addu	s0,v0,a1
-  00462823  // 4d8:	 subu	a1,v0,a2
-  0c000023  // 4dc:	 jal	8c <eng_ctrl(int, int, int volatile*)>
-  24060010  // 4e0:	 li	a2,16
-  8fbf001c  // 4e4:	 lw	ra,28(sp)
-  02202021  // 4e8:	 move	a0,s1
-  02002821  // 4ec:	 move	a1,s0
-  8fb10018  // 4f0:	 lw	s1,24(sp)
-  8fb00014  // 4f4:	 lw	s0,20(sp)
-  24060014  // 4f8:	 li	a2,20
-  08000023  // 4fc:	 j	8c <eng_ctrl(int, int, int volatile*)>
-  27bd0020  // 500:	 addiu	sp,sp,32
+// 000004a8 <EnginesUpdateTask::start()>:
+  27bdffe0  // 4a8:	 addiu	sp,sp,-32
+  3c028000  // 4ac:	 lui	v0,0x8000
+  afbf001c  // 4b0:	 sw	ra,28(sp)
+  afb10018  // 4b4:	 sw	s1,24(sp)
+  afb00014  // 4b8:	 sw	s0,20(sp)
+  8c430004  // 4bc:	 lw	v1,4(v0)
+  00000000  // 4c0:	 nop
+  8c620038  // 4c4:	 lw	v0,56(v1)
+  8c66003c  // 4c8:	 lw	a2,60(v1)
+  8c650040  // 4cc:	 lw	a1,64(v1)
+  00462021  // 4d0:	 addu	a0,v0,a2
+  00458823  // 4d4:	 subu	s1,v0,a1
+  00458021  // 4d8:	 addu	s0,v0,a1
+  00462823  // 4dc:	 subu	a1,v0,a2
+  0c000023  // 4e0:	 jal	8c <eng_ctrl(int, int, int volatile*)>
+  24060010  // 4e4:	 li	a2,16
+  8fbf001c  // 4e8:	 lw	ra,28(sp)
+  02202021  // 4ec:	 move	a0,s1
+  02002821  // 4f0:	 move	a1,s0
+  8fb10018  // 4f4:	 lw	s1,24(sp)
+  8fb00014  // 4f8:	 lw	s0,20(sp)
+  24060014  // 4fc:	 li	a2,20
+  08000023  // 500:	 j	8c <eng_ctrl(int, int, int volatile*)>
+  27bd0020  // 504:	 addiu	sp,sp,32
 
-// 00000504 <IMUUpdateTask::start()>:
-  27bdffb8  // 504:	 addiu	sp,sp,-72
-  afbf0044  // 508:	 sw	ra,68(sp)
-  afbe0040  // 50c:	 sw	s8,64(sp)
-  afb7003c  // 510:	 sw	s7,60(sp)
-  afb60038  // 514:	 sw	s6,56(sp)
-  afb50034  // 518:	 sw	s5,52(sp)
-  afb40030  // 51c:	 sw	s4,48(sp)
-  afb3002c  // 520:	 sw	s3,44(sp)
-  afb20028  // 524:	 sw	s2,40(sp)
-  afb10024  // 528:	 sw	s1,36(sp)
-  0c000006  // 52c:	 jal	18 <i2c_start()>
-  afb00020  // 530:	 sw	s0,32(sp)
-  0c000018  // 534:	 jal	60 <i2c_io(int)>
-  240401d0  // 538:	 li	a0,464
-  0c000018  // 53c:	 jal	60 <i2c_io(int)>
-  2404013b  // 540:	 li	a0,315
-  0c00000f  // 544:	 jal	3c <i2c_stop()>
-  00000000  // 548:	 nop
-  0c000006  // 54c:	 jal	18 <i2c_start()>
-  00000000  // 550:	 nop
-  0c000018  // 554:	 jal	60 <i2c_io(int)>
-  240401d1  // 558:	 li	a0,465
-  0c000018  // 55c:	 jal	60 <i2c_io(int)>
-  240400ff  // 560:	 li	a0,255
+// 00000508 <IMUUpdateTask::start()>:
+  27bdffb8  // 508:	 addiu	sp,sp,-72
+  afbf0044  // 50c:	 sw	ra,68(sp)
+  afbe0040  // 510:	 sw	s8,64(sp)
+  afb7003c  // 514:	 sw	s7,60(sp)
+  afb60038  // 518:	 sw	s6,56(sp)
+  afb50034  // 51c:	 sw	s5,52(sp)
+  afb40030  // 520:	 sw	s4,48(sp)
+  afb3002c  // 524:	 sw	s3,44(sp)
+  afb20028  // 528:	 sw	s2,40(sp)
+  afb10024  // 52c:	 sw	s1,36(sp)
+  0c000006  // 530:	 jal	18 <i2c_start()>
+  afb00020  // 534:	 sw	s0,32(sp)
+  0c000018  // 538:	 jal	60 <i2c_io(int)>
+  240401d0  // 53c:	 li	a0,464
+  0c000018  // 540:	 jal	60 <i2c_io(int)>
+  2404013b  // 544:	 li	a0,315
+  0c00000f  // 548:	 jal	3c <i2c_stop()>
+  00000000  // 54c:	 nop
+  0c000006  // 550:	 jal	18 <i2c_start()>
+  00000000  // 554:	 nop
+  0c000018  // 558:	 jal	60 <i2c_io(int)>
+  240401d1  // 55c:	 li	a0,465
+  0c000018  // 560:	 jal	60 <i2c_io(int)>
   240400ff  // 564:	 li	a0,255
-  0c000018  // 568:	 jal	60 <i2c_io(int)>
-  afa20018  // 56c:	 sw	v0,24(sp)
-  240400ff  // 570:	 li	a0,255
-  0c000018  // 574:	 jal	60 <i2c_io(int)>
-  0040a021  // 578:	 move	s4,v0
-  240400ff  // 57c:	 li	a0,255
-  0c000018  // 580:	 jal	60 <i2c_io(int)>
-  afa20014  // 584:	 sw	v0,20(sp)
-  240400ff  // 588:	 li	a0,255
-  0c000018  // 58c:	 jal	60 <i2c_io(int)>
-  00409821  // 590:	 move	s3,v0
-  240400ff  // 594:	 li	a0,255
-  0c000018  // 598:	 jal	60 <i2c_io(int)>
-  afa20010  // 59c:	 sw	v0,16(sp)
-  240400ff  // 5a0:	 li	a0,255
-  0c000018  // 5a4:	 jal	60 <i2c_io(int)>
-  00409021  // 5a8:	 move	s2,v0
-  0c000018  // 5ac:	 jal	60 <i2c_io(int)>
-  240400ff  // 5b0:	 li	a0,255
-  0c000018  // 5b4:	 jal	60 <i2c_io(int)>
-  240400ff  // 5b8:	 li	a0,255
+  240400ff  // 568:	 li	a0,255
+  0c000018  // 56c:	 jal	60 <i2c_io(int)>
+  afa20018  // 570:	 sw	v0,24(sp)
+  240400ff  // 574:	 li	a0,255
+  0c000018  // 578:	 jal	60 <i2c_io(int)>
+  0040a021  // 57c:	 move	s4,v0
+  240400ff  // 580:	 li	a0,255
+  0c000018  // 584:	 jal	60 <i2c_io(int)>
+  afa20014  // 588:	 sw	v0,20(sp)
+  240400ff  // 58c:	 li	a0,255
+  0c000018  // 590:	 jal	60 <i2c_io(int)>
+  00409821  // 594:	 move	s3,v0
+  240400ff  // 598:	 li	a0,255
+  0c000018  // 59c:	 jal	60 <i2c_io(int)>
+  afa20010  // 5a0:	 sw	v0,16(sp)
+  240400ff  // 5a4:	 li	a0,255
+  0c000018  // 5a8:	 jal	60 <i2c_io(int)>
+  00409021  // 5ac:	 move	s2,v0
+  0c000018  // 5b0:	 jal	60 <i2c_io(int)>
+  240400ff  // 5b4:	 li	a0,255
+  0c000018  // 5b8:	 jal	60 <i2c_io(int)>
   240400ff  // 5bc:	 li	a0,255
-  0c000018  // 5c0:	 jal	60 <i2c_io(int)>
-  0040f021  // 5c4:	 move	s8,v0
-  240400ff  // 5c8:	 li	a0,255
-  0c000018  // 5cc:	 jal	60 <i2c_io(int)>
-  00408821  // 5d0:	 move	s1,v0
-  240400ff  // 5d4:	 li	a0,255
-  0c000018  // 5d8:	 jal	60 <i2c_io(int)>
-  0040b821  // 5dc:	 move	s7,v0
-  240400ff  // 5e0:	 li	a0,255
-  0c000018  // 5e4:	 jal	60 <i2c_io(int)>
-  00408021  // 5e8:	 move	s0,v0
-  240401ff  // 5ec:	 li	a0,511
-  0c000018  // 5f0:	 jal	60 <i2c_io(int)>
-  0040b021  // 5f4:	 move	s6,v0
-  0c00000f  // 5f8:	 jal	3c <i2c_stop()>
-  0040a821  // 5fc:	 move	s5,v0
-  8fa60018  // 600:	 lw	a2,24(sp)
-  329400ff  // 604:	 andi	s4,s4,0xff
-  30c600ff  // 608:	 andi	a2,a2,0xff
-  00062200  // 60c:	 sll	a0,a2,0x8
-  0c000046  // 610:	 jal	118 <sign_extend(int)>
-  00942025  // 614:	 or	a0,a0,s4
-  8fa50014  // 618:	 lw	a1,20(sp)
-  327300ff  // 61c:	 andi	s3,s3,0xff
-  30a500ff  // 620:	 andi	a1,a1,0xff
-  00052200  // 624:	 sll	a0,a1,0x8
-  00932025  // 628:	 or	a0,a0,s3
-  0c000046  // 62c:	 jal	118 <sign_extend(int)>
-  0040a021  // 630:	 move	s4,v0
-  8fa30010  // 634:	 lw	v1,16(sp)
-  325200ff  // 638:	 andi	s2,s2,0xff
-  306300ff  // 63c:	 andi	v1,v1,0xff
-  00032200  // 640:	 sll	a0,v1,0x8
-  00922025  // 644:	 or	a0,a0,s2
-  33de00ff  // 648:	 andi	s8,s8,0xff
-  00409821  // 64c:	 move	s3,v0
-  0c000046  // 650:	 jal	118 <sign_extend(int)>
-  323100ff  // 654:	 andi	s1,s1,0xff
-  001e2200  // 658:	 sll	a0,s8,0x8
-  00912025  // 65c:	 or	a0,a0,s1
-  32f700ff  // 660:	 andi	s7,s7,0xff
-  00409021  // 664:	 move	s2,v0
-  0c000046  // 668:	 jal	118 <sign_extend(int)>
-  321000ff  // 66c:	 andi	s0,s0,0xff
-  00172200  // 670:	 sll	a0,s7,0x8
-  00902025  // 674:	 or	a0,a0,s0
-  32d600ff  // 678:	 andi	s6,s6,0xff
-  00408821  // 67c:	 move	s1,v0
-  0c000046  // 680:	 jal	118 <sign_extend(int)>
-  32b500ff  // 684:	 andi	s5,s5,0xff
-  00162200  // 688:	 sll	a0,s6,0x8
-  00952025  // 68c:	 or	a0,a0,s5
-  0c000046  // 690:	 jal	118 <sign_extend(int)>
-  00408021  // 694:	 move	s0,v0
-  3c038000  // 698:	 lui	v1,0x8000
-  8c640004  // 69c:	 lw	a0,4(v1)
-  00000000  // 6a0:	 nop
-  ac940000  // 6a4:	 sw	s4,0(a0)
-  8c640004  // 6a8:	 lw	a0,4(v1)
-  00000000  // 6ac:	 nop
-  ac930004  // 6b0:	 sw	s3,4(a0)
-  8c640004  // 6b4:	 lw	a0,4(v1)
-  00000000  // 6b8:	 nop
-  ac920008  // 6bc:	 sw	s2,8(a0)
-  8c640004  // 6c0:	 lw	a0,4(v1)
-  00000000  // 6c4:	 nop
-  ac910018  // 6c8:	 sw	s1,24(a0)
-  8c640004  // 6cc:	 lw	a0,4(v1)
-  00000000  // 6d0:	 nop
-  ac90001c  // 6d4:	 sw	s0,28(a0)
-  8c630004  // 6d8:	 lw	v1,4(v1)
-  00000000  // 6dc:	 nop
-  ac620020  // 6e0:	 sw	v0,32(v1)
-  8fbf0044  // 6e4:	 lw	ra,68(sp)
-  8fbe0040  // 6e8:	 lw	s8,64(sp)
-  8fb7003c  // 6ec:	 lw	s7,60(sp)
-  8fb60038  // 6f0:	 lw	s6,56(sp)
-  8fb50034  // 6f4:	 lw	s5,52(sp)
-  8fb40030  // 6f8:	 lw	s4,48(sp)
-  8fb3002c  // 6fc:	 lw	s3,44(sp)
-  8fb20028  // 700:	 lw	s2,40(sp)
-  8fb10024  // 704:	 lw	s1,36(sp)
-  8fb00020  // 708:	 lw	s0,32(sp)
-  03e00008  // 70c:	 jr	ra
-  27bd0048  // 710:	 addiu	sp,sp,72
+  240400ff  // 5c0:	 li	a0,255
+  0c000018  // 5c4:	 jal	60 <i2c_io(int)>
+  0040f021  // 5c8:	 move	s8,v0
+  240400ff  // 5cc:	 li	a0,255
+  0c000018  // 5d0:	 jal	60 <i2c_io(int)>
+  00408821  // 5d4:	 move	s1,v0
+  240400ff  // 5d8:	 li	a0,255
+  0c000018  // 5dc:	 jal	60 <i2c_io(int)>
+  0040b821  // 5e0:	 move	s7,v0
+  240400ff  // 5e4:	 li	a0,255
+  0c000018  // 5e8:	 jal	60 <i2c_io(int)>
+  00408021  // 5ec:	 move	s0,v0
+  240401ff  // 5f0:	 li	a0,511
+  0c000018  // 5f4:	 jal	60 <i2c_io(int)>
+  0040b021  // 5f8:	 move	s6,v0
+  0c00000f  // 5fc:	 jal	3c <i2c_stop()>
+  0040a821  // 600:	 move	s5,v0
+  8fa60018  // 604:	 lw	a2,24(sp)
+  329400ff  // 608:	 andi	s4,s4,0xff
+  30c600ff  // 60c:	 andi	a2,a2,0xff
+  00062200  // 610:	 sll	a0,a2,0x8
+  0c000046  // 614:	 jal	118 <sign_extend(int)>
+  00942025  // 618:	 or	a0,a0,s4
+  8fa50014  // 61c:	 lw	a1,20(sp)
+  327300ff  // 620:	 andi	s3,s3,0xff
+  30a500ff  // 624:	 andi	a1,a1,0xff
+  00052200  // 628:	 sll	a0,a1,0x8
+  00932025  // 62c:	 or	a0,a0,s3
+  0c000046  // 630:	 jal	118 <sign_extend(int)>
+  0040a021  // 634:	 move	s4,v0
+  8fa30010  // 638:	 lw	v1,16(sp)
+  325200ff  // 63c:	 andi	s2,s2,0xff
+  306300ff  // 640:	 andi	v1,v1,0xff
+  00032200  // 644:	 sll	a0,v1,0x8
+  00922025  // 648:	 or	a0,a0,s2
+  33de00ff  // 64c:	 andi	s8,s8,0xff
+  00409821  // 650:	 move	s3,v0
+  0c000046  // 654:	 jal	118 <sign_extend(int)>
+  323100ff  // 658:	 andi	s1,s1,0xff
+  001e2200  // 65c:	 sll	a0,s8,0x8
+  00912025  // 660:	 or	a0,a0,s1
+  32f700ff  // 664:	 andi	s7,s7,0xff
+  00409021  // 668:	 move	s2,v0
+  0c000046  // 66c:	 jal	118 <sign_extend(int)>
+  321000ff  // 670:	 andi	s0,s0,0xff
+  00172200  // 674:	 sll	a0,s7,0x8
+  00902025  // 678:	 or	a0,a0,s0
+  32d600ff  // 67c:	 andi	s6,s6,0xff
+  00408821  // 680:	 move	s1,v0
+  0c000046  // 684:	 jal	118 <sign_extend(int)>
+  32b500ff  // 688:	 andi	s5,s5,0xff
+  00162200  // 68c:	 sll	a0,s6,0x8
+  00952025  // 690:	 or	a0,a0,s5
+  0c000046  // 694:	 jal	118 <sign_extend(int)>
+  00408021  // 698:	 move	s0,v0
+  3c038000  // 69c:	 lui	v1,0x8000
+  8c640004  // 6a0:	 lw	a0,4(v1)
+  00000000  // 6a4:	 nop
+  ac940000  // 6a8:	 sw	s4,0(a0)
+  8c640004  // 6ac:	 lw	a0,4(v1)
+  00000000  // 6b0:	 nop
+  ac930004  // 6b4:	 sw	s3,4(a0)
+  8c640004  // 6b8:	 lw	a0,4(v1)
+  00000000  // 6bc:	 nop
+  ac920008  // 6c0:	 sw	s2,8(a0)
+  8c640004  // 6c4:	 lw	a0,4(v1)
+  00000000  // 6c8:	 nop
+  ac910018  // 6cc:	 sw	s1,24(a0)
+  8c640004  // 6d0:	 lw	a0,4(v1)
+  00000000  // 6d4:	 nop
+  ac90001c  // 6d8:	 sw	s0,28(a0)
+  8c630004  // 6dc:	 lw	v1,4(v1)
+  00000000  // 6e0:	 nop
+  ac620020  // 6e4:	 sw	v0,32(v1)
+  8fbf0044  // 6e8:	 lw	ra,68(sp)
+  8fbe0040  // 6ec:	 lw	s8,64(sp)
+  8fb7003c  // 6f0:	 lw	s7,60(sp)
+  8fb60038  // 6f4:	 lw	s6,56(sp)
+  8fb50034  // 6f8:	 lw	s5,52(sp)
+  8fb40030  // 6fc:	 lw	s4,48(sp)
+  8fb3002c  // 700:	 lw	s3,44(sp)
+  8fb20028  // 704:	 lw	s2,40(sp)
+  8fb10024  // 708:	 lw	s1,36(sp)
+  8fb00020  // 70c:	 lw	s0,32(sp)
+  03e00008  // 710:	 jr	ra
+  27bd0048  // 714:	 addiu	sp,sp,72
 
-// 00000714 <TaskScheduler::selectNextTask(unsigned int)>:
-  27bdfff8  // 714:	 addiu	sp,sp,-8
-  24820004  // 718:	 addiu	v0,a0,4
-  03a01821  // 71c:	 move	v1,sp
-  afa40000  // 720:	 sw	a0,0(sp)
-  afa20004  // 724:	 sw	v0,4(sp)
-  27ab0008  // 728:	 addiu	t3,sp,8
-  00004021  // 72c:	 move	t0,zero
-  2409ffff  // 730:	 li	t1,-1
-  00003021  // 734:	 move	a2,zero
-  8c620000  // 738:	 lw	v0,0(v1)
-  00000000  // 73c:	 nop
-  8c470000  // 740:	 lw	a3,0(v0)
-  00000000  // 744:	 nop
-  10e0000e  // 748:	 beqz	a3,784 <TaskScheduler::selectNextTask(unsigned int)+0x70>
-  00e01021  // 74c:	 move	v0,a3
-  8c4a0004  // 750:	 lw	t2,4(v0)
-  00000000  // 754:	 nop
-  01455023  // 758:	 subu	t2,t2,a1
-  0149602b  // 75c:	 sltu	t4,t2,t1
-  11800004  // 760:	 beqz	t4,774 <TaskScheduler::selectNextTask(unsigned int)+0x60>
-  00000000  // 764:	 nop
-  00e04021  // 768:	 move	t0,a3
-  01404821  // 76c:	 move	t1,t2
-  00403021  // 770:	 move	a2,v0
-  8c42000c  // 774:	 lw	v0,12(v0)
-  00000000  // 778:	 nop
-  1440fff4  // 77c:	 bnez	v0,750 <TaskScheduler::selectNextTask(unsigned int)+0x3c>
-  00000000  // 780:	 nop
-  24630004  // 784:	 addiu	v1,v1,4
-  146bffeb  // 788:	 bne	v1,t3,738 <TaskScheduler::selectNextTask(unsigned int)+0x24>
-  00000000  // 78c:	 nop
-  ac860008  // 790:	 sw	a2,8(a0)
-  8cc20004  // 794:	 lw	v0,4(a2)
-  27bd0008  // 798:	 addiu	sp,sp,8
-  ac82000c  // 79c:	 sw	v0,12(a0)
-  8c820000  // 7a0:	 lw	v0,0(a0)
-  00000000  // 7a4:	 nop
-  01024026  // 7a8:	 xor	t0,t0,v0
-  0008402b  // 7ac:	 sltu	t0,zero,t0
-  03e00008  // 7b0:	 jr	ra
-  ac880010  // 7b4:	 sw	t0,16(a0)
+// 00000718 <TaskScheduler::selectNextTask(unsigned int)>:
+  27bdfff8  // 718:	 addiu	sp,sp,-8
+  24820004  // 71c:	 addiu	v0,a0,4
+  03a01821  // 720:	 move	v1,sp
+  afa40000  // 724:	 sw	a0,0(sp)
+  afa20004  // 728:	 sw	v0,4(sp)
+  27ab0008  // 72c:	 addiu	t3,sp,8
+  00004021  // 730:	 move	t0,zero
+  2409ffff  // 734:	 li	t1,-1
+  00003021  // 738:	 move	a2,zero
+  8c620000  // 73c:	 lw	v0,0(v1)
+  00000000  // 740:	 nop
+  8c470000  // 744:	 lw	a3,0(v0)
+  00000000  // 748:	 nop
+  10e0000e  // 74c:	 beqz	a3,788 <TaskScheduler::selectNextTask(unsigned int)+0x70>
+  00e01021  // 750:	 move	v0,a3
+  8c4a0004  // 754:	 lw	t2,4(v0)
+  00000000  // 758:	 nop
+  01455023  // 75c:	 subu	t2,t2,a1
+  0149602b  // 760:	 sltu	t4,t2,t1
+  11800004  // 764:	 beqz	t4,778 <TaskScheduler::selectNextTask(unsigned int)+0x60>
+  00000000  // 768:	 nop
+  00e04021  // 76c:	 move	t0,a3
+  01404821  // 770:	 move	t1,t2
+  00403021  // 774:	 move	a2,v0
+  8c42000c  // 778:	 lw	v0,12(v0)
+  00000000  // 77c:	 nop
+  1440fff4  // 780:	 bnez	v0,754 <TaskScheduler::selectNextTask(unsigned int)+0x3c>
+  00000000  // 784:	 nop
+  24630004  // 788:	 addiu	v1,v1,4
+  146bffeb  // 78c:	 bne	v1,t3,73c <TaskScheduler::selectNextTask(unsigned int)+0x24>
+  00000000  // 790:	 nop
+  ac860008  // 794:	 sw	a2,8(a0)
+  8cc20004  // 798:	 lw	v0,4(a2)
+  27bd0008  // 79c:	 addiu	sp,sp,8
+  ac82000c  // 7a0:	 sw	v0,12(a0)
+  8c820000  // 7a4:	 lw	v0,0(a0)
+  00000000  // 7a8:	 nop
+  01024026  // 7ac:	 xor	t0,t0,v0
+  0008402b  // 7b0:	 sltu	t0,zero,t0
+  03e00008  // 7b4:	 jr	ra
+  ac880010  // 7b8:	 sw	t0,16(a0)
 
-// 000007b8 <TaskScheduler::addTask(Task*&, Task*, int)>:
-  acc70008  // 7b8:	 sw	a3,8(a2)
-  acc40010  // 7bc:	 sw	a0,16(a2)
-  8c020030  // 7c0:	 lw	v0,48(zero)
-  00000000  // 7c4:	 nop
-  00473821  // 7c8:	 addu	a3,v0,a3
-  acc70004  // 7cc:	 sw	a3,4(a2)
-  8ca20000  // 7d0:	 lw	v0,0(a1)
-  00000000  // 7d4:	 nop
-  14400004  // 7d8:	 bnez	v0,7ec <TaskScheduler::addTask(Task*&, Task*, int)+0x34>
-  00000000  // 7dc:	 nop
-  03e00008  // 7e0:	 jr	ra
-  aca60000  // 7e4:	 sw	a2,0(a1)
-  00601021  // 7e8:	 move	v0,v1
-  8c43000c  // 7ec:	 lw	v1,12(v0)
-  00000000  // 7f0:	 nop
-  1460fffc  // 7f4:	 bnez	v1,7e8 <TaskScheduler::addTask(Task*&, Task*, int)+0x30>
-  00000000  // 7f8:	 nop
-  03e00008  // 7fc:	 jr	ra
-  ac46000c  // 800:	 sw	a2,12(v0)
+// 000007bc <TaskScheduler::addTask(Task*&, Task*, int)>:
+  acc70008  // 7bc:	 sw	a3,8(a2)
+  acc40010  // 7c0:	 sw	a0,16(a2)
+  8c020030  // 7c4:	 lw	v0,48(zero)
+  00000000  // 7c8:	 nop
+  00473821  // 7cc:	 addu	a3,v0,a3
+  acc70004  // 7d0:	 sw	a3,4(a2)
+  8ca20000  // 7d4:	 lw	v0,0(a1)
+  00000000  // 7d8:	 nop
+  14400004  // 7dc:	 bnez	v0,7f0 <TaskScheduler::addTask(Task*&, Task*, int)+0x34>
+  00000000  // 7e0:	 nop
+  03e00008  // 7e4:	 jr	ra
+  aca60000  // 7e8:	 sw	a2,0(a1)
+  00601021  // 7ec:	 move	v0,v1
+  8c43000c  // 7f0:	 lw	v1,12(v0)
+  00000000  // 7f4:	 nop
+  1460fffc  // 7f8:	 bnez	v1,7ec <TaskScheduler::addTask(Task*&, Task*, int)+0x30>
+  00000000  // 7fc:	 nop
+  03e00008  // 800:	 jr	ra
+  ac46000c  // 804:	 sw	a2,12(v0)
 
-// 00000804 <TaskScheduler::start()>:
-  27bdffc8  // 804:	 addiu	sp,sp,-56
-  00002821  // 808:	 move	a1,zero
-  afb20024  // 80c:	 sw	s2,36(sp)
-  afb0001c  // 810:	 sw	s0,28(sp)
-  3c12b2d0  // 814:	 lui	s2,0xb2d0
-  00808021  // 818:	 move	s0,a0
-  afb50030  // 81c:	 sw	s5,48(sp)
-  afb4002c  // 820:	 sw	s4,44(sp)
-  afb30028  // 824:	 sw	s3,40(sp)
-  afbf0034  // 828:	 sw	ra,52(sp)
-  afb10020  // 82c:	 sw	s1,32(sp)
-  0c0001c5  // 830:	 jal	714 <TaskScheduler::selectNextTask(unsigned int)>
-  26525e00  // 834:	 addiu	s2,s2,24064
-  24130001  // 838:	 li	s3,1
-  26140004  // 83c:	 addiu	s4,s0,4
-  27b50018  // 840:	 addiu	s5,sp,24
-  8e02000c  // 844:	 lw	v0,12(s0)
-  8c110030  // 848:	 lw	s1,48(zero)
-  00000000  // 84c:	 nop
-  0222182b  // 850:	 sltu	v1,s1,v0
-  1460fffc  // 854:	 bnez	v1,848 <TaskScheduler::start()+0x44>
-  02221823  // 858:	 subu	v1,s1,v0
-  0072182b  // 85c:	 sltu	v1,v1,s2
-  1060fff9  // 860:	 beqz	v1,848 <TaskScheduler::start()+0x44>
-  00000000  // 864:	 nop
-  8e040008  // 868:	 lw	a0,8(s0)
-  00000000  // 86c:	 nop
-  8c820000  // 870:	 lw	v0,0(a0)
-  00000000  // 874:	 nop
-  8c420000  // 878:	 lw	v0,0(v0)
-  00000000  // 87c:	 nop
-  0040f809  // 880:	 jalr	v0
-  00000000  // 884:	 nop
-  8e030010  // 888:	 lw	v1,16(s0)
-  8e020008  // 88c:	 lw	v0,8(s0)
-  14730022  // 890:	 bne	v1,s3,91c <TaskScheduler::start()+0x118>
-  02002021  // 894:	 move	a0,s0
-  afb00010  // 898:	 sw	s0,16(sp)
-  afb40014  // 89c:	 sw	s4,20(sp)
-  27a40010  // 8a0:	 addiu	a0,sp,16
-  8c850000  // 8a4:	 lw	a1,0(a0)
-  00000000  // 8a8:	 nop
-  8ca30000  // 8ac:	 lw	v1,0(a1)
-  00000000  // 8b0:	 nop
-  10600012  // 8b4:	 beqz	v1,900 <TaskScheduler::start()+0xfc>
-  00000000  // 8b8:	 nop
-  14620005  // 8bc:	 bne	v1,v0,8d4 <TaskScheduler::start()+0xd0>
-  00000000  // 8c0:	 nop
-  8c43000c  // 8c4:	 lw	v1,12(v0)
-  08000243  // 8c8:	 j	90c <TaskScheduler::start()+0x108>
-  aca30000  // 8cc:	 sw	v1,0(a1)
-  00a01821  // 8d0:	 move	v1,a1
-  8c65000c  // 8d4:	 lw	a1,12(v1)
-  00000000  // 8d8:	 nop
-  10a00006  // 8dc:	 beqz	a1,8f8 <TaskScheduler::start()+0xf4>
-  00000000  // 8e0:	 nop
-  14a2fffa  // 8e4:	 bne	a1,v0,8d0 <TaskScheduler::start()+0xcc>
-  00000000  // 8e8:	 nop
-  8c44000c  // 8ec:	 lw	a0,12(v0)
-  08000243  // 8f0:	 j	90c <TaskScheduler::start()+0x108>
-  ac64000c  // 8f4:	 sw	a0,12(v1)
-  1040fffc  // 8f8:	 beqz	v0,8ec <TaskScheduler::start()+0xe8>
-  00000000  // 8fc:	 nop
-  24840004  // 900:	 addiu	a0,a0,4
-  1495ffe7  // 904:	 bne	a0,s5,8a4 <TaskScheduler::start()+0xa0>
-  00000000  // 908:	 nop
-  0c0002df  // 90c:	 jal	b7c <operator delete(void*)>
-  00402021  // 910:	 move	a0,v0
-  0800024b  // 914:	 j	92c <TaskScheduler::start()+0x128>
-  02002021  // 918:	 move	a0,s0
-  8c430008  // 91c:	 lw	v1,8(v0)
-  00000000  // 920:	 nop
-  02231821  // 924:	 addu	v1,s1,v1
-  ac430004  // 928:	 sw	v1,4(v0)
-  0c0001c5  // 92c:	 jal	714 <TaskScheduler::selectNextTask(unsigned int)>
-  02202821  // 930:	 move	a1,s1
-  08000211  // 934:	 j	844 <TaskScheduler::start()+0x40>
-  00000000  // 938:	 nop
+// 00000808 <TaskScheduler::start()>:
+  27bdffc8  // 808:	 addiu	sp,sp,-56
+  00002821  // 80c:	 move	a1,zero
+  afb20024  // 810:	 sw	s2,36(sp)
+  afb0001c  // 814:	 sw	s0,28(sp)
+  3c12b2d0  // 818:	 lui	s2,0xb2d0
+  00808021  // 81c:	 move	s0,a0
+  afb50030  // 820:	 sw	s5,48(sp)
+  afb4002c  // 824:	 sw	s4,44(sp)
+  afb30028  // 828:	 sw	s3,40(sp)
+  afbf0034  // 82c:	 sw	ra,52(sp)
+  afb10020  // 830:	 sw	s1,32(sp)
+  0c0001c6  // 834:	 jal	718 <TaskScheduler::selectNextTask(unsigned int)>
+  26525e00  // 838:	 addiu	s2,s2,24064
+  24130001  // 83c:	 li	s3,1
+  26140004  // 840:	 addiu	s4,s0,4
+  27b50018  // 844:	 addiu	s5,sp,24
+  8e02000c  // 848:	 lw	v0,12(s0)
+  8c110030  // 84c:	 lw	s1,48(zero)
+  00000000  // 850:	 nop
+  0222182b  // 854:	 sltu	v1,s1,v0
+  1460fffc  // 858:	 bnez	v1,84c <TaskScheduler::start()+0x44>
+  02221823  // 85c:	 subu	v1,s1,v0
+  0072182b  // 860:	 sltu	v1,v1,s2
+  1060fff9  // 864:	 beqz	v1,84c <TaskScheduler::start()+0x44>
+  00000000  // 868:	 nop
+  8e040008  // 86c:	 lw	a0,8(s0)
+  00000000  // 870:	 nop
+  8c820000  // 874:	 lw	v0,0(a0)
+  00000000  // 878:	 nop
+  8c420000  // 87c:	 lw	v0,0(v0)
+  00000000  // 880:	 nop
+  0040f809  // 884:	 jalr	v0
+  00000000  // 888:	 nop
+  8e030010  // 88c:	 lw	v1,16(s0)
+  8e020008  // 890:	 lw	v0,8(s0)
+  14730022  // 894:	 bne	v1,s3,920 <TaskScheduler::start()+0x118>
+  02002021  // 898:	 move	a0,s0
+  afb00010  // 89c:	 sw	s0,16(sp)
+  afb40014  // 8a0:	 sw	s4,20(sp)
+  27a40010  // 8a4:	 addiu	a0,sp,16
+  8c850000  // 8a8:	 lw	a1,0(a0)
+  00000000  // 8ac:	 nop
+  8ca30000  // 8b0:	 lw	v1,0(a1)
+  00000000  // 8b4:	 nop
+  10600012  // 8b8:	 beqz	v1,904 <TaskScheduler::start()+0xfc>
+  00000000  // 8bc:	 nop
+  14620005  // 8c0:	 bne	v1,v0,8d8 <TaskScheduler::start()+0xd0>
+  00000000  // 8c4:	 nop
+  8c43000c  // 8c8:	 lw	v1,12(v0)
+  08000244  // 8cc:	 j	910 <TaskScheduler::start()+0x108>
+  aca30000  // 8d0:	 sw	v1,0(a1)
+  00a01821  // 8d4:	 move	v1,a1
+  8c65000c  // 8d8:	 lw	a1,12(v1)
+  00000000  // 8dc:	 nop
+  10a00006  // 8e0:	 beqz	a1,8fc <TaskScheduler::start()+0xf4>
+  00000000  // 8e4:	 nop
+  14a2fffa  // 8e8:	 bne	a1,v0,8d4 <TaskScheduler::start()+0xcc>
+  00000000  // 8ec:	 nop
+  8c44000c  // 8f0:	 lw	a0,12(v0)
+  08000244  // 8f4:	 j	910 <TaskScheduler::start()+0x108>
+  ac64000c  // 8f8:	 sw	a0,12(v1)
+  1040fffc  // 8fc:	 beqz	v0,8f0 <TaskScheduler::start()+0xe8>
+  00000000  // 900:	 nop
+  24840004  // 904:	 addiu	a0,a0,4
+  1495ffe7  // 908:	 bne	a0,s5,8a8 <TaskScheduler::start()+0xa0>
+  00000000  // 90c:	 nop
+  0c0002e0  // 910:	 jal	b80 <operator delete(void*)>
+  00402021  // 914:	 move	a0,v0
+  0800024c  // 918:	 j	930 <TaskScheduler::start()+0x128>
+  02002021  // 91c:	 move	a0,s0
+  8c430008  // 920:	 lw	v1,8(v0)
+  00000000  // 924:	 nop
+  02231821  // 928:	 addu	v1,s1,v1
+  ac430004  // 92c:	 sw	v1,4(v0)
+  0c0001c6  // 930:	 jal	718 <TaskScheduler::selectNextTask(unsigned int)>
+  02202821  // 934:	 move	a1,s1
+  08000212  // 938:	 j	848 <TaskScheduler::start()+0x40>
+  00000000  // 93c:	 nop
 
-// 0000093c <MemoryManager::MemoryManager()>:
-  ac800008  // 93c:	 sw	zero,8(a0)
-  ac80008c  // 940:	 sw	zero,140(a0)
-  ac800000  // 944:	 sw	zero,0(a0)
-  03e00008  // 948:	 jr	ra
-  ac800004  // 94c:	 sw	zero,4(a0)
+// 00000940 <MemoryManager::MemoryManager()>:
+  ac800008  // 940:	 sw	zero,8(a0)
+  ac80020c  // 944:	 sw	zero,524(a0)
+  ac800000  // 948:	 sw	zero,0(a0)
+  03e00008  // 94c:	 jr	ra
+  ac800004  // 950:	 sw	zero,4(a0)
 
-// 00000950 <MemoryManager::init()>:
-  ac800000  // 950:	 sw	zero,0(a0)
-  ac800004  // 954:	 sw	zero,4(a0)
-  ac800008  // 958:	 sw	zero,8(a0)
-  03e00008  // 95c:	 jr	ra
-  ac80008c  // 960:	 sw	zero,140(a0)
+// 00000954 <MemoryManager::init()>:
+  ac800000  // 954:	 sw	zero,0(a0)
+  ac800004  // 958:	 sw	zero,4(a0)
+  ac800008  // 95c:	 sw	zero,8(a0)
+  03e00008  // 960:	 jr	ra
+  ac80020c  // 964:	 sw	zero,524(a0)
 
-// 00000964 <MemoryManager::free(void*)>:
-  8c820008  // 964:	 lw	v0,8(a0)
-  08000261  // 968:	 j	984 <MemoryManager::free(void*)+0x20>
-  24a3fff8  // 96c:	 addiu	v1,a1,-8
-  14e0000b  // 970:	 bnez	a3,9a0 <MemoryManager::free(void*)+0x3c>
-  0066382b  // 974:	 sltu	a3,v1,a2
-  14e00009  // 978:	 bnez	a3,9a0 <MemoryManager::free(void*)+0x3c>
-  00000000  // 97c:	 nop
-  00c01021  // 980:	 move	v0,a2
-  0043382b  // 984:	 sltu	a3,v0,v1
-  8c460000  // 988:	 lw	a2,0(v0)
-  10e00022  // 98c:	 beqz	a3,a18 <MemoryManager::free(void*)+0xb4>
-  0046382b  // 990:	 sltu	a3,v0,a2
-  0066382b  // 994:	 sltu	a3,v1,a2
-  10e0001f  // 998:	 beqz	a3,a18 <MemoryManager::free(void*)+0xb4>
-  0046382b  // 99c:	 sltu	a3,v0,a2
-  8ca7fffc  // 9a0:	 lw	a3,-4(a1)
-  8c460000  // 9a4:	 lw	a2,0(v0)
-  000740c0  // 9a8:	 sll	t0,a3,0x3
-  00684021  // 9ac:	 addu	t0,v1,t0
-  15060009  // 9b0:	 bne	t0,a2,9d8 <MemoryManager::free(void*)+0x74>
-  00000000  // 9b4:	 nop
-  8d060004  // 9b8:	 lw	a2,4(t0)
-  00000000  // 9bc:	 nop
-  00c73821  // 9c0:	 addu	a3,a2,a3
-  aca7fffc  // 9c4:	 sw	a3,-4(a1)
-  8c460000  // 9c8:	 lw	a2,0(v0)
-  00000000  // 9cc:	 nop
-  8cc60000  // 9d0:	 lw	a2,0(a2)
-  00000000  // 9d4:	 nop
-  aca6fff8  // 9d8:	 sw	a2,-8(a1)
-  8c460004  // 9dc:	 lw	a2,4(v0)
-  00000000  // 9e0:	 nop
-  000638c0  // 9e4:	 sll	a3,a2,0x3
-  00473821  // 9e8:	 addu	a3,v0,a3
-  14670007  // 9ec:	 bne	v1,a3,a0c <MemoryManager::free(void*)+0xa8>
-  00000000  // 9f0:	 nop
-  8ca3fffc  // 9f4:	 lw	v1,-4(a1)
-  00000000  // 9f8:	 nop
-  00663021  // 9fc:	 addu	a2,v1,a2
-  ac460004  // a00:	 sw	a2,4(v0)
-  8ca3fff8  // a04:	 lw	v1,-8(a1)
-  00000000  // a08:	 nop
-  ac430000  // a0c:	 sw	v1,0(v0)
-  03e00008  // a10:	 jr	ra
-  ac820008  // a14:	 sw	v0,8(a0)
-  10e0ffd5  // a18:	 beqz	a3,970 <MemoryManager::free(void*)+0xc>
-  0043382b  // a1c:	 sltu	a3,v0,v1
-  08000261  // a20:	 j	984 <MemoryManager::free(void*)+0x20>
-  00c01021  // a24:	 move	v0,a2
+// 00000968 <MemoryManager::free(void*)>:
+  8c820008  // 968:	 lw	v0,8(a0)
+  08000262  // 96c:	 j	988 <MemoryManager::free(void*)+0x20>
+  24a3fff8  // 970:	 addiu	v1,a1,-8
+  14e0000b  // 974:	 bnez	a3,9a4 <MemoryManager::free(void*)+0x3c>
+  0066382b  // 978:	 sltu	a3,v1,a2
+  14e00009  // 97c:	 bnez	a3,9a4 <MemoryManager::free(void*)+0x3c>
+  00000000  // 980:	 nop
+  00c01021  // 984:	 move	v0,a2
+  0043382b  // 988:	 sltu	a3,v0,v1
+  8c460000  // 98c:	 lw	a2,0(v0)
+  10e00022  // 990:	 beqz	a3,a1c <MemoryManager::free(void*)+0xb4>
+  0046382b  // 994:	 sltu	a3,v0,a2
+  0066382b  // 998:	 sltu	a3,v1,a2
+  10e0001f  // 99c:	 beqz	a3,a1c <MemoryManager::free(void*)+0xb4>
+  0046382b  // 9a0:	 sltu	a3,v0,a2
+  8ca7fffc  // 9a4:	 lw	a3,-4(a1)
+  8c460000  // 9a8:	 lw	a2,0(v0)
+  000740c0  // 9ac:	 sll	t0,a3,0x3
+  00684021  // 9b0:	 addu	t0,v1,t0
+  15060009  // 9b4:	 bne	t0,a2,9dc <MemoryManager::free(void*)+0x74>
+  00000000  // 9b8:	 nop
+  8d060004  // 9bc:	 lw	a2,4(t0)
+  00000000  // 9c0:	 nop
+  00c73821  // 9c4:	 addu	a3,a2,a3
+  aca7fffc  // 9c8:	 sw	a3,-4(a1)
+  8c460000  // 9cc:	 lw	a2,0(v0)
+  00000000  // 9d0:	 nop
+  8cc60000  // 9d4:	 lw	a2,0(a2)
+  00000000  // 9d8:	 nop
+  aca6fff8  // 9dc:	 sw	a2,-8(a1)
+  8c460004  // 9e0:	 lw	a2,4(v0)
+  00000000  // 9e4:	 nop
+  000638c0  // 9e8:	 sll	a3,a2,0x3
+  00473821  // 9ec:	 addu	a3,v0,a3
+  14670007  // 9f0:	 bne	v1,a3,a10 <MemoryManager::free(void*)+0xa8>
+  00000000  // 9f4:	 nop
+  8ca3fffc  // 9f8:	 lw	v1,-4(a1)
+  00000000  // 9fc:	 nop
+  00663021  // a00:	 addu	a2,v1,a2
+  ac460004  // a04:	 sw	a2,4(v0)
+  8ca3fff8  // a08:	 lw	v1,-8(a1)
+  00000000  // a0c:	 nop
+  ac430000  // a10:	 sw	v1,0(v0)
+  03e00008  // a14:	 jr	ra
+  ac820008  // a18:	 sw	v0,8(a0)
+  10e0ffd5  // a1c:	 beqz	a3,974 <MemoryManager::free(void*)+0xc>
+  0043382b  // a20:	 sltu	a3,v0,v1
+  08000262  // a24:	 j	988 <MemoryManager::free(void*)+0x20>
+  00c01021  // a28:	 move	v0,a2
 
-// 00000a28 <MemoryManager::get_mem_from_pool(unsigned int)>:
-  27bdffe0  // a28:	 addiu	sp,sp,-32
-  2ca20010  // a2c:	 sltiu	v0,a1,16
-  afb00014  // a30:	 sw	s0,20(sp)
-  afbf001c  // a34:	 sw	ra,28(sp)
-  afb10018  // a38:	 sw	s1,24(sp)
-  10400002  // a3c:	 beqz	v0,a48 <MemoryManager::get_mem_from_pool(unsigned int)+0x20>
-  00808021  // a40:	 move	s0,a0
-  24050010  // a44:	 li	a1,16
-  8e02008c  // a48:	 lw	v0,140(s0)
-  000588c0  // a4c:	 sll	s1,a1,0x3
-  02221821  // a50:	 addu	v1,s1,v0
-  2c630081  // a54:	 sltiu	v1,v1,129
-  1060000d  // a58:	 beqz	v1,a90 <MemoryManager::get_mem_from_pool(unsigned int)+0x68>
-  24420008  // a5c:	 addiu	v0,v0,8
-  02021021  // a60:	 addu	v0,s0,v0
-  ac450008  // a64:	 sw	a1,8(v0)
-  02002021  // a68:	 move	a0,s0
-  0c000259  // a6c:	 jal	964 <MemoryManager::free(void*)>
-  2445000c  // a70:	 addiu	a1,v0,12
-  8e02008c  // a74:	 lw	v0,140(s0)
-  00000000  // a78:	 nop
-  00518821  // a7c:	 addu	s1,v0,s1
-  ae11008c  // a80:	 sw	s1,140(s0)
-  8e020008  // a84:	 lw	v0,8(s0)
-  080002a5  // a88:	 j	a94 <MemoryManager::get_mem_from_pool(unsigned int)+0x6c>
-  00000000  // a8c:	 nop
-  00001021  // a90:	 move	v0,zero
-  8fbf001c  // a94:	 lw	ra,28(sp)
-  8fb10018  // a98:	 lw	s1,24(sp)
-  8fb00014  // a9c:	 lw	s0,20(sp)
-  03e00008  // aa0:	 jr	ra
-  27bd0020  // aa4:	 addiu	sp,sp,32
+// 00000a2c <MemoryManager::get_mem_from_pool(unsigned int)>:
+  27bdffe0  // a2c:	 addiu	sp,sp,-32
+  2ca20010  // a30:	 sltiu	v0,a1,16
+  afb00014  // a34:	 sw	s0,20(sp)
+  afbf001c  // a38:	 sw	ra,28(sp)
+  afb10018  // a3c:	 sw	s1,24(sp)
+  10400002  // a40:	 beqz	v0,a4c <MemoryManager::get_mem_from_pool(unsigned int)+0x20>
+  00808021  // a44:	 move	s0,a0
+  24050010  // a48:	 li	a1,16
+  8e02020c  // a4c:	 lw	v0,524(s0)
+  000588c0  // a50:	 sll	s1,a1,0x3
+  02221821  // a54:	 addu	v1,s1,v0
+  2c630201  // a58:	 sltiu	v1,v1,513
+  1060000d  // a5c:	 beqz	v1,a94 <MemoryManager::get_mem_from_pool(unsigned int)+0x68>
+  24420008  // a60:	 addiu	v0,v0,8
+  02021021  // a64:	 addu	v0,s0,v0
+  ac450008  // a68:	 sw	a1,8(v0)
+  02002021  // a6c:	 move	a0,s0
+  0c00025a  // a70:	 jal	968 <MemoryManager::free(void*)>
+  2445000c  // a74:	 addiu	a1,v0,12
+  8e02020c  // a78:	 lw	v0,524(s0)
+  00000000  // a7c:	 nop
+  00518821  // a80:	 addu	s1,v0,s1
+  ae11020c  // a84:	 sw	s1,524(s0)
+  8e020008  // a88:	 lw	v0,8(s0)
+  080002a6  // a8c:	 j	a98 <MemoryManager::get_mem_from_pool(unsigned int)+0x6c>
+  00000000  // a90:	 nop
+  00001021  // a94:	 move	v0,zero
+  8fbf001c  // a98:	 lw	ra,28(sp)
+  8fb10018  // a9c:	 lw	s1,24(sp)
+  8fb00014  // aa0:	 lw	s0,20(sp)
+  03e00008  // aa4:	 jr	ra
+  27bd0020  // aa8:	 addiu	sp,sp,32
 
-// 00000aa8 <MemoryManager::alloc(unsigned int)>:
-  27bdffe0  // aa8:	 addiu	sp,sp,-32
-  afb10018  // aac:	 sw	s1,24(sp)
-  afb00014  // ab0:	 sw	s0,20(sp)
-  afbf001c  // ab4:	 sw	ra,28(sp)
-  24a50007  // ab8:	 addiu	a1,a1,7
-  8c830008  // abc:	 lw	v1,8(a0)
-  000588c2  // ac0:	 srl	s1,a1,0x3
-  00808021  // ac4:	 move	s0,a0
-  14600005  // ac8:	 bnez	v1,ae0 <MemoryManager::alloc(unsigned int)+0x38>
-  26310001  // acc:	 addiu	s1,s1,1
-  ae040008  // ad0:	 sw	a0,8(s0)
-  ae040000  // ad4:	 sw	a0,0(s0)
-  00801821  // ad8:	 move	v1,a0
-  ac800004  // adc:	 sw	zero,4(a0)
-  8c620000  // ae0:	 lw	v0,0(v1)
-  00000000  // ae4:	 nop
-  8c440004  // ae8:	 lw	a0,4(v0)
-  00000000  // aec:	 nop
-  0091282b  // af0:	 sltu	a1,a0,s1
-  14a0000d  // af4:	 bnez	a1,b2c <MemoryManager::alloc(unsigned int)+0x84>
-  00000000  // af8:	 nop
-  14910004  // afc:	 bne	a0,s1,b10 <MemoryManager::alloc(unsigned int)+0x68>
-  00912023  // b00:	 subu	a0,a0,s1
-  8c440000  // b04:	 lw	a0,0(v0)
-  080002c8  // b08:	 j	b20 <MemoryManager::alloc(unsigned int)+0x78>
-  ac640000  // b0c:	 sw	a0,0(v1)
-  ac440004  // b10:	 sw	a0,4(v0)
-  000420c0  // b14:	 sll	a0,a0,0x3
-  00441021  // b18:	 addu	v0,v0,a0
-  ac510004  // b1c:	 sw	s1,4(v0)
-  ae030008  // b20:	 sw	v1,8(s0)
-  080002d5  // b24:	 j	b54 <MemoryManager::alloc(unsigned int)+0xac>
-  24420008  // b28:	 addiu	v0,v0,8
-  8e030008  // b2c:	 lw	v1,8(s0)
-  00000000  // b30:	 nop
-  14430003  // b34:	 bne	v0,v1,b44 <MemoryManager::alloc(unsigned int)+0x9c>
-  02002021  // b38:	 move	a0,s0
-  0c00028a  // b3c:	 jal	a28 <MemoryManager::get_mem_from_pool(unsigned int)>
-  02202821  // b40:	 move	a1,s1
-  00401821  // b44:	 move	v1,v0
-  8c420000  // b48:	 lw	v0,0(v0)
-  080002ba  // b4c:	 j	ae8 <MemoryManager::alloc(unsigned int)+0x40>
-  00000000  // b50:	 nop
-  8fbf001c  // b54:	 lw	ra,28(sp)
-  8fb10018  // b58:	 lw	s1,24(sp)
-  8fb00014  // b5c:	 lw	s0,20(sp)
-  03e00008  // b60:	 jr	ra
-  27bd0020  // b64:	 addiu	sp,sp,32
+// 00000aac <MemoryManager::alloc(unsigned int)>:
+  27bdffe0  // aac:	 addiu	sp,sp,-32
+  afb10018  // ab0:	 sw	s1,24(sp)
+  afb00014  // ab4:	 sw	s0,20(sp)
+  afbf001c  // ab8:	 sw	ra,28(sp)
+  24a50007  // abc:	 addiu	a1,a1,7
+  8c830008  // ac0:	 lw	v1,8(a0)
+  000588c2  // ac4:	 srl	s1,a1,0x3
+  00808021  // ac8:	 move	s0,a0
+  14600005  // acc:	 bnez	v1,ae4 <MemoryManager::alloc(unsigned int)+0x38>
+  26310001  // ad0:	 addiu	s1,s1,1
+  ae040008  // ad4:	 sw	a0,8(s0)
+  ae040000  // ad8:	 sw	a0,0(s0)
+  00801821  // adc:	 move	v1,a0
+  ac800004  // ae0:	 sw	zero,4(a0)
+  8c620000  // ae4:	 lw	v0,0(v1)
+  00000000  // ae8:	 nop
+  8c440004  // aec:	 lw	a0,4(v0)
+  00000000  // af0:	 nop
+  0091282b  // af4:	 sltu	a1,a0,s1
+  14a0000d  // af8:	 bnez	a1,b30 <MemoryManager::alloc(unsigned int)+0x84>
+  00000000  // afc:	 nop
+  14910004  // b00:	 bne	a0,s1,b14 <MemoryManager::alloc(unsigned int)+0x68>
+  00912023  // b04:	 subu	a0,a0,s1
+  8c440000  // b08:	 lw	a0,0(v0)
+  080002c9  // b0c:	 j	b24 <MemoryManager::alloc(unsigned int)+0x78>
+  ac640000  // b10:	 sw	a0,0(v1)
+  ac440004  // b14:	 sw	a0,4(v0)
+  000420c0  // b18:	 sll	a0,a0,0x3
+  00441021  // b1c:	 addu	v0,v0,a0
+  ac510004  // b20:	 sw	s1,4(v0)
+  ae030008  // b24:	 sw	v1,8(s0)
+  080002d6  // b28:	 j	b58 <MemoryManager::alloc(unsigned int)+0xac>
+  24420008  // b2c:	 addiu	v0,v0,8
+  8e030008  // b30:	 lw	v1,8(s0)
+  00000000  // b34:	 nop
+  14430003  // b38:	 bne	v0,v1,b48 <MemoryManager::alloc(unsigned int)+0x9c>
+  02002021  // b3c:	 move	a0,s0
+  0c00028b  // b40:	 jal	a2c <MemoryManager::get_mem_from_pool(unsigned int)>
+  02202821  // b44:	 move	a1,s1
+  00401821  // b48:	 move	v1,v0
+  8c420000  // b4c:	 lw	v0,0(v0)
+  080002bb  // b50:	 j	aec <MemoryManager::alloc(unsigned int)+0x40>
+  00000000  // b54:	 nop
+  8fbf001c  // b58:	 lw	ra,28(sp)
+  8fb10018  // b5c:	 lw	s1,24(sp)
+  8fb00014  // b60:	 lw	s0,20(sp)
+  03e00008  // b64:	 jr	ra
+  27bd0020  // b68:	 addiu	sp,sp,32
 
-// 00000b68 <operator new(unsigned int)>:
-  3c028000  // b68:	 lui	v0,0x8000
-  00802821  // b6c:	 move	a1,a0
-  8c440000  // b70:	 lw	a0,0(v0)
-  080002aa  // b74:	 j	aa8 <MemoryManager::alloc(unsigned int)>
-  00000000  // b78:	 nop
+// 00000b6c <operator new(unsigned int)>:
+  3c028000  // b6c:	 lui	v0,0x8000
+  00802821  // b70:	 move	a1,a0
+  8c440000  // b74:	 lw	a0,0(v0)
+  080002ab  // b78:	 j	aac <MemoryManager::alloc(unsigned int)>
+  00000000  // b7c:	 nop
 
-// 00000b7c <operator delete(void*)>:
-  3c028000  // b7c:	 lui	v0,0x8000
-  00802821  // b80:	 move	a1,a0
-  8c440000  // b84:	 lw	a0,0(v0)
-  08000259  // b88:	 j	964 <MemoryManager::free(void*)>
-  00000000  // b8c:	 nop
+// 00000b80 <operator delete(void*)>:
+  3c028000  // b80:	 lui	v0,0x8000
+  00802821  // b84:	 move	a1,a0
+  8c440000  // b88:	 lw	a0,0(v0)
+  0800025a  // b8c:	 j	968 <MemoryManager::free(void*)>
+  00000000  // b90:	 nop
 

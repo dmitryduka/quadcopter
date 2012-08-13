@@ -22,6 +22,7 @@ static void led_startup() {
 //=================== MAIN==============================//
 extern "C" void entry() {
     led_startup();
+    mpu6050_init();
     MemoryManagerInit();
     TaskScheduler scheduler;
     SystemRegistry registry;
