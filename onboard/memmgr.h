@@ -62,7 +62,7 @@
 
 #define MemoryManagerInit() MemoryManager mm; *MM = &mm;
 
-const unsigned int POOL_SIZE = 128;
+const unsigned int POOL_SIZE = 512;
 const unsigned int MIN_POOL_ALLOC_QUANTAS = 16;
 
 class MemoryManager;
