@@ -10,7 +10,7 @@ STRIP = $(XTOOLS_LOCATION)/$(XTOOLS_TRIPLE)/bin/$(XTOOLS_TRIPLE)-strip
 
 # Optimizing for speed is actually optimizing for size in our case
 CCOPTS = -std=c++11 -Os -fno-strict-aliasing -fno-exceptions -fno-rtti
-LDOPTS = --no-check-sections --section-start .text=0x00000000 --section-start .rodata=0x00000008 -n -N
+LDOPTS = --no-check-sections --section-start .text=0x00000000 --section-start .rodata=0x00000000 -n -N
 
 all: startup
 	$(CC) -c $(CCOPTS) -o memmgr.o memmgr.cc

@@ -20,7 +20,7 @@
   ac02001c  //  20:	 sw	v0,28(zero)
   8c02001c  //  24:	 lw	v0,28(zero)
   00000000  //  28:	 nop
-  0440fffd  //  2c:	 bltz	v0,24 <i2c_start()+0xc>
+  0440fffd  //  2c:	 bltz	v0,24 <vtable for ContinuousTask+0x4>
   00000000  //  30:	 nop
   03e00008  //  34:	 jr	ra
   00000000  //  38:	 nop
@@ -31,7 +31,7 @@
   ac02001c  //  44:	 sw	v0,28(zero)
   8c02001c  //  48:	 lw	v0,28(zero)
   00000000  //  4c:	 nop
-  0440fffd  //  50:	 bltz	v0,48 <vtable for ThrottleADCTask>
+  0440fffd  //  50:	 bltz	v0,48 <vtable for ThrottleADCTask+0x8>
   00000000  //  54:	 nop
   03e00008  //  58:	 jr	ra
   00000000  //  5c:	 nop
@@ -43,7 +43,7 @@
   ac04001c  //  6c:	 sw	a0,28(zero)
   8c02001c  //  70:	 lw	v0,28(zero)
   00000000  //  74:	 nop
-  0440fffd  //  78:	 bltz	v0,70 <__bss_start+0x8>
+  0440fffd  //  78:	 bltz	v0,70 <i2c_io(int)+0x10>
   00000000  //  7c:	 nop
   8c02001c  //  80:	 lw	v0,28(zero)
   03e00008  //  84:	 jr	ra
@@ -171,7 +171,7 @@
   0c0002db  // 244:	 jal	b6c <operator new(unsigned int)>
   ac430004  // 248:	 sw	v1,4(v0)
   3c030000  // 24c:	 lui	v1,0x0
-  24630010  // 250:	 addiu	v1,v1,16
+  24630008  // 250:	 addiu	v1,v1,8
   27a4026c  // 254:	 addiu	a0,sp,620
   3c07000f  // 258:	 lui	a3,0xf
   00802821  // 25c:	 move	a1,a0
@@ -189,7 +189,7 @@
   0c0002db  // 28c:	 jal	b6c <operator new(unsigned int)>
   24040014  // 290:	 li	a0,20
   3c030000  // 294:	 lui	v1,0x0
-  24630040  // 298:	 addiu	v1,v1,64
+  24630038  // 298:	 addiu	v1,v1,56
   27a4026c  // 29c:	 addiu	a0,sp,620
   3c100007  // 2a0:	 lui	s0,0x7
   00802821  // 2a4:	 move	a1,a0
@@ -203,7 +203,7 @@
   0c0002db  // 2c4:	 jal	b6c <operator new(unsigned int)>
   24040014  // 2c8:	 li	a0,20
   3c030000  // 2cc:	 lui	v1,0x0
-  24630050  // 2d0:	 addiu	v1,v1,80
+  24630048  // 2d0:	 addiu	v1,v1,72
   27a4026c  // 2d4:	 addiu	a0,sp,620
   00802821  // 2d8:	 move	a1,a0
   ac430000  // 2dc:	 sw	v1,0(v0)
@@ -217,7 +217,7 @@
   24040014  // 2fc:	 li	a0,20
   3c030000  // 300:	 lui	v1,0x0
   27a4026c  // 304:	 addiu	a0,sp,620
-  24630060  // 308:	 addiu	v1,v1,96
+  24630058  // 308:	 addiu	v1,v1,88
   3c070001  // 30c:	 lui	a3,0x1
   00802821  // 310:	 move	a1,a0
   ac400004  // 314:	 sw	zero,4(v0)
