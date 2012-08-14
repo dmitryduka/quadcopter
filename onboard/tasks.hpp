@@ -296,13 +296,29 @@ public:
 
 /* Sets engine speed from SystemRegistry values (THROTTLE and PID_CORRECTION_*) */
 class EnginesUpdateTask : public ContinuousTask {
+private:
+    const int MINIMUM_THROTTLE = 100;
+    const int MINIMUM_THROTTLE_FOR_ACTIVE_PID = 200;
 public:
     virtual void start() {
         int throttle = SystemRegistry::value(SystemRegistry::THROTTLE);
-        int E1 = throttle + SystemRegistry::value(SystemRegistry::PID_CORRECTION_X);
-        int E2 = throttle - SystemRegistry::value(SystemRegistry::PID_CORRECTION_Y);
-        int E3 = throttle - SystemRegistry::value(SystemRegistry::PID_CORRECTION_X);
-        int E4 = throttle + SystemRegistry::value(SystemRegistry::PID_CORRECTION_Y);
+        int E1, E2, E3, E4;
+        E1 = E2 = E3 = E4 = throttle;
+        if(throttle > MINIMUM_THROTTLE_FOR_ACTIVE_PID) {
+    	    /* check, that engine wont stop, because of PID */
+    	    if(E1 + SystemRegistry::value(SystemRegistry::PID_CORRECTION_X) > MINIMUM_THROTTLE)
+    		E1 += SystemRegistry::value(SystemRegistry::PID_CORRECTION_X);
+    	    else E1 = MINIMUM_THROTTLE;
+    	    if(E2 - SystemRegistry::value(SystemRegistry::PID_CORRECTION_Y) > MINIMUM_THROTTLE)
+    		E2 -= SystemRegistry::value(SystemRegistry::PID_CORRECTION_Y);
+    	    else E2 = MINIMUM_THROTTLE;
+    	    if(E3 - SystemRegistry::value(SystemRegistry::PID_CORRECTION_X) > MINIMUM_THROTTLE)
+        	    E3 -= SystemRegistry::value(SystemRegistry::PID_CORRECTION_X);
+    	    else E3 = MINIMUM_THROTTLE;
+    	    if(E4 + SystemRegistry::value(SystemRegistry::PID_CORRECTION_Y) > MINIMUM_THROTTLE)
+    		E4 += SystemRegistry::value(SystemRegistry::PID_CORRECTION_Y);
+    	    else E4 = MINIMUM_THROTTLE;
+        }
         eng_ctrl(E1, E3, ENGINES_13_ADDR);
         eng_ctrl(E2, E4, ENGINES_24_ADDR);
     }

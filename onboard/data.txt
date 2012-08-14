@@ -7,36 +7,36 @@
 // 00000000 <vtable for HorizontalStabilizationTask>:
   00000000  //   0:	 nop
   00000000  //   4:	 nop
-  00000340  //   8:	 sll	zero,zero,0xd
+  00000350  //   8:	 0x350
   00000000  //   c:	 nop
 
 // 00000010 <vtable for Task>:
   00000000  //  10:	 nop
   00000000  //  14:	 nop
-  00000338  //  18:	 0x338
+  00000348  //  18:	 0x348
   00000000  //  1c:	 nop
 
 // 00000020 <vtable for ContinuousTask>:
   00000000  //  20:	 nop
   00000000  //  24:	 nop
-  00000338  //  28:	 0x338
+  00000348  //  28:	 0x348
   00000000  //  2c:	 nop
 
 // 00000030 <vtable for IMUUpdateTask>:
   00000000  //  30:	 nop
   00000000  //  34:	 nop
-  00000508  //  38:	 0x508
+  00000584  //  38:	 0x584
   00000000  //  3c:	 nop
 
 // 00000040 <vtable for ThrottleADCTask>:
   00000000  //  40:	 nop
   00000000  //  44:	 nop
-  00000480  //  48:	 sll	zero,zero,0x12
+  00000490  //  48:	 0x490
   00000000  //  4c:	 nop
 
 // 00000050 <vtable for EnginesUpdateTask>:
   00000000  //  50:	 nop
   00000000  //  54:	 nop
-  000004a8  //  58:	 0x4a8
+  000004b8  //  58:	 0x4b8
   00000000  //  5c:	 nop
 
