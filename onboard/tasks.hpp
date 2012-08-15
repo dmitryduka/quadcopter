@@ -286,6 +286,19 @@ public:
     }
 };
 
+/* Azimuth stabilization */
+class AzimuthStabilizationTask : public ContinuousTask {
+private:
+    static const unsigned int Kz = 100;
+public:
+    virtual void start() {
+	int gz = scale<Kz, 1024>(SystemRegistry::value(SystemRegistry::GYRO_Z));
+	/* Check signes here */
+	SystemRegistry::set(SystemRegistry::AZIMUTH_CORRECTION_X, gz);
+	SystemRegistry::set(SystemRegistry::AZIMUTH_CORRECTION_Y, -gz);
+    }
+};
+
 /* Updates the SystemRegistry with new data from the ADC (for throttle) */
 class ThrottleADCTask : public ContinuousTask {
 public:
@@ -299,14 +312,14 @@ public:
 /* Sets engine speed from SystemRegistry values (THROTTLE and PID_CORRECTION_*) */
 class EnginesUpdateTask : public ContinuousTask {
 private:
-    const int MINIMUM_THROTTLE = 100;
-    const int MINIMUM_THROTTLE_FOR_ACTIVE_PID = 200;
+    const unsigned int MINIMUM_THROTTLE = 100;
+    const unsigned int MINIMUM_THROTTLE_FOR_CORRECTIONS = 200;
 public:
     virtual void start() {
         int throttle = SystemRegistry::value(SystemRegistry::THROTTLE);
         int E1, E2, E3, E4;
         E1 = E2 = E3 = E4 = throttle;
-        if(throttle > MINIMUM_THROTTLE_FOR_ACTIVE_PID) {
+        if(throttle > MINIMUM_THROTTLE_FOR_CORRECTIONS) {
     	    /* check, that engine wont stop, because of PID */
     	    if(E1 + SystemRegistry::value(SystemRegistry::PID_CORRECTION_X) > MINIMUM_THROTTLE)
     		E1 += SystemRegistry::value(SystemRegistry::PID_CORRECTION_X);
@@ -320,6 +333,16 @@ public:
     	    if(E4 + SystemRegistry::value(SystemRegistry::PID_CORRECTION_Y) > MINIMUM_THROTTLE)
     		E4 += SystemRegistry::value(SystemRegistry::PID_CORRECTION_Y);
     	    else E4 = MINIMUM_THROTTLE;
+
+	    /* check, that engine wont stop, because of azimuth correction */
+	    if(E1 + SystemRegistry::value(SystemRegistry::AZIMUTH_CORRECTION_X) > MINIMUM_THROTTLE)
+    		E1 += SystemRegistry::value(SystemRegistry::AZIMUTH_CORRECTION_X);
+    	    if(E2 + SystemRegistry::value(SystemRegistry::AZIMUTH_CORRECTION_Y) > MINIMUM_THROTTLE)
+    		E2 += SystemRegistry::value(SystemRegistry::AZIMUTH_CORRECTION_Y);
+    	    if(E3 + SystemRegistry::value(SystemRegistry::AZIMUTH_CORRECTION_X) > MINIMUM_THROTTLE)
+    		E3 += SystemRegistry::value(SystemRegistry::AZIMUTH_CORRECTION_X);
+    	    if(E4 + SystemRegistry::value(SystemRegistry::AZIMUTH_CORRECTION_Y) > MINIMUM_THROTTLE)
+    	        E4 += SystemRegistry::value(SystemRegistry::AZIMUTH_CORRECTION_Y);
         }
         eng_ctrl(E1, E3, ENGINES_13_ADDR);
         eng_ctrl(E2, E4, ENGINES_24_ADDR);

@@ -28,6 +28,7 @@ extern "C" void entry() {
     SystemRegistry registry;
 
     scheduler.addTask(new HorizontalStabilizationTask, 50hz);
+    //scheduler.addTask(new AzimuthStabilizationTask, 50hz);
     scheduler.addTask(new IMUUpdateTask, 100hz);
     scheduler.addTask(new ThrottleADCTask, 100hz);
     scheduler.addTask(new EnginesUpdateTask, 440hz);

@@ -37,6 +37,9 @@ public:
         /* PID corrections */
         PID_CORRECTION_X,
         PID_CORRECTION_Y,
+        /* PID corrections */
+        AZIMUTH_CORRECTION_X,
+        AZIMUTH_CORRECTION_Y,
         /* Desired angle to stabilize */
         DESIRED_X,
         DESIRED_Y,
@@ -48,7 +51,7 @@ private:
     int values[VALUES_END];
 public:
     SystemRegistry() {
-        for (int i = 0; i < VALUES_END; ++i) values[0];
+	for(int i = 0; i < VALUES_END; ++i) values[i] = 0;
         *SR = this;
     }
 
