@@ -290,7 +290,9 @@ public:
 class ThrottleADCTask : public ContinuousTask {
 public:
     virtual void start() {
-        SystemRegistry::set(SystemRegistry::THROTTLE, adc_read(2) >> 2);
+	int adc = adc_read(2) >> 2;
+        SystemRegistry::set(SystemRegistry::THROTTLE, adc);
+        leds(adc >> 2);
     }
 };
 
