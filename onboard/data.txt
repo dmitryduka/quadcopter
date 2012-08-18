@@ -4,39 +4,21 @@
 
 // Disassembly of section .rodata:
 
-// 00000000 <vtable for HorizontalStabilizationTask>:
+// 00000000 <vtable for StabilizationAndEngineUpdateTask>:
   00000000  //   0:	 nop
   00000000  //   4:	 nop
-  0000036c  //   8:	 0x36c
+  00000854  //   8:	 0x854
   00000000  //   c:	 nop
 
 // 00000010 <vtable for Task>:
   00000000  //  10:	 nop
   00000000  //  14:	 nop
-  00000364  //  18:	 0x364
+  000002e8  //  18:	 0x2e8
   00000000  //  1c:	 nop
 
 // 00000020 <vtable for ContinuousTask>:
   00000000  //  20:	 nop
   00000000  //  24:	 nop
-  00000364  //  28:	 0x364
+  000002e8  //  28:	 0x2e8
   00000000  //  2c:	 nop
-
-// 00000030 <vtable for IMUUpdateTask>:
-  00000000  //  30:	 nop
-  00000000  //  34:	 nop
-  00000608  //  38:	 0x608
-  00000000  //  3c:	 nop
-
-// 00000040 <vtable for ThrottleADCTask>:
-  00000000  //  40:	 nop
-  00000000  //  44:	 nop
-  000004ac  //  48:	 0x4ac
-  00000000  //  4c:	 nop
-
-// 00000050 <vtable for EnginesUpdateTask>:
-  00000000  //  50:	 nop
-  00000000  //  54:	 nop
-  000004e4  //  58:	 0x4e4
-  00000000  //  5c:	 nop
 

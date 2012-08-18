@@ -51,7 +51,7 @@ private:
     int values[VALUES_END];
 public:
     SystemRegistry() {
-	for(int i = 0; i < VALUES_END; ++i) values[i] = 0;
+        for (int i = 0; i < VALUES_END; ++i) values[i] = 0;
         *SR = this;
     }
 
