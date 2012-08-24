@@ -58,24 +58,22 @@
 //    fragmentation.
 //
 
-#include "memory_config.hpp"
-
-#define MemoryManagerInit() MemoryManager mm; *MM = &mm;
-
 const unsigned int POOL_SIZE = 512;
-const unsigned int MIN_POOL_ALLOC_QUANTAS = 16;
-
-class MemoryManager;
-
-MemoryManager ** const MM = reinterpret_cast<MemoryManager ** const>(MEMORY_MANAGER_INSTANCE_ADDRESS);
+const unsigned int MIN_POOL_ALLOC_QUANTAS = 7;
 
 class MemoryManager {
 public:
-    MemoryManager();
+    static MemoryManager& instance() {
+	static MemoryManager inst;
+	return inst;
+    }
 
     void*		alloc(unsigned int nbytes);
     void		free(void* ap);
 private:
+    MemoryManager();
+
+
     union mem_header_union {
         struct {
             // Pointer to the next block in the free list

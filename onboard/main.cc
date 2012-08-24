@@ -5,6 +5,7 @@
 #include "moving_average.hpp"
 #include "devices.hpp"
 #include "tasks.hpp"
+#include "messages.hpp"
 
 //===============FUNCTION DEFINITIONS==================//
 
@@ -20,12 +21,11 @@ static void led_startup() {
 }
 
 //=================== MAIN==============================//
-extern "C" void entry() {
+int main() {
+    Messages::handlers[*reinterpret_cast<int*>(0x0)]();
     led_startup();
     mpu6050_init();
-    MemoryManagerInit();
     TaskScheduler scheduler;
-    SystemRegistry registry;
 
     scheduler.addTask(new StabilizationAndEngineUpdateTask, 440hz);
 

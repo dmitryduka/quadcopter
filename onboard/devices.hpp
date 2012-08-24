@@ -27,6 +27,9 @@ DEFINE_EXTERNAL_DEVICE(EVENTS_ADDR,	0x00000020);
 /* RTC */
 DEFINE_EXTERNAL_DEVICE(RTC_ADDR,	0x00000030);
 
+/* UART1 */
+DEFINE_EXTERNAL_DEVICE(UART1_ADDR,	0x00000040);
+
 const int ENGINE_THRUST_RANGE_LOW = 0;
 const int ENGINE_THRUST_RANGE_HIGH = 512;
 
@@ -76,7 +79,6 @@ static void wait4event()
     //wait for event
     while (*EVENTS_ADDR == 0) { }
     *EVENTS_ADDR = 1;
-    return;
 }
 
 /* Read 2 words for RTC */
@@ -114,6 +116,12 @@ void mpu6050_write(int reg, int byte)
 int sign_extend(int halfword)
 {
     return  ((halfword & 0xFFFF) >> 15) ? (0xFFFF0000 | halfword) : halfword;
+}
+
+void uart_send(char x) {
+    // TODO: implement this correctly
+    while (*UART1_ADDR == 0) { }
+    *UART1_ADDR = x;
 }
 
 void mpu6050_init() {

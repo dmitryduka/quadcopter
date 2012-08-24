@@ -2,11 +2,6 @@
 #define REGISTRY_HPP
 
 #include "ct-utility.hpp"
-#include "memory_config.hpp"
-
-class SystemRegistry;
-
-SystemRegistry ** const SR = reinterpret_cast<SystemRegistry ** const>(SYSTEM_REGISTRY_INSTANCE_ADDRESS);
 
 class SystemRegistry {
 public:
@@ -49,17 +44,21 @@ public:
     };
 private:
     int values[VALUES_END];
-public:
+private:
     SystemRegistry() {
         for (int i = 0; i < VALUES_END; ++i) values[i] = 0;
-        *SR = this;
     }
+public:
+    static SystemRegistry& instance() {
+	static SystemRegistry inst;
+	return inst;
+    };
 
     static int& value(Value v) {
-        return (*SR)->values[v];
+        return instance().values[v];
     }
     static void set(Value v, int value) {
-        (*SR)->values[v] = value;
+        instance().values[v] = value;
     }
 };
 

@@ -136,8 +136,8 @@ void MemoryManager::free(void* ap) {
 }
 
 void* operator new(unsigned int size) {
-    return (*MM)->alloc(size);
+    return MemoryManager::instance().alloc(size);
 }
 void operator delete(void * addr) {
-    (*MM)->free(addr);
+    MemoryManager::instance().free(addr);
 }

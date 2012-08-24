@@ -99,16 +99,16 @@ private:
     }
 
     /* Adds Task t to the list */
-    void addTask(Task*& list, Task* t, int delay) {
+    void addTask(Task** list, Task* t, int delay) {
         t->setScheduler(this);
         t->interval = delay;
         int rtc = RTC();
         t->executeAt = rtc + delay;
-        Task* last = list;
+        Task* last = *list;
         /* First task */
         if (!last) {
             last = t;
-            list = t;
+            *list = t;
         } else {
             /* go to the end of the linked list.
             TODO: Scheduler should know about the last task in both linked lists */
@@ -136,12 +136,12 @@ public:
     }
 
     ContinuousTask*	addTask(ContinuousTask* t, int delay) {
-        addTask(continuousTasks, t, delay);
+        addTask(&continuousTasks, t, delay);
         return t;
     }
 
     OneShotTask*	addTask(OneShotTask* t, int delay) {
-        addTask(oneShotTasks, t, delay);
+        addTask(&oneShotTasks, t, delay);
         return t;
     }
 
