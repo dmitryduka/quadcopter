@@ -7,32 +7,24 @@ SEARCH_DIR("=/usr/local/lib"); SEARCH_DIR("=/lib"); SEARCH_DIR("=/usr/lib");
 MEMORY 
 {
     imem (rx) : ORIGIN = 0, LENGTH = 8K
-    dmem (rw) : ORIGIN = 0x80000000, LENGTH = 2K
+    dmem (rw) : ORIGIN = 0x80000000, LENGTH = 4K
 }
 SECTIONS
 {
   .text           :  { startup.o(.text)} > imem
   .text           :  { *(.text.*) } > imem
-  .rodata         : { *(.rodata .rodata.* .gnu.linkonce.r.*) } > dmem
-  .data           :
+  .data         : 
   {
+    *(.rodata .rodata.* .gnu.linkonce.r.*)
     *(.data .data.* .gnu.linkonce.d.*)
     SORT(CONSTRUCTORS)
-  } > dmem
-  .sdata          :
-  {
     *(.sdata .sdata.* .gnu.linkonce.s.*)
-  } > dmem
-  .sbss           :
-  {
     *(.dynsbss)
     *(.sbss .sbss.* .gnu.linkonce.sb.*)
     *(.scommon)
-  } > dmem
-  .bss            :
-  {
-   *(.dynbss)
-   *(.bss .bss.* .gnu.linkonce.b.*)
-   *(COMMON)
-  } > dmem
+    *(.dynbss)
+    *(.bss .bss.* .gnu.linkonce.b.*)
+    *(COMMON)
+    . = LENGTH(dmem);
+  } > dmem = 0
 }
