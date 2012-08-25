@@ -11,10 +11,14 @@ MEMORY
 }
 SECTIONS
 {
-  .text           :  { startup.o(.text)} > imem
-  .text           :  { *(.text.*) } > imem
-  .data         : 
-  {
+  .text : {
+    startup.o(.text)
+    *(.text)
+    *(.text.*)
+    . = LENGTH(imem);
+  } > imem = 0
+  text_size = SIZEOF(.text);
+  .data : {
     *(.rodata .rodata.* .gnu.linkonce.r.*)
     *(.data .data.* .gnu.linkonce.d.*)
     SORT(CONSTRUCTORS)
