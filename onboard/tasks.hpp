@@ -4,6 +4,7 @@
 #include "ct-utility.hpp"
 #include "devices.hpp"
 #include "registry.hpp"
+#include "messages.hpp"
 
 class TaskScheduler;
 class Task;
@@ -34,6 +35,7 @@ public:
 };
 
 /* Inherit from some of these classes and implement void start() function as a task activity. */
+class IdleTask : public Task {};
 class ContinuousTask : public Task {};
 class OneShotTask : public Task {};
 
@@ -54,8 +56,11 @@ class OneShotTask : public Task {};
 class TaskScheduler {
 private:
     /* 1st queue */
+    Task*	idleTasks;
     Task*	continuousTasks;
     Task*	oneShotTasks;
+    
+    Task*	currentIdleTask;
 
     enum Queues { CONTINUOUS_QUEUE= 0, ONE_SHOT_QUEUE, QUEUES_COUNT };
 
@@ -117,7 +122,7 @@ private:
         }
     }
 public:
-    TaskScheduler() : continuousTasks(0), oneShotTasks(0), nextTask {0, 0, 0} {}
+    TaskScheduler() : idleTasks(0), continuousTasks(0), oneShotTasks(0), currentIdleTask(0), nextTask {0, 0, 0} {}
     ~TaskScheduler() { }
 
     void start() {
@@ -131,12 +136,25 @@ public:
                 if (nextTask.queue == ONE_SHOT_QUEUE) removeTask(nextTask.task);
                 else nextTask.task->executeAt = rtc + nextTask.task->interval;
                 selectNextTask(rtc);
+            } else {
+        	/* Select next idle task */
+        	if(currentIdleTask) currentIdleTask = currentIdleTask->nextTask;
+        	/* If it was the last one, jump to the start */
+        	if(currentIdleTask == 0)
+        	    currentIdleTask = idleTasks;
+        	/* Execute selected task */
+        	if(currentIdleTask) currentIdleTask->start();
             }
         }
     }
 
     ContinuousTask*	addTask(ContinuousTask* t, int delay) {
         addTask(&continuousTasks, t, delay);
+        return t;
+    }
+
+    IdleTask*		addTask(IdleTask* t) {
+        addTask(&idleTasks, t, 0);
         return t;
     }
 
@@ -149,9 +167,9 @@ public:
     void		removeTask(Task* t) {
         /* Look in both queues */
         int queueNo = -1;
-        Task** queues[2] = {&continuousTasks, &oneShotTasks};
+        Task** queues[3] = {&idleTasks, &continuousTasks, &oneShotTasks};
         /* Find previous task */
-        for (int i = 0; i < QUEUES_COUNT; ++i) {
+        for (int i = 0; i < 3; ++i) {
             Task* queue = *(queues[i]);
             if (queue) {
                 /* There is no previous task, because it is itself the first one */
@@ -363,6 +381,32 @@ public:
         SystemRegistry::set(SystemRegistry::PID_CORRECTION_Y,	scale<Kp, 1024>(py) +
                             scale<Ki, 1024>(iy) +
                             scale<Kd, 1024>(dy));
+    }
+};
+
+class XBeeReadIdleTask : public IdleTask {
+private:
+    char UART_BUFFER[Messages::MAX_MESSAGE_LENGTH];
+    unsigned int bytesSoFar;
+    Messages::EntryType handler;
+public:
+    XBeeReadIdleTask() : bytesSoFar(0), handler{0, 0} {}
+    void start() {
+	/* TODO: poll uart, exit if unavailable */
+	/* TODO */
+	/* read it otherwise */
+	char b = uart_read();
+	/* Determine message size/handler */
+	if(bytesSoFar == 0)
+	    handler = Messages::handlers[b];
+	/* Put new byte to the buffer */
+	UART_BUFFER[bytesSoFar++] = b;
+	/* check if we have full message yet */
+	if(bytesSoFar == handler.size) {
+	    handler.handler(UART_BUFFER);
+	    bytesSoFar = 0;
+	    handler = {0, 0};
+	}
     }
 };
 

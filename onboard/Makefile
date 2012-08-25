@@ -20,10 +20,11 @@ OBJECTS += $(CSOURCES:.c=.o)
 all: clean $(OBJECTS)
 	$(LD) -T ld.script -o main $(LDOPTS) $(OBJECTS)
 	$(DUMP) -C -Dz --section=.text main > program-listing.txt
-	$(DUMP) -C -Dz --section=.rodata main > data-listing.txt
-	$(DUMP) -C -Dz --section=.bss main > bss-listing.txt
+	-$(DUMP) -C -Dz --section=.rodata main > rodata-listing.txt
+	-$(DUMP) -C -Dz --section=.data main > data-listing.txt
+	-$(DUMP) -C -Dz --section=.bss main > bss-listing.txt
 	cat program-listing.txt | grep -P "^\s*[\d|abcdef]+:" | cut -f 2 > program.txt
-	cat data-listing.txt | grep -P "^\s*[\d|abcdef]+:" | cut -f 2 > data.txt
+	cat rodata-listing.txt | grep -P "^\s*[\d|abcdef]+:" | cut -f 2 > data.txt
 	cat bss-listing.txt | grep -P "^\s*[\d|abcdef]+:" | cut -f 2 >> data.txt
 	$(READELF) -a main > program-elf.txt
 

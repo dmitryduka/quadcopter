@@ -24,17 +24,17 @@ In order to add new message:
 
 enum class To : char {
     MESSAGES_BEGIN = 0,
-    THROTTLE = 0,
-    PITCH,
-    YAW,
-    ROLL,
+    Throttle = 0,
+    Pitch,
+    Yaw,
+    Roll,
     MESSAGES_COUNT
 };
 
 enum class From : unsigned char {
     MESSAGES_BEGIN = 128,
-    IMU_DATA,
-    PID_VALUES,
+    IMUData,
+    PIDValues,
     MESSAGES_END
 };
 
@@ -46,7 +46,7 @@ template<typename Type, Type TYPE> struct Message { const Type type = TYPE; };
 /* ==============================================================
 		Messages definitions 
    ============================================================== */
-struct IMUData : Message<From, From::IMU_DATA> {
+struct IMUData : Message<From, From::IMUData> {
     short int Ax;
     short int Ay;
     short int Az;
@@ -58,30 +58,46 @@ struct IMUData : Message<From, From::IMU_DATA> {
     short int Cz;
 };
 
-struct PIDValues : Message<From, From::PID_VALUES> {
+struct PIDValues : Message<From, From::PIDValues> {
     short int X, Y;
 };
 
-struct Throttle : Message<To, To::THROTTLE> { short int value; };
-struct Pitch : Message<To, To::PITCH> { short int value; };
-struct Yaw : Message<To, To::YAW> { short int value; };
-struct Roll : Message<To, To::ROLL> { short int value; };
+struct Throttle : Message<To, To::Throttle> { short int value; };
+struct Pitch : Message<To, To::Pitch> { short int value; };
+struct Yaw : Message<To, To::Yaw> { short int value; };
+struct Roll : Message<To, To::Roll> { short int value; };
 
 /* ==============================================================
 		Messages handlers definitions 
    ============================================================== */
-typedef void (*HandlerType)();
-const HandlerType defaultHandler = [](){};
+typedef void (*HandlerType)(char*);
+void defaultHandler(char*) {}
 
-/* Setup Message Type -> Message handler mapping here */
-const HandlerType handlers[asIntegral(To::MESSAGES_COUNT) + 1] { 
-    [To::THROTTLE] 	= defaultHandler,
-    [To::PITCH] 	= defaultHandler,
-    [To::YAW] 		= defaultHandler,
-    [To::ROLL] 		= defaultHandler,
-    /* This is here to generate compile-time error if not all messages were specified above */
-    [To::MESSAGES_COUNT] = defaultHandler,
+struct EntryType {
+    unsigned char size;
+    HandlerType handler;
+    
+    void operator=(const EntryType& other) {
+	size = other.size; handler = other.handler;
+    }
 };
+
+const unsigned int MAX_MESSAGE_LENGTH = 32;
+
+/* Setup Message Type -> Message size/Message handler mapping here */
+#define DEFINE_MESSAGE_HANDLER(X, H) [To::X] = { sizeof(X), H }
+
+const EntryType handlers[asIntegral(To::MESSAGES_COUNT) + 1] = {
+    DEFINE_MESSAGE_HANDLER(Throttle, 	defaultHandler),
+    DEFINE_MESSAGE_HANDLER(Pitch, 	defaultHandler),
+    DEFINE_MESSAGE_HANDLER(Yaw, 	defaultHandler),
+    DEFINE_MESSAGE_HANDLER(Roll, 	defaultHandler),
+
+    /* This is here to generate compile-time error if not all messages were specified above */
+    [To::MESSAGES_COUNT] = {0, 		defaultHandler},
+};
+
+#undef DEFINE_MESSAGE_HANDLER
 
 };
 

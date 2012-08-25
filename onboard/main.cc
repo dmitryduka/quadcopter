@@ -22,11 +22,11 @@ static void led_startup() {
 
 //=================== MAIN==============================//
 int main() {
-    Messages::handlers[*reinterpret_cast<int*>(0x0)]();
     led_startup();
     mpu6050_init();
     TaskScheduler scheduler;
 
+    //scheduler.addTask(new XBeeReadIdleTask);
     scheduler.addTask(new StabilizationAndEngineUpdateTask, 440hz);
 
     /* Forever */
