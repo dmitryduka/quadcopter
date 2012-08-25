@@ -2,7 +2,6 @@
 #include "memmgr.h"
 #include "registry.hpp"
 #include "ct-utility.hpp"
-#include "moving_average.hpp"
 #include "devices.hpp"
 #include "tasks.hpp"
 #include "messages.hpp"

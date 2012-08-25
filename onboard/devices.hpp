@@ -82,7 +82,7 @@ static void wait4event()
 }
 
 /* Read 2 words for RTC */
-static unsigned RTC() {
+static unsigned int RTC() {
     return *RTC_ADDR;
 }
 
