@@ -1,0 +1,23 @@
+
+main:     file format elf32-bigmips
+
+
+Disassembly of section .rodata:
+
+80000000 <vtable for StabilizationAndEngineUpdateTask>:
+80000000:	00000000 	nop
+80000004:	00000000 	nop
+80000008:	0000073c 	0x73c
+8000000c:	00000000 	nop
+
+80000010 <vtable for Task>:
+80000010:	00000000 	nop
+80000014:	00000000 	nop
+80000018:	00000008 	jr	zero
+8000001c:	00000000 	nop
+
+80000020 <vtable for ContinuousTask>:
+80000020:	00000000 	nop
+80000024:	00000000 	nop
+80000028:	00000008 	jr	zero
+8000002c:	00000000 	nop
