@@ -13,7 +13,7 @@ class Task;
     TaskScheduler needs each Task to hold its time to execute at,
     interval, nextTask (to construct a linked list structure, a queue).
 
-    Do not inherit from this class - use either ContinuousTask or OneShotTask.
+    Do not inherit from this class - use either ContinuousTask, OneShotTask or IdleTask.
 */
 class Task {
 private:
