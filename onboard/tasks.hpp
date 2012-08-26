@@ -34,7 +34,11 @@ public:
     virtual void start() {}
 };
 
-/* Inherit from some of these classes and implement void start() function as a task activity. */
+/* Inherit from some of these classes and implement start() function as a task activity.
+    Task can not be interrupted in the middle of execution, so do not implement blocking tasks!
+
+    IdleTasks should not block at all to minimize scheduling errors.
+*/
 class IdleTask : public Task {};
 class ContinuousTask : public Task {};
 class OneShotTask : public Task {};
