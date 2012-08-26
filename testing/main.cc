@@ -25,7 +25,7 @@ int main() {
     mpu6050_init();
     TaskScheduler scheduler;
 
-    //scheduler.addTask(new XBeeReadIdleTask);
+    scheduler.addTask(new XBeeReadIdleTask);
     scheduler.addTask(new StabilizationAndEngineUpdateTask, 440hz);
 
     /* Forever */

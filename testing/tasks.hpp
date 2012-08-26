@@ -6,6 +6,8 @@
 #include "registry.hpp"
 #include "messages.hpp"
 
+#include <stdio.h>
+
 class TaskScheduler;
 class Task;
 
@@ -42,29 +44,26 @@ class OneShotTask : public Task {};
 /* Task scheduler
 
     Create TaskScheduler object, add some tasks and call start()
-    TaskScheduler class maintains three queues of tasks - one for continuous tasks, one for
-    tasks which should be run only once and the last for the idle task, which will run everytime 
-    the scheduler sees it's not the time yet to run some Continuous/OneShot tasks.
-
+    TaskScheduler class maintains two queues of tasks - one for continuous tasks and one for
+    tasks which should be run only once.
     Use
 	* addTask(ContinuousTask*, int interval) - returns a pointer to the added task (later you might want to remove it). Scheduler owns the task though.
-	* addTask(OneShotTask*, int interval) - =same=
-	* addTask(IdleTask*) - =same=
+	* addTask(OneShotTask*, int interval)
 
 	* removeTask(OneShotTask*, int interval) -  remove a task from queue (it'll try to find in both queues) and destroy the task
 	* start() - starts infinite loop, requires RTC() function
-	    - polls RTC until it's time to execute the next task. Runs idle tasks (in a loop) whenever it's possible. Each time some task was executed, it finds next task to be executed.
+	    - polls RTC until it's time to execute next task. Each time some task was executed, it finds next task to be executed.
 	    - it calls removeTask for tasks inherited from OneShotTask class
 */
 class TaskScheduler {
 private:
+    /* 1st queue */
     Task*	idleTasks;
     Task*	continuousTasks;
     Task*	oneShotTasks;
-
+    
     Task*	currentIdleTask;
 
-    /* No need for IDLE_QUEUE here, because this is only for the logic to delete task from the oneShotTasks queue */
     enum Queues { CONTINUOUS_QUEUE= 0, ONE_SHOT_QUEUE, QUEUES_COUNT };
 
     /* holds a task to be executed */
@@ -86,10 +85,8 @@ private:
             Task* q = *(queues[i]);
             if (q) {
                 Task* cur = q;
-                /* This piece of code finds the minimum time between *now* (which is passed in the argument)
-                and some task' time to execute.
-                */
                 while (cur) {
+                    /* exclude current task */
                     if (cur->executeAt - rtc < minimumExecuteAt) {
                         nextTaskCandidate = cur;
                         minimumExecuteAt = cur->executeAt - rtc;
@@ -102,14 +99,13 @@ private:
         return setNextTask(nextTaskCandidate, queue);
     }
 
-    /* Sets up nextTask structure (which is used in the main loop of the scheduler) */
     void setNextTask(Task* t, Task* list) {
         nextTask.task = t;
         nextTask.time = t->executeAt;
         nextTask.queue = (list == continuousTasks) ? CONTINUOUS_QUEUE : ONE_SHOT_QUEUE;
     }
 
-    /* Adds Task t to the queue ('list') */
+    /* Adds Task t to the list */
     void addTask(Task** list, Task* t, int delay) {
         t->setScheduler(this);
         t->interval = delay;
@@ -131,15 +127,14 @@ public:
     TaskScheduler() : idleTasks(0), continuousTasks(0), oneShotTasks(0), currentIdleTask(0), nextTask {0, 0, 0} {}
     ~TaskScheduler() { }
 
-    /* The main loop - poll RTC, execute task if RTC > nextTask.time, execute next IdleTask otherwise */
     void start() {
         selectNextTask(0);
         forever {
             unsigned int rtc = RTC();
             /* Check if RTC value is equal or higher than nextTask' execution time,
-            accounting that they could be on different sides of RTC overflow.
-            MAX_TASK_INTERVAL_TICKS is defined in the devices.hpp and is 'once in a minute' */
+            accounting that they could be on different sides of RTC overflow */
             if (rtc >= nextTask.time && (rtc - nextTask.time) < MAX_TASK_INTERVAL_TICKS) {
+                printf("RTC : %u : ", rtc);
                 nextTask.task->start();
                 if (nextTask.queue == ONE_SHOT_QUEUE) removeTask(nextTask.task);
                 else nextTask.task->executeAt = rtc + nextTask.task->interval;
@@ -150,7 +145,7 @@ public:
         	/* If it was the last one, jump to the start */
         	if(currentIdleTask == 0)
         	    currentIdleTask = idleTasks;
-        	/* Execute selected task, if there is one */
+        	/* Execute selected task */
         	if(currentIdleTask) currentIdleTask->start();
             }
         }
@@ -298,12 +293,7 @@ public:
     }
 };
 
-/* Sets engine speed from SystemRegistry values (THROTTLE and PID_CORRECTION_*)
-    There is no need to have all tasks above as separate tasks, so this task
-    calls their static functions to update IMU data/throttle data. 
-
-    It's handy to have these as separate tasks though.
-    */
+/* Sets engine speed from SystemRegistry values (THROTTLE and PID_CORRECTION_*) */
 class StabilizationAndEngineUpdateTask : public ContinuousTask {
 private:
     static constexpr unsigned int Kp = 160;
@@ -320,6 +310,7 @@ public:
 
     /* Calculate all corrections and apply them to motors */
     virtual void start() {
+	printf("StabilizationAndEngineUpdateTask\n");
         /* Read throttle */
         ThrottleADCTask::update();
         /* Update IMU data */
@@ -356,8 +347,8 @@ public:
             if (E4 + SystemRegistry::value(SystemRegistry::AZIMUTH_CORRECTION_Y) > MINIMUM_THROTTLE)
                 E4 += SystemRegistry::value(SystemRegistry::AZIMUTH_CORRECTION_Y);
         }
-        eng_ctrl(E1, E3, ENGINES_13_ADDR);
-        eng_ctrl(E2, E4, ENGINES_24_ADDR);
+        //eng_ctrl(E1, E3, ENGINES_13_ADDR);
+        //eng_ctrl(E2, E4, ENGINES_24_ADDR);
     }
 
     /* PID-controller */
@@ -405,21 +396,10 @@ private:
 public:
     XBeeReadIdleTask() : bytesSoFar(0), handler{0, 0} {}
     void start() {
+	printf("XBeeReadIdleTask\n");
 	/* TODO: poll uart, exit if unavailable */
 	/* TODO */
 	/* read it otherwise */
-	char b = uart_read();
-	/* Determine message size/handler, because first byte is always message type */
-	if(bytesSoFar == 0)
-	    handler = Messages::handlers[b];
-	/* Put the byte to the buffer */
-	UART_BUFFER[bytesSoFar++] = b;
-	/* check if we have full message yet and call handler if so */
-	if(bytesSoFar == handler.size) {
-	    handler.handler(UART_BUFFER);
-	    bytesSoFar = 0;
-	    handler = {0, 0};
-	}
     }
 };
 

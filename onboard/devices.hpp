@@ -44,7 +44,7 @@ const unsigned int MPU6050_ADDR = 0x1D0;
 //===============FUNCTION DEFINITIONS==================//
 
 /* Clamp value */
-inline int clamp(int x, int low, int high) {
+inline static int clamp(int x, int low, int high) {
     return (x >= low && x <= high) ? x : ((x < low) ? low : high);
 }
 
@@ -82,7 +82,7 @@ static void wait4event()
 }
 
 /* Read 2 words for RTC */
-static unsigned RTC() {
+static unsigned int RTC() {
     return *RTC_ADDR;
 }
 
@@ -104,7 +104,7 @@ static int i2c_io(int b) {
     return *I2C_ADDR;
 }
 
-void mpu6050_write(int reg, int byte)
+static void mpu6050_write(int reg, int byte)
 {
     i2c_start();
     i2c_io(MPU6050_ADDR);
@@ -113,18 +113,25 @@ void mpu6050_write(int reg, int byte)
     i2c_stop();
 }
 
-int sign_extend(int halfword)
+static int sign_extend(int halfword)
 {
     return  ((halfword & 0xFFFF) >> 15) ? (0xFFFF0000 | halfword) : halfword;
 }
 
-void uart_send(char x) {
+static void uart_write(char x) {
     // TODO: implement this correctly
     while (*UART1_ADDR == 0) { }
     *UART1_ADDR = x;
 }
 
-void mpu6050_init() {
+static char uart_read() {
+    // TODO: implement this correctly
+    char x;
+    while (x < 0) { x = *UART1_ADDR; }
+    return x;
+}
+
+static void mpu6050_init() {
     /* TODO: no magic values */
     mpu6050_write(0x1A, 0x03); //Low-pass ON
     mpu6050_write(0x1B, 0x18); //GYRO_CONFIG: +-2000 dps range
