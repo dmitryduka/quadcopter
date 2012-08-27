@@ -12,7 +12,7 @@ MEMORY
 SECTIONS
 {
   .text : {
-    startup.o(.text)
+    *startup.o(.text)
     *(.text)
     *(.text.*)
     . = LENGTH(imem);

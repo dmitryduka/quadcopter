@@ -8,31 +8,43 @@ DUMP = $(XTOOLS_LOCATION)/$(XTOOLS_TRIPLE)/bin/$(XTOOLS_TRIPLE)-objdump
 READELF = $(XTOOLS_LOCATION)/$(XTOOLS_TRIPLE)/bin/$(XTOOLS_TRIPLE)-readelf
 STRIP = $(XTOOLS_LOCATION)/$(XTOOLS_TRIPLE)/bin/$(XTOOLS_TRIPLE)-strip
 
+SRCDIR = src
+OBJDIR = obj
+LISTINGSDIR = listings
+
 # Optimizing for speed is actually optimizing for size in our case
 STACK_SIZE = 2000
 CCOPTS = -G0 -nostartfiles -I. -c -fno-threadsafe-statics -fpack-struct -fstack-usage -Wstack-usage=$(STACK_SIZE) -std=c++11 -Os -fno-strict-aliasing -fno-exceptions -fno-rtti
 
-CCSOURCES = main.cc memmgr.cc
-OBJECTS = startup.o
-OBJECTS += $(CCSOURCES:.cc=.o)
-OBJECTS += $(CSOURCES:.c=.o)
+SRC_AS = $(wildcard $(SRCDIR)/*.S)
+SRC_CC = $(wildcard $(SRCDIR)/*.cc) $(wildcard $(SRCDIR)/*.cpp)
+SRC_C = $(wildcard $(SRCDIR)/*.c)
+OBJECTS = $(foreach file, $(SRC_AS), $(OBJDIR)/$(notdir $(file)).o)
+OBJECTS += $(foreach file, $(SRC_CC), $(OBJDIR)/$(notdir $(file)).o)
+OBJECTS += $(foreach file, $(SRC_C), $(OBJDIR)/$(notdir $(file)).o)
 
-all: clean $(OBJECTS)
-	$(LD) -T ld.script -o main $(LDOPTS) $(OBJECTS)
-	$(DUMP) -C -Dz --section=.text main > program-listing.txt
-	-$(DUMP) -C -Dz --section=.data main > data-listing.txt
-	cat program-listing.txt | grep -P "^\s*[\d|abcdef]+:" | cut -f 2 > program.txt
-	cat data-listing.txt | grep -P "^\s*[\d|abcdef]+:" | cut -f 2 > data.txt
-	$(READELF) -a main > program-elf.txt
+all: clean dirs $(OBJECTS)
+	$(LD) -T $(SRCDIR)/ld.script -o main $(LDOPTS) $(OBJECTS)
+	$(DUMP) -C -Dz --section=.text main > $(LISTINGSDIR)/program-listing.txt
+	-$(DUMP) -C -Dz --section=.data main > $(LISTINGSDIR)/data-listing.txt
+	cat $(LISTINGSDIR)/program-listing.txt | grep -P "^\s*[\d|abcdef]+:" | cut -f 2 > program.txt
+	cat $(LISTINGSDIR)/data-listing.txt | grep -P "^\s*[\d|abcdef]+:" | cut -f 2 > data.txt
+	$(READELF) -a main > $(LISTINGSDIR)/program-elf.txt
 
-.cc.o:
+dirs:
+	mkdir -p $(OBJDIR)
+	mkdir -p $(LISTINGSDIR)
+
+$(OBJDIR)/%.cc.o: $(SRCDIR)/%.cc
 	$(CC) $(CCOPTS) $< -o $@
 
-.c.o:
+$(OBJDIR)/%.c.o: $(SRCDIR)/%.c
 	$(CC) $(CCOPTS) $< -o $@
 
-startup.o:
-	$(AS) -mips1 -o startup.o startup.S
+$(OBJDIR)/%.S.o: $(SRCDIR)/%.S
+	$(AS) -mips1 $< -o $@
 
 clean:
-	-rm main program-objdump.txt program.txt *.o
+	-rm -rf $(OBJDIR)
+	-rm -rf $(LISTINGSDIR)
+	-rm main program.txt data.txt
