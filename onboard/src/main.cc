@@ -1,4 +1,3 @@
-#include <sys/types.h>
 #include "memmgr.h"
 #include "registry.hpp"
 #include "ct-utility.hpp"
