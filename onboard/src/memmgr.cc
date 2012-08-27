@@ -1,6 +1,5 @@
 //----------------------------------------------------------------
 // Statically-allocated memory manager
-//
 // by Eli Bendersky (eliben@gmail.com)
 //
 // This code is in the public domain.
