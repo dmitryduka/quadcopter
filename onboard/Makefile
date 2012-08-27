@@ -12,7 +12,6 @@ GRN = tput setaf 2; echo $(1); tput sgr0
 YLW = tput setaf 3; echo $(1); tput sgr0
 RED = tput setaf 1; echo $(1); tput sgr0
 BLD = tput bold; echo -n $(1); tput sgr0
-
 CHECK = if test -e temp.errors; then $(call RED, $(1)) && cat temp.log; elif test -s temp.log; then $(call YLW, $(1)) && cat temp.log; else $(call GRN, '$(1) no warnings/errors'); fi;
 
 # Optimizing for speed is actually optimizing for size in our case
