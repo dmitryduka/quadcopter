@@ -19,8 +19,8 @@ class Task {
 private:
     unsigned int		executeAt;
     unsigned int		interval;
-
-    Task*		nextTask;
+    
+    Task*			nextTask;
 protected:
     TaskScheduler*	scheduler;
 
@@ -207,8 +207,7 @@ public:
             }
         }
 
-        /* Delete task anyway */
-        delete t;
+        t->scheduler = 0;
     }
 };
 
@@ -403,7 +402,7 @@ public:
 
 class XBeeReadIdleTask : public IdleTask {
 private:
-    char UART_BUFFER[Messages::MAX_MESSAGE_LENGTH];
+    char UART_BUFFER[Messages::MAX_MESSAGE_LENGTH * 10];
     unsigned int bytesSoFar;
     Messages::EntryType handler;
 public:

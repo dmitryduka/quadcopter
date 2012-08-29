@@ -1,4 +1,3 @@
-#include "memmgr.h"
 #include "registry.hpp"
 #include "ct-utility.hpp"
 #include "devices.hpp"
@@ -18,14 +17,21 @@ static void led_startup() {
     }
 }
 
+ThrottleADCTask throttleADCTask;
+IMUUpdateTask imuUpdateTask;
+StabilizationAndEngineUpdateTask stabilizationAndEngineUpdateTask;
+XBeeReadIdleTask xbeeReadIdleTask;
+
 //=================== MAIN==============================//
 int main() {
     led_startup();
     mpu6050_init();
     TaskScheduler scheduler;
 
-    //scheduler.addTask(new XBeeReadIdleTask);
-    scheduler.addTask(new StabilizationAndEngineUpdateTask, 440hz);
+    scheduler.addTask(&xbeeReadIdleTask);
+    scheduler.addTask(&imuUpdateTask, 100hz);
+    scheduler.addTask(&throttleADCTask, 50hz);
+    scheduler.addTask(&stabilizationAndEngineUpdateTask, 440hz);
 
     /* Forever */
     scheduler.start();

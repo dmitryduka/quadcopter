@@ -16,7 +16,11 @@ CHECK = if test -e temp.errors; then $(call RED, $(1)) && cat temp.log; elif tes
 
 # Optimizing for speed is actually optimizing for size in our case
 STACK_SIZE = 2000
-CCOPTS = -G0 -nostartfiles -I. -c -fno-threadsafe-statics -fpack-struct -fstack-usage -Wstack-usage=$(STACK_SIZE) -std=c++11 -Os -fno-strict-aliasing -fno-exceptions -fno-rtti
+CCOPTS =  -c -std=c++11 -G0 -I.
+CCOPTS += -Os 
+CCOPTS += -Wstack-usage=$(STACK_SIZE) 
+CCOPTS += -fno-threadsafe-statics -fpack-struct -fstack-usage -fno-strict-aliasing -fno-exceptions -fno-rtti
+LDOPTS =
 
 SRCDIR = src
 OBJDIR = obj
@@ -42,9 +46,9 @@ include $(DEPS)
 
 main: $(OBJECTS)
 	@$(call BLD, 'Linking ')
-	@$(LD) -T $(SRCDIR)/ld.script -o $@ $(LDOPTS) $(OBJECTS) 2> temp.log || touch temp.errors
-	@$(READELF) -a main > $(LISTINGSDIR)/program-elf.txt
+	@$(LD) -T $(SRCDIR)/ld.script -o $@ $(OBJECTS) $(LDOPTS) 2> temp.log || touch temp.errors
 	@$(call CHECK, $@:)
+	@$(READELF) -a main > $(LISTINGSDIR)/program-elf.txt
 	@-$(RM) -f temp.errors temp.log
 
 $(IMEMFILE): main
@@ -84,4 +88,4 @@ clean:
 	@echo Cleaning ...
 	@-rm -rf $(OBJDIR)
 	@-rm -rf $(LISTINGSDIR)
-	@-rm main temp.log program.txt data.txt
+	@-rm main temp.errors temp.log program.txt data.txt
