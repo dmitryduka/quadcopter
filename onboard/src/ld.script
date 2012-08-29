@@ -23,11 +23,13 @@ SECTIONS
   .text : {
     *(.text)
     *(.text.*)
+    CODE_ENDS = .;
     . = LENGTH(imem);
   } > imem = 0
   .data : {
     CTORS_INIT = .;
     *(.ctors)
+    *(.dtors)
     *(.rodata .rodata.* .gnu.linkonce.r.*)
     *(.data .data.* .gnu.linkonce.d.*)
     *(.sdata .sdata.* .gnu.linkonce.s.*)
@@ -37,6 +39,7 @@ SECTIONS
     *(.dynbss)
     *(.bss .bss.* .gnu.linkonce.b.*)
     *(COMMON)
+    DATA_ENDS = .;
     . = LENGTH(dmem);
   } > dmem = 0
 }

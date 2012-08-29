@@ -10,7 +10,7 @@ ELF Header:
   Version:                           0x1
   Entry point address:               0x0
   Start of program headers:          52 (bytes into file)
-  Start of section headers:          29524 (bytes into file)
+  Start of section headers:          29844 (bytes into file)
   Flags:                             0x1, noreorder, mips1
   Size of this header:               52 (bytes)
   Size of program headers:           32 (bytes)
@@ -25,12 +25,12 @@ Section Headers:
   [ 1] .text             PROGBITS        00000000 001000 004000 00  AX  0   0  4
   [ 2] .data             PROGBITS        80000000 005000 002000 00  WA  0   0  8
   [ 3] .reginfo          MIPS_REGINFO    00000000 007000 000018 01      0   0  4
-  [ 4] .pdr              PROGBITS        00000000 007018 0002a0 00      0   0  4
-  [ 5] .comment          PROGBITS        00000000 0072b8 00003c 01  MS  0   0  1
-  [ 6] .gnu.attributes   LOOS+ffffff5    00000000 0072f4 000010 00      0   0  1
-  [ 7] .shstrtab         STRTAB          00000000 007304 00004e 00      0   0  1
-  [ 8] .symtab           SYMTAB          00000000 0074e4 0002a0 10      9  16  4
-  [ 9] .strtab           STRTAB          00000000 007784 000385 00      0   0  1
+  [ 4] .pdr              PROGBITS        00000000 007018 0003e0 00      0   0  4
+  [ 5] .comment          PROGBITS        00000000 0073f8 00003c 01  MS  0   0  1
+  [ 6] .gnu.attributes   LOOS+ffffff5    00000000 007434 000010 00      0   0  1
+  [ 7] .shstrtab         STRTAB          00000000 007444 00004e 00      0   0  1
+  [ 8] .symtab           SYMTAB          00000000 007624 000410 10      9  22  4
+  [ 9] .strtab           STRTAB          00000000 007a34 0005ed 00      0   0  1
 Key to Flags:
   W (write), A (alloc), X (execute), M (merge), S (strings)
   I (info), L (link order), G (group), T (TLS), E (exclude), x (unknown)
@@ -54,7 +54,7 @@ There are no relocations in this file.
 
 There are no unwind sections in this file.
 
-Symbol table '.symtab' contains 42 entries:
+Symbol table '.symtab' contains 65 entries:
    Num:    Value  Size Type    Bind   Vis      Ndx Name
      0: 00000000     0 NOTYPE  LOCAL  DEFAULT  UND 
      1: 00000000     0 SECTION LOCAL  DEFAULT    1 
@@ -64,40 +64,63 @@ Symbol table '.symtab' contains 42 entries:
      5: 00000000     0 SECTION LOCAL  DEFAULT    5 
      6: 00000000     0 SECTION LOCAL  DEFAULT    6 
      7: 00000000     0 FILE    LOCAL  DEFAULT  ABS main.cc
-     8: 00000020    36 FUNC    LOCAL  DEFAULT    1 _ZL9i2c_startv
-     9: 00000044    36 FUNC    LOCAL  DEFAULT    1 _ZL8i2c_stopv
-    10: 00000068    44 FUNC    LOCAL  DEFAULT    1 _ZL6i2c_ioi
-    11: 00000094    72 FUNC    LOCAL  DEFAULT    1 _ZL13mpu6050_writeii
-    12: 000000dc    32 FUNC    LOCAL  DEFAULT    1 _ZL11sign_extendi
-    13: 80000004    25 OBJECT  LOCAL  DEFAULT    2 _ZN8MessagesL8handlersE
-    14: 00000104    68 FUNC    LOCAL  DEFAULT    1 _ZL8eng_ctrliiPVi
-    15: 00000df4   164 FUNC    LOCAL  DEFAULT    1 _GLOBAL__sub_I__ZN8Messag
-    16: 00000150   224 FUNC    WEAK   DEFAULT    1 _ZN16XBeeReadIdleTask5sta
-    17: 80000210     8 OBJECT  WEAK   DEFAULT    2 _ZGVZN14SystemRegistry8in
-    18: 0000087c   500 FUNC    WEAK   DEFAULT    1 _ZN32StabilizationAndEngi
-    19: 80000000     0 NOTYPE  GLOBAL DEFAULT    2 CTORS_INIT
-    20: 80000060   349 OBJECT  GLOBAL DEFAULT    2 xbeeReadIdleTask
-    21: 800001c0    36 OBJECT  GLOBAL DEFAULT    2 stabilizationAndEngineUpd
-    22: 80000020    12 OBJECT  WEAK   DEFAULT    2 _ZTV16XBeeReadIdleTask
-    23: 000000fc     8 FUNC    GLOBAL DEFAULT    1 _ZN8Messages14defaultHand
-    24: 80000030    12 OBJECT  WEAK   DEFAULT    2 _ZTV32StabilizationAndEng
-    25: 0000026c   216 FUNC    WEAK   DEFAULT    1 _ZN13TaskScheduler14selec
-    26: 00000230    60 FUNC    WEAK   DEFAULT    1 _ZN14SystemRegistry8insta
-    27: 00000814     8 FUNC    WEAK   DEFAULT    1 _ZN13IMUUpdateTask5startE
-    28: 00000874     8 FUNC    WEAK   DEFAULT    1 _ZN15ThrottleADCTask5star
-    29: 00000000     0 OBJECT  GLOBAL DEFAULT    1 _start
-    30: 80000218    84 OBJECT  WEAK   DEFAULT    2 _ZZN14SystemRegistry8inst
-    31: 0000081c    88 FUNC    WEAK   DEFAULT    1 _ZN15ThrottleADCTask6upda
-    32: 00000a70   572 FUNC    WEAK   DEFAULT    1 _ZN32StabilizationAndEngi
-    33: 00000cac   328 FUNC    GLOBAL DEFAULT    1 main
-    34: 00000604   528 FUNC    WEAK   DEFAULT    1 _ZN13IMUUpdateTask6update
-    35: 000003a8   604 FUNC    WEAK   DEFAULT    1 _ZN13TaskScheduler5startE
-    36: 800001e4    20 OBJECT  GLOBAL DEFAULT    2 imuUpdateTask
-    37: 00000148     8 FUNC    WEAK   DEFAULT    1 _ZN4Task5startEv
-    38: 00000344   100 FUNC    WEAK   DEFAULT    1 _ZN13TaskScheduler7addTas
-    39: 80000050    12 OBJECT  WEAK   DEFAULT    2 _ZTV15ThrottleADCTask
-    40: 800001f8    20 OBJECT  GLOBAL DEFAULT    2 throttleADCTask
-    41: 80000040    12 OBJECT  WEAK   DEFAULT    2 _ZTV13IMUUpdateTask
+     8: 00000020    44 FUNC    LOCAL  DEFAULT    1 _ZL6i2c_ioi
+     9: 0000004c   124 FUNC    LOCAL  DEFAULT    1 _ZL13mpu6050_writeii
+    10: 00000000     0 FILE    LOCAL  DEFAULT  ABS messages.cc
+    11: 00000000     0 FILE    LOCAL  DEFAULT  ABS mpu6050.cc
+    12: 000000d0    44 FUNC    LOCAL  DEFAULT    1 _ZL6i2c_ioi
+    13: 000000fc    32 FUNC    LOCAL  DEFAULT    1 _ZL11sign_extendi
+    14: 00000000     0 FILE    LOCAL  DEFAULT  ABS stabilization.cc
+    15: 00000364    68 FUNC    LOCAL  DEFAULT    1 _ZL8eng_ctrliiPVi
+    16: 00000000     0 FILE    LOCAL  DEFAULT  ABS task_pool.cc
+    17: 80000038    12 OBJECT  LOCAL  DEFAULT    2 _ZN8TaskPoolL5tasksE
+    18: 00000e9c    72 FUNC    LOCAL  DEFAULT    1 _GLOBAL__sub_I__ZN8TaskPo
+    19: 00000000     0 FILE    LOCAL  DEFAULT  ABS tasks.cc
+    20: 00000000     0 FILE    LOCAL  DEFAULT  ABS xbee.cc
+    21: 80000078    25 OBJECT  LOCAL  DEFAULT    2 _ZN8MessagesL8handlersE
+    22: 00000ee4     0 NOTYPE  GLOBAL DEFAULT    1 CODE_ENDS
+    23: 00000c1c   224 FUNC    GLOBAL DEFAULT    1 _ZN16XBeeReadIdleTask5sta
+    24: 00000be8    52 FUNC    GLOBAL DEFAULT    1 _ZN13TaskScheduler7addTas
+    25: 80000098     8 OBJECT  WEAK   DEFAULT    2 _ZGVZN14SystemRegistry8in
+    26: 0000040c   500 FUNC    GLOBAL DEFAULT    1 _ZN32StabilizationAndEngi
+    27: 80000000     0 NOTYPE  GLOBAL DEFAULT    2 CTORS_INIT
+    28: 000006fc    28 FUNC    GLOBAL DEFAULT    1 _ZN8TaskPool14getOneShotT
+    29: 00000cfc    88 FUNC    GLOBAL DEFAULT    1 _ZN16XBeeReadIdleTaskC1Ev
+    30: 00000720    44 FUNC    GLOBAL DEFAULT    1 _ZN4TaskC1Ev
+    31: 00000ad8    68 FUNC    GLOBAL DEFAULT    1 _ZN13TaskScheduler11setNe
+    32: 80000058    12 OBJECT  WEAK   DEFAULT    2 _ZTV16XBeeReadIdleTask
+    33: 000003a8   100 FUNC    GLOBAL DEFAULT    1 _ZN32StabilizationAndEngi
+    34: 000000c8     8 FUNC    GLOBAL DEFAULT    1 _ZN8Messages14defaultHand
+    35: 00000b80    52 FUNC    GLOBAL DEFAULT    1 _ZN13TaskScheduler7addTas
+    36: 80000018    12 OBJECT  WEAK   DEFAULT    2 _ZTV32StabilizationAndEng
+    37: 00000864   216 FUNC    GLOBAL DEFAULT    1 _ZN13TaskScheduler14selec
+    38: 00000e60    60 FUNC    WEAK   DEFAULT    1 _ZN14SystemRegistry8insta
+    39: 0000035c     8 FUNC    GLOBAL DEFAULT    1 _ZN13IMUUpdateTask5startE
+    40: 000006e0    28 FUNC    GLOBAL DEFAULT    1 _ZN8TaskPool17getContinuo
+    41: 0000074c    60 FUNC    GLOBAL DEFAULT    1 _ZN13TaskSchedulerC2Ev
+    42: 00000bb4    52 FUNC    GLOBAL DEFAULT    1 _ZN13TaskScheduler7addTas
+    43: 000003a8   100 FUNC    GLOBAL DEFAULT    1 _ZN32StabilizationAndEngi
+    44: 00000000     0 OBJECT  GLOBAL DEFAULT    1 _start
+    45: 800000a0    84 OBJECT  WEAK   DEFAULT    2 _ZZN14SystemRegistry8inst
+    46: 00000600   196 FUNC    GLOBAL DEFAULT    1 _ZN32StabilizationAndEngi
+    47: 00000720    44 FUNC    GLOBAL DEFAULT    1 _ZN4TaskC2Ev
+    48: 00000d54   268 FUNC    GLOBAL DEFAULT    1 main
+    49: 0000011c   576 FUNC    GLOBAL DEFAULT    1 _ZN13IMUUpdateTask6update
+    50: 000006c4    28 FUNC    GLOBAL DEFAULT    1 _ZN8TaskPool11getIdleTask
+    51: 80000048    12 OBJECT  WEAK   DEFAULT    2 _ZTV4Task
+    52: 80000028    12 OBJECT  WEAK   DEFAULT    2 _ZTV14ContinuousTask
+    53: 0000074c    60 FUNC    GLOBAL DEFAULT    1 _ZN13TaskSchedulerC1Ev
+    54: 0000093c   412 FUNC    GLOBAL DEFAULT    1 _ZN13TaskScheduler5startE
+    55: 00000718     8 FUNC    GLOBAL DEFAULT    1 _ZN4Task5startEv
+    56: 800000f4    36 OBJECT  GLOBAL DEFAULT    2 _ZN8TaskPool32stabilizati
+    57: 80000068    12 OBJECT  WEAK   DEFAULT    2 _ZTV8IdleTask
+    58: 00000b1c   100 FUNC    GLOBAL DEFAULT    1 _ZN13TaskScheduler7addTas
+    59: 8000016c     0 NOTYPE  GLOBAL DEFAULT    2 DATA_ENDS
+    60: 80000158    20 OBJECT  GLOBAL DEFAULT    2 _ZN8TaskPool13imuUpdateTa
+    61: 00000cfc    88 FUNC    GLOBAL DEFAULT    1 _ZN16XBeeReadIdleTaskC2Ev
+    62: 00000788   220 FUNC    GLOBAL DEFAULT    1 _ZN13TaskScheduler10remov
+    63: 80000008    12 OBJECT  WEAK   DEFAULT    2 _ZTV13IMUUpdateTask
+    64: 80000118    61 OBJECT  GLOBAL DEFAULT    2 _ZN8TaskPool16xbeeReadIdl
 
 No version information found in this file.
 Attribute Section: gnu

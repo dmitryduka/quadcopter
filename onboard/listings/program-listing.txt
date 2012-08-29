@@ -11,995 +11,1015 @@ Disassembly of section .text:
        c:	00000000 	nop
       10:	0040f809 	jalr	v0
       14:	00000000 	nop
-      18:	0c00032b 	jal	cac <main>
+      18:	0c000355 	jal	d54 <main>
       1c:	00000000 	nop
 
-00000020 <i2c_start()>:
-      20:	3c020004 	lui	v0,0x4
-      24:	244200ff 	addiu	v0,v0,255
-      28:	ac02001c 	sw	v0,28(zero)
-      2c:	8c02001c 	lw	v0,28(zero)
-      30:	00000000 	nop
-      34:	0440fffd 	bltz	v0,2c <i2c_start()+0xc>
-      38:	00000000 	nop
-      3c:	03e00008 	jr	ra
-      40:	00000000 	nop
+00000020 <i2c_io(int)>:
+      20:	308401ff 	andi	a0,a0,0x1ff
+      24:	3c020002 	lui	v0,0x2
+      28:	00822025 	or	a0,a0,v0
+      2c:	ac04001c 	sw	a0,28(zero)
+      30:	8c02001c 	lw	v0,28(zero)
+      34:	00000000 	nop
+      38:	0440fffd 	bltz	v0,30 <i2c_io(int)+0x10>
+      3c:	00000000 	nop
+      40:	8c02001c 	lw	v0,28(zero)
+      44:	03e00008 	jr	ra
+      48:	00000000 	nop
 
-00000044 <i2c_stop()>:
-      44:	3c020001 	lui	v0,0x1
-      48:	244200ff 	addiu	v0,v0,255
-      4c:	ac02001c 	sw	v0,28(zero)
-      50:	8c02001c 	lw	v0,28(zero)
-      54:	00000000 	nop
-      58:	0440fffd 	bltz	v0,50 <i2c_stop()+0xc>
-      5c:	00000000 	nop
-      60:	03e00008 	jr	ra
-      64:	00000000 	nop
-
-00000068 <i2c_io(int)>:
-      68:	308401ff 	andi	a0,a0,0x1ff
-      6c:	3c020002 	lui	v0,0x2
-      70:	00822025 	or	a0,a0,v0
-      74:	ac04001c 	sw	a0,28(zero)
-      78:	8c02001c 	lw	v0,28(zero)
+0000004c <mpu6050_write(int, int)>:
+      4c:	3c020004 	lui	v0,0x4
+      50:	27bdffe0 	addiu	sp,sp,-32
+      54:	244200ff 	addiu	v0,v0,255
+      58:	afb10018 	sw	s1,24(sp)
+      5c:	afb00014 	sw	s0,20(sp)
+      60:	afbf001c 	sw	ra,28(sp)
+      64:	00808021 	move	s0,a0
+      68:	00a08821 	move	s1,a1
+      6c:	ac02001c 	sw	v0,28(zero)
+      70:	8c02001c 	lw	v0,28(zero)
+      74:	00000000 	nop
+      78:	0440fffd 	bltz	v0,70 <mpu6050_write(int, int)+0x24>
       7c:	00000000 	nop
-      80:	0440fffd 	bltz	v0,78 <i2c_io(int)+0x10>
-      84:	00000000 	nop
-      88:	8c02001c 	lw	v0,28(zero)
-      8c:	03e00008 	jr	ra
-      90:	00000000 	nop
+      80:	0c000008 	jal	20 <i2c_io(int)>
+      84:	240401d0 	li	a0,464
+      88:	0c000008 	jal	20 <i2c_io(int)>
+      8c:	36040100 	ori	a0,s0,0x100
+      90:	0c000008 	jal	20 <i2c_io(int)>
+      94:	36240100 	ori	a0,s1,0x100
+      98:	3c020001 	lui	v0,0x1
+      9c:	244200ff 	addiu	v0,v0,255
+      a0:	ac02001c 	sw	v0,28(zero)
+      a4:	8c02001c 	lw	v0,28(zero)
+      a8:	00000000 	nop
+      ac:	0440fffd 	bltz	v0,a4 <mpu6050_write(int, int)+0x58>
+      b0:	00000000 	nop
+      b4:	8fbf001c 	lw	ra,28(sp)
+      b8:	8fb10018 	lw	s1,24(sp)
+      bc:	8fb00014 	lw	s0,20(sp)
+      c0:	03e00008 	jr	ra
+      c4:	27bd0020 	addiu	sp,sp,32
 
-00000094 <mpu6050_write(int, int)>:
-      94:	27bdffe0 	addiu	sp,sp,-32
-      98:	afbf001c 	sw	ra,28(sp)
-      9c:	afb10018 	sw	s1,24(sp)
-      a0:	afb00014 	sw	s0,20(sp)
-      a4:	00a08821 	move	s1,a1
-      a8:	0c000008 	jal	20 <i2c_start()>
-      ac:	00808021 	move	s0,a0
-      b0:	0c00001a 	jal	68 <i2c_io(int)>
-      b4:	240401d0 	li	a0,464
-      b8:	0c00001a 	jal	68 <i2c_io(int)>
-      bc:	36040100 	ori	a0,s0,0x100
-      c0:	0c00001a 	jal	68 <i2c_io(int)>
-      c4:	36240100 	ori	a0,s1,0x100
-      c8:	8fbf001c 	lw	ra,28(sp)
-      cc:	8fb10018 	lw	s1,24(sp)
-      d0:	8fb00014 	lw	s0,20(sp)
-      d4:	08000011 	j	44 <i2c_stop()>
-      d8:	27bd0020 	addiu	sp,sp,32
+000000c8 <Messages::defaultHandler(char*)>:
+      c8:	03e00008 	jr	ra
+      cc:	00000000 	nop
 
-000000dc <sign_extend(int)>:
-      dc:	3083ffff 	andi	v1,a0,0xffff
-      e0:	00031bc3 	sra	v1,v1,0xf
-      e4:	10600003 	beqz	v1,f4 <sign_extend(int)+0x18>
-      e8:	00801021 	move	v0,a0
-      ec:	3c03ffff 	lui	v1,0xffff
-      f0:	00831025 	or	v0,a0,v1
+000000d0 <i2c_io(int)>:
+      d0:	308401ff 	andi	a0,a0,0x1ff
+      d4:	3c020002 	lui	v0,0x2
+      d8:	00822025 	or	a0,a0,v0
+      dc:	ac04001c 	sw	a0,28(zero)
+      e0:	8c02001c 	lw	v0,28(zero)
+      e4:	00000000 	nop
+      e8:	0440fffd 	bltz	v0,e0 <i2c_io(int)+0x10>
+      ec:	00000000 	nop
+      f0:	8c02001c 	lw	v0,28(zero)
       f4:	03e00008 	jr	ra
       f8:	00000000 	nop
 
-000000fc <Messages::defaultHandler(char*)>:
-      fc:	03e00008 	jr	ra
-     100:	00000000 	nop
+000000fc <sign_extend(int)>:
+      fc:	3083ffff 	andi	v1,a0,0xffff
+     100:	00031bc3 	sra	v1,v1,0xf
+     104:	10600003 	beqz	v1,114 <sign_extend(int)+0x18>
+     108:	00801021 	move	v0,a0
+     10c:	3c03ffff 	lui	v1,0xffff
+     110:	00831025 	or	v0,a0,v1
+     114:	03e00008 	jr	ra
+     118:	00000000 	nop
 
-00000104 <eng_ctrl(int, int, int volatile*)>:
-     104:	28a20201 	slti	v0,a1,513
-     108:	14400002 	bnez	v0,114 <eng_ctrl(int, int, int volatile*)+0x10>
-     10c:	28820201 	slti	v0,a0,513
-     110:	24050200 	li	a1,512
-     114:	14400002 	bnez	v0,120 <eng_ctrl(int, int, int volatile*)+0x1c>
-     118:	00051027 	nor	v0,zero,a1
-     11c:	24040200 	li	a0,512
-     120:	000217c3 	sra	v0,v0,0x1f
-     124:	00a22824 	and	a1,a1,v0
-     128:	00041027 	nor	v0,zero,a0
-     12c:	000217c3 	sra	v0,v0,0x1f
-     130:	00822024 	and	a0,a0,v0
-     134:	00042400 	sll	a0,a0,0x10
-     138:	00a42825 	or	a1,a1,a0
-     13c:	acc50000 	sw	a1,0(a2)
-     140:	03e00008 	jr	ra
-     144:	00000000 	nop
-
-00000148 <Task::start()>:
-     148:	03e00008 	jr	ra
-     14c:	00000000 	nop
-
-00000150 <XBeeReadIdleTask::start()>:
-     150:	27bdffe0 	addiu	sp,sp,-32
-     154:	afb00018 	sw	s0,24(sp)
-     158:	afbf001c 	sw	ra,28(sp)
-     15c:	0800005d 	j	174 <XBeeReadIdleTask::start()+0x24>
-     160:	00808021 	move	s0,a0
-     164:	8c050040 	lw	a1,64(zero)
-     168:	00000000 	nop
-     16c:	00052e00 	sll	a1,a1,0x18
-     170:	00052e03 	sra	a1,a1,0x18
-     174:	04a0fffb 	bltz	a1,164 <XBeeReadIdleTask::start()+0x14>
-     178:	00000000 	nop
-     17c:	8a020154 	lwl	v0,340(s0)
+0000011c <IMUUpdateTask::update()>:
+     11c:	3c020004 	lui	v0,0x4
+     120:	244200ff 	addiu	v0,v0,255
+     124:	ac02001c 	sw	v0,28(zero)
+     128:	8c02001c 	lw	v0,28(zero)
+     12c:	00000000 	nop
+     130:	0440fffd 	bltz	v0,128 <IMUUpdateTask::update()+0xc>
+     134:	240401d0 	li	a0,464
+     138:	27bdffc0 	addiu	sp,sp,-64
+     13c:	afbf003c 	sw	ra,60(sp)
+     140:	afbe0038 	sw	s8,56(sp)
+     144:	afb70034 	sw	s7,52(sp)
+     148:	afb60030 	sw	s6,48(sp)
+     14c:	afb5002c 	sw	s5,44(sp)
+     150:	afb40028 	sw	s4,40(sp)
+     154:	afb30024 	sw	s3,36(sp)
+     158:	afb20020 	sw	s2,32(sp)
+     15c:	afb1001c 	sw	s1,28(sp)
+     160:	0c000034 	jal	d0 <i2c_io(int)>
+     164:	afb00018 	sw	s0,24(sp)
+     168:	0c000034 	jal	d0 <i2c_io(int)>
+     16c:	2404013b 	li	a0,315
+     170:	3c020001 	lui	v0,0x1
+     174:	244200ff 	addiu	v0,v0,255
+     178:	ac02001c 	sw	v0,28(zero)
+     17c:	8c02001c 	lw	v0,28(zero)
      180:	00000000 	nop
-     184:	9a020157 	lwr	v0,343(s0)
-     188:	00000000 	nop
-     18c:	14400011 	bnez	v0,1d4 <XBeeReadIdleTask::start()+0x84>
-     190:	02021821 	addu	v1,s0,v0
-     194:	24030005 	li	v1,5
-     198:	00a30018 	mult	a1,v1
-     19c:	3c038000 	lui	v1,0x8000
-     1a0:	24630004 	addiu	v1,v1,4
-     1a4:	00002012 	mflo	a0
-     1a8:	00641821 	addu	v1,v1,a0
-     1ac:	90640000 	lbu	a0,0(v1)
-     1b0:	00000000 	nop
-     1b4:	a2040158 	sb	a0,344(s0)
-     1b8:	88640001 	lwl	a0,1(v1)
-     1bc:	00000000 	nop
-     1c0:	98640004 	lwr	a0,4(v1)
-     1c4:	00000000 	nop
-     1c8:	aa040159 	swl	a0,345(s0)
-     1cc:	ba04015c 	swr	a0,348(s0)
-     1d0:	02021821 	addu	v1,s0,v0
-     1d4:	a0650014 	sb	a1,20(v1)
-     1d8:	24420001 	addiu	v0,v0,1
-     1dc:	aa020154 	swl	v0,340(s0)
-     1e0:	ba020157 	swr	v0,343(s0)
-     1e4:	92030158 	lbu	v1,344(s0)
-     1e8:	00000000 	nop
-     1ec:	1443000c 	bne	v0,v1,220 <XBeeReadIdleTask::start()+0xd0>
-     1f0:	00000000 	nop
-     1f4:	8a020159 	lwl	v0,345(s0)
-     1f8:	00000000 	nop
-     1fc:	9a02015c 	lwr	v0,348(s0)
-     200:	00000000 	nop
-     204:	0040f809 	jalr	v0
-     208:	26040014 	addiu	a0,s0,20
-     20c:	aa000154 	swl	zero,340(s0)
-     210:	ba000157 	swr	zero,343(s0)
-     214:	a2000158 	sb	zero,344(s0)
-     218:	aa000159 	swl	zero,345(s0)
-     21c:	ba00015c 	swr	zero,348(s0)
-     220:	8fbf001c 	lw	ra,28(sp)
-     224:	8fb00018 	lw	s0,24(sp)
-     228:	03e00008 	jr	ra
-     22c:	27bd0020 	addiu	sp,sp,32
+     184:	0440fffd 	bltz	v0,17c <IMUUpdateTask::update()+0x60>
+     188:	3c020004 	lui	v0,0x4
+     18c:	244200ff 	addiu	v0,v0,255
+     190:	ac02001c 	sw	v0,28(zero)
+     194:	8c02001c 	lw	v0,28(zero)
+     198:	00000000 	nop
+     19c:	0440fffd 	bltz	v0,194 <IMUUpdateTask::update()+0x78>
+     1a0:	00000000 	nop
+     1a4:	0c000034 	jal	d0 <i2c_io(int)>
+     1a8:	240401d1 	li	a0,465
+     1ac:	0c000034 	jal	d0 <i2c_io(int)>
+     1b0:	240400ff 	li	a0,255
+     1b4:	304600ff 	andi	a2,v0,0xff
+     1b8:	240400ff 	li	a0,255
+     1bc:	0c000034 	jal	d0 <i2c_io(int)>
+     1c0:	afa60010 	sw	a2,16(sp)
+     1c4:	304500ff 	andi	a1,v0,0xff
+     1c8:	240400ff 	li	a0,255
+     1cc:	0c000034 	jal	d0 <i2c_io(int)>
+     1d0:	afa50014 	sw	a1,20(sp)
+     1d4:	240400ff 	li	a0,255
+     1d8:	0c000034 	jal	d0 <i2c_io(int)>
+     1dc:	305e00ff 	andi	s8,v0,0xff
+     1e0:	240400ff 	li	a0,255
+     1e4:	0c000034 	jal	d0 <i2c_io(int)>
+     1e8:	305300ff 	andi	s3,v0,0xff
+     1ec:	240400ff 	li	a0,255
+     1f0:	0c000034 	jal	d0 <i2c_io(int)>
+     1f4:	305700ff 	andi	s7,v0,0xff
+     1f8:	240400ff 	li	a0,255
+     1fc:	0c000034 	jal	d0 <i2c_io(int)>
+     200:	305200ff 	andi	s2,v0,0xff
+     204:	0c000034 	jal	d0 <i2c_io(int)>
+     208:	240400ff 	li	a0,255
+     20c:	0c000034 	jal	d0 <i2c_io(int)>
+     210:	240400ff 	li	a0,255
+     214:	240400ff 	li	a0,255
+     218:	0c000034 	jal	d0 <i2c_io(int)>
+     21c:	305600ff 	andi	s6,v0,0xff
+     220:	240400ff 	li	a0,255
+     224:	0c000034 	jal	d0 <i2c_io(int)>
+     228:	305100ff 	andi	s1,v0,0xff
+     22c:	240400ff 	li	a0,255
+     230:	0c000034 	jal	d0 <i2c_io(int)>
+     234:	305500ff 	andi	s5,v0,0xff
+     238:	240400ff 	li	a0,255
+     23c:	0c000034 	jal	d0 <i2c_io(int)>
+     240:	305000ff 	andi	s0,v0,0xff
+     244:	240401ff 	li	a0,511
+     248:	0c000034 	jal	d0 <i2c_io(int)>
+     24c:	305400ff 	andi	s4,v0,0xff
+     250:	304300ff 	andi	v1,v0,0xff
+     254:	3c020001 	lui	v0,0x1
+     258:	244200ff 	addiu	v0,v0,255
+     25c:	ac02001c 	sw	v0,28(zero)
+     260:	8fa60010 	lw	a2,16(sp)
+     264:	8fa50014 	lw	a1,20(sp)
+     268:	8c02001c 	lw	v0,28(zero)
+     26c:	00000000 	nop
+     270:	0440fffd 	bltz	v0,268 <IMUUpdateTask::update()+0x14c>
+     274:	00062200 	sll	a0,a2,0x8
+     278:	00852025 	or	a0,a0,a1
+     27c:	0c00003f 	jal	fc <sign_extend(int)>
+     280:	afa30010 	sw	v1,16(sp)
+     284:	001e2200 	sll	a0,s8,0x8
+     288:	00932025 	or	a0,a0,s3
+     28c:	0c00003f 	jal	fc <sign_extend(int)>
+     290:	afa20014 	sw	v0,20(sp)
+     294:	00172200 	sll	a0,s7,0x8
+     298:	00922025 	or	a0,a0,s2
+     29c:	0c00003f 	jal	fc <sign_extend(int)>
+     2a0:	00409821 	move	s3,v0
+     2a4:	00162200 	sll	a0,s6,0x8
+     2a8:	00912025 	or	a0,a0,s1
+     2ac:	0c00003f 	jal	fc <sign_extend(int)>
+     2b0:	00409021 	move	s2,v0
+     2b4:	00152200 	sll	a0,s5,0x8
+     2b8:	00902025 	or	a0,a0,s0
+     2bc:	0c00003f 	jal	fc <sign_extend(int)>
+     2c0:	00408821 	move	s1,v0
+     2c4:	8fa30010 	lw	v1,16(sp)
+     2c8:	00142200 	sll	a0,s4,0x8
+     2cc:	00832025 	or	a0,a0,v1
+     2d0:	0c00003f 	jal	fc <sign_extend(int)>
+     2d4:	00408021 	move	s0,v0
+     2d8:	0c000398 	jal	e60 <SystemRegistry::instance()>
+     2dc:	0040a021 	move	s4,v0
+     2e0:	8fa50014 	lw	a1,20(sp)
+     2e4:	00000000 	nop
+     2e8:	a8450000 	swl	a1,0(v0)
+     2ec:	0c000398 	jal	e60 <SystemRegistry::instance()>
+     2f0:	b8450003 	swr	a1,3(v0)
+     2f4:	a8530004 	swl	s3,4(v0)
+     2f8:	0c000398 	jal	e60 <SystemRegistry::instance()>
+     2fc:	b8530007 	swr	s3,7(v0)
+     300:	a8520008 	swl	s2,8(v0)
+     304:	0c000398 	jal	e60 <SystemRegistry::instance()>
+     308:	b852000b 	swr	s2,11(v0)
+     30c:	a8510018 	swl	s1,24(v0)
+     310:	0c000398 	jal	e60 <SystemRegistry::instance()>
+     314:	b851001b 	swr	s1,27(v0)
+     318:	a850001c 	swl	s0,28(v0)
+     31c:	0c000398 	jal	e60 <SystemRegistry::instance()>
+     320:	b850001f 	swr	s0,31(v0)
+     324:	a8540020 	swl	s4,32(v0)
+     328:	b8540023 	swr	s4,35(v0)
+     32c:	8fbf003c 	lw	ra,60(sp)
+     330:	8fbe0038 	lw	s8,56(sp)
+     334:	8fb70034 	lw	s7,52(sp)
+     338:	8fb60030 	lw	s6,48(sp)
+     33c:	8fb5002c 	lw	s5,44(sp)
+     340:	8fb40028 	lw	s4,40(sp)
+     344:	8fb30024 	lw	s3,36(sp)
+     348:	8fb20020 	lw	s2,32(sp)
+     34c:	8fb1001c 	lw	s1,28(sp)
+     350:	8fb00018 	lw	s0,24(sp)
+     354:	03e00008 	jr	ra
+     358:	27bd0040 	addiu	sp,sp,64
 
-00000230 <SystemRegistry::instance()>:
-     230:	3c028000 	lui	v0,0x8000
-     234:	80430210 	lb	v1,528(v0)
-     238:	00402021 	move	a0,v0
-     23c:	14600009 	bnez	v1,264 <SystemRegistry::instance()+0x34>
-     240:	3c028000 	lui	v0,0x8000
-     244:	24430218 	addiu	v1,v0,536
-     248:	24650054 	addiu	a1,v1,84
-     24c:	ac600000 	sw	zero,0(v1)
-     250:	24630004 	addiu	v1,v1,4
-     254:	1465fffd 	bne	v1,a1,24c <SystemRegistry::instance()+0x1c>
-     258:	00000000 	nop
-     25c:	24030001 	li	v1,1
-     260:	a0830210 	sb	v1,528(a0)
-     264:	03e00008 	jr	ra
-     268:	24420218 	addiu	v0,v0,536
+0000035c <IMUUpdateTask::start()>:
+     35c:	08000047 	j	11c <IMUUpdateTask::update()>
+     360:	00000000 	nop
 
-0000026c <TaskScheduler::selectNextTask(unsigned int)>:
-     26c:	27bdfff8 	addiu	sp,sp,-8
-     270:	24820004 	addiu	v0,a0,4
-     274:	afa20000 	sw	v0,0(sp)
-     278:	24820008 	addiu	v0,a0,8
-     27c:	afa20004 	sw	v0,4(sp)
-     280:	00003021 	move	a2,zero
-     284:	00004821 	move	t1,zero
-     288:	240affff 	li	t2,-1
-     28c:	00001821 	move	v1,zero
-     290:	240b0008 	li	t3,8
-     294:	03a61021 	addu	v0,sp,a2
-     298:	8c420000 	lw	v0,0(v0)
-     29c:	00000000 	nop
-     2a0:	8c470000 	lw	a3,0(v0)
-     2a4:	00000000 	nop
-     2a8:	10e00012 	beqz	a3,2f4 <TaskScheduler::selectNextTask(unsigned int)+0x88>
-     2ac:	00e01021 	move	v0,a3
-     2b0:	88480004 	lwl	t0,4(v0)
-     2b4:	00000000 	nop
-     2b8:	98480007 	lwr	t0,7(v0)
-     2bc:	00000000 	nop
-     2c0:	01054023 	subu	t0,t0,a1
-     2c4:	010a602b 	sltu	t4,t0,t2
-     2c8:	11800004 	beqz	t4,2dc <TaskScheduler::selectNextTask(unsigned int)+0x70>
-     2cc:	00000000 	nop
-     2d0:	00e04821 	move	t1,a3
-     2d4:	01005021 	move	t2,t0
-     2d8:	00401821 	move	v1,v0
-     2dc:	8848000c 	lwl	t0,12(v0)
-     2e0:	00000000 	nop
-     2e4:	9848000f 	lwr	t0,15(v0)
-     2e8:	00000000 	nop
-     2ec:	1500fff0 	bnez	t0,2b0 <TaskScheduler::selectNextTask(unsigned int)+0x44>
-     2f0:	01001021 	move	v0,t0
-     2f4:	24c60004 	addiu	a2,a2,4
-     2f8:	14cbffe7 	bne	a2,t3,298 <TaskScheduler::selectNextTask(unsigned int)+0x2c>
-     2fc:	03a61021 	addu	v0,sp,a2
-     300:	a8830010 	swl	v1,16(a0)
-     304:	b8830013 	swr	v1,19(a0)
-     308:	88620004 	lwl	v0,4(v1)
-     30c:	00000000 	nop
-     310:	98620007 	lwr	v0,7(v1)
-     314:	27bd0008 	addiu	sp,sp,8
-     318:	a8820014 	swl	v0,20(a0)
-     31c:	b8820017 	swr	v0,23(a0)
-     320:	88820004 	lwl	v0,4(a0)
-     324:	00000000 	nop
-     328:	98820007 	lwr	v0,7(a0)
-     32c:	00000000 	nop
-     330:	01221026 	xor	v0,t1,v0
-     334:	0002102b 	sltu	v0,zero,v0
-     338:	a8820018 	swl	v0,24(a0)
-     33c:	03e00008 	jr	ra
-     340:	b882001b 	swr	v0,27(a0)
-
-00000344 <TaskScheduler::addTask(Task**, Task*, int)>:
-     344:	a8c40010 	swl	a0,16(a2)
-     348:	b8c40013 	swr	a0,19(a2)
-     34c:	a8c70008 	swl	a3,8(a2)
-     350:	b8c7000b 	swr	a3,11(a2)
-     354:	8c020030 	lw	v0,48(zero)
-     358:	00000000 	nop
-     35c:	00473821 	addu	a3,v0,a3
-     360:	a8c70004 	swl	a3,4(a2)
-     364:	b8c70007 	swr	a3,7(a2)
-     368:	8ca20000 	lw	v0,0(a1)
-     36c:	00000000 	nop
-     370:	14400004 	bnez	v0,384 <TaskScheduler::addTask(Task**, Task*, int)+0x40>
-     374:	00000000 	nop
-     378:	03e00008 	jr	ra
-     37c:	aca60000 	sw	a2,0(a1)
-     380:	00601021 	move	v0,v1
-     384:	8843000c 	lwl	v1,12(v0)
-     388:	00000000 	nop
-     38c:	9843000f 	lwr	v1,15(v0)
-     390:	00000000 	nop
-     394:	1460fffa 	bnez	v1,380 <TaskScheduler::addTask(Task**, Task*, int)+0x3c>
-     398:	00000000 	nop
-     39c:	a846000c 	swl	a2,12(v0)
+00000364 <eng_ctrl(int, int, int volatile*)>:
+     364:	28a20201 	slti	v0,a1,513
+     368:	14400002 	bnez	v0,374 <eng_ctrl(int, int, int volatile*)+0x10>
+     36c:	28820201 	slti	v0,a0,513
+     370:	24050200 	li	a1,512
+     374:	14400002 	bnez	v0,380 <eng_ctrl(int, int, int volatile*)+0x1c>
+     378:	00051027 	nor	v0,zero,a1
+     37c:	24040200 	li	a0,512
+     380:	000217c3 	sra	v0,v0,0x1f
+     384:	00a22824 	and	a1,a1,v0
+     388:	00041027 	nor	v0,zero,a0
+     38c:	000217c3 	sra	v0,v0,0x1f
+     390:	00822024 	and	a0,a0,v0
+     394:	00042400 	sll	a0,a0,0x10
+     398:	00a42825 	or	a1,a1,a0
+     39c:	acc50000 	sw	a1,0(a2)
      3a0:	03e00008 	jr	ra
-     3a4:	b846000f 	swr	a2,15(v0)
+     3a4:	00000000 	nop
 
-000003a8 <TaskScheduler::start()>:
-     3a8:	27bdffc8 	addiu	sp,sp,-56
-     3ac:	00002821 	move	a1,zero
-     3b0:	afb10024 	sw	s1,36(sp)
-     3b4:	afb00020 	sw	s0,32(sp)
-     3b8:	3c11b2d0 	lui	s1,0xb2d0
-     3bc:	00808021 	move	s0,a0
-     3c0:	afb3002c 	sw	s3,44(sp)
-     3c4:	afb20028 	sw	s2,40(sp)
-     3c8:	afbf0034 	sw	ra,52(sp)
-     3cc:	afb40030 	sw	s4,48(sp)
-     3d0:	0c00009b 	jal	26c <TaskScheduler::selectNextTask(unsigned int)>
-     3d4:	26315e00 	addiu	s1,s1,24064
-     3d8:	26120004 	addiu	s2,s0,4
-     3dc:	26130008 	addiu	s3,s0,8
-     3e0:	8a020014 	lwl	v0,20(s0)
-     3e4:	8c140030 	lw	s4,48(zero)
-     3e8:	9a020017 	lwr	v0,23(s0)
-     3ec:	00000000 	nop
-     3f0:	0282182b 	sltu	v1,s4,v0
-     3f4:	1460005b 	bnez	v1,564 <TaskScheduler::start()+0x1bc>
-     3f8:	02821023 	subu	v0,s4,v0
-     3fc:	0051102b 	sltu	v0,v0,s1
-     400:	10400058 	beqz	v0,564 <TaskScheduler::start()+0x1bc>
-     404:	00000000 	nop
-     408:	8a040010 	lwl	a0,16(s0)
-     40c:	00000000 	nop
-     410:	9a040013 	lwr	a0,19(s0)
-     414:	00000000 	nop
-     418:	88820000 	lwl	v0,0(a0)
-     41c:	00000000 	nop
-     420:	98820003 	lwr	v0,3(a0)
-     424:	00000000 	nop
-     428:	8c420000 	lw	v0,0(v0)
-     42c:	00000000 	nop
-     430:	0040f809 	jalr	v0
-     434:	00000000 	nop
-     438:	8a020018 	lwl	v0,24(s0)
-     43c:	24030001 	li	v1,1
-     440:	9a02001b 	lwr	v0,27(s0)
-     444:	00000000 	nop
-     448:	14430036 	bne	v0,v1,524 <TaskScheduler::start()+0x17c>
-     44c:	00002821 	move	a1,zero
-     450:	8a020010 	lwl	v0,16(s0)
-     454:	afb00010 	sw	s0,16(sp)
-     458:	9a020013 	lwr	v0,19(s0)
-     45c:	afb20014 	sw	s2,20(sp)
-     460:	afb30018 	sw	s3,24(sp)
-     464:	2406000c 	li	a2,12
-     468:	27a40010 	addiu	a0,sp,16
-     46c:	00851821 	addu	v1,a0,a1
-     470:	8c640000 	lw	a0,0(v1)
-     474:	00000000 	nop
-     478:	8c830000 	lw	v1,0(a0)
-     47c:	00000000 	nop
-     480:	10600022 	beqz	v1,50c <TaskScheduler::start()+0x164>
-     484:	00000000 	nop
-     488:	14620007 	bne	v1,v0,4a8 <TaskScheduler::start()+0x100>
-     48c:	00000000 	nop
-     490:	8843000c 	lwl	v1,12(v0)
-     494:	00000000 	nop
-     498:	9843000f 	lwr	v1,15(v0)
-     49c:	08000146 	j	518 <TaskScheduler::start()+0x170>
-     4a0:	ac830000 	sw	v1,0(a0)
-     4a4:	00801821 	move	v1,a0
-     4a8:	8864000c 	lwl	a0,12(v1)
-     4ac:	00000000 	nop
-     4b0:	9864000f 	lwr	a0,15(v1)
-     4b4:	00000000 	nop
-     4b8:	1080000b 	beqz	a0,4e8 <TaskScheduler::start()+0x140>
-     4bc:	00000000 	nop
-     4c0:	1482fff8 	bne	a0,v0,4a4 <TaskScheduler::start()+0xfc>
-     4c4:	00000000 	nop
-     4c8:	8844000c 	lwl	a0,12(v0)
-     4cc:	00000000 	nop
-     4d0:	9844000f 	lwr	a0,15(v0)
-     4d4:	00000000 	nop
-     4d8:	14800007 	bnez	a0,4f8 <TaskScheduler::start()+0x150>
+000003a8 <StabilizationAndEngineUpdateTask::StabilizationAndEngineUpdateTask()>:
+     3a8:	27bdffe8 	addiu	sp,sp,-24
+     3ac:	afbf0014 	sw	ra,20(sp)
+     3b0:	afb00010 	sw	s0,16(sp)
+     3b4:	0c0001c8 	jal	720 <Task::Task()>
+     3b8:	00808021 	move	s0,a0
+     3bc:	3c028000 	lui	v0,0x8000
+     3c0:	24420030 	addiu	v0,v0,48
+     3c4:	aa020000 	swl	v0,0(s0)
+     3c8:	ba020003 	swr	v0,3(s0)
+     3cc:	3c028000 	lui	v0,0x8000
+     3d0:	24420020 	addiu	v0,v0,32
+     3d4:	aa020000 	swl	v0,0(s0)
+     3d8:	ba020003 	swr	v0,3(s0)
+     3dc:	aa000014 	swl	zero,20(s0)
+     3e0:	ba000017 	swr	zero,23(s0)
+     3e4:	aa000018 	swl	zero,24(s0)
+     3e8:	ba00001b 	swr	zero,27(s0)
+     3ec:	aa00001c 	swl	zero,28(s0)
+     3f0:	ba00001f 	swr	zero,31(s0)
+     3f4:	8fbf0014 	lw	ra,20(sp)
+     3f8:	aa000020 	swl	zero,32(s0)
+     3fc:	ba000023 	swr	zero,35(s0)
+     400:	8fb00010 	lw	s0,16(sp)
+     404:	03e00008 	jr	ra
+     408:	27bd0018 	addiu	sp,sp,24
+
+0000040c <StabilizationAndEngineUpdateTask::horizontalStabilization()>:
+     40c:	27bdffc8 	addiu	sp,sp,-56
+     410:	afbf0034 	sw	ra,52(sp)
+     414:	afb60030 	sw	s6,48(sp)
+     418:	afb5002c 	sw	s5,44(sp)
+     41c:	afb40028 	sw	s4,40(sp)
+     420:	afb30024 	sw	s3,36(sp)
+     424:	afb20020 	sw	s2,32(sp)
+     428:	afb1001c 	sw	s1,28(sp)
+     42c:	afb00018 	sw	s0,24(sp)
+     430:	0c000398 	jal	e60 <SystemRegistry::instance()>
+     434:	00808021 	move	s0,a0
+     438:	8c510000 	lw	s1,0(v0)
+     43c:	0c000398 	jal	e60 <SystemRegistry::instance()>
+     440:	00000000 	nop
+     444:	8c420004 	lw	v0,4(v0)
+     448:	00000000 	nop
+     44c:	02229023 	subu	s2,s1,v0
+     450:	0c000398 	jal	e60 <SystemRegistry::instance()>
+     454:	02228821 	addu	s1,s1,v0
+     458:	8c55004c 	lw	s5,76(v0)
+     45c:	0c000398 	jal	e60 <SystemRegistry::instance()>
+     460:	0255a823 	subu	s5,s2,s5
+     464:	8c530050 	lw	s3,80(v0)
+     468:	0c000398 	jal	e60 <SystemRegistry::instance()>
+     46c:	02339823 	subu	s3,s1,s3
+     470:	8c540018 	lw	s4,24(v0)
+     474:	0c000398 	jal	e60 <SystemRegistry::instance()>
+     478:	00000000 	nop
+     47c:	8c42001c 	lw	v0,28(v0)
+     480:	00000000 	nop
+     484:	02821821 	addu	v1,s4,v0
+     488:	0282b023 	subu	s6,s4,v0
+     48c:	8a02001c 	lwl	v0,28(s0)
+     490:	00000000 	nop
+     494:	9a02001f 	lwr	v0,31(s0)
+     498:	00000000 	nop
+     49c:	02421026 	xor	v0,s2,v0
+     4a0:	04410004 	bgez	v0,4b4 <StabilizationAndEngineUpdateTask::horizontalStabilization()+0xa8>
+     4a4:	00031823 	negu	v1,v1
+     4a8:	aa000014 	swl	zero,20(s0)
+     4ac:	08000136 	j	4d8 <StabilizationAndEngineUpdateTask::horizontalStabilization()+0xcc>
+     4b0:	ba000017 	swr	zero,23(s0)
+     4b4:	8a020014 	lwl	v0,20(s0)
+     4b8:	00000000 	nop
+     4bc:	9a020017 	lwr	v0,23(s0)
+     4c0:	00000000 	nop
+     4c4:	2c4407d0 	sltiu	a0,v0,2000
+     4c8:	10800003 	beqz	a0,4d8 <StabilizationAndEngineUpdateTask::horizontalStabilization()+0xcc>
+     4cc:	00521021 	addu	v0,v0,s2
+     4d0:	aa020014 	swl	v0,20(s0)
+     4d4:	ba020017 	swr	v0,23(s0)
+     4d8:	8a020020 	lwl	v0,32(s0)
      4dc:	00000000 	nop
-     4e0:	08000141 	j	504 <TaskScheduler::start()+0x15c>
-     4e4:	a860000c 	swl	zero,12(v1)
-     4e8:	14400009 	bnez	v0,510 <TaskScheduler::start()+0x168>
-     4ec:	24a50004 	addiu	a1,a1,4
-     4f0:	08000132 	j	4c8 <TaskScheduler::start()+0x120>
-     4f4:	00000000 	nop
-     4f8:	a864000c 	swl	a0,12(v1)
-     4fc:	08000146 	j	518 <TaskScheduler::start()+0x170>
-     500:	b864000f 	swr	a0,15(v1)
-     504:	08000146 	j	518 <TaskScheduler::start()+0x170>
-     508:	b860000f 	swr	zero,15(v1)
-     50c:	24a50004 	addiu	a1,a1,4
-     510:	14a6ffd6 	bne	a1,a2,46c <TaskScheduler::start()+0xc4>
-     514:	27a40010 	addiu	a0,sp,16
-     518:	a8400010 	swl	zero,16(v0)
-     51c:	08000154 	j	550 <TaskScheduler::start()+0x1a8>
-     520:	b8400013 	swr	zero,19(v0)
-     524:	8a020010 	lwl	v0,16(s0)
-     528:	00000000 	nop
-     52c:	9a020013 	lwr	v0,19(s0)
-     530:	00000000 	nop
-     534:	88430008 	lwl	v1,8(v0)
-     538:	00000000 	nop
-     53c:	9843000b 	lwr	v1,11(v0)
-     540:	00000000 	nop
-     544:	02831821 	addu	v1,s4,v1
-     548:	a8430004 	swl	v1,4(v0)
-     54c:	b8430007 	swr	v1,7(v0)
-     550:	02002021 	move	a0,s0
-     554:	0c00009b 	jal	26c <TaskScheduler::selectNextTask(unsigned int)>
-     558:	02802821 	move	a1,s4
-     55c:	080000f8 	j	3e0 <TaskScheduler::start()+0x38>
-     560:	00000000 	nop
-     564:	8a02000c 	lwl	v0,12(s0)
-     568:	00000000 	nop
-     56c:	9a02000f 	lwr	v0,15(s0)
-     570:	00000000 	nop
-     574:	10400007 	beqz	v0,594 <TaskScheduler::start()+0x1ec>
-     578:	00000000 	nop
-     57c:	8843000c 	lwl	v1,12(v0)
-     580:	00000000 	nop
-     584:	9843000f 	lwr	v1,15(v0)
-     588:	00000000 	nop
-     58c:	aa03000c 	swl	v1,12(s0)
-     590:	ba03000f 	swr	v1,15(s0)
-     594:	8a02000c 	lwl	v0,12(s0)
-     598:	00000000 	nop
-     59c:	9a02000f 	lwr	v0,15(s0)
-     5a0:	00000000 	nop
-     5a4:	14400007 	bnez	v0,5c4 <TaskScheduler::start()+0x21c>
-     5a8:	00000000 	nop
-     5ac:	8a020000 	lwl	v0,0(s0)
-     5b0:	00000000 	nop
-     5b4:	9a020003 	lwr	v0,3(s0)
-     5b8:	00000000 	nop
-     5bc:	aa02000c 	swl	v0,12(s0)
-     5c0:	ba02000f 	swr	v0,15(s0)
-     5c4:	8a04000c 	lwl	a0,12(s0)
-     5c8:	00000000 	nop
-     5cc:	9a04000f 	lwr	a0,15(s0)
-     5d0:	00000000 	nop
-     5d4:	1080ff82 	beqz	a0,3e0 <TaskScheduler::start()+0x38>
-     5d8:	00000000 	nop
-     5dc:	88820000 	lwl	v0,0(a0)
-     5e0:	00000000 	nop
-     5e4:	98820003 	lwr	v0,3(a0)
-     5e8:	00000000 	nop
-     5ec:	8c420000 	lw	v0,0(v0)
-     5f0:	00000000 	nop
-     5f4:	0040f809 	jalr	v0
-     5f8:	00000000 	nop
-     5fc:	080000f8 	j	3e0 <TaskScheduler::start()+0x38>
-     600:	00000000 	nop
+     4e0:	9a020023 	lwr	v0,35(s0)
+     4e4:	00000000 	nop
+     4e8:	02221026 	xor	v0,s1,v0
+     4ec:	04410004 	bgez	v0,500 <StabilizationAndEngineUpdateTask::horizontalStabilization()+0xf4>
+     4f0:	00000000 	nop
+     4f4:	aa000018 	swl	zero,24(s0)
+     4f8:	08000149 	j	524 <StabilizationAndEngineUpdateTask::horizontalStabilization()+0x118>
+     4fc:	ba00001b 	swr	zero,27(s0)
+     500:	8a020018 	lwl	v0,24(s0)
+     504:	00000000 	nop
+     508:	9a02001b 	lwr	v0,27(s0)
+     50c:	00000000 	nop
+     510:	2c4407d0 	sltiu	a0,v0,2000
+     514:	10800003 	beqz	a0,524 <StabilizationAndEngineUpdateTask::horizontalStabilization()+0x118>
+     518:	00511021 	addu	v0,v0,s1
+     51c:	aa020018 	swl	v0,24(s0)
+     520:	ba02001b 	swr	v0,27(s0)
+     524:	241400a0 	li	s4,160
+     528:	02b40018 	mult	s5,s4
+     52c:	aa12001c 	swl	s2,28(s0)
+     530:	ba12001f 	swr	s2,31(s0)
+     534:	aa110020 	swl	s1,32(s0)
+     538:	ba110023 	swr	s1,35(s0)
+     53c:	24120003 	li	s2,3
+     540:	2411012c 	li	s1,300
+     544:	00001012 	mflo	v0
+     548:	0002aa83 	sra	s5,v0,0xa
+     54c:	8a020014 	lwl	v0,20(s0)
+     550:	00000000 	nop
+     554:	9a020017 	lwr	v0,23(s0)
+     558:	00000000 	nop
+     55c:	00520018 	mult	v0,s2
+     560:	00002012 	mflo	a0
+     564:	00041283 	sra	v0,a0,0xa
+     568:	02a2a821 	addu	s5,s5,v0
+     56c:	00710018 	mult	v1,s1
+     570:	00001012 	mflo	v0
+     574:	afa20010 	sw	v0,16(sp)
+     578:	00021283 	sra	v0,v0,0xa
+     57c:	0c000398 	jal	e60 <SystemRegistry::instance()>
+     580:	02a2a821 	addu	s5,s5,v0
+     584:	02740018 	mult	s3,s4
+     588:	a855003c 	swl	s5,60(v0)
+     58c:	b855003f 	swr	s5,63(v0)
+     590:	00001012 	mflo	v0
+     594:	00021a83 	sra	v1,v0,0xa
+     598:	8a020018 	lwl	v0,24(s0)
+     59c:	00000000 	nop
+     5a0:	9a02001b 	lwr	v0,27(s0)
+     5a4:	00000000 	nop
+     5a8:	00520018 	mult	v0,s2
+     5ac:	00002012 	mflo	a0
+     5b0:	00041283 	sra	v0,a0,0xa
+     5b4:	00628021 	addu	s0,v1,v0
+     5b8:	02d10018 	mult	s6,s1
+     5bc:	00001012 	mflo	v0
+     5c0:	afa20010 	sw	v0,16(sp)
+     5c4:	00021283 	sra	v0,v0,0xa
+     5c8:	0c000398 	jal	e60 <SystemRegistry::instance()>
+     5cc:	02028021 	addu	s0,s0,v0
+     5d0:	a8500040 	swl	s0,64(v0)
+     5d4:	b8500043 	swr	s0,67(v0)
+     5d8:	8fbf0034 	lw	ra,52(sp)
+     5dc:	8fb60030 	lw	s6,48(sp)
+     5e0:	8fb5002c 	lw	s5,44(sp)
+     5e4:	8fb40028 	lw	s4,40(sp)
+     5e8:	8fb30024 	lw	s3,36(sp)
+     5ec:	8fb20020 	lw	s2,32(sp)
+     5f0:	8fb1001c 	lw	s1,28(sp)
+     5f4:	8fb00018 	lw	s0,24(sp)
+     5f8:	03e00008 	jr	ra
+     5fc:	27bd0038 	addiu	sp,sp,56
 
-00000604 <IMUUpdateTask::update()>:
-     604:	27bdffb8 	addiu	sp,sp,-72
-     608:	afbf0044 	sw	ra,68(sp)
-     60c:	afbe0040 	sw	s8,64(sp)
-     610:	afb7003c 	sw	s7,60(sp)
-     614:	afb60038 	sw	s6,56(sp)
-     618:	afb50034 	sw	s5,52(sp)
-     61c:	afb40030 	sw	s4,48(sp)
-     620:	afb3002c 	sw	s3,44(sp)
-     624:	afb20028 	sw	s2,40(sp)
-     628:	afb10024 	sw	s1,36(sp)
-     62c:	0c000008 	jal	20 <i2c_start()>
-     630:	afb00020 	sw	s0,32(sp)
-     634:	0c00001a 	jal	68 <i2c_io(int)>
-     638:	240401d0 	li	a0,464
-     63c:	0c00001a 	jal	68 <i2c_io(int)>
-     640:	2404013b 	li	a0,315
-     644:	0c000011 	jal	44 <i2c_stop()>
-     648:	00000000 	nop
-     64c:	0c000008 	jal	20 <i2c_start()>
-     650:	00000000 	nop
-     654:	0c00001a 	jal	68 <i2c_io(int)>
-     658:	240401d1 	li	a0,465
-     65c:	0c00001a 	jal	68 <i2c_io(int)>
-     660:	240400ff 	li	a0,255
-     664:	240400ff 	li	a0,255
-     668:	0c00001a 	jal	68 <i2c_io(int)>
-     66c:	afa20018 	sw	v0,24(sp)
-     670:	240400ff 	li	a0,255
-     674:	0c00001a 	jal	68 <i2c_io(int)>
-     678:	0040a021 	move	s4,v0
-     67c:	240400ff 	li	a0,255
-     680:	0c00001a 	jal	68 <i2c_io(int)>
-     684:	afa20014 	sw	v0,20(sp)
-     688:	240400ff 	li	a0,255
-     68c:	0c00001a 	jal	68 <i2c_io(int)>
-     690:	00409821 	move	s3,v0
-     694:	240400ff 	li	a0,255
-     698:	0c00001a 	jal	68 <i2c_io(int)>
-     69c:	afa20010 	sw	v0,16(sp)
-     6a0:	240400ff 	li	a0,255
-     6a4:	0c00001a 	jal	68 <i2c_io(int)>
-     6a8:	00409021 	move	s2,v0
-     6ac:	0c00001a 	jal	68 <i2c_io(int)>
-     6b0:	240400ff 	li	a0,255
-     6b4:	0c00001a 	jal	68 <i2c_io(int)>
-     6b8:	240400ff 	li	a0,255
-     6bc:	240400ff 	li	a0,255
-     6c0:	0c00001a 	jal	68 <i2c_io(int)>
-     6c4:	0040f021 	move	s8,v0
-     6c8:	240400ff 	li	a0,255
-     6cc:	0c00001a 	jal	68 <i2c_io(int)>
-     6d0:	00408821 	move	s1,v0
-     6d4:	240400ff 	li	a0,255
-     6d8:	0c00001a 	jal	68 <i2c_io(int)>
-     6dc:	0040b821 	move	s7,v0
-     6e0:	240400ff 	li	a0,255
-     6e4:	0c00001a 	jal	68 <i2c_io(int)>
-     6e8:	00408021 	move	s0,v0
-     6ec:	240401ff 	li	a0,511
-     6f0:	0c00001a 	jal	68 <i2c_io(int)>
-     6f4:	0040b021 	move	s6,v0
-     6f8:	0c000011 	jal	44 <i2c_stop()>
-     6fc:	0040a821 	move	s5,v0
-     700:	8fa60018 	lw	a2,24(sp)
-     704:	329400ff 	andi	s4,s4,0xff
-     708:	30c600ff 	andi	a2,a2,0xff
-     70c:	00062200 	sll	a0,a2,0x8
-     710:	0c000037 	jal	dc <sign_extend(int)>
-     714:	00942025 	or	a0,a0,s4
-     718:	8fa50014 	lw	a1,20(sp)
-     71c:	327300ff 	andi	s3,s3,0xff
-     720:	30a500ff 	andi	a1,a1,0xff
-     724:	00052200 	sll	a0,a1,0x8
-     728:	00932025 	or	a0,a0,s3
-     72c:	0c000037 	jal	dc <sign_extend(int)>
-     730:	0040a021 	move	s4,v0
-     734:	8fa30010 	lw	v1,16(sp)
-     738:	325200ff 	andi	s2,s2,0xff
-     73c:	306300ff 	andi	v1,v1,0xff
-     740:	00032200 	sll	a0,v1,0x8
-     744:	00922025 	or	a0,a0,s2
-     748:	33de00ff 	andi	s8,s8,0xff
-     74c:	00409821 	move	s3,v0
-     750:	0c000037 	jal	dc <sign_extend(int)>
-     754:	323100ff 	andi	s1,s1,0xff
-     758:	001e2200 	sll	a0,s8,0x8
-     75c:	00912025 	or	a0,a0,s1
-     760:	32f700ff 	andi	s7,s7,0xff
-     764:	00409021 	move	s2,v0
-     768:	0c000037 	jal	dc <sign_extend(int)>
-     76c:	321000ff 	andi	s0,s0,0xff
-     770:	00172200 	sll	a0,s7,0x8
-     774:	00902025 	or	a0,a0,s0
-     778:	32d600ff 	andi	s6,s6,0xff
-     77c:	00408821 	move	s1,v0
-     780:	0c000037 	jal	dc <sign_extend(int)>
-     784:	32b500ff 	andi	s5,s5,0xff
-     788:	00162200 	sll	a0,s6,0x8
-     78c:	00952025 	or	a0,a0,s5
-     790:	0c000037 	jal	dc <sign_extend(int)>
-     794:	00408021 	move	s0,v0
-     798:	0c00008c 	jal	230 <SystemRegistry::instance()>
-     79c:	0040a821 	move	s5,v0
-     7a0:	a8540000 	swl	s4,0(v0)
-     7a4:	0c00008c 	jal	230 <SystemRegistry::instance()>
-     7a8:	b8540003 	swr	s4,3(v0)
-     7ac:	a8530004 	swl	s3,4(v0)
-     7b0:	0c00008c 	jal	230 <SystemRegistry::instance()>
-     7b4:	b8530007 	swr	s3,7(v0)
-     7b8:	a8520008 	swl	s2,8(v0)
-     7bc:	0c00008c 	jal	230 <SystemRegistry::instance()>
-     7c0:	b852000b 	swr	s2,11(v0)
-     7c4:	a8510018 	swl	s1,24(v0)
-     7c8:	0c00008c 	jal	230 <SystemRegistry::instance()>
-     7cc:	b851001b 	swr	s1,27(v0)
-     7d0:	a850001c 	swl	s0,28(v0)
-     7d4:	0c00008c 	jal	230 <SystemRegistry::instance()>
-     7d8:	b850001f 	swr	s0,31(v0)
-     7dc:	a8550020 	swl	s5,32(v0)
-     7e0:	b8550023 	swr	s5,35(v0)
-     7e4:	8fbf0044 	lw	ra,68(sp)
-     7e8:	8fbe0040 	lw	s8,64(sp)
-     7ec:	8fb7003c 	lw	s7,60(sp)
-     7f0:	8fb60038 	lw	s6,56(sp)
-     7f4:	8fb50034 	lw	s5,52(sp)
-     7f8:	8fb40030 	lw	s4,48(sp)
-     7fc:	8fb3002c 	lw	s3,44(sp)
-     800:	8fb20028 	lw	s2,40(sp)
-     804:	8fb10024 	lw	s1,36(sp)
-     808:	8fb00020 	lw	s0,32(sp)
-     80c:	03e00008 	jr	ra
-     810:	27bd0048 	addiu	sp,sp,72
+00000600 <StabilizationAndEngineUpdateTask::start()>:
+     600:	27bdffd0 	addiu	sp,sp,-48
+     604:	afbf002c 	sw	ra,44(sp)
+     608:	afb0001c 	sw	s0,28(sp)
+     60c:	afa40010 	sw	a0,16(sp)
+     610:	afb30028 	sw	s3,40(sp)
+     614:	afb20024 	sw	s2,36(sp)
+     618:	0c000047 	jal	11c <IMUUpdateTask::update()>
+     61c:	afb10020 	sw	s1,32(sp)
+     620:	8fa40010 	lw	a0,16(sp)
+     624:	0c000103 	jal	40c <StabilizationAndEngineUpdateTask::horizontalStabilization()>
+     628:	00000000 	nop
+     62c:	0c000398 	jal	e60 <SystemRegistry::instance()>
+     630:	00000000 	nop
+     634:	8c500038 	lw	s0,56(v0)
+     638:	00000000 	nop
+     63c:	2e0200c9 	sltiu	v0,s0,201
+     640:	1440000f 	bnez	v0,680 <StabilizationAndEngineUpdateTask::start()+0x80>
+     644:	00000000 	nop
+     648:	0c000398 	jal	e60 <SystemRegistry::instance()>
+     64c:	00000000 	nop
+     650:	8c53003c 	lw	s3,60(v0)
+     654:	0c000398 	jal	e60 <SystemRegistry::instance()>
+     658:	02139821 	addu	s3,s0,s3
+     65c:	8c510040 	lw	s1,64(v0)
+     660:	0c000398 	jal	e60 <SystemRegistry::instance()>
+     664:	02118823 	subu	s1,s0,s1
+     668:	8c52003c 	lw	s2,60(v0)
+     66c:	0c000398 	jal	e60 <SystemRegistry::instance()>
+     670:	02129023 	subu	s2,s0,s2
+     674:	8c420040 	lw	v0,64(v0)
+     678:	080001a3 	j	68c <StabilizationAndEngineUpdateTask::start()+0x8c>
+     67c:	02028021 	addu	s0,s0,v0
+     680:	02009021 	move	s2,s0
+     684:	02008821 	move	s1,s0
+     688:	02009821 	move	s3,s0
+     68c:	02602021 	move	a0,s3
+     690:	02402821 	move	a1,s2
+     694:	0c0000d9 	jal	364 <eng_ctrl(int, int, int volatile*)>
+     698:	24060010 	li	a2,16
+     69c:	8fbf002c 	lw	ra,44(sp)
+     6a0:	8fb30028 	lw	s3,40(sp)
+     6a4:	8fb20024 	lw	s2,36(sp)
+     6a8:	02202021 	move	a0,s1
+     6ac:	02002821 	move	a1,s0
+     6b0:	8fb10020 	lw	s1,32(sp)
+     6b4:	8fb0001c 	lw	s0,28(sp)
+     6b8:	24060014 	li	a2,20
+     6bc:	080000d9 	j	364 <eng_ctrl(int, int, int volatile*)>
+     6c0:	27bd0030 	addiu	sp,sp,48
 
-00000814 <IMUUpdateTask::start()>:
-     814:	08000181 	j	604 <IMUUpdateTask::update()>
+000006c4 <TaskPool::getIdleTask(TaskPool::TaskType)>:
+     6c4:	3c028000 	lui	v0,0x8000
+     6c8:	24420038 	addiu	v0,v0,56
+     6cc:	00042080 	sll	a0,a0,0x2
+     6d0:	00822021 	addu	a0,a0,v0
+     6d4:	8c820000 	lw	v0,0(a0)
+     6d8:	03e00008 	jr	ra
+     6dc:	00000000 	nop
+
+000006e0 <TaskPool::getContinuousTask(TaskPool::TaskType)>:
+     6e0:	3c028000 	lui	v0,0x8000
+     6e4:	24420038 	addiu	v0,v0,56
+     6e8:	00042080 	sll	a0,a0,0x2
+     6ec:	00822021 	addu	a0,a0,v0
+     6f0:	8c820000 	lw	v0,0(a0)
+     6f4:	03e00008 	jr	ra
+     6f8:	00000000 	nop
+
+000006fc <TaskPool::getOneShotTask(TaskPool::TaskType)>:
+     6fc:	3c028000 	lui	v0,0x8000
+     700:	24420038 	addiu	v0,v0,56
+     704:	00042080 	sll	a0,a0,0x2
+     708:	00822021 	addu	a0,a0,v0
+     70c:	8c820000 	lw	v0,0(a0)
+     710:	03e00008 	jr	ra
+     714:	00000000 	nop
+
+00000718 <Task::start()>:
+     718:	03e00008 	jr	ra
+     71c:	00000000 	nop
+
+00000720 <Task::Task()>:
+     720:	3c028000 	lui	v0,0x8000
+     724:	24420050 	addiu	v0,v0,80
+     728:	a8820000 	swl	v0,0(a0)
+     72c:	b8820003 	swr	v0,3(a0)
+     730:	a8800004 	swl	zero,4(a0)
+     734:	b8800007 	swr	zero,7(a0)
+     738:	a8800008 	swl	zero,8(a0)
+     73c:	b880000b 	swr	zero,11(a0)
+     740:	a880000c 	swl	zero,12(a0)
+     744:	03e00008 	jr	ra
+     748:	b880000f 	swr	zero,15(a0)
+
+0000074c <TaskScheduler::TaskScheduler()>:
+     74c:	a8800000 	swl	zero,0(a0)
+     750:	b8800003 	swr	zero,3(a0)
+     754:	a8800004 	swl	zero,4(a0)
+     758:	b8800007 	swr	zero,7(a0)
+     75c:	a8800008 	swl	zero,8(a0)
+     760:	b880000b 	swr	zero,11(a0)
+     764:	a880000c 	swl	zero,12(a0)
+     768:	b880000f 	swr	zero,15(a0)
+     76c:	a8800010 	swl	zero,16(a0)
+     770:	b8800013 	swr	zero,19(a0)
+     774:	a8800014 	swl	zero,20(a0)
+     778:	b8800017 	swr	zero,23(a0)
+     77c:	a8800018 	swl	zero,24(a0)
+     780:	03e00008 	jr	ra
+     784:	b880001b 	swr	zero,27(a0)
+
+00000788 <TaskScheduler::removeTask(Task*)>:
+     788:	27bdfff0 	addiu	sp,sp,-16
+     78c:	24820004 	addiu	v0,a0,4
+     790:	afa40000 	sw	a0,0(sp)
+     794:	24840008 	addiu	a0,a0,8
+     798:	afa40008 	sw	a0,8(sp)
+     79c:	afa20004 	sw	v0,4(sp)
+     7a0:	00002021 	move	a0,zero
+     7a4:	2406000c 	li	a2,12
+     7a8:	03a41021 	addu	v0,sp,a0
+     7ac:	8c430000 	lw	v1,0(v0)
+     7b0:	00000000 	nop
+     7b4:	8c620000 	lw	v0,0(v1)
+     7b8:	00000000 	nop
+     7bc:	10400022 	beqz	v0,848 <TaskScheduler::removeTask(Task*)+0xc0>
+     7c0:	00000000 	nop
+     7c4:	14450007 	bne	v0,a1,7e4 <TaskScheduler::removeTask(Task*)+0x5c>
+     7c8:	00000000 	nop
+     7cc:	88a2000c 	lwl	v0,12(a1)
+     7d0:	00000000 	nop
+     7d4:	98a2000f 	lwr	v0,15(a1)
+     7d8:	08000215 	j	854 <TaskScheduler::removeTask(Task*)+0xcc>
+     7dc:	ac620000 	sw	v0,0(v1)
+     7e0:	00601021 	move	v0,v1
+     7e4:	8843000c 	lwl	v1,12(v0)
+     7e8:	00000000 	nop
+     7ec:	9843000f 	lwr	v1,15(v0)
+     7f0:	00000000 	nop
+     7f4:	1060000b 	beqz	v1,824 <TaskScheduler::removeTask(Task*)+0x9c>
+     7f8:	00000000 	nop
+     7fc:	1465fff8 	bne	v1,a1,7e0 <TaskScheduler::removeTask(Task*)+0x58>
+     800:	00000000 	nop
+     804:	88a3000c 	lwl	v1,12(a1)
+     808:	00000000 	nop
+     80c:	98a3000f 	lwr	v1,15(a1)
+     810:	00000000 	nop
+     814:	14600007 	bnez	v1,834 <TaskScheduler::removeTask(Task*)+0xac>
      818:	00000000 	nop
+     81c:	08000210 	j	840 <TaskScheduler::removeTask(Task*)+0xb8>
+     820:	a840000c 	swl	zero,12(v0)
+     824:	14a00009 	bnez	a1,84c <TaskScheduler::removeTask(Task*)+0xc4>
+     828:	24840004 	addiu	a0,a0,4
+     82c:	08000201 	j	804 <TaskScheduler::removeTask(Task*)+0x7c>
+     830:	2484fffc 	addiu	a0,a0,-4
+     834:	a843000c 	swl	v1,12(v0)
+     838:	08000215 	j	854 <TaskScheduler::removeTask(Task*)+0xcc>
+     83c:	b843000f 	swr	v1,15(v0)
+     840:	08000215 	j	854 <TaskScheduler::removeTask(Task*)+0xcc>
+     844:	b840000f 	swr	zero,15(v0)
+     848:	24840004 	addiu	a0,a0,4
+     84c:	1486ffd7 	bne	a0,a2,7ac <TaskScheduler::removeTask(Task*)+0x24>
+     850:	03a41021 	addu	v0,sp,a0
+     854:	a8a00010 	swl	zero,16(a1)
+     858:	b8a00013 	swr	zero,19(a1)
+     85c:	03e00008 	jr	ra
+     860:	27bd0010 	addiu	sp,sp,16
 
-0000081c <ThrottleADCTask::update()>:
-     81c:	27bdffe0 	addiu	sp,sp,-32
-     820:	24020002 	li	v0,2
-     824:	afbf001c 	sw	ra,28(sp)
-     828:	afb10018 	sw	s1,24(sp)
-     82c:	afb00014 	sw	s0,20(sp)
-     830:	ac02000c 	sw	v0,12(zero)
-     834:	8c10000c 	lw	s0,12(zero)
-     838:	00000000 	nop
-     83c:	0600fffd 	bltz	s0,834 <ThrottleADCTask::update()+0x18>
-     840:	00000000 	nop
-     844:	0c00008c 	jal	230 <SystemRegistry::instance()>
-     848:	00108883 	sra	s1,s0,0x2
-     84c:	00108103 	sra	s0,s0,0x4
-     850:	a8510038 	swl	s1,56(v0)
-     854:	321000ff 	andi	s0,s0,0xff
-     858:	b851003b 	swr	s1,59(v0)
-     85c:	ac100018 	sw	s0,24(zero)
-     860:	8fbf001c 	lw	ra,28(sp)
-     864:	8fb10018 	lw	s1,24(sp)
-     868:	8fb00014 	lw	s0,20(sp)
-     86c:	03e00008 	jr	ra
-     870:	27bd0020 	addiu	sp,sp,32
+00000864 <TaskScheduler::selectNextTask(unsigned int)>:
+     864:	27bdfff8 	addiu	sp,sp,-8
+     868:	24820004 	addiu	v0,a0,4
+     86c:	afa20000 	sw	v0,0(sp)
+     870:	24820008 	addiu	v0,a0,8
+     874:	afa20004 	sw	v0,4(sp)
+     878:	00003021 	move	a2,zero
+     87c:	00004821 	move	t1,zero
+     880:	240affff 	li	t2,-1
+     884:	00001821 	move	v1,zero
+     888:	240b0008 	li	t3,8
+     88c:	03a61021 	addu	v0,sp,a2
+     890:	8c420000 	lw	v0,0(v0)
+     894:	00000000 	nop
+     898:	8c470000 	lw	a3,0(v0)
+     89c:	00000000 	nop
+     8a0:	10e00012 	beqz	a3,8ec <TaskScheduler::selectNextTask(unsigned int)+0x88>
+     8a4:	00e01021 	move	v0,a3
+     8a8:	88480004 	lwl	t0,4(v0)
+     8ac:	00000000 	nop
+     8b0:	98480007 	lwr	t0,7(v0)
+     8b4:	00000000 	nop
+     8b8:	01054023 	subu	t0,t0,a1
+     8bc:	010a602b 	sltu	t4,t0,t2
+     8c0:	11800004 	beqz	t4,8d4 <TaskScheduler::selectNextTask(unsigned int)+0x70>
+     8c4:	00000000 	nop
+     8c8:	00e04821 	move	t1,a3
+     8cc:	01005021 	move	t2,t0
+     8d0:	00401821 	move	v1,v0
+     8d4:	8848000c 	lwl	t0,12(v0)
+     8d8:	00000000 	nop
+     8dc:	9848000f 	lwr	t0,15(v0)
+     8e0:	00000000 	nop
+     8e4:	1500fff0 	bnez	t0,8a8 <TaskScheduler::selectNextTask(unsigned int)+0x44>
+     8e8:	01001021 	move	v0,t0
+     8ec:	24c60004 	addiu	a2,a2,4
+     8f0:	14cbffe7 	bne	a2,t3,890 <TaskScheduler::selectNextTask(unsigned int)+0x2c>
+     8f4:	03a61021 	addu	v0,sp,a2
+     8f8:	a8830010 	swl	v1,16(a0)
+     8fc:	b8830013 	swr	v1,19(a0)
+     900:	88620004 	lwl	v0,4(v1)
+     904:	00000000 	nop
+     908:	98620007 	lwr	v0,7(v1)
+     90c:	27bd0008 	addiu	sp,sp,8
+     910:	a8820014 	swl	v0,20(a0)
+     914:	b8820017 	swr	v0,23(a0)
+     918:	88820004 	lwl	v0,4(a0)
+     91c:	00000000 	nop
+     920:	98820007 	lwr	v0,7(a0)
+     924:	00000000 	nop
+     928:	01221026 	xor	v0,t1,v0
+     92c:	0002102b 	sltu	v0,zero,v0
+     930:	a8820018 	swl	v0,24(a0)
+     934:	03e00008 	jr	ra
+     938:	b882001b 	swr	v0,27(a0)
 
-00000874 <ThrottleADCTask::start()>:
-     874:	08000207 	j	81c <ThrottleADCTask::update()>
-     878:	00000000 	nop
-
-0000087c <StabilizationAndEngineUpdateTask::horizontalStabilization()>:
-     87c:	27bdffc8 	addiu	sp,sp,-56
-     880:	afbf0034 	sw	ra,52(sp)
-     884:	afb60030 	sw	s6,48(sp)
-     888:	afb5002c 	sw	s5,44(sp)
-     88c:	afb40028 	sw	s4,40(sp)
-     890:	afb30024 	sw	s3,36(sp)
-     894:	afb20020 	sw	s2,32(sp)
-     898:	afb1001c 	sw	s1,28(sp)
-     89c:	afb00018 	sw	s0,24(sp)
-     8a0:	0c00008c 	jal	230 <SystemRegistry::instance()>
-     8a4:	00808021 	move	s0,a0
-     8a8:	8c510000 	lw	s1,0(v0)
-     8ac:	0c00008c 	jal	230 <SystemRegistry::instance()>
-     8b0:	00000000 	nop
-     8b4:	8c420004 	lw	v0,4(v0)
-     8b8:	00000000 	nop
-     8bc:	02229023 	subu	s2,s1,v0
-     8c0:	0c00008c 	jal	230 <SystemRegistry::instance()>
-     8c4:	02228821 	addu	s1,s1,v0
-     8c8:	8c55004c 	lw	s5,76(v0)
-     8cc:	0c00008c 	jal	230 <SystemRegistry::instance()>
-     8d0:	0255a823 	subu	s5,s2,s5
-     8d4:	8c530050 	lw	s3,80(v0)
-     8d8:	0c00008c 	jal	230 <SystemRegistry::instance()>
-     8dc:	02339823 	subu	s3,s1,s3
-     8e0:	8c540018 	lw	s4,24(v0)
-     8e4:	0c00008c 	jal	230 <SystemRegistry::instance()>
-     8e8:	00000000 	nop
-     8ec:	8c42001c 	lw	v0,28(v0)
-     8f0:	00000000 	nop
-     8f4:	02821821 	addu	v1,s4,v0
-     8f8:	0282b023 	subu	s6,s4,v0
-     8fc:	8a02001c 	lwl	v0,28(s0)
-     900:	00000000 	nop
-     904:	9a02001f 	lwr	v0,31(s0)
-     908:	00000000 	nop
-     90c:	02421026 	xor	v0,s2,v0
-     910:	04410004 	bgez	v0,924 <StabilizationAndEngineUpdateTask::horizontalStabilization()+0xa8>
-     914:	00031823 	negu	v1,v1
-     918:	aa000014 	swl	zero,20(s0)
-     91c:	08000252 	j	948 <StabilizationAndEngineUpdateTask::horizontalStabilization()+0xcc>
-     920:	ba000017 	swr	zero,23(s0)
-     924:	8a020014 	lwl	v0,20(s0)
-     928:	00000000 	nop
-     92c:	9a020017 	lwr	v0,23(s0)
-     930:	00000000 	nop
-     934:	2c4407d0 	sltiu	a0,v0,2000
-     938:	10800003 	beqz	a0,948 <StabilizationAndEngineUpdateTask::horizontalStabilization()+0xcc>
-     93c:	00521021 	addu	v0,v0,s2
-     940:	aa020014 	swl	v0,20(s0)
-     944:	ba020017 	swr	v0,23(s0)
-     948:	8a020020 	lwl	v0,32(s0)
-     94c:	00000000 	nop
-     950:	9a020023 	lwr	v0,35(s0)
-     954:	00000000 	nop
-     958:	02221026 	xor	v0,s1,v0
-     95c:	04410004 	bgez	v0,970 <StabilizationAndEngineUpdateTask::horizontalStabilization()+0xf4>
-     960:	00000000 	nop
-     964:	aa000018 	swl	zero,24(s0)
-     968:	08000265 	j	994 <StabilizationAndEngineUpdateTask::horizontalStabilization()+0x118>
-     96c:	ba00001b 	swr	zero,27(s0)
-     970:	8a020018 	lwl	v0,24(s0)
-     974:	00000000 	nop
-     978:	9a02001b 	lwr	v0,27(s0)
-     97c:	00000000 	nop
-     980:	2c4407d0 	sltiu	a0,v0,2000
-     984:	10800003 	beqz	a0,994 <StabilizationAndEngineUpdateTask::horizontalStabilization()+0x118>
-     988:	00511021 	addu	v0,v0,s1
-     98c:	aa020018 	swl	v0,24(s0)
-     990:	ba02001b 	swr	v0,27(s0)
-     994:	241400a0 	li	s4,160
-     998:	02b40018 	mult	s5,s4
-     99c:	aa12001c 	swl	s2,28(s0)
-     9a0:	ba12001f 	swr	s2,31(s0)
-     9a4:	aa110020 	swl	s1,32(s0)
-     9a8:	ba110023 	swr	s1,35(s0)
-     9ac:	24120003 	li	s2,3
-     9b0:	2411012c 	li	s1,300
-     9b4:	00001012 	mflo	v0
-     9b8:	0002aa83 	sra	s5,v0,0xa
-     9bc:	8a020014 	lwl	v0,20(s0)
+0000093c <TaskScheduler::start()>:
+     93c:	27bdffd8 	addiu	sp,sp,-40
+     940:	00002821 	move	a1,zero
+     944:	afb2001c 	sw	s2,28(sp)
+     948:	3c12b2d0 	lui	s2,0xb2d0
+     94c:	afb30020 	sw	s3,32(sp)
+     950:	afb00014 	sw	s0,20(sp)
+     954:	afbf0024 	sw	ra,36(sp)
+     958:	afb10018 	sw	s1,24(sp)
+     95c:	00808021 	move	s0,a0
+     960:	0c000219 	jal	864 <TaskScheduler::selectNextTask(unsigned int)>
+     964:	26525e00 	addiu	s2,s2,24064
+     968:	24130001 	li	s3,1
+     96c:	8a020014 	lwl	v0,20(s0)
+     970:	8c110030 	lw	s1,48(zero)
+     974:	9a020017 	lwr	v0,23(s0)
+     978:	00000000 	nop
+     97c:	0222182b 	sltu	v1,s1,v0
+     980:	1460002d 	bnez	v1,a38 <TaskScheduler::start()+0xfc>
+     984:	02221023 	subu	v0,s1,v0
+     988:	0052102b 	sltu	v0,v0,s2
+     98c:	1040002a 	beqz	v0,a38 <TaskScheduler::start()+0xfc>
+     990:	00000000 	nop
+     994:	8a040010 	lwl	a0,16(s0)
+     998:	00000000 	nop
+     99c:	9a040013 	lwr	a0,19(s0)
+     9a0:	00000000 	nop
+     9a4:	88820000 	lwl	v0,0(a0)
+     9a8:	00000000 	nop
+     9ac:	98820003 	lwr	v0,3(a0)
+     9b0:	00000000 	nop
+     9b4:	8c420000 	lw	v0,0(v0)
+     9b8:	00000000 	nop
+     9bc:	0040f809 	jalr	v0
      9c0:	00000000 	nop
-     9c4:	9a020017 	lwr	v0,23(s0)
+     9c4:	8a020018 	lwl	v0,24(s0)
      9c8:	00000000 	nop
-     9cc:	00520018 	mult	v0,s2
-     9d0:	00002012 	mflo	a0
-     9d4:	00041283 	sra	v0,a0,0xa
-     9d8:	02a2a821 	addu	s5,s5,v0
-     9dc:	00710018 	mult	v1,s1
-     9e0:	00001012 	mflo	v0
-     9e4:	afa20010 	sw	v0,16(sp)
-     9e8:	00021283 	sra	v0,v0,0xa
-     9ec:	0c00008c 	jal	230 <SystemRegistry::instance()>
-     9f0:	02a2a821 	addu	s5,s5,v0
-     9f4:	02740018 	mult	s3,s4
-     9f8:	a855003c 	swl	s5,60(v0)
-     9fc:	b855003f 	swr	s5,63(v0)
-     a00:	00001012 	mflo	v0
-     a04:	00021a83 	sra	v1,v0,0xa
-     a08:	8a020018 	lwl	v0,24(s0)
+     9cc:	9a02001b 	lwr	v0,27(s0)
+     9d0:	00000000 	nop
+     9d4:	14530008 	bne	v0,s3,9f8 <TaskScheduler::start()+0xbc>
+     9d8:	00000000 	nop
+     9dc:	8a050010 	lwl	a1,16(s0)
+     9e0:	00000000 	nop
+     9e4:	9a050013 	lwr	a1,19(s0)
+     9e8:	0c0001e2 	jal	788 <TaskScheduler::removeTask(Task*)>
+     9ec:	02002021 	move	a0,s0
+     9f0:	0800028a 	j	a28 <TaskScheduler::start()+0xec>
+     9f4:	02002021 	move	a0,s0
+     9f8:	8a020010 	lwl	v0,16(s0)
+     9fc:	00000000 	nop
+     a00:	9a020013 	lwr	v0,19(s0)
+     a04:	00000000 	nop
+     a08:	88430008 	lwl	v1,8(v0)
      a0c:	00000000 	nop
-     a10:	9a02001b 	lwr	v0,27(s0)
+     a10:	9843000b 	lwr	v1,11(v0)
      a14:	00000000 	nop
-     a18:	00520018 	mult	v0,s2
-     a1c:	00002012 	mflo	a0
-     a20:	00041283 	sra	v0,a0,0xa
-     a24:	00628021 	addu	s0,v1,v0
-     a28:	02d10018 	mult	s6,s1
-     a2c:	00001012 	mflo	v0
-     a30:	afa20010 	sw	v0,16(sp)
-     a34:	00021283 	sra	v0,v0,0xa
-     a38:	0c00008c 	jal	230 <SystemRegistry::instance()>
-     a3c:	02028021 	addu	s0,s0,v0
-     a40:	a8500040 	swl	s0,64(v0)
-     a44:	b8500043 	swr	s0,67(v0)
-     a48:	8fbf0034 	lw	ra,52(sp)
-     a4c:	8fb60030 	lw	s6,48(sp)
-     a50:	8fb5002c 	lw	s5,44(sp)
-     a54:	8fb40028 	lw	s4,40(sp)
-     a58:	8fb30024 	lw	s3,36(sp)
-     a5c:	8fb20020 	lw	s2,32(sp)
-     a60:	8fb1001c 	lw	s1,28(sp)
-     a64:	8fb00018 	lw	s0,24(sp)
-     a68:	03e00008 	jr	ra
-     a6c:	27bd0038 	addiu	sp,sp,56
-
-00000a70 <StabilizationAndEngineUpdateTask::start()>:
-     a70:	27bdffd0 	addiu	sp,sp,-48
-     a74:	afbf002c 	sw	ra,44(sp)
-     a78:	afa40010 	sw	a0,16(sp)
-     a7c:	afb00018 	sw	s0,24(sp)
-     a80:	afb40028 	sw	s4,40(sp)
-     a84:	afb30024 	sw	s3,36(sp)
-     a88:	afb20020 	sw	s2,32(sp)
-     a8c:	0c000207 	jal	81c <ThrottleADCTask::update()>
-     a90:	afb1001c 	sw	s1,28(sp)
-     a94:	0c000181 	jal	604 <IMUUpdateTask::update()>
-     a98:	00000000 	nop
-     a9c:	8fa40010 	lw	a0,16(sp)
-     aa0:	0c00021f 	jal	87c <StabilizationAndEngineUpdateTask::horizontalStabilization()>
+     a18:	02231821 	addu	v1,s1,v1
+     a1c:	a8430004 	swl	v1,4(v0)
+     a20:	b8430007 	swr	v1,7(v0)
+     a24:	02002021 	move	a0,s0
+     a28:	0c000219 	jal	864 <TaskScheduler::selectNextTask(unsigned int)>
+     a2c:	02202821 	move	a1,s1
+     a30:	0800025b 	j	96c <TaskScheduler::start()+0x30>
+     a34:	00000000 	nop
+     a38:	8a02000c 	lwl	v0,12(s0)
+     a3c:	00000000 	nop
+     a40:	9a02000f 	lwr	v0,15(s0)
+     a44:	00000000 	nop
+     a48:	10400007 	beqz	v0,a68 <TaskScheduler::start()+0x12c>
+     a4c:	00000000 	nop
+     a50:	8843000c 	lwl	v1,12(v0)
+     a54:	00000000 	nop
+     a58:	9843000f 	lwr	v1,15(v0)
+     a5c:	00000000 	nop
+     a60:	aa03000c 	swl	v1,12(s0)
+     a64:	ba03000f 	swr	v1,15(s0)
+     a68:	8a02000c 	lwl	v0,12(s0)
+     a6c:	00000000 	nop
+     a70:	9a02000f 	lwr	v0,15(s0)
+     a74:	00000000 	nop
+     a78:	14400007 	bnez	v0,a98 <TaskScheduler::start()+0x15c>
+     a7c:	00000000 	nop
+     a80:	8a020000 	lwl	v0,0(s0)
+     a84:	00000000 	nop
+     a88:	9a020003 	lwr	v0,3(s0)
+     a8c:	00000000 	nop
+     a90:	aa02000c 	swl	v0,12(s0)
+     a94:	ba02000f 	swr	v0,15(s0)
+     a98:	8a04000c 	lwl	a0,12(s0)
+     a9c:	00000000 	nop
+     aa0:	9a04000f 	lwr	a0,15(s0)
      aa4:	00000000 	nop
-     aa8:	0c00008c 	jal	230 <SystemRegistry::instance()>
+     aa8:	1080ffb0 	beqz	a0,96c <TaskScheduler::start()+0x30>
      aac:	00000000 	nop
-     ab0:	8c500038 	lw	s0,56(v0)
+     ab0:	88820000 	lwl	v0,0(a0)
      ab4:	00000000 	nop
-     ab8:	2e0200c9 	sltiu	v0,s0,201
-     abc:	14400069 	bnez	v0,c64 <StabilizationAndEngineUpdateTask::start()+0x1f4>
-     ac0:	0200a021 	move	s4,s0
-     ac4:	0c00008c 	jal	230 <SystemRegistry::instance()>
-     ac8:	24140064 	li	s4,100
-     acc:	8c42003c 	lw	v0,60(v0)
-     ad0:	00000000 	nop
-     ad4:	02021021 	addu	v0,s0,v0
-     ad8:	2c420065 	sltiu	v0,v0,101
-     adc:	14400006 	bnez	v0,af8 <StabilizationAndEngineUpdateTask::start()+0x88>
-     ae0:	00000000 	nop
-     ae4:	0c00008c 	jal	230 <SystemRegistry::instance()>
-     ae8:	00000000 	nop
-     aec:	8c54003c 	lw	s4,60(v0)
-     af0:	00000000 	nop
-     af4:	0214a021 	addu	s4,s0,s4
-     af8:	0c00008c 	jal	230 <SystemRegistry::instance()>
-     afc:	24120064 	li	s2,100
-     b00:	8c420040 	lw	v0,64(v0)
+     ab8:	98820003 	lwr	v0,3(a0)
+     abc:	00000000 	nop
+     ac0:	8c420000 	lw	v0,0(v0)
+     ac4:	00000000 	nop
+     ac8:	0040f809 	jalr	v0
+     acc:	00000000 	nop
+     ad0:	0800025b 	j	96c <TaskScheduler::start()+0x30>
+     ad4:	00000000 	nop
+
+00000ad8 <TaskScheduler::setNextTask(Task*, Task*)>:
+     ad8:	a8850010 	swl	a1,16(a0)
+     adc:	b8850013 	swr	a1,19(a0)
+     ae0:	88a20004 	lwl	v0,4(a1)
+     ae4:	00000000 	nop
+     ae8:	98a20007 	lwr	v0,7(a1)
+     aec:	00000000 	nop
+     af0:	a8820014 	swl	v0,20(a0)
+     af4:	b8820017 	swr	v0,23(a0)
+     af8:	88820004 	lwl	v0,4(a0)
+     afc:	00000000 	nop
+     b00:	98820007 	lwr	v0,7(a0)
      b04:	00000000 	nop
-     b08:	02021023 	subu	v0,s0,v0
-     b0c:	2c420065 	sltiu	v0,v0,101
-     b10:	14400006 	bnez	v0,b2c <StabilizationAndEngineUpdateTask::start()+0xbc>
-     b14:	00000000 	nop
-     b18:	0c00008c 	jal	230 <SystemRegistry::instance()>
-     b1c:	00000000 	nop
-     b20:	8c520040 	lw	s2,64(v0)
-     b24:	00000000 	nop
-     b28:	02129023 	subu	s2,s0,s2
-     b2c:	0c00008c 	jal	230 <SystemRegistry::instance()>
-     b30:	24130064 	li	s3,100
-     b34:	8c42003c 	lw	v0,60(v0)
-     b38:	00000000 	nop
-     b3c:	02021023 	subu	v0,s0,v0
-     b40:	2c420065 	sltiu	v0,v0,101
-     b44:	14400006 	bnez	v0,b60 <StabilizationAndEngineUpdateTask::start()+0xf0>
-     b48:	00000000 	nop
-     b4c:	0c00008c 	jal	230 <SystemRegistry::instance()>
-     b50:	00000000 	nop
-     b54:	8c53003c 	lw	s3,60(v0)
-     b58:	00000000 	nop
-     b5c:	02139823 	subu	s3,s0,s3
-     b60:	0c00008c 	jal	230 <SystemRegistry::instance()>
-     b64:	24110064 	li	s1,100
-     b68:	8c420040 	lw	v0,64(v0)
-     b6c:	00000000 	nop
-     b70:	02021021 	addu	v0,s0,v0
-     b74:	2c420065 	sltiu	v0,v0,101
-     b78:	14400006 	bnez	v0,b94 <StabilizationAndEngineUpdateTask::start()+0x124>
-     b7c:	00000000 	nop
-     b80:	0c00008c 	jal	230 <SystemRegistry::instance()>
-     b84:	00000000 	nop
-     b88:	8c510040 	lw	s1,64(v0)
-     b8c:	00000000 	nop
-     b90:	02118821 	addu	s1,s0,s1
-     b94:	0c00008c 	jal	230 <SystemRegistry::instance()>
-     b98:	00000000 	nop
-     b9c:	8c420044 	lw	v0,68(v0)
-     ba0:	00000000 	nop
-     ba4:	02821021 	addu	v0,s4,v0
-     ba8:	2c420065 	sltiu	v0,v0,101
-     bac:	14400006 	bnez	v0,bc8 <StabilizationAndEngineUpdateTask::start()+0x158>
-     bb0:	00000000 	nop
-     bb4:	0c00008c 	jal	230 <SystemRegistry::instance()>
-     bb8:	00000000 	nop
-     bbc:	8c420044 	lw	v0,68(v0)
-     bc0:	00000000 	nop
-     bc4:	0282a021 	addu	s4,s4,v0
-     bc8:	0c00008c 	jal	230 <SystemRegistry::instance()>
-     bcc:	00000000 	nop
-     bd0:	8c420048 	lw	v0,72(v0)
-     bd4:	00000000 	nop
-     bd8:	02421021 	addu	v0,s2,v0
-     bdc:	2c420065 	sltiu	v0,v0,101
-     be0:	14400006 	bnez	v0,bfc <StabilizationAndEngineUpdateTask::start()+0x18c>
-     be4:	00000000 	nop
-     be8:	0c00008c 	jal	230 <SystemRegistry::instance()>
-     bec:	00000000 	nop
-     bf0:	8c420048 	lw	v0,72(v0)
-     bf4:	00000000 	nop
-     bf8:	02429021 	addu	s2,s2,v0
-     bfc:	0c00008c 	jal	230 <SystemRegistry::instance()>
-     c00:	00000000 	nop
-     c04:	8c420044 	lw	v0,68(v0)
-     c08:	00000000 	nop
-     c0c:	02621021 	addu	v0,s3,v0
-     c10:	2c420065 	sltiu	v0,v0,101
-     c14:	14400006 	bnez	v0,c30 <StabilizationAndEngineUpdateTask::start()+0x1c0>
-     c18:	00000000 	nop
-     c1c:	0c00008c 	jal	230 <SystemRegistry::instance()>
-     c20:	00000000 	nop
-     c24:	8c420044 	lw	v0,68(v0)
-     c28:	00000000 	nop
-     c2c:	02629821 	addu	s3,s3,v0
-     c30:	0c00008c 	jal	230 <SystemRegistry::instance()>
+     b08:	00c23026 	xor	a2,a2,v0
+     b0c:	0006102b 	sltu	v0,zero,a2
+     b10:	a8820018 	swl	v0,24(a0)
+     b14:	03e00008 	jr	ra
+     b18:	b882001b 	swr	v0,27(a0)
+
+00000b1c <TaskScheduler::addTask(Task**, Task*, int)>:
+     b1c:	a8c40010 	swl	a0,16(a2)
+     b20:	b8c40013 	swr	a0,19(a2)
+     b24:	a8c70008 	swl	a3,8(a2)
+     b28:	b8c7000b 	swr	a3,11(a2)
+     b2c:	8c020030 	lw	v0,48(zero)
+     b30:	00000000 	nop
+     b34:	00473821 	addu	a3,v0,a3
+     b38:	a8c70004 	swl	a3,4(a2)
+     b3c:	b8c70007 	swr	a3,7(a2)
+     b40:	8ca20000 	lw	v0,0(a1)
+     b44:	00000000 	nop
+     b48:	14400004 	bnez	v0,b5c <TaskScheduler::addTask(Task**, Task*, int)+0x40>
+     b4c:	00000000 	nop
+     b50:	03e00008 	jr	ra
+     b54:	aca60000 	sw	a2,0(a1)
+     b58:	00601021 	move	v0,v1
+     b5c:	8843000c 	lwl	v1,12(v0)
+     b60:	00000000 	nop
+     b64:	9843000f 	lwr	v1,15(v0)
+     b68:	00000000 	nop
+     b6c:	1460fffa 	bnez	v1,b58 <TaskScheduler::addTask(Task**, Task*, int)+0x3c>
+     b70:	00000000 	nop
+     b74:	a846000c 	swl	a2,12(v0)
+     b78:	03e00008 	jr	ra
+     b7c:	b846000f 	swr	a2,15(v0)
+
+00000b80 <TaskScheduler::addTask(OneShotTask*, int)>:
+     b80:	27bdffe8 	addiu	sp,sp,-24
+     b84:	afb00010 	sw	s0,16(sp)
+     b88:	00a08021 	move	s0,a1
+     b8c:	00c03821 	move	a3,a2
+     b90:	24850008 	addiu	a1,a0,8
+     b94:	afbf0014 	sw	ra,20(sp)
+     b98:	0c0002c7 	jal	b1c <TaskScheduler::addTask(Task**, Task*, int)>
+     b9c:	02003021 	move	a2,s0
+     ba0:	8fbf0014 	lw	ra,20(sp)
+     ba4:	02001021 	move	v0,s0
+     ba8:	8fb00010 	lw	s0,16(sp)
+     bac:	03e00008 	jr	ra
+     bb0:	27bd0018 	addiu	sp,sp,24
+
+00000bb4 <TaskScheduler::addTask(IdleTask*)>:
+     bb4:	27bdffe8 	addiu	sp,sp,-24
+     bb8:	afb00010 	sw	s0,16(sp)
+     bbc:	00a08021 	move	s0,a1
+     bc0:	02003021 	move	a2,s0
+     bc4:	00802821 	move	a1,a0
+     bc8:	afbf0014 	sw	ra,20(sp)
+     bcc:	0c0002c7 	jal	b1c <TaskScheduler::addTask(Task**, Task*, int)>
+     bd0:	00003821 	move	a3,zero
+     bd4:	8fbf0014 	lw	ra,20(sp)
+     bd8:	02001021 	move	v0,s0
+     bdc:	8fb00010 	lw	s0,16(sp)
+     be0:	03e00008 	jr	ra
+     be4:	27bd0018 	addiu	sp,sp,24
+
+00000be8 <TaskScheduler::addTask(ContinuousTask*, int)>:
+     be8:	27bdffe8 	addiu	sp,sp,-24
+     bec:	afb00010 	sw	s0,16(sp)
+     bf0:	00a08021 	move	s0,a1
+     bf4:	00c03821 	move	a3,a2
+     bf8:	24850004 	addiu	a1,a0,4
+     bfc:	afbf0014 	sw	ra,20(sp)
+     c00:	0c0002c7 	jal	b1c <TaskScheduler::addTask(Task**, Task*, int)>
+     c04:	02003021 	move	a2,s0
+     c08:	8fbf0014 	lw	ra,20(sp)
+     c0c:	02001021 	move	v0,s0
+     c10:	8fb00010 	lw	s0,16(sp)
+     c14:	03e00008 	jr	ra
+     c18:	27bd0018 	addiu	sp,sp,24
+
+00000c1c <XBeeReadIdleTask::start()>:
+     c1c:	27bdffe0 	addiu	sp,sp,-32
+     c20:	afb00018 	sw	s0,24(sp)
+     c24:	afbf001c 	sw	ra,28(sp)
+     c28:	08000310 	j	c40 <XBeeReadIdleTask::start()+0x24>
+     c2c:	00808021 	move	s0,a0
+     c30:	8c050040 	lw	a1,64(zero)
      c34:	00000000 	nop
-     c38:	8c420048 	lw	v0,72(v0)
-     c3c:	00000000 	nop
-     c40:	02221021 	addu	v0,s1,v0
-     c44:	2c420065 	sltiu	v0,v0,101
-     c48:	1440000a 	bnez	v0,c74 <StabilizationAndEngineUpdateTask::start()+0x204>
-     c4c:	02802021 	move	a0,s4
-     c50:	0c00008c 	jal	230 <SystemRegistry::instance()>
+     c38:	00052e00 	sll	a1,a1,0x18
+     c3c:	00052e03 	sra	a1,a1,0x18
+     c40:	04a0fffb 	bltz	a1,c30 <XBeeReadIdleTask::start()+0x14>
+     c44:	00000000 	nop
+     c48:	8a020034 	lwl	v0,52(s0)
+     c4c:	00000000 	nop
+     c50:	9a020037 	lwr	v0,55(s0)
      c54:	00000000 	nop
-     c58:	8c420048 	lw	v0,72(v0)
-     c5c:	0800031c 	j	c70 <StabilizationAndEngineUpdateTask::start()+0x200>
-     c60:	02228821 	addu	s1,s1,v0
-     c64:	02008821 	move	s1,s0
-     c68:	02009821 	move	s3,s0
-     c6c:	02009021 	move	s2,s0
-     c70:	02802021 	move	a0,s4
-     c74:	02602821 	move	a1,s3
-     c78:	0c000041 	jal	104 <eng_ctrl(int, int, int volatile*)>
-     c7c:	24060010 	li	a2,16
-     c80:	8fbf002c 	lw	ra,44(sp)
-     c84:	8fb40028 	lw	s4,40(sp)
-     c88:	8fb30024 	lw	s3,36(sp)
-     c8c:	8fb00018 	lw	s0,24(sp)
-     c90:	02402021 	move	a0,s2
-     c94:	02202821 	move	a1,s1
-     c98:	8fb20020 	lw	s2,32(sp)
-     c9c:	8fb1001c 	lw	s1,28(sp)
-     ca0:	24060014 	li	a2,20
-     ca4:	08000041 	j	104 <eng_ctrl(int, int, int volatile*)>
-     ca8:	27bd0030 	addiu	sp,sp,48
+     c58:	14400011 	bnez	v0,ca0 <XBeeReadIdleTask::start()+0x84>
+     c5c:	02021821 	addu	v1,s0,v0
+     c60:	24030005 	li	v1,5
+     c64:	00a30018 	mult	a1,v1
+     c68:	3c038000 	lui	v1,0x8000
+     c6c:	24630078 	addiu	v1,v1,120
+     c70:	00002012 	mflo	a0
+     c74:	00641821 	addu	v1,v1,a0
+     c78:	90640000 	lbu	a0,0(v1)
+     c7c:	00000000 	nop
+     c80:	a2040038 	sb	a0,56(s0)
+     c84:	88640001 	lwl	a0,1(v1)
+     c88:	00000000 	nop
+     c8c:	98640004 	lwr	a0,4(v1)
+     c90:	00000000 	nop
+     c94:	aa040039 	swl	a0,57(s0)
+     c98:	ba04003c 	swr	a0,60(s0)
+     c9c:	02021821 	addu	v1,s0,v0
+     ca0:	a0650014 	sb	a1,20(v1)
+     ca4:	24420001 	addiu	v0,v0,1
+     ca8:	aa020034 	swl	v0,52(s0)
+     cac:	ba020037 	swr	v0,55(s0)
+     cb0:	92030038 	lbu	v1,56(s0)
+     cb4:	00000000 	nop
+     cb8:	1443000c 	bne	v0,v1,cec <XBeeReadIdleTask::start()+0xd0>
+     cbc:	00000000 	nop
+     cc0:	8a020039 	lwl	v0,57(s0)
+     cc4:	00000000 	nop
+     cc8:	9a02003c 	lwr	v0,60(s0)
+     ccc:	00000000 	nop
+     cd0:	0040f809 	jalr	v0
+     cd4:	26040014 	addiu	a0,s0,20
+     cd8:	aa000034 	swl	zero,52(s0)
+     cdc:	ba000037 	swr	zero,55(s0)
+     ce0:	a2000038 	sb	zero,56(s0)
+     ce4:	aa000039 	swl	zero,57(s0)
+     ce8:	ba00003c 	swr	zero,60(s0)
+     cec:	8fbf001c 	lw	ra,28(sp)
+     cf0:	8fb00018 	lw	s0,24(sp)
+     cf4:	03e00008 	jr	ra
+     cf8:	27bd0020 	addiu	sp,sp,32
 
-00000cac <main>:
-     cac:	3c060098 	lui	a2,0x98
-     cb0:	00001021 	move	v0,zero
-     cb4:	24050001 	li	a1,1
-     cb8:	34c69681 	ori	a2,a2,0x9681
-     cbc:	24040008 	li	a0,8
-     cc0:	00451804 	sllv	v1,a1,v0
-     cc4:	306300ff 	andi	v1,v1,0xff
-     cc8:	ac030018 	sw	v1,24(zero)
-     ccc:	00c01821 	move	v1,a2
-     cd0:	2463ffff 	addiu	v1,v1,-1
-     cd4:	1460fffe 	bnez	v1,cd0 <main+0x24>
-     cd8:	00000000 	nop
-     cdc:	24420001 	addiu	v0,v0,1
-     ce0:	1444fff8 	bne	v0,a0,cc4 <main+0x18>
-     ce4:	00451804 	sllv	v1,a1,v0
-     ce8:	3c060098 	lui	a2,0x98
-     cec:	00001021 	move	v0,zero
-     cf0:	24050080 	li	a1,128
-     cf4:	34c69681 	ori	a2,a2,0x9681
-     cf8:	24040008 	li	a0,8
-     cfc:	00451807 	srav	v1,a1,v0
-     d00:	ac030018 	sw	v1,24(zero)
-     d04:	00c01821 	move	v1,a2
-     d08:	2463ffff 	addiu	v1,v1,-1
-     d0c:	1460fffe 	bnez	v1,d08 <main+0x5c>
-     d10:	00000000 	nop
-     d14:	24420001 	addiu	v0,v0,1
-     d18:	1444fff9 	bne	v0,a0,d00 <main+0x54>
-     d1c:	00451807 	srav	v1,a1,v0
-     d20:	27bdffc8 	addiu	sp,sp,-56
-     d24:	2404001a 	li	a0,26
-     d28:	afbf0034 	sw	ra,52(sp)
-     d2c:	0c000025 	jal	94 <mpu6050_write(int, int)>
-     d30:	24050003 	li	a1,3
-     d34:	2404001b 	li	a0,27
-     d38:	0c000025 	jal	94 <mpu6050_write(int, int)>
-     d3c:	24050018 	li	a1,24
-     d40:	2404001c 	li	a0,28
-     d44:	0c000025 	jal	94 <mpu6050_write(int, int)>
-     d48:	24050018 	li	a1,24
-     d4c:	2404006b 	li	a0,107
-     d50:	0c000025 	jal	94 <mpu6050_write(int, int)>
-     d54:	00002821 	move	a1,zero
-     d58:	34029c41 	li	v0,0x9c41
-     d5c:	2442ffff 	addiu	v0,v0,-1
-     d60:	1440fffe 	bnez	v0,d5c <main+0xb0>
-     d64:	27a40010 	addiu	a0,sp,16
-     d68:	3c068000 	lui	a2,0x8000
-     d6c:	00802821 	move	a1,a0
-     d70:	24c60060 	addiu	a2,a2,96
-     d74:	00003821 	move	a3,zero
-     d78:	afa00010 	sw	zero,16(sp)
-     d7c:	afa00014 	sw	zero,20(sp)
-     d80:	afa00018 	sw	zero,24(sp)
-     d84:	afa0001c 	sw	zero,28(sp)
-     d88:	afa00020 	sw	zero,32(sp)
-     d8c:	afa00024 	sw	zero,36(sp)
-     d90:	0c0000d1 	jal	344 <TaskScheduler::addTask(Task**, Task*, int)>
-     d94:	afa00028 	sw	zero,40(sp)
-     d98:	3c068000 	lui	a2,0x8000
-     d9c:	3c070007 	lui	a3,0x7
-     da0:	27a40010 	addiu	a0,sp,16
-     da4:	27a50014 	addiu	a1,sp,20
-     da8:	24c601e4 	addiu	a2,a2,484
-     dac:	0c0000d1 	jal	344 <TaskScheduler::addTask(Task**, Task*, int)>
-     db0:	34e7a120 	ori	a3,a3,0xa120
-     db4:	3c068000 	lui	a2,0x8000
-     db8:	3c07000f 	lui	a3,0xf
-     dbc:	27a40010 	addiu	a0,sp,16
-     dc0:	27a50014 	addiu	a1,sp,20
-     dc4:	24c601f8 	addiu	a2,a2,504
-     dc8:	0c0000d1 	jal	344 <TaskScheduler::addTask(Task**, Task*, int)>
-     dcc:	24e74240 	addiu	a3,a3,16960
-     dd0:	3c068000 	lui	a2,0x8000
-     dd4:	3c070001 	lui	a3,0x1
-     dd8:	27a40010 	addiu	a0,sp,16
-     ddc:	27a50014 	addiu	a1,sp,20
-     de0:	24c601c0 	addiu	a2,a2,448
-     de4:	0c0000d1 	jal	344 <TaskScheduler::addTask(Task**, Task*, int)>
-     de8:	34e7bbe4 	ori	a3,a3,0xbbe4
-     dec:	0c0000ea 	jal	3a8 <TaskScheduler::start()>
-     df0:	27a40010 	addiu	a0,sp,16
+00000cfc <XBeeReadIdleTask::XBeeReadIdleTask()>:
+     cfc:	27bdffe8 	addiu	sp,sp,-24
+     d00:	afbf0014 	sw	ra,20(sp)
+     d04:	afb00010 	sw	s0,16(sp)
+     d08:	0c0001c8 	jal	720 <Task::Task()>
+     d0c:	00808021 	move	s0,a0
+     d10:	3c028000 	lui	v0,0x8000
+     d14:	24420070 	addiu	v0,v0,112
+     d18:	aa020000 	swl	v0,0(s0)
+     d1c:	ba020003 	swr	v0,3(s0)
+     d20:	3c028000 	lui	v0,0x8000
+     d24:	24420060 	addiu	v0,v0,96
+     d28:	aa020000 	swl	v0,0(s0)
+     d2c:	ba020003 	swr	v0,3(s0)
+     d30:	aa000034 	swl	zero,52(s0)
+     d34:	ba000037 	swr	zero,55(s0)
+     d38:	8fbf0014 	lw	ra,20(sp)
+     d3c:	a2000038 	sb	zero,56(s0)
+     d40:	aa000039 	swl	zero,57(s0)
+     d44:	ba00003c 	swr	zero,60(s0)
+     d48:	8fb00010 	lw	s0,16(sp)
+     d4c:	03e00008 	jr	ra
+     d50:	27bd0018 	addiu	sp,sp,24
 
-00000df4 <_GLOBAL__sub_I__ZN8Messages14defaultHandlerEPc>:
-     df4:	3c038000 	lui	v1,0x8000
-     df8:	246201f8 	addiu	v0,v1,504
-     dfc:	ac400004 	sw	zero,4(v0)
-     e00:	ac400008 	sw	zero,8(v0)
-     e04:	ac40000c 	sw	zero,12(v0)
-     e08:	3c028000 	lui	v0,0x8000
-     e0c:	24420058 	addiu	v0,v0,88
-     e10:	ac6201f8 	sw	v0,504(v1)
-     e14:	3c038000 	lui	v1,0x8000
-     e18:	246201e4 	addiu	v0,v1,484
-     e1c:	ac400004 	sw	zero,4(v0)
-     e20:	ac400008 	sw	zero,8(v0)
-     e24:	ac40000c 	sw	zero,12(v0)
-     e28:	3c028000 	lui	v0,0x8000
-     e2c:	24420048 	addiu	v0,v0,72
-     e30:	3c048000 	lui	a0,0x8000
-     e34:	ac6201e4 	sw	v0,484(v1)
-     e38:	24840038 	addiu	a0,a0,56
-     e3c:	3c038000 	lui	v1,0x8000
-     e40:	ac6401c0 	sw	a0,448(v1)
-     e44:	3c048000 	lui	a0,0x8000
-     e48:	246201c0 	addiu	v0,v1,448
-     e4c:	24840028 	addiu	a0,a0,40
-     e50:	3c038000 	lui	v1,0x8000
-     e54:	ac400004 	sw	zero,4(v0)
-     e58:	ac400008 	sw	zero,8(v0)
-     e5c:	ac40000c 	sw	zero,12(v0)
-     e60:	ac400014 	sw	zero,20(v0)
-     e64:	ac400018 	sw	zero,24(v0)
-     e68:	ac40001c 	sw	zero,28(v0)
-     e6c:	ac400020 	sw	zero,32(v0)
-     e70:	ac640060 	sw	a0,96(v1)
-     e74:	24620060 	addiu	v0,v1,96
-     e78:	ac400004 	sw	zero,4(v0)
-     e7c:	ac400008 	sw	zero,8(v0)
-     e80:	ac40000c 	sw	zero,12(v0)
-     e84:	ac400154 	sw	zero,340(v0)
-     e88:	a0400158 	sb	zero,344(v0)
-     e8c:	a8400159 	swl	zero,345(v0)
-     e90:	03e00008 	jr	ra
-     e94:	b840015c 	swr	zero,348(v0)
-     e98:	00000000 	nop
-     e9c:	00000000 	nop
-     ea0:	00000000 	nop
-     ea4:	00000000 	nop
-     ea8:	00000000 	nop
-     eac:	00000000 	nop
-     eb0:	00000000 	nop
-     eb4:	00000000 	nop
-     eb8:	00000000 	nop
-     ebc:	00000000 	nop
-     ec0:	00000000 	nop
-     ec4:	00000000 	nop
-     ec8:	00000000 	nop
-     ecc:	00000000 	nop
-     ed0:	00000000 	nop
-     ed4:	00000000 	nop
-     ed8:	00000000 	nop
-     edc:	00000000 	nop
-     ee0:	00000000 	nop
+00000d54 <main>:
+     d54:	3c060098 	lui	a2,0x98
+     d58:	00001021 	move	v0,zero
+     d5c:	24050001 	li	a1,1
+     d60:	34c69681 	ori	a2,a2,0x9681
+     d64:	24040008 	li	a0,8
+     d68:	00451804 	sllv	v1,a1,v0
+     d6c:	306300ff 	andi	v1,v1,0xff
+     d70:	ac030018 	sw	v1,24(zero)
+     d74:	00c01821 	move	v1,a2
+     d78:	2463ffff 	addiu	v1,v1,-1
+     d7c:	1460fffe 	bnez	v1,d78 <main+0x24>
+     d80:	00000000 	nop
+     d84:	24420001 	addiu	v0,v0,1
+     d88:	1444fff8 	bne	v0,a0,d6c <main+0x18>
+     d8c:	00451804 	sllv	v1,a1,v0
+     d90:	3c060098 	lui	a2,0x98
+     d94:	00001021 	move	v0,zero
+     d98:	24050080 	li	a1,128
+     d9c:	34c69681 	ori	a2,a2,0x9681
+     da0:	24040008 	li	a0,8
+     da4:	00451807 	srav	v1,a1,v0
+     da8:	ac030018 	sw	v1,24(zero)
+     dac:	00c01821 	move	v1,a2
+     db0:	2463ffff 	addiu	v1,v1,-1
+     db4:	1460fffe 	bnez	v1,db0 <main+0x5c>
+     db8:	00000000 	nop
+     dbc:	24420001 	addiu	v0,v0,1
+     dc0:	1444fff9 	bne	v0,a0,da8 <main+0x54>
+     dc4:	00451807 	srav	v1,a1,v0
+     dc8:	27bdffc8 	addiu	sp,sp,-56
+     dcc:	2404001a 	li	a0,26
+     dd0:	afbf0034 	sw	ra,52(sp)
+     dd4:	0c000013 	jal	4c <mpu6050_write(int, int)>
+     dd8:	24050003 	li	a1,3
+     ddc:	2404001b 	li	a0,27
+     de0:	0c000013 	jal	4c <mpu6050_write(int, int)>
+     de4:	24050018 	li	a1,24
+     de8:	2404001c 	li	a0,28
+     dec:	0c000013 	jal	4c <mpu6050_write(int, int)>
+     df0:	24050018 	li	a1,24
+     df4:	2404006b 	li	a0,107
+     df8:	0c000013 	jal	4c <mpu6050_write(int, int)>
+     dfc:	00002821 	move	a1,zero
+     e00:	34029c41 	li	v0,0x9c41
+     e04:	2442ffff 	addiu	v0,v0,-1
+     e08:	1440fffe 	bnez	v0,e04 <main+0xb0>
+     e0c:	00000000 	nop
+     e10:	0c0001d3 	jal	74c <TaskScheduler::TaskScheduler()>
+     e14:	27a40010 	addiu	a0,sp,16
+     e18:	0c0001b1 	jal	6c4 <TaskPool::getIdleTask(TaskPool::TaskType)>
+     e1c:	24040002 	li	a0,2
+     e20:	00402821 	move	a1,v0
+     e24:	0c0002ed 	jal	bb4 <TaskScheduler::addTask(IdleTask*)>
+     e28:	27a40010 	addiu	a0,sp,16
+     e2c:	0c0001b8 	jal	6e0 <TaskPool::getContinuousTask(TaskPool::TaskType)>
+     e30:	00002021 	move	a0,zero
+     e34:	3c060001 	lui	a2,0x1
+     e38:	27a40010 	addiu	a0,sp,16
+     e3c:	00402821 	move	a1,v0
+     e40:	0c0002fa 	jal	be8 <TaskScheduler::addTask(ContinuousTask*, int)>
+     e44:	34c6bbe4 	ori	a2,a2,0xbbe4
+     e48:	0c00024f 	jal	93c <TaskScheduler::start()>
+     e4c:	27a40010 	addiu	a0,sp,16
+     e50:	8fbf0034 	lw	ra,52(sp)
+     e54:	00001021 	move	v0,zero
+     e58:	03e00008 	jr	ra
+     e5c:	27bd0038 	addiu	sp,sp,56
+
+00000e60 <SystemRegistry::instance()>:
+     e60:	3c028000 	lui	v0,0x8000
+     e64:	80430098 	lb	v1,152(v0)
+     e68:	00402021 	move	a0,v0
+     e6c:	14600009 	bnez	v1,e94 <SystemRegistry::instance()+0x34>
+     e70:	3c028000 	lui	v0,0x8000
+     e74:	244300a0 	addiu	v1,v0,160
+     e78:	24650054 	addiu	a1,v1,84
+     e7c:	ac600000 	sw	zero,0(v1)
+     e80:	24630004 	addiu	v1,v1,4
+     e84:	1465fffd 	bne	v1,a1,e7c <SystemRegistry::instance()+0x1c>
+     e88:	00000000 	nop
+     e8c:	24030001 	li	v1,1
+     e90:	a0830098 	sb	v1,152(a0)
+     e94:	03e00008 	jr	ra
+     e98:	244200a0 	addiu	v0,v0,160
+
+00000e9c <_GLOBAL__sub_I__ZN8TaskPool13imuUpdateTaskE>:
+     e9c:	27bdffe8 	addiu	sp,sp,-24
+     ea0:	afb00010 	sw	s0,16(sp)
+     ea4:	3c108000 	lui	s0,0x8000
+     ea8:	afbf0014 	sw	ra,20(sp)
+     eac:	0c0001c8 	jal	720 <Task::Task()>
+     eb0:	26040158 	addiu	a0,s0,344
+     eb4:	3c028000 	lui	v0,0x8000
+     eb8:	3c048000 	lui	a0,0x8000
+     ebc:	24420010 	addiu	v0,v0,16
+     ec0:	24840118 	addiu	a0,a0,280
+     ec4:	0c00033f 	jal	cfc <XBeeReadIdleTask::XBeeReadIdleTask()>
+     ec8:	ae020158 	sw	v0,344(s0)
+     ecc:	8fbf0014 	lw	ra,20(sp)
+     ed0:	8fb00010 	lw	s0,16(sp)
+     ed4:	3c048000 	lui	a0,0x8000
+     ed8:	248400f4 	addiu	a0,a0,244
+     edc:	080000ea 	j	3a8 <StabilizationAndEngineUpdateTask::StabilizationAndEngineUpdateTask()>
+     ee0:	27bd0018 	addiu	sp,sp,24
+
+00000ee4 <CODE_ENDS>:
      ee4:	00000000 	nop
      ee8:	00000000 	nop
      eec:	00000000 	nop

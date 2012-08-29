@@ -25,20 +25,25 @@ template<int P, int Q> inline int scale(int x) {
 
 /* Time conversions */
 typedef unsigned int Ticks;
-constexpr Ticks operator"" hz(unsigned long long x) {
+constexpr Ticks operator"" _hz(unsigned long long x) {
     return CPU_FREQUENCY_HZ / x;
 }
-constexpr Ticks operator"" ns(unsigned long long x) {
+constexpr Ticks operator"" _ns(unsigned long long x) {
     return x * CPU_FREQUENCY_HZ / 1000000000;
 }
-constexpr Ticks operator"" us(unsigned long long x) {
+constexpr Ticks operator"" _us(unsigned long long x) {
     return x * CPU_FREQUENCY_HZ / 1000000;
 }
-constexpr Ticks operator"" ms(unsigned long long x) {
+constexpr Ticks operator"" _ms(unsigned long long x) {
     return x * CPU_FREQUENCY_HZ / 1000;
 }
-constexpr Ticks operator"" s(unsigned long long x) {
+constexpr Ticks operator"" _s(unsigned long long x) {
     return x * CPU_FREQUENCY_HZ;
 }
+
+/* */
+template<typename To, typename From>
+constexpr To asIntegral(From x) { return static_cast<To>(x); }
+
 
 #endif

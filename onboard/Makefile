@@ -2,7 +2,7 @@ XTOOLS_LOCATION = ~/x-tools-new
 XTOOLS_TRIPLE = mips-quadcopter-elf
 
 AS   = $(XTOOLS_LOCATION)/$(XTOOLS_TRIPLE)/bin/$(XTOOLS_TRIPLE)-as
-LD   = $(XTOOLS_LOCATION)/$(XTOOLS_TRIPLE)/bin/$(XTOOLS_TRIPLE)-ld
+LD   = $(XTOOLS_LOCATION)/$(XTOOLS_TRIPLE)/bin/$(XTOOLS_TRIPLE)-g++
 CC   = $(XTOOLS_LOCATION)/$(XTOOLS_TRIPLE)/bin/$(XTOOLS_TRIPLE)-g++
 DUMP = $(XTOOLS_LOCATION)/$(XTOOLS_TRIPLE)/bin/$(XTOOLS_TRIPLE)-objdump
 READELF = $(XTOOLS_LOCATION)/$(XTOOLS_TRIPLE)/bin/$(XTOOLS_TRIPLE)-readelf
@@ -20,7 +20,7 @@ CCOPTS =  -c -std=c++11 -G0 -I.
 CCOPTS += -Os 
 CCOPTS += -Wstack-usage=$(STACK_SIZE) 
 CCOPTS += -fno-threadsafe-statics -fpack-struct -fstack-usage -fno-strict-aliasing -fno-exceptions -fno-rtti
-LDOPTS =
+LDOPTS = -nostdlib -nostartfiles -fwhole-program
 
 SRCDIR = src
 OBJDIR = obj
@@ -46,7 +46,7 @@ include $(DEPS)
 
 main: $(OBJECTS)
 	@$(call BLD, 'Linking ')
-	@$(LD) -T $(SRCDIR)/ld.script -o $@ $(OBJECTS) $(LDOPTS) 2> temp.log || touch temp.errors
+	@$(LD) -Wl,-T,$(SRCDIR)/ld.script -o $@ $(OBJECTS) $(LDOPTS) 2> temp.log || touch temp.errors
 	@$(call CHECK, $@:)
 	@$(READELF) -a main > $(LISTINGSDIR)/program-elf.txt
 	@-$(RM) -f temp.errors temp.log

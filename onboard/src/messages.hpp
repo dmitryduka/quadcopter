@@ -1,6 +1,8 @@
 #ifndef MESSAGES_HPP
 #define MESSAGES_HPP
 
+#include "ct-utility.hpp"
+
 namespace Messages {
 
 /* Quad-centric definitions 
@@ -35,10 +37,8 @@ enum class From : unsigned char {
     MESSAGES_BEGIN = 128,
     IMUData,
     PIDValues,
-    MESSAGES_END
+    MESSAGES_COUNT
 };
-
-constexpr unsigned char asIntegral(To x) { return (unsigned char)x; }
 
 /* Each message should contain it's type stored in 1 byte */
 template<typename Type, Type TYPE> struct Message { const Type type = TYPE; };
@@ -71,7 +71,8 @@ struct Roll : Message<To, To::Roll> { short int value; };
 		Messages handlers definitions 
    ============================================================== */
 typedef void (*HandlerType)(char*);
-void defaultHandler(char*) {}
+
+void defaultHandler(char*);
 
 struct EntryType {
     unsigned char size;
@@ -87,7 +88,7 @@ const unsigned int MAX_MESSAGE_LENGTH = 32;
 /* Setup Message Type -> Message size/Message handler mapping here */
 #define DEFINE_MESSAGE_HANDLER(X, H) [To::X] = { sizeof(X), H }
 
-const EntryType handlers[asIntegral(To::MESSAGES_COUNT) + 1] = {
+const EntryType handlers[asIntegral<unsigned char, To>(To::MESSAGES_COUNT) + 1] = {
     DEFINE_MESSAGE_HANDLER(Throttle, 	defaultHandler),
     DEFINE_MESSAGE_HANDLER(Pitch, 	defaultHandler),
     DEFINE_MESSAGE_HANDLER(Yaw, 	defaultHandler),
