@@ -3,7 +3,9 @@
 
 #include "ct-utility.hpp"
 
-class SystemRegistry {
+namespace System {
+
+class Registry {
 public:
     enum Value {
         VALUES_BEGIN = -1,
@@ -45,12 +47,12 @@ public:
 private:
     int values[VALUES_END];
 private:
-    SystemRegistry() {
+    Registry() {
         for (int i = 0; i < VALUES_END; ++i) values[i] = 0;
     }
 public:
-    static SystemRegistry& instance() {
-	static SystemRegistry inst;
+    static Registry& instance() {
+	static System::Registry inst;
 	return inst;
     };
 
@@ -62,4 +64,5 @@ public:
     }
 };
 
+}
 #endif

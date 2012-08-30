@@ -14,14 +14,14 @@ void StabilizationAndEngineUpdateTask::start() {
     horizontalStabilization();
     /* Also azimuth control here */
 
-    int throttle = SystemRegistry::value(SystemRegistry::THROTTLE);
+    int throttle = System::Registry::value(System::Registry::THROTTLE);
     int E1, E2, E3, E4;
     E1 = E2 = E3 = E4 = throttle;
     if (throttle > MINIMUM_THROTTLE_FOR_CORRECTIONS) {
-        E1 += SystemRegistry::value(SystemRegistry::PID_CORRECTION_X);
-        E2 -= SystemRegistry::value(SystemRegistry::PID_CORRECTION_Y);
-        E3 -= SystemRegistry::value(SystemRegistry::PID_CORRECTION_X);
-        E4 += SystemRegistry::value(SystemRegistry::PID_CORRECTION_Y);
+        E1 += System::Registry::value(System::Registry::PID_CORRECTION_X);
+        E2 -= System::Registry::value(System::Registry::PID_CORRECTION_Y);
+        E3 -= System::Registry::value(System::Registry::PID_CORRECTION_X);
+        E4 += System::Registry::value(System::Registry::PID_CORRECTION_Y);
     }
     *ENGINES_13_ADDR = ((E1 << 16) | E3);
     *ENGINES_24_ADDR = ((E2 << 16) | E4);
@@ -29,19 +29,19 @@ void StabilizationAndEngineUpdateTask::start() {
 
 /* PID-controller */
 void StabilizationAndEngineUpdateTask::horizontalStabilization() {
-    int ACC_X = SystemRegistry::value(SystemRegistry::ACCELEROMETER1_X);
-    int ACC_Y = SystemRegistry::value(SystemRegistry::ACCELEROMETER1_Y);
+    int ACC_X = System::Registry::value(System::Registry::ACCELEROMETER1_X);
+    int ACC_Y = System::Registry::value(System::Registry::ACCELEROMETER1_Y);
     /* Actual sensors are tilted 45 deg. */
     int x = ACC_X - ACC_Y;
     int y = ACC_X + ACC_Y;
 
     /* P term */
-    int px = x - SystemRegistry::value(SystemRegistry::DESIRED_X);
-    int py = y - SystemRegistry::value(SystemRegistry::DESIRED_Y);
+    int px = x - System::Registry::value(System::Registry::DESIRED_X);
+    int py = y - System::Registry::value(System::Registry::DESIRED_Y);
 
     /* D term */
-    int gx = SystemRegistry::value(SystemRegistry::GYRO_X);
-    int gy = SystemRegistry::value(SystemRegistry::GYRO_Y);
+    int gx = System::Registry::value(System::Registry::GYRO_X);
+    int gy = System::Registry::value(System::Registry::GYRO_Y);
 
     int dx = - (gx + gy);
     int dy = gx - gy;
@@ -55,10 +55,10 @@ void StabilizationAndEngineUpdateTask::horizontalStabilization() {
     ox = x;
     oy = y;
 
-    SystemRegistry::set(SystemRegistry::PID_CORRECTION_X, 	scale<Kp, 1024>(px) +
+    System::Registry::set(System::Registry::PID_CORRECTION_X, 	scale<Kp, 1024>(px) +
                         scale<Ki, 1024>(ix) +
                         scale<Kd, 1024>(dx));
-    SystemRegistry::set(SystemRegistry::PID_CORRECTION_Y,	scale<Kp, 1024>(py) +
+    System::Registry::set(System::Registry::PID_CORRECTION_Y,	scale<Kp, 1024>(py) +
                         scale<Ki, 1024>(iy) +
                         scale<Kd, 1024>(dy));
 }

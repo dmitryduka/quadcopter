@@ -1,12 +1,31 @@
 #include "mpu6050.h"
+#include <common/ct-utility.hpp>
 #include <common/math/maths.hpp>
 #include <system/bus/i2c/i2c.h>
 #include <system/devices.hpp>
+#include <system/util.h>
 #include <system/registry.hpp>
 
 namespace Sensors {
 namespace IMU {
 namespace MPU6050 {
+
+
+static void mpu6050_setup(char reg, char byte) {
+    System::Bus::I2C::start();
+    System::Bus::I2C::write(MPU6050_ADDRESS_W);
+    System::Bus::I2C::write(reg);
+    System::Bus::I2C::write(byte);
+    System::Bus::I2C::stop();
+}
+
+void init() {
+    mpu6050_setup(MPU6050_SETUP_DLPF, MPU6050_DLPF_44HZ_DELAY_5MS);
+    mpu6050_setup(MPU6050_SETUP_GYRO, MPU6050_GYRO_RANGE_2000DEG);
+    mpu6050_setup(MPU6050_SETUP_ACC, MPU6050_ACC_RANGE_16G);
+    mpu6050_setup(MPU6050_PWR_MGMT, MPU6050_PWR_MGMT_SLEEP_DISABLE);
+    System::Util::delay(1_ms);
+}
 
 /* Whole operation takes ~400us, so no need for separate I2C tasks */
 void updateAccelerometerAndGyro() {
@@ -44,12 +63,12 @@ void updateAccelerometerAndGyro() {
     gy = Math::sign_extend((gy << 8) | gyL);
     gz = Math::sign_extend((gz << 8) | gzL);
 
-    SystemRegistry::set(SystemRegistry::ACCELEROMETER1_X, ax);
-    SystemRegistry::set(SystemRegistry::ACCELEROMETER1_Y, ay);
-    SystemRegistry::set(SystemRegistry::ACCELEROMETER1_Z, az);
-    SystemRegistry::set(SystemRegistry::GYRO_X, gx);
-    SystemRegistry::set(SystemRegistry::GYRO_Y, gy);
-    SystemRegistry::set(SystemRegistry::GYRO_Z, gz);
+    System::Registry::set(System::Registry::ACCELEROMETER1_X, ax);
+    System::Registry::set(System::Registry::ACCELEROMETER1_Y, ay);
+    System::Registry::set(System::Registry::ACCELEROMETER1_Z, az);
+    System::Registry::set(System::Registry::GYRO_X, gx);
+    System::Registry::set(System::Registry::GYRO_Y, gy);
+    System::Registry::set(System::Registry::GYRO_Z, gz);
 }
 
 void updateTemperature() {

@@ -13,9 +13,7 @@ enum class TaskType {
     TASK_TYPE_COUNT
 };
 
-IdleTask*       const     getIdleTask(TaskType type);
-ContinuousTask* const     getContinuousTask(TaskType type);
-OneShotTask*    const     getOneShotTask(TaskType type);
+Task*    const     getTask(TaskType type);
 
 }
 }

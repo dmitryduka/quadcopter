@@ -6,7 +6,7 @@ ENTRY(_start)
 SEARCH_DIR("=/usr/local/lib"); SEARCH_DIR("=/lib"); SEARCH_DIR("=/usr/lib");
 MEMORY 
 {
-    imem (rx) : ORIGIN = 0, LENGTH = 16K
+    imem (rx) : ORIGIN = 0, LENGTH = 8K
     dmem (rw) : ORIGIN = 0x80000000, LENGTH = 8K
 }
 SECTIONS
@@ -27,9 +27,6 @@ SECTIONS
     . = LENGTH(imem);
   } > imem = 0
   .data : {
-    CTORS_INIT = .;
-    *(.ctors)
-    *(.dtors)
     *(.rodata .rodata.* .gnu.linkonce.r.*)
     *(.data .data.* .gnu.linkonce.d.*)
     *(.sdata .sdata.* .gnu.linkonce.s.*)
@@ -39,6 +36,11 @@ SECTIONS
     *(.dynbss)
     *(.bss .bss.* .gnu.linkonce.b.*)
     *(COMMON)
+    CTORS_INIT = .;
+    KEEP(*(.ctors))
+    KEEP(*(.ctors.*))
+    *(.dtors)
+    *(.dtors.*)
     DATA_ENDS = .;
     . = LENGTH(dmem);
   } > dmem = 0
