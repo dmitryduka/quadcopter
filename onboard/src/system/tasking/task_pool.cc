@@ -1,20 +1,21 @@
 #include "task_pool.h"
 
-#include "xbee.h"
-#include "mpu6050.h"
-#include "stabilization.h"
+#include <radio/xbee/xbee.h>
+#include <sensors/imu/mpu6050.h>
+#include <control/stabilization.h>
 
-namespace TaskPool {
+namespace System {
+namespace Tasking {
+namespace Pool {
+
 /* All task instances go here */
-IMUUpdateTask imuUpdateTask;
-XBeeReadIdleTask xbeeReadIdleTask;
-StabilizationAndEngineUpdateTask stabilizationAndEngineUpdateTask;
+Radio::Digital::XBeeReadIdleTask xbeeReadIdleTask;
+Control::StabilizationAndEngineUpdateTask stabilizationAndEngineUpdateTask;
 
 /* All task instances end here */
 
 Task* const tasks[asIntegral<unsigned int>(TaskType::TASK_TYPE_COUNT)] = {
     [TaskType::StabilizationAndEngineUpdateTask] = &stabilizationAndEngineUpdateTask,    
-    [TaskType::IMUUpdateTask] = &imuUpdateTask,    
     [TaskType::XBeeReadIdleTask] = &xbeeReadIdleTask
 };
 
@@ -22,4 +23,6 @@ IdleTask*       const getIdleTask(TaskType type) { return static_cast<IdleTask* 
 ContinuousTask* const getContinuousTask(TaskType type) { return static_cast<ContinuousTask* const>(tasks[asIntegral<unsigned int>(type)]); }
 OneShotTask*    const getOneShotTask(TaskType type) { return static_cast<OneShotTask* const>(tasks[asIntegral<unsigned int>(type)]); }
 
+}
+}
 }

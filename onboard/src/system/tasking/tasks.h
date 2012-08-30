@@ -1,6 +1,11 @@
 #ifndef TASKS_HPP
 #define TASKS_HPP
 
+#include <system/devices.hpp>
+
+namespace System {
+namespace Tasking {
+
 class TaskScheduler;
 
 /* Task base class definition.
@@ -60,6 +65,8 @@ private:
 
     Task*	currentIdleTask;
 
+    constexpr static unsigned int MAX_TASK_INTERVAL_TICKS = 60 * CPU_FREQUENCY_HZ;
+
     /* No need for IDLE_QUEUE here, because this is only for the logic to delete task from the oneShotTasks queue */
     enum Queues { CONTINUOUS_QUEUE= 0, ONE_SHOT_QUEUE, QUEUES_COUNT };
 
@@ -89,5 +96,8 @@ public:
     /* Remove the task from queue and delete it (even if it is not in any queue) */
     void		removeTask(Task* t);
 };
+
+}
+}
 
 #endif

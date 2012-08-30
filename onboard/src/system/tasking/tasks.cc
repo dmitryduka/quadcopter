@@ -1,16 +1,18 @@
 #include "tasks.h"
-#include "ct-utility.hpp"
+#include <common/ct-utility.hpp>
+
+namespace System {
+namespace Tasking {
 
 Task::Task() : executeAt(0), interval(0), nextTask(0) { }
 void Task::start() {}
-
 
 TaskScheduler::TaskScheduler() : idleTasks(0), continuousTasks(0), oneShotTasks(0), currentIdleTask(0), nextTask {0, 0, 0} {}
 
 void TaskScheduler::start() {
     selectNextTask(0);
     forever {
-        unsigned int rtc = RTC();
+        unsigned int rtc = *RTC;
         /* Check if RTC value is equal or higher than nextTask' execution time,
         accounting that they could be on different sides of RTC overflow.
         MAX_TASK_INTERVAL_TICKS is defined in the devices.hpp and is 'once in a minute' */
@@ -119,7 +121,7 @@ void TaskScheduler::setNextTask(Task* t, Task* list) {
 void TaskScheduler::addTask(Task** list, Task* t, int delay) {
     t->setScheduler(this);
     t->interval = delay;
-    int rtc = RTC();
+    int rtc = *RTC;
     t->executeAt = rtc + delay;
     Task* last = *list;
     /* First task */
@@ -134,3 +136,5 @@ void TaskScheduler::addTask(Task** list, Task* t, int delay) {
     }
 }
 
+}
+}

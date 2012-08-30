@@ -1,6 +1,7 @@
 #ifndef MOVING_AVERAGE_HPP
 #define MOVING_AVERAGE_HPP
 
+namespace Math {
 /* N is window width, should be power of 2 */
 template<int N>
 class moving_average
@@ -27,5 +28,7 @@ private:
     int num_samples_;
     int total_;
 };
+
+}
 
 #endif

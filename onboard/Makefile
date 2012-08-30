@@ -14,13 +14,6 @@ RED = tput setaf 1; echo $(1); tput sgr0
 BLD = tput bold; echo -n $(1); tput sgr0
 CHECK = if test -e temp.errors; then $(call RED, $(1)) && cat temp.log; elif test -s temp.log; then $(call YLW, $(1)) && cat temp.log; else $(call GRN, '$(1) no warnings/errors'); fi;
 
-# Optimizing for speed is actually optimizing for size in our case
-STACK_SIZE = 2000
-CCOPTS =  -c -std=c++11 -G0 -I.
-CCOPTS += -Os 
-CCOPTS += -Wstack-usage=$(STACK_SIZE) 
-CCOPTS += -fno-threadsafe-statics -fpack-struct -fstack-usage -fno-strict-aliasing -fno-exceptions -fno-rtti
-LDOPTS = -nostdlib -nostartfiles -fwhole-program
 
 SRCDIR = src
 OBJDIR = obj
@@ -30,15 +23,26 @@ PROGRAM = main
 IMEMFILE = program.txt
 DMEMFILE = data.txt
 
-SRC_AS = $(wildcard $(SRCDIR)/*.S)
-SRC_CC = $(wildcard $(SRCDIR)/*.cc) $(wildcard $(SRCDIR)/*.cpp)
-SRC_C = $(wildcard $(SRCDIR)/*.c)
+SRC_ROOT = src
+DIRS := ${shell find ${SRC_ROOT} -type d -print}
+OUTPUTDIRS = $(patsubst src/%, obj/%, $(DIRS))
+SRC_AS = $(foreach dir, $(DIRS), $(wildcard $(dir)/*.S))
+SRC_CC = $(foreach dir, $(DIRS), $(wildcard $(dir)/*.cc) $(wildcard $(dir)/*.cpp))
+SRC_C = $(foreach dir, $(DIRS), $(wildcard $(dir)/*.c))
 
-OBJECTS = $(foreach file, $(SRC_AS), $(OBJDIR)/$(notdir $(file)).o)
-OBJECTS += $(foreach file, $(SRC_CC), $(OBJDIR)/$(notdir $(file)).o)
-OBJECTS += $(foreach file, $(SRC_C), $(OBJDIR)/$(notdir $(file)).o)
+SRC_TO_OBJ = $(foreach file, $(1), $(patsubst src/%, obj/%, $(dir $(file)))$(notdir $(file)).o)
+
+OBJECTS = $(call SRC_TO_OBJ, $(SRC_AS)) $(call SRC_TO_OBJ, $(SRC_C)) $(call SRC_TO_OBJ, $(SRC_CC))
 
 DEPS = $(wildcard $(OBJDIR)/*.d)
+
+STACK_SIZE = 2000
+INCLUDEDIRS = $(addprefix -I, $(DIRS))
+CCOPTS =  -c -std=c++11 -G0 $(INCLUDEDIRS)
+CCOPTS += -Os
+CCOPTS += -Wstack-usage=$(STACK_SIZE) 
+CCOPTS += -fno-threadsafe-statics -fpack-struct -fstack-usage -fno-strict-aliasing -fno-exceptions -fno-rtti
+LDOPTS = -nostdlib -nostartfiles -fwhole-program
 
 all: dirs $(IMEMFILE) $(DMEMFILE)
 
@@ -78,10 +82,9 @@ $(OBJDIR)/%.S.o: $(SRCDIR)/%.S
 	@$(call CHECK, $<:)
 	@-$(RM) -f temp.errors temp.log
 
-dirs: $(OBJDIR) $(LISTINGSDIR)
+dirs: $(OBJDIR) $(LISTINGSDIR) $(OUTPUTDIRS)
 
-$(OBJDIR) $(LISTINGSDIR):
-	@echo Creating directory $@
+$(OBJDIR) $(LISTINGSDIR) $(OUTPUTDIRS):
 	@mkdir -p $@
 
 clean:

@@ -1,27 +1,14 @@
-#include "ct-utility.hpp"
-#include "tasks.h"
-#include "task_pool.h"
+#include "common/ct-utility.hpp"
+#include "system/tasking/task_pool.h"
 
-namespace TP = TaskPool;
-
-static void led_startup() {
-    for (int i = 0; i < 8; ++i) {
-        leds(1 << i);
-        delay(200_ms);
-    }
-    for (int i = 0; i < 8; ++i) {
-        leds(0x80 >> i);
-        delay(200_ms);
-    }
-}
+namespace Tasks = System::Tasking::Pool;
 
 int main() {
-    led_startup();
-    mpu6050_init();
-    TaskScheduler scheduler;
+    /* TODO: init */
+    System::Tasking::TaskScheduler scheduler;
 
-    scheduler.addTask(TP::getIdleTask(TP::TaskType::XBeeReadIdleTask));
-    scheduler.addTask(TP::getContinuousTask(TP::TaskType::StabilizationAndEngineUpdateTask), 440_hz);
+    scheduler.addTask(Tasks::getIdleTask(Tasks::TaskType::XBeeReadIdleTask));
+    scheduler.addTask(Tasks::getContinuousTask(Tasks::TaskType::StabilizationAndEngineUpdateTask), 440_hz);
 
     /* Forever */
     scheduler.start();

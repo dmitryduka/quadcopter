@@ -1,7 +1,9 @@
 #ifndef MESSAGES_HPP
 #define MESSAGES_HPP
 
-#include "ct-utility.hpp"
+#include <common/ct-utility.hpp>
+
+namespace Radio {
 
 namespace Messages {
 
@@ -100,6 +102,8 @@ const EntryType handlers[asIntegral<unsigned char, To>(To::MESSAGES_COUNT) + 1] 
 
 #undef DEFINE_MESSAGE_HANDLER
 
-};
+}
+
+}
 
 #endif

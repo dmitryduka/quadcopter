@@ -1,3 +1,7 @@
+namespace Math {
+
+static int sign_extend(int halfword) { return  ((halfword & 0xFFFF) >> 15) ? (0xFFFF0000 | halfword) : halfword; }
+
 template<typename T> T max(T a, T b) { return a < b ? b : a; }
 
 unsigned int abs(int x) { return x < 0 ? -x : x; }
@@ -65,4 +69,6 @@ static unsigned char asin_lut[128] = { 0, 1, 3, 4, 5, 6, 8, 9, 10, 12, 13, 14, 1
 int arcsin(int P, int A) {
     int angle = asin_lut[(divide(P << 11, A) >> 4) & 0x7F];
     return P > 0 ? angle : -angle;
+}
+
 }

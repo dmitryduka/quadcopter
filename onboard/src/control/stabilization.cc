@@ -1,14 +1,15 @@
 #include "stabilization.h"
-#include "devices.hpp"
-#include "registry.hpp"
-#include "mpu6050.h"
+#include <system/devices.hpp>
+#include <system/registry.hpp>
+#include <sensors/imu/mpu6050.h>
+
+namespace Control {
 
 StabilizationAndEngineUpdateTask::StabilizationAndEngineUpdateTask() : ix(0), iy(0), ox(0), oy(0) {}
 
 /* Calculate all corrections and apply them to motors */
 void StabilizationAndEngineUpdateTask::start() {
-    /* Update IMU data */
-    IMUUpdateTask::update();
+    Sensors::IMU::MPU6050::updateAccelerometerAndGyro();
     /* Calculate engine corrections */
     horizontalStabilization();
     /* Also azimuth control here */
@@ -22,8 +23,8 @@ void StabilizationAndEngineUpdateTask::start() {
         E3 -= SystemRegistry::value(SystemRegistry::PID_CORRECTION_X);
         E4 += SystemRegistry::value(SystemRegistry::PID_CORRECTION_Y);
     }
-    eng_ctrl(E1, E3, ENGINES_13_ADDR);
-    eng_ctrl(E2, E4, ENGINES_24_ADDR);
+    *ENGINES_13_ADDR = ((E1 << 16) | E3);
+    *ENGINES_24_ADDR = ((E2 << 16) | E4);
 }
 
 /* PID-controller */
@@ -60,5 +61,7 @@ void StabilizationAndEngineUpdateTask::horizontalStabilization() {
     SystemRegistry::set(SystemRegistry::PID_CORRECTION_Y,	scale<Kp, 1024>(py) +
                         scale<Ki, 1024>(iy) +
                         scale<Kd, 1024>(dy));
+}
+
 }
 

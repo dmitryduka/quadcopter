@@ -1,11 +1,13 @@
 #ifndef STABILIZATION_HPP
 #define STABILIZATION_HPP
 
-#include "tasks.h"
+#include <system/tasking/tasks.h>
+
+namespace Control {
 
 /*  TODO: comments
     */
-class StabilizationAndEngineUpdateTask : public ContinuousTask {
+class StabilizationAndEngineUpdateTask : public System::Tasking::ContinuousTask {
 private:
     static constexpr unsigned int Kp = 160;
     static constexpr unsigned int Ki = 3;
@@ -23,5 +25,6 @@ public:
 
     void horizontalStabilization();
 };
+}
 #endif
 

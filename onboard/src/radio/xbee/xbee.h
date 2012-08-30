@@ -1,10 +1,13 @@
 #ifndef XBEE_H
 #define XBEE_H
 
-#include "tasks.h"
-#include "messages.hpp"
+#include <system/tasking/tasks.h>
+#include <radio/messages/messages.hpp>
 
-class XBeeReadIdleTask : public IdleTask {
+namespace Radio {
+namespace Digital {
+
+class XBeeReadIdleTask : public System::Tasking::IdleTask {
 private:
     char message_buffer[Messages::MAX_MESSAGE_LENGTH];
     unsigned int bytesSoFar;
@@ -13,6 +16,9 @@ public:
     XBeeReadIdleTask();
     void start();
 };
+
+}
+}
 
 #endif
 
