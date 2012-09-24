@@ -1,0 +1,4 @@
+main.cc:81:13:void print_hex(unsigned int)	24	static
+main.cc:92:13:void print_str(const char*)	24	static
+main.cc:98:9:float32 fast_sqrt(float32)	0	static
+main.cc:105:5:int main()	48	static

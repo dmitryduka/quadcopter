@@ -12,7 +12,7 @@ module imem ( input         CLK,
 //on altera cyclone-3 devices
 
               
-logic [31:0] RAM[0:1023];
+logic [31:0] RAM[0:8191];
 logic [31:0] read_reg_1, read_reg_2;
 
 initial
@@ -39,7 +39,7 @@ module dmem ( input        CLK,
               input [31:0] WD,
               output[31:0] RD );
 
-parameter D = 6;
+parameter D = 8;
               
 logic [3:0][7:0] RAM[0:2**D-1];
 logic [31:0] read_reg;

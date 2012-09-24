@@ -254,7 +254,7 @@ buffered_rx the_uart_rx( .CLK     ( CLK_CPU    ),
                          
 //=================SIMPLE REALTIME CLOCK=========================//
 
-rtc   the_rtc (      .CLK      ( CLK_1M   ),
+rtc   the_rtc (      .CLK      ( CLK_CPU  ), //CLK_1M?
                      .RESET    ( RESET    ),
                      .DATA_OUT ( RTC_RD   ) );
 
