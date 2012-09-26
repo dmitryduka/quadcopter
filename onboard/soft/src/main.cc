@@ -1,6 +1,7 @@
 #include <common/ct-utility.hpp>
 #include <system/tasking/task_pool.h>
 #include <system/util.h>
+#include <system/fp/float32.h>
 
 namespace Tasks = System::Tasking::Pool;
 

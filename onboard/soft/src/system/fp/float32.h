@@ -23,13 +23,23 @@ private:
     mutable float_type data;
 
 /* Numerous helper functions */
-    static flag		extractSign(float32);
-    static int16	extractExp(float32);
-    static bits32	extractFrac(float32);
-
+    static float_type   addSigs( float_type a, float_type b, flag zSign );
+    static float_type   subSigs( float_type a, float_type b, flag zSign );
+    static int8         countLeadingZeros32( bits32 a );
+    static void         shift32RightJamming(bits32 a, int16 count, bits32 *zPtr);
+    static flag         extractSign(float_type);
+    static int16        extractExp(float_type);
+    static bits32       extractFrac(float_type);
+    static void         normalizeSubnormal(bits32 aSig, int16 *zExpPtr, bits32 *zSigPtr);
+    static float_type   pack(flag zSign, int16 zExp, bits32 zSig);
+    static float_type   roundAndPack(flag zSign, int16 zExp, bits32 zSig);
+    static float_type   normalizeRoundAndPack(flag zSign, int16 zExp, bits32 zSig);
 public:
     float32();
+    float32(int);
     float32(const float32&);
+
+    float32& operator=(float32);
 
     float32 operator+(float32) const;
     float32 operator-(float32) const;
