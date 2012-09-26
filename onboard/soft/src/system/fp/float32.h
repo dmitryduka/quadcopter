@@ -4,9 +4,9 @@
 /* FreeBSD softfloat code as a class */
 class float32 {
 private:
-    typedef int flag;
-    typedef int uint8;
-    typedef int int8;
+    typedef bool flag;
+    typedef char uint8;
+    typedef char int8;
     typedef int uint16;
     typedef int int16;
     typedef unsigned int uint32;
