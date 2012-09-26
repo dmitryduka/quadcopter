@@ -6,22 +6,29 @@ ENTRY(_start)
 SEARCH_DIR("=/usr/local/lib"); SEARCH_DIR("=/lib"); SEARCH_DIR("=/usr/lib");
 MEMORY 
 {
-    imem (rx) : ORIGIN = 0, LENGTH = 32K
-    dmem (rw) : ORIGIN = 0x80000000, LENGTH = 1k
+    imem (rx) : ORIGIN = 0, LENGTH = 8K
+    dmem (rw) : ORIGIN = 0x80000000, LENGTH = 8K
 }
 SECTIONS
 {
+  /DISCARD/ : {
+    *(.jcr)
+    *(.jcr.*)
+    *(.eh_frame)
+    *(.eh_frame.*)
+  }
   .text : {
     *startup.o(.text)
+  } > imem
+  .text : {
     *(.text)
     *(.text.*)
-/*    . = LENGTH(imem);*/
+    CODE_ENDS = .;
+    . = LENGTH(imem);
   } > imem = 0
-  text_size = SIZEOF(.text);
   .data : {
     *(.rodata .rodata.* .gnu.linkonce.r.*)
     *(.data .data.* .gnu.linkonce.d.*)
-    SORT(CONSTRUCTORS)
     *(.sdata .sdata.* .gnu.linkonce.s.*)
     *(.dynsbss)
     *(.sbss .sbss.* .gnu.linkonce.sb.*)
@@ -29,6 +36,12 @@ SECTIONS
     *(.dynbss)
     *(.bss .bss.* .gnu.linkonce.b.*)
     *(COMMON)
-    . = LENGTH(dmem); 
+    CTORS_INIT = .;
+    KEEP(*(.ctors))
+    KEEP(*(.ctors.*))
+    *(.dtors)
+    *(.dtors.*)
+    DATA_ENDS = .;
+    . = LENGTH(dmem);
   } > dmem = 0
 }
