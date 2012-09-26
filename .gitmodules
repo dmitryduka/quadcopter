@@ -1,0 +1,3 @@
+[submodule "onboard"]
+	path = onboard
+	url = git://github.com/ineganov/flight_control.git
