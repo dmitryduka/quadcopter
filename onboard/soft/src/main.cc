@@ -6,11 +6,11 @@
 namespace Tasks = System::Tasking::Pool;
 
 int main() {
-    float32 a(1), b(1);
+    float32 a(1.234f), b(1.0f), c(3.0f), d(3.14159f);
     System::Util::init();
     System::Tasking::TaskScheduler scheduler;
 
-    volatile float32 c = a + b;
+    volatile float32 e = a * b + c - d;
     scheduler.addTask(static_cast<System::Tasking::IdleTask*>(Tasks::getTask(Tasks::TaskType::XBeeReadIdleTask)));
     scheduler.addTask(static_cast<System::Tasking::ContinuousTask*>(Tasks::getTask(Tasks::TaskType::StabilizationAndEngineUpdateTask)), 440_hz);
 

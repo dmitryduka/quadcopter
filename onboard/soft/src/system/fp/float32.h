@@ -11,6 +11,8 @@ private:
     typedef int int16;
     typedef unsigned int uint32;
     typedef signed int int32;
+    typedef long long int64;
+    typedef unsigned long long uint64;
 
     typedef unsigned char bits8;
     typedef signed char sbits8;
@@ -18,6 +20,8 @@ private:
     typedef signed short int sbits16;
     typedef unsigned int bits32;
     typedef signed int sbits32;
+    typedef unsigned long long bits64;
+    typedef long long sbits64;
 
     typedef unsigned int float_type;
     mutable float_type data;
@@ -36,9 +40,11 @@ private:
     static float_type   normalizeRoundAndPack(flag zSign, int16 zExp, bits32 zSig);
 public:
     float32();
-    float32(int);
+    explicit float32(float);
+    explicit float32(int);
     float32(const float32&);
 
+    float32& operator=(float);
     float32& operator=(float32);
 
     float32 operator+(float32) const;
@@ -58,6 +64,7 @@ public:
     bool operator<=(float32) const;
 
     operator int() const;
+    operator float() const;
 };
 
 #endif

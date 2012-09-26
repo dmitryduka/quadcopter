@@ -4,6 +4,8 @@
 
 float32::float32() : data(0) {}
 
+float32::float32(float a) { data = *reinterpret_cast<float_type*>(&a); }
+
 float32::float32(int a) {
     flag zSign;
 
@@ -22,6 +24,7 @@ float32::float32(int a) {
 float32::float32(const float32& other) : data(other.data) {}
 
 float32 float32::operator+(float32 other) const {
+    float32 result;
     flag aSign, bSign;
     float_type a = data;
     float_type b = other.data;
@@ -29,14 +32,16 @@ float32 float32::operator+(float32 other) const {
     aSign = extractSign( data );
     bSign = extractSign( other.data );
     if (aSign == bSign) {
-        return addSigs( data, other.data, aSign );
+        result.data = addSigs( data, other.data, aSign );
     }
     else {
-        return subSigs( data, other.data, aSign );
+        result.data = subSigs( data, other.data, aSign );
     }
+    return result;
 }
 
 float32 float32::operator-(float32 other) const {
+    float32 result;
     flag aSign, bSign;
     float_type a = data;
     float_type b = other.data;
@@ -44,24 +49,140 @@ float32 float32::operator-(float32 other) const {
     aSign = extractSign( a );
     bSign = extractSign( b );
     if ( aSign == bSign ) {
-        return subSigs( a, b, aSign );
+        result.data = subSigs( a, b, aSign );
     }
     else {
-        return addSigs( a, b, aSign );
+        result.data = addSigs( a, b, aSign );
     }
+    return result;
 }
 
-float32 float32::operator*(float32) const {
+float32 float32::operator*(float32 other) const {
     float32 result;
+    float_type a = data;
+    float_type b = other.data;
+    flag aSign, bSign, zSign;
+    int16 aExp, bExp, zExp;
+    bits32 aSig, bSig;
+
+    aSig = extractFrac(a);
+    aExp = extractExp(a);
+    aSign = extractSign(a);
+    bSig = extractFrac(b);
+    bExp = extractExp(b);
+    bSign = extractSign(b);
+    zSign = aSign ^ bSign;
+    if ( aExp == 0xFF ) {
+        if ( ( bExp | bSig ) == 0 ) {
+            result.data = float32_default_nan;
+            return result;
+        }
+        result.data = pack( zSign, 0xFF, 0 );
+        return result;
+    }
+    if ( bExp == 0xFF ) {
+        if ( ( aExp | aSig ) == 0 ) {
+            result.data = float32_default_nan;
+        }
+        result.data = pack(zSign, 0xFF, 0);
+        return result;
+    }
+    if ( aExp == 0 ) {
+        if ( aSig == 0 ) {
+    	    result.data = pack( zSign, 0, 0 );
+    	    return result;
+    	}
+        normalizeSubnormal(aSig, &aExp, &aSig);
+    }
+    if ( bExp == 0 ) {
+        if ( bSig == 0 ) {
+    	    result.data = pack(zSign, 0, 0);
+    	    return result;
+    	}
+        normalizeSubnormal(bSig, &bExp, &bSig);
+    }
+    zExp = aExp + bExp - 0x7F;
+    aSig = ( aSig | 0x00800000 ) << 7;
+    bSig = ( bSig | 0x00800000 ) << 8;
+    bits64 zSig = (bits64)aSig * (bits64)bSig;
+    bits32 zSig1 = (bits32)zSig;
+    bits32 zSig0 = (zSig >> 32);
+    zSig0 |= ( zSig1 != 0 );
+    if ( 0 <= (sbits32) ( zSig0 << 1 ) ) {
+        zSig0 <<= 1;
+        --zExp;
+    }
+    result.data = roundAndPack( zSign, zExp, zSig0 );
     return result;
 }
 
 float32 float32::operator/(float32) const {
+/*
+    flag aSign, bSign, zSign;
+    int16 aExp, bExp, zExp;
+    bits32 aSig, bSig, zSig, rem0, rem1, term0, term1;
+
+    aSig = extractFloat32Frac( a );
+    aExp = extractFloat32Exp( a );
+    aSign = extractFloat32Sign( a );
+    bSig = extractFloat32Frac( b );
+    bExp = extractFloat32Exp( b );
+    bSign = extractFloat32Sign( b );
+    zSign = aSign ^ bSign;
+    if ( aExp == 0xFF ) {
+        if ( aSig ) return propagateFloat32NaN( a, b );
+        if ( bExp == 0xFF ) {
+            if ( bSig ) return propagateFloat32NaN( a, b );
+            float_raise( float_flag_invalid );
+            return float32_default_nan;
+        }
+        return packFloat32( zSign, 0xFF, 0 );
+    }
+    if ( bExp == 0xFF ) {
+        if ( bSig ) return propagateFloat32NaN( a, b );
+        return packFloat32( zSign, 0, 0 );
+    }
+    if ( bExp == 0 ) {
+        if ( bSig == 0 ) {
+            if ( ( aExp | aSig ) == 0 ) {
+                float_raise( float_flag_invalid );
+                return float32_default_nan;
+            }
+            float_raise( float_flag_divbyzero );
+            return packFloat32( zSign, 0xFF, 0 );
+        }
+        normalizeFloat32Subnormal( bSig, &bExp, &bSig );
+    }
+    if ( aExp == 0 ) {
+        if ( aSig == 0 ) return packFloat32( zSign, 0, 0 );
+        normalizeFloat32Subnormal( aSig, &aExp, &aSig );
+    }
+    zExp = aExp - bExp + 0x7D;
+    aSig = ( aSig | 0x00800000 )<<7;
+    bSig = ( bSig | 0x00800000 )<<8;
+    if ( bSig <= ( aSig + aSig ) ) {
+        aSig >>= 1;
+        ++zExp;
+    }
+    zSig = estimateDiv64To32( aSig, 0, bSig );
+    if ( ( zSig & 0x3F ) <= 2 ) {
+        mul32To64( bSig, zSig, &term0, &term1 );
+        sub64( aSig, 0, term0, term1, &rem0, &rem1 );
+        while ( (sbits32) rem0 < 0 ) {
+            --zSig;
+            add64( rem0, rem1, 0, bSig, &rem0, &rem1 );
+        }
+        zSig |= ( rem1 != 0 );
+    }
+    return roundAndPackFloat32( zSign, zExp, zSig );
+
+*/
     float32 result;
     return result;
 }
 
 float32& float32::operator=(float32 other) { data = other.data; return *this; }
+float32& float32::operator=(float other) { return *this = float32(other); }
 
 float32& float32::operator+=(float32 other) { return *this = this->operator+(other); }
 float32& float32::operator-=(float32 other) { return *this = this->operator-(other); }
@@ -82,11 +203,11 @@ bool float32::operator>(float32 other) const { return !this->operator<=(other); 
 
 bool float32::operator<(float32 other) const {
     flag aSign, bSign;
-	float_type a = data;
-	float_type b = other.data;
+    float_type a = data;
+    float_type b = other.data;
 
-	if (((extractExp(a) == 0xFF) && extractFrac(a)) || 
-		((extractExp(b) == 0xFF) && extractFrac(b))) return 0;
+    if (((extractExp(a) == 0xFF) && extractFrac(a)) || 
+	((extractExp(b) == 0xFF) && extractFrac(b))) return 0;
     aSign = extractSign( a );
     bSign = extractSign( b );
     if ( aSign != bSign ) return aSign && ( (bits32) ( ( a | b )<<1 ) != 0 );
@@ -108,8 +229,12 @@ bool float32::operator<=(float32 other) const {
     return ( a == b ) || ( aSign ^ ( a < b ) );	
 }
 
+float32::operator float() const {
+    return *reinterpret_cast<float*>(&data);
+}
+
 float32::operator int() const {
-	flag aSign;
+    flag aSign;
     int16 aExp, shiftCount;
     bits32 aSig, aSigExtra;
     int32 z;
@@ -146,7 +271,7 @@ float32::operator int() const {
         }
         if ( aSign ) z = - z;
     }
-    return z;	
+    return z;
 }
 
 /*
@@ -465,6 +590,4 @@ float32::float_type float32::normalizeRoundAndPack(flag zSign, int16 zExp, bits3
     shiftCount = countLeadingZeros32(zSig) - 1;
     return roundAndPack(zSign, zExp - shiftCount, zSig << shiftCount);
 }
-
-
 

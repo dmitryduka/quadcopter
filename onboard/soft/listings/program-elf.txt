@@ -28,8 +28,8 @@ Section Headers:
   [ 4] .comment          PROGBITS        00000000 009818 00003c 01  MS  0   0  1
   [ 5] .gnu.attributes   LOOS+ffffff5    00000000 009854 000010 00      0   0  1
   [ 6] .shstrtab         STRTAB          00000000 009864 000049 00      0   0  1
-  [ 7] .symtab           SYMTAB          00000000 009a18 000270 10      8  34  4
-  [ 8] .strtab           STRTAB          00000000 009c88 000525 00      0   0  1
+  [ 7] .symtab           SYMTAB          00000000 009a18 0002a0 10      8  37  4
+  [ 8] .strtab           STRTAB          00000000 009cb8 000568 00      0   0  1
 Key to Flags:
   W (write), A (alloc), X (execute), M (merge), S (strings)
   I (info), L (link order), G (group), T (TLS), E (exclude), x (unknown)
@@ -53,7 +53,7 @@ There are no relocations in this file.
 
 There are no unwind sections in this file.
 
-Symbol table '.symtab' contains 39 entries:
+Symbol table '.symtab' contains 42 entries:
    Num:    Value  Size Type    Bind   Vis      Ndx Name
      0: 00000000     0 NOTYPE  LOCAL  DEFAULT  UND 
      1: 00000000     0 SECTION LOCAL  DEFAULT    1 
@@ -61,7 +61,7 @@ Symbol table '.symtab' contains 39 entries:
      3: 00000000     0 SECTION LOCAL  DEFAULT    3 
      4: 00000000     0 SECTION LOCAL  DEFAULT    4 
      5: 00000000     0 SECTION LOCAL  DEFAULT    5 
-     6: 00000000     0 FILE    LOCAL  DEFAULT  ABS ccTKtb6Y.ltrans0.o
+     6: 00000000     0 FILE    LOCAL  DEFAULT  ABS ccHZniBa.ltrans0.o
      7: 00000020    60 FUNC    LOCAL  DEFAULT    1 _ZN6System8Registry8insta
      8: 80000148     8 OBJECT  LOCAL  DEFAULT    2 _ZGVZN6System8Registry8in
      9: 80000150    84 OBJECT  LOCAL  DEFAULT    2 _ZZN6System8Registry8inst
@@ -70,30 +70,33 @@ Symbol table '.symtab' contains 39 entries:
     12: 00000154     8 FUNC    LOCAL  DEFAULT    1 _ZN6System7Tasking4Task5s
     13: 0000015c    48 FUNC    LOCAL  DEFAULT    1 _ZN7float3219shift32Right
     14: 0000018c   188 FUNC    LOCAL  DEFAULT    1 _ZN7float3212roundAndPack
-    15: 00000248   108 FUNC    LOCAL  DEFAULT    1 _ZN7float3221normalizeRou
-    16: 80000048   256 OBJECT  LOCAL  DEFAULT    2 _ZZN7float3219countLeadin
-    17: 000002b4    64 FUNC    LOCAL  DEFAULT    1 _ZN7float32C2Ei.part.0.17
-    18: 000002f4   728 FUNC    LOCAL  DEFAULT    1 _ZNK7float32plES_.1501
-    19: 000005cc   176 FUNC    LOCAL  DEFAULT    1 _ZN5Radio7Digital16XBeeRe
-    20: 8000002c    25 OBJECT  LOCAL  DEFAULT    2 _ZN5Radio8MessagesL8handl
-    21: 0000067c    36 FUNC    LOCAL  DEFAULT    1 _ZN6System3Bus3I2C4stopEv
-    22: 000006a0    36 FUNC    LOCAL  DEFAULT    1 _ZN6System3Bus3I2C5startE
-    23: 000006c4    40 FUNC    LOCAL  DEFAULT    1 _ZN6System3Bus3I2CL2ioEcN
-    24: 000006ec    72 FUNC    LOCAL  DEFAULT    1 _ZN7Sensors3IMU7MPU6050L1
-    25: 00000734    36 FUNC    LOCAL  DEFAULT    1 _ZN6System3Bus3I2C4readEv
-    26: 00000758   984 FUNC    LOCAL  DEFAULT    1 _ZN7Control32Stabilizatio
-    27: 00000b30     8 FUNC    LOCAL  DEFAULT    1 _ZN5Radio8Messages14defau
-    28: 00000b38   100 FUNC    LOCAL  DEFAULT    1 _GLOBAL__sub_I__ZN6System
-    29: 80000020    12 OBJECT  LOCAL  DEFAULT    2 _ZTVN5Radio7Digital16XBee
-    30: 800001a4    61 OBJECT  LOCAL  DEFAULT    2 _ZN6System7Tasking4Pool16
-    31: 800001e4    36 OBJECT  LOCAL  DEFAULT    2 _ZN6System7Tasking4Pool32
-    32: 80000000    12 OBJECT  LOCAL  DEFAULT    2 _ZTVN7Control32Stabilizat
-    33: 80000010    12 OBJECT  LOCAL  DEFAULT    2 _ZTVN6System7Tasking4Task
-    34: 00000f44     0 NOTYPE  GLOBAL DEFAULT    1 CODE_ENDS
-    35: 80000208     0 NOTYPE  GLOBAL DEFAULT    2 CTORS_INIT
-    36: 00000000     0 OBJECT  GLOBAL DEFAULT    1 _start
-    37: 00000b9c   936 FUNC    GLOBAL DEFAULT    1 main
-    38: 8000020c     0 NOTYPE  GLOBAL DEFAULT    2 DATA_ENDS
+    15: 00000248   360 FUNC    LOCAL  DEFAULT    1 _ZN7float327addSigsEjjb.1
+    16: 000003b0    92 FUNC    LOCAL  DEFAULT    1 _ZN7float3219countLeading
+    17: 80000048   256 OBJECT  LOCAL  DEFAULT    2 _ZZN7float3219countLeadin
+    18: 0000040c   400 FUNC    LOCAL  DEFAULT    1 _ZNK7float32mlES_.1504
+    19: 0000059c   408 FUNC    LOCAL  DEFAULT    1 _ZN7float327subSigsEjjb.1
+    20: 00000734   116 FUNC    LOCAL  DEFAULT    1 _ZNK7float32plES_.1572
+    21: 000007a8   116 FUNC    LOCAL  DEFAULT    1 _ZNK7float32miES_.1576
+    22: 0000081c   176 FUNC    LOCAL  DEFAULT    1 _ZN5Radio7Digital16XBeeRe
+    23: 8000002c    25 OBJECT  LOCAL  DEFAULT    2 _ZN5Radio8MessagesL8handl
+    24: 000008cc    36 FUNC    LOCAL  DEFAULT    1 _ZN6System3Bus3I2C4stopEv
+    25: 000008f0    36 FUNC    LOCAL  DEFAULT    1 _ZN6System3Bus3I2C5startE
+    26: 00000914    40 FUNC    LOCAL  DEFAULT    1 _ZN6System3Bus3I2CL2ioEcN
+    27: 0000093c    72 FUNC    LOCAL  DEFAULT    1 _ZN7Sensors3IMU7MPU6050L1
+    28: 00000984    36 FUNC    LOCAL  DEFAULT    1 _ZN6System3Bus3I2C4readEv
+    29: 000009a8   984 FUNC    LOCAL  DEFAULT    1 _ZN7Control32Stabilizatio
+    30: 00000d80     8 FUNC    LOCAL  DEFAULT    1 _ZN5Radio8Messages14defau
+    31: 00000d88   100 FUNC    LOCAL  DEFAULT    1 _GLOBAL__sub_I__ZN6System
+    32: 80000020    12 OBJECT  LOCAL  DEFAULT    2 _ZTVN5Radio7Digital16XBee
+    33: 800001a4    61 OBJECT  LOCAL  DEFAULT    2 _ZN6System7Tasking4Pool16
+    34: 800001e4    36 OBJECT  LOCAL  DEFAULT    2 _ZN6System7Tasking4Pool32
+    35: 80000000    12 OBJECT  LOCAL  DEFAULT    2 _ZTVN7Control32Stabilizat
+    36: 80000010    12 OBJECT  LOCAL  DEFAULT    2 _ZTVN6System7Tasking4Task
+    37: 000011bc     0 NOTYPE  GLOBAL DEFAULT    1 CODE_ENDS
+    38: 80000208     0 NOTYPE  GLOBAL DEFAULT    2 CTORS_INIT
+    39: 00000000     0 OBJECT  GLOBAL DEFAULT    1 _start
+    40: 00000dec   976 FUNC    GLOBAL DEFAULT    1 main
+    41: 8000020c     0 NOTYPE  GLOBAL DEFAULT    2 DATA_ENDS
 
 No version information found in this file.
 Attribute Section: gnu

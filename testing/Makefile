@@ -1,6 +1,6 @@
-CC = g++-4.7 -std=c++11 -c
+CC = g++-4.7 -std=c++11 -g3 -c
 LD = g++-4.7
-CCSOURCES = main.cc memmgr.cc
+CCSOURCES = main.cc float32.cc
 OBJECTS += $(CCSOURCES:.cc=.o)
 OBJECTS += $(CSOURCES:.c=.o)
 

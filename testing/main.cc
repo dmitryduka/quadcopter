@@ -1,35 +1,19 @@
-#include <sys/types.h>
-#include "memmgr.h"
-#include "registry.hpp"
-#include "ct-utility.hpp"
-#include "devices.hpp"
-#include "tasks.hpp"
-#include "messages.hpp"
+#include <iostream>
 
-//===============FUNCTION DEFINITIONS==================//
+#include "float32.h"
 
-static void led_startup() {
-    for (int i = 0; i < 8; ++i) {
-        leds(1 << i);
-        delay(200ms);
-    }
-    for (int i = 0; i < 8; ++i) {
-        leds(0x80 >> i);
-        delay(200ms);
-    }
+template<typename T>
+float check(T a, T b, T c, T d, T e) { 
+    T result = a * b + c * d - e * d * d * d * d * d * d;
+    return *reinterpret_cast<float*>(&result);
 }
 
 //=================== MAIN==============================//
 int main() {
-    led_startup();
-    mpu6050_init();
-    TaskScheduler scheduler;
-
-    scheduler.addTask(new XBeeReadIdleTask);
-    scheduler.addTask(new StabilizationAndEngineUpdateTask, 440hz);
-
-    /* Forever */
-    scheduler.start();
+    float a = 1.02f, b = 2.02f, c = 3.02f, d = 5.02f, e = 0.01f;
+    float32 a1(a), b1(b), c1(c), d1(d), e1(e);
+    std::cout << "float : "<< check(a, b, c, d, e) << std::endl;
+    std::cout << "float32 : "<< check(a1, b1, c1, d1, e1) << std::endl;
 }
 
 //=====================================================//
