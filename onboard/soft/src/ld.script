@@ -6,8 +6,8 @@ ENTRY(_start)
 SEARCH_DIR("=/usr/local/lib"); SEARCH_DIR("=/lib"); SEARCH_DIR("=/usr/lib");
 MEMORY 
 {
-    imem (rx) : ORIGIN = 0, LENGTH = 8K
-    dmem (rw) : ORIGIN = 0x80000000, LENGTH = 8K
+    imem (rx) : ORIGIN = 0, LENGTH = 32K
+    dmem (rw) : ORIGIN = 0x80000000, LENGTH = 2K
 }
 SECTIONS
 {
