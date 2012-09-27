@@ -4,7 +4,7 @@
 
 template<typename T>
 float check(T a, T b, T c, T d, T e) { 
-    T result = a * b + c * d - e * d * d * d * d * d * d;
+    T result = a * b + c * d - e * d * d * d * d * d * d - a / e;
     return *reinterpret_cast<float*>(&result);
 }
 

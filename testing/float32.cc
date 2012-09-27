@@ -1,4 +1,4 @@
-#include <common/math/maths.hpp>
+#include "maths.hpp"
 #include "float32.h"
 
 #define float32_default_nan 0xFFFFFFFF

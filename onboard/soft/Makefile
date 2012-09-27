@@ -42,7 +42,7 @@ CCOPTS =  -c -std=c++11 -G0 $(INCLUDEDIRS)
 CCOPTS += -Os
 CCOPTS += -Wstack-usage=$(STACK_SIZE) 
 CCOPTS += -flto -fdata-sections -ffunction-sections -fno-threadsafe-statics -fpack-struct -fstack-usage -fno-strict-aliasing -fno-exceptions -fno-rtti
-LDOPTS = -Os -flto -Wl,--gc-sections -nostdlib -nostartfiles -fwhole-program
+LDOPTS = -Os -flto -Wl,--gc-sections -nostdlib -nostartfiles -fwhole-program -lgcc
 
 all: dirs $(IMEMFILE) $(DMEMFILE)
 
