@@ -3,6 +3,7 @@
 #include <radio/xbee/xbee.h>
 #include <sensors/imu/mpu6050.h>
 #include <control/stabilization.h>
+#include <control/marg.h>
 
 namespace System {
 namespace Tasking {

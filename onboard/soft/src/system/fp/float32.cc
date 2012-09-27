@@ -645,3 +645,26 @@ float32::bits32 float32::estimateDiv64To32( bits32 a0, bits32 a1, bits32 b )
     return z;
 }
 
+/* operators to support builtin float */
+float32 operator+(float a, float32 b) {  return float32(a) + b; }
+float32 operator-(float a, float32 b) {  return float32(a) - b; }
+float32 operator*(float a, float32 b) {  return float32(a) * b; }
+float32 operator/(float a, float32 b) {  return float32(a) / b; }
+
+/* Math functions for the float32 type */
+
+/* Quake3 sqrt implementation */
+float32 sqrt(float32 x) {
+#define SQRT_MAGIC_F 0x5f3759df 
+    const float32 xhalf = 0.5f * x;
+    union // get bits for floating value
+    {
+	float x;
+	int i;
+    } u;
+    u.x = x;
+    u.i = SQRT_MAGIC_F - (u.i >> 1);  // gives initial guess y0
+    return float32(x) * u.x * (1.5f - xhalf * u.x * u.x);// Newton step, repeating increases accuracy 
+}
+
+

@@ -57,6 +57,15 @@ public:
     float32& operator*=(float32);
     float32& operator/=(float32);
 
+    inline float32 operator+(float x) const { return this->operator+(float32(x)); }
+    inline float32 operator-(float x) const { return this->operator-(float32(x)); }
+    inline float32 operator*(float x) const { return this->operator*(float32(x)); }
+    inline float32 operator/(float x) const { return this->operator/(float32(x)); }
+    inline float32& operator+=(float x) { return this->operator+=(float32(x)); }
+    inline float32& operator-=(float x) { return this->operator-=(float32(x)); }
+    inline float32& operator*=(float x) { return this->operator*=(float32(x)); }
+    inline float32& operator/=(float x) { return this->operator/=(float32(x)); };
+
     bool operator==(float32) const;
     bool operator!=(float32) const;
     bool operator>(float32) const;
@@ -64,8 +73,25 @@ public:
     bool operator>=(float32) const;
     bool operator<=(float32) const;
 
+    inline bool operator==(float x) const { return this->operator==(float32(x)); }
+    inline bool operator!=(float x) const { return this->operator!=(float32(x)); }
+    inline bool operator>(float x) const { return this->operator>(float32(x)); }
+    inline bool operator<(float x) const { return this->operator<(float32(x)); }
+    inline bool operator>=(float x) const { return this->operator>=(float32(x)); }
+    inline bool operator<=(float x) const { return this->operator<=(float32(x)); }
+
     operator int() const;
     operator float() const;
 };
+
+/* Global operators to support builtin float */
+float32 operator+(float, float32);
+float32 operator-(float, float32);
+float32 operator*(float, float32);
+float32 operator/(float, float32);
+
+/* Math functions for the float32 type */
+float32 sqrt(float32);
+
 
 #endif
