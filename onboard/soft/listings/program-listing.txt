@@ -2014,12 +2014,12 @@ Disassembly of section .text:
 00001eac <_ZN6System3Bus3I2CL2ioEcNS1_6IoTypeE.isra.0.1701>:
     1eac:	3c020002 	lui	v0,0x2
     1eb0:	00822025 	or	a0,a0,v0
-    1eb4:	ac04001c 	sw	a0,28(zero)
-    1eb8:	8c02001c 	lw	v0,28(zero)
+    1eb4:	ac04000c 	sw	a0,12(zero)
+    1eb8:	8c02000c 	lw	v0,12(zero)
     1ebc:	00000000 	nop
     1ec0:	0440fffd 	bltz	v0,1eb8 <_ZN6System3Bus3I2CL2ioEcNS1_6IoTypeE.isra.0.1701+0xc>
     1ec4:	00000000 	nop
-    1ec8:	8c02001c 	lw	v0,28(zero)
+    1ec8:	8c02000c 	lw	v0,12(zero)
     1ecc:	03e00008 	jr	ra
     1ed0:	00000000 	nop
 
@@ -2049,8 +2049,8 @@ Disassembly of section .text:
     1f24:	afb10024 	sw	s1,36(sp)
     1f28:	afb00020 	sw	s0,32(sp)
     1f2c:	0080b021 	move	s6,a0
-    1f30:	ac02001c 	sw	v0,28(zero)
-    1f34:	8c02001c 	lw	v0,28(zero)
+    1f30:	ac02000c 	sw	v0,12(zero)
+    1f34:	8c02000c 	lw	v0,12(zero)
     1f38:	00000000 	nop
     1f3c:	0440fffd 	bltz	v0,1f34 <_ZN7Control32StabilizationAndEngineUpdateTask5startEv.1442+0x3c>
     1f40:	00000000 	nop
@@ -2060,14 +2060,14 @@ Disassembly of section .text:
     1f50:	2404003b 	li	a0,59
     1f54:	3c020001 	lui	v0,0x1
     1f58:	244200ff 	addiu	v0,v0,255
-    1f5c:	ac02001c 	sw	v0,28(zero)
-    1f60:	8c02001c 	lw	v0,28(zero)
+    1f5c:	ac02000c 	sw	v0,12(zero)
+    1f60:	8c02000c 	lw	v0,12(zero)
     1f64:	00000000 	nop
     1f68:	0440fffd 	bltz	v0,1f60 <_ZN7Control32StabilizationAndEngineUpdateTask5startEv.1442+0x68>
     1f6c:	3c020004 	lui	v0,0x4
     1f70:	244200ff 	addiu	v0,v0,255
-    1f74:	ac02001c 	sw	v0,28(zero)
-    1f78:	8c02001c 	lw	v0,28(zero)
+    1f74:	ac02000c 	sw	v0,12(zero)
+    1f78:	8c02000c 	lw	v0,12(zero)
     1f7c:	00000000 	nop
     1f80:	0440fffd 	bltz	v0,1f78 <_ZN7Control32StabilizationAndEngineUpdateTask5startEv.1442+0x80>
     1f84:	00000000 	nop
@@ -2106,8 +2106,8 @@ Disassembly of section .text:
     2008:	244200ff 	addiu	v0,v0,255
     200c:	8fa50018 	lw	a1,24(sp)
     2010:	8fa40014 	lw	a0,20(sp)
-    2014:	ac02001c 	sw	v0,28(zero)
-    2018:	8c02001c 	lw	v0,28(zero)
+    2014:	ac02000c 	sw	v0,12(zero)
+    2018:	8c02000c 	lw	v0,12(zero)
     201c:	00000000 	nop
     2020:	0440fffd 	bltz	v0,2018 <_ZN7Control32StabilizationAndEngineUpdateTask5startEv.1442+0x120>
     2024:	00000000 	nop
@@ -2291,9 +2291,9 @@ Disassembly of section .text:
     22ec:	8fbf0044 	lw	ra,68(sp)
     22f0:	02729025 	or	s2,s3,s2
     22f4:	02308025 	or	s0,s1,s0
-    22f8:	ac120010 	sw	s2,16(zero)
+    22f8:	ac120040 	sw	s2,64(zero)
     22fc:	8fbe0040 	lw	s8,64(sp)
-    2300:	ac100014 	sw	s0,20(zero)
+    2300:	ac100044 	sw	s0,68(zero)
     2304:	8fb7003c 	lw	s7,60(sp)
     2308:	8fb60038 	lw	s6,56(sp)
     230c:	8fb50034 	lw	s5,52(sp)

@@ -12,7 +12,7 @@ TaskScheduler::TaskScheduler() : idleTasks(0), continuousTasks(0), oneShotTasks(
 void TaskScheduler::start() {
     selectNextTask(0);
     forever {
-        unsigned int rtc = *RTC;
+        unsigned int rtc = *DEV_RTC;
         /* Check if RTC value is equal or higher than nextTask' execution time,
         accounting that they could be on different sides of RTC overflow.
         MAX_TASK_INTERVAL_TICKS is defined in the devices.hpp and is 'once in a minute' */
@@ -121,7 +121,7 @@ void TaskScheduler::setNextTask(Task* t, Task* list) {
 void TaskScheduler::addTask(Task** list, Task* t, int delay) {
     t->setScheduler(this);
     t->interval = delay;
-    int rtc = *RTC;
+    int rtc = *DEV_RTC;
     t->executeAt = rtc + delay;
     Task* last = *list;
     /* First task */

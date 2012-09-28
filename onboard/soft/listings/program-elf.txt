@@ -75,8 +75,8 @@ Symbol table '.symtab' contains 63 entries:
     10: 00000000     0 SECTION LOCAL  DEFAULT   10 
     11: 00000000     0 SECTION LOCAL  DEFAULT   11 
     12: 00000000     0 SECTION LOCAL  DEFAULT   12 
-    13: 00000000     0 FILE    LOCAL  DEFAULT  ABS cc7SCEsr.ltrans0.o
-    14: 00000000     0 FILE    LOCAL  DEFAULT  ABS cc7SCEsr.ltrans1.o
+    13: 00000000     0 FILE    LOCAL  DEFAULT  ABS ccEYODbj.ltrans0.o
+    14: 00000000     0 FILE    LOCAL  DEFAULT  ABS ccEYODbj.ltrans1.o
     15: 00001210    48 FUNC    LOCAL  DEFAULT    1 _ZN7float3219shift32Right
     16: 00001240   188 FUNC    LOCAL  DEFAULT    1 _ZN7float3212roundAndPack
     17: 000012fc   360 FUNC    LOCAL  DEFAULT    1 _ZN7float327addSigsEjjb.1
@@ -89,7 +89,7 @@ Symbol table '.symtab' contains 63 entries:
     24: 000017b4     8 FUNC    LOCAL  DEFAULT    1 _ZN5Radio8Messages14defau
     25: 80000150     8 OBJECT  LOCAL  DEFAULT    2 _ZGVZN6System8Registry8in
     26: 80000158    84 OBJECT  LOCAL  DEFAULT    2 _ZZN6System8Registry8inst
-    27: 00000000     0 FILE    LOCAL  DEFAULT  ABS cc7SCEsr.ltrans2.o
+    27: 00000000     0 FILE    LOCAL  DEFAULT  ABS ccEYODbj.ltrans2.o
     28: 00001ef8  1076 FUNC    LOCAL  DEFAULT    1 _ZN7Control32Stabilizatio
     29: 00002374   196 FUNC    LOCAL  DEFAULT    1 _GLOBAL__I_65535_0__ZN6Sy
     30: 80000140    12 OBJECT  LOCAL  DEFAULT    2 _ZTVN5Radio7Digital16XBee
