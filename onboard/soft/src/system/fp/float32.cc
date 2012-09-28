@@ -3,7 +3,7 @@
 
 #define float32_default_nan 0xFFFFFFFF
 
-float32::float32() : data(0) {}
+float32::float32() {}
 
 float32::float32(float a) { data = *reinterpret_cast<float_type*>(&a); }
 
@@ -24,7 +24,7 @@ float32::float32(int a) {
 
 float32::float32(const float32& other) : data(other.data) {}
 
-float32 float32::operator+(float32 other) const {
+const float32 float32::operator+(const float32& other) const {
     float32 result;
     flag aSign, bSign;
     float_type a = data;
@@ -41,7 +41,7 @@ float32 float32::operator+(float32 other) const {
     return result;
 }
 
-float32 float32::operator-(float32 other) const {
+const float32 float32::operator-(const float32& other) const {
     float32 result;
     flag aSign, bSign;
     float_type a = data;
@@ -58,7 +58,7 @@ float32 float32::operator-(float32 other) const {
     return result;
 }
 
-float32 float32::operator*(float32 other) const {
+const float32 float32::operator*(const float32& other) const {
     float32 result;
     float_type a = data;
     float_type b = other.data;
@@ -117,7 +117,7 @@ float32 float32::operator*(float32 other) const {
     return result;
 }
 
-float32 float32::operator/(float32 other) const {
+const float32 float32::operator/(const float32& other) const {
     float32 result;
     float_type a = data;
     float_type b = other.data;
@@ -193,15 +193,15 @@ float32 float32::operator/(float32 other) const {
     return result;
 }
 
-float32& float32::operator=(float32 other) { data = other.data; return *this; }
+float32& float32::operator=(const float32& other) { data = other.data; return *this; }
 float32& float32::operator=(float other) { return *this = float32(other); }
 
-float32& float32::operator+=(float32 other) { return *this = this->operator+(other); }
-float32& float32::operator-=(float32 other) { return *this = this->operator-(other); }
-float32& float32::operator*=(float32 other) { return *this = this->operator*(other); }
-float32& float32::operator/=(float32 other) { return *this = this->operator/(other); }
+float32& float32::operator+=(const float32& other) { return *this = this->operator+(other); }
+float32& float32::operator-=(const float32& other) { return *this = this->operator-(other); }
+float32& float32::operator*=(const float32& other) { return *this = this->operator*(other); }
+float32& float32::operator/=(const float32& other) { return *this = this->operator/(other); }
 
-bool float32::operator==(float32 other) const {
+bool float32::operator==(const float32& other) const {
 	float_type a = data;
 	float_type b = other.data;
 	if (((extractExp(a) == 0xFF) && extractFrac(a)) || 
@@ -209,11 +209,11 @@ bool float32::operator==(float32 other) const {
     return ( a == b ) || ( (bits32) ( ( a | b )<<1 ) == 0 );
 }
 
-bool float32::operator!=(float32 other) const { return !this->operator==(other); }
+bool float32::operator!=(const float32& other) const { return !this->operator==(other); }
 
-bool float32::operator>(float32 other) const { return !this->operator<=(other); }
+bool float32::operator>(const float32& other) const { return !this->operator<=(other); }
 
-bool float32::operator<(float32 other) const {
+bool float32::operator<(const float32& other) const {
     flag aSign, bSign;
     float_type a = data;
     float_type b = other.data;
@@ -226,9 +226,9 @@ bool float32::operator<(float32 other) const {
     return ( a != b ) && ( aSign ^ ( a < b ) );	
 }
 
-bool float32::operator>=(float32 other) const { return !this->operator<(other); }
+bool float32::operator>=(const float32& other) const { return !this->operator<(other); }
 
-bool float32::operator<=(float32 other) const {
+bool float32::operator<=(const float32& other) const {
 	flag aSign, bSign;
 	float_type a = data;
 	float_type b = other.data;
@@ -654,7 +654,7 @@ float32 operator/(float a, float32 b) {  return float32(a) / b; }
 /* Math functions for the float32 type */
 
 /* Quake3 sqrt implementation */
-float32 sqrt(float32 x) {
+float32 sqrt(const float32& x) {
 #define SQRT_MAGIC_F 0x5f3759df 
     const float32 xhalf = 0.5f * x;
     union // get bits for floating value

@@ -46,16 +46,16 @@ public:
     float32(const float32&);
 
     float32& operator=(float);
-    float32& operator=(float32);
+    float32& operator=(const float32&);
 
-    float32 operator+(float32) const;
-    float32 operator-(float32) const;
-    float32 operator*(float32) const;
-    float32 operator/(float32) const;
-    float32& operator+=(float32);
-    float32& operator-=(float32);
-    float32& operator*=(float32);
-    float32& operator/=(float32);
+    const float32 operator+(const float32&) const;
+    const float32 operator-(const float32&) const;
+    const float32 operator*(const float32&) const;
+    const float32 operator/(const float32&) const;
+    float32& operator+=(const float32&);
+    float32& operator-=(const float32&);
+    float32& operator*=(const float32&);
+    float32& operator/=(const float32&);
 
     inline float32 operator+(float x) const { return this->operator+(float32(x)); }
     inline float32 operator-(float x) const { return this->operator-(float32(x)); }
@@ -66,12 +66,12 @@ public:
     inline float32& operator*=(float x) { return this->operator*=(float32(x)); }
     inline float32& operator/=(float x) { return this->operator/=(float32(x)); };
 
-    bool operator==(float32) const;
-    bool operator!=(float32) const;
-    bool operator>(float32) const;
-    bool operator<(float32) const;
-    bool operator>=(float32) const;
-    bool operator<=(float32) const;
+    bool operator==(const float32&) const;
+    bool operator!=(const float32&) const;
+    bool operator>(const float32&) const;
+    bool operator<(const float32&) const;
+    bool operator>=(const float32&) const;
+    bool operator<=(const float32&) const;
 
     inline bool operator==(float x) const { return this->operator==(float32(x)); }
     inline bool operator!=(float x) const { return this->operator!=(float32(x)); }
@@ -91,7 +91,7 @@ float32 operator*(float, float32);
 float32 operator/(float, float32);
 
 /* Math functions for the float32 type */
-float32 sqrt(float32);
+float32 sqrt(const float32&);
 
 
 #endif
