@@ -27,13 +27,14 @@ void MARG::filterUpdateIMU(float32 w_x, float32 w_y, float32 w_z, float32 a_x, f
 	float32 SEqHatDot_1, SEqHatDot_2, SEqHatDot_3, SEqHatDot_4; // estimated direction of the gyroscope error
 	
 	// Axulirary variables to avoid reapeated calcualtions
-	float32 halfSEq_1 = 0.5f * SEq_1;
-	float32 halfSEq_2 = 0.5f * SEq_2;
-	float32 halfSEq_3 = 0.5f * SEq_3;
-	float32 halfSEq_4 = 0.5f * SEq_4;
-	float32 twoSEq_1 = 2.0f * SEq_1;
-	float32 twoSEq_2 = 2.0f * SEq_2;
-	float32 twoSEq_3 = 2.0f * SEq_3;
+	const float32 half(0.5f), one(1.0f), two(2.0f);
+	float32 halfSEq_1 = half * SEq_1;
+	float32 halfSEq_2 = half * SEq_2;
+	float32 halfSEq_3 = half * SEq_3;
+	float32 halfSEq_4 = half * SEq_4;
+	float32 twoSEq_1 = two * SEq_1;
+	float32 twoSEq_2 = two * SEq_2;
+	float32 twoSEq_3 = two * SEq_3;
 	
 	// Normalise the accelerometer measurement
 	norm = sqrt(a_x * a_x + a_y * a_y + a_z * a_z);
@@ -44,13 +45,13 @@ void MARG::filterUpdateIMU(float32 w_x, float32 w_y, float32 w_z, float32 a_x, f
 	// Compute the objective function and Jacobian
 	f_1 = twoSEq_2 * SEq_4 - twoSEq_1 * SEq_3 - a_x;
 	f_2 = twoSEq_1 * SEq_2 + twoSEq_3 * SEq_4 - a_y;
-	f_3 = 1.0f - twoSEq_2 * SEq_2 - twoSEq_3 * SEq_3 - a_z;
+	f_3 = one - twoSEq_2 * SEq_2 - twoSEq_3 * SEq_3 - a_z;
 	J_11or24 = twoSEq_3; // J_11 negated in matrix multiplication
-	J_12or23 = 2.0f * SEq_4;
+	J_12or23 = two * SEq_4;
 	J_13or22 = twoSEq_1; // J_12 negated in matrix multiplication
 	J_14or21 = twoSEq_2;
-	J_32 = 2.0f * J_14or21; // negated in matrix multiplication
-	J_33 = 2.0f * J_11or24; // negated in matrix multiplication
+	J_32 = two * J_14or21; // negated in matrix multiplication
+	J_33 = two * J_11or24; // negated in matrix multiplication
 	
 	// Compute the gradient (matrix multiplication)
 	SEqHatDot_1 = J_14or21 * f_2 - J_11or24 * f_1;
@@ -98,33 +99,34 @@ void MARG::filterUpdateMARG(float32 w_x, float32 w_y, float32 w_z, float32 a_x, 
 	float32 h_x, h_y, h_z; // computed flux in the earth frame
 
 	// axulirary variables to avoid reapeated calcualtions
-	float32 halfSEq_1 = 0.5f * SEq_1;
-	float32 halfSEq_2 = 0.5f * SEq_2;
-	float32 halfSEq_3 = 0.5f * SEq_3;
-	float32 halfSEq_4 = 0.5f * SEq_4;
-	float32 twoSEq_1 = 2.0f * SEq_1;
-	float32 twoSEq_2 = 2.0f * SEq_2;
-	float32 twoSEq_3 = 2.0f * SEq_3;
-	float32 twoSEq_4 = 2.0f * SEq_4;
-	float32 twob_x = 2.0f * b_x;
-	float32 twob_z = 2.0f * b_z;
-	float32 twob_xSEq_1 = 2.0f * b_x * SEq_1;
-	float32 twob_xSEq_2 = 2.0f * b_x * SEq_2;
-	float32 twob_xSEq_3 = 2.0f * b_x * SEq_3;
-	float32 twob_xSEq_4 = 2.0f * b_x * SEq_4;
-	float32 twob_zSEq_1 = 2.0f * b_z * SEq_1;
-	float32 twob_zSEq_2 = 2.0f * b_z * SEq_2;
-	float32 twob_zSEq_3 = 2.0f * b_z * SEq_3;
-	float32 twob_zSEq_4 = 2.0f * b_z * SEq_4;
+	const float32 half(0.5f), two(2.0f);
+	const float32 halfSEq_1 = half * SEq_1;
+	const float32 halfSEq_2 = half * SEq_2;
+	const float32 halfSEq_3 = half * SEq_3;
+	const float32 halfSEq_4 = half * SEq_4;
+	const float32 twoSEq_1 = two * SEq_1;
+	const float32 twoSEq_2 = two * SEq_2;
+	const float32 twoSEq_3 = two * SEq_3;
+	const float32 twoSEq_4 = two * SEq_4;
+	const float32 twob_x = two * b_x;
+	const float32 twob_z = two * b_z;
+	const float32 twob_xSEq_1 = twob_x * SEq_1;
+	const float32 twob_xSEq_2 = twob_x * SEq_2;
+	const float32 twob_xSEq_3 = twob_x * SEq_3;
+	const float32 twob_xSEq_4 = twob_x * SEq_4;
+	const float32 twob_zSEq_1 = twob_z * SEq_1;
+	const float32 twob_zSEq_2 = twob_z * SEq_2;
+	const float32 twob_zSEq_3 = twob_z * SEq_3;
+	const float32 twob_zSEq_4 = twob_z * SEq_4;
 	float32 SEq_1SEq_2;
 	float32 SEq_1SEq_3 = SEq_1 * SEq_3;
 	float32 SEq_1SEq_4;
 	float32 SEq_2SEq_3;
 	float32 SEq_2SEq_4 = SEq_2 * SEq_4;
 	float32 SEq_3SEq_4;
-	float32 twom_x = 2.0f * m_x;
-	float32 twom_y = 2.0f * m_y;
-	float32 twom_z = 2.0f * m_z;
+	const float32 twom_x = two * m_x;
+	const float32 twom_y = two * m_y;
+	const float32 twom_z = two * m_z;
 
 	// normalise the accelerometer measurement
 	norm = sqrt(a_x * a_x + a_y * a_y + a_z * a_z);
@@ -141,27 +143,27 @@ void MARG::filterUpdateMARG(float32 w_x, float32 w_y, float32 w_z, float32 a_x, 
 	// compute the objective function and Jacobian
 	f_1 = twoSEq_2 * SEq_4 - twoSEq_1 * SEq_3 - a_x;
 	f_2 = twoSEq_1 * SEq_2 + twoSEq_3 * SEq_4 - a_y;
-	f_3 = 1.0f - twoSEq_2 * SEq_2 - twoSEq_3 * SEq_3 - a_z;
-	f_4 = twob_x * (0.5f - SEq_3 * SEq_3 - SEq_4 * SEq_4) + twob_z * (SEq_2SEq_4 - SEq_1SEq_3) - m_x;
+	f_3 = one - twoSEq_2 * SEq_2 - twoSEq_3 * SEq_3 - a_z;
+	f_4 = twob_x * (half - SEq_3 * SEq_3 - SEq_4 * SEq_4) + twob_z * (SEq_2SEq_4 - SEq_1SEq_3) - m_x;
 	f_5 = twob_x * (SEq_2 * SEq_3 - SEq_1 * SEq_4) + twob_z * (SEq_1 * SEq_2 + SEq_3 * SEq_4) - m_y;
-	f_6 = twob_x * (SEq_1SEq_3 + SEq_2SEq_4) + twob_z * (0.5f - SEq_2 * SEq_2 - SEq_3 * SEq_3) - m_z;
+	f_6 = twob_x * (SEq_1SEq_3 + SEq_2SEq_4) + twob_z * (half - SEq_2 * SEq_2 - SEq_3 * SEq_3) - m_z;
 	J_11or24 = twoSEq_3; // J_11 negated in matrix multiplication
-	J_12or23 = 2.0f * SEq_4;
+	J_12or23 = two * SEq_4;
 	J_13or22 = twoSEq_1; // J_12 negated in matrix multiplication
 	J_14or21 = twoSEq_2;
-	J_32 = 2.0f * J_14or21; // negated in matrix multiplication
-	J_33 = 2.0f * J_11or24; // negated in matrix multiplication
+	J_32 = two * J_14or21; // negated in matrix multiplication
+	J_33 = two * J_11or24; // negated in matrix multiplication
 	J_41 = twob_zSEq_3; // negated in matrix multiplication
 	J_42 = twob_zSEq_4;
-	J_43 = 2.0f * twob_xSEq_3 + twob_zSEq_1; // negated in matrix multiplication
-	J_44 = 2.0f * twob_xSEq_4 - twob_zSEq_2; // negated in matrix multiplication
+	J_43 = two * twob_xSEq_3 + twob_zSEq_1; // negated in matrix multiplication
+	J_44 = two * twob_xSEq_4 - twob_zSEq_2; // negated in matrix multiplication
 	J_51 = twob_xSEq_4 - twob_zSEq_2; // negated in matrix multiplication
 	J_52 = twob_xSEq_3 + twob_zSEq_1;
 	J_53 = twob_xSEq_2 + twob_zSEq_4;
 	J_54 = twob_xSEq_1 - twob_zSEq_3; // negated in matrix multiplication
 	J_61 = twob_xSEq_3;
-	J_62 = twob_xSEq_4 - 2.0f * twob_zSEq_2;
-	J_63 = twob_xSEq_1 - 2.0f * twob_zSEq_3;
+	J_62 = twob_xSEq_4 - two * twob_zSEq_2;
+	J_63 = twob_xSEq_1 - two * twob_zSEq_3;
 	J_64 = twob_xSEq_2;
 
 	// compute the gradient (matrix multiplication)
@@ -216,9 +218,9 @@ void MARG::filterUpdateMARG(float32 w_x, float32 w_y, float32 w_z, float32 a_x, 
 	SEq_3SEq_4 = SEq_3 * SEq_4;
 	SEq_2SEq_3 = SEq_2 * SEq_3;
 	SEq_2SEq_4 = SEq_2 * SEq_4;
-	h_x = twom_x * (0.5f - SEq_3 * SEq_3 - SEq_4 * SEq_4) + twom_y * (SEq_2SEq_3 - SEq_1SEq_4) + twom_z * (SEq_2SEq_4 + SEq_1SEq_3);
-	h_y = twom_x * (SEq_2SEq_3 + SEq_1SEq_4) + twom_y * (0.5f - SEq_2 * SEq_2 - SEq_4 * SEq_4) + twom_z * (SEq_3SEq_4 - SEq_1SEq_2);
-	h_z = twom_x * (SEq_2SEq_4 - SEq_1SEq_3) + twom_y * (SEq_3SEq_4 + SEq_1SEq_2) + twom_z * (0.5f - SEq_2 * SEq_2 - SEq_3 * SEq_3);
+	h_x = twom_x * (half - SEq_3 * SEq_3 - SEq_4 * SEq_4) + twom_y * (SEq_2SEq_3 - SEq_1SEq_4) + twom_z * (SEq_2SEq_4 + SEq_1SEq_3);
+	h_y = twom_x * (SEq_2SEq_3 + SEq_1SEq_4) + twom_y * (half - SEq_2 * SEq_2 - SEq_4 * SEq_4) + twom_z * (SEq_3SEq_4 - SEq_1SEq_2);
+	h_z = twom_x * (SEq_2SEq_4 - SEq_1SEq_3) + twom_y * (SEq_3SEq_4 + SEq_1SEq_2) + twom_z * (half - SEq_2 * SEq_2 - SEq_3 * SEq_3);
 
 	// normalise the flux vector to have only components in the x and z
 	b_x = sqrt((h_x * h_x) + (h_y * h_y));
