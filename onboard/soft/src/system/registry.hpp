@@ -1,15 +1,24 @@
 #ifndef REGISTRY_HPP
 #define REGISTRY_HPP
 
-#include "ct-utility.hpp"
+#include <common/ct-utility.hpp>
+#include <system/fp/float32.h>
 
 namespace System {
 
 class Registry {
 public:
-    enum Value {
+    enum FloatValue {
+        FLOAT_VALUES_BEGIN = -1,
+        /* Orientation quaternion */
+        ORIENTATION_Q1 = 0,
+        ORIENTATION_Q2,
+        ORIENTATION_Q3,
+        ORIENTATION_Q4,
+        FLOAT_VALUES_END
+    };
+    enum IntegerValue {
         VALUES_BEGIN = -1,
-
         /* Accelerometer 1 */
         ACCELEROMETER1_X = 0,
         ACCELEROMETER1_Y,
@@ -41,14 +50,16 @@ public:
         DESIRED_X,
         DESIRED_Y,
         /* etc */
-
         VALUES_END
     };
 private:
-    int values[VALUES_END];
+    float32 fvalues[FLOAT_VALUES_END];
+    int ivalues[VALUES_END];
 private:
     Registry() {
-        for (int i = 0; i < VALUES_END; ++i) values[i] = 0;
+        for (int i = 0; i < VALUES_END; ++i) ivalues[i] = 0;
+        float32 zero(0.0f);
+        for (int i = 0; i < FLOAT_VALUES_END; ++i) fvalues[i] = zero;
     }
 public:
     static Registry& instance() {
@@ -56,11 +67,20 @@ public:
 	return inst;
     };
 
-    static int& value(Value v) {
-        return instance().values[v];
+    static int& value(IntegerValue v) {
+        return instance().ivalues[v];
     }
-    static void set(Value v, int value) {
-        instance().values[v] = value;
+
+    static float32& value(FloatValue v) {
+        return instance().fvalues[v];
+    }
+
+    static void set(IntegerValue v, int value) {
+        instance().ivalues[v] = value;
+    }
+
+    static void set(FloatValue v, const float32& value) {
+        instance().fvalues[v] = value;
     }
 };
 

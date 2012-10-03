@@ -92,6 +92,7 @@ float32 operator/(float, float32);
 
 /* Math functions for the float32 type */
 float32 sqrt(const float32&);
+float32 rsqrt(const float32&);
 
 
 #endif

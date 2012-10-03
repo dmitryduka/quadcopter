@@ -7,19 +7,11 @@
 namespace Tasks = System::Tasking::Pool;
 
 int main() {
-    /* MARG testing */
-    Control::MARG marg;
-
-    while(1) {
-	marg.update();
-    }
-
-    /* This is not executed */
     System::Util::init();
     System::Tasking::TaskScheduler scheduler;
 
     scheduler.addTask(static_cast<System::Tasking::IdleTask*>(Tasks::getTask(Tasks::TaskType::XBeeReadIdleTask)));
-    scheduler.addTask(static_cast<System::Tasking::ContinuousTask*>(Tasks::getTask(Tasks::TaskType::StabilizationAndEngineUpdateTask)), 440_hz);
+    scheduler.addTask(static_cast<System::Tasking::ContinuousTask*>(Tasks::getTask(Tasks::TaskType::MARGTask)), 100_hz);
 
     /* Forever */
     scheduler.start();

@@ -12,12 +12,14 @@ namespace Pool {
 /* All task instances go here */
 Radio::Digital::XBeeReadIdleTask xbeeReadIdleTask;
 Control::StabilizationAndEngineUpdateTask stabilizationAndEngineUpdateTask;
+Control::MARG margTask;
 
 /* All task instances end here */
 
 Task* const tasks[asIntegral<unsigned int>(TaskType::TASK_TYPE_COUNT)] = {
-    [TaskType::StabilizationAndEngineUpdateTask] = &stabilizationAndEngineUpdateTask,    
-    [TaskType::XBeeReadIdleTask] = &xbeeReadIdleTask
+    [TaskType::StabilizationAndEngineUpdateTask] = &stabilizationAndEngineUpdateTask,
+    [TaskType::XBeeReadIdleTask] = &xbeeReadIdleTask,
+    [TaskType::MARGTask] = &margTask,
 };
 
 Task*       const getTask(TaskType type) { return tasks[asIntegral<unsigned int>(type)]; }

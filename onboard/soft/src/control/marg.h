@@ -1,11 +1,12 @@
 #ifndef MARG_H
 #define MARG_H
 
+#include <system/tasking/tasks.h>
 #include <system/fp/float32.h>
 
 namespace Control {
 
-class MARG {
+class MARG : public System::Tasking::ContinuousTask {
 private:
     // Global system variables
     float32 a_x, a_y, a_z; // accelerometer measurements
@@ -20,7 +21,7 @@ private:
 public:
     MARG();
 
-    void update();
+    void start();
 };
 
 }

@@ -667,4 +667,17 @@ float32 sqrt(const float32& x) {
     return float32(x) * u.x * (1.5f - xhalf * u.x * u.x);// Newton step, repeating increases accuracy 
 }
 
+/* http://en.wikipedia.org/wiki/Fast_inverse_square_root */
+float32 rsqrt(const float32& y) {
+    float32 x(y);
+    const float32 threehalves(1.5f), half(0.5f);
+    const float32 xhalf = half * x;
+    int i = *(int *)&x;          // View x as an int.
+    i = 0x5f375a86 - (i >> 1);   // Initial guess (slightly better).
+    x = *(float *)&i;            // View i as float.
+    x = x * (threehalves - xhalf * x * x);    // Newton step.
+    //x = x * (threehalves - xhalf * x * x);    // Once more too increase accuracy
+    return x;
+}
+
 

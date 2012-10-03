@@ -1,4 +1,6 @@
 #include "marg.h"
+#include <system/registry.hpp>
+#include <sensors/imu/mpu6050.h>
 
 namespace Control {
 
@@ -13,8 +15,25 @@ static const float32 deltatzeta(3.02299894009561660393237900375e-6f);
 MARG::MARG() : SEq_1(1.0f), b_x(1.0f) {
 }
 
-void MARG::update() {
-    float32 w_x, w_y, w_z, a_x, a_y, a_z, m_x, m_y, m_z;
+void MARG::start() {
+    /* Update IMU data */
+    /* TODO: update magnetometer as well */
+    Sensors::IMU::MPU6050::updateAccelerometerAndGyro();
+    /* Convert to SI */
+    /* TODO: convert using sensors setup */
+    const float32 GYRO_CONVERTION_FACTOR(0.06103515625f); // [-2000:2000] / 65536
+    const float32 ACC_CONVERTION_FACTOR(0.00048828125f); // [-16:16] / 65536
+    const float32 COMPASS_CONVERTION_FACTOR(0.00091743f); // http://www.soc-robotics.com/pdfs/HMC5883L.pdf : page 12, GN0 = 1, GN1 = 0, GN2 = 0, +-1.3Ga, 1090LSB/Gauss, [-2048, 2047] => 1 / 1090.0f
+
+    float32 w_x = float32(System::Registry::value(System::Registry::GYRO_X)) * GYRO_CONVERTION_FACTOR,
+	    w_y = float32(System::Registry::value(System::Registry::GYRO_Y)) * GYRO_CONVERTION_FACTOR,
+	    w_z = float32(System::Registry::value(System::Registry::GYRO_Z)) * GYRO_CONVERTION_FACTOR,
+	    a_x = float32(System::Registry::value(System::Registry::ACCELEROMETER1_X)) * ACC_CONVERTION_FACTOR,
+	    a_y = float32(System::Registry::value(System::Registry::ACCELEROMETER1_Y)) * ACC_CONVERTION_FACTOR,
+	    a_z = float32(System::Registry::value(System::Registry::ACCELEROMETER1_Z)) * ACC_CONVERTION_FACTOR,
+	    m_x = float32(System::Registry::value(System::Registry::COMPASS_X)) * COMPASS_CONVERTION_FACTOR,
+	    m_y = float32(System::Registry::value(System::Registry::COMPASS_Y)) * COMPASS_CONVERTION_FACTOR,
+	    m_z = float32(System::Registry::value(System::Registry::COMPASS_Z)) * COMPASS_CONVERTION_FACTOR;
     filterUpdateMARG(w_x, w_y, w_z, a_x, a_y, a_z, m_x, m_y, m_z);
 }
 
@@ -27,7 +46,7 @@ void MARG::filterUpdateIMU(float32 w_x, float32 w_y, float32 w_z, float32 a_x, f
 	float32 J_11or24, J_12or23, J_13or22, J_14or21, J_32, J_33; // objective function Jacobian elements
 	float32 SEqHatDot_1, SEqHatDot_2, SEqHatDot_3, SEqHatDot_4; // estimated direction of the gyroscope error
 	
-	// Axulirary variables to avoid reapeated calcualtions
+	// Auxlirary variables to avoid reapeated calcualtions
 	const float32 half(0.5f), one(1.0f), two(2.0f);
 	float32 halfSEq_1 = half * SEq_1;
 	float32 halfSEq_2 = half * SEq_2;
@@ -130,16 +149,16 @@ void MARG::filterUpdateMARG(float32 w_x, float32 w_y, float32 w_z, float32 a_x, 
 	const float32 twom_z = two * m_z;
 
 	// normalise the accelerometer measurement
-	norm = sqrt(a_x * a_x + a_y * a_y + a_z * a_z);
-	a_x /= norm;
-	a_y /= norm;
-	a_z /= norm;
+	norm = rsqrt(a_x * a_x + a_y * a_y + a_z * a_z);
+	a_x *= norm;
+	a_y *= norm;
+	a_z *= norm;
 
 	// normalise the magnetometer measurement
-	norm = sqrt(m_x * m_x + m_y * m_y + m_z * m_z);
-	m_x /= norm;
-	m_y /= norm;
-	m_z /= norm;
+	norm = rsqrt(m_x * m_x + m_y * m_y + m_z * m_z);
+	m_x *= norm;
+	m_y *= norm;
+	m_z *= norm;
 
 	// compute the objective function and Jacobian
 	float32 SEq_3_squared = SEq_3 * SEq_3, SEq_2_squared, SEq_4_squared;
@@ -214,11 +233,11 @@ void MARG::filterUpdateMARG(float32 w_x, float32 w_y, float32 w_z, float32 a_x, 
 	SEqHatDotVectorSquared += SEqHatDot_2 * SEqHatDot_2;
 	SEqHatDotVectorSquared += SEqHatDot_3 * SEqHatDot_3; 
 	SEqHatDotVectorSquared += SEqHatDot_4 * SEqHatDot_4;
-	norm = sqrt(SEqHatDotVectorSquared);
-	SEqHatDot_1 = SEqHatDot_1 / norm;
-	SEqHatDot_2 = SEqHatDot_2 / norm;
-	SEqHatDot_3 = SEqHatDot_3 / norm;
-	SEqHatDot_4 = SEqHatDot_4 / norm;
+	norm = rsqrt(SEqHatDotVectorSquared);
+	SEqHatDot_1 = SEqHatDot_1 * norm;
+	SEqHatDot_2 = SEqHatDot_2 * norm;
+	SEqHatDot_3 = SEqHatDot_3 * norm;
+	SEqHatDot_4 = SEqHatDot_4 * norm;
 
 	// compute angular estimated direction of the gyroscope error
 	w_err_x = twoSEq_1 * SEqHatDot_2;
@@ -268,11 +287,16 @@ void MARG::filterUpdateMARG(float32 w_x, float32 w_y, float32 w_z, float32 a_x, 
 	SEq_squared += SEq_2 * SEq_2;
 	SEq_squared += SEq_3 * SEq_3;
 	SEq_squared += SEq_4 * SEq_4;
-	norm = sqrt(SEq_squared);
-	SEq_1 /= norm;
-	SEq_2 /= norm;
-	SEq_3 /= norm;
-	SEq_4 /= norm;
+	norm = rsqrt(SEq_squared);
+	SEq_1 *= norm;
+	SEq_2 *= norm;
+	SEq_3 *= norm;
+	SEq_4 *= norm;
+	
+	System::Registry::set(System::Registry::ORIENTATION_Q1, SEq_1);
+	System::Registry::set(System::Registry::ORIENTATION_Q2, SEq_2);
+	System::Registry::set(System::Registry::ORIENTATION_Q3, SEq_3);
+	System::Registry::set(System::Registry::ORIENTATION_Q4, SEq_4);
 
 	// compute flux in the earth frame
 	SEq_1SEq_2 = SEq_1 * SEq_2; // recompute axulirary variables

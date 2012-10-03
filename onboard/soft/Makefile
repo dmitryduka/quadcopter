@@ -8,11 +8,12 @@ DUMP = $(XTOOLS_LOCATION)/$(XTOOLS_TRIPLE)/bin/$(XTOOLS_TRIPLE)-objdump
 READELF = $(XTOOLS_LOCATION)/$(XTOOLS_TRIPLE)/bin/$(XTOOLS_TRIPLE)-readelf
 STRIP = $(XTOOLS_LOCATION)/$(XTOOLS_TRIPLE)/bin/$(XTOOLS_TRIPLE)-strip
 
-GRN = tput setaf 2; echo $(1); tput sgr0
-YLW = tput setaf 3; echo $(1); tput sgr0
-RED = tput setaf 1; echo $(1); tput sgr0
+PRINTALIGNED = printf '%$(shell echo 60 - $(shell echo $2 | wc -c) | bc)s\n' $(1)
+GRN = tput setaf 2; $(call PRINTALIGNED, $1, $2); tput sgr0
+YLW = tput setaf 3; $(call PRINTALIGNED, $1, $2); tput sgr0
+RED = tput setaf 1; $(call PRINTALIGNED, $1, $2); tput sgr0
 BLD = tput bold; echo -n $(1); tput sgr0
-CHECK = if test -e temp.errors; then $(call RED, $(1)) && cat temp.log; elif test -s temp.log; then $(call YLW, $(1)) && cat temp.log; else $(call GRN, '$(1) no warnings/errors'); fi;
+CHECK = if test -e temp.errors; then $(call RED, 'errors/warnings', $1) && cat temp.log; elif test -s temp.log; then $(call YLW, 'warnings only', $1) && cat temp.log; else $(call GRN, 'no warnings/errors', $1); fi;
 
 
 SRCDIR = src
@@ -38,10 +39,10 @@ DEPS = $(wildcard $(OBJDIR)/*.d)
 
 STACK_SIZE = 2000
 INCLUDEDIRS = $(addprefix -I, $(DIRS))
-CCOPTS =  -c -std=c++11 -G0 $(INCLUDEDIRS)
+CCOPTS =  -c -std=c++11 -mno-gpopt -G0 $(INCLUDEDIRS)
 CCOPTS += -Os
-CCOPTS += -Wstack-usage=$(STACK_SIZE) 
-CCOPTS += -flto -fdata-sections -ffunction-sections -fno-threadsafe-statics -fpack-struct -fstack-usage -fno-strict-aliasing -fno-exceptions -fno-rtti
+CCOPTS += -Wcast-align -Wstack-usage=$(STACK_SIZE) 
+CCOPTS += -flto -fdata-sections -ffunction-sections -fno-threadsafe-statics -fstack-usage -fno-strict-aliasing -fno-exceptions -fno-rtti
 LDOPTS = -Os -flto -Wl,--gc-sections -nostdlib -nostartfiles -fwhole-program -lgcc
 
 all: dirs $(IMEMFILE) $(DMEMFILE)
@@ -51,35 +52,38 @@ include $(DEPS)
 main: $(OBJECTS)
 	@$(call BLD, 'Linking ')
 	@$(LD) -Wl,-T,$(SRCDIR)/ld.script -o $@ $(OBJECTS) $(LDOPTS) 2> temp.log || touch temp.errors
-	@$(call CHECK, $@:)
+	@$(call CHECK, 'Linking ')
 	@$(READELF) -a main > $(LISTINGSDIR)/program-elf.txt
 	@-$(RM) -f temp.errors temp.log
 
 $(IMEMFILE): main
 	@$(call BLD, 'Generating $@\n')
-	@$(DUMP) -C -Dz --section=.text main > $(LISTINGSDIR)/program-listing.txt
+	@$(DUMP) -C -D --section=.text main > $(LISTINGSDIR)/program-listing.txt
 	@cat $(LISTINGSDIR)/program-listing.txt | grep -P "^\s*[\d|abcdef]+:" | cut -f 2 > program.txt
 
 $(DMEMFILE): main
 	@$(call BLD, 'Generating $@\n')
-	@-$(DUMP) -C -Dz --section=.data main > $(LISTINGSDIR)/data-listing.txt
+	@-$(DUMP) -C -D --section=.data main > $(LISTINGSDIR)/data-listing.txt
 	@-cat $(LISTINGSDIR)/data-listing.txt | grep -P "^\s*[\d|abcdef]+:" | cut -f 2 > data.txt
 
 $(OBJDIR)/%.cc.o: $(SRCDIR)/%.cc
+	@$(call BLD, $<)
 	@$(CC) $(CCOPTS) $< -o $@ 2> temp.log || touch temp.errors
 	@$(CC) -MM -MT $(OBJDIR)/$*.cc.o $< -o $(OBJDIR)/$*.d
-	@$(call CHECK, $<:)
+	@$(call CHECK, $<)
 	@-$(RM) -f temp.errors temp.log
 
 $(OBJDIR)/%.c.o: $(SRCDIR)/%.c
+	@$(call BLD, $<)
 	@$(CC) $(CCOPTS) $< -o $@ 2> temp.log || touch temp.errors
 	@$(CC) -MM -MT $(OBJDIR)/$*.c.o $< -o $(OBJDIR)/$*.d
-	@$(call CHECK, $<:)
+	@$(call CHECK, $<)
 	@-$(RM) -f temp.errors temp.log
 
 $(OBJDIR)/%.S.o: $(SRCDIR)/%.S
+	@$(call BLD, $<)
 	@$(AS) -mips1 $< -o $@ 2> temp.log || touch temp.errors
-	@$(call CHECK, $<:)
+	@$(call CHECK, $<)
 	@-$(RM) -f temp.errors temp.log
 
 dirs: $(OBJDIR) $(LISTINGSDIR) $(OUTPUTDIRS)
