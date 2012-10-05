@@ -1,6 +1,7 @@
 #include "xbee.h"
 #include <system/bus/uart/uart.h>
 #include <system/devices.hpp>
+#include <radio/messages/console.h>
 
 namespace Radio {
 
@@ -8,6 +9,11 @@ namespace Digital {
 
 XBeeReadIdleTask::XBeeReadIdleTask() : bytesSoFar(0), handler{0, 0} {}
 void XBeeReadIdleTask::start() {
+    /* Just for testing */
+    parseConsoleMessage(message_buffer);
+
+
+
     /* TODO: poll uart, exit if unavailable */
     /* TODO */
     /* read it otherwise */

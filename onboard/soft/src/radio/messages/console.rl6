@@ -1,0 +1,71 @@
+#include "console.h"
+#include <system/bus/uart/uart.h>
+
+void sendUARTText(const char* str) {
+    while(*str) {
+	System::Bus::UART::write(*str);
+	str++;
+    }
+}
+
+void hey() {
+    sendUARTText("hey there\n");
+}
+
+void quat() {
+    sendUARTText("quat data\n");
+}
+
+void acc() {
+    sendUARTText("acc data\n");
+}
+
+void gyro() {
+    sendUARTText("gyro data\n");
+}
+
+void magn() {
+    sendUARTText("magn data\n");
+}
+
+void pid() {
+    sendUARTText("pid data\n");
+}
+
+/* ---------- actions implementation ----------- */
+
+/* TODO: move this to common */
+unsigned int strlen(const char* str) {
+    unsigned int size = 0;
+    while(*str++) size++;
+    return size;
+}
+
+%%{
+    machine parseConsoleMessage;
+}%%
+
+void parseConsoleMessage(const char* str) {
+    const char *p = str, *pe = str + strlen( str );
+    int cs;
+    %%{
+	action hey { hey(); }
+	action quat { quat(); }
+	action acc { acc(); }
+	action gyro { gyro(); }
+	action magn { magn(); }
+	action pid { pid(); }
+
+	# exactly one command followed by either \n or \r
+	main := 	('hey'		@hey |
+			 'get_quat'	@quat |
+			 'get_acc'	@acc  |
+			 'get_gyro'	@gyro |
+			 'get_magn'	@magn |
+			 'get_pid'	@pid) ( '\n' | '\r');
+	# Initialize and execute.
+        write data noerror nofinal;
+	write init;
+	write exec;
+    }%%
+}

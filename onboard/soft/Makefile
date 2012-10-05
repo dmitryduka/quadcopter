@@ -1,20 +1,15 @@
+# Setup Makefile here
+
 XTOOLS_LOCATION = ~/x-tools-new
 XTOOLS_TRIPLE = mips-quadcopter-elf
 
+RAGEL= ragel
 AS   = $(XTOOLS_LOCATION)/$(XTOOLS_TRIPLE)/bin/$(XTOOLS_TRIPLE)-as
 LD   = $(XTOOLS_LOCATION)/$(XTOOLS_TRIPLE)/bin/$(XTOOLS_TRIPLE)-g++
 CC   = $(XTOOLS_LOCATION)/$(XTOOLS_TRIPLE)/bin/$(XTOOLS_TRIPLE)-g++
 DUMP = $(XTOOLS_LOCATION)/$(XTOOLS_TRIPLE)/bin/$(XTOOLS_TRIPLE)-objdump
 READELF = $(XTOOLS_LOCATION)/$(XTOOLS_TRIPLE)/bin/$(XTOOLS_TRIPLE)-readelf
 STRIP = $(XTOOLS_LOCATION)/$(XTOOLS_TRIPLE)/bin/$(XTOOLS_TRIPLE)-strip
-
-PRINTALIGNED = printf '%$(shell echo 60 - $(shell echo $2 | wc -c) | bc)s\n' $(1)
-GRN = tput setaf 2; $(call PRINTALIGNED, $1, $2); tput sgr0
-YLW = tput setaf 3; $(call PRINTALIGNED, $1, $2); tput sgr0
-RED = tput setaf 1; $(call PRINTALIGNED, $1, $2); tput sgr0
-BLD = tput bold; echo -n $(1); tput sgr0
-CHECK = if test -e temp.errors; then $(call RED, 'errors/warnings', $1) && cat temp.log; elif test -s temp.log; then $(call YLW, 'warnings only', $1) && cat temp.log; else $(call GRN, 'no warnings/errors', $1); fi;
-
 
 SRCDIR = src
 OBJDIR = obj
@@ -24,12 +19,22 @@ PROGRAM = main
 IMEMFILE = program.txt
 DMEMFILE = data.txt
 
-SRC_ROOT = src
-DIRS := ${shell find ${SRC_ROOT} -type d -print}
+# All other fancy stuff
+
+PRINTALIGNED = printf '%$(shell echo 60 - $(shell echo $2 | wc -c) | bc)s\n' $(1)
+GRN = tput setaf 2; $(call PRINTALIGNED, $1, $2); tput sgr0
+YLW = tput setaf 3; $(call PRINTALIGNED, $1, $2); tput sgr0
+RED = tput setaf 1; $(call PRINTALIGNED, $1, $2); tput sgr0
+BLD = tput bold; echo -n $(1); tput sgr0
+CHECK = if test -e temp.errors; then $(call RED, 'errors/warnings', $1) && cat temp.log; elif test -s temp.log; then $(call YLW, 'warnings only', $1) && cat temp.log; else $(call GRN, 'no warnings/errors', $1); fi;
+
+DIRS := ${shell find ${SRCDIR} -type d -print}
 OUTPUTDIRS = $(patsubst src/%, obj/%, $(DIRS))
+
+SRC_RL6 = $(foreach dir, $(DIRS), $(wildcard $(dir)/*.rl6))
 SRC_AS = $(foreach dir, $(DIRS), $(wildcard $(dir)/*.S))
 SRC_CC = $(foreach dir, $(DIRS), $(wildcard $(dir)/*.cc) $(wildcard $(dir)/*.cpp))
-SRC_C = $(foreach dir, $(DIRS), $(wildcard $(dir)/*.c))
+SRC_C = $(foreach rl6, $(SRC_RL6), $(rl6:.rl6=.c)) $(foreach dir, $(DIRS), $(wildcard $(dir)/*.c))
 
 SRC_TO_OBJ = $(foreach file, $(1), $(patsubst src/%, obj/%, $(dir $(file)))$(notdir $(file)).o)
 
@@ -58,12 +63,12 @@ main: $(OBJECTS)
 
 $(IMEMFILE): main
 	@$(call BLD, 'Generating $@\n')
-	@$(DUMP) -C -D --section=.text main > $(LISTINGSDIR)/program-listing.txt
+	@$(DUMP) -C -Dz --section=.text main > $(LISTINGSDIR)/program-listing.txt
 	@cat $(LISTINGSDIR)/program-listing.txt | grep -P "^\s*[\d|abcdef]+:" | cut -f 2 > program.txt
 
 $(DMEMFILE): main
 	@$(call BLD, 'Generating $@\n')
-	@-$(DUMP) -C -D --section=.data main > $(LISTINGSDIR)/data-listing.txt
+	@-$(DUMP) -C -Dz --section=.data main > $(LISTINGSDIR)/data-listing.txt
 	@-cat $(LISTINGSDIR)/data-listing.txt | grep -P "^\s*[\d|abcdef]+:" | cut -f 2 > data.txt
 
 $(OBJDIR)/%.cc.o: $(SRCDIR)/%.cc
@@ -85,6 +90,11 @@ $(OBJDIR)/%.S.o: $(SRCDIR)/%.S
 	@$(AS) -mips1 $< -o $@ 2> temp.log || touch temp.errors
 	@$(call CHECK, $<)
 	@-$(RM) -f temp.errors temp.log
+
+$(SRCDIR)/%.c: $(SRCDIR)/%.rl6
+	@$(call BLD, $<)
+	@$(RAGEL) $< -G0 -C -o $@
+	@$(call CHECK, $<)
 
 dirs: $(OBJDIR) $(LISTINGSDIR) $(OUTPUTDIRS)
 

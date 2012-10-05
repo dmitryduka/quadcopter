@@ -6,6 +6,8 @@ namespace Messages {
 
 void defaultHandler(char*) {}
 
+void consoleHandler(char*) {}
+
 }
 
 }

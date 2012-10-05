@@ -32,22 +32,25 @@ enum class To : char {
     Pitch,
     Yaw,
     Roll,
-    MESSAGES_COUNT
+    ConsoleRequest = '>', // 60
+    MESSAGES_COUNT = 5
 };
 
 enum class From : unsigned char {
     MESSAGES_BEGIN = 128,
     IMUData,
     PIDValues,
-    MESSAGES_COUNT
+    ConsoleResponse = '<', // 62
+    MESSAGES_COUNT = 3
 };
 
-/* Each message should contain it's type stored in 1 byte */
+/* Each message should contain it's type stored inside the first byte */
 template<typename Type, Type TYPE> struct Message { const Type type = TYPE; };
 
 /* ==============================================================
 		Messages definitions 
    ============================================================== */
+/* Telemetry messages */
 struct IMUData : Message<From, From::IMUData> {
     short int Ax;
     short int Ay;
@@ -58,16 +61,22 @@ struct IMUData : Message<From, From::IMUData> {
     short int Cx;
     short int Cy;
     short int Cz;
+    int P;
+    int T;
 };
 
 struct PIDValues : Message<From, From::PIDValues> {
-    short int X, Y;
+    short int P, I, D;
 };
 
+/* Control messages */
 struct Throttle : Message<To, To::Throttle> { short int value; };
 struct Pitch : Message<To, To::Pitch> { short int value; };
 struct Yaw : Message<To, To::Yaw> { short int value; };
 struct Roll : Message<To, To::Roll> { short int value; };
+
+/* Console request message */
+struct ConsoleRequest : Message<To, To::ConsoleRequest> { };
 
 /* ==============================================================
 		Messages handlers definitions 
@@ -75,6 +84,8 @@ struct Roll : Message<To, To::Roll> { short int value; };
 typedef void (*HandlerType)(char*);
 
 void defaultHandler(char*);
+
+void consoleHandler(char*);
 
 struct EntryType {
     unsigned char size;
@@ -88,16 +99,14 @@ struct EntryType {
 const unsigned int MAX_MESSAGE_LENGTH = 32;
 
 /* Setup Message Type -> Message size/Message handler mapping here */
-#define DEFINE_MESSAGE_HANDLER(X, H) [To::X] = { sizeof(X), H }
+#define DEFINE_MESSAGE_HANDLER(X, H) { sizeof(X), H }
 
-const EntryType handlers[asIntegral<unsigned char, To>(To::MESSAGES_COUNT) + 1] = {
-    DEFINE_MESSAGE_HANDLER(Throttle, 	defaultHandler),
-    DEFINE_MESSAGE_HANDLER(Pitch, 	defaultHandler),
-    DEFINE_MESSAGE_HANDLER(Yaw, 	defaultHandler),
-    DEFINE_MESSAGE_HANDLER(Roll, 	defaultHandler),
-
-    /* This is here to generate compile-time error if not all messages were specified above */
-    [To::MESSAGES_COUNT] = {0, 		defaultHandler},
+const EntryType handlers[asIntegral<unsigned char, To>(To::MESSAGES_COUNT)] = {
+    DEFINE_MESSAGE_HANDLER(Throttle,		defaultHandler),
+    DEFINE_MESSAGE_HANDLER(Pitch,		defaultHandler),
+    DEFINE_MESSAGE_HANDLER(Yaw,			defaultHandler),
+    DEFINE_MESSAGE_HANDLER(Roll,		defaultHandler),
+    DEFINE_MESSAGE_HANDLER(ConsoleRequest,	consoleHandler),
 };
 
 #undef DEFINE_MESSAGE_HANDLER
