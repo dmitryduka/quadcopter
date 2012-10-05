@@ -38,7 +38,7 @@ SRC_C = $(foreach rl6, $(SRC_RL6), $(rl6:.rl6=.c)) $(foreach dir, $(DIRS), $(wil
 
 SRC_TO_OBJ = $(foreach file, $(1), $(patsubst src/%, obj/%, $(dir $(file)))$(notdir $(file)).o)
 
-OBJECTS = $(call SRC_TO_OBJ, $(SRC_AS)) $(call SRC_TO_OBJ, $(SRC_C)) $(call SRC_TO_OBJ, $(SRC_CC))
+OBJECTS = $(sort $(call SRC_TO_OBJ, $(SRC_AS)) $(call SRC_TO_OBJ, $(SRC_C)) $(call SRC_TO_OBJ, $(SRC_CC)))
 
 DEPS = $(wildcard $(OBJDIR)/*.d)
 
@@ -93,7 +93,7 @@ $(OBJDIR)/%.S.o: $(SRCDIR)/%.S
 
 $(SRCDIR)/%.c: $(SRCDIR)/%.rl6
 	@$(call BLD, $<)
-	@$(RAGEL) $< -G0 -C -o $@
+	@$(RAGEL) $< -G1 -C -o $@
 	@$(call CHECK, $<)
 
 dirs: $(OBJDIR) $(LISTINGSDIR) $(OUTPUTDIRS)

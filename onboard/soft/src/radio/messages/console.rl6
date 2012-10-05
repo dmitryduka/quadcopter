@@ -9,7 +9,7 @@ void sendUARTText(const char* str) {
 }
 
 void hey() {
-    sendUARTText("hey there\n");
+    sendUARTText(":)\n");
 }
 
 void quat() {
@@ -29,8 +29,29 @@ void magn() {
 }
 
 void pid() {
-    sendUARTText("pid data\n");
+    sendUARTText("\n");
 }
+
+void set_pid(int P, int I, int D) {
+    sendUARTText(":)\n");
+}
+
+void set_throttle(int x) {
+    sendUARTText(":)\n");
+}
+
+void set_pitch(int x) {
+    sendUARTText(":)\n");
+}
+
+void set_yaw(int x) {
+    sendUARTText(":)\n");
+}
+
+void set_roll(int x) {
+    sendUARTText(":)\n");
+}
+
 
 /* ---------- actions implementation ----------- */
 
@@ -46,25 +67,58 @@ unsigned int strlen(const char* str) {
 }%%
 
 void parseConsoleMessage(const char* str) {
-    const char *p = str, *pe = str + strlen( str );
+    const int MAX_ARGS = 3;
+    int arg_idx = 0;
+    int arg[MAX_ARGS] = {0};
+    char arg_sign = '+';
+    const char *p = str, *pe = str + strlen(str) + 1; // +1 is to have trailing zero for parser
     int cs;
     %%{
+	action arg {  
+	    arg[arg_idx] = arg[arg_idx] * 10 + (fc - '0'); 
+	}
+	action arg_idx_inc { 
+	    if(arg_sign == '-') {
+		arg_sign = '+';
+		arg[arg_idx] = -arg[arg_idx];
+	    }
+	    arg_idx++; 
+	}
+	action arg_sign { if(fc == '-') arg_sign = '-'; }
 	action hey { hey(); }
 	action quat { quat(); }
 	action acc { acc(); }
 	action gyro { gyro(); }
 	action magn { magn(); }
-	action pid { pid(); }
+	action get_pid { pid(); }
+	action set_pid { set_pid(arg[0], arg[1], arg[2]); }
+	action set_throttle { set_throttle(arg[0]); }
+	action set_pitch { set_pitch(arg[0]); }
+	action set_yaw { set_yaw(arg[0]); }
+	action set_roll { set_roll(arg[0]); }
 
 	# exactly one command followed by either \n or \r
-	main := 	('hey'		@hey |
-			 'get_quat'	@quat |
-			 'get_acc'	@acc  |
-			 'get_gyro'	@gyro |
-			 'get_magn'	@magn |
-			 'get_pid'	@pid) ( '\n' | '\r');
+	signed_numeric = ('+' | '-')? @arg_sign ' '* digit+ @arg;
+	unsigned_numeric = digit+ @arg;
+	snumarg = ' '+ signed_numeric %arg_idx_inc;
+	unumarg = ' '+ unsigned_numeric %arg_idx_inc;
+	main := 	' '*
+			('hey' @hey |
+			 'get_quat' @quat|
+			 'get_acc' @acc |
+			 'get_gyro' @gyro |
+			 'get_magn' @magn |
+			 'get_pid' @get_pid |
+			 ('set_pid' snumarg{3}) %set_pid |
+			 ('set_throttle' unumarg) %set_throttle |
+			 ('set_pitch' snumarg) %set_pitch |
+			 ('set_yaw' snumarg) %set_yaw |
+			 ('set_roll' snumarg) %set_roll
+			)
+			' '*
+			(0 | '\n' | '\r');
 	# Initialize and execute.
-        write data noerror nofinal;
+        write data;
 	write init;
 	write exec;
     }%%

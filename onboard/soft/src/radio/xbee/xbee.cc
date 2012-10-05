@@ -11,9 +11,6 @@ XBeeReadIdleTask::XBeeReadIdleTask() : bytesSoFar(0), handler{0, 0} {}
 void XBeeReadIdleTask::start() {
     /* Just for testing */
     parseConsoleMessage(message_buffer);
-
-
-
     /* TODO: poll uart, exit if unavailable */
     /* TODO */
     /* read it otherwise */
