@@ -55,6 +55,7 @@ all: dirs $(IMEMFILE) $(DMEMFILE)
 include $(DEPS)
 
 main: $(OBJECTS)
+	@$(call BLD, '[  LD   ] ')
 	@$(call BLD, 'Linking ')
 	@$(LD) -Wl,-T,$(SRCDIR)/ld.script -o $@ $(OBJECTS) $(LDOPTS) 2> temp.log || touch temp.errors
 	@$(call CHECK, 'Linking ')
@@ -62,16 +63,19 @@ main: $(OBJECTS)
 	@-$(RM) -f temp.errors temp.log
 
 $(IMEMFILE): main
+	@$(call BLD, '[  G++  ] ')
 	@$(call BLD, 'Generating $@\n')
 	@$(DUMP) -C -Dz --section=.text main > $(LISTINGSDIR)/program-listing.txt
 	@cat $(LISTINGSDIR)/program-listing.txt | grep -P "^\s*[\d|abcdef]+:" | cut -f 2 > program.txt
 
 $(DMEMFILE): main
+	@$(call BLD, '[  G++  ] ')
 	@$(call BLD, 'Generating $@\n')
 	@-$(DUMP) -C -Dz --section=.data main > $(LISTINGSDIR)/data-listing.txt
 	@-cat $(LISTINGSDIR)/data-listing.txt | grep -P "^\s*[\d|abcdef]+:" | cut -f 2 > data.txt
 
 $(OBJDIR)/%.cc.o: $(SRCDIR)/%.cc
+	@$(call BLD, '[  G++  ] ')
 	@$(call BLD, $<)
 	@$(CC) $(CCOPTS) $< -o $@ 2> temp.log || touch temp.errors
 	@$(CC) -MM -MT $(OBJDIR)/$*.cc.o $< -o $(OBJDIR)/$*.d
@@ -79,6 +83,7 @@ $(OBJDIR)/%.cc.o: $(SRCDIR)/%.cc
 	@-$(RM) -f temp.errors temp.log
 
 $(OBJDIR)/%.c.o: $(SRCDIR)/%.c
+	@$(call BLD, '[  GCC  ] ')
 	@$(call BLD, $<)
 	@$(CC) $(CCOPTS) $< -o $@ 2> temp.log || touch temp.errors
 	@$(CC) -MM -MT $(OBJDIR)/$*.c.o $< -o $(OBJDIR)/$*.d
@@ -86,12 +91,14 @@ $(OBJDIR)/%.c.o: $(SRCDIR)/%.c
 	@-$(RM) -f temp.errors temp.log
 
 $(OBJDIR)/%.S.o: $(SRCDIR)/%.S
+	@$(call BLD, '[  AS   ] ')
 	@$(call BLD, $<)
 	@$(AS) -mips1 $< -o $@ 2> temp.log || touch temp.errors
 	@$(call CHECK, $<)
 	@-$(RM) -f temp.errors temp.log
 
 $(SRCDIR)/%.c: $(SRCDIR)/%.rl6
+	@$(call BLD, '[ RAGEL ] ')
 	@$(call BLD, $<)
 	@$(RAGEL) $< -G1 -C -o $@
 	@$(call CHECK, $<)

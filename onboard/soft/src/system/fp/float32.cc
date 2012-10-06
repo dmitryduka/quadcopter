@@ -286,6 +286,8 @@ float32::operator int() const {
     return z;
 }
 
+float32::float_type float32::internals() const { return data; }
+
 /*
 -------------------------------------------------------------------------------
 Returns the sign bit of the single-precision floating-point value `a'.
@@ -679,5 +681,4 @@ float32 rsqrt(const float32& y) {
     //x = x * (threehalves - xhalf * x * x);    // Once more too increase accuracy
     return x;
 }
-
 

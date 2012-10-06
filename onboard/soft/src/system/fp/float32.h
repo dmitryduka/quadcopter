@@ -82,6 +82,8 @@ public:
 
     operator int() const;
     operator float() const;
+
+    float_type internals() const;
 };
 
 /* Global operators to support builtin float */

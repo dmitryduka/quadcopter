@@ -1,65 +1,88 @@
 #include "console.h"
+#include <common/string.h>
 #include <system/bus/uart/uart.h>
-
-void sendUARTText(const char* str) {
-    while(*str) {
-	System::Bus::UART::write(*str);
-	str++;
-    }
-}
-
-void hey() {
-    sendUARTText(":)\n");
-}
-
-void quat() {
-    sendUARTText("quat data\n");
-}
-
-void acc() {
-    sendUARTText("acc data\n");
-}
-
-void gyro() {
-    sendUARTText("gyro data\n");
-}
-
-void magn() {
-    sendUARTText("magn data\n");
-}
-
-void pid() {
-    sendUARTText("\n");
-}
-
-void set_pid(int P, int I, int D) {
-    sendUARTText(":)\n");
-}
-
-void set_throttle(int x) {
-    sendUARTText(":)\n");
-}
-
-void set_pitch(int x) {
-    sendUARTText(":)\n");
-}
-
-void set_yaw(int x) {
-    sendUARTText(":)\n");
-}
-
-void set_roll(int x) {
-    sendUARTText(":)\n");
-}
-
+#include <system/registry.hpp>
 
 /* ---------- actions implementation ----------- */
 
-/* TODO: move this to common */
-unsigned int strlen(const char* str) {
-    unsigned int size = 0;
-    while(*str++) size++;
-    return size;
+const char* RESPONSE_OK = ":)";
+const char* RESPONSE_LF = "\n";
+
+
+void hey() {
+    System::Bus::UART::write(RESPONSE_OK);
+    System::Bus::UART::write(RESPONSE_LF);
+}
+
+void quat() {
+    unsigned int q[4] = { b32tohex(System::Registry::value(System::Registry::ORIENTATION_Q1).internals()),
+			    b32tohex(System::Registry::value(System::Registry::ORIENTATION_Q2).internals()),
+			    b32tohex(System::Registry::value(System::Registry::ORIENTATION_Q3).internals()),
+			    b32tohex(System::Registry::value(System::Registry::ORIENTATION_Q4).internals()),
+			};
+
+    for(int i = 0; i < 4; ++i) {
+	System::Bus::UART::write("0x");
+	System::Bus::UART::write(reinterpret_cast<const char*>(q + i), sizeof(int));
+	System::Bus::UART::write(" ");
+    }
+}
+
+void acc() {
+    unsigned int q[3] = { b32tohex(System::Registry::value(System::Registry::ACCELEROMETER1_X)),
+			    b32tohex(System::Registry::value(System::Registry::ACCELEROMETER1_Y)),
+			    b32tohex(System::Registry::value(System::Registry::ACCELEROMETER1_Z)),
+			};
+
+    for(int i = 0; i < 3; ++i) {
+	System::Bus::UART::write("0x");
+	System::Bus::UART::write(reinterpret_cast<const char*>(q + i), sizeof(int));
+	System::Bus::UART::write(" ");
+    }
+}
+
+void gyro() {
+    unsigned int q[3] = { b32tohex(System::Registry::value(System::Registry::GYRO_X)),
+			    b32tohex(System::Registry::value(System::Registry::GYRO_Y)),
+			    b32tohex(System::Registry::value(System::Registry::GYRO_Z)),
+			};
+
+    for(int i = 0; i < 3; ++i) {
+	System::Bus::UART::write("0x");
+	System::Bus::UART::write(reinterpret_cast<const char*>(q + i), sizeof(int));
+	System::Bus::UART::write(" ");
+    }
+}
+
+void magn() {
+    unsigned int q[3] = { b32tohex(System::Registry::value(System::Registry::COMPASS_X)),
+			    b32tohex(System::Registry::value(System::Registry::COMPASS_Y)),
+			    b32tohex(System::Registry::value(System::Registry::COMPASS_Z)),
+			};
+
+    for(int i = 0; i < 3; ++i) {
+	System::Bus::UART::write("0x");
+	System::Bus::UART::write(reinterpret_cast<const char*>(q + i), sizeof(int));
+	System::Bus::UART::write(" ");
+    }
+}
+
+void pid() {
+}
+
+void set_pid(int P, int I, int D) {
+}
+
+void set_throttle(int x) {
+}
+
+void set_pitch(int x) {
+}
+
+void set_yaw(int x) {
+}
+
+void set_roll(int x) {
 }
 
 %%{

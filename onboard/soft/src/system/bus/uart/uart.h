@@ -5,11 +5,12 @@ namespace System {
 namespace Bus {
 namespace UART {
 
-void start();
-void stop();
-
 char read();
-void write(char);
+bool write(char);
+void write_waiting(char);
+
+bool write(const char*, unsigned int size = 0);
+void write_waiting(const char*, unsigned int size = 0);
 
 }
 }
