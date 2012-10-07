@@ -61,8 +61,8 @@ Symbol table '.symtab' contains 60 entries:
      3: 00000000     0 SECTION LOCAL  DEFAULT    3 
      4: 00000000     0 SECTION LOCAL  DEFAULT    4 
      5: 00000000     0 SECTION LOCAL  DEFAULT    5 
-     6: 00000000     0 FILE    LOCAL  DEFAULT  ABS ccmaWuyD.ltrans0.o
-     7: 00000000     0 FILE    LOCAL  DEFAULT  ABS ccmaWuyD.ltrans1.o
+     6: 00000000     0 FILE    LOCAL  DEFAULT  ABS ccpIY0Zt.ltrans0.o
+     7: 00000000     0 FILE    LOCAL  DEFAULT  ABS ccpIY0Zt.ltrans1.o
      8: 00001490    48 FUNC    LOCAL  DEFAULT    1 _ZN6System3Bus4UART10writ
      9: 000014c0    36 FUNC    LOCAL  DEFAULT    1 _ZN6System3Bus4UART13writ
     10: 000014ec    48 FUNC    LOCAL  DEFAULT    1 _ZN7float3219shift32Right
@@ -80,7 +80,7 @@ Symbol table '.symtab' contains 60 entries:
     22: 80000278     8 OBJECT  LOCAL  DEFAULT    2 _ZGVZN6System8Registry8in
     23: 80000280   100 OBJECT  LOCAL  DEFAULT    2 _ZZN6System8Registry8inst
     24: 00002088  3272 FUNC    LOCAL  DEFAULT    1 _Z19parseConsoleMessagePK
-    25: 00000000     0 FILE    LOCAL  DEFAULT  ABS ccmaWuyD.ltrans2.o
+    25: 00000000     0 FILE    LOCAL  DEFAULT  ABS ccpIY0Zt.ltrans2.o
     26: 00003030   236 FUNC    LOCAL  DEFAULT    1 _GLOBAL__I_65535_0_RESPON
     27: 80000258    12 OBJECT  LOCAL  DEFAULT    2 _ZTVN5Radio7Digital16XBee
     28: 800002f4    64 OBJECT  LOCAL  DEFAULT    2 _ZN6System7Tasking4Pool16
