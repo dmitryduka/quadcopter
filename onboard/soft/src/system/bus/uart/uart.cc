@@ -7,10 +7,12 @@ namespace UART {
 
 const unsigned int UART_TX_BUFFER_LENGTH = 32;
 
-enum IoType { Read, Write };
+bool can_read() { return ((*DEV_UART_RX >> 16) != 0); }
 
 char read() {
-    return *DEV_UART_RX;
+	char c = *DEV_UART_RX & 0xFF;
+	*DEV_UART_RX = 0;
+    return c;
 }
 
 /* TODO: Comment all this */
@@ -25,7 +27,7 @@ bool write(char x) {
     return true;
 }
 
-static void write_loop(const char* x, unsigned int size = 0) {
+void write_loop(const char* x, unsigned int size) {
     unsigned int counter = 0;
     while(*x) {
 	if(counter < UART_TX_BUFFER_LENGTH) {

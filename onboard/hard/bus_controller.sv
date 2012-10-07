@@ -36,6 +36,12 @@ module bus_controller(  input  [29:0]  CPU_ADDR,
                         
                         input  [31:0]  RTC,
                         
+                        output [31:0]  ENGINES_13_WD,
+                        output         ENGINES_13_WE,
+
+                        output [31:0]  ENGINES_24_WD,
+                        output         ENGINES_24_WE,
+                        
                         input  [31:0]  RADIO_CH1,
                         input  [31:0]  RADIO_CH2,
                         input  [31:0]  RADIO_CH3,
@@ -85,8 +91,12 @@ iospace_mux inout_space_mux(  .SEL         ( CPU_ADDR[3:0] ),
                               .IO_6_RD     ( UART_RX_RD    ),
                               .IO_6_WE     ( UART_RX_WE    ),
                               
-                              .IO_7_RD     ( 32'd7         ),
-                              .IO_8_RD     ( 32'd8         ),
+                              .IO_7_RD     ( 32'hEE000012  ),
+                              .IO_7_WE     ( ENGINES_13_WE ),
+                              
+                              .IO_8_RD     ( 32'hEE000024  ),
+                              .IO_8_WE     ( ENGINES_24_WE ),
+                              
                               .IO_9_RD     ( 32'd9         ),
                               
                               .IO_10_RD    ( RADIO_CH1     ),
@@ -107,6 +117,9 @@ assign LEDS_WD       = CPU_WD;
 assign JTAG_WD       = CPU_WD;
 assign IMU_WD        = CPU_WD;
 assign UART_TX_WD    = CPU_WD;
+assign ENGINES_13_WD = CPU_WD;
+assign ENGINES_24_WD = CPU_WD;
+
 
 assign STACK_MEM_BE  = CPU_BE;
 

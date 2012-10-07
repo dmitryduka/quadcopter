@@ -39,7 +39,7 @@ module dmem ( input        CLK,
               input [31:0] WD,
               output[31:0] RD );
 
-parameter D = 8;
+parameter D = 10;
               
 logic [3:0][7:0] RAM[0:2**D-1];
 logic [31:0] read_reg;

@@ -2,6 +2,6 @@
 #define STRING_H
 
 unsigned int strlen(const char*);
-unsigned int b32tohex(unsigned int);
+const char* b32tohex(unsigned int);
 
 #endif

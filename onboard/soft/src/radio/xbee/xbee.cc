@@ -1,6 +1,8 @@
 #include "xbee.h"
+#include <common/ct-utility.hpp>
 #include <system/bus/uart/uart.h>
 #include <system/devices.hpp>
+#include <system/util.h>
 #include <radio/messages/console.h>
 
 namespace Radio {
@@ -9,23 +11,18 @@ namespace Digital {
 
 XBeeReadIdleTask::XBeeReadIdleTask() : bytesSoFar(0), handler{0, 0} {}
 void XBeeReadIdleTask::start() {
-    /* Just for testing */
-    parseConsoleMessage(message_buffer);
-    /* TODO: poll uart, exit if unavailable */
-    /* TODO */
-    /* read it otherwise */
-    char b = System::Bus::UART::read();
-    /* Determine message size/handler, because first byte is always message type */
-    if(bytesSoFar == 0)
-        handler = Messages::handlers[b];
-    /* Put the byte to the buffer */
-    message_buffer[bytesSoFar++] = b;
-    /* check if we have full message yet and call handler if so */
-    if(bytesSoFar == handler.size) {
-        handler.handler(message_buffer);
-        bytesSoFar = 0;
-        handler = {0, 0};
+    bool ok = false;
+    if(System::Bus::UART::can_read()) {
+	char ch = System::Bus::UART::read();
+	message_buffer[bytesSoFar++] = ch;
+	if(ch == '\r' || ch == '\n') {
+	    message_buffer[bytesSoFar] = 0;
+	    bytesSoFar = 0;
+	    ok = true;
+	}
     }
+    if(ok) parseConsoleMessage(message_buffer);
+    /* TODO: poll uart, exit if unavailable */
 }
 
 }

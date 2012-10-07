@@ -6,8 +6,8 @@ ENTRY(_start)
 SEARCH_DIR("=/usr/local/lib"); SEARCH_DIR("=/lib"); SEARCH_DIR("=/usr/lib");
 MEMORY 
 {
-    imem (rx) : ORIGIN = 0, LENGTH = 16K
-    dmem (rw) : ORIGIN = 0x80000000, LENGTH = 2K
+    imem (rx) : ORIGIN = 0, LENGTH = 32K
+    dmem (rw) : ORIGIN = 0x80000000, LENGTH = 4K
 }
 SECTIONS
 {
@@ -18,7 +18,7 @@ SECTIONS
     *(.eh_frame.*)
   }
   .text : {
-    *startup.o(.text)
+    *startup.S.o(.text)
   } > imem
   .text : {
     *(.text)

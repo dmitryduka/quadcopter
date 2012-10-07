@@ -16,7 +16,7 @@ void TaskScheduler::start() {
         /* Check if RTC value is equal or higher than nextTask' execution time,
         accounting that they could be on different sides of RTC overflow.
         MAX_TASK_INTERVAL_TICKS is defined in the devices.hpp and is 'once in a minute' */
-        if (rtc >= nextTask.time && (rtc - nextTask.time) < MAX_TASK_INTERVAL_TICKS) {
+        if (nextTask.task && rtc >= nextTask.time && (rtc - nextTask.time) < MAX_TASK_INTERVAL_TICKS) {
             nextTask.task->start();
             if (nextTask.queue == ONE_SHOT_QUEUE) removeTask(nextTask.task);
             else nextTask.task->executeAt = rtc + nextTask.task->interval;

@@ -73,9 +73,9 @@ wire        IMU_WE;
 wire [31:0] RTC_RD;
 
 //Engine Control signals
-wire [31:0] ENGINES_13_CTRL_WD, ENGINES_24_CTRL_WD, 
+wire [31:0] ENGINES_13_WD, ENGINES_24_WD, 
             ENGINES_13_CTRL, ENGINES_24_CTRL;
-wire        ENGINES_13_CTRL_WE, ENGINES_24_CTRL_WE;
+wire        ENGINES_13_WE, ENGINES_24_WE;
 
 //===================SYSTEM CLOCK================================//
 
@@ -175,6 +175,12 @@ bus_controller bc(   .CPU_ADDR         ( CPU_ADDR     ),
                      .UART_RX_WE       ( UART_RX_WE   ),
                      
                      .RTC              ( RTC_RD       ),
+                     
+                     .ENGINES_13_WD    ( ENGINES_13_WD ),
+                     .ENGINES_13_WE    ( ENGINES_13_WE ),
+
+                     .ENGINES_24_WD    ( ENGINES_24_WD ),
+                     .ENGINES_24_WE    ( ENGINES_24_WE ),
                      
                      .RADIO_CH1        ( RADIO_CH1    ),
                      .RADIO_CH2        ( RADIO_CH2    ),
@@ -293,13 +299,13 @@ radio_rx radio_ch_6( .CLK_1M   ( CLK_1M    ),
 //===================ENGINES REGISTERS===========================//
                     
 io32 eng_13_reg( .CLK     ( CLK_CPU            ),
-                 .WE      ( ENGINES_13_CTRL_WE ),
-                 .DATA_IN ( ENGINES_13_CTRL_WD ),
+                 .WE      ( ENGINES_13_WE ),
+                 .DATA_IN ( ENGINES_13_WD ),
                  .IO_OUT  ( ENGINES_13_CTRL    ) );
 
 io32 eng_24_reg( .CLK     ( CLK_CPU            ),
-                 .WE      ( ENGINES_24_CTRL_WE ),
-                 .DATA_IN ( ENGINES_24_CTRL_WD ),
+                 .WE      ( ENGINES_24_WE ),
+                 .DATA_IN ( ENGINES_24_WD ),
                  .IO_OUT  ( ENGINES_24_CTRL    ) );
 
 //====================ENGINES CONTROL============================//

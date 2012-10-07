@@ -8,7 +8,7 @@ namespace Util {
 void init();
 
 /* Delay in clock cycles */
-void delay(int value);
+void delay(unsigned int value);
 
 }
 }

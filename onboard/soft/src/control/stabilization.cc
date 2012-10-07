@@ -23,8 +23,8 @@ void StabilizationAndEngineUpdateTask::start() {
         E3 -= System::Registry::value(System::Registry::PID_CORRECTION_X);
         E4 += System::Registry::value(System::Registry::PID_CORRECTION_Y);
     }
-    *DEV_ENGINES_13 = ((E1 << 16) | E3);
-    *DEV_ENGINES_24 = ((E2 << 16) | E4);
+    *DEV_ENG_13 = ((E1 << 16) | E3);
+    *DEV_ENG_24 = ((E2 << 16) | E4);
 }
 
 /* PID-controller */

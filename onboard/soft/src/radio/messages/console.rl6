@@ -5,66 +5,48 @@
 
 /* ---------- actions implementation ----------- */
 
-const char* RESPONSE_OK = ":)";
-const char* RESPONSE_LF = "\n";
-
+const char* RESPONSE_OK = ":)\n";
 
 void hey() {
     System::Bus::UART::write(RESPONSE_OK);
-    System::Bus::UART::write(RESPONSE_LF);
 }
 
 void quat() {
-    unsigned int q[4] = { b32tohex(System::Registry::value(System::Registry::ORIENTATION_Q1).internals()),
-			    b32tohex(System::Registry::value(System::Registry::ORIENTATION_Q2).internals()),
-			    b32tohex(System::Registry::value(System::Registry::ORIENTATION_Q3).internals()),
-			    b32tohex(System::Registry::value(System::Registry::ORIENTATION_Q4).internals()),
-			};
-
-    for(int i = 0; i < 4; ++i) {
-	System::Bus::UART::write("0x");
-	System::Bus::UART::write(reinterpret_cast<const char*>(q + i), sizeof(int));
-	System::Bus::UART::write(" ");
-    }
+    System::Bus::UART::write_waiting(b32tohex(System::Registry::value(System::Registry::ORIENTATION_Q1).internals()));
+    System::Bus::UART::write_loop(" ");
+    System::Bus::UART::write_loop(b32tohex(System::Registry::value(System::Registry::ORIENTATION_Q2).internals()));
+    System::Bus::UART::write_loop(" ");
+    System::Bus::UART::write_loop(b32tohex(System::Registry::value(System::Registry::ORIENTATION_Q3).internals()));
+    System::Bus::UART::write_loop(" ");
+    System::Bus::UART::write_waiting(b32tohex(System::Registry::value(System::Registry::ORIENTATION_Q4).internals()));
+    System::Bus::UART::write_loop("\n");
 }
 
 void acc() {
-    unsigned int q[3] = { b32tohex(System::Registry::value(System::Registry::ACCELEROMETER1_X)),
-			    b32tohex(System::Registry::value(System::Registry::ACCELEROMETER1_Y)),
-			    b32tohex(System::Registry::value(System::Registry::ACCELEROMETER1_Z)),
-			};
-
-    for(int i = 0; i < 3; ++i) {
-	System::Bus::UART::write("0x");
-	System::Bus::UART::write(reinterpret_cast<const char*>(q + i), sizeof(int));
-	System::Bus::UART::write(" ");
-    }
+    System::Bus::UART::write_waiting(b32tohex(System::Registry::value(System::Registry::ACCELEROMETER1_X)));
+    System::Bus::UART::write_loop(" ");
+    System::Bus::UART::write_loop(b32tohex(System::Registry::value(System::Registry::ACCELEROMETER1_Y)));
+    System::Bus::UART::write_loop(" ");
+    System::Bus::UART::write_loop(b32tohex(System::Registry::value(System::Registry::ACCELEROMETER1_Z)));
+    System::Bus::UART::write_loop("\n");
 }
 
 void gyro() {
-    unsigned int q[3] = { b32tohex(System::Registry::value(System::Registry::GYRO_X)),
-			    b32tohex(System::Registry::value(System::Registry::GYRO_Y)),
-			    b32tohex(System::Registry::value(System::Registry::GYRO_Z)),
-			};
-
-    for(int i = 0; i < 3; ++i) {
-	System::Bus::UART::write("0x");
-	System::Bus::UART::write(reinterpret_cast<const char*>(q + i), sizeof(int));
-	System::Bus::UART::write(" ");
-    }
+    System::Bus::UART::write_waiting(b32tohex(System::Registry::value(System::Registry::GYRO_X)));
+    System::Bus::UART::write_loop(" ");
+    System::Bus::UART::write_loop(b32tohex(System::Registry::value(System::Registry::GYRO_Y)));
+    System::Bus::UART::write_loop(" ");
+    System::Bus::UART::write_loop(b32tohex(System::Registry::value(System::Registry::GYRO_Z)));
+    System::Bus::UART::write_loop("\n");
 }
 
 void magn() {
-    unsigned int q[3] = { b32tohex(System::Registry::value(System::Registry::COMPASS_X)),
-			    b32tohex(System::Registry::value(System::Registry::COMPASS_Y)),
-			    b32tohex(System::Registry::value(System::Registry::COMPASS_Z)),
-			};
-
-    for(int i = 0; i < 3; ++i) {
-	System::Bus::UART::write("0x");
-	System::Bus::UART::write(reinterpret_cast<const char*>(q + i), sizeof(int));
-	System::Bus::UART::write(" ");
-    }
+    System::Bus::UART::write_waiting(b32tohex(System::Registry::value(System::Registry::COMPASS_X)));
+    System::Bus::UART::write_loop(" ");
+    System::Bus::UART::write_loop(b32tohex(System::Registry::value(System::Registry::COMPASS_Y)));
+    System::Bus::UART::write_loop(" ");
+    System::Bus::UART::write_loop(b32tohex(System::Registry::value(System::Registry::COMPASS_Z)));
+    System::Bus::UART::write_loop("\n");
 }
 
 void pid() {
