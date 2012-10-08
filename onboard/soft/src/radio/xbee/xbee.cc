@@ -11,18 +11,20 @@ namespace Digital {
 
 XBeeReadIdleTask::XBeeReadIdleTask() : bytesSoFar(0), handler{0, 0} {}
 void XBeeReadIdleTask::start() {
-    bool ok = false;
+    /* In case it is console message accumulate bytes into ConsoleRequest::command until '\r'/'\n' is read or buffer is full.
+	Otherwise it is a message with predefined length so read until we have full message and call it's handler
+    */
+
+    /* If we have something to read from UART, do it, otherwise return */
     if(System::Bus::UART::can_read()) {
-	char ch = System::Bus::UART::read();
-	message_buffer[bytesSoFar++] = ch;
-	if(ch == '\r' || ch == '\n') {
-	    message_buffer[bytesSoFar] = 0;
-	    bytesSoFar = 0;
-	    ok = true;
+	if(/* awaiting for the first character that could be interpretable as a message header/type */) {
+	} else {
+	    if(/* console message */) {
+	    } else {
+	    /* other message */
+	    }
 	}
     }
-    if(ok) parseConsoleMessage(message_buffer);
-    /* TODO: poll uart, exit if unavailable */
 }
 
 }
