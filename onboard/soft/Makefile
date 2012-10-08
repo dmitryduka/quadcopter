@@ -108,8 +108,13 @@ dirs: $(OBJDIR) $(LISTINGSDIR) $(OUTPUTDIRS)
 $(OBJDIR) $(LISTINGSDIR) $(OUTPUTDIRS):
 	@mkdir -p $@
 
-clean:
+.PHONY: clean clean_errors
+
+clean: clean_errors
 	@echo Cleaning ...
 	@-rm -rf $(OBJDIR)
 	@-rm -rf $(LISTINGSDIR)
-	@-rm main temp.errors temp.log program.txt data.txt
+	@-rm main program.txt data.txt
+
+clean_errors:
+	@-rm temp.errors temp.log

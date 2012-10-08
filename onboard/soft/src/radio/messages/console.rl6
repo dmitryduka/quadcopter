@@ -8,7 +8,7 @@
 const char* RESPONSE_OK = ":)\n";
 
 void hey() {
-    System::Bus::UART::write(RESPONSE_OK);
+    System::Bus::UART::write_waiting(RESPONSE_OK);
 }
 
 void quat() {
@@ -49,22 +49,55 @@ void magn() {
     System::Bus::UART::write_loop("\n");
 }
 
+void get_throttle() {
+    System::Bus::UART::write_waiting(b32tohex(System::Registry::value(System::Registry::THROTTLE)));
+    System::Bus::UART::write_loop("\n");
+}
+
+void alt() {
+    System::Bus::UART::write_waiting(b32tohex(System::Registry::value(System::Registry::ALTIMETER)));
+    System::Bus::UART::write_loop("\n");
+}
+
+void temp() {
+    System::Bus::UART::write_waiting(b32tohex(System::Registry::value(System::Registry::TEMPERATURE)));
+    System::Bus::UART::write_loop("\n");
+}
+
 void pid() {
+    System::Bus::UART::write_waiting(b32tohex(System::Registry::value(System::Registry::PID_P)));
+    System::Bus::UART::write_loop(" ");
+    System::Bus::UART::write_loop(b32tohex(System::Registry::value(System::Registry::PID_I)));
+    System::Bus::UART::write_loop(" ");
+    System::Bus::UART::write_loop(b32tohex(System::Registry::value(System::Registry::PID_D)));
+    System::Bus::UART::write_loop("\n");
 }
 
 void set_pid(int P, int I, int D) {
+    System::Registry::set(System::Registry::PID_P, P);
+    System::Registry::set(System::Registry::PID_I, I);
+    System::Registry::set(System::Registry::PID_D, D);
+    System::Bus::UART::write_waiting(RESPONSE_OK);
 }
 
 void set_throttle(int x) {
+    System::Registry::set(System::Registry::THROTTLE, x);
+    System::Bus::UART::write_waiting(RESPONSE_OK);
 }
 
 void set_pitch(int x) {
+    System::Registry::set(System::Registry::DESIRED_PITCH, x);
+    System::Bus::UART::write_waiting(RESPONSE_OK);
 }
 
 void set_yaw(int x) {
+    System::Registry::set(System::Registry::DESIRED_YAW, x);
+    System::Bus::UART::write_waiting(RESPONSE_OK);
 }
 
 void set_roll(int x) {
+    System::Registry::set(System::Registry::DESIRED_ROLL, x);
+    System::Bus::UART::write_waiting(RESPONSE_OK);
 }
 
 %%{
@@ -93,6 +126,9 @@ void parseConsoleMessage(const char* str) {
 	action hey { hey(); }
 	action quat { quat(); }
 	action acc { acc(); }
+	action alt { alt(); }
+	action temp { temp(); }
+	action get_throttle { get_throttle(); }
 	action gyro { gyro(); }
 	action magn { magn(); }
 	action get_pid { pid(); }
@@ -111,6 +147,9 @@ void parseConsoleMessage(const char* str) {
 			('hey' @hey |
 			 'get_quat' @quat|
 			 'get_acc' @acc |
+			 'get_alt' @alt |
+			 'get_throttle' @get_throttle |
+			 'get_temp' @temp |
 			 'get_gyro' @gyro |
 			 'get_magn' @magn |
 			 'get_pid' @get_pid |

@@ -40,15 +40,20 @@ public:
         ALTIMETER,
         /* Throttle */
         THROTTLE,
+        /* PID values */
+        PID_P,
+        PID_I,
+        PID_D,
         /* PID corrections */
         PID_CORRECTION_X,
         PID_CORRECTION_Y,
         /* PID corrections */
         AZIMUTH_CORRECTION_X,
         AZIMUTH_CORRECTION_Y,
-        /* Desired angle to stabilize */
-        DESIRED_X,
-        DESIRED_Y,
+        /* Desired angles */
+        DESIRED_PITCH,
+        DESIRED_YAW,
+        DESIRED_ROLL,
         /* etc */
         VALUES_END
     };

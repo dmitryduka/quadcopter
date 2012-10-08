@@ -29,14 +29,14 @@ bool write(char x) {
 
 void write_loop(const char* x, unsigned int size) {
     unsigned int counter = 0;
-    while(*x) {
-	if(counter < UART_TX_BUFFER_LENGTH) {
-	    if(size > 0) {
-		if(counter < size) *DEV_UART_TX = *x++;
-		else break;
-	    } else *DEV_UART_TX = *x++;
-	    counter++;
-	} else break;
+    for(int i = 0; i < UART_TX_BUFFER_LENGTH; ++i) {
+	if(size) {
+	    if(i < size) *DEV_UART_TX = x[i];
+	    else break;
+	} else {
+	    if(x[i]) *DEV_UART_TX = x[i];
+	    else break;
+	}
     }
 }
 
