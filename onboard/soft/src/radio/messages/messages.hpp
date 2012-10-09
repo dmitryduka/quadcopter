@@ -76,7 +76,7 @@ struct Yaw : Message<To, To::Yaw> { short int value; };
 struct Roll : Message<To, To::Roll> { short int value; };
 
 /* Console request message */
-struct ConsoleRequest : Message<To, To::ConsoleRequest> { };
+struct ConsoleRequest : Message<To, To::ConsoleRequest> { const char command[31]; };
 
 /* ==============================================================
 		Messages handlers definitions 

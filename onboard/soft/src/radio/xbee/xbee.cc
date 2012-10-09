@@ -17,9 +17,9 @@ void XBeeReadIdleTask::start() {
 
     /* If we have something to read from UART, do it, otherwise return */
     if(System::Bus::UART::can_read()) {
-	if(/* awaiting for the first character that could be interpretable as a message header/type */) {
+	if(1/* awaiting for the first character that could be interpretable as a message header/type */) {
 	} else {
-	    if(/* console message */) {
+	    if(1/* console message */) {
 	    } else {
 	    /* other message */
 	    }

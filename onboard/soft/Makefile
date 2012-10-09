@@ -59,19 +59,19 @@ main: $(OBJECTS)
 	@$(call BLD, 'Linking ')
 	@$(LD) -Wl,-T,$(SRCDIR)/ld.script -o $@ $(OBJECTS) $(LDOPTS) 2> temp.log || touch temp.errors
 	@$(call CHECK, 'Linking ')
-	@$(READELF) -a main > $(LISTINGSDIR)/program-elf.txt
+	@$(READELF) -W -a main > $(LISTINGSDIR)/program-elf.txt
 	@-$(RM) -f temp.errors temp.log
 
 $(IMEMFILE): main
 	@$(call BLD, '[  G++  ] ')
 	@$(call BLD, 'Generating $@\n')
-	@$(DUMP) -C -Dz --section=.text main > $(LISTINGSDIR)/program-listing.txt
+	@$(DUMP) -S -C -Dz --section=.text main > $(LISTINGSDIR)/program-listing.txt
 	@cat $(LISTINGSDIR)/program-listing.txt | grep -P "^\s*[\d|abcdef]+:" | cut -f 2 > program.txt
 
 $(DMEMFILE): main
 	@$(call BLD, '[  G++  ] ')
 	@$(call BLD, 'Generating $@\n')
-	@-$(DUMP) -C -Dz --section=.data main > $(LISTINGSDIR)/data-listing.txt
+	@-$(DUMP) -S -C -Dz --section=.data main > $(LISTINGSDIR)/data-listing.txt
 	@-cat $(LISTINGSDIR)/data-listing.txt | grep -P "^\s*[\d|abcdef]+:" | cut -f 2 > data.txt
 
 $(OBJDIR)/%.cc.o: $(SRCDIR)/%.cc
