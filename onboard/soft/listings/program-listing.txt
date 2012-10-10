@@ -1617,13 +1617,13 @@ Disassembly of section .text:
     18e4:	03e00008 	jr	ra
     18e8:	00000000 	nop
 
-000018ec <_ZN6System3Bus3I2CL2ioEcNS1_6IoTypeE.isra.0.2312.1577>:
+000018ec <_ZN6System3Bus3I2CL2ioEcNS1_6IoTypeE.isra.0.2309.1577>:
     18ec:	3c020002 	lui	v0,0x2
     18f0:	00822025 	or	a0,a0,v0
     18f4:	ac04000c 	sw	a0,12(zero)
     18f8:	8c02000c 	lw	v0,12(zero)
     18fc:	00000000 	nop
-    1900:	0440fffd 	bltz	v0,18f8 <_ZN6System3Bus3I2CL2ioEcNS1_6IoTypeE.isra.0.2312.1577+0xc>
+    1900:	0440fffd 	bltz	v0,18f8 <_ZN6System3Bus3I2CL2ioEcNS1_6IoTypeE.isra.0.2309.1577+0xc>
     1904:	00000000 	nop
     1908:	8c02000c 	lw	v0,12(zero)
     190c:	03e00008 	jr	ra
@@ -1632,7 +1632,7 @@ Disassembly of section .text:
 00001914 <_ZN6System3Bus3I2C4readEv.1575>:
     1914:	27bdffe8 	addiu	sp,sp,-24
     1918:	afbf0014 	sw	ra,20(sp)
-    191c:	0c00063b 	jal	18ec <_ZN6System3Bus3I2CL2ioEcNS1_6IoTypeE.isra.0.2312.1577>
+    191c:	0c00063b 	jal	18ec <_ZN6System3Bus3I2CL2ioEcNS1_6IoTypeE.isra.0.2309.1577>
     1920:	2404ffff 	li	a0,-1
     1924:	8fbf0014 	lw	ra,20(sp)
     1928:	00021600 	sll	v0,v0,0x18
@@ -1640,10 +1640,10 @@ Disassembly of section .text:
     1930:	03e00008 	jr	ra
     1934:	27bd0018 	addiu	sp,sp,24
 
-00001938 <_ZN4MathL11sign_extendEi.2263.1580>:
+00001938 <_ZN4MathL11sign_extendEi.2260.1580>:
     1938:	3083ffff 	andi	v1,a0,0xffff
     193c:	00031bc3 	sra	v1,v1,0xf
-    1940:	10600003 	beqz	v1,1950 <_ZN4MathL11sign_extendEi.2263.1580+0x18>
+    1940:	10600003 	beqz	v1,1950 <_ZN4MathL11sign_extendEi.2260.1580+0x18>
     1944:	00801021 	move	v0,a0
     1948:	3c03ffff 	lui	v1,0xffff
     194c:	00831025 	or	v0,a0,v1
@@ -1841,9 +1841,9 @@ Disassembly of section .text:
     1c24:	afb30024 	sw	s3,36(sp)
     1c28:	afb20020 	sw	s2,32(sp)
     1c2c:	afb1001c 	sw	s1,28(sp)
-    1c30:	0c00063b 	jal	18ec <_ZN6System3Bus3I2CL2ioEcNS1_6IoTypeE.isra.0.2312.1577>
+    1c30:	0c00063b 	jal	18ec <_ZN6System3Bus3I2CL2ioEcNS1_6IoTypeE.isra.0.2309.1577>
     1c34:	afb00018 	sw	s0,24(sp)
-    1c38:	0c00063b 	jal	18ec <_ZN6System3Bus3I2CL2ioEcNS1_6IoTypeE.isra.0.2312.1577>
+    1c38:	0c00063b 	jal	18ec <_ZN6System3Bus3I2CL2ioEcNS1_6IoTypeE.isra.0.2309.1577>
     1c3c:	2404003b 	li	a0,59
     1c40:	3c020001 	lui	v0,0x1
     1c44:	244200ff 	addiu	v0,v0,255
@@ -1858,7 +1858,7 @@ Disassembly of section .text:
     1c68:	00000000 	nop
     1c6c:	0440fffd 	bltz	v0,1c64 <Sensors::IMU::MPU6050::updateAccelerometerAndGyro()+0x78>
     1c70:	00000000 	nop
-    1c74:	0c00063b 	jal	18ec <_ZN6System3Bus3I2CL2ioEcNS1_6IoTypeE.isra.0.2312.1577>
+    1c74:	0c00063b 	jal	18ec <_ZN6System3Bus3I2CL2ioEcNS1_6IoTypeE.isra.0.2309.1577>
     1c78:	2404ffd1 	li	a0,-47
     1c7c:	0c000645 	jal	1914 <_ZN6System3Bus3I2C4readEv.1575>
     1c80:	00000000 	nop
@@ -1900,28 +1900,28 @@ Disassembly of section .text:
     1d10:	00000000 	nop
     1d14:	00042200 	sll	a0,a0,0x8
     1d18:	00832025 	or	a0,a0,v1
-    1d1c:	0c00064e 	jal	1938 <_ZN4MathL11sign_extendEi.2263.1580>
+    1d1c:	0c00064e 	jal	1938 <_ZN4MathL11sign_extendEi.2260.1580>
     1d20:	afa50010 	sw	a1,16(sp)
     1d24:	001e2200 	sll	a0,s8,0x8
     1d28:	00972025 	or	a0,a0,s7
-    1d2c:	0c00064e 	jal	1938 <_ZN4MathL11sign_extendEi.2263.1580>
+    1d2c:	0c00064e 	jal	1938 <_ZN4MathL11sign_extendEi.2260.1580>
     1d30:	afa20014 	sw	v0,20(sp)
     1d34:	00162200 	sll	a0,s6,0x8
     1d38:	00952025 	or	a0,a0,s5
-    1d3c:	0c00064e 	jal	1938 <_ZN4MathL11sign_extendEi.2263.1580>
+    1d3c:	0c00064e 	jal	1938 <_ZN4MathL11sign_extendEi.2260.1580>
     1d40:	0040b821 	move	s7,v0
     1d44:	00142200 	sll	a0,s4,0x8
     1d48:	00932025 	or	a0,a0,s3
-    1d4c:	0c00064e 	jal	1938 <_ZN4MathL11sign_extendEi.2263.1580>
+    1d4c:	0c00064e 	jal	1938 <_ZN4MathL11sign_extendEi.2260.1580>
     1d50:	0040a821 	move	s5,v0
     1d54:	00122200 	sll	a0,s2,0x8
     1d58:	00912025 	or	a0,a0,s1
-    1d5c:	0c00064e 	jal	1938 <_ZN4MathL11sign_extendEi.2263.1580>
+    1d5c:	0c00064e 	jal	1938 <_ZN4MathL11sign_extendEi.2260.1580>
     1d60:	00409821 	move	s3,v0
     1d64:	8fa50010 	lw	a1,16(sp)
     1d68:	00102200 	sll	a0,s0,0x8
     1d6c:	00852025 	or	a0,a0,a1
-    1d70:	0c00064e 	jal	1938 <_ZN4MathL11sign_extendEi.2263.1580>
+    1d70:	0c00064e 	jal	1938 <_ZN4MathL11sign_extendEi.2260.1580>
     1d74:	00408821 	move	s1,v0
     1d78:	0c0006e5 	jal	1b94 <_ZN6System8Registry8instanceEv.local.1>
     1d7c:	00408021 	move	s0,v0
@@ -2166,7 +2166,7 @@ Disassembly of section .text:
     2100:	03e00008 	jr	ra
     2104:	27bd0020 	addiu	sp,sp,32
 
-00002108 <global constructors keyed to 65535_0_RESPONSE_OK.2839.1328>:
+00002108 <global constructors keyed to 65535_0_RESPONSE_OK.2838.1328>:
     2108:	3c048000 	lui	a0,0x8000
     210c:	3c038000 	lui	v1,0x8000
     2110:	24840138 	addiu	a0,a0,312

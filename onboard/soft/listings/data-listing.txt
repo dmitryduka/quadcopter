@@ -4,7 +4,7 @@ main:     file format elf32-bigmips
 
 Disassembly of section .data:
 
-80000000 <_ZZN7float3219countLeadingZeros32EjE21countLeadingZerosHigh.2583.1586>:
+80000000 <_ZZN7float3219countLeadingZeros32EjE21countLeadingZerosHigh.2582.1586>:
 80000000:	08070606 	j	801c1818 <DATA_ENDS+0x1c157c>
 80000004:	05050505 	0x5050505
 80000008:	04040404 	0x4040404

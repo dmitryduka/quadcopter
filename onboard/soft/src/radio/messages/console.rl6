@@ -13,64 +13,64 @@ void hey() {
 
 void quat() {
     System::Bus::UART::write_waiting(b32tohex(System::Registry::value(System::Registry::ORIENTATION_Q1).internals()));
-    System::Bus::UART::write_loop(" ");
-    System::Bus::UART::write_loop(b32tohex(System::Registry::value(System::Registry::ORIENTATION_Q2).internals()));
-    System::Bus::UART::write_loop(" ");
-    System::Bus::UART::write_loop(b32tohex(System::Registry::value(System::Registry::ORIENTATION_Q3).internals()));
-    System::Bus::UART::write_loop(" ");
+    System::Bus::UART::write_waiting(" ");
+    System::Bus::UART::write_waiting(b32tohex(System::Registry::value(System::Registry::ORIENTATION_Q2).internals()));
+    System::Bus::UART::write_waiting(" ");
+    System::Bus::UART::write_waiting(b32tohex(System::Registry::value(System::Registry::ORIENTATION_Q3).internals()));
+    System::Bus::UART::write_waiting(" ");
     System::Bus::UART::write_waiting(b32tohex(System::Registry::value(System::Registry::ORIENTATION_Q4).internals()));
-    System::Bus::UART::write_loop("\n");
+    System::Bus::UART::write_waiting("\n");
 }
 
 void acc() {
     System::Bus::UART::write_waiting(b32tohex(System::Registry::value(System::Registry::ACCELEROMETER1_X)));
-    System::Bus::UART::write_loop(" ");
-    System::Bus::UART::write_loop(b32tohex(System::Registry::value(System::Registry::ACCELEROMETER1_Y)));
-    System::Bus::UART::write_loop(" ");
-    System::Bus::UART::write_loop(b32tohex(System::Registry::value(System::Registry::ACCELEROMETER1_Z)));
-    System::Bus::UART::write_loop("\n");
+    System::Bus::UART::write_waiting(" ");
+    System::Bus::UART::write_waiting(b32tohex(System::Registry::value(System::Registry::ACCELEROMETER1_Y)));
+    System::Bus::UART::write_waiting(" ");
+    System::Bus::UART::write_waiting(b32tohex(System::Registry::value(System::Registry::ACCELEROMETER1_Z)));
+    System::Bus::UART::write_waiting("\n");
 }
 
 void gyro() {
     System::Bus::UART::write_waiting(b32tohex(System::Registry::value(System::Registry::GYRO_X)));
-    System::Bus::UART::write_loop(" ");
-    System::Bus::UART::write_loop(b32tohex(System::Registry::value(System::Registry::GYRO_Y)));
-    System::Bus::UART::write_loop(" ");
-    System::Bus::UART::write_loop(b32tohex(System::Registry::value(System::Registry::GYRO_Z)));
-    System::Bus::UART::write_loop("\n");
+    System::Bus::UART::write_waiting(" ");
+    System::Bus::UART::write_waiting(b32tohex(System::Registry::value(System::Registry::GYRO_Y)));
+    System::Bus::UART::write_waiting(" ");
+    System::Bus::UART::write_waiting(b32tohex(System::Registry::value(System::Registry::GYRO_Z)));
+    System::Bus::UART::write_waiting("\n");
 }
 
 void magn() {
     System::Bus::UART::write_waiting(b32tohex(System::Registry::value(System::Registry::COMPASS_X)));
-    System::Bus::UART::write_loop(" ");
-    System::Bus::UART::write_loop(b32tohex(System::Registry::value(System::Registry::COMPASS_Y)));
-    System::Bus::UART::write_loop(" ");
-    System::Bus::UART::write_loop(b32tohex(System::Registry::value(System::Registry::COMPASS_Z)));
-    System::Bus::UART::write_loop("\n");
+    System::Bus::UART::write_waiting(" ");
+    System::Bus::UART::write_waiting(b32tohex(System::Registry::value(System::Registry::COMPASS_Y)));
+    System::Bus::UART::write_waiting(" ");
+    System::Bus::UART::write_waiting(b32tohex(System::Registry::value(System::Registry::COMPASS_Z)));
+    System::Bus::UART::write_waiting("\n");
 }
 
 void get_throttle() {
     System::Bus::UART::write_waiting(b32tohex(System::Registry::value(System::Registry::THROTTLE)));
-    System::Bus::UART::write_loop("\n");
+    System::Bus::UART::write_waiting("\n");
 }
 
 void alt() {
     System::Bus::UART::write_waiting(b32tohex(System::Registry::value(System::Registry::ALTIMETER)));
-    System::Bus::UART::write_loop("\n");
+    System::Bus::UART::write_waiting("\n");
 }
 
 void temp() {
     System::Bus::UART::write_waiting(b32tohex(System::Registry::value(System::Registry::TEMPERATURE)));
-    System::Bus::UART::write_loop("\n");
+    System::Bus::UART::write_waiting("\n");
 }
 
 void pid() {
     System::Bus::UART::write_waiting(b32tohex(System::Registry::value(System::Registry::PID_P)));
-    System::Bus::UART::write_loop(" ");
-    System::Bus::UART::write_loop(b32tohex(System::Registry::value(System::Registry::PID_I)));
-    System::Bus::UART::write_loop(" ");
-    System::Bus::UART::write_loop(b32tohex(System::Registry::value(System::Registry::PID_D)));
-    System::Bus::UART::write_loop("\n");
+    System::Bus::UART::write_waiting(" ");
+    System::Bus::UART::write_waiting(b32tohex(System::Registry::value(System::Registry::PID_I)));
+    System::Bus::UART::write_waiting(" ");
+    System::Bus::UART::write_waiting(b32tohex(System::Registry::value(System::Registry::PID_D)));
+    System::Bus::UART::write_waiting("\n");
 }
 
 void set_pid(int P, int I, int D) {

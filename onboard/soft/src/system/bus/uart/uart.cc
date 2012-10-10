@@ -1,5 +1,6 @@
 #include "uart.h"
 #include <system/devices.hpp>
+#include <common/string.h>
 
 namespace System {
 namespace Bus {
@@ -17,7 +18,7 @@ char read() {
 
 /* TODO: Comment all this */
 void write_waiting(char x) {
-    while(*DEV_UART_TX == 0) { asm("nop");  }
+    while(UART_TX_BUFFER_LENGTH - *DEV_UART_TX == 0) { asm("nop");  }
     *DEV_UART_TX = x;
 }
 
@@ -49,8 +50,10 @@ bool write(const char* x, unsigned int size) {
 }
 
 void write_waiting(const char* x, unsigned int size) {
-    unsigned int counter = 0;
-    while(*DEV_UART_TX == 0) { asm("nop"); }
+    unsigned int len = 0;
+    if(size) len = size;
+    else len = strlen(x);
+    while(UART_TX_BUFFER_LENGTH - *DEV_UART_TX < len) { asm("nop"); }
     write_loop(x, size);
 }
 

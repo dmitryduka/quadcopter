@@ -8,6 +8,7 @@ AS   = $(XTOOLS_LOCATION)/$(XTOOLS_TRIPLE)/bin/$(XTOOLS_TRIPLE)-as
 LD   = $(XTOOLS_LOCATION)/$(XTOOLS_TRIPLE)/bin/$(XTOOLS_TRIPLE)-g++
 CC   = $(XTOOLS_LOCATION)/$(XTOOLS_TRIPLE)/bin/$(XTOOLS_TRIPLE)-g++
 DUMP = $(XTOOLS_LOCATION)/$(XTOOLS_TRIPLE)/bin/$(XTOOLS_TRIPLE)-objdump
+OCOPY = $(XTOOLS_LOCATION)/$(XTOOLS_TRIPLE)/bin/$(XTOOLS_TRIPLE)-objcopy
 READELF = $(XTOOLS_LOCATION)/$(XTOOLS_TRIPLE)/bin/$(XTOOLS_TRIPLE)-readelf
 STRIP = $(XTOOLS_LOCATION)/$(XTOOLS_TRIPLE)/bin/$(XTOOLS_TRIPLE)-strip
 
@@ -63,16 +64,21 @@ main: $(OBJECTS)
 	@-$(RM) -f temp.errors temp.log
 
 $(IMEMFILE): main
-	@$(call BLD, '[  G++  ] ')
+	@$(call BLD, '[ SREC  ] ')
 	@$(call BLD, 'Generating $@\n')
 	@$(DUMP) -S -C -Dz --section=.text main > $(LISTINGSDIR)/program-listing.txt
-	@cat $(LISTINGSDIR)/program-listing.txt | grep -P "^\s*[\d|abcdef]+:" | cut -f 2 > program.txt
+	@$(OCOPY) -j .text -O srec main text.dump
+	@srec_cat text.dump -o program.txt -vmem 32
+	@rm text.dump
 
 $(DMEMFILE): main
-	@$(call BLD, '[  G++  ] ')
+	@$(call BLD, '[ SREC  ] ')
 	@$(call BLD, 'Generating $@\n')
 	@-$(DUMP) -S -C -Dz --section=.data main > $(LISTINGSDIR)/data-listing.txt
 	@-cat $(LISTINGSDIR)/data-listing.txt | grep -P "^\s*[\d|abcdef]+:" | cut -f 2 > data.txt
+	@$(OCOPY) -j .data -O srec main data.dump
+	@srec_cat data.dump -o data.txt -vmem 32
+	@rm data.dump
 
 $(OBJDIR)/%.cc.o: $(SRCDIR)/%.cc
 	@$(call BLD, '[  G++  ] ')
