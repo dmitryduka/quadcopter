@@ -9,6 +9,7 @@ LD   = $(XTOOLS_LOCATION)/$(XTOOLS_TRIPLE)/bin/$(XTOOLS_TRIPLE)-g++
 CC   = $(XTOOLS_LOCATION)/$(XTOOLS_TRIPLE)/bin/$(XTOOLS_TRIPLE)-g++
 DUMP = $(XTOOLS_LOCATION)/$(XTOOLS_TRIPLE)/bin/$(XTOOLS_TRIPLE)-objdump
 OCOPY = $(XTOOLS_LOCATION)/$(XTOOLS_TRIPLE)/bin/$(XTOOLS_TRIPLE)-objcopy
+NM = $(XTOOLS_LOCATION)/$(XTOOLS_TRIPLE)/bin/$(XTOOLS_TRIPLE)-nm
 READELF = $(XTOOLS_LOCATION)/$(XTOOLS_TRIPLE)/bin/$(XTOOLS_TRIPLE)-readelf
 STRIP = $(XTOOLS_LOCATION)/$(XTOOLS_TRIPLE)/bin/$(XTOOLS_TRIPLE)-strip
 
@@ -52,6 +53,15 @@ CCOPTS += -flto -fdata-sections -ffunction-sections -fno-threadsafe-statics -fst
 LDOPTS = -Os -flto -Wl,--gc-sections -nostdlib -nostartfiles -fwhole-program -lgcc
 
 all: dirs $(IMEMFILE) $(DMEMFILE)
+	@$(eval CE := $(shell $(NM) ./main | grep CODE_ENDS | cut -f 1 -d ' ' | tr '[:lower:]' '[:upper:]'))
+	@$(eval DE := $(shell $(NM) ./main | grep DATA_ENDS | cut -f 1 -d ' ' | tr '[:lower:]' '[:upper:]'))
+	@$(eval DESIZE := $(shell echo "ibase=16; $(DE)-80000000" | bc))
+	@$(call BLD, 'CODE_ENDS at ')
+	@$(call BLD, 0x$(CE))
+	@printf ' (%d bytes)\n' 0x$(CE)
+	@$(call BLD, 'DATA_ENDS at ')
+	@$(call BLD, 0x$(DE))
+	@printf ' (%d bytes)\n' $(DESIZE)
 
 include $(DEPS)
 

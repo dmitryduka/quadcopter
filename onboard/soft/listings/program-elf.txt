@@ -61,8 +61,8 @@ Symbol table '.symtab' contains 55 entries:
      3: 00000000     0 SECTION LOCAL  DEFAULT    3 
      4: 00000000     0 SECTION LOCAL  DEFAULT    4 
      5: 00000000     0 SECTION LOCAL  DEFAULT    5 
-     6: 00000000     0 FILE    LOCAL  DEFAULT  ABS ccLSkF6G.ltrans0.o
-     7: 00000000     0 FILE    LOCAL  DEFAULT  ABS ccLSkF6G.ltrans1.o
+     6: 00000000     0 FILE    LOCAL  DEFAULT  ABS ccSPFDhf.ltrans0.o
+     7: 00000000     0 FILE    LOCAL  DEFAULT  ABS ccSPFDhf.ltrans1.o
      8: 00001498    48 FUNC    LOCAL  DEFAULT    1 _ZN7float3219shift32RightJammingEjiPj.1536
      9: 000014c8   188 FUNC    LOCAL  DEFAULT    1 _ZN7float3212roundAndPackEbij.1531
     10: 00001584   360 FUNC    LOCAL  DEFAULT    1 _ZN7float327addSigsEjjb.1526
@@ -75,7 +75,7 @@ Symbol table '.symtab' contains 55 entries:
     17: 00001b0c   136 FUNC    LOCAL  DEFAULT    1 _ZN7float32C2Ei.1361
     18: 80000140     8 OBJECT  LOCAL  DEFAULT    2 _ZGVZN6System8Registry8instanceEvE4inst.local.10.1584
     19: 80000148   116 OBJECT  LOCAL  DEFAULT    2 _ZZN6System8Registry8instanceEvE4inst.local.9.1585
-    20: 00000000     0 FILE    LOCAL  DEFAULT  ABS ccLSkF6G.ltrans2.o
+    20: 00000000     0 FILE    LOCAL  DEFAULT  ABS ccSPFDhf.ltrans2.o
     21: 00002108   236 FUNC    LOCAL  DEFAULT    1 _GLOBAL__I_65535_0_RESPONSE_OK.2838.1328
     22: 80000130    12 OBJECT  LOCAL  DEFAULT    2 _ZTVN5Radio7Digital16XBeeReadIdleTaskE.local.15.1427
     23: 800001cc    64 OBJECT  LOCAL  DEFAULT    2 _ZN6System7Tasking4Pool16xbeeReadIdleTaskE.1545
