@@ -28,7 +28,7 @@ public:
     friend class TaskScheduler;
 
     Task();
-    virtual void start();
+    virtual void start() = 0;
 };
 
 /* Inherit from some of these classes and implement start() function as a task activity.

@@ -1,18 +1,24 @@
 #include "marg.h"
+#include <system/devices.hpp>
 #include <system/registry.hpp>
 #include <sensors/imu/mpu6050.h>
 
 namespace Control {
 
 // System constants
-static const float32 deltat(0.001f); // sampling period in seconds (shown as 1 ms)
+static const float32 cpu_tick_time(1.0f / CPU_FREQUENCY_HZ);
 static const float32 gyroMeasError(0.08726646259971647884618453842443f); // gyroscope measurement error in rad/s (shown as 5 deg/s)
 static const float32 gyroMeasDrift(0.00349065850398865915384738153698f); // gyroscope measurement error in rad/s/s (shown as 0.2f deg/s/s)
 static const float32 beta(0.07557497350239041509830947509372f); // compute beta
 static const float32 zeta(0.00302299894009561660393237900375f); // compute zeta
 static const float32 deltatzeta(3.02299894009561660393237900375e-6f);
 
-MARG::MARG() : SEq_1(1.0f), b_x(1.0f) {
+/* TODO: convert using sensors setup */
+static const float32 GYRO_FACTOR(0.06103515625f); // [-2000:2000] / 65536
+static const float32 ACC_FACTOR(0.00048828125f); // [-16:16] / 65536
+static const float32 COMPASS_FACTOR(0.00091743f); // http://www.soc-robotics.com/pdfs/HMC5883L.pdf : page 12, GN0 = 1, GN1 = 0, GN2 = 0, +-1.3Ga, 1090LSB/Gauss, [-2048, 2047] => 1 / 1090.0f
+
+MARG::MARG() : deltat(*DEV_RTC), SEq_1(1.0f), b_x(1.0f) {
 }
 
 void MARG::start() {
@@ -20,21 +26,34 @@ void MARG::start() {
     /* TODO: update magnetometer as well */
     Sensors::IMU::MPU6050::updateAccelerometerAndGyro();
     /* Convert to SI */
-    /* TODO: convert using sensors setup */
-    const float32 GYRO_CONVERTION_FACTOR(0.06103515625f); // [-2000:2000] / 65536
-    const float32 ACC_CONVERTION_FACTOR(0.00048828125f); // [-16:16] / 65536
-    const float32 COMPASS_CONVERTION_FACTOR(0.00091743f); // http://www.soc-robotics.com/pdfs/HMC5883L.pdf : page 12, GN0 = 1, GN1 = 0, GN2 = 0, +-1.3Ga, 1090LSB/Gauss, [-2048, 2047] => 1 / 1090.0f
 
-    float32 w_x = float32(System::Registry::value(System::Registry::GYRO_X)) * GYRO_CONVERTION_FACTOR,
-	    w_y = float32(System::Registry::value(System::Registry::GYRO_Y)) * GYRO_CONVERTION_FACTOR,
-	    w_z = float32(System::Registry::value(System::Registry::GYRO_Z)) * GYRO_CONVERTION_FACTOR,
-	    a_x = float32(System::Registry::value(System::Registry::ACCELEROMETER1_X)) * ACC_CONVERTION_FACTOR,
-	    a_y = float32(System::Registry::value(System::Registry::ACCELEROMETER1_Y)) * ACC_CONVERTION_FACTOR,
-	    a_z = float32(System::Registry::value(System::Registry::ACCELEROMETER1_Z)) * ACC_CONVERTION_FACTOR,
-	    m_x = float32(System::Registry::value(System::Registry::COMPASS_X)) * COMPASS_CONVERTION_FACTOR,
-	    m_y = float32(System::Registry::value(System::Registry::COMPASS_Y)) * COMPASS_CONVERTION_FACTOR,
-	    m_z = float32(System::Registry::value(System::Registry::COMPASS_Z)) * COMPASS_CONVERTION_FACTOR;
-    filterUpdateMARG(w_x, w_y, w_z, a_x, a_y, a_z, m_x, m_y, m_z);
+    /* Measure deltat */
+    unsigned int rtc = *DEV_RTC;
+    /* WARNING: test that float32(unsigned int) ctor is correct */
+    deltat = float32(rtc - old_rtc) * cpu_tick_time;
+    old_rtc = rtc;
+
+    float32 w_x = float32(System::Registry::value(System::Registry::GYRO_X)) * GYRO_FACTOR,
+	    w_y = float32(System::Registry::value(System::Registry::GYRO_Y)) * GYRO_FACTOR,
+	    w_z = float32(System::Registry::value(System::Registry::GYRO_Z)) * GYRO_FACTOR,
+	    a_x = float32(System::Registry::value(System::Registry::ACCELEROMETER1_X)) * ACC_FACTOR,
+	    a_y = float32(System::Registry::value(System::Registry::ACCELEROMETER1_Y)) * ACC_FACTOR,
+	    a_z = float32(System::Registry::value(System::Registry::ACCELEROMETER1_Z)) * ACC_FACTOR,
+	    /* These will be optimized out in case we don't use them */
+	    m_x = float32(System::Registry::value(System::Registry::COMPASS_X)) * COMPASS_FACTOR,
+	    m_y = float32(System::Registry::value(System::Registry::COMPASS_Y)) * COMPASS_FACTOR,
+	    m_z = float32(System::Registry::value(System::Registry::COMPASS_Z)) * COMPASS_FACTOR;
+
+    /* Do not use magnetometer */
+    filterUpdateIMU(w_x, w_y, w_z, a_x, a_y, a_z);
+    /* Use magnetometer */
+    //filterUpdateMARG(w_x, w_y, w_z, a_x, a_y, a_z, m_x, m_y, m_z);
+
+    /* Update System::Registry with the new attitude */
+    System::Registry::set(System::Registry::ORIENTATION_Q1, SEq_1);
+    System::Registry::set(System::Registry::ORIENTATION_Q2, SEq_2);
+    System::Registry::set(System::Registry::ORIENTATION_Q3, SEq_3);
+    System::Registry::set(System::Registry::ORIENTATION_Q4, SEq_4);
 }
 
 void MARG::filterUpdateIMU(float32 w_x, float32 w_y, float32 w_z, float32 a_x, float32 a_y, float32 a_z)
@@ -57,15 +76,25 @@ void MARG::filterUpdateIMU(float32 w_x, float32 w_y, float32 w_z, float32 a_x, f
 	float32 twoSEq_3 = two * SEq_3;
 	
 	// Normalise the accelerometer measurement
-	norm = sqrt(a_x * a_x + a_y * a_y + a_z * a_z);
-	a_x /= norm;
-	a_y /= norm;
-	a_z /= norm;
+	float32 norm_squared(a_x * a_x);
+	norm_squared += a_y * a_y;
+	norm_squared += a_z * a_z;
+	norm = rsqrt(norm_squared);
+	a_x *= norm;
+	a_y *= norm;
+	a_z *= norm;
 	
 	// Compute the objective function and Jacobian
-	f_1 = twoSEq_2 * SEq_4 - twoSEq_1 * SEq_3 - a_x;
-	f_2 = twoSEq_1 * SEq_2 + twoSEq_3 * SEq_4 - a_y;
-	f_3 = one - twoSEq_2 * SEq_2 - twoSEq_3 * SEq_3 - a_z;
+	f_1 = twoSEq_2 * SEq_4;
+	f_1 -= twoSEq_1 * SEq_3;
+	f_1 -= a_x;
+	f_2 = twoSEq_1 * SEq_2;
+	f_2 += twoSEq_3 * SEq_4;
+	f_2 -= a_y;
+	f_3 = one;
+	f_3 -= twoSEq_2 * SEq_2;
+	f_3 -= twoSEq_3 * SEq_3;
+	f_3 -= a_z;
 	J_11or24 = twoSEq_3; // J_11 negated in matrix multiplication
 	J_12or23 = two * SEq_4;
 	J_13or22 = twoSEq_1; // J_12 negated in matrix multiplication
@@ -74,23 +103,43 @@ void MARG::filterUpdateIMU(float32 w_x, float32 w_y, float32 w_z, float32 a_x, f
 	J_33 = two * J_11or24; // negated in matrix multiplication
 	
 	// Compute the gradient (matrix multiplication)
-	SEqHatDot_1 = J_14or21 * f_2 - J_11or24 * f_1;
-	SEqHatDot_2 = J_12or23 * f_1 + J_13or22 * f_2 - J_32 * f_3;
-	SEqHatDot_3 = J_12or23 * f_2 - J_33 * f_3 - J_13or22 * f_1;
-	SEqHatDot_4 = J_14or21 * f_1 + J_11or24 * f_2;
+	SEqHatDot_1 = J_14or21 * f_2;
+	SEqHatDot_1 -= J_11or24 * f_1;
+	SEqHatDot_2 = J_12or23 * f_1;
+	SEqHatDot_2 += J_13or22 * f_2;
+	SEqHatDot_2 -= J_32 * f_3;
+	SEqHatDot_3 = J_12or23 * f_2;
+	SEqHatDot_3 -= J_33 * f_3;
+	SEqHatDot_3 -= J_13or22 * f_1;
+	SEqHatDot_4 = J_14or21 * f_1;
+	SEqHatDot_4 + J_11or24 * f_2;
 	
 	// Normalise the gradient
-	norm = sqrt(SEqHatDot_1 * SEqHatDot_1 + SEqHatDot_2 * SEqHatDot_2 + SEqHatDot_3 * SEqHatDot_3 + SEqHatDot_4 * SEqHatDot_4);
-	SEqHatDot_1 /= norm;
-	SEqHatDot_2 /= norm;
-	SEqHatDot_3 /= norm;
-	SEqHatDot_4 /= norm;
+	
+	norm_squared = SEqHatDot_1 * SEqHatDot_1;
+	norm_squared += SEqHatDot_2 * SEqHatDot_2;
+	norm_squared += SEqHatDot_3 * SEqHatDot_3;
+	norm_squared += SEqHatDot_4 * SEqHatDot_4;
+	norm = rsqrt(norm_squared);
+	SEqHatDot_1 *= norm;
+	SEqHatDot_2 *= norm;
+	SEqHatDot_3 *= norm;
+	SEqHatDot_4 *= norm;
 	
 	// Compute the quaternion derrivative measured by gyroscopes
-	SEqDot_omega_1 = float32(0.0f) - halfSEq_2 * w_x - halfSEq_3 * w_y - halfSEq_4 * w_z;
-	SEqDot_omega_2 = halfSEq_1 * w_x + halfSEq_3 * w_z - halfSEq_4 * w_y;
-	SEqDot_omega_3 = halfSEq_1 * w_y - halfSEq_2 * w_z + halfSEq_4 * w_x;
-	SEqDot_omega_4 = halfSEq_1 * w_z + halfSEq_2 * w_y - halfSEq_3 * w_x;
+	SEqDot_omega_1 = float32(0.0f);
+	SEqDot_omega_1 -= halfSEq_2 * w_x;
+	SEqDot_omega_1 -= halfSEq_3 * w_y;
+	SEqDot_omega_1 -= halfSEq_4 * w_z;
+	SEqDot_omega_2 = halfSEq_1 * w_x;
+	SEqDot_omega_2 += halfSEq_3 * w_z;
+	SEqDot_omega_2 -= halfSEq_4 * w_y;
+	SEqDot_omega_3 = halfSEq_1 * w_y;
+	SEqDot_omega_3 -= halfSEq_2 * w_z;
+	SEqDot_omega_3 += halfSEq_4 * w_x;
+	SEqDot_omega_4 = halfSEq_1 * w_z;
+	SEqDot_omega_4 += halfSEq_2 * w_y;
+	SEqDot_omega_4 -= halfSEq_3 * w_x;
 	
 	// Compute then integrate the estimated quaternion derrivative
 	SEq_1 += (SEqDot_omega_1 - (beta * SEqHatDot_1)) * deltat;
@@ -99,11 +148,15 @@ void MARG::filterUpdateIMU(float32 w_x, float32 w_y, float32 w_z, float32 a_x, f
 	SEq_4 += (SEqDot_omega_4 - (beta * SEqHatDot_4)) * deltat;
 	
 	// Normalise quaternion
-	norm = sqrt(SEq_1 * SEq_1 + SEq_2 * SEq_2 + SEq_3 * SEq_3 + SEq_4 * SEq_4);
-	SEq_1 /= norm;
-	SEq_2 /= norm;
-	SEq_3 /= norm;
-	SEq_4 /= norm;
+	norm_squared = SEq_1 * SEq_1;
+	norm_squared += SEq_2 * SEq_2;
+	norm_squared += SEq_3 * SEq_3;
+	norm_squared += SEq_4 * SEq_4;
+	norm = rsqrt(norm_squared);
+	SEq_1 *= norm;
+	SEq_2 *= norm;
+	SEq_3 *= norm;
+	SEq_4 *= norm;
 }
 
 void MARG::filterUpdateMARG(float32 w_x, float32 w_y, float32 w_z, float32 a_x, float32 a_y, float32 a_z, float32 m_x, float32 m_y, float32 m_z)
@@ -149,13 +202,19 @@ void MARG::filterUpdateMARG(float32 w_x, float32 w_y, float32 w_z, float32 a_x, 
 	const float32 twom_z = two * m_z;
 
 	// normalise the accelerometer measurement
-	norm = rsqrt(a_x * a_x + a_y * a_y + a_z * a_z);
+	float32 norm_squared = a_x * a_x;
+	norm_squared += a_y * a_y;
+	norm_squared += a_z * a_z;
+	norm = rsqrt(norm_squared);
 	a_x *= norm;
 	a_y *= norm;
 	a_z *= norm;
 
 	// normalise the magnetometer measurement
-	norm = rsqrt(m_x * m_x + m_y * m_y + m_z * m_z);
+	norm_squared = m_x * m_x;
+	norm_squared += m_y * m_y;
+	norm_squared += m_z * m_z;
+	norm = rsqrt(norm_squared);
 	m_x *= norm;
 	m_y *= norm;
 	m_z *= norm;
@@ -292,11 +351,6 @@ void MARG::filterUpdateMARG(float32 w_x, float32 w_y, float32 w_z, float32 a_x, 
 	SEq_2 *= norm;
 	SEq_3 *= norm;
 	SEq_4 *= norm;
-	
-	System::Registry::set(System::Registry::ORIENTATION_Q1, SEq_1);
-	System::Registry::set(System::Registry::ORIENTATION_Q2, SEq_2);
-	System::Registry::set(System::Registry::ORIENTATION_Q3, SEq_3);
-	System::Registry::set(System::Registry::ORIENTATION_Q4, SEq_4);
 
 	// compute flux in the earth frame
 	SEq_1SEq_2 = SEq_1 * SEq_2; // recompute axulirary variables

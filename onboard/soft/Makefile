@@ -52,7 +52,7 @@ CCOPTS += -Wcast-align -Wstack-usage=$(STACK_SIZE)
 CCOPTS += -flto -fdata-sections -ffunction-sections -fno-threadsafe-statics -fstack-usage -fno-strict-aliasing -fno-exceptions -fno-rtti
 LDOPTS = -Os -flto -Wl,--gc-sections -nostdlib -nostartfiles -fwhole-program -lgcc
 
-all: dirs $(IMEMFILE) $(DMEMFILE)
+all: clean_errors dirs $(IMEMFILE) $(DMEMFILE)
 	@$(eval CE := $(shell $(NM) ./main | grep CODE_ENDS | cut -f 1 -d ' ' | tr '[:lower:]' '[:upper:]'))
 	@$(eval DE := $(shell $(NM) ./main | grep DATA_ENDS | cut -f 1 -d ' ' | tr '[:lower:]' '[:upper:]'))
 	@$(eval DESIZE := $(shell echo "ibase=16; $(DE)-80000000" | bc))

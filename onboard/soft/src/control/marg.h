@@ -9,6 +9,8 @@ namespace Control {
 class MARG : public System::Tasking::ContinuousTask {
 private:
     // Global system variables
+    unsigned int old_rtc;
+    float32 deltat;
     float32 a_x, a_y, a_z; // accelerometer measurements
     float32 w_x, w_y, w_z; // gyroscope measurements in rad/s
     float32 m_x, m_y, m_z; // magnetometer measurements

@@ -2,6 +2,8 @@
 #define MESSAGES_HPP
 
 #include <common/ct-utility.hpp>
+#include <system/bus/uart/uart.h>
+#include <system/fp/float32.h>
 
 namespace Radio {
 
@@ -28,16 +30,18 @@ In order to add new message:
 
 enum class To : char {
     MESSAGES_BEGIN = 0,
-    Throttle = 0,
+    Throttle = 1, /* This starts with 1, just to be on the safe side in case somebody sends bunch of zeroes */
     Pitch,
     Yaw,
     Roll,
+    BINARY_MESSAGES_COUNT,
     ConsoleRequest = '>', // 60
     MESSAGES_COUNT = 5
 };
 
 enum class From : unsigned char {
     MESSAGES_BEGIN = 128,
+    QuatData,
     IMUData,
     PIDValues,
     ConsoleResponse = '<', // 62
@@ -45,12 +49,24 @@ enum class From : unsigned char {
 };
 
 /* Each message should contain it's type stored inside the first byte */
-template<typename Type, Type TYPE> struct Message { const Type type = TYPE; };
+template<typename Type, Type TYPE> struct Message { 
+    const Type type = TYPE; 
+    inline operator const char*() const { return reinterpret_cast<const char*>(this); }
+};
 
+/* Send message template function */
+template<typename T>
+void send(const T& x) {
+    System::Bus::UART::write_waiting(x, sizeof(x));
+}
 /* ==============================================================
 		Messages definitions 
    ============================================================== */
 /* Telemetry messages */
+struct QuatData : Message<From, From::QuatData> {
+    float32 q1, q2, q3, q4;
+};
+
 struct IMUData : Message<From, From::IMUData> {
     short int Ax;
     short int Ay;
@@ -64,6 +80,7 @@ struct IMUData : Message<From, From::IMUData> {
     int P;
     int T;
 };
+
 
 struct PIDValues : Message<From, From::PIDValues> {
     short int P, I, D;
@@ -90,10 +107,6 @@ void consoleHandler(char*);
 struct EntryType {
     unsigned char size;
     HandlerType handler;
-    
-    void operator=(const EntryType& other) {
-	size = other.size; handler = other.handler;
-    }
 };
 
 const unsigned int MAX_MESSAGE_LENGTH = 32;
@@ -101,6 +114,7 @@ const unsigned int MAX_MESSAGE_LENGTH = 32;
 /* Setup Message Type -> Message size/Message handler mapping here */
 #define DEFINE_MESSAGE_HANDLER(X, H) { sizeof(X), H }
 
+/* It's vital to place handlers in the same order as in the Radio::Messages::To */
 const EntryType handlers[asIntegral<unsigned char, To>(To::MESSAGES_COUNT)] = {
     DEFINE_MESSAGE_HANDLER(Throttle,		defaultHandler),
     DEFINE_MESSAGE_HANDLER(Pitch,		defaultHandler),

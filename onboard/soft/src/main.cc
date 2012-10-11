@@ -7,16 +7,16 @@
 namespace Tasks = System::Tasking::Pool;
 
 int main() {
-    
-	System::Util::init();
+    System::Util::init();
     System::Tasking::TaskScheduler scheduler;
 
     scheduler.addTask(static_cast<System::Tasking::IdleTask*>(Tasks::getTask(Tasks::TaskType::XBeeReadIdleTask)));
-    //scheduler.addTask(static_cast<System::Tasking::ContinuousTask*>(Tasks::getTask(Tasks::TaskType::MARGTask)), 100_hz);
+    scheduler.addTask(static_cast<System::Tasking::ContinuousTask*>(Tasks::getTask(Tasks::TaskType::MARGTask)), 100_hz);
+    scheduler.addTask(static_cast<System::Tasking::ContinuousTask*>(Tasks::getTask(Tasks::TaskType::TelemetryTask)), 10_hz);
 
     /* Forever */
     scheduler.start();
-	while(1) { System::Util::delay(10); }
+    while(1) { System::Util::delay(10); }
 }
 
 //=====================================================//

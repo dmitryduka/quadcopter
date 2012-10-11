@@ -7,2379 +7,2387 @@ Disassembly of section .text:
 00000000 <_start>:
        0:	241dffff 	li	sp,-1
        4:	3c028000 	lui	v0,0x8000
-       8:	8c420298 	lw	v0,664(v0)
+       8:	8c4202e8 	lw	v0,744(v0)
        c:	00000000 	nop
       10:	0040f809 	jalr	v0
       14:	00000000 	nop
-      18:	0c00087d 	jal	21f4 <main>
+      18:	0c000649 	jal	1924 <main>
       1c:	00000000 	nop
 
-00000020 <Control::MARG::start()>:
-      20:	27bdfe08 	addiu	sp,sp,-504
-      24:	afbf01f4 	sw	ra,500(sp)
-      28:	afbe01f0 	sw	s8,496(sp)
-      2c:	afb701ec 	sw	s7,492(sp)
-      30:	afb601e8 	sw	s6,488(sp)
-      34:	afb501e4 	sw	s5,484(sp)
-      38:	afb401e0 	sw	s4,480(sp)
-      3c:	afb301dc 	sw	s3,476(sp)
-      40:	0080a021 	move	s4,a0
-      44:	afb201d8 	sw	s2,472(sp)
-      48:	afb101d4 	sw	s1,468(sp)
-      4c:	0c0006fb 	jal	1bec <Sensors::IMU::MPU6050::updateAccelerometerAndGyro()>
-      50:	afb001d0 	sw	s0,464(sp)
-      54:	3c023d7a 	lui	v0,0x3d7a
-      58:	afa20188 	sw	v0,392(sp)
-      5c:	3c023a00 	lui	v0,0x3a00
-      60:	afa20184 	sw	v0,388(sp)
-      64:	3c023a70 	lui	v0,0x3a70
-      68:	24427faf 	addiu	v0,v0,32687
-      6c:	0c0006e5 	jal	1b94 <_ZN6System8Registry8instanceEv.local.1>
-      70:	afa20180 	sw	v0,384(sp)
-      74:	27b00010 	addiu	s0,sp,16
-      78:	8c450028 	lw	a1,40(v0)
-      7c:	0c0006c3 	jal	1b0c <float32::float32(int)>
-      80:	02002021 	move	a0,s0
-      84:	27a60188 	addiu	a2,sp,392
-      88:	27a4017c 	addiu	a0,sp,380
-      8c:	0c000656 	jal	1958 <float32::operator*(float32 const&) const>
-      90:	02002821 	move	a1,s0
-      94:	0c0006e5 	jal	1b94 <_ZN6System8Registry8instanceEv.local.1>
-      98:	26950038 	addiu	s5,s4,56
-      9c:	8c45002c 	lw	a1,44(v0)
-      a0:	0c0006c3 	jal	1b0c <float32::float32(int)>
-      a4:	02002021 	move	a0,s0
-      a8:	27a60188 	addiu	a2,sp,392
-      ac:	27a40178 	addiu	a0,sp,376
-      b0:	0c000656 	jal	1958 <float32::operator*(float32 const&) const>
-      b4:	02002821 	move	a1,s0
-      b8:	0c0006e5 	jal	1b94 <_ZN6System8Registry8instanceEv.local.1>
-      bc:	2693003c 	addiu	s3,s4,60
-      c0:	8c450030 	lw	a1,48(v0)
-      c4:	0c0006c3 	jal	1b0c <float32::float32(int)>
-      c8:	02002021 	move	a0,s0
-      cc:	27a60188 	addiu	a2,sp,392
-      d0:	27a40174 	addiu	a0,sp,372
-      d4:	0c000656 	jal	1958 <float32::operator*(float32 const&) const>
-      d8:	02002821 	move	a1,s0
-      dc:	0c0006e5 	jal	1b94 <_ZN6System8Registry8instanceEv.local.1>
-      e0:	26920040 	addiu	s2,s4,64
-      e4:	8c450010 	lw	a1,16(v0)
-      e8:	0c0006c3 	jal	1b0c <float32::float32(int)>
-      ec:	02002021 	move	a0,s0
-      f0:	27a60184 	addiu	a2,sp,388
-      f4:	27a40170 	addiu	a0,sp,368
-      f8:	0c000656 	jal	1958 <float32::operator*(float32 const&) const>
-      fc:	02002821 	move	a1,s0
-     100:	0c0006e5 	jal	1b94 <_ZN6System8Registry8instanceEv.local.1>
-     104:	26910044 	addiu	s1,s4,68
-     108:	8c450014 	lw	a1,20(v0)
-     10c:	0c0006c3 	jal	1b0c <float32::float32(int)>
-     110:	02002021 	move	a0,s0
-     114:	27a60184 	addiu	a2,sp,388
-     118:	27a4016c 	addiu	a0,sp,364
-     11c:	0c000656 	jal	1958 <float32::operator*(float32 const&) const>
-     120:	02002821 	move	a1,s0
-     124:	0c0006e5 	jal	1b94 <_ZN6System8Registry8instanceEv.local.1>
-     128:	27b60158 	addiu	s6,sp,344
-     12c:	8c450018 	lw	a1,24(v0)
-     130:	0c0006c3 	jal	1b0c <float32::float32(int)>
-     134:	02002021 	move	a0,s0
-     138:	27a60184 	addiu	a2,sp,388
-     13c:	27a40168 	addiu	a0,sp,360
-     140:	0c000656 	jal	1958 <float32::operator*(float32 const&) const>
-     144:	02002821 	move	a1,s0
-     148:	0c0006e5 	jal	1b94 <_ZN6System8Registry8instanceEv.local.1>
-     14c:	27b700e4 	addiu	s7,sp,228
-     150:	8c450034 	lw	a1,52(v0)
-     154:	0c0006c3 	jal	1b0c <float32::float32(int)>
-     158:	02002021 	move	a0,s0
-     15c:	27a60180 	addiu	a2,sp,384
-     160:	27a40164 	addiu	a0,sp,356
-     164:	0c000656 	jal	1958 <float32::operator*(float32 const&) const>
-     168:	02002821 	move	a1,s0
-     16c:	0c0006e5 	jal	1b94 <_ZN6System8Registry8instanceEv.local.1>
-     170:	27be00e0 	addiu	s8,sp,224
-     174:	8c450038 	lw	a1,56(v0)
-     178:	0c0006c3 	jal	1b0c <float32::float32(int)>
-     17c:	02002021 	move	a0,s0
-     180:	27a60180 	addiu	a2,sp,384
-     184:	27a40160 	addiu	a0,sp,352
-     188:	0c000656 	jal	1958 <float32::operator*(float32 const&) const>
-     18c:	02002821 	move	a1,s0
-     190:	0c0006e5 	jal	1b94 <_ZN6System8Registry8instanceEv.local.1>
-     194:	00000000 	nop
-     198:	8c45003c 	lw	a1,60(v0)
-     19c:	0c0006c3 	jal	1b0c <float32::float32(int)>
-     1a0:	02002021 	move	a0,s0
-     1a4:	27a4015c 	addiu	a0,sp,348
-     1a8:	02002821 	move	a1,s0
-     1ac:	0c000656 	jal	1958 <float32::operator*(float32 const&) const>
-     1b0:	27a60180 	addiu	a2,sp,384
-     1b4:	8fa2017c 	lw	v0,380(sp)
-     1b8:	27a700b4 	addiu	a3,sp,180
-     1bc:	afa201ac 	sw	v0,428(sp)
-     1c0:	8fa20178 	lw	v0,376(sp)
-     1c4:	00000000 	nop
-     1c8:	afa201a8 	sw	v0,424(sp)
-     1cc:	8fa20174 	lw	v0,372(sp)
-     1d0:	00e02021 	move	a0,a3
-     1d4:	afa201a4 	sw	v0,420(sp)
-     1d8:	8fa20170 	lw	v0,368(sp)
-     1dc:	27a500bc 	addiu	a1,sp,188
-     1e0:	afa201a0 	sw	v0,416(sp)
-     1e4:	8fa2016c 	lw	v0,364(sp)
-     1e8:	02a03021 	move	a2,s5
-     1ec:	afa2019c 	sw	v0,412(sp)
-     1f0:	8fa20168 	lw	v0,360(sp)
-     1f4:	afa701c8 	sw	a3,456(sp)
-     1f8:	afa20198 	sw	v0,408(sp)
-     1fc:	8fa20164 	lw	v0,356(sp)
-     200:	00000000 	nop
-     204:	afa20194 	sw	v0,404(sp)
-     208:	8fa20160 	lw	v0,352(sp)
-     20c:	afa00154 	sw	zero,340(sp)
-     210:	afa20190 	sw	v0,400(sp)
-     214:	8fa2015c 	lw	v0,348(sp)
-     218:	00000000 	nop
-     21c:	afa2018c 	sw	v0,396(sp)
-     220:	3c023f00 	lui	v0,0x3f00
-     224:	afa200bc 	sw	v0,188(sp)
-     228:	3c024000 	lui	v0,0x4000
-     22c:	0c000656 	jal	1958 <float32::operator*(float32 const&) const>
-     230:	afa200b8 	sw	v0,184(sp)
-     234:	27a300b0 	addiu	v1,sp,176
-     238:	00602021 	move	a0,v1
-     23c:	27a500bc 	addiu	a1,sp,188
-     240:	02603021 	move	a2,s3
-     244:	0c000656 	jal	1958 <float32::operator*(float32 const&) const>
-     248:	afa301cc 	sw	v1,460(sp)
-     24c:	27aa00ac 	addiu	t2,sp,172
-     250:	01402021 	move	a0,t2
-     254:	27a500bc 	addiu	a1,sp,188
-     258:	02403021 	move	a2,s2
-     25c:	0c000656 	jal	1958 <float32::operator*(float32 const&) const>
-     260:	afaa01c0 	sw	t2,448(sp)
-     264:	27a800a8 	addiu	t0,sp,168
-     268:	01002021 	move	a0,t0
-     26c:	27a500bc 	addiu	a1,sp,188
-     270:	02203021 	move	a2,s1
-     274:	0c000656 	jal	1958 <float32::operator*(float32 const&) const>
-     278:	afa801c4 	sw	t0,452(sp)
-     27c:	27a400a4 	addiu	a0,sp,164
-     280:	27a500b8 	addiu	a1,sp,184
-     284:	0c000656 	jal	1958 <float32::operator*(float32 const&) const>
-     288:	02a03021 	move	a2,s5
-     28c:	27a400a0 	addiu	a0,sp,160
-     290:	27a500b8 	addiu	a1,sp,184
-     294:	0c000656 	jal	1958 <float32::operator*(float32 const&) const>
-     298:	02603021 	move	a2,s3
-     29c:	27a4009c 	addiu	a0,sp,156
-     2a0:	27a500b8 	addiu	a1,sp,184
-     2a4:	0c000656 	jal	1958 <float32::operator*(float32 const&) const>
-     2a8:	02403021 	move	a2,s2
-     2ac:	27a40098 	addiu	a0,sp,152
-     2b0:	27a500b8 	addiu	a1,sp,184
-     2b4:	0c000656 	jal	1958 <float32::operator*(float32 const&) const>
-     2b8:	02203021 	move	a2,s1
-     2bc:	27a40094 	addiu	a0,sp,148
-     2c0:	27a500b8 	addiu	a1,sp,184
-     2c4:	0c000656 	jal	1958 <float32::operator*(float32 const&) const>
-     2c8:	26860048 	addiu	a2,s4,72
-     2cc:	27a40090 	addiu	a0,sp,144
-     2d0:	27a500b8 	addiu	a1,sp,184
-     2d4:	0c000656 	jal	1958 <float32::operator*(float32 const&) const>
-     2d8:	2686004c 	addiu	a2,s4,76
-     2dc:	27a4008c 	addiu	a0,sp,140
-     2e0:	27a50094 	addiu	a1,sp,148
-     2e4:	0c000656 	jal	1958 <float32::operator*(float32 const&) const>
-     2e8:	02a03021 	move	a2,s5
-     2ec:	27a40088 	addiu	a0,sp,136
-     2f0:	27a50094 	addiu	a1,sp,148
-     2f4:	0c000656 	jal	1958 <float32::operator*(float32 const&) const>
-     2f8:	02603021 	move	a2,s3
-     2fc:	27a40084 	addiu	a0,sp,132
-     300:	27a50094 	addiu	a1,sp,148
-     304:	0c000656 	jal	1958 <float32::operator*(float32 const&) const>
-     308:	02403021 	move	a2,s2
-     30c:	27a40080 	addiu	a0,sp,128
-     310:	27a50094 	addiu	a1,sp,148
-     314:	0c000656 	jal	1958 <float32::operator*(float32 const&) const>
-     318:	02203021 	move	a2,s1
-     31c:	27a4007c 	addiu	a0,sp,124
-     320:	27a50090 	addiu	a1,sp,144
-     324:	0c000656 	jal	1958 <float32::operator*(float32 const&) const>
-     328:	02a03021 	move	a2,s5
-     32c:	27a40078 	addiu	a0,sp,120
-     330:	27a50090 	addiu	a1,sp,144
-     334:	0c000656 	jal	1958 <float32::operator*(float32 const&) const>
-     338:	02603021 	move	a2,s3
-     33c:	27a40074 	addiu	a0,sp,116
-     340:	27a50090 	addiu	a1,sp,144
-     344:	0c000656 	jal	1958 <float32::operator*(float32 const&) const>
-     348:	02403021 	move	a2,s2
-     34c:	27a40070 	addiu	a0,sp,112
-     350:	27a50090 	addiu	a1,sp,144
-     354:	0c000656 	jal	1958 <float32::operator*(float32 const&) const>
-     358:	02203021 	move	a2,s1
-     35c:	27a40068 	addiu	a0,sp,104
-     360:	02a02821 	move	a1,s5
-     364:	0c000656 	jal	1958 <float32::operator*(float32 const&) const>
-     368:	02403021 	move	a2,s2
-     36c:	27a4005c 	addiu	a0,sp,92
-     370:	02602821 	move	a1,s3
-     374:	0c000656 	jal	1958 <float32::operator*(float32 const&) const>
-     378:	02203021 	move	a2,s1
-     37c:	27a40054 	addiu	a0,sp,84
-     380:	27a500b8 	addiu	a1,sp,184
-     384:	0c000656 	jal	1958 <float32::operator*(float32 const&) const>
-     388:	27a60194 	addiu	a2,sp,404
-     38c:	27a40050 	addiu	a0,sp,80
-     390:	27a500b8 	addiu	a1,sp,184
-     394:	0c000656 	jal	1958 <float32::operator*(float32 const&) const>
-     398:	27a60190 	addiu	a2,sp,400
-     39c:	27a4004c 	addiu	a0,sp,76
-     3a0:	27a500b8 	addiu	a1,sp,184
-     3a4:	0c000656 	jal	1958 <float32::operator*(float32 const&) const>
-     3a8:	27a6018c 	addiu	a2,sp,396
-     3ac:	27a501a0 	addiu	a1,sp,416
-     3b0:	27a4001c 	addiu	a0,sp,28
-     3b4:	0c000656 	jal	1958 <float32::operator*(float32 const&) const>
-     3b8:	00a03021 	move	a2,a1
-     3bc:	27a5019c 	addiu	a1,sp,412
-     3c0:	27a40020 	addiu	a0,sp,32
-     3c4:	0c000656 	jal	1958 <float32::operator*(float32 const&) const>
-     3c8:	00a03021 	move	a2,a1
-     3cc:	27a40018 	addiu	a0,sp,24
-     3d0:	27a5001c 	addiu	a1,sp,28
-     3d4:	0c0007ce 	jal	1f38 <float32::operator+(float32 const&) const>
-     3d8:	27a60020 	addiu	a2,sp,32
-     3dc:	27a50198 	addiu	a1,sp,408
-     3e0:	27a40024 	addiu	a0,sp,36
-     3e4:	0c000656 	jal	1958 <float32::operator*(float32 const&) const>
-     3e8:	00a03021 	move	a2,a1
-     3ec:	27a60024 	addiu	a2,sp,36
-     3f0:	27a40014 	addiu	a0,sp,20
-     3f4:	0c0007ce 	jal	1f38 <float32::operator+(float32 const&) const>
-     3f8:	27a50018 	addiu	a1,sp,24
-     3fc:	02002021 	move	a0,s0
-     400:	0c000808 	jal	2020 <rsqrt(float32 const&)>
-     404:	27a50014 	addiu	a1,sp,20
-     408:	8fa20010 	lw	v0,16(sp)
-     40c:	27a401a0 	addiu	a0,sp,416
-     410:	02c02821 	move	a1,s6
-     414:	0c0006b4 	jal	1ad0 <float32::operator*=(float32 const&)>
-     418:	afa20158 	sw	v0,344(sp)
-     41c:	27a4019c 	addiu	a0,sp,412
-     420:	0c0006b4 	jal	1ad0 <float32::operator*=(float32 const&)>
-     424:	02c02821 	move	a1,s6
-     428:	27a40198 	addiu	a0,sp,408
-     42c:	0c0006b4 	jal	1ad0 <float32::operator*=(float32 const&)>
-     430:	02c02821 	move	a1,s6
-     434:	27a50194 	addiu	a1,sp,404
-     438:	27a4001c 	addiu	a0,sp,28
-     43c:	0c000656 	jal	1958 <float32::operator*(float32 const&) const>
-     440:	00a03021 	move	a2,a1
-     444:	27a50190 	addiu	a1,sp,400
-     448:	27a40020 	addiu	a0,sp,32
-     44c:	0c000656 	jal	1958 <float32::operator*(float32 const&) const>
-     450:	00a03021 	move	a2,a1
-     454:	27a40018 	addiu	a0,sp,24
-     458:	27a5001c 	addiu	a1,sp,28
-     45c:	0c0007ce 	jal	1f38 <float32::operator+(float32 const&) const>
-     460:	27a60020 	addiu	a2,sp,32
-     464:	27a5018c 	addiu	a1,sp,396
-     468:	27a40024 	addiu	a0,sp,36
-     46c:	0c000656 	jal	1958 <float32::operator*(float32 const&) const>
-     470:	00a03021 	move	a2,a1
-     474:	27a60024 	addiu	a2,sp,36
-     478:	27a40014 	addiu	a0,sp,20
-     47c:	0c0007ce 	jal	1f38 <float32::operator+(float32 const&) const>
-     480:	27a50018 	addiu	a1,sp,24
-     484:	02002021 	move	a0,s0
-     488:	0c000808 	jal	2020 <rsqrt(float32 const&)>
-     48c:	27a50014 	addiu	a1,sp,20
-     490:	8fa20010 	lw	v0,16(sp)
-     494:	27a40194 	addiu	a0,sp,404
-     498:	02c02821 	move	a1,s6
-     49c:	0c0006b4 	jal	1ad0 <float32::operator*=(float32 const&)>
-     4a0:	afa20158 	sw	v0,344(sp)
-     4a4:	27a40190 	addiu	a0,sp,400
-     4a8:	0c0006b4 	jal	1ad0 <float32::operator*=(float32 const&)>
-     4ac:	02c02821 	move	a1,s6
-     4b0:	27a4018c 	addiu	a0,sp,396
-     4b4:	0c0006b4 	jal	1ad0 <float32::operator*=(float32 const&)>
-     4b8:	02c02821 	move	a1,s6
-     4bc:	27a40048 	addiu	a0,sp,72
-     4c0:	02402821 	move	a1,s2
-     4c4:	0c000656 	jal	1958 <float32::operator*(float32 const&) const>
-     4c8:	02403021 	move	a2,s2
-     4cc:	02002021 	move	a0,s0
-     4d0:	27a500a0 	addiu	a1,sp,160
-     4d4:	0c000656 	jal	1958 <float32::operator*(float32 const&) const>
-     4d8:	02203021 	move	a2,s1
-     4dc:	8fa20010 	lw	v0,16(sp)
-     4e0:	02403021 	move	a2,s2
-     4e4:	02002021 	move	a0,s0
-     4e8:	27a500a4 	addiu	a1,sp,164
-     4ec:	0c000656 	jal	1958 <float32::operator*(float32 const&) const>
-     4f0:	afa20144 	sw	v0,324(sp)
-     4f4:	27a40144 	addiu	a0,sp,324
-     4f8:	0c000833 	jal	20cc <float32::operator-=(float32 const&)>
-     4fc:	02002821 	move	a1,s0
-     500:	27a40144 	addiu	a0,sp,324
-     504:	0c000833 	jal	20cc <float32::operator-=(float32 const&)>
-     508:	27a501a0 	addiu	a1,sp,416
-     50c:	02002021 	move	a0,s0
-     510:	27a500a4 	addiu	a1,sp,164
-     514:	0c000656 	jal	1958 <float32::operator*(float32 const&) const>
-     518:	02603021 	move	a2,s3
-     51c:	8fa20010 	lw	v0,16(sp)
-     520:	02203021 	move	a2,s1
-     524:	02002021 	move	a0,s0
-     528:	27a5009c 	addiu	a1,sp,156
-     52c:	0c000656 	jal	1958 <float32::operator*(float32 const&) const>
-     530:	afa20140 	sw	v0,320(sp)
-     534:	27a40140 	addiu	a0,sp,320
-     538:	0c0007e4 	jal	1f90 <float32::operator+=(float32 const&)>
-     53c:	02002821 	move	a1,s0
-     540:	27a40140 	addiu	a0,sp,320
-     544:	0c000833 	jal	20cc <float32::operator-=(float32 const&)>
-     548:	27a5019c 	addiu	a1,sp,412
-     54c:	02603021 	move	a2,s3
-     550:	3c023f80 	lui	v0,0x3f80
-     554:	02002021 	move	a0,s0
-     558:	27a500a0 	addiu	a1,sp,160
-     55c:	0c000656 	jal	1958 <float32::operator*(float32 const&) const>
-     560:	afa2013c 	sw	v0,316(sp)
-     564:	27a4013c 	addiu	a0,sp,316
-     568:	0c000833 	jal	20cc <float32::operator-=(float32 const&)>
-     56c:	02002821 	move	a1,s0
-     570:	02403021 	move	a2,s2
-     574:	02002021 	move	a0,s0
-     578:	0c000656 	jal	1958 <float32::operator*(float32 const&) const>
-     57c:	27a5009c 	addiu	a1,sp,156
-     580:	27a4013c 	addiu	a0,sp,316
-     584:	0c000833 	jal	20cc <float32::operator-=(float32 const&)>
-     588:	02002821 	move	a1,s0
-     58c:	27a4013c 	addiu	a0,sp,316
-     590:	0c000833 	jal	20cc <float32::operator-=(float32 const&)>
-     594:	27a50198 	addiu	a1,sp,408
-     598:	27a40018 	addiu	a0,sp,24
-     59c:	27a500bc 	addiu	a1,sp,188
-     5a0:	0c0007f3 	jal	1fcc <float32::operator-(float32 const&) const>
-     5a4:	27a60048 	addiu	a2,sp,72
-     5a8:	27a4001c 	addiu	a0,sp,28
-     5ac:	02202821 	move	a1,s1
-     5b0:	0c000656 	jal	1958 <float32::operator*(float32 const&) const>
-     5b4:	02203021 	move	a2,s1
-     5b8:	27a40014 	addiu	a0,sp,20
-     5bc:	27a50018 	addiu	a1,sp,24
-     5c0:	0c0007f3 	jal	1fcc <float32::operator-(float32 const&) const>
-     5c4:	27a6001c 	addiu	a2,sp,28
-     5c8:	02002021 	move	a0,s0
-     5cc:	27a50094 	addiu	a1,sp,148
-     5d0:	0c000656 	jal	1958 <float32::operator*(float32 const&) const>
-     5d4:	27a60014 	addiu	a2,sp,20
-     5d8:	8fa20010 	lw	v0,16(sp)
-     5dc:	27a40014 	addiu	a0,sp,20
-     5e0:	27a5005c 	addiu	a1,sp,92
-     5e4:	27a60068 	addiu	a2,sp,104
-     5e8:	0c0007f3 	jal	1fcc <float32::operator-(float32 const&) const>
-     5ec:	afa20138 	sw	v0,312(sp)
-     5f0:	27a60014 	addiu	a2,sp,20
-     5f4:	02002021 	move	a0,s0
-     5f8:	0c000656 	jal	1958 <float32::operator*(float32 const&) const>
-     5fc:	27a50090 	addiu	a1,sp,144
-     600:	27a40138 	addiu	a0,sp,312
-     604:	0c0007e4 	jal	1f90 <float32::operator+=(float32 const&)>
-     608:	02002821 	move	a1,s0
-     60c:	27a40138 	addiu	a0,sp,312
-     610:	0c000833 	jal	20cc <float32::operator-=(float32 const&)>
-     614:	27a50194 	addiu	a1,sp,404
-     618:	27a40018 	addiu	a0,sp,24
-     61c:	02602821 	move	a1,s3
-     620:	0c000656 	jal	1958 <float32::operator*(float32 const&) const>
-     624:	02403021 	move	a2,s2
-     628:	27a4001c 	addiu	a0,sp,28
-     62c:	02a02821 	move	a1,s5
-     630:	0c000656 	jal	1958 <float32::operator*(float32 const&) const>
-     634:	02203021 	move	a2,s1
-     638:	27a40014 	addiu	a0,sp,20
-     63c:	27a50018 	addiu	a1,sp,24
-     640:	0c0007f3 	jal	1fcc <float32::operator-(float32 const&) const>
-     644:	27a6001c 	addiu	a2,sp,28
-     648:	02002021 	move	a0,s0
-     64c:	27a50094 	addiu	a1,sp,148
-     650:	0c000656 	jal	1958 <float32::operator*(float32 const&) const>
-     654:	27a60014 	addiu	a2,sp,20
-     658:	8fa20010 	lw	v0,16(sp)
-     65c:	27a40018 	addiu	a0,sp,24
-     660:	02a02821 	move	a1,s5
-     664:	02603021 	move	a2,s3
-     668:	0c000656 	jal	1958 <float32::operator*(float32 const&) const>
-     66c:	afa20134 	sw	v0,308(sp)
-     670:	27a4001c 	addiu	a0,sp,28
-     674:	02402821 	move	a1,s2
-     678:	0c000656 	jal	1958 <float32::operator*(float32 const&) const>
-     67c:	02203021 	move	a2,s1
-     680:	27a40014 	addiu	a0,sp,20
-     684:	27a50018 	addiu	a1,sp,24
-     688:	0c0007ce 	jal	1f38 <float32::operator+(float32 const&) const>
-     68c:	27a6001c 	addiu	a2,sp,28
-     690:	27a60014 	addiu	a2,sp,20
-     694:	02002021 	move	a0,s0
-     698:	0c000656 	jal	1958 <float32::operator*(float32 const&) const>
-     69c:	27a50090 	addiu	a1,sp,144
-     6a0:	27a40134 	addiu	a0,sp,308
-     6a4:	0c0007e4 	jal	1f90 <float32::operator+=(float32 const&)>
-     6a8:	02002821 	move	a1,s0
-     6ac:	27a40134 	addiu	a0,sp,308
-     6b0:	0c000833 	jal	20cc <float32::operator-=(float32 const&)>
-     6b4:	27a50190 	addiu	a1,sp,400
-     6b8:	27a40014 	addiu	a0,sp,20
-     6bc:	27a50068 	addiu	a1,sp,104
-     6c0:	0c0007ce 	jal	1f38 <float32::operator+(float32 const&) const>
-     6c4:	27a6005c 	addiu	a2,sp,92
-     6c8:	02002021 	move	a0,s0
-     6cc:	27a50094 	addiu	a1,sp,148
-     6d0:	0c000656 	jal	1958 <float32::operator*(float32 const&) const>
-     6d4:	27a60014 	addiu	a2,sp,20
-     6d8:	8fa20010 	lw	v0,16(sp)
-     6dc:	27a4001c 	addiu	a0,sp,28
-     6e0:	02602821 	move	a1,s3
-     6e4:	02603021 	move	a2,s3
-     6e8:	0c000656 	jal	1958 <float32::operator*(float32 const&) const>
-     6ec:	afa20130 	sw	v0,304(sp)
-     6f0:	27a40018 	addiu	a0,sp,24
-     6f4:	27a500bc 	addiu	a1,sp,188
-     6f8:	0c0007f3 	jal	1fcc <float32::operator-(float32 const&) const>
-     6fc:	27a6001c 	addiu	a2,sp,28
-     700:	27a40014 	addiu	a0,sp,20
-     704:	27a50018 	addiu	a1,sp,24
-     708:	0c0007f3 	jal	1fcc <float32::operator-(float32 const&) const>
-     70c:	27a60048 	addiu	a2,sp,72
-     710:	27a60014 	addiu	a2,sp,20
-     714:	02002021 	move	a0,s0
-     718:	0c000656 	jal	1958 <float32::operator*(float32 const&) const>
-     71c:	27a50090 	addiu	a1,sp,144
-     720:	27a40130 	addiu	a0,sp,304
-     724:	0c0007e4 	jal	1f90 <float32::operator+=(float32 const&)>
-     728:	02002821 	move	a1,s0
-     72c:	27a40130 	addiu	a0,sp,304
-     730:	0c000833 	jal	20cc <float32::operator-=(float32 const&)>
-     734:	27a5018c 	addiu	a1,sp,396
-     738:	8fa2009c 	lw	v0,156(sp)
-     73c:	02002021 	move	a0,s0
-     740:	27a500b8 	addiu	a1,sp,184
-     744:	02203021 	move	a2,s1
-     748:	0c000656 	jal	1958 <float32::operator*(float32 const&) const>
-     74c:	afa2012c 	sw	v0,300(sp)
-     750:	8fa20010 	lw	v0,16(sp)
-     754:	02002021 	move	a0,s0
-     758:	afa20128 	sw	v0,296(sp)
-     75c:	8fa200a4 	lw	v0,164(sp)
-     760:	27a500b8 	addiu	a1,sp,184
-     764:	afa20124 	sw	v0,292(sp)
-     768:	8fa200a0 	lw	v0,160(sp)
-     76c:	27a60120 	addiu	a2,sp,288
-     770:	0c000656 	jal	1958 <float32::operator*(float32 const&) const>
-     774:	afa20120 	sw	v0,288(sp)
-     778:	8fa20010 	lw	v0,16(sp)
-     77c:	02002021 	move	a0,s0
-     780:	27a500b8 	addiu	a1,sp,184
-     784:	27a6012c 	addiu	a2,sp,300
-     788:	0c000656 	jal	1958 <float32::operator*(float32 const&) const>
-     78c:	afa2011c 	sw	v0,284(sp)
-     790:	8fa20010 	lw	v0,16(sp)
-     794:	27a60084 	addiu	a2,sp,132
-     798:	afa20118 	sw	v0,280(sp)
-     79c:	8fa20074 	lw	v0,116(sp)
-     7a0:	02002021 	move	a0,s0
-     7a4:	afa20114 	sw	v0,276(sp)
-     7a8:	8fa20070 	lw	v0,112(sp)
-     7ac:	27a500b8 	addiu	a1,sp,184
-     7b0:	0c000656 	jal	1958 <float32::operator*(float32 const&) const>
-     7b4:	afa20110 	sw	v0,272(sp)
-     7b8:	8fa20010 	lw	v0,16(sp)
-     7bc:	27a4010c 	addiu	a0,sp,268
-     7c0:	27a5007c 	addiu	a1,sp,124
-     7c4:	0c0007e4 	jal	1f90 <float32::operator+=(float32 const&)>
-     7c8:	afa2010c 	sw	v0,268(sp)
-     7cc:	27a60080 	addiu	a2,sp,128
-     7d0:	02002021 	move	a0,s0
-     7d4:	0c000656 	jal	1958 <float32::operator*(float32 const&) const>
-     7d8:	27a500b8 	addiu	a1,sp,184
-     7dc:	8fa20010 	lw	v0,16(sp)
-     7e0:	27a40108 	addiu	a0,sp,264
-     7e4:	27a50078 	addiu	a1,sp,120
-     7e8:	0c000833 	jal	20cc <float32::operator-=(float32 const&)>
-     7ec:	afa20108 	sw	v0,264(sp)
-     7f0:	02002021 	move	a0,s0
-     7f4:	27a50080 	addiu	a1,sp,128
-     7f8:	0c0007f3 	jal	1fcc <float32::operator-(float32 const&) const>
-     7fc:	27a60078 	addiu	a2,sp,120
-     800:	8fa20010 	lw	v0,16(sp)
-     804:	02002021 	move	a0,s0
-     808:	27a50084 	addiu	a1,sp,132
-     80c:	27a6007c 	addiu	a2,sp,124
-     810:	0c0007ce 	jal	1f38 <float32::operator+(float32 const&) const>
-     814:	afa20104 	sw	v0,260(sp)
-     818:	8fa20010 	lw	v0,16(sp)
-     81c:	02002021 	move	a0,s0
-     820:	27a50088 	addiu	a1,sp,136
-     824:	27a60070 	addiu	a2,sp,112
-     828:	0c0007ce 	jal	1f38 <float32::operator+(float32 const&) const>
-     82c:	afa20100 	sw	v0,256(sp)
-     830:	8fa20010 	lw	v0,16(sp)
-     834:	02002021 	move	a0,s0
-     838:	27a5008c 	addiu	a1,sp,140
-     83c:	27a60074 	addiu	a2,sp,116
-     840:	0c0007f3 	jal	1fcc <float32::operator-(float32 const&) const>
-     844:	afa200fc 	sw	v0,252(sp)
-     848:	8fa20010 	lw	v0,16(sp)
-     84c:	27a60078 	addiu	a2,sp,120
-     850:	afa200f8 	sw	v0,248(sp)
-     854:	8fa20084 	lw	v0,132(sp)
-     858:	02002021 	move	a0,s0
-     85c:	afa200f4 	sw	v0,244(sp)
-     860:	8fa20080 	lw	v0,128(sp)
-     864:	27a500b8 	addiu	a1,sp,184
-     868:	0c000656 	jal	1958 <float32::operator*(float32 const&) const>
-     86c:	afa200f0 	sw	v0,240(sp)
-     870:	27a400f0 	addiu	a0,sp,240
-     874:	0c000833 	jal	20cc <float32::operator-=(float32 const&)>
-     878:	02002821 	move	a1,s0
-     87c:	8fa2008c 	lw	v0,140(sp)
-     880:	27a60074 	addiu	a2,sp,116
-     884:	02002021 	move	a0,s0
-     888:	27a500b8 	addiu	a1,sp,184
-     88c:	0c000656 	jal	1958 <float32::operator*(float32 const&) const>
-     890:	afa200ec 	sw	v0,236(sp)
-     894:	27a400ec 	addiu	a0,sp,236
-     898:	0c000833 	jal	20cc <float32::operator-=(float32 const&)>
-     89c:	02002821 	move	a1,s0
-     8a0:	8fa20088 	lw	v0,136(sp)
-     8a4:	02002021 	move	a0,s0
-     8a8:	27a50120 	addiu	a1,sp,288
-     8ac:	27a60140 	addiu	a2,sp,320
-     8b0:	0c000656 	jal	1958 <float32::operator*(float32 const&) const>
-     8b4:	afa200e8 	sw	v0,232(sp)
-     8b8:	8fa20010 	lw	v0,16(sp)
-     8bc:	27a60144 	addiu	a2,sp,324
-     8c0:	02002021 	move	a0,s0
-     8c4:	27a5012c 	addiu	a1,sp,300
-     8c8:	0c000656 	jal	1958 <float32::operator*(float32 const&) const>
-     8cc:	afa200e4 	sw	v0,228(sp)
-     8d0:	02e02021 	move	a0,s7
-     8d4:	0c000833 	jal	20cc <float32::operator-=(float32 const&)>
-     8d8:	02002821 	move	a1,s0
-     8dc:	27a60138 	addiu	a2,sp,312
-     8e0:	02002021 	move	a0,s0
-     8e4:	0c000656 	jal	1958 <float32::operator*(float32 const&) const>
-     8e8:	27a50114 	addiu	a1,sp,276
-     8ec:	02e02021 	move	a0,s7
-     8f0:	0c000833 	jal	20cc <float32::operator-=(float32 const&)>
-     8f4:	02002821 	move	a1,s0
-     8f8:	27a60134 	addiu	a2,sp,308
-     8fc:	02002021 	move	a0,s0
-     900:	0c000656 	jal	1958 <float32::operator*(float32 const&) const>
-     904:	27a50104 	addiu	a1,sp,260
-     908:	02e02021 	move	a0,s7
-     90c:	0c000833 	jal	20cc <float32::operator-=(float32 const&)>
-     910:	02002821 	move	a1,s0
-     914:	27a60130 	addiu	a2,sp,304
-     918:	02002021 	move	a0,s0
-     91c:	0c000656 	jal	1958 <float32::operator*(float32 const&) const>
-     920:	27a500f4 	addiu	a1,sp,244
-     924:	02e02021 	move	a0,s7
-     928:	0c0007e4 	jal	1f90 <float32::operator+=(float32 const&)>
-     92c:	02002821 	move	a1,s0
-     930:	02002021 	move	a0,s0
-     934:	27a50128 	addiu	a1,sp,296
-     938:	0c000656 	jal	1958 <float32::operator*(float32 const&) const>
-     93c:	27a60144 	addiu	a2,sp,324
-     940:	8fa20010 	lw	v0,16(sp)
-     944:	27a60140 	addiu	a2,sp,320
-     948:	02002021 	move	a0,s0
-     94c:	27a50124 	addiu	a1,sp,292
-     950:	0c000656 	jal	1958 <float32::operator*(float32 const&) const>
-     954:	afa200e0 	sw	v0,224(sp)
-     958:	03c02021 	move	a0,s8
-     95c:	0c0007e4 	jal	1f90 <float32::operator+=(float32 const&)>
-     960:	02002821 	move	a1,s0
-     964:	27a6013c 	addiu	a2,sp,316
-     968:	02002021 	move	a0,s0
-     96c:	0c000656 	jal	1958 <float32::operator*(float32 const&) const>
-     970:	27a5011c 	addiu	a1,sp,284
-     974:	03c02021 	move	a0,s8
-     978:	0c000833 	jal	20cc <float32::operator-=(float32 const&)>
-     97c:	02002821 	move	a1,s0
-     980:	27a60138 	addiu	a2,sp,312
-     984:	02002021 	move	a0,s0
-     988:	0c000656 	jal	1958 <float32::operator*(float32 const&) const>
-     98c:	27a50110 	addiu	a1,sp,272
-     990:	03c02021 	move	a0,s8
-     994:	0c0007e4 	jal	1f90 <float32::operator+=(float32 const&)>
-     998:	02002821 	move	a1,s0
-     99c:	27a60134 	addiu	a2,sp,308
-     9a0:	02002021 	move	a0,s0
-     9a4:	0c000656 	jal	1958 <float32::operator*(float32 const&) const>
-     9a8:	27a50100 	addiu	a1,sp,256
-     9ac:	03c02021 	move	a0,s8
-     9b0:	0c0007e4 	jal	1f90 <float32::operator+=(float32 const&)>
-     9b4:	02002821 	move	a1,s0
-     9b8:	27a60130 	addiu	a2,sp,304
-     9bc:	02002021 	move	a0,s0
-     9c0:	0c000656 	jal	1958 <float32::operator*(float32 const&) const>
-     9c4:	27a500f0 	addiu	a1,sp,240
-     9c8:	03c02021 	move	a0,s8
-     9cc:	0c0007e4 	jal	1f90 <float32::operator+=(float32 const&)>
-     9d0:	02002821 	move	a1,s0
-     9d4:	02002021 	move	a0,s0
-     9d8:	27a50128 	addiu	a1,sp,296
-     9dc:	0c000656 	jal	1958 <float32::operator*(float32 const&) const>
-     9e0:	27a60140 	addiu	a2,sp,320
-     9e4:	8fa20010 	lw	v0,16(sp)
-     9e8:	27a6013c 	addiu	a2,sp,316
-     9ec:	02002021 	move	a0,s0
-     9f0:	27a50118 	addiu	a1,sp,280
-     9f4:	0c000656 	jal	1958 <float32::operator*(float32 const&) const>
-     9f8:	afa200dc 	sw	v0,220(sp)
-     9fc:	27a200dc 	addiu	v0,sp,220
-     a00:	02002821 	move	a1,s0
-     a04:	00402021 	move	a0,v0
-     a08:	0c000833 	jal	20cc <float32::operator-=(float32 const&)>
-     a0c:	afa201b0 	sw	v0,432(sp)
-     a10:	27a60144 	addiu	a2,sp,324
-     a14:	02002021 	move	a0,s0
-     a18:	0c000656 	jal	1958 <float32::operator*(float32 const&) const>
-     a1c:	27a50124 	addiu	a1,sp,292
-     a20:	27a400dc 	addiu	a0,sp,220
-     a24:	0c000833 	jal	20cc <float32::operator-=(float32 const&)>
-     a28:	02002821 	move	a1,s0
-     a2c:	27a60138 	addiu	a2,sp,312
-     a30:	02002021 	move	a0,s0
-     a34:	0c000656 	jal	1958 <float32::operator*(float32 const&) const>
-     a38:	27a5010c 	addiu	a1,sp,268
-     a3c:	27a400dc 	addiu	a0,sp,220
-     a40:	0c000833 	jal	20cc <float32::operator-=(float32 const&)>
-     a44:	02002821 	move	a1,s0
-     a48:	27a60134 	addiu	a2,sp,308
-     a4c:	02002021 	move	a0,s0
-     a50:	0c000656 	jal	1958 <float32::operator*(float32 const&) const>
-     a54:	27a500fc 	addiu	a1,sp,252
-     a58:	27a400dc 	addiu	a0,sp,220
-     a5c:	0c0007e4 	jal	1f90 <float32::operator+=(float32 const&)>
-     a60:	02002821 	move	a1,s0
-     a64:	27a60130 	addiu	a2,sp,304
-     a68:	02002021 	move	a0,s0
-     a6c:	0c000656 	jal	1958 <float32::operator*(float32 const&) const>
-     a70:	27a500ec 	addiu	a1,sp,236
-     a74:	27a400dc 	addiu	a0,sp,220
-     a78:	0c0007e4 	jal	1f90 <float32::operator+=(float32 const&)>
-     a7c:	02002821 	move	a1,s0
-     a80:	02002021 	move	a0,s0
-     a84:	27a50120 	addiu	a1,sp,288
-     a88:	0c000656 	jal	1958 <float32::operator*(float32 const&) const>
-     a8c:	27a60144 	addiu	a2,sp,324
-     a90:	8fa20010 	lw	v0,16(sp)
-     a94:	27a60140 	addiu	a2,sp,320
-     a98:	02002021 	move	a0,s0
-     a9c:	27a5012c 	addiu	a1,sp,300
-     aa0:	0c000656 	jal	1958 <float32::operator*(float32 const&) const>
-     aa4:	afa200d8 	sw	v0,216(sp)
-     aa8:	27a400d8 	addiu	a0,sp,216
-     aac:	0c0007e4 	jal	1f90 <float32::operator+=(float32 const&)>
-     ab0:	02002821 	move	a1,s0
-     ab4:	27a60138 	addiu	a2,sp,312
-     ab8:	02002021 	move	a0,s0
-     abc:	0c000656 	jal	1958 <float32::operator*(float32 const&) const>
-     ac0:	27a50108 	addiu	a1,sp,264
-     ac4:	27a400d8 	addiu	a0,sp,216
-     ac8:	0c000833 	jal	20cc <float32::operator-=(float32 const&)>
-     acc:	02002821 	move	a1,s0
-     ad0:	27a60134 	addiu	a2,sp,308
-     ad4:	02002021 	move	a0,s0
-     ad8:	0c000656 	jal	1958 <float32::operator*(float32 const&) const>
-     adc:	27a500f8 	addiu	a1,sp,248
-     ae0:	27a400d8 	addiu	a0,sp,216
-     ae4:	0c000833 	jal	20cc <float32::operator-=(float32 const&)>
-     ae8:	02002821 	move	a1,s0
-     aec:	27a60130 	addiu	a2,sp,304
-     af0:	02002021 	move	a0,s0
-     af4:	0c000656 	jal	1958 <float32::operator*(float32 const&) const>
-     af8:	27a500e8 	addiu	a1,sp,232
-     afc:	27a400d8 	addiu	a0,sp,216
-     b00:	0c0007e4 	jal	1f90 <float32::operator+=(float32 const&)>
-     b04:	02002821 	move	a1,s0
-     b08:	27a4003c 	addiu	a0,sp,60
-     b0c:	02e02821 	move	a1,s7
-     b10:	0c000656 	jal	1958 <float32::operator*(float32 const&) const>
-     b14:	02e03021 	move	a2,s7
-     b18:	27a500e0 	addiu	a1,sp,224
-     b1c:	00a03021 	move	a2,a1
-     b20:	0c000656 	jal	1958 <float32::operator*(float32 const&) const>
-     b24:	02002021 	move	a0,s0
-     b28:	27a4003c 	addiu	a0,sp,60
-     b2c:	0c0007e4 	jal	1f90 <float32::operator+=(float32 const&)>
-     b30:	02002821 	move	a1,s0
-     b34:	27a500dc 	addiu	a1,sp,220
-     b38:	00a03021 	move	a2,a1
-     b3c:	0c000656 	jal	1958 <float32::operator*(float32 const&) const>
-     b40:	02002021 	move	a0,s0
-     b44:	27a4003c 	addiu	a0,sp,60
-     b48:	0c0007e4 	jal	1f90 <float32::operator+=(float32 const&)>
-     b4c:	02002821 	move	a1,s0
-     b50:	27a500d8 	addiu	a1,sp,216
-     b54:	00a03021 	move	a2,a1
-     b58:	0c000656 	jal	1958 <float32::operator*(float32 const&) const>
-     b5c:	02002021 	move	a0,s0
-     b60:	27a4003c 	addiu	a0,sp,60
-     b64:	0c0007e4 	jal	1f90 <float32::operator+=(float32 const&)>
-     b68:	02002821 	move	a1,s0
-     b6c:	02002021 	move	a0,s0
-     b70:	0c000808 	jal	2020 <rsqrt(float32 const&)>
-     b74:	27a5003c 	addiu	a1,sp,60
-     b78:	8fa20010 	lw	v0,16(sp)
-     b7c:	02002021 	move	a0,s0
-     b80:	02e02821 	move	a1,s7
-     b84:	02c03021 	move	a2,s6
-     b88:	0c000656 	jal	1958 <float32::operator*(float32 const&) const>
-     b8c:	afa20158 	sw	v0,344(sp)
-     b90:	8fa20010 	lw	v0,16(sp)
-     b94:	02002021 	move	a0,s0
-     b98:	27a500e0 	addiu	a1,sp,224
-     b9c:	02c03021 	move	a2,s6
-     ba0:	0c000656 	jal	1958 <float32::operator*(float32 const&) const>
-     ba4:	afa200e4 	sw	v0,228(sp)
-     ba8:	8fa20010 	lw	v0,16(sp)
-     bac:	02002021 	move	a0,s0
-     bb0:	27a500dc 	addiu	a1,sp,220
-     bb4:	02c03021 	move	a2,s6
-     bb8:	0c000656 	jal	1958 <float32::operator*(float32 const&) const>
-     bbc:	afa200e0 	sw	v0,224(sp)
-     bc0:	8fa20010 	lw	v0,16(sp)
-     bc4:	02002021 	move	a0,s0
-     bc8:	27a500d8 	addiu	a1,sp,216
-     bcc:	02c03021 	move	a2,s6
-     bd0:	0c000656 	jal	1958 <float32::operator*(float32 const&) const>
-     bd4:	afa200dc 	sw	v0,220(sp)
-     bd8:	8fa20010 	lw	v0,16(sp)
-     bdc:	02002021 	move	a0,s0
-     be0:	27a500a4 	addiu	a1,sp,164
-     be4:	27a600e0 	addiu	a2,sp,224
-     be8:	0c000656 	jal	1958 <float32::operator*(float32 const&) const>
-     bec:	afa200d8 	sw	v0,216(sp)
-     bf0:	8fa20010 	lw	v0,16(sp)
-     bf4:	02e03021 	move	a2,s7
-     bf8:	02002021 	move	a0,s0
-     bfc:	27a500a0 	addiu	a1,sp,160
-     c00:	0c000656 	jal	1958 <float32::operator*(float32 const&) const>
-     c04:	afa200d4 	sw	v0,212(sp)
-     c08:	27a400d4 	addiu	a0,sp,212
-     c0c:	0c000833 	jal	20cc <float32::operator-=(float32 const&)>
-     c10:	02002821 	move	a1,s0
-     c14:	27a600d8 	addiu	a2,sp,216
-     c18:	02002021 	move	a0,s0
-     c1c:	0c000656 	jal	1958 <float32::operator*(float32 const&) const>
-     c20:	27a5009c 	addiu	a1,sp,156
-     c24:	27a400d4 	addiu	a0,sp,212
-     c28:	0c000833 	jal	20cc <float32::operator-=(float32 const&)>
-     c2c:	02002821 	move	a1,s0
-     c30:	27a600dc 	addiu	a2,sp,220
-     c34:	02002021 	move	a0,s0
-     c38:	0c000656 	jal	1958 <float32::operator*(float32 const&) const>
-     c3c:	27a50098 	addiu	a1,sp,152
-     c40:	27a400d4 	addiu	a0,sp,212
-     c44:	0c0007e4 	jal	1f90 <float32::operator+=(float32 const&)>
-     c48:	02002821 	move	a1,s0
-     c4c:	02002021 	move	a0,s0
-     c50:	27a500a4 	addiu	a1,sp,164
-     c54:	0c000656 	jal	1958 <float32::operator*(float32 const&) const>
-     c58:	27a600dc 	addiu	a2,sp,220
-     c5c:	8fa20010 	lw	v0,16(sp)
-     c60:	27a600d8 	addiu	a2,sp,216
-     c64:	02002021 	move	a0,s0
-     c68:	27a500a0 	addiu	a1,sp,160
-     c6c:	0c000656 	jal	1958 <float32::operator*(float32 const&) const>
-     c70:	afa200d0 	sw	v0,208(sp)
-     c74:	27a400d0 	addiu	a0,sp,208
-     c78:	0c0007e4 	jal	1f90 <float32::operator+=(float32 const&)>
-     c7c:	02002821 	move	a1,s0
-     c80:	02e03021 	move	a2,s7
-     c84:	02002021 	move	a0,s0
-     c88:	0c000656 	jal	1958 <float32::operator*(float32 const&) const>
-     c8c:	27a5009c 	addiu	a1,sp,156
-     c90:	27a400d0 	addiu	a0,sp,208
-     c94:	0c000833 	jal	20cc <float32::operator-=(float32 const&)>
-     c98:	02002821 	move	a1,s0
-     c9c:	27a600e0 	addiu	a2,sp,224
-     ca0:	02002021 	move	a0,s0
-     ca4:	0c000656 	jal	1958 <float32::operator*(float32 const&) const>
-     ca8:	27a50098 	addiu	a1,sp,152
-     cac:	27a400d0 	addiu	a0,sp,208
-     cb0:	0c000833 	jal	20cc <float32::operator-=(float32 const&)>
-     cb4:	02002821 	move	a1,s0
-     cb8:	02002021 	move	a0,s0
-     cbc:	27a500a4 	addiu	a1,sp,164
-     cc0:	0c000656 	jal	1958 <float32::operator*(float32 const&) const>
-     cc4:	27a600d8 	addiu	a2,sp,216
-     cc8:	8fa20010 	lw	v0,16(sp)
-     ccc:	27a600dc 	addiu	a2,sp,220
-     cd0:	02002021 	move	a0,s0
-     cd4:	27a500a0 	addiu	a1,sp,160
-     cd8:	0c000656 	jal	1958 <float32::operator*(float32 const&) const>
-     cdc:	afa200cc 	sw	v0,204(sp)
-     ce0:	27a400cc 	addiu	a0,sp,204
-     ce4:	0c000833 	jal	20cc <float32::operator-=(float32 const&)>
-     ce8:	02002821 	move	a1,s0
-     cec:	27a600e0 	addiu	a2,sp,224
-     cf0:	02002021 	move	a0,s0
-     cf4:	0c000656 	jal	1958 <float32::operator*(float32 const&) const>
-     cf8:	27a5009c 	addiu	a1,sp,156
-     cfc:	27a400cc 	addiu	a0,sp,204
-     d00:	0c0007e4 	jal	1f90 <float32::operator+=(float32 const&)>
-     d04:	02002821 	move	a1,s0
-     d08:	02e03021 	move	a2,s7
-     d0c:	02002021 	move	a0,s0
-     d10:	0c000656 	jal	1958 <float32::operator*(float32 const&) const>
-     d14:	27a50098 	addiu	a1,sp,152
-     d18:	3c1e8000 	lui	s8,0x8000
-     d1c:	27a400cc 	addiu	a0,sp,204
-     d20:	0c000833 	jal	20cc <float32::operator-=(float32 const&)>
-     d24:	02002821 	move	a1,s0
-     d28:	26820050 	addiu	v0,s4,80
-     d2c:	27c601c0 	addiu	a2,s8,448
-     d30:	02002021 	move	a0,s0
-     d34:	27a500d4 	addiu	a1,sp,212
-     d38:	0c000656 	jal	1958 <float32::operator*(float32 const&) const>
-     d3c:	afa201b4 	sw	v0,436(sp)
-     d40:	8fa401b4 	lw	a0,436(sp)
-     d44:	0c0007e4 	jal	1f90 <float32::operator+=(float32 const&)>
-     d48:	02002821 	move	a1,s0
-     d4c:	26820054 	addiu	v0,s4,84
-     d50:	27c601c0 	addiu	a2,s8,448
-     d54:	02002021 	move	a0,s0
-     d58:	27a500d0 	addiu	a1,sp,208
-     d5c:	0c000656 	jal	1958 <float32::operator*(float32 const&) const>
-     d60:	afa201b8 	sw	v0,440(sp)
-     d64:	8fa401b8 	lw	a0,440(sp)
-     d68:	0c0007e4 	jal	1f90 <float32::operator+=(float32 const&)>
-     d6c:	02002821 	move	a1,s0
-     d70:	27c601c0 	addiu	a2,s8,448
-     d74:	26820058 	addiu	v0,s4,88
-     d78:	02002021 	move	a0,s0
-     d7c:	27a500cc 	addiu	a1,sp,204
-     d80:	0c000656 	jal	1958 <float32::operator*(float32 const&) const>
-     d84:	afa201bc 	sw	v0,444(sp)
-     d88:	8fa401bc 	lw	a0,444(sp)
-     d8c:	0c0007e4 	jal	1f90 <float32::operator+=(float32 const&)>
-     d90:	02002821 	move	a1,s0
-     d94:	8fa501b4 	lw	a1,436(sp)
-     d98:	0c000833 	jal	20cc <float32::operator-=(float32 const&)>
-     d9c:	27a401ac 	addiu	a0,sp,428
-     da0:	8fa501b8 	lw	a1,440(sp)
-     da4:	0c000833 	jal	20cc <float32::operator-=(float32 const&)>
-     da8:	27a401a8 	addiu	a0,sp,424
-     dac:	8fa501bc 	lw	a1,444(sp)
-     db0:	0c000833 	jal	20cc <float32::operator-=(float32 const&)>
-     db4:	27a401a4 	addiu	a0,sp,420
-     db8:	8fa301cc 	lw	v1,460(sp)
-     dbc:	27a601ac 	addiu	a2,sp,428
-     dc0:	00602821 	move	a1,v1
-     dc4:	0c000656 	jal	1958 <float32::operator*(float32 const&) const>
-     dc8:	02002021 	move	a0,s0
-     dcc:	27a40154 	addiu	a0,sp,340
-     dd0:	0c000833 	jal	20cc <float32::operator-=(float32 const&)>
-     dd4:	02002821 	move	a1,s0
-     dd8:	8faa01c0 	lw	t2,448(sp)
-     ddc:	27a601a8 	addiu	a2,sp,424
-     de0:	01402821 	move	a1,t2
-     de4:	02002021 	move	a0,s0
-     de8:	0c000656 	jal	1958 <float32::operator*(float32 const&) const>
-     dec:	0140f021 	move	s8,t2
-     df0:	27a40154 	addiu	a0,sp,340
-     df4:	0c000833 	jal	20cc <float32::operator-=(float32 const&)>
-     df8:	02002821 	move	a1,s0
-     dfc:	8fa801c4 	lw	t0,452(sp)
-     e00:	27a601a4 	addiu	a2,sp,420
-     e04:	01002821 	move	a1,t0
-     e08:	0c000656 	jal	1958 <float32::operator*(float32 const&) const>
-     e0c:	02002021 	move	a0,s0
-     e10:	27a40154 	addiu	a0,sp,340
-     e14:	0c000833 	jal	20cc <float32::operator-=(float32 const&)>
-     e18:	02002821 	move	a1,s0
-     e1c:	8fa701c8 	lw	a3,456(sp)
-     e20:	02002021 	move	a0,s0
-     e24:	00e02821 	move	a1,a3
-     e28:	0c000656 	jal	1958 <float32::operator*(float32 const&) const>
-     e2c:	27a601ac 	addiu	a2,sp,428
-     e30:	8fa20010 	lw	v0,16(sp)
-     e34:	27a601a4 	addiu	a2,sp,420
-     e38:	02002021 	move	a0,s0
-     e3c:	03c02821 	move	a1,s8
-     e40:	0c000656 	jal	1958 <float32::operator*(float32 const&) const>
-     e44:	afa20150 	sw	v0,336(sp)
-     e48:	27a40150 	addiu	a0,sp,336
-     e4c:	0c0007e4 	jal	1f90 <float32::operator+=(float32 const&)>
-     e50:	02002821 	move	a1,s0
-     e54:	8fa801c4 	lw	t0,452(sp)
-     e58:	27a601a8 	addiu	a2,sp,424
-     e5c:	01002821 	move	a1,t0
-     e60:	0c000656 	jal	1958 <float32::operator*(float32 const&) const>
-     e64:	02002021 	move	a0,s0
-     e68:	27a40150 	addiu	a0,sp,336
-     e6c:	0c000833 	jal	20cc <float32::operator-=(float32 const&)>
-     e70:	02002821 	move	a1,s0
-     e74:	8fa701c8 	lw	a3,456(sp)
-     e78:	02002021 	move	a0,s0
-     e7c:	00e02821 	move	a1,a3
-     e80:	0c000656 	jal	1958 <float32::operator*(float32 const&) const>
-     e84:	27a601a8 	addiu	a2,sp,424
-     e88:	8fa301cc 	lw	v1,460(sp)
-     e8c:	8fa20010 	lw	v0,16(sp)
-     e90:	00602821 	move	a1,v1
-     e94:	27a601a4 	addiu	a2,sp,420
-     e98:	02002021 	move	a0,s0
-     e9c:	0c000656 	jal	1958 <float32::operator*(float32 const&) const>
-     ea0:	afa2014c 	sw	v0,332(sp)
-     ea4:	27a4014c 	addiu	a0,sp,332
-     ea8:	0c000833 	jal	20cc <float32::operator-=(float32 const&)>
-     eac:	02002821 	move	a1,s0
-     eb0:	8fa801c4 	lw	t0,452(sp)
-     eb4:	27a601ac 	addiu	a2,sp,428
-     eb8:	01002821 	move	a1,t0
-     ebc:	0c000656 	jal	1958 <float32::operator*(float32 const&) const>
-     ec0:	02002021 	move	a0,s0
-     ec4:	27a4014c 	addiu	a0,sp,332
-     ec8:	0c0007e4 	jal	1f90 <float32::operator+=(float32 const&)>
-     ecc:	02002821 	move	a1,s0
-     ed0:	8fa701c8 	lw	a3,456(sp)
-     ed4:	02002021 	move	a0,s0
-     ed8:	00e02821 	move	a1,a3
-     edc:	0c000656 	jal	1958 <float32::operator*(float32 const&) const>
-     ee0:	27a601a4 	addiu	a2,sp,420
-     ee4:	8fa301cc 	lw	v1,460(sp)
-     ee8:	8fa20010 	lw	v0,16(sp)
-     eec:	00602821 	move	a1,v1
-     ef0:	27a601a8 	addiu	a2,sp,424
-     ef4:	02002021 	move	a0,s0
-     ef8:	0c000656 	jal	1958 <float32::operator*(float32 const&) const>
-     efc:	afa20148 	sw	v0,328(sp)
-     f00:	27a40148 	addiu	a0,sp,328
-     f04:	0c0007e4 	jal	1f90 <float32::operator+=(float32 const&)>
-     f08:	02002821 	move	a1,s0
-     f0c:	27a601ac 	addiu	a2,sp,428
-     f10:	02002021 	move	a0,s0
-     f14:	0c000656 	jal	1958 <float32::operator*(float32 const&) const>
-     f18:	03c02821 	move	a1,s8
-     f1c:	3c1e8000 	lui	s8,0x8000
-     f20:	27a40148 	addiu	a0,sp,328
-     f24:	0c000833 	jal	20cc <float32::operator-=(float32 const&)>
-     f28:	02002821 	move	a1,s0
-     f2c:	27a40018 	addiu	a0,sp,24
-     f30:	27c501c4 	addiu	a1,s8,452
-     f34:	0c000656 	jal	1958 <float32::operator*(float32 const&) const>
-     f38:	02e03021 	move	a2,s7
-     f3c:	3c178000 	lui	s7,0x8000
-     f40:	27a40014 	addiu	a0,sp,20
-     f44:	27a50154 	addiu	a1,sp,340
-     f48:	0c0007f3 	jal	1fcc <float32::operator-(float32 const&) const>
-     f4c:	27a60018 	addiu	a2,sp,24
-     f50:	26e601c8 	addiu	a2,s7,456
-     f54:	02002021 	move	a0,s0
-     f58:	0c000656 	jal	1958 <float32::operator*(float32 const&) const>
-     f5c:	27a50014 	addiu	a1,sp,20
-     f60:	02a02021 	move	a0,s5
-     f64:	0c0007e4 	jal	1f90 <float32::operator+=(float32 const&)>
-     f68:	02002821 	move	a1,s0
-     f6c:	27a40018 	addiu	a0,sp,24
-     f70:	27c501c4 	addiu	a1,s8,452
-     f74:	0c000656 	jal	1958 <float32::operator*(float32 const&) const>
-     f78:	27a600e0 	addiu	a2,sp,224
-     f7c:	27a40014 	addiu	a0,sp,20
-     f80:	27a50150 	addiu	a1,sp,336
-     f84:	0c0007f3 	jal	1fcc <float32::operator-(float32 const&) const>
-     f88:	27a60018 	addiu	a2,sp,24
-     f8c:	26e601c8 	addiu	a2,s7,456
-     f90:	02002021 	move	a0,s0
-     f94:	0c000656 	jal	1958 <float32::operator*(float32 const&) const>
-     f98:	27a50014 	addiu	a1,sp,20
-     f9c:	02602021 	move	a0,s3
-     fa0:	0c0007e4 	jal	1f90 <float32::operator+=(float32 const&)>
-     fa4:	02002821 	move	a1,s0
-     fa8:	27a40018 	addiu	a0,sp,24
-     fac:	27c501c4 	addiu	a1,s8,452
-     fb0:	0c000656 	jal	1958 <float32::operator*(float32 const&) const>
-     fb4:	27a600dc 	addiu	a2,sp,220
-     fb8:	27a40014 	addiu	a0,sp,20
-     fbc:	27a5014c 	addiu	a1,sp,332
-     fc0:	0c0007f3 	jal	1fcc <float32::operator-(float32 const&) const>
-     fc4:	27a60018 	addiu	a2,sp,24
-     fc8:	26e601c8 	addiu	a2,s7,456
-     fcc:	02002021 	move	a0,s0
-     fd0:	0c000656 	jal	1958 <float32::operator*(float32 const&) const>
-     fd4:	27a50014 	addiu	a1,sp,20
-     fd8:	02402021 	move	a0,s2
-     fdc:	0c0007e4 	jal	1f90 <float32::operator+=(float32 const&)>
-     fe0:	02002821 	move	a1,s0
-     fe4:	27a40018 	addiu	a0,sp,24
-     fe8:	27c501c4 	addiu	a1,s8,452
-     fec:	0c000656 	jal	1958 <float32::operator*(float32 const&) const>
-     ff0:	27a600d8 	addiu	a2,sp,216
-     ff4:	27a40014 	addiu	a0,sp,20
-     ff8:	27a50148 	addiu	a1,sp,328
-     ffc:	0c0007f3 	jal	1fcc <float32::operator-(float32 const&) const>
-    1000:	27a60018 	addiu	a2,sp,24
-    1004:	26e601c8 	addiu	a2,s7,456
-    1008:	02002021 	move	a0,s0
-    100c:	0c000656 	jal	1958 <float32::operator*(float32 const&) const>
-    1010:	27a50014 	addiu	a1,sp,20
-    1014:	02202021 	move	a0,s1
-    1018:	0c0007e4 	jal	1f90 <float32::operator+=(float32 const&)>
-    101c:	02002821 	move	a1,s0
-    1020:	27a40038 	addiu	a0,sp,56
-    1024:	02a02821 	move	a1,s5
-    1028:	0c000656 	jal	1958 <float32::operator*(float32 const&) const>
-    102c:	02a03021 	move	a2,s5
-    1030:	02603021 	move	a2,s3
-    1034:	02002021 	move	a0,s0
-    1038:	0c000656 	jal	1958 <float32::operator*(float32 const&) const>
-    103c:	02602821 	move	a1,s3
-    1040:	27a40038 	addiu	a0,sp,56
-    1044:	0c0007e4 	jal	1f90 <float32::operator+=(float32 const&)>
-    1048:	02002821 	move	a1,s0
-    104c:	02403021 	move	a2,s2
-    1050:	02002021 	move	a0,s0
-    1054:	0c000656 	jal	1958 <float32::operator*(float32 const&) const>
-    1058:	02402821 	move	a1,s2
-    105c:	27a40038 	addiu	a0,sp,56
-    1060:	0c0007e4 	jal	1f90 <float32::operator+=(float32 const&)>
-    1064:	02002821 	move	a1,s0
-    1068:	02203021 	move	a2,s1
-    106c:	02002021 	move	a0,s0
-    1070:	0c000656 	jal	1958 <float32::operator*(float32 const&) const>
-    1074:	02202821 	move	a1,s1
+00000020 <_ZN6System8Registry8instanceEv.local.5.1576>:
+      20:	3c028000 	lui	v0,0x8000
+      24:	80430168 	lb	v1,360(v0)
+      28:	00402021 	move	a0,v0
+      2c:	14600010 	bnez	v1,70 <_ZN6System8Registry8instanceEv.local.5.1576+0x50>
+      30:	3c028000 	lui	v0,0x8000
+      34:	3c038000 	lui	v1,0x8000
+      38:	24450170 	addiu	a1,v0,368
+      3c:	24630180 	addiu	v1,v1,384
+      40:	24a50074 	addiu	a1,a1,116
+      44:	ac600000 	sw	zero,0(v1)
+      48:	24630004 	addiu	v1,v1,4
+      4c:	1465fffd 	bne	v1,a1,44 <_ZN6System8Registry8instanceEv.local.5.1576+0x24>
+      50:	00000000 	nop
+      54:	24430170 	addiu	v1,v0,368
+      58:	ac600004 	sw	zero,4(v1)
+      5c:	ac600008 	sw	zero,8(v1)
+      60:	ac60000c 	sw	zero,12(v1)
+      64:	24030001 	li	v1,1
+      68:	ac400170 	sw	zero,368(v0)
+      6c:	a0830168 	sb	v1,360(a0)
+      70:	03e00008 	jr	ra
+      74:	24420170 	addiu	v0,v0,368
+
+00000078 <Radio::Digital::TelemetryTask::start()>:
+      78:	27bdffd0 	addiu	sp,sp,-48
+      7c:	2402ff81 	li	v0,-127
+      80:	afbf002c 	sw	ra,44(sp)
+      84:	0c000008 	jal	20 <_ZN6System8Registry8instanceEv.local.5.1576>
+      88:	a3a20010 	sb	v0,16(sp)
+      8c:	8c420000 	lw	v0,0(v0)
+      90:	0c000008 	jal	20 <_ZN6System8Registry8instanceEv.local.5.1576>
+      94:	afa20014 	sw	v0,20(sp)
+      98:	8c420004 	lw	v0,4(v0)
+      9c:	0c000008 	jal	20 <_ZN6System8Registry8instanceEv.local.5.1576>
+      a0:	afa20018 	sw	v0,24(sp)
+      a4:	8c420008 	lw	v0,8(v0)
+      a8:	0c000008 	jal	20 <_ZN6System8Registry8instanceEv.local.5.1576>
+      ac:	afa2001c 	sw	v0,28(sp)
+      b0:	8c42000c 	lw	v0,12(v0)
+      b4:	24030020 	li	v1,32
+      b8:	08000031 	j	c4 <Radio::Digital::TelemetryTask::start()+0x4c>
+      bc:	afa20020 	sw	v0,32(sp)
+      c0:	00000000 	nop
+      c4:	8c020014 	lw	v0,20(zero)
+      c8:	00000000 	nop
+      cc:	00621023 	subu	v0,v1,v0
+      d0:	2c420014 	sltiu	v0,v0,20
+      d4:	1440fffa 	bnez	v0,c0 <Radio::Digital::TelemetryTask::start()+0x48>
+      d8:	00000000 	nop
+      dc:	24030014 	li	v1,20
+      e0:	27a50010 	addiu	a1,sp,16
+      e4:	00a22021 	addu	a0,a1,v0
+      e8:	80840000 	lb	a0,0(a0)
+      ec:	24420001 	addiu	v0,v0,1
+      f0:	1443fffb 	bne	v0,v1,e0 <Radio::Digital::TelemetryTask::start()+0x68>
+      f4:	ac040014 	sw	a0,20(zero)
+      f8:	8fbf002c 	lw	ra,44(sp)
+      fc:	00000000 	nop
+     100:	03e00008 	jr	ra
+     104:	27bd0030 	addiu	sp,sp,48
+
+00000108 <_ZN7float3219shift32RightJammingEjiPj.1641>:
+     108:	10a00009 	beqz	a1,130 <_ZN7float3219shift32RightJammingEjiPj.1641+0x28>
+     10c:	00801021 	move	v0,a0
+     110:	28a30020 	slti	v1,a1,32
+     114:	10600006 	beqz	v1,130 <_ZN7float3219shift32RightJammingEjiPj.1641+0x28>
+     118:	0004102b 	sltu	v0,zero,a0
+     11c:	00051023 	negu	v0,a1
+     120:	00441004 	sllv	v0,a0,v0
+     124:	0002102b 	sltu	v0,zero,v0
+     128:	00a42806 	srlv	a1,a0,a1
+     12c:	00451025 	or	v0,v0,a1
+     130:	03e00008 	jr	ra
+     134:	acc20000 	sw	v0,0(a2)
+
+00000138 <_ZN7float3212roundAndPackEbij.1636>:
+     138:	30a3ffff 	andi	v1,a1,0xffff
+     13c:	27bdffe8 	addiu	sp,sp,-24
+     140:	2c6300fd 	sltiu	v1,v1,253
+     144:	30c2007f 	andi	v0,a2,0x7f
+     148:	afb00010 	sw	s0,16(sp)
+     14c:	afbf0014 	sw	ra,20(sp)
+     150:	afa60020 	sw	a2,32(sp)
+     154:	14600015 	bnez	v1,1ac <_ZN7float3212roundAndPackEbij.1636+0x74>
+     158:	00808021 	move	s0,a0
+     15c:	28a300fe 	slti	v1,a1,254
+     160:	10600006 	beqz	v1,17c <_ZN7float3212roundAndPackEbij.1636+0x44>
+     164:	240300fd 	li	v1,253
+     168:	14a30008 	bne	a1,v1,18c <_ZN7float3212roundAndPackEbij.1636+0x54>
+     16c:	00000000 	nop
+     170:	24c60040 	addiu	a2,a2,64
+     174:	04c1000d 	bgez	a2,1ac <_ZN7float3212roundAndPackEbij.1636+0x74>
+     178:	00000000 	nop
+     17c:	001087c0 	sll	s0,s0,0x1f
+     180:	3c027f80 	lui	v0,0x7f80
+     184:	08000079 	j	1e4 <_ZN7float3212roundAndPackEbij.1636+0xac>
+     188:	02021021 	addu	v0,s0,v0
+     18c:	04a10007 	bgez	a1,1ac <_ZN7float3212roundAndPackEbij.1636+0x74>
+     190:	00c02021 	move	a0,a2
+     194:	00052823 	negu	a1,a1
+     198:	0c000042 	jal	108 <_ZN7float3219shift32RightJammingEjiPj.1641>
+     19c:	27a60020 	addiu	a2,sp,32
+     1a0:	8fa20020 	lw	v0,32(sp)
+     1a4:	00002821 	move	a1,zero
+     1a8:	3042007f 	andi	v0,v0,0x7f
+     1ac:	8fa30020 	lw	v1,32(sp)
+     1b0:	38420040 	xori	v0,v0,0x40
+     1b4:	2c420001 	sltiu	v0,v0,1
+     1b8:	24630040 	addiu	v1,v1,64
+     1bc:	000319c2 	srl	v1,v1,0x7
+     1c0:	00021027 	nor	v0,zero,v0
+     1c4:	00431024 	and	v0,v0,v1
+     1c8:	0002182b 	sltu	v1,zero,v0
+     1cc:	00031823 	negu	v1,v1
+     1d0:	00a32824 	and	a1,a1,v1
+     1d4:	001087c0 	sll	s0,s0,0x1f
+     1d8:	00501021 	addu	v0,v0,s0
+     1dc:	00052dc0 	sll	a1,a1,0x17
+     1e0:	00451021 	addu	v0,v0,a1
+     1e4:	8fbf0014 	lw	ra,20(sp)
+     1e8:	8fb00010 	lw	s0,16(sp)
+     1ec:	03e00008 	jr	ra
+     1f0:	27bd0018 	addiu	sp,sp,24
+
+000001f4 <_ZN7float327addSigsEjjb.1631>:
+     1f4:	27bdffd8 	addiu	sp,sp,-40
+     1f8:	00801021 	move	v0,a0
+     1fc:	afb00018 	sw	s0,24(sp)
+     200:	000485c2 	srl	s0,a0,0x17
+     204:	3c04007f 	lui	a0,0x7f
+     208:	3484ffff 	ori	a0,a0,0xffff
+     20c:	afb1001c 	sw	s1,28(sp)
+     210:	00058dc2 	srl	s1,a1,0x17
+     214:	321000ff 	andi	s0,s0,0xff
+     218:	323100ff 	andi	s1,s1,0xff
+     21c:	00443824 	and	a3,v0,a0
+     220:	00a42824 	and	a1,a1,a0
+     224:	00073980 	sll	a3,a3,0x6
+     228:	00052980 	sll	a1,a1,0x6
+     22c:	02111823 	subu	v1,s0,s1
+     230:	afb20020 	sw	s2,32(sp)
+     234:	afbf0024 	sw	ra,36(sp)
+     238:	00c09021 	move	s2,a2
+     23c:	afa70014 	sw	a3,20(sp)
+     240:	18600010 	blez	v1,284 <_ZN7float327addSigsEjjb.1631+0x90>
+     244:	afa50010 	sw	a1,16(sp)
+     248:	240400ff 	li	a0,255
+     24c:	1204003d 	beq	s0,a0,344 <_ZN7float327addSigsEjjb.1631+0x150>
+     250:	00000000 	nop
+     254:	16200003 	bnez	s1,264 <_ZN7float327addSigsEjjb.1631+0x70>
+     258:	3c022000 	lui	v0,0x2000
+     25c:	0800009b 	j	26c <_ZN7float327addSigsEjjb.1631+0x78>
+     260:	2463ffff 	addiu	v1,v1,-1
+     264:	00a22825 	or	a1,a1,v0
+     268:	afa50010 	sw	a1,16(sp)
+     26c:	8fa40010 	lw	a0,16(sp)
+     270:	00602821 	move	a1,v1
+     274:	0c000042 	jal	108 <_ZN7float3219shift32RightJammingEjiPj.1641>
+     278:	27a60010 	addiu	a2,sp,16
+     27c:	080000c4 	j	310 <_ZN7float327addSigsEjjb.1631+0x11c>
+     280:	02002821 	move	a1,s0
+     284:	10600014 	beqz	v1,2d8 <_ZN7float327addSigsEjjb.1631+0xe4>
+     288:	00000000 	nop
+     28c:	240200ff 	li	v0,255
+     290:	16220004 	bne	s1,v0,2a4 <_ZN7float327addSigsEjjb.1631+0xb0>
+     294:	000617c0 	sll	v0,a2,0x1f
+     298:	3c037f80 	lui	v1,0x7f80
+     29c:	080000d1 	j	344 <_ZN7float327addSigsEjjb.1631+0x150>
+     2a0:	00431021 	addu	v0,v0,v1
+     2a4:	16000003 	bnez	s0,2b4 <_ZN7float327addSigsEjjb.1631+0xc0>
+     2a8:	00000000 	nop
+     2ac:	080000b0 	j	2c0 <_ZN7float327addSigsEjjb.1631+0xcc>
+     2b0:	24630001 	addiu	v1,v1,1
+     2b4:	3c052000 	lui	a1,0x2000
+     2b8:	00e53825 	or	a3,a3,a1
+     2bc:	afa70014 	sw	a3,20(sp)
+     2c0:	8fa40014 	lw	a0,20(sp)
+     2c4:	00032823 	negu	a1,v1
+     2c8:	0c000042 	jal	108 <_ZN7float3219shift32RightJammingEjiPj.1641>
+     2cc:	27a60014 	addiu	a2,sp,20
+     2d0:	080000c4 	j	310 <_ZN7float327addSigsEjjb.1631+0x11c>
+     2d4:	02202821 	move	a1,s1
+     2d8:	240300ff 	li	v1,255
+     2dc:	12030019 	beq	s0,v1,344 <_ZN7float327addSigsEjjb.1631+0x150>
+     2e0:	00000000 	nop
+     2e4:	16000006 	bnez	s0,300 <_ZN7float327addSigsEjjb.1631+0x10c>
+     2e8:	3c034000 	lui	v1,0x4000
+     2ec:	00a71021 	addu	v0,a1,a3
+     2f0:	00021182 	srl	v0,v0,0x6
+     2f4:	000697c0 	sll	s2,a2,0x1f
+     2f8:	080000d1 	j	344 <_ZN7float327addSigsEjjb.1631+0x150>
+     2fc:	00521021 	addu	v0,v0,s2
+     300:	00e31821 	addu	v1,a3,v1
+     304:	00653021 	addu	a2,v1,a1
+     308:	080000cf 	j	33c <_ZN7float327addSigsEjjb.1631+0x148>
+     30c:	02002821 	move	a1,s0
+     310:	8fa20014 	lw	v0,20(sp)
+     314:	3c032000 	lui	v1,0x2000
+     318:	00621825 	or	v1,v1,v0
+     31c:	8fa20010 	lw	v0,16(sp)
+     320:	00000000 	nop
+     324:	00623021 	addu	a2,v1,v0
+     328:	00061040 	sll	v0,a2,0x1
+     32c:	04400003 	bltz	v0,33c <_ZN7float327addSigsEjjb.1631+0x148>
+     330:	afa30014 	sw	v1,20(sp)
+     334:	24a5ffff 	addiu	a1,a1,-1
+     338:	00403021 	move	a2,v0
+     33c:	0c00004e 	jal	138 <_ZN7float3212roundAndPackEbij.1636>
+     340:	02402021 	move	a0,s2
+     344:	8fbf0024 	lw	ra,36(sp)
+     348:	8fb20020 	lw	s2,32(sp)
+     34c:	8fb1001c 	lw	s1,28(sp)
+     350:	8fb00018 	lw	s0,24(sp)
+     354:	03e00008 	jr	ra
+     358:	27bd0028 	addiu	sp,sp,40
+
+0000035c <_ZN7float3219countLeadingZeros32Ej.1646>:
+     35c:	3c030001 	lui	v1,0x1
+     360:	0083182b 	sltu	v1,a0,v1
+     364:	10600003 	beqz	v1,374 <_ZN7float3219countLeadingZeros32Ej.1646+0x18>
+     368:	00001021 	move	v0,zero
+     36c:	00042400 	sll	a0,a0,0x10
+     370:	24020010 	li	v0,16
+     374:	3c030100 	lui	v1,0x100
+     378:	0083182b 	sltu	v1,a0,v1
+     37c:	10600005 	beqz	v1,394 <_ZN7float3219countLeadingZeros32Ej.1646+0x38>
+     380:	3c038000 	lui	v1,0x8000
+     384:	24420008 	addiu	v0,v0,8
+     388:	00021600 	sll	v0,v0,0x18
+     38c:	00021603 	sra	v0,v0,0x18
+     390:	00042200 	sll	a0,a0,0x8
+     394:	24630000 	addiu	v1,v1,0
+     398:	00042602 	srl	a0,a0,0x18
+     39c:	00832021 	addu	a0,a0,v1
+     3a0:	90830000 	lbu	v1,0(a0)
+     3a4:	00000000 	nop
+     3a8:	00621021 	addu	v0,v1,v0
+     3ac:	00021600 	sll	v0,v0,0x18
+     3b0:	03e00008 	jr	ra
+     3b4:	00021603 	sra	v0,v0,0x18
+
+000003b8 <_ZNK7float32mlERKS_.1484>:
+     3b8:	27bdffd0 	addiu	sp,sp,-48
+     3bc:	8ca20000 	lw	v0,0(a1)
+     3c0:	afb3001c 	sw	s3,28(sp)
+     3c4:	afb20018 	sw	s2,24(sp)
+     3c8:	3c13007f 	lui	s3,0x7f
+     3cc:	8cd20000 	lw	s2,0(a2)
+     3d0:	afb40020 	sw	s4,32(sp)
+     3d4:	3673ffff 	ori	s3,s3,0xffff
+     3d8:	0002a5c2 	srl	s4,v0,0x17
+     3dc:	afb50024 	sw	s5,36(sp)
+     3e0:	afb10014 	sw	s1,20(sp)
+     3e4:	0012adc2 	srl	s5,s2,0x17
+     3e8:	02538824 	and	s1,s2,s3
+     3ec:	329400ff 	andi	s4,s4,0xff
+     3f0:	00529026 	xor	s2,v0,s2
+     3f4:	240300ff 	li	v1,255
+     3f8:	afb00010 	sw	s0,16(sp)
+     3fc:	afbf002c 	sw	ra,44(sp)
+     400:	afb60028 	sw	s6,40(sp)
+     404:	00808021 	move	s0,a0
+     408:	32b500ff 	andi	s5,s5,0xff
+     40c:	16830006 	bne	s4,v1,428 <_ZNK7float32mlERKS_.1484+0x70>
+     410:	001297c2 	srl	s2,s2,0x1f
+     414:	02b18825 	or	s1,s5,s1
+     418:	12200039 	beqz	s1,500 <_ZNK7float32mlERKS_.1484+0x148>
+     41c:	2402ffff 	li	v0,-1
+     420:	0800010d 	j	434 <_ZNK7float32mlERKS_.1484+0x7c>
+     424:	001297c0 	sll	s2,s2,0x1f
+     428:	16a30005 	bne	s5,v1,440 <_ZNK7float32mlERKS_.1484+0x88>
+     42c:	02a0b021 	move	s6,s5
+     430:	001297c0 	sll	s2,s2,0x1f
+     434:	3c027f80 	lui	v0,0x7f80
+     438:	08000123 	j	48c <_ZNK7float32mlERKS_.1484+0xd4>
+     43c:	02429021 	addu	s2,s2,v0
+     440:	1680000d 	bnez	s4,478 <_ZNK7float32mlERKS_.1484+0xc0>
+     444:	00539824 	and	s3,v0,s3
+     448:	16600003 	bnez	s3,458 <_ZNK7float32mlERKS_.1484+0xa0>
+     44c:	00000000 	nop
+     450:	08000123 	j	48c <_ZNK7float32mlERKS_.1484+0xd4>
+     454:	001297c0 	sll	s2,s2,0x1f
+     458:	0c0000d7 	jal	35c <_ZN7float3219countLeadingZeros32Ej.1646>
+     45c:	02602021 	move	a0,s3
+     460:	2442fff8 	addiu	v0,v0,-8
+     464:	0002a600 	sll	s4,v0,0x18
+     468:	0014a603 	sra	s4,s4,0x18
+     46c:	24020001 	li	v0,1
+     470:	02939804 	sllv	s3,s3,s4
+     474:	0054a023 	subu	s4,v0,s4
+     478:	16a0000f 	bnez	s5,4b8 <_ZNK7float32mlERKS_.1484+0x100>
+     47c:	3c020080 	lui	v0,0x80
+     480:	16200004 	bnez	s1,494 <_ZNK7float32mlERKS_.1484+0xdc>
+     484:	00000000 	nop
+     488:	001297c0 	sll	s2,s2,0x1f
+     48c:	08000141 	j	504 <_ZNK7float32mlERKS_.1484+0x14c>
+     490:	ae120000 	sw	s2,0(s0)
+     494:	0c0000d7 	jal	35c <_ZN7float3219countLeadingZeros32Ej.1646>
+     498:	02202021 	move	a0,s1
+     49c:	2442fff8 	addiu	v0,v0,-8
+     4a0:	0002b600 	sll	s6,v0,0x18
+     4a4:	0016b603 	sra	s6,s6,0x18
+     4a8:	24020001 	li	v0,1
+     4ac:	02d18804 	sllv	s1,s1,s6
+     4b0:	0056b023 	subu	s6,v0,s6
+     4b4:	3c020080 	lui	v0,0x80
+     4b8:	02629825 	or	s3,s3,v0
+     4bc:	02223025 	or	a2,s1,v0
+     4c0:	00063200 	sll	a2,a2,0x8
+     4c4:	001399c0 	sll	s3,s3,0x7
+     4c8:	00d30019 	multu	a2,s3
+     4cc:	00003812 	mflo	a3
+     4d0:	0007102b 	sltu	v0,zero,a3
+     4d4:	00003010 	mfhi	a2
+     4d8:	00463025 	or	a2,v0,a2
+     4dc:	00061040 	sll	v0,a2,0x1
+     4e0:	04410003 	bgez	v0,4f0 <_ZNK7float32mlERKS_.1484+0x138>
+     4e4:	02962821 	addu	a1,s4,s6
+     4e8:	0800013e 	j	4f8 <_ZNK7float32mlERKS_.1484+0x140>
+     4ec:	24a5ff81 	addiu	a1,a1,-127
+     4f0:	24a5ff80 	addiu	a1,a1,-128
+     4f4:	00403021 	move	a2,v0
+     4f8:	0c00004e 	jal	138 <_ZN7float3212roundAndPackEbij.1636>
+     4fc:	02402021 	move	a0,s2
+     500:	ae020000 	sw	v0,0(s0)
+     504:	8fbf002c 	lw	ra,44(sp)
+     508:	02001021 	move	v0,s0
+     50c:	8fb60028 	lw	s6,40(sp)
+     510:	8fb50024 	lw	s5,36(sp)
+     514:	8fb40020 	lw	s4,32(sp)
+     518:	8fb3001c 	lw	s3,28(sp)
+     51c:	8fb20018 	lw	s2,24(sp)
+     520:	8fb10014 	lw	s1,20(sp)
+     524:	8fb00010 	lw	s0,16(sp)
+     528:	03e00008 	jr	ra
+     52c:	27bd0030 	addiu	sp,sp,48
+
+00000530 <_ZN7float32mLERKS_.1480>:
+     530:	27bdffe0 	addiu	sp,sp,-32
+     534:	afb00018 	sw	s0,24(sp)
+     538:	00808021 	move	s0,a0
+     53c:	00a03021 	move	a2,a1
+     540:	27a40010 	addiu	a0,sp,16
+     544:	afbf001c 	sw	ra,28(sp)
+     548:	0c0000ee 	jal	3b8 <_ZNK7float32mlERKS_.1484>
+     54c:	02002821 	move	a1,s0
+     550:	8fa20010 	lw	v0,16(sp)
+     554:	8fbf001c 	lw	ra,28(sp)
+     558:	ae020000 	sw	v0,0(s0)
+     55c:	02001021 	move	v0,s0
+     560:	8fb00018 	lw	s0,24(sp)
+     564:	03e00008 	jr	ra
+     568:	27bd0020 	addiu	sp,sp,32
+
+0000056c <_ZN7float3221normalizeRoundAndPackEbij.1626>:
+     56c:	27bdffe0 	addiu	sp,sp,-32
+     570:	afb20018 	sw	s2,24(sp)
+     574:	00809021 	move	s2,a0
+     578:	00c02021 	move	a0,a2
+     57c:	afbf001c 	sw	ra,28(sp)
+     580:	afb10014 	sw	s1,20(sp)
+     584:	afb00010 	sw	s0,16(sp)
+     588:	00a08821 	move	s1,a1
+     58c:	0c0000d7 	jal	35c <_ZN7float3219countLeadingZeros32Ej.1646>
+     590:	00c08021 	move	s0,a2
+     594:	2442ffff 	addiu	v0,v0,-1
+     598:	00023600 	sll	a2,v0,0x18
+     59c:	00063603 	sra	a2,a2,0x18
+     5a0:	02262823 	subu	a1,s1,a2
+     5a4:	8fbf001c 	lw	ra,28(sp)
+     5a8:	8fb10014 	lw	s1,20(sp)
+     5ac:	02402021 	move	a0,s2
+     5b0:	00d03004 	sllv	a2,s0,a2
+     5b4:	8fb20018 	lw	s2,24(sp)
+     5b8:	8fb00010 	lw	s0,16(sp)
+     5bc:	0800004e 	j	138 <_ZN7float3212roundAndPackEbij.1636>
+     5c0:	27bd0020 	addiu	sp,sp,32
+
+000005c4 <_ZN7float327subSigsEjjb.1621>:
+     5c4:	27bdffd8 	addiu	sp,sp,-40
+     5c8:	3c03007f 	lui	v1,0x7f
+     5cc:	00a03821 	move	a3,a1
+     5d0:	3463ffff 	ori	v1,v1,0xffff
+     5d4:	afb1001c 	sw	s1,28(sp)
+     5d8:	afb00018 	sw	s0,24(sp)
+     5dc:	00058dc2 	srl	s1,a1,0x17
+     5e0:	000485c2 	srl	s0,a0,0x17
+     5e4:	00801021 	move	v0,a0
+     5e8:	321000ff 	andi	s0,s0,0xff
+     5ec:	00832024 	and	a0,a0,v1
+     5f0:	323100ff 	andi	s1,s1,0xff
+     5f4:	00e31824 	and	v1,a3,v1
+     5f8:	000421c0 	sll	a0,a0,0x7
+     5fc:	000319c0 	sll	v1,v1,0x7
+     600:	02112823 	subu	a1,s0,s1
+     604:	afb20020 	sw	s2,32(sp)
+     608:	afbf0024 	sw	ra,36(sp)
+     60c:	00c09021 	move	s2,a2
+     610:	afa40014 	sw	a0,20(sp)
+     614:	1ca0002b 	bgtz	a1,6c4 <_ZN7float327subSigsEjjb.1621+0x100>
+     618:	afa30010 	sw	v1,16(sp)
+     61c:	14a0000e 	bnez	a1,658 <_ZN7float327subSigsEjjb.1621+0x94>
+     620:	00000000 	nop
+     624:	240500ff 	li	a1,255
+     628:	1205003d 	beq	s0,a1,720 <_ZN7float327subSigsEjjb.1621+0x15c>
+     62c:	2402ffff 	li	v0,-1
+     630:	16000003 	bnez	s0,640 <_ZN7float327subSigsEjjb.1621+0x7c>
+     634:	0064102b 	sltu	v0,v1,a0
+     638:	24110001 	li	s1,1
+     63c:	24100001 	li	s0,1
+     640:	14400030 	bnez	v0,704 <_ZN7float327subSigsEjjb.1621+0x140>
+     644:	0083182b 	sltu	v1,a0,v1
+     648:	10600035 	beqz	v1,720 <_ZN7float327subSigsEjjb.1621+0x15c>
+     64c:	00001021 	move	v0,zero
+     650:	080001ab 	j	6ac <_ZN7float327subSigsEjjb.1621+0xe8>
+     654:	00000000 	nop
+     658:	240200ff 	li	v0,255
+     65c:	16220005 	bne	s1,v0,674 <_ZN7float327subSigsEjjb.1621+0xb0>
+     660:	38c20001 	xori	v0,a2,0x1
+     664:	000217c0 	sll	v0,v0,0x1f
+     668:	3c037f80 	lui	v1,0x7f80
+     66c:	080001c8 	j	720 <_ZN7float327subSigsEjjb.1621+0x15c>
+     670:	00431021 	addu	v0,v0,v1
+     674:	16000003 	bnez	s0,684 <_ZN7float327subSigsEjjb.1621+0xc0>
+     678:	3c034000 	lui	v1,0x4000
+     67c:	080001a3 	j	68c <_ZN7float327subSigsEjjb.1621+0xc8>
+     680:	24a50001 	addiu	a1,a1,1
+     684:	00832025 	or	a0,a0,v1
+     688:	afa40014 	sw	a0,20(sp)
+     68c:	8fa40014 	lw	a0,20(sp)
+     690:	00052823 	negu	a1,a1
+     694:	0c000042 	jal	108 <_ZN7float3219shift32RightJammingEjiPj.1641>
+     698:	27a60014 	addiu	a2,sp,20
+     69c:	8fa30010 	lw	v1,16(sp)
+     6a0:	3c024000 	lui	v0,0x4000
+     6a4:	00621025 	or	v0,v1,v0
+     6a8:	afa20010 	sw	v0,16(sp)
+     6ac:	8fa20014 	lw	v0,20(sp)
+     6b0:	8fa60010 	lw	a2,16(sp)
+     6b4:	3a520001 	xori	s2,s2,0x1
+     6b8:	00c23023 	subu	a2,a2,v0
+     6bc:	080001c5 	j	714 <_ZN7float327subSigsEjjb.1621+0x150>
+     6c0:	02202821 	move	a1,s1
+     6c4:	240400ff 	li	a0,255
+     6c8:	12040015 	beq	s0,a0,720 <_ZN7float327subSigsEjjb.1621+0x15c>
+     6cc:	00000000 	nop
+     6d0:	16200003 	bnez	s1,6e0 <_ZN7float327subSigsEjjb.1621+0x11c>
+     6d4:	3c024000 	lui	v0,0x4000
+     6d8:	080001ba 	j	6e8 <_ZN7float327subSigsEjjb.1621+0x124>
+     6dc:	24a5ffff 	addiu	a1,a1,-1
+     6e0:	00621825 	or	v1,v1,v0
+     6e4:	afa30010 	sw	v1,16(sp)
+     6e8:	8fa40010 	lw	a0,16(sp)
+     6ec:	0c000042 	jal	108 <_ZN7float3219shift32RightJammingEjiPj.1641>
+     6f0:	27a60010 	addiu	a2,sp,16
+     6f4:	8fa30014 	lw	v1,20(sp)
+     6f8:	3c024000 	lui	v0,0x4000
+     6fc:	00621025 	or	v0,v1,v0
+     700:	afa20014 	sw	v0,20(sp)
+     704:	8fa20010 	lw	v0,16(sp)
+     708:	8fa60014 	lw	a2,20(sp)
+     70c:	02002821 	move	a1,s0
+     710:	00c23023 	subu	a2,a2,v0
+     714:	02402021 	move	a0,s2
+     718:	0c00015b 	jal	56c <_ZN7float3221normalizeRoundAndPackEbij.1626>
+     71c:	24a5ffff 	addiu	a1,a1,-1
+     720:	8fbf0024 	lw	ra,36(sp)
+     724:	8fb20020 	lw	s2,32(sp)
+     728:	8fb1001c 	lw	s1,28(sp)
+     72c:	8fb00018 	lw	s0,24(sp)
+     730:	03e00008 	jr	ra
+     734:	27bd0028 	addiu	sp,sp,40
+
+00000738 <_ZNK7float32plERKS_.1609>:
+     738:	27bdffe8 	addiu	sp,sp,-24
+     73c:	afb00010 	sw	s0,16(sp)
+     740:	00808021 	move	s0,a0
+     744:	8ca40000 	lw	a0,0(a1)
+     748:	8cc50000 	lw	a1,0(a2)
+     74c:	000417c2 	srl	v0,a0,0x1f
+     750:	00051fc2 	srl	v1,a1,0x1f
+     754:	afbf0014 	sw	ra,20(sp)
+     758:	14430005 	bne	v0,v1,770 <_ZNK7float32plERKS_.1609+0x38>
+     75c:	00403021 	move	a2,v0
+     760:	0c00007d 	jal	1f4 <_ZN7float327addSigsEjjb.1631>
+     764:	00000000 	nop
+     768:	080001de 	j	778 <_ZNK7float32plERKS_.1609+0x40>
+     76c:	00000000 	nop
+     770:	0c000171 	jal	5c4 <_ZN7float327subSigsEjjb.1621>
+     774:	00000000 	nop
+     778:	8fbf0014 	lw	ra,20(sp)
+     77c:	ae020000 	sw	v0,0(s0)
+     780:	02001021 	move	v0,s0
+     784:	8fb00010 	lw	s0,16(sp)
+     788:	03e00008 	jr	ra
+     78c:	27bd0018 	addiu	sp,sp,24
+
+00000790 <_ZN7float32pLERKS_.1605>:
+     790:	27bdffe0 	addiu	sp,sp,-32
+     794:	afb00018 	sw	s0,24(sp)
+     798:	00808021 	move	s0,a0
+     79c:	00a03021 	move	a2,a1
+     7a0:	27a40010 	addiu	a0,sp,16
+     7a4:	afbf001c 	sw	ra,28(sp)
+     7a8:	0c0001ce 	jal	738 <_ZNK7float32plERKS_.1609>
+     7ac:	02002821 	move	a1,s0
+     7b0:	8fa20010 	lw	v0,16(sp)
+     7b4:	8fbf001c 	lw	ra,28(sp)
+     7b8:	ae020000 	sw	v0,0(s0)
+     7bc:	02001021 	move	v0,s0
+     7c0:	8fb00018 	lw	s0,24(sp)
+     7c4:	03e00008 	jr	ra
+     7c8:	27bd0020 	addiu	sp,sp,32
+
+000007cc <_ZNK7float32miERKS_.1617>:
+     7cc:	27bdffe8 	addiu	sp,sp,-24
+     7d0:	afb00010 	sw	s0,16(sp)
+     7d4:	00808021 	move	s0,a0
+     7d8:	8ca40000 	lw	a0,0(a1)
+     7dc:	8cc50000 	lw	a1,0(a2)
+     7e0:	000437c2 	srl	a2,a0,0x1f
+     7e4:	000517c2 	srl	v0,a1,0x1f
+     7e8:	14c20005 	bne	a2,v0,800 <_ZNK7float32miERKS_.1617+0x34>
+     7ec:	afbf0014 	sw	ra,20(sp)
+     7f0:	0c000171 	jal	5c4 <_ZN7float327subSigsEjjb.1621>
+     7f4:	00000000 	nop
+     7f8:	08000202 	j	808 <_ZNK7float32miERKS_.1617+0x3c>
+     7fc:	00000000 	nop
+     800:	0c00007d 	jal	1f4 <_ZN7float327addSigsEjjb.1631>
+     804:	00000000 	nop
+     808:	8fbf0014 	lw	ra,20(sp)
+     80c:	ae020000 	sw	v0,0(s0)
+     810:	02001021 	move	v0,s0
+     814:	8fb00010 	lw	s0,16(sp)
+     818:	03e00008 	jr	ra
+     81c:	27bd0018 	addiu	sp,sp,24
+
+00000820 <_Z5rsqrtRK7float32.1476>:
+     820:	8ca20000 	lw	v0,0(a1)
+     824:	27bdffc8 	addiu	sp,sp,-56
+     828:	afbf0034 	sw	ra,52(sp)
+     82c:	afb00030 	sw	s0,48(sp)
+     830:	00808021 	move	s0,a0
+     834:	ac820000 	sw	v0,0(a0)
+     838:	3c023fc0 	lui	v0,0x3fc0
+     83c:	afa20018 	sw	v0,24(sp)
+     840:	27a40010 	addiu	a0,sp,16
+     844:	3c023f00 	lui	v0,0x3f00
+     848:	27a50014 	addiu	a1,sp,20
+     84c:	02003021 	move	a2,s0
+     850:	0c0000ee 	jal	3b8 <_ZNK7float32mlERKS_.1484>
+     854:	afa20014 	sw	v0,20(sp)
+     858:	8e030000 	lw	v1,0(s0)
+     85c:	3c025f37 	lui	v0,0x5f37
+     860:	00031843 	sra	v1,v1,0x1
+     864:	24425a86 	addiu	v0,v0,23174
+     868:	00431023 	subu	v0,v0,v1
+     86c:	ae020000 	sw	v0,0(s0)
+     870:	27a4001c 	addiu	a0,sp,28
+     874:	27a50010 	addiu	a1,sp,16
+     878:	0c0000ee 	jal	3b8 <_ZNK7float32mlERKS_.1484>
+     87c:	02003021 	move	a2,s0
+     880:	27a40020 	addiu	a0,sp,32
+     884:	27a5001c 	addiu	a1,sp,28
+     888:	0c0000ee 	jal	3b8 <_ZNK7float32mlERKS_.1484>
+     88c:	02003021 	move	a2,s0
+     890:	27a40024 	addiu	a0,sp,36
+     894:	27a50018 	addiu	a1,sp,24
+     898:	0c0001f3 	jal	7cc <_ZNK7float32miERKS_.1617>
+     89c:	27a60020 	addiu	a2,sp,32
+     8a0:	27a40028 	addiu	a0,sp,40
+     8a4:	02002821 	move	a1,s0
+     8a8:	0c0000ee 	jal	3b8 <_ZNK7float32mlERKS_.1484>
+     8ac:	27a60024 	addiu	a2,sp,36
+     8b0:	8fa20028 	lw	v0,40(sp)
+     8b4:	8fbf0034 	lw	ra,52(sp)
+     8b8:	ae020000 	sw	v0,0(s0)
+     8bc:	02001021 	move	v0,s0
+     8c0:	8fb00030 	lw	s0,48(sp)
+     8c4:	03e00008 	jr	ra
+     8c8:	27bd0038 	addiu	sp,sp,56
+
+000008cc <_ZN7float32mIERKS_.1613>:
+     8cc:	27bdffe0 	addiu	sp,sp,-32
+     8d0:	afb00018 	sw	s0,24(sp)
+     8d4:	00808021 	move	s0,a0
+     8d8:	00a03021 	move	a2,a1
+     8dc:	27a40010 	addiu	a0,sp,16
+     8e0:	afbf001c 	sw	ra,28(sp)
+     8e4:	0c0001f3 	jal	7cc <_ZNK7float32miERKS_.1617>
+     8e8:	02002821 	move	a1,s0
+     8ec:	8fa20010 	lw	v0,16(sp)
+     8f0:	8fbf001c 	lw	ra,28(sp)
+     8f4:	ae020000 	sw	v0,0(s0)
+     8f8:	02001021 	move	v0,s0
+     8fc:	8fb00018 	lw	s0,24(sp)
+     900:	03e00008 	jr	ra
+     904:	27bd0020 	addiu	sp,sp,32
+
+00000908 <_ZN5Radio8Messages14consoleHandlerEPc.1677>:
+     908:	03e00008 	jr	ra
+     90c:	00000000 	nop
+
+00000910 <Radio::Digital::XBeeReadIdleTask::start()>:
+     910:	8c020018 	lw	v0,24(zero)
+     914:	00000000 	nop
+     918:	00021403 	sra	v0,v0,0x10
+     91c:	10400046 	beqz	v0,a38 <Radio::Digital::XBeeReadIdleTask::start()+0x128>
+     920:	00000000 	nop
+     924:	8c020018 	lw	v0,24(zero)
+     928:	8c83003c 	lw	v1,60(a0)
+     92c:	27bdffe8 	addiu	sp,sp,-24
+     930:	00021600 	sll	v0,v0,0x18
+     934:	00021603 	sra	v0,v0,0x18
+     938:	afb00010 	sw	s0,16(sp)
+     93c:	afbf0014 	sw	ra,20(sp)
+     940:	00808021 	move	s0,a0
+     944:	ac000018 	sw	zero,24(zero)
+     948:	1460000f 	bnez	v1,988 <Radio::Digital::XBeeReadIdleTask::start()+0x78>
+     94c:	00000000 	nop
+     950:	2403003e 	li	v1,62
+     954:	14430006 	bne	v0,v1,970 <Radio::Digital::XBeeReadIdleTask::start()+0x60>
+     958:	00000000 	nop
+     95c:	3c020000 	lui	v0,0x0
+     960:	24420908 	addiu	v0,v0,2312
+     964:	a0800038 	sb	zero,56(a0)
+     968:	0800028b 	j	a2c <Radio::Digital::XBeeReadIdleTask::start()+0x11c>
+     96c:	ac82003c 	sw	v0,60(a0)
+     970:	1840002e 	blez	v0,a2c <Radio::Digital::XBeeReadIdleTask::start()+0x11c>
+     974:	28430005 	slti	v1,v0,5
+     978:	1460001f 	bnez	v1,9f8 <Radio::Digital::XBeeReadIdleTask::start()+0xe8>
+     97c:	3c038000 	lui	v1,0x8000
+     980:	0800028b 	j	a2c <Radio::Digital::XBeeReadIdleTask::start()+0x11c>
+     984:	00000000 	nop
+     988:	8c840034 	lw	a0,52(a0)
+     98c:	00000000 	nop
+     990:	2c860020 	sltiu	a2,a0,32
+     994:	10c00006 	beqz	a2,9b0 <Radio::Digital::XBeeReadIdleTask::start()+0xa0>
+     998:	24050001 	li	a1,1
+     99c:	02042821 	addu	a1,s0,a0
+     9a0:	24840001 	addiu	a0,a0,1
+     9a4:	a0a20014 	sb	v0,20(a1)
+     9a8:	ae040034 	sw	a0,52(s0)
+     9ac:	00002821 	move	a1,zero
+     9b0:	3c040000 	lui	a0,0x0
+     9b4:	24840908 	addiu	a0,a0,2312
+     9b8:	14640005 	bne	v1,a0,9d0 <Radio::Digital::XBeeReadIdleTask::start()+0xc0>
+     9bc:	2404000d 	li	a0,13
+     9c0:	10440016 	beq	v0,a0,a1c <Radio::Digital::XBeeReadIdleTask::start()+0x10c>
+     9c4:	2404000a 	li	a0,10
+     9c8:	08000277 	j	9dc <Radio::Digital::XBeeReadIdleTask::start()+0xcc>
+     9cc:	00000000 	nop
+     9d0:	92020038 	lbu	v0,56(s0)
+     9d4:	8e040034 	lw	a0,52(s0)
+     9d8:	00000000 	nop
+     9dc:	1082000f 	beq	a0,v0,a1c <Radio::Digital::XBeeReadIdleTask::start()+0x10c>
+     9e0:	00000000 	nop
+     9e4:	10a00011 	beqz	a1,a2c <Radio::Digital::XBeeReadIdleTask::start()+0x11c>
+     9e8:	00000000 	nop
+     9ec:	a2000038 	sb	zero,56(s0)
+     9f0:	0800028b 	j	a2c <Radio::Digital::XBeeReadIdleTask::start()+0x11c>
+     9f4:	ae00003c 	sw	zero,60(s0)
+     9f8:	24630100 	addiu	v1,v1,256
+     9fc:	000210c0 	sll	v0,v0,0x3
+     a00:	00621021 	addu	v0,v1,v0
+     a04:	88430004 	lwl	v1,4(v0)
+     a08:	90440000 	lbu	a0,0(v0)
+     a0c:	98430007 	lwr	v1,7(v0)
+     a10:	a2040038 	sb	a0,56(s0)
+     a14:	0800028b 	j	a2c <Radio::Digital::XBeeReadIdleTask::start()+0x11c>
+     a18:	ae03003c 	sw	v1,60(s0)
+     a1c:	0060f809 	jalr	v1
+     a20:	26040014 	addiu	a0,s0,20
+     a24:	0800027c 	j	9f0 <Radio::Digital::XBeeReadIdleTask::start()+0xe0>
+     a28:	a2000038 	sb	zero,56(s0)
+     a2c:	8fbf0014 	lw	ra,20(sp)
+     a30:	8fb00010 	lw	s0,16(sp)
+     a34:	27bd0018 	addiu	sp,sp,24
+     a38:	03e00008 	jr	ra
+     a3c:	00000000 	nop
+
+00000a40 <_ZN6System3Bus3I2CL2ioEcNS1_6IoTypeE.isra.0.2496.1689>:
+     a40:	3c020002 	lui	v0,0x2
+     a44:	00822025 	or	a0,a0,v0
+     a48:	ac04000c 	sw	a0,12(zero)
+     a4c:	8c02000c 	lw	v0,12(zero)
+     a50:	00000000 	nop
+     a54:	0440fffd 	bltz	v0,a4c <_ZN6System3Bus3I2CL2ioEcNS1_6IoTypeE.isra.0.2496.1689+0xc>
+     a58:	00000000 	nop
+     a5c:	8c02000c 	lw	v0,12(zero)
+     a60:	03e00008 	jr	ra
+     a64:	00000000 	nop
+
+00000a68 <_ZN6System3Bus3I2C4readEv.1687>:
+     a68:	27bdffe8 	addiu	sp,sp,-24
+     a6c:	afbf0014 	sw	ra,20(sp)
+     a70:	0c000290 	jal	a40 <_ZN6System3Bus3I2CL2ioEcNS1_6IoTypeE.isra.0.2496.1689>
+     a74:	2404ffff 	li	a0,-1
+     a78:	8fbf0014 	lw	ra,20(sp)
+     a7c:	00021600 	sll	v0,v0,0x18
+     a80:	00021603 	sra	v0,v0,0x18
+     a84:	03e00008 	jr	ra
+     a88:	27bd0018 	addiu	sp,sp,24
+
+00000a8c <_ZN4MathL11sign_extendEi.2447.1692>:
+     a8c:	3083ffff 	andi	v1,a0,0xffff
+     a90:	00031bc3 	sra	v1,v1,0xf
+     a94:	10600003 	beqz	v1,aa4 <_ZN4MathL11sign_extendEi.2447.1692+0x18>
+     a98:	00801021 	move	v0,a0
+     a9c:	3c03ffff 	lui	v1,0xffff
+     aa0:	00831025 	or	v0,a0,v1
+     aa4:	03e00008 	jr	ra
+     aa8:	00000000 	nop
+
+00000aac <_ZN7Sensors3IMU7MPU605026updateAccelerometerAndGyroEv.1506>:
+     aac:	3c020004 	lui	v0,0x4
+     ab0:	244200ff 	addiu	v0,v0,255
+     ab4:	ac02000c 	sw	v0,12(zero)
+     ab8:	8c02000c 	lw	v0,12(zero)
+     abc:	00000000 	nop
+     ac0:	0440fffd 	bltz	v0,ab8 <_ZN7Sensors3IMU7MPU605026updateAccelerometerAndGyroEv.1506+0xc>
+     ac4:	2404ffd0 	li	a0,-48
+     ac8:	27bdffc0 	addiu	sp,sp,-64
+     acc:	afbf003c 	sw	ra,60(sp)
+     ad0:	afbe0038 	sw	s8,56(sp)
+     ad4:	afb70034 	sw	s7,52(sp)
+     ad8:	afb60030 	sw	s6,48(sp)
+     adc:	afb5002c 	sw	s5,44(sp)
+     ae0:	afb40028 	sw	s4,40(sp)
+     ae4:	afb30024 	sw	s3,36(sp)
+     ae8:	afb20020 	sw	s2,32(sp)
+     aec:	afb1001c 	sw	s1,28(sp)
+     af0:	0c000290 	jal	a40 <_ZN6System3Bus3I2CL2ioEcNS1_6IoTypeE.isra.0.2496.1689>
+     af4:	afb00018 	sw	s0,24(sp)
+     af8:	0c000290 	jal	a40 <_ZN6System3Bus3I2CL2ioEcNS1_6IoTypeE.isra.0.2496.1689>
+     afc:	2404003b 	li	a0,59
+     b00:	3c020001 	lui	v0,0x1
+     b04:	244200ff 	addiu	v0,v0,255
+     b08:	ac02000c 	sw	v0,12(zero)
+     b0c:	8c02000c 	lw	v0,12(zero)
+     b10:	00000000 	nop
+     b14:	0440fffd 	bltz	v0,b0c <_ZN7Sensors3IMU7MPU605026updateAccelerometerAndGyroEv.1506+0x60>
+     b18:	3c020004 	lui	v0,0x4
+     b1c:	244200ff 	addiu	v0,v0,255
+     b20:	ac02000c 	sw	v0,12(zero)
+     b24:	8c02000c 	lw	v0,12(zero)
+     b28:	00000000 	nop
+     b2c:	0440fffd 	bltz	v0,b24 <_ZN7Sensors3IMU7MPU605026updateAccelerometerAndGyroEv.1506+0x78>
+     b30:	00000000 	nop
+     b34:	0c000290 	jal	a40 <_ZN6System3Bus3I2CL2ioEcNS1_6IoTypeE.isra.0.2496.1689>
+     b38:	2404ffd1 	li	a0,-47
+     b3c:	0c00029a 	jal	a68 <_ZN6System3Bus3I2C4readEv.1687>
+     b40:	00000000 	nop
+     b44:	0c00029a 	jal	a68 <_ZN6System3Bus3I2C4readEv.1687>
+     b48:	afa20010 	sw	v0,16(sp)
+     b4c:	0c00029a 	jal	a68 <_ZN6System3Bus3I2C4readEv.1687>
+     b50:	afa20014 	sw	v0,20(sp)
+     b54:	0c00029a 	jal	a68 <_ZN6System3Bus3I2C4readEv.1687>
+     b58:	0040f021 	move	s8,v0
+     b5c:	0c00029a 	jal	a68 <_ZN6System3Bus3I2C4readEv.1687>
+     b60:	0040b821 	move	s7,v0
+     b64:	0c00029a 	jal	a68 <_ZN6System3Bus3I2C4readEv.1687>
+     b68:	0040b021 	move	s6,v0
+     b6c:	0c00029a 	jal	a68 <_ZN6System3Bus3I2C4readEv.1687>
+     b70:	0040a821 	move	s5,v0
+     b74:	0c00029a 	jal	a68 <_ZN6System3Bus3I2C4readEv.1687>
+     b78:	00000000 	nop
+     b7c:	0c00029a 	jal	a68 <_ZN6System3Bus3I2C4readEv.1687>
+     b80:	00000000 	nop
+     b84:	0c00029a 	jal	a68 <_ZN6System3Bus3I2C4readEv.1687>
+     b88:	0040a021 	move	s4,v0
+     b8c:	0c00029a 	jal	a68 <_ZN6System3Bus3I2C4readEv.1687>
+     b90:	00409821 	move	s3,v0
+     b94:	0c00029a 	jal	a68 <_ZN6System3Bus3I2C4readEv.1687>
+     b98:	00409021 	move	s2,v0
+     b9c:	0c00029a 	jal	a68 <_ZN6System3Bus3I2C4readEv.1687>
+     ba0:	00408821 	move	s1,v0
+     ba4:	0c00029a 	jal	a68 <_ZN6System3Bus3I2C4readEv.1687>
+     ba8:	00408021 	move	s0,v0
+     bac:	00402821 	move	a1,v0
+     bb0:	3c020001 	lui	v0,0x1
+     bb4:	244200ff 	addiu	v0,v0,255
+     bb8:	8fa40010 	lw	a0,16(sp)
+     bbc:	8fa30014 	lw	v1,20(sp)
+     bc0:	ac02000c 	sw	v0,12(zero)
+     bc4:	8c02000c 	lw	v0,12(zero)
+     bc8:	00000000 	nop
+     bcc:	0440fffd 	bltz	v0,bc4 <_ZN7Sensors3IMU7MPU605026updateAccelerometerAndGyroEv.1506+0x118>
+     bd0:	00000000 	nop
+     bd4:	00042200 	sll	a0,a0,0x8
+     bd8:	00832025 	or	a0,a0,v1
+     bdc:	0c0002a3 	jal	a8c <_ZN4MathL11sign_extendEi.2447.1692>
+     be0:	afa50010 	sw	a1,16(sp)
+     be4:	001e2200 	sll	a0,s8,0x8
+     be8:	00972025 	or	a0,a0,s7
+     bec:	0c0002a3 	jal	a8c <_ZN4MathL11sign_extendEi.2447.1692>
+     bf0:	afa20014 	sw	v0,20(sp)
+     bf4:	00162200 	sll	a0,s6,0x8
+     bf8:	00952025 	or	a0,a0,s5
+     bfc:	0c0002a3 	jal	a8c <_ZN4MathL11sign_extendEi.2447.1692>
+     c00:	0040b821 	move	s7,v0
+     c04:	00142200 	sll	a0,s4,0x8
+     c08:	00932025 	or	a0,a0,s3
+     c0c:	0c0002a3 	jal	a8c <_ZN4MathL11sign_extendEi.2447.1692>
+     c10:	0040a821 	move	s5,v0
+     c14:	00122200 	sll	a0,s2,0x8
+     c18:	00912025 	or	a0,a0,s1
+     c1c:	0c0002a3 	jal	a8c <_ZN4MathL11sign_extendEi.2447.1692>
+     c20:	00409821 	move	s3,v0
+     c24:	8fa50010 	lw	a1,16(sp)
+     c28:	00102200 	sll	a0,s0,0x8
+     c2c:	00852025 	or	a0,a0,a1
+     c30:	0c0002a3 	jal	a8c <_ZN4MathL11sign_extendEi.2447.1692>
+     c34:	00408821 	move	s1,v0
+     c38:	0c000008 	jal	20 <_ZN6System8Registry8instanceEv.local.5.1576>
+     c3c:	00408021 	move	s0,v0
+     c40:	8fa30014 	lw	v1,20(sp)
+     c44:	0c000008 	jal	20 <_ZN6System8Registry8instanceEv.local.5.1576>
+     c48:	ac430010 	sw	v1,16(v0)
+     c4c:	0c000008 	jal	20 <_ZN6System8Registry8instanceEv.local.5.1576>
+     c50:	ac570014 	sw	s7,20(v0)
+     c54:	0c000008 	jal	20 <_ZN6System8Registry8instanceEv.local.5.1576>
+     c58:	ac550018 	sw	s5,24(v0)
+     c5c:	0c000008 	jal	20 <_ZN6System8Registry8instanceEv.local.5.1576>
+     c60:	ac530028 	sw	s3,40(v0)
+     c64:	0c000008 	jal	20 <_ZN6System8Registry8instanceEv.local.5.1576>
+     c68:	ac51002c 	sw	s1,44(v0)
+     c6c:	8fbf003c 	lw	ra,60(sp)
+     c70:	ac500030 	sw	s0,48(v0)
+     c74:	8fbe0038 	lw	s8,56(sp)
+     c78:	8fb70034 	lw	s7,52(sp)
+     c7c:	8fb60030 	lw	s6,48(sp)
+     c80:	8fb5002c 	lw	s5,44(sp)
+     c84:	8fb40028 	lw	s4,40(sp)
+     c88:	8fb30024 	lw	s3,36(sp)
+     c8c:	8fb20020 	lw	s2,32(sp)
+     c90:	8fb1001c 	lw	s1,28(sp)
+     c94:	8fb00018 	lw	s0,24(sp)
+     c98:	03e00008 	jr	ra
+     c9c:	27bd0040 	addiu	sp,sp,64
+
+00000ca0 <Control::StabilizationAndEngineUpdateTask::start()>:
+     ca0:	27bdffd8 	addiu	sp,sp,-40
+     ca4:	afbf0024 	sw	ra,36(sp)
+     ca8:	afb00014 	sw	s0,20(sp)
+     cac:	afb30020 	sw	s3,32(sp)
+     cb0:	afb2001c 	sw	s2,28(sp)
+     cb4:	0c0002ab 	jal	aac <_ZN7Sensors3IMU7MPU605026updateAccelerometerAndGyroEv.1506>
+     cb8:	afb10018 	sw	s1,24(sp)
+     cbc:	0c000008 	jal	20 <_ZN6System8Registry8instanceEv.local.5.1576>
+     cc0:	00000000 	nop
+     cc4:	8c500048 	lw	s0,72(v0)
+     cc8:	00000000 	nop
+     ccc:	2e0200c9 	sltiu	v0,s0,201
+     cd0:	1440000f 	bnez	v0,d10 <Control::StabilizationAndEngineUpdateTask::start()+0x70>
+     cd4:	00000000 	nop
+     cd8:	0c000008 	jal	20 <_ZN6System8Registry8instanceEv.local.5.1576>
+     cdc:	00000000 	nop
+     ce0:	8c530058 	lw	s3,88(v0)
+     ce4:	0c000008 	jal	20 <_ZN6System8Registry8instanceEv.local.5.1576>
+     ce8:	02139821 	addu	s3,s0,s3
+     cec:	8c51005c 	lw	s1,92(v0)
+     cf0:	0c000008 	jal	20 <_ZN6System8Registry8instanceEv.local.5.1576>
+     cf4:	02118823 	subu	s1,s0,s1
+     cf8:	8c520058 	lw	s2,88(v0)
+     cfc:	0c000008 	jal	20 <_ZN6System8Registry8instanceEv.local.5.1576>
+     d00:	02129023 	subu	s2,s0,s2
+     d04:	8c42005c 	lw	v0,92(v0)
+     d08:	08000347 	j	d1c <Control::StabilizationAndEngineUpdateTask::start()+0x7c>
+     d0c:	02028021 	addu	s0,s0,v0
+     d10:	02009021 	move	s2,s0
+     d14:	02008821 	move	s1,s0
+     d18:	02009821 	move	s3,s0
+     d1c:	00139c00 	sll	s3,s3,0x10
+     d20:	00118c00 	sll	s1,s1,0x10
+     d24:	8fbf0024 	lw	ra,36(sp)
+     d28:	02729025 	or	s2,s3,s2
+     d2c:	02308025 	or	s0,s1,s0
+     d30:	ac12001c 	sw	s2,28(zero)
+     d34:	8fb30020 	lw	s3,32(sp)
+     d38:	ac100020 	sw	s0,32(zero)
+     d3c:	8fb2001c 	lw	s2,28(sp)
+     d40:	8fb10018 	lw	s1,24(sp)
+     d44:	8fb00014 	lw	s0,20(sp)
+     d48:	03e00008 	jr	ra
+     d4c:	27bd0028 	addiu	sp,sp,40
+
+00000d50 <_ZN5Radio8Messages14defaultHandlerEPc.1696>:
+     d50:	03e00008 	jr	ra
+     d54:	00000000 	nop
+
+00000d58 <System::Tasking::TaskScheduler::addTask(System::Tasking::Task**, System::Tasking::Task*, int)>:
+     d58:	acc70008 	sw	a3,8(a2)
+     d5c:	8c020010 	lw	v0,16(zero)
+     d60:	acc40010 	sw	a0,16(a2)
+     d64:	00473821 	addu	a3,v0,a3
+     d68:	8ca20000 	lw	v0,0(a1)
+     d6c:	00000000 	nop
+     d70:	14400004 	bnez	v0,d84 <System::Tasking::TaskScheduler::addTask(System::Tasking::Task**, System::Tasking::Task*, int)+0x2c>
+     d74:	acc70004 	sw	a3,4(a2)
+     d78:	03e00008 	jr	ra
+     d7c:	aca60000 	sw	a2,0(a1)
+     d80:	00601021 	move	v0,v1
+     d84:	8c43000c 	lw	v1,12(v0)
+     d88:	00000000 	nop
+     d8c:	1460fffc 	bnez	v1,d80 <System::Tasking::TaskScheduler::addTask(System::Tasking::Task**, System::Tasking::Task*, int)+0x28>
+     d90:	00000000 	nop
+     d94:	03e00008 	jr	ra
+     d98:	ac46000c 	sw	a2,12(v0)
+
+00000d9c <System::Tasking::TaskScheduler::selectNextTask(unsigned int)>:
+     d9c:	27bdfff8 	addiu	sp,sp,-8
+     da0:	24820004 	addiu	v0,a0,4
+     da4:	afa20000 	sw	v0,0(sp)
+     da8:	24820008 	addiu	v0,a0,8
+     dac:	afa20004 	sw	v0,4(sp)
+     db0:	00001821 	move	v1,zero
+     db4:	00004021 	move	t0,zero
+     db8:	2409ffff 	li	t1,-1
+     dbc:	00003021 	move	a2,zero
+     dc0:	240b0008 	li	t3,8
+     dc4:	03a31021 	addu	v0,sp,v1
+     dc8:	8c420000 	lw	v0,0(v0)
+     dcc:	00000000 	nop
+     dd0:	8c470000 	lw	a3,0(v0)
+     dd4:	00000000 	nop
+     dd8:	10e0000e 	beqz	a3,e14 <System::Tasking::TaskScheduler::selectNextTask(unsigned int)+0x78>
+     ddc:	00e01021 	move	v0,a3
+     de0:	8c4a0004 	lw	t2,4(v0)
+     de4:	00000000 	nop
+     de8:	01455023 	subu	t2,t2,a1
+     dec:	0149602b 	sltu	t4,t2,t1
+     df0:	11800004 	beqz	t4,e04 <System::Tasking::TaskScheduler::selectNextTask(unsigned int)+0x68>
+     df4:	00000000 	nop
+     df8:	00e04021 	move	t0,a3
+     dfc:	01404821 	move	t1,t2
+     e00:	00403021 	move	a2,v0
+     e04:	8c42000c 	lw	v0,12(v0)
+     e08:	00000000 	nop
+     e0c:	1440fff4 	bnez	v0,de0 <System::Tasking::TaskScheduler::selectNextTask(unsigned int)+0x44>
+     e10:	00000000 	nop
+     e14:	24630004 	addiu	v1,v1,4
+     e18:	146bffeb 	bne	v1,t3,dc8 <System::Tasking::TaskScheduler::selectNextTask(unsigned int)+0x2c>
+     e1c:	03a31021 	addu	v0,sp,v1
+     e20:	8cc20004 	lw	v0,4(a2)
+     e24:	ac860010 	sw	a2,16(a0)
+     e28:	ac820014 	sw	v0,20(a0)
+     e2c:	8c820004 	lw	v0,4(a0)
+     e30:	27bd0008 	addiu	sp,sp,8
+     e34:	01024026 	xor	t0,t0,v0
+     e38:	0008402b 	sltu	t0,zero,t0
+     e3c:	03e00008 	jr	ra
+     e40:	ac880018 	sw	t0,24(a0)
+
+00000e44 <float32::float32(int)>:
+     e44:	27bdffe8 	addiu	sp,sp,-24
+     e48:	afb00010 	sw	s0,16(sp)
+     e4c:	afbf0014 	sw	ra,20(sp)
+     e50:	14a00003 	bnez	a1,e60 <float32::float32(int)+0x1c>
+     e54:	00808021 	move	s0,a0
+     e58:	080003a3 	j	e8c <float32::float32(int)+0x48>
+     e5c:	ac800000 	sw	zero,0(a0)
+     e60:	3c028000 	lui	v0,0x8000
+     e64:	14a20003 	bne	a1,v0,e74 <float32::float32(int)+0x30>
+     e68:	000527c2 	srl	a0,a1,0x1f
+     e6c:	080003a2 	j	e88 <float32::float32(int)+0x44>
+     e70:	3c02cf00 	lui	v0,0xcf00
+     e74:	10800002 	beqz	a0,e80 <float32::float32(int)+0x3c>
+     e78:	00a03021 	move	a2,a1
+     e7c:	00053023 	negu	a2,a1
+     e80:	0c00015b 	jal	56c <_ZN7float3221normalizeRoundAndPackEbij.1626>
+     e84:	2405009c 	li	a1,156
+     e88:	ae020000 	sw	v0,0(s0)
+     e8c:	8fbf0014 	lw	ra,20(sp)
+     e90:	8fb00010 	lw	s0,16(sp)
+     e94:	03e00008 	jr	ra
+     e98:	27bd0018 	addiu	sp,sp,24
+
+00000e9c <Control::MARG::start()>:
+     e9c:	27bdff10 	addiu	sp,sp,-240
+     ea0:	afb000d0 	sw	s0,208(sp)
+     ea4:	00808021 	move	s0,a0
+     ea8:	afb100d4 	sw	s1,212(sp)
+     eac:	afbf00ec 	sw	ra,236(sp)
+     eb0:	afb600e8 	sw	s6,232(sp)
+     eb4:	afb500e4 	sw	s5,228(sp)
+     eb8:	afb400e0 	sw	s4,224(sp)
+     ebc:	afb300dc 	sw	s3,220(sp)
+     ec0:	0c0002ab 	jal	aac <_ZN7Sensors3IMU7MPU605026updateAccelerometerAndGyroEv.1506>
+     ec4:	afb200d8 	sw	s2,216(sp)
+     ec8:	8c110010 	lw	s1,16(zero)
+     ecc:	8e060014 	lw	a2,20(s0)
+     ed0:	00000000 	nop
+     ed4:	02263023 	subu	a2,s1,a2
+     ed8:	14c00003 	bnez	a2,ee8 <Control::MARG::start()+0x4c>
+     edc:	00000000 	nop
+     ee0:	080003be 	j	ef8 <Control::MARG::start()+0x5c>
+     ee4:	afa00010 	sw	zero,16(sp)
+     ee8:	00002021 	move	a0,zero
+     eec:	0c00015b 	jal	56c <_ZN7float3221normalizeRoundAndPackEbij.1626>
+     ef0:	2405009c 	li	a1,156
+     ef4:	afa20010 	sw	v0,16(sp)
+     ef8:	3c068000 	lui	a2,0x8000
+     efc:	27a40014 	addiu	a0,sp,20
+     f00:	27a50010 	addiu	a1,sp,16
+     f04:	0c0000ee 	jal	3b8 <_ZNK7float32mlERKS_.1484>
+     f08:	24c601f8 	addiu	a2,a2,504
+     f0c:	8fa20014 	lw	v0,20(sp)
+     f10:	ae110014 	sw	s1,20(s0)
+     f14:	0c000008 	jal	20 <_ZN6System8Registry8instanceEv.local.5.1576>
+     f18:	ae020018 	sw	v0,24(s0)
+     f1c:	8c450028 	lw	a1,40(v0)
+     f20:	3c118000 	lui	s1,0x8000
+     f24:	0c000391 	jal	e44 <float32::float32(int)>
+     f28:	27a40010 	addiu	a0,sp,16
+     f2c:	262601f0 	addiu	a2,s1,496
+     f30:	27a400ac 	addiu	a0,sp,172
+     f34:	0c0000ee 	jal	3b8 <_ZNK7float32mlERKS_.1484>
+     f38:	27a50010 	addiu	a1,sp,16
+     f3c:	0c000008 	jal	20 <_ZN6System8Registry8instanceEv.local.5.1576>
+     f40:	26140040 	addiu	s4,s0,64
+     f44:	8c45002c 	lw	a1,44(v0)
+     f48:	0c000391 	jal	e44 <float32::float32(int)>
+     f4c:	27a40010 	addiu	a0,sp,16
+     f50:	262601f0 	addiu	a2,s1,496
+     f54:	27a400a8 	addiu	a0,sp,168
+     f58:	0c0000ee 	jal	3b8 <_ZNK7float32mlERKS_.1484>
+     f5c:	27a50010 	addiu	a1,sp,16
+     f60:	0c000008 	jal	20 <_ZN6System8Registry8instanceEv.local.5.1576>
+     f64:	26130044 	addiu	s3,s0,68
+     f68:	8c450030 	lw	a1,48(v0)
+     f6c:	0c000391 	jal	e44 <float32::float32(int)>
+     f70:	27a40010 	addiu	a0,sp,16
+     f74:	262601f0 	addiu	a2,s1,496
+     f78:	27a400a4 	addiu	a0,sp,164
+     f7c:	0c0000ee 	jal	3b8 <_ZNK7float32mlERKS_.1484>
+     f80:	27a50010 	addiu	a1,sp,16
+     f84:	0c000008 	jal	20 <_ZN6System8Registry8instanceEv.local.5.1576>
+     f88:	3c118000 	lui	s1,0x8000
+     f8c:	8c450010 	lw	a1,16(v0)
+     f90:	0c000391 	jal	e44 <float32::float32(int)>
+     f94:	27a40010 	addiu	a0,sp,16
+     f98:	262601ec 	addiu	a2,s1,492
+     f9c:	27a400a0 	addiu	a0,sp,160
+     fa0:	0c0000ee 	jal	3b8 <_ZNK7float32mlERKS_.1484>
+     fa4:	27a50010 	addiu	a1,sp,16
+     fa8:	0c000008 	jal	20 <_ZN6System8Registry8instanceEv.local.5.1576>
+     fac:	26120048 	addiu	s2,s0,72
+     fb0:	8c450014 	lw	a1,20(v0)
+     fb4:	0c000391 	jal	e44 <float32::float32(int)>
+     fb8:	27a40010 	addiu	a0,sp,16
+     fbc:	262601ec 	addiu	a2,s1,492
+     fc0:	27a4009c 	addiu	a0,sp,156
+     fc4:	0c0000ee 	jal	3b8 <_ZNK7float32mlERKS_.1484>
+     fc8:	27a50010 	addiu	a1,sp,16
+     fcc:	0c000008 	jal	20 <_ZN6System8Registry8instanceEv.local.5.1576>
+     fd0:	3c168000 	lui	s6,0x8000
+     fd4:	8c450018 	lw	a1,24(v0)
+     fd8:	0c000391 	jal	e44 <float32::float32(int)>
+     fdc:	27a40010 	addiu	a0,sp,16
+     fe0:	262601ec 	addiu	a2,s1,492
+     fe4:	27a40098 	addiu	a0,sp,152
+     fe8:	0c0000ee 	jal	3b8 <_ZNK7float32mlERKS_.1484>
+     fec:	27a50010 	addiu	a1,sp,16
+     ff0:	0c000008 	jal	20 <_ZN6System8Registry8instanceEv.local.5.1576>
+     ff4:	3c118000 	lui	s1,0x8000
+     ff8:	8c450034 	lw	a1,52(v0)
+     ffc:	0c000391 	jal	e44 <float32::float32(int)>
+    1000:	27a40010 	addiu	a0,sp,16
+    1004:	262601e8 	addiu	a2,s1,488
+    1008:	27a40094 	addiu	a0,sp,148
+    100c:	0c0000ee 	jal	3b8 <_ZNK7float32mlERKS_.1484>
+    1010:	27a50010 	addiu	a1,sp,16
+    1014:	0c000008 	jal	20 <_ZN6System8Registry8instanceEv.local.5.1576>
+    1018:	26150018 	addiu	s5,s0,24
+    101c:	8c450038 	lw	a1,56(v0)
+    1020:	0c000391 	jal	e44 <float32::float32(int)>
+    1024:	27a40010 	addiu	a0,sp,16
+    1028:	262601e8 	addiu	a2,s1,488
+    102c:	27a40090 	addiu	a0,sp,144
+    1030:	0c0000ee 	jal	3b8 <_ZNK7float32mlERKS_.1484>
+    1034:	27a50010 	addiu	a1,sp,16
+    1038:	0c000008 	jal	20 <_ZN6System8Registry8instanceEv.local.5.1576>
+    103c:	00000000 	nop
+    1040:	8c45003c 	lw	a1,60(v0)
+    1044:	0c000391 	jal	e44 <float32::float32(int)>
+    1048:	27a40010 	addiu	a0,sp,16
+    104c:	27a4008c 	addiu	a0,sp,140
+    1050:	27a50010 	addiu	a1,sp,16
+    1054:	0c0000ee 	jal	3b8 <_ZNK7float32mlERKS_.1484>
+    1058:	262601e8 	addiu	a2,s1,488
+    105c:	8fa200ac 	lw	v0,172(sp)
+    1060:	00000000 	nop
+    1064:	afa200c4 	sw	v0,196(sp)
+    1068:	8fa200a8 	lw	v0,168(sp)
+    106c:	00000000 	nop
+    1070:	afa200c0 	sw	v0,192(sp)
+    1074:	8fa200a4 	lw	v0,164(sp)
     1078:	27a40038 	addiu	a0,sp,56
-    107c:	0c0007e4 	jal	1f90 <float32::operator+=(float32 const&)>
-    1080:	02002821 	move	a1,s0
-    1084:	02002021 	move	a0,s0
-    1088:	0c000808 	jal	2020 <rsqrt(float32 const&)>
-    108c:	27a50038 	addiu	a1,sp,56
-    1090:	8fa20010 	lw	v0,16(sp)
-    1094:	02a02021 	move	a0,s5
-    1098:	02c02821 	move	a1,s6
-    109c:	0c0006b4 	jal	1ad0 <float32::operator*=(float32 const&)>
-    10a0:	afa20158 	sw	v0,344(sp)
-    10a4:	02602021 	move	a0,s3
-    10a8:	0c0006b4 	jal	1ad0 <float32::operator*=(float32 const&)>
-    10ac:	02c02821 	move	a1,s6
-    10b0:	02402021 	move	a0,s2
-    10b4:	0c0006b4 	jal	1ad0 <float32::operator*=(float32 const&)>
-    10b8:	02c02821 	move	a1,s6
-    10bc:	02202021 	move	a0,s1
-    10c0:	0c0006b4 	jal	1ad0 <float32::operator*=(float32 const&)>
-    10c4:	02c02821 	move	a1,s6
-    10c8:	0c0006e5 	jal	1b94 <_ZN6System8Registry8instanceEv.local.1>
-    10cc:	00000000 	nop
-    10d0:	8e830038 	lw	v1,56(s4)
-    10d4:	0c0006e5 	jal	1b94 <_ZN6System8Registry8instanceEv.local.1>
-    10d8:	ac430000 	sw	v1,0(v0)
-    10dc:	8e83003c 	lw	v1,60(s4)
-    10e0:	0c0006e5 	jal	1b94 <_ZN6System8Registry8instanceEv.local.1>
-    10e4:	ac430004 	sw	v1,4(v0)
-    10e8:	8e830040 	lw	v1,64(s4)
-    10ec:	0c0006e5 	jal	1b94 <_ZN6System8Registry8instanceEv.local.1>
-    10f0:	ac430008 	sw	v1,8(v0)
-    10f4:	8e830044 	lw	v1,68(s4)
-    10f8:	02002021 	move	a0,s0
-    10fc:	ac43000c 	sw	v1,12(v0)
-    1100:	02a02821 	move	a1,s5
-    1104:	0c000656 	jal	1958 <float32::operator*(float32 const&) const>
+    107c:	afa200bc 	sw	v0,188(sp)
+    1080:	8fa200a0 	lw	v0,160(sp)
+    1084:	27a50040 	addiu	a1,sp,64
+    1088:	afa200b8 	sw	v0,184(sp)
+    108c:	8fa2009c 	lw	v0,156(sp)
+    1090:	02803021 	move	a2,s4
+    1094:	afa200b4 	sw	v0,180(sp)
+    1098:	8fa20098 	lw	v0,152(sp)
+    109c:	00000000 	nop
+    10a0:	afa200b0 	sw	v0,176(sp)
+    10a4:	3c023f00 	lui	v0,0x3f00
+    10a8:	afa20040 	sw	v0,64(sp)
+    10ac:	3c024000 	lui	v0,0x4000
+    10b0:	0c0000ee 	jal	3b8 <_ZNK7float32mlERKS_.1484>
+    10b4:	afa2003c 	sw	v0,60(sp)
+    10b8:	27a40034 	addiu	a0,sp,52
+    10bc:	27a50040 	addiu	a1,sp,64
+    10c0:	02603021 	move	a2,s3
+    10c4:	0c0000ee 	jal	3b8 <_ZNK7float32mlERKS_.1484>
+    10c8:	2611004c 	addiu	s1,s0,76
+    10cc:	27a40030 	addiu	a0,sp,48
+    10d0:	27a50040 	addiu	a1,sp,64
+    10d4:	0c0000ee 	jal	3b8 <_ZNK7float32mlERKS_.1484>
+    10d8:	02403021 	move	a2,s2
+    10dc:	27a4002c 	addiu	a0,sp,44
+    10e0:	27a50040 	addiu	a1,sp,64
+    10e4:	0c0000ee 	jal	3b8 <_ZNK7float32mlERKS_.1484>
+    10e8:	02203021 	move	a2,s1
+    10ec:	27a40028 	addiu	a0,sp,40
+    10f0:	27a5003c 	addiu	a1,sp,60
+    10f4:	0c0000ee 	jal	3b8 <_ZNK7float32mlERKS_.1484>
+    10f8:	02803021 	move	a2,s4
+    10fc:	27a40024 	addiu	a0,sp,36
+    1100:	27a5003c 	addiu	a1,sp,60
+    1104:	0c0000ee 	jal	3b8 <_ZNK7float32mlERKS_.1484>
     1108:	02603021 	move	a2,s3
-    110c:	8fa20010 	lw	v0,16(sp)
-    1110:	02002021 	move	a0,s0
-    1114:	02a02821 	move	a1,s5
+    110c:	27a40020 	addiu	a0,sp,32
+    1110:	27a5003c 	addiu	a1,sp,60
+    1114:	0c0000ee 	jal	3b8 <_ZNK7float32mlERKS_.1484>
     1118:	02403021 	move	a2,s2
-    111c:	0c000656 	jal	1958 <float32::operator*(float32 const&) const>
-    1120:	afa2006c 	sw	v0,108(sp)
-    1124:	8fa20010 	lw	v0,16(sp)
-    1128:	02002021 	move	a0,s0
-    112c:	02a02821 	move	a1,s5
-    1130:	02203021 	move	a2,s1
-    1134:	0c000656 	jal	1958 <float32::operator*(float32 const&) const>
-    1138:	afa20068 	sw	v0,104(sp)
-    113c:	8fa20010 	lw	v0,16(sp)
-    1140:	02002021 	move	a0,s0
-    1144:	02402821 	move	a1,s2
-    1148:	02203021 	move	a2,s1
-    114c:	0c000656 	jal	1958 <float32::operator*(float32 const&) const>
-    1150:	afa20064 	sw	v0,100(sp)
-    1154:	8fa20010 	lw	v0,16(sp)
-    1158:	02002021 	move	a0,s0
-    115c:	02602821 	move	a1,s3
-    1160:	02403021 	move	a2,s2
-    1164:	0c000656 	jal	1958 <float32::operator*(float32 const&) const>
-    1168:	afa20058 	sw	v0,88(sp)
-    116c:	8fa20010 	lw	v0,16(sp)
-    1170:	02002021 	move	a0,s0
-    1174:	02602821 	move	a1,s3
-    1178:	02203021 	move	a2,s1
-    117c:	0c000656 	jal	1958 <float32::operator*(float32 const&) const>
-    1180:	afa20060 	sw	v0,96(sp)
-    1184:	8fa20010 	lw	v0,16(sp)
-    1188:	02002021 	move	a0,s0
-    118c:	02602821 	move	a1,s3
-    1190:	02603021 	move	a2,s3
-    1194:	0c000656 	jal	1958 <float32::operator*(float32 const&) const>
-    1198:	afa2005c 	sw	v0,92(sp)
-    119c:	8fa20010 	lw	v0,16(sp)
-    11a0:	02002021 	move	a0,s0
-    11a4:	02402821 	move	a1,s2
-    11a8:	02403021 	move	a2,s2
-    11ac:	0c000656 	jal	1958 <float32::operator*(float32 const&) const>
-    11b0:	afa20044 	sw	v0,68(sp)
-    11b4:	8fa20010 	lw	v0,16(sp)
-    11b8:	02002021 	move	a0,s0
-    11bc:	02202821 	move	a1,s1
-    11c0:	02203021 	move	a2,s1
-    11c4:	0c000656 	jal	1958 <float32::operator*(float32 const&) const>
-    11c8:	afa20048 	sw	v0,72(sp)
-    11cc:	8fa20010 	lw	v0,16(sp)
-    11d0:	27a40018 	addiu	a0,sp,24
-    11d4:	27a500bc 	addiu	a1,sp,188
-    11d8:	27a60048 	addiu	a2,sp,72
-    11dc:	0c0007f3 	jal	1fcc <float32::operator-(float32 const&) const>
-    11e0:	afa20040 	sw	v0,64(sp)
-    11e4:	27a40014 	addiu	a0,sp,20
-    11e8:	27a50018 	addiu	a1,sp,24
-    11ec:	0c0007f3 	jal	1fcc <float32::operator-(float32 const&) const>
-    11f0:	27a60040 	addiu	a2,sp,64
-    11f4:	02002021 	move	a0,s0
-    11f8:	27a50054 	addiu	a1,sp,84
-    11fc:	0c000656 	jal	1958 <float32::operator*(float32 const&) const>
-    1200:	27a60014 	addiu	a2,sp,20
-    1204:	8fa20010 	lw	v0,16(sp)
-    1208:	27a40014 	addiu	a0,sp,20
-    120c:	27a50060 	addiu	a1,sp,96
-    1210:	27a60064 	addiu	a2,sp,100
-    1214:	0c0007f3 	jal	1fcc <float32::operator-(float32 const&) const>
-    1218:	afa200c8 	sw	v0,200(sp)
-    121c:	27a60014 	addiu	a2,sp,20
-    1220:	02002021 	move	a0,s0
-    1224:	0c000656 	jal	1958 <float32::operator*(float32 const&) const>
-    1228:	27a50050 	addiu	a1,sp,80
-    122c:	27a400c8 	addiu	a0,sp,200
-    1230:	0c0007e4 	jal	1f90 <float32::operator+=(float32 const&)>
-    1234:	02002821 	move	a1,s0
-    1238:	27a40014 	addiu	a0,sp,20
-    123c:	27a5005c 	addiu	a1,sp,92
-    1240:	0c0007ce 	jal	1f38 <float32::operator+(float32 const&) const>
-    1244:	27a60068 	addiu	a2,sp,104
-    1248:	27a60014 	addiu	a2,sp,20
-    124c:	02002021 	move	a0,s0
-    1250:	0c000656 	jal	1958 <float32::operator*(float32 const&) const>
-    1254:	27a5004c 	addiu	a1,sp,76
-    1258:	27a400c8 	addiu	a0,sp,200
-    125c:	0c0007e4 	jal	1f90 <float32::operator+=(float32 const&)>
-    1260:	02002821 	move	a1,s0
-    1264:	27a40014 	addiu	a0,sp,20
-    1268:	27a50060 	addiu	a1,sp,96
-    126c:	0c0007ce 	jal	1f38 <float32::operator+(float32 const&) const>
-    1270:	27a60064 	addiu	a2,sp,100
-    1274:	02002021 	move	a0,s0
-    1278:	27a50054 	addiu	a1,sp,84
-    127c:	0c000656 	jal	1958 <float32::operator*(float32 const&) const>
-    1280:	27a60014 	addiu	a2,sp,20
-    1284:	8fa20010 	lw	v0,16(sp)
-    1288:	27a40018 	addiu	a0,sp,24
-    128c:	27a500bc 	addiu	a1,sp,188
-    1290:	27a60044 	addiu	a2,sp,68
-    1294:	0c0007f3 	jal	1fcc <float32::operator-(float32 const&) const>
-    1298:	afa200c4 	sw	v0,196(sp)
-    129c:	27a40014 	addiu	a0,sp,20
-    12a0:	27a50018 	addiu	a1,sp,24
-    12a4:	0c0007f3 	jal	1fcc <float32::operator-(float32 const&) const>
-    12a8:	27a60040 	addiu	a2,sp,64
-    12ac:	27a60014 	addiu	a2,sp,20
-    12b0:	02002021 	move	a0,s0
-    12b4:	0c000656 	jal	1958 <float32::operator*(float32 const&) const>
-    12b8:	27a50050 	addiu	a1,sp,80
-    12bc:	27a400c4 	addiu	a0,sp,196
-    12c0:	0c0007e4 	jal	1f90 <float32::operator+=(float32 const&)>
-    12c4:	02002821 	move	a1,s0
-    12c8:	27a40014 	addiu	a0,sp,20
-    12cc:	27a50058 	addiu	a1,sp,88
-    12d0:	0c0007f3 	jal	1fcc <float32::operator-(float32 const&) const>
-    12d4:	27a6006c 	addiu	a2,sp,108
-    12d8:	27a60014 	addiu	a2,sp,20
-    12dc:	02002021 	move	a0,s0
-    12e0:	0c000656 	jal	1958 <float32::operator*(float32 const&) const>
-    12e4:	27a5004c 	addiu	a1,sp,76
-    12e8:	27a400c4 	addiu	a0,sp,196
-    12ec:	0c0007e4 	jal	1f90 <float32::operator+=(float32 const&)>
-    12f0:	02002821 	move	a1,s0
-    12f4:	27a40014 	addiu	a0,sp,20
-    12f8:	27a5005c 	addiu	a1,sp,92
-    12fc:	0c0007f3 	jal	1fcc <float32::operator-(float32 const&) const>
-    1300:	27a60068 	addiu	a2,sp,104
-    1304:	02002021 	move	a0,s0
-    1308:	27a50054 	addiu	a1,sp,84
-    130c:	0c000656 	jal	1958 <float32::operator*(float32 const&) const>
-    1310:	27a60014 	addiu	a2,sp,20
-    1314:	8fa20010 	lw	v0,16(sp)
-    1318:	27a40014 	addiu	a0,sp,20
-    131c:	27a50058 	addiu	a1,sp,88
-    1320:	27a6006c 	addiu	a2,sp,108
-    1324:	0c0007ce 	jal	1f38 <float32::operator+(float32 const&) const>
-    1328:	afa200c0 	sw	v0,192(sp)
-    132c:	27a60014 	addiu	a2,sp,20
-    1330:	02002021 	move	a0,s0
-    1334:	0c000656 	jal	1958 <float32::operator*(float32 const&) const>
-    1338:	27a50050 	addiu	a1,sp,80
-    133c:	27a400c0 	addiu	a0,sp,192
-    1340:	0c0007e4 	jal	1f90 <float32::operator+=(float32 const&)>
-    1344:	02002821 	move	a1,s0
-    1348:	27a40018 	addiu	a0,sp,24
-    134c:	27a500bc 	addiu	a1,sp,188
-    1350:	0c0007f3 	jal	1fcc <float32::operator-(float32 const&) const>
-    1354:	27a60044 	addiu	a2,sp,68
-    1358:	27a40014 	addiu	a0,sp,20
-    135c:	27a50018 	addiu	a1,sp,24
-    1360:	0c0007f3 	jal	1fcc <float32::operator-(float32 const&) const>
-    1364:	27a60048 	addiu	a2,sp,72
-    1368:	27a60014 	addiu	a2,sp,20
-    136c:	02002021 	move	a0,s0
-    1370:	0c000656 	jal	1958 <float32::operator*(float32 const&) const>
-    1374:	27a5004c 	addiu	a1,sp,76
-    1378:	27a400c0 	addiu	a0,sp,192
-    137c:	0c0007e4 	jal	1f90 <float32::operator+=(float32 const&)>
-    1380:	02002821 	move	a1,s0
-    1384:	27a500c8 	addiu	a1,sp,200
-    1388:	27a40030 	addiu	a0,sp,48
-    138c:	0c000656 	jal	1958 <float32::operator*(float32 const&) const>
-    1390:	00a03021 	move	a2,a1
-    1394:	27a500c4 	addiu	a1,sp,196
-    1398:	27a40034 	addiu	a0,sp,52
-    139c:	0c000656 	jal	1958 <float32::operator*(float32 const&) const>
-    13a0:	00a03021 	move	a2,a1
-    13a4:	27a4002c 	addiu	a0,sp,44
-    13a8:	27a50030 	addiu	a1,sp,48
-    13ac:	0c0007ce 	jal	1f38 <float32::operator+(float32 const&) const>
-    13b0:	27a60034 	addiu	a2,sp,52
-    13b4:	8fa2002c 	lw	v0,44(sp)
-    13b8:	27a40028 	addiu	a0,sp,40
-    13bc:	afa20014 	sw	v0,20(sp)
-    13c0:	02002821 	move	a1,s0
-    13c4:	3c023f00 	lui	v0,0x3f00
-    13c8:	27a60014 	addiu	a2,sp,20
-    13cc:	0c000656 	jal	1958 <float32::operator*(float32 const&) const>
-    13d0:	afa20010 	sw	v0,16(sp)
-    13d4:	8fb1002c 	lw	s1,44(sp)
-    13d8:	3c025f37 	lui	v0,0x5f37
-    13dc:	244259df 	addiu	v0,v0,23007
-    13e0:	afb10018 	sw	s1,24(sp)
-    13e4:	00118843 	sra	s1,s1,0x1
-    13e8:	00518823 	subu	s1,v0,s1
-    13ec:	27a40014 	addiu	a0,sp,20
-    13f0:	27a50018 	addiu	a1,sp,24
-    13f4:	02003021 	move	a2,s0
-    13f8:	0c000656 	jal	1958 <float32::operator*(float32 const&) const>
-    13fc:	afb10010 	sw	s1,16(sp)
-    1400:	27a40024 	addiu	a0,sp,36
-    1404:	27a50028 	addiu	a1,sp,40
-    1408:	02003021 	move	a2,s0
-    140c:	0c000656 	jal	1958 <float32::operator*(float32 const&) const>
-    1410:	afb10010 	sw	s1,16(sp)
-    1414:	27a40020 	addiu	a0,sp,32
-    1418:	27a50024 	addiu	a1,sp,36
-    141c:	02003021 	move	a2,s0
-    1420:	0c000656 	jal	1958 <float32::operator*(float32 const&) const>
-    1424:	afb10010 	sw	s1,16(sp)
-    1428:	3c023fc0 	lui	v0,0x3fc0
-    142c:	27a4001c 	addiu	a0,sp,28
-    1430:	02002821 	move	a1,s0
-    1434:	27a60020 	addiu	a2,sp,32
-    1438:	0c0007f3 	jal	1fcc <float32::operator-(float32 const&) const>
-    143c:	afa20010 	sw	v0,16(sp)
-    1440:	02002021 	move	a0,s0
-    1444:	27a50014 	addiu	a1,sp,20
-    1448:	0c000656 	jal	1958 <float32::operator*(float32 const&) const>
-    144c:	27a6001c 	addiu	a2,sp,28
-    1450:	8fa20010 	lw	v0,16(sp)
-    1454:	8fbf01f4 	lw	ra,500(sp)
-    1458:	ae820048 	sw	v0,72(s4)
-    145c:	8fa200c0 	lw	v0,192(sp)
-    1460:	8fbe01f0 	lw	s8,496(sp)
-    1464:	8fb701ec 	lw	s7,492(sp)
-    1468:	8fb601e8 	lw	s6,488(sp)
-    146c:	8fb501e4 	lw	s5,484(sp)
-    1470:	8fb301dc 	lw	s3,476(sp)
-    1474:	8fb201d8 	lw	s2,472(sp)
-    1478:	8fb101d4 	lw	s1,468(sp)
-    147c:	8fb001d0 	lw	s0,464(sp)
-    1480:	ae82004c 	sw	v0,76(s4)
-    1484:	8fb401e0 	lw	s4,480(sp)
-    1488:	03e00008 	jr	ra
-    148c:	27bd01f8 	addiu	sp,sp,504
+    111c:	27a500b8 	addiu	a1,sp,184
+    1120:	27a4001c 	addiu	a0,sp,28
+    1124:	0c0000ee 	jal	3b8 <_ZNK7float32mlERKS_.1484>
+    1128:	00a03021 	move	a2,a1
+    112c:	27a500b4 	addiu	a1,sp,180
+    1130:	00a03021 	move	a2,a1
+    1134:	0c0000ee 	jal	3b8 <_ZNK7float32mlERKS_.1484>
+    1138:	27a40010 	addiu	a0,sp,16
+    113c:	27a4001c 	addiu	a0,sp,28
+    1140:	0c0001e4 	jal	790 <_ZN7float32pLERKS_.1605>
+    1144:	27a50010 	addiu	a1,sp,16
+    1148:	27a500b0 	addiu	a1,sp,176
+    114c:	00a03021 	move	a2,a1
+    1150:	0c0000ee 	jal	3b8 <_ZNK7float32mlERKS_.1484>
+    1154:	27a40010 	addiu	a0,sp,16
+    1158:	27a4001c 	addiu	a0,sp,28
+    115c:	0c0001e4 	jal	790 <_ZN7float32pLERKS_.1605>
+    1160:	27a50010 	addiu	a1,sp,16
+    1164:	27a40010 	addiu	a0,sp,16
+    1168:	0c000208 	jal	820 <_Z5rsqrtRK7float32.1476>
+    116c:	27a5001c 	addiu	a1,sp,28
+    1170:	8fa20010 	lw	v0,16(sp)
+    1174:	27a400b8 	addiu	a0,sp,184
+    1178:	27a50088 	addiu	a1,sp,136
+    117c:	0c00014c 	jal	530 <_ZN7float32mLERKS_.1480>
+    1180:	afa20088 	sw	v0,136(sp)
+    1184:	27a400b4 	addiu	a0,sp,180
+    1188:	0c00014c 	jal	530 <_ZN7float32mLERKS_.1480>
+    118c:	27a50088 	addiu	a1,sp,136
+    1190:	27a400b0 	addiu	a0,sp,176
+    1194:	0c00014c 	jal	530 <_ZN7float32mLERKS_.1480>
+    1198:	27a50088 	addiu	a1,sp,136
+    119c:	27a40010 	addiu	a0,sp,16
+    11a0:	27a50024 	addiu	a1,sp,36
+    11a4:	0c0000ee 	jal	3b8 <_ZNK7float32mlERKS_.1484>
+    11a8:	02203021 	move	a2,s1
+    11ac:	8fa20010 	lw	v0,16(sp)
+    11b0:	02403021 	move	a2,s2
+    11b4:	27a40010 	addiu	a0,sp,16
+    11b8:	27a50028 	addiu	a1,sp,40
+    11bc:	0c0000ee 	jal	3b8 <_ZNK7float32mlERKS_.1484>
+    11c0:	afa20074 	sw	v0,116(sp)
+    11c4:	27a40074 	addiu	a0,sp,116
+    11c8:	0c000233 	jal	8cc <_ZN7float32mIERKS_.1613>
+    11cc:	27a50010 	addiu	a1,sp,16
+    11d0:	27a40074 	addiu	a0,sp,116
+    11d4:	0c000233 	jal	8cc <_ZN7float32mIERKS_.1613>
+    11d8:	27a500b8 	addiu	a1,sp,184
+    11dc:	27a40010 	addiu	a0,sp,16
+    11e0:	27a50028 	addiu	a1,sp,40
+    11e4:	0c0000ee 	jal	3b8 <_ZNK7float32mlERKS_.1484>
+    11e8:	02603021 	move	a2,s3
+    11ec:	8fa20010 	lw	v0,16(sp)
+    11f0:	02203021 	move	a2,s1
+    11f4:	27a40010 	addiu	a0,sp,16
+    11f8:	27a50020 	addiu	a1,sp,32
+    11fc:	0c0000ee 	jal	3b8 <_ZNK7float32mlERKS_.1484>
+    1200:	afa20070 	sw	v0,112(sp)
+    1204:	27a40070 	addiu	a0,sp,112
+    1208:	0c0001e4 	jal	790 <_ZN7float32pLERKS_.1605>
+    120c:	27a50010 	addiu	a1,sp,16
+    1210:	27a40070 	addiu	a0,sp,112
+    1214:	0c000233 	jal	8cc <_ZN7float32mIERKS_.1613>
+    1218:	27a500b4 	addiu	a1,sp,180
+    121c:	02603021 	move	a2,s3
+    1220:	3c023f80 	lui	v0,0x3f80
+    1224:	27a40010 	addiu	a0,sp,16
+    1228:	27a50024 	addiu	a1,sp,36
+    122c:	0c0000ee 	jal	3b8 <_ZNK7float32mlERKS_.1484>
+    1230:	afa2006c 	sw	v0,108(sp)
+    1234:	27a4006c 	addiu	a0,sp,108
+    1238:	0c000233 	jal	8cc <_ZN7float32mIERKS_.1613>
+    123c:	27a50010 	addiu	a1,sp,16
+    1240:	02403021 	move	a2,s2
+    1244:	27a40010 	addiu	a0,sp,16
+    1248:	0c0000ee 	jal	3b8 <_ZNK7float32mlERKS_.1484>
+    124c:	27a50020 	addiu	a1,sp,32
+    1250:	27a4006c 	addiu	a0,sp,108
+    1254:	0c000233 	jal	8cc <_ZN7float32mIERKS_.1613>
+    1258:	27a50010 	addiu	a1,sp,16
+    125c:	27a4006c 	addiu	a0,sp,108
+    1260:	0c000233 	jal	8cc <_ZN7float32mIERKS_.1613>
+    1264:	27a500b0 	addiu	a1,sp,176
+    1268:	8fa20020 	lw	v0,32(sp)
+    126c:	27a40010 	addiu	a0,sp,16
+    1270:	27a5003c 	addiu	a1,sp,60
+    1274:	02203021 	move	a2,s1
+    1278:	0c0000ee 	jal	3b8 <_ZNK7float32mlERKS_.1484>
+    127c:	afa20068 	sw	v0,104(sp)
+    1280:	8fa20010 	lw	v0,16(sp)
+    1284:	27a40010 	addiu	a0,sp,16
+    1288:	afa20064 	sw	v0,100(sp)
+    128c:	8fa20028 	lw	v0,40(sp)
+    1290:	27a5003c 	addiu	a1,sp,60
+    1294:	afa20060 	sw	v0,96(sp)
+    1298:	8fa20024 	lw	v0,36(sp)
+    129c:	27a6005c 	addiu	a2,sp,92
+    12a0:	0c0000ee 	jal	3b8 <_ZNK7float32mlERKS_.1484>
+    12a4:	afa2005c 	sw	v0,92(sp)
+    12a8:	8fa20010 	lw	v0,16(sp)
+    12ac:	27a40010 	addiu	a0,sp,16
+    12b0:	27a5003c 	addiu	a1,sp,60
+    12b4:	27a60068 	addiu	a2,sp,104
+    12b8:	0c0000ee 	jal	3b8 <_ZNK7float32mlERKS_.1484>
+    12bc:	afa20058 	sw	v0,88(sp)
+    12c0:	8fa20010 	lw	v0,16(sp)
+    12c4:	27a40010 	addiu	a0,sp,16
+    12c8:	27a5005c 	addiu	a1,sp,92
+    12cc:	27a60070 	addiu	a2,sp,112
+    12d0:	0c0000ee 	jal	3b8 <_ZNK7float32mlERKS_.1484>
+    12d4:	afa20054 	sw	v0,84(sp)
+    12d8:	8fa20010 	lw	v0,16(sp)
+    12dc:	27a60074 	addiu	a2,sp,116
+    12e0:	27a40010 	addiu	a0,sp,16
+    12e4:	27a50068 	addiu	a1,sp,104
+    12e8:	0c0000ee 	jal	3b8 <_ZNK7float32mlERKS_.1484>
+    12ec:	afa20050 	sw	v0,80(sp)
+    12f0:	27a40050 	addiu	a0,sp,80
+    12f4:	0c000233 	jal	8cc <_ZN7float32mIERKS_.1613>
+    12f8:	27a50010 	addiu	a1,sp,16
+    12fc:	27a40010 	addiu	a0,sp,16
+    1300:	27a50064 	addiu	a1,sp,100
+    1304:	0c0000ee 	jal	3b8 <_ZNK7float32mlERKS_.1484>
+    1308:	27a60074 	addiu	a2,sp,116
+    130c:	8fa20010 	lw	v0,16(sp)
+    1310:	27a60070 	addiu	a2,sp,112
+    1314:	27a40010 	addiu	a0,sp,16
+    1318:	27a50060 	addiu	a1,sp,96
+    131c:	0c0000ee 	jal	3b8 <_ZNK7float32mlERKS_.1484>
+    1320:	afa2004c 	sw	v0,76(sp)
+    1324:	27a4004c 	addiu	a0,sp,76
+    1328:	0c0001e4 	jal	790 <_ZN7float32pLERKS_.1605>
+    132c:	27a50010 	addiu	a1,sp,16
+    1330:	27a6006c 	addiu	a2,sp,108
+    1334:	27a40010 	addiu	a0,sp,16
+    1338:	0c0000ee 	jal	3b8 <_ZNK7float32mlERKS_.1484>
+    133c:	27a50058 	addiu	a1,sp,88
+    1340:	27a4004c 	addiu	a0,sp,76
+    1344:	0c000233 	jal	8cc <_ZN7float32mIERKS_.1613>
+    1348:	27a50010 	addiu	a1,sp,16
+    134c:	27a40010 	addiu	a0,sp,16
+    1350:	27a50064 	addiu	a1,sp,100
+    1354:	0c0000ee 	jal	3b8 <_ZNK7float32mlERKS_.1484>
+    1358:	27a60070 	addiu	a2,sp,112
+    135c:	8fa20010 	lw	v0,16(sp)
+    1360:	27a6006c 	addiu	a2,sp,108
+    1364:	27a40010 	addiu	a0,sp,16
+    1368:	27a50054 	addiu	a1,sp,84
+    136c:	0c0000ee 	jal	3b8 <_ZNK7float32mlERKS_.1484>
+    1370:	afa20048 	sw	v0,72(sp)
+    1374:	27a40048 	addiu	a0,sp,72
+    1378:	0c000233 	jal	8cc <_ZN7float32mIERKS_.1613>
+    137c:	27a50010 	addiu	a1,sp,16
+    1380:	27a60074 	addiu	a2,sp,116
+    1384:	27a40010 	addiu	a0,sp,16
+    1388:	0c0000ee 	jal	3b8 <_ZNK7float32mlERKS_.1484>
+    138c:	27a50060 	addiu	a1,sp,96
+    1390:	27a40048 	addiu	a0,sp,72
+    1394:	0c000233 	jal	8cc <_ZN7float32mIERKS_.1613>
+    1398:	27a50010 	addiu	a1,sp,16
+    139c:	27a40010 	addiu	a0,sp,16
+    13a0:	27a5005c 	addiu	a1,sp,92
+    13a4:	0c0000ee 	jal	3b8 <_ZNK7float32mlERKS_.1484>
+    13a8:	27a60074 	addiu	a2,sp,116
+    13ac:	8fa20010 	lw	v0,16(sp)
+    13b0:	27a40010 	addiu	a0,sp,16
+    13b4:	27a50068 	addiu	a1,sp,104
+    13b8:	27a60070 	addiu	a2,sp,112
+    13bc:	0c0000ee 	jal	3b8 <_ZNK7float32mlERKS_.1484>
+    13c0:	afa20044 	sw	v0,68(sp)
+    13c4:	27a400c8 	addiu	a0,sp,200
+    13c8:	27a50044 	addiu	a1,sp,68
+    13cc:	0c0001ce 	jal	738 <_ZNK7float32plERKS_.1609>
+    13d0:	27a60010 	addiu	a2,sp,16
+    13d4:	27a50050 	addiu	a1,sp,80
+    13d8:	27a40010 	addiu	a0,sp,16
+    13dc:	0c0000ee 	jal	3b8 <_ZNK7float32mlERKS_.1484>
+    13e0:	00a03021 	move	a2,a1
+    13e4:	8fa20010 	lw	v0,16(sp)
+    13e8:	27a5004c 	addiu	a1,sp,76
+    13ec:	00a03021 	move	a2,a1
+    13f0:	27a40010 	addiu	a0,sp,16
+    13f4:	0c0000ee 	jal	3b8 <_ZNK7float32mlERKS_.1484>
+    13f8:	afa2001c 	sw	v0,28(sp)
+    13fc:	27a4001c 	addiu	a0,sp,28
+    1400:	0c0001e4 	jal	790 <_ZN7float32pLERKS_.1605>
+    1404:	27a50010 	addiu	a1,sp,16
+    1408:	27a50048 	addiu	a1,sp,72
+    140c:	00a03021 	move	a2,a1
+    1410:	0c0000ee 	jal	3b8 <_ZNK7float32mlERKS_.1484>
+    1414:	27a40010 	addiu	a0,sp,16
+    1418:	27a4001c 	addiu	a0,sp,28
+    141c:	0c0001e4 	jal	790 <_ZN7float32pLERKS_.1605>
+    1420:	27a50010 	addiu	a1,sp,16
+    1424:	27a50044 	addiu	a1,sp,68
+    1428:	00a03021 	move	a2,a1
+    142c:	0c0000ee 	jal	3b8 <_ZNK7float32mlERKS_.1484>
+    1430:	27a40010 	addiu	a0,sp,16
+    1434:	27a4001c 	addiu	a0,sp,28
+    1438:	0c0001e4 	jal	790 <_ZN7float32pLERKS_.1605>
+    143c:	27a50010 	addiu	a1,sp,16
+    1440:	27a40010 	addiu	a0,sp,16
+    1444:	0c000208 	jal	820 <_Z5rsqrtRK7float32.1476>
+    1448:	27a5001c 	addiu	a1,sp,28
+    144c:	8fa20010 	lw	v0,16(sp)
+    1450:	27a40050 	addiu	a0,sp,80
+    1454:	27a50088 	addiu	a1,sp,136
+    1458:	0c00014c 	jal	530 <_ZN7float32mLERKS_.1480>
+    145c:	afa20088 	sw	v0,136(sp)
+    1460:	27a4004c 	addiu	a0,sp,76
+    1464:	0c00014c 	jal	530 <_ZN7float32mLERKS_.1480>
+    1468:	27a50088 	addiu	a1,sp,136
+    146c:	27a40048 	addiu	a0,sp,72
+    1470:	0c00014c 	jal	530 <_ZN7float32mLERKS_.1480>
+    1474:	27a50088 	addiu	a1,sp,136
+    1478:	27a40044 	addiu	a0,sp,68
+    147c:	0c00014c 	jal	530 <_ZN7float32mLERKS_.1480>
+    1480:	27a50088 	addiu	a1,sp,136
+    1484:	27a600c4 	addiu	a2,sp,196
+    1488:	27a40010 	addiu	a0,sp,16
+    148c:	27a50034 	addiu	a1,sp,52
+    1490:	0c0000ee 	jal	3b8 <_ZNK7float32mlERKS_.1484>
+    1494:	afa00084 	sw	zero,132(sp)
+    1498:	27a40084 	addiu	a0,sp,132
+    149c:	0c000233 	jal	8cc <_ZN7float32mIERKS_.1613>
+    14a0:	27a50010 	addiu	a1,sp,16
+    14a4:	27a600c0 	addiu	a2,sp,192
+    14a8:	27a40010 	addiu	a0,sp,16
+    14ac:	0c0000ee 	jal	3b8 <_ZNK7float32mlERKS_.1484>
+    14b0:	27a50030 	addiu	a1,sp,48
+    14b4:	27a40084 	addiu	a0,sp,132
+    14b8:	0c000233 	jal	8cc <_ZN7float32mIERKS_.1613>
+    14bc:	27a50010 	addiu	a1,sp,16
+    14c0:	27a600bc 	addiu	a2,sp,188
+    14c4:	27a40010 	addiu	a0,sp,16
+    14c8:	0c0000ee 	jal	3b8 <_ZNK7float32mlERKS_.1484>
+    14cc:	27a5002c 	addiu	a1,sp,44
+    14d0:	27a40084 	addiu	a0,sp,132
+    14d4:	0c000233 	jal	8cc <_ZN7float32mIERKS_.1613>
+    14d8:	27a50010 	addiu	a1,sp,16
+    14dc:	27a40010 	addiu	a0,sp,16
+    14e0:	27a50038 	addiu	a1,sp,56
+    14e4:	0c0000ee 	jal	3b8 <_ZNK7float32mlERKS_.1484>
+    14e8:	27a600c4 	addiu	a2,sp,196
+    14ec:	8fa20010 	lw	v0,16(sp)
+    14f0:	27a600bc 	addiu	a2,sp,188
+    14f4:	27a40010 	addiu	a0,sp,16
+    14f8:	27a50030 	addiu	a1,sp,48
+    14fc:	0c0000ee 	jal	3b8 <_ZNK7float32mlERKS_.1484>
+    1500:	afa20080 	sw	v0,128(sp)
+    1504:	27a40080 	addiu	a0,sp,128
+    1508:	0c0001e4 	jal	790 <_ZN7float32pLERKS_.1605>
+    150c:	27a50010 	addiu	a1,sp,16
+    1510:	27a600c0 	addiu	a2,sp,192
+    1514:	27a40010 	addiu	a0,sp,16
+    1518:	0c0000ee 	jal	3b8 <_ZNK7float32mlERKS_.1484>
+    151c:	27a5002c 	addiu	a1,sp,44
+    1520:	27a40080 	addiu	a0,sp,128
+    1524:	0c000233 	jal	8cc <_ZN7float32mIERKS_.1613>
+    1528:	27a50010 	addiu	a1,sp,16
+    152c:	27a40010 	addiu	a0,sp,16
+    1530:	27a50038 	addiu	a1,sp,56
+    1534:	0c0000ee 	jal	3b8 <_ZNK7float32mlERKS_.1484>
+    1538:	27a600c0 	addiu	a2,sp,192
+    153c:	8fa20010 	lw	v0,16(sp)
+    1540:	27a600bc 	addiu	a2,sp,188
+    1544:	27a40010 	addiu	a0,sp,16
+    1548:	27a50034 	addiu	a1,sp,52
+    154c:	0c0000ee 	jal	3b8 <_ZNK7float32mlERKS_.1484>
+    1550:	afa2007c 	sw	v0,124(sp)
+    1554:	27a4007c 	addiu	a0,sp,124
+    1558:	0c000233 	jal	8cc <_ZN7float32mIERKS_.1613>
+    155c:	27a50010 	addiu	a1,sp,16
+    1560:	27a600c4 	addiu	a2,sp,196
+    1564:	27a40010 	addiu	a0,sp,16
+    1568:	0c0000ee 	jal	3b8 <_ZNK7float32mlERKS_.1484>
+    156c:	27a5002c 	addiu	a1,sp,44
+    1570:	27a4007c 	addiu	a0,sp,124
+    1574:	0c0001e4 	jal	790 <_ZN7float32pLERKS_.1605>
+    1578:	27a50010 	addiu	a1,sp,16
+    157c:	27a40010 	addiu	a0,sp,16
+    1580:	27a50038 	addiu	a1,sp,56
+    1584:	0c0000ee 	jal	3b8 <_ZNK7float32mlERKS_.1484>
+    1588:	27a600bc 	addiu	a2,sp,188
+    158c:	8fa20010 	lw	v0,16(sp)
+    1590:	27a600c0 	addiu	a2,sp,192
+    1594:	27a40010 	addiu	a0,sp,16
+    1598:	27a50034 	addiu	a1,sp,52
+    159c:	0c0000ee 	jal	3b8 <_ZNK7float32mlERKS_.1484>
+    15a0:	afa20078 	sw	v0,120(sp)
+    15a4:	27a40078 	addiu	a0,sp,120
+    15a8:	0c0001e4 	jal	790 <_ZN7float32pLERKS_.1605>
+    15ac:	27a50010 	addiu	a1,sp,16
+    15b0:	27a600c4 	addiu	a2,sp,196
+    15b4:	27a40010 	addiu	a0,sp,16
+    15b8:	0c0000ee 	jal	3b8 <_ZNK7float32mlERKS_.1484>
+    15bc:	27a50030 	addiu	a1,sp,48
+    15c0:	27a40078 	addiu	a0,sp,120
+    15c4:	0c000233 	jal	8cc <_ZN7float32mIERKS_.1613>
+    15c8:	27a50010 	addiu	a1,sp,16
+    15cc:	27a40018 	addiu	a0,sp,24
+    15d0:	26c501f4 	addiu	a1,s6,500
+    15d4:	0c0000ee 	jal	3b8 <_ZNK7float32mlERKS_.1484>
+    15d8:	27a60050 	addiu	a2,sp,80
+    15dc:	27a40014 	addiu	a0,sp,20
+    15e0:	27a50084 	addiu	a1,sp,132
+    15e4:	0c0001f3 	jal	7cc <_ZNK7float32miERKS_.1617>
+    15e8:	27a60018 	addiu	a2,sp,24
+    15ec:	02a03021 	move	a2,s5
+    15f0:	27a40010 	addiu	a0,sp,16
+    15f4:	0c0000ee 	jal	3b8 <_ZNK7float32mlERKS_.1484>
+    15f8:	27a50014 	addiu	a1,sp,20
+    15fc:	02802021 	move	a0,s4
+    1600:	0c0001e4 	jal	790 <_ZN7float32pLERKS_.1605>
+    1604:	27a50010 	addiu	a1,sp,16
+    1608:	27a40018 	addiu	a0,sp,24
+    160c:	26c501f4 	addiu	a1,s6,500
+    1610:	0c0000ee 	jal	3b8 <_ZNK7float32mlERKS_.1484>
+    1614:	27a6004c 	addiu	a2,sp,76
+    1618:	27a40014 	addiu	a0,sp,20
+    161c:	27a50080 	addiu	a1,sp,128
+    1620:	0c0001f3 	jal	7cc <_ZNK7float32miERKS_.1617>
+    1624:	27a60018 	addiu	a2,sp,24
+    1628:	02a03021 	move	a2,s5
+    162c:	27a40010 	addiu	a0,sp,16
+    1630:	0c0000ee 	jal	3b8 <_ZNK7float32mlERKS_.1484>
+    1634:	27a50014 	addiu	a1,sp,20
+    1638:	02602021 	move	a0,s3
+    163c:	0c0001e4 	jal	790 <_ZN7float32pLERKS_.1605>
+    1640:	27a50010 	addiu	a1,sp,16
+    1644:	27a40018 	addiu	a0,sp,24
+    1648:	26c501f4 	addiu	a1,s6,500
+    164c:	0c0000ee 	jal	3b8 <_ZNK7float32mlERKS_.1484>
+    1650:	27a60048 	addiu	a2,sp,72
+    1654:	27a40014 	addiu	a0,sp,20
+    1658:	27a5007c 	addiu	a1,sp,124
+    165c:	0c0001f3 	jal	7cc <_ZNK7float32miERKS_.1617>
+    1660:	27a60018 	addiu	a2,sp,24
+    1664:	02a03021 	move	a2,s5
+    1668:	27a40010 	addiu	a0,sp,16
+    166c:	0c0000ee 	jal	3b8 <_ZNK7float32mlERKS_.1484>
+    1670:	27a50014 	addiu	a1,sp,20
+    1674:	02402021 	move	a0,s2
+    1678:	0c0001e4 	jal	790 <_ZN7float32pLERKS_.1605>
+    167c:	27a50010 	addiu	a1,sp,16
+    1680:	27a40018 	addiu	a0,sp,24
+    1684:	26c501f4 	addiu	a1,s6,500
+    1688:	0c0000ee 	jal	3b8 <_ZNK7float32mlERKS_.1484>
+    168c:	27a60044 	addiu	a2,sp,68
+    1690:	27a40014 	addiu	a0,sp,20
+    1694:	27a50078 	addiu	a1,sp,120
+    1698:	0c0001f3 	jal	7cc <_ZNK7float32miERKS_.1617>
+    169c:	27a60018 	addiu	a2,sp,24
+    16a0:	02a03021 	move	a2,s5
+    16a4:	27a40010 	addiu	a0,sp,16
+    16a8:	0c0000ee 	jal	3b8 <_ZNK7float32mlERKS_.1484>
+    16ac:	27a50014 	addiu	a1,sp,20
+    16b0:	02202021 	move	a0,s1
+    16b4:	0c0001e4 	jal	790 <_ZN7float32pLERKS_.1605>
+    16b8:	27a50010 	addiu	a1,sp,16
+    16bc:	27a40010 	addiu	a0,sp,16
+    16c0:	02802821 	move	a1,s4
+    16c4:	0c0000ee 	jal	3b8 <_ZNK7float32mlERKS_.1484>
+    16c8:	02803021 	move	a2,s4
+    16cc:	8fa20010 	lw	v0,16(sp)
+    16d0:	02603021 	move	a2,s3
+    16d4:	27a40010 	addiu	a0,sp,16
+    16d8:	02602821 	move	a1,s3
+    16dc:	0c0000ee 	jal	3b8 <_ZNK7float32mlERKS_.1484>
+    16e0:	afa2001c 	sw	v0,28(sp)
+    16e4:	27a4001c 	addiu	a0,sp,28
+    16e8:	0c0001e4 	jal	790 <_ZN7float32pLERKS_.1605>
+    16ec:	27a50010 	addiu	a1,sp,16
+    16f0:	02403021 	move	a2,s2
+    16f4:	27a40010 	addiu	a0,sp,16
+    16f8:	0c0000ee 	jal	3b8 <_ZNK7float32mlERKS_.1484>
+    16fc:	02402821 	move	a1,s2
+    1700:	27a4001c 	addiu	a0,sp,28
+    1704:	0c0001e4 	jal	790 <_ZN7float32pLERKS_.1605>
+    1708:	27a50010 	addiu	a1,sp,16
+    170c:	02203021 	move	a2,s1
+    1710:	27a40010 	addiu	a0,sp,16
+    1714:	0c0000ee 	jal	3b8 <_ZNK7float32mlERKS_.1484>
+    1718:	02202821 	move	a1,s1
+    171c:	27a4001c 	addiu	a0,sp,28
+    1720:	0c0001e4 	jal	790 <_ZN7float32pLERKS_.1605>
+    1724:	27a50010 	addiu	a1,sp,16
+    1728:	27a40010 	addiu	a0,sp,16
+    172c:	0c000208 	jal	820 <_Z5rsqrtRK7float32.1476>
+    1730:	27a5001c 	addiu	a1,sp,28
+    1734:	8fa20010 	lw	v0,16(sp)
+    1738:	02802021 	move	a0,s4
+    173c:	27a50088 	addiu	a1,sp,136
+    1740:	0c00014c 	jal	530 <_ZN7float32mLERKS_.1480>
+    1744:	afa20088 	sw	v0,136(sp)
+    1748:	02602021 	move	a0,s3
+    174c:	0c00014c 	jal	530 <_ZN7float32mLERKS_.1480>
+    1750:	27a50088 	addiu	a1,sp,136
+    1754:	02402021 	move	a0,s2
+    1758:	0c00014c 	jal	530 <_ZN7float32mLERKS_.1480>
+    175c:	27a50088 	addiu	a1,sp,136
+    1760:	02202021 	move	a0,s1
+    1764:	0c00014c 	jal	530 <_ZN7float32mLERKS_.1480>
+    1768:	27a50088 	addiu	a1,sp,136
+    176c:	0c000008 	jal	20 <_ZN6System8Registry8instanceEv.local.5.1576>
+    1770:	00000000 	nop
+    1774:	8e030040 	lw	v1,64(s0)
+    1778:	0c000008 	jal	20 <_ZN6System8Registry8instanceEv.local.5.1576>
+    177c:	ac430000 	sw	v1,0(v0)
+    1780:	8e030044 	lw	v1,68(s0)
+    1784:	0c000008 	jal	20 <_ZN6System8Registry8instanceEv.local.5.1576>
+    1788:	ac430004 	sw	v1,4(v0)
+    178c:	8e030048 	lw	v1,72(s0)
+    1790:	0c000008 	jal	20 <_ZN6System8Registry8instanceEv.local.5.1576>
+    1794:	ac430008 	sw	v1,8(v0)
+    1798:	8e03004c 	lw	v1,76(s0)
+    179c:	8fbf00ec 	lw	ra,236(sp)
+    17a0:	8fb600e8 	lw	s6,232(sp)
+    17a4:	8fb500e4 	lw	s5,228(sp)
+    17a8:	8fb400e0 	lw	s4,224(sp)
+    17ac:	8fb300dc 	lw	s3,220(sp)
+    17b0:	8fb200d8 	lw	s2,216(sp)
+    17b4:	8fb100d4 	lw	s1,212(sp)
+    17b8:	8fb000d0 	lw	s0,208(sp)
+    17bc:	ac43000c 	sw	v1,12(v0)
+    17c0:	03e00008 	jr	ra
+    17c4:	27bd00f0 	addiu	sp,sp,240
 
-00001490 <System::Tasking::Task::start()>:
-    1490:	03e00008 	jr	ra
-    1494:	00000000 	nop
+000017c8 <global constructors keyed to 65535_0_RESPONSE_OK.3057.1318>:
+    17c8:	3c048000 	lui	a0,0x8000
+    17cc:	3c038000 	lui	v1,0x8000
+    17d0:	24840160 	addiu	a0,a0,352
+    17d4:	27bdffe8 	addiu	sp,sp,-24
+    17d8:	246201fc 	addiu	v0,v1,508
+    17dc:	ac6401fc 	sw	a0,508(v1)
+    17e0:	3c038000 	lui	v1,0x8000
+    17e4:	afbf0014 	sw	ra,20(sp)
+    17e8:	afb00010 	sw	s0,16(sp)
+    17ec:	ac400004 	sw	zero,4(v0)
+    17f0:	ac400008 	sw	zero,8(v0)
+    17f4:	ac40000c 	sw	zero,12(v0)
+    17f8:	ac400034 	sw	zero,52(v0)
+    17fc:	a0400038 	sb	zero,56(v0)
+    1800:	ac40003c 	sw	zero,60(v0)
+    1804:	2462023c 	addiu	v0,v1,572
+    1808:	ac400004 	sw	zero,4(v0)
+    180c:	ac400008 	sw	zero,8(v0)
+    1810:	ac40000c 	sw	zero,12(v0)
+    1814:	3c028000 	lui	v0,0x8000
+    1818:	24420150 	addiu	v0,v0,336
+    181c:	ac62023c 	sw	v0,572(v1)
+    1820:	3c038000 	lui	v1,0x8000
+    1824:	24620250 	addiu	v0,v1,592
+    1828:	ac400004 	sw	zero,4(v0)
+    182c:	ac400008 	sw	zero,8(v0)
+    1830:	ac400014 	sw	zero,20(v0)
+    1834:	ac400018 	sw	zero,24(v0)
+    1838:	ac40001c 	sw	zero,28(v0)
+    183c:	ac400020 	sw	zero,32(v0)
+    1840:	ac40000c 	sw	zero,12(v0)
+    1844:	3c028000 	lui	v0,0x8000
+    1848:	24500274 	addiu	s0,v0,628
+    184c:	3c048000 	lui	a0,0x8000
+    1850:	ae000004 	sw	zero,4(s0)
+    1854:	ae000008 	sw	zero,8(s0)
+    1858:	24840140 	addiu	a0,a0,320
+    185c:	ac640250 	sw	a0,592(v1)
+    1860:	8c050010 	lw	a1,16(zero)
+    1864:	3c038000 	lui	v1,0x8000
+    1868:	3c048000 	lui	a0,0x8000
+    186c:	24630130 	addiu	v1,v1,304
+    1870:	2484028c 	addiu	a0,a0,652
+    1874:	ac430274 	sw	v1,628(v0)
+    1878:	0c000391 	jal	e44 <float32::float32(int)>
+    187c:	ae00000c 	sw	zero,12(s0)
+    1880:	3c023f80 	lui	v0,0x3f80
+    1884:	3c0332ab 	lui	v1,0x32ab
+    1888:	ae020040 	sw	v0,64(s0)
+    188c:	ae020050 	sw	v0,80(s0)
+    1890:	3463cc77 	ori	v1,v1,0xcc77
+    1894:	3c028000 	lui	v0,0x8000
+    1898:	ac4301f8 	sw	v1,504(v0)
+    189c:	3c033db2 	lui	v1,0x3db2
+    18a0:	3463b8c2 	ori	v1,v1,0xb8c2
+    18a4:	3c028000 	lui	v0,0x8000
+    18a8:	ac4302d8 	sw	v1,728(v0)
+    18ac:	3c033b64 	lui	v1,0x3b64
+    18b0:	3463c388 	ori	v1,v1,0xc388
+    18b4:	3c028000 	lui	v0,0x8000
+    18b8:	ac4302dc 	sw	v1,732(v0)
+    18bc:	3c033d9a 	lui	v1,0x3d9a
+    18c0:	3463c70d 	ori	v1,v1,0xc70d
+    18c4:	3c028000 	lui	v0,0x8000
+    18c8:	ac4301f4 	sw	v1,500(v0)
+    18cc:	3c033b46 	lui	v1,0x3b46
+    18d0:	24631d82 	addiu	v1,v1,7554
+    18d4:	3c028000 	lui	v0,0x8000
+    18d8:	ac4302e0 	sw	v1,736(v0)
+    18dc:	3c03364a 	lui	v1,0x364a
+    18e0:	3463deba 	ori	v1,v1,0xdeba
+    18e4:	3c028000 	lui	v0,0x8000
+    18e8:	ac4302e4 	sw	v1,740(v0)
+    18ec:	3c033d7a 	lui	v1,0x3d7a
+    18f0:	3c028000 	lui	v0,0x8000
+    18f4:	ac4301f0 	sw	v1,496(v0)
+    18f8:	3c033a00 	lui	v1,0x3a00
+    18fc:	3c028000 	lui	v0,0x8000
+    1900:	ac4301ec 	sw	v1,492(v0)
+    1904:	8fbf0014 	lw	ra,20(sp)
+    1908:	3c033a70 	lui	v1,0x3a70
+    190c:	24637faf 	addiu	v1,v1,32687
+    1910:	3c028000 	lui	v0,0x8000
+    1914:	8fb00010 	lw	s0,16(sp)
+    1918:	ac4301e8 	sw	v1,488(v0)
+    191c:	03e00008 	jr	ra
+    1920:	27bd0018 	addiu	sp,sp,24
 
-00001498 <_ZN7float3219shift32RightJammingEjiPj.1536>:
-    1498:	10a00009 	beqz	a1,14c0 <_ZN7float3219shift32RightJammingEjiPj.1536+0x28>
-    149c:	00801021 	move	v0,a0
-    14a0:	28a30020 	slti	v1,a1,32
-    14a4:	10600006 	beqz	v1,14c0 <_ZN7float3219shift32RightJammingEjiPj.1536+0x28>
-    14a8:	0004102b 	sltu	v0,zero,a0
-    14ac:	00051023 	negu	v0,a1
-    14b0:	00441004 	sllv	v0,a0,v0
-    14b4:	0002102b 	sltu	v0,zero,v0
-    14b8:	00a42806 	srlv	a1,a0,a1
-    14bc:	00451025 	or	v0,v0,a1
-    14c0:	03e00008 	jr	ra
-    14c4:	acc20000 	sw	v0,0(a2)
+00001924 <main>:
+    1924:	3c060001 	lui	a2,0x1
+    1928:	00001021 	move	v0,zero
+    192c:	24050001 	li	a1,1
+    1930:	34c6e848 	ori	a2,a2,0xe848
+    1934:	24040008 	li	a0,8
+    1938:	00451804 	sllv	v1,a1,v0
+    193c:	306300ff 	andi	v1,v1,0xff
+    1940:	ac030004 	sw	v1,4(zero)
+    1944:	00c01821 	move	v1,a2
+    1948:	2463ffff 	addiu	v1,v1,-1
+    194c:	1460fffe 	bnez	v1,1948 <main+0x24>
+    1950:	00000000 	nop
+    1954:	24420001 	addiu	v0,v0,1
+    1958:	1444fff8 	bne	v0,a0,193c <main+0x18>
+    195c:	00451804 	sllv	v1,a1,v0
+    1960:	3c060001 	lui	a2,0x1
+    1964:	00001021 	move	v0,zero
+    1968:	24050080 	li	a1,128
+    196c:	34c6e848 	ori	a2,a2,0xe848
+    1970:	24040009 	li	a0,9
+    1974:	00451807 	srav	v1,a1,v0
+    1978:	ac030004 	sw	v1,4(zero)
+    197c:	00c01821 	move	v1,a2
+    1980:	2463ffff 	addiu	v1,v1,-1
+    1984:	1460fffe 	bnez	v1,1980 <main+0x5c>
+    1988:	00000000 	nop
+    198c:	24420001 	addiu	v0,v0,1
+    1990:	1444fff9 	bne	v0,a0,1978 <main+0x54>
+    1994:	00451807 	srav	v1,a1,v0
+    1998:	27bdffb0 	addiu	sp,sp,-80
+    199c:	3c068000 	lui	a2,0x8000
+    19a0:	afb00038 	sw	s0,56(sp)
+    19a4:	27b00010 	addiu	s0,sp,16
+    19a8:	02002021 	move	a0,s0
+    19ac:	02002821 	move	a1,s0
+    19b0:	24c601fc 	addiu	a2,a2,508
+    19b4:	00003821 	move	a3,zero
+    19b8:	afbf004c 	sw	ra,76(sp)
+    19bc:	afb40048 	sw	s4,72(sp)
+    19c0:	afb30044 	sw	s3,68(sp)
+    19c4:	afb20040 	sw	s2,64(sp)
+    19c8:	afb1003c 	sw	s1,60(sp)
+    19cc:	afa00010 	sw	zero,16(sp)
+    19d0:	27b10014 	addiu	s1,sp,20
+    19d4:	afa00014 	sw	zero,20(sp)
+    19d8:	afa00018 	sw	zero,24(sp)
+    19dc:	afa0001c 	sw	zero,28(sp)
+    19e0:	afa00020 	sw	zero,32(sp)
+    19e4:	afa00024 	sw	zero,36(sp)
+    19e8:	0c000356 	jal	d58 <System::Tasking::TaskScheduler::addTask(System::Tasking::Task**, System::Tasking::Task*, int)>
+    19ec:	afa00028 	sw	zero,40(sp)
+    19f0:	3c068000 	lui	a2,0x8000
+    19f4:	3c070007 	lui	a3,0x7
+    19f8:	02002021 	move	a0,s0
+    19fc:	02202821 	move	a1,s1
+    1a00:	24c60274 	addiu	a2,a2,628
+    1a04:	0c000356 	jal	d58 <System::Tasking::TaskScheduler::addTask(System::Tasking::Task**, System::Tasking::Task*, int)>
+    1a08:	34e7a120 	ori	a3,a3,0xa120
+    1a0c:	3c068000 	lui	a2,0x8000
+    1a10:	3c07004c 	lui	a3,0x4c
+    1a14:	02002021 	move	a0,s0
+    1a18:	02202821 	move	a1,s1
+    1a1c:	24c6023c 	addiu	a2,a2,572
+    1a20:	0c000356 	jal	d58 <System::Tasking::TaskScheduler::addTask(System::Tasking::Task**, System::Tasking::Task*, int)>
+    1a24:	24e74b40 	addiu	a3,a3,19264
+    1a28:	3c12b2d0 	lui	s2,0xb2d0
+    1a2c:	02002021 	move	a0,s0
+    1a30:	0c000367 	jal	d9c <System::Tasking::TaskScheduler::selectNextTask(unsigned int)>
+    1a34:	00002821 	move	a1,zero
+    1a38:	26525e00 	addiu	s2,s2,24064
+    1a3c:	02209821 	move	s3,s1
+    1a40:	27b40018 	addiu	s4,sp,24
+    1a44:	8fa40020 	lw	a0,32(sp)
+    1a48:	8c110010 	lw	s1,16(zero)
+    1a4c:	1080003f 	beqz	a0,1b4c <main+0x228>
+    1a50:	00000000 	nop
+    1a54:	8fa20024 	lw	v0,36(sp)
+    1a58:	00000000 	nop
+    1a5c:	0222182b 	sltu	v1,s1,v0
+    1a60:	1460003a 	bnez	v1,1b4c <main+0x228>
+    1a64:	02221023 	subu	v0,s1,v0
+    1a68:	0052102b 	sltu	v0,v0,s2
+    1a6c:	10400037 	beqz	v0,1b4c <main+0x228>
+    1a70:	00000000 	nop
+    1a74:	8c820000 	lw	v0,0(a0)
+    1a78:	00000000 	nop
+    1a7c:	8c420000 	lw	v0,0(v0)
+    1a80:	00000000 	nop
+    1a84:	0040f809 	jalr	v0
+    1a88:	00000000 	nop
+    1a8c:	8fa40028 	lw	a0,40(sp)
+    1a90:	24030001 	li	v1,1
+    1a94:	8fa20020 	lw	v0,32(sp)
+    1a98:	14830023 	bne	a0,v1,1b28 <main+0x204>
+    1a9c:	00003021 	move	a2,zero
+    1aa0:	afb0002c 	sw	s0,44(sp)
+    1aa4:	afb30030 	sw	s3,48(sp)
+    1aa8:	afb40034 	sw	s4,52(sp)
+    1aac:	2405000c 	li	a1,12
+    1ab0:	27a4002c 	addiu	a0,sp,44
+    1ab4:	00861821 	addu	v1,a0,a2
+    1ab8:	8c640000 	lw	a0,0(v1)
+    1abc:	00000000 	nop
+    1ac0:	8c830000 	lw	v1,0(a0)
+    1ac4:	00000000 	nop
+    1ac8:	10600012 	beqz	v1,1b14 <main+0x1f0>
+    1acc:	00000000 	nop
+    1ad0:	14620005 	bne	v1,v0,1ae8 <main+0x1c4>
+    1ad4:	00000000 	nop
+    1ad8:	8c43000c 	lw	v1,12(v0)
+    1adc:	080006c8 	j	1b20 <main+0x1fc>
+    1ae0:	ac830000 	sw	v1,0(a0)
+    1ae4:	00801821 	move	v1,a0
+    1ae8:	8c64000c 	lw	a0,12(v1)
+    1aec:	00000000 	nop
+    1af0:	10800006 	beqz	a0,1b0c <main+0x1e8>
+    1af4:	00000000 	nop
+    1af8:	1482fffa 	bne	a0,v0,1ae4 <main+0x1c0>
+    1afc:	00000000 	nop
+    1b00:	8c44000c 	lw	a0,12(v0)
+    1b04:	080006c8 	j	1b20 <main+0x1fc>
+    1b08:	ac64000c 	sw	a0,12(v1)
+    1b0c:	1040fffc 	beqz	v0,1b00 <main+0x1dc>
+    1b10:	00000000 	nop
+    1b14:	24c60004 	addiu	a2,a2,4
+    1b18:	14c5ffe6 	bne	a2,a1,1ab4 <main+0x190>
+    1b1c:	27a4002c 	addiu	a0,sp,44
+    1b20:	080006ce 	j	1b38 <main+0x214>
+    1b24:	ac400010 	sw	zero,16(v0)
+    1b28:	8c430008 	lw	v1,8(v0)
+    1b2c:	00000000 	nop
+    1b30:	02231821 	addu	v1,s1,v1
+    1b34:	ac430004 	sw	v1,4(v0)
+    1b38:	02002021 	move	a0,s0
+    1b3c:	0c000367 	jal	d9c <System::Tasking::TaskScheduler::selectNextTask(unsigned int)>
+    1b40:	02202821 	move	a1,s1
+    1b44:	08000691 	j	1a44 <main+0x120>
+    1b48:	00000000 	nop
+    1b4c:	8fa2001c 	lw	v0,28(sp)
+    1b50:	00000000 	nop
+    1b54:	10400006 	beqz	v0,1b70 <main+0x24c>
+    1b58:	00000000 	nop
+    1b5c:	8c42000c 	lw	v0,12(v0)
+    1b60:	00000000 	nop
+    1b64:	afa2001c 	sw	v0,28(sp)
+    1b68:	8fa2001c 	lw	v0,28(sp)
+    1b6c:	00000000 	nop
+    1b70:	14400004 	bnez	v0,1b84 <main+0x260>
+    1b74:	00000000 	nop
+    1b78:	8fa20010 	lw	v0,16(sp)
+    1b7c:	00000000 	nop
+    1b80:	afa2001c 	sw	v0,28(sp)
+    1b84:	8fa4001c 	lw	a0,28(sp)
+    1b88:	00000000 	nop
+    1b8c:	1080ffad 	beqz	a0,1a44 <main+0x120>
+    1b90:	00000000 	nop
+    1b94:	8c820000 	lw	v0,0(a0)
+    1b98:	00000000 	nop
+    1b9c:	8c420000 	lw	v0,0(v0)
+    1ba0:	00000000 	nop
+    1ba4:	0040f809 	jalr	v0
+    1ba8:	00000000 	nop
+    1bac:	08000691 	j	1a44 <main+0x120>
+    1bb0:	00000000 	nop
 
-000014c8 <_ZN7float3212roundAndPackEbij.1531>:
-    14c8:	30a3ffff 	andi	v1,a1,0xffff
-    14cc:	27bdffe8 	addiu	sp,sp,-24
-    14d0:	2c6300fd 	sltiu	v1,v1,253
-    14d4:	30c2007f 	andi	v0,a2,0x7f
-    14d8:	afb00010 	sw	s0,16(sp)
-    14dc:	afbf0014 	sw	ra,20(sp)
-    14e0:	afa60020 	sw	a2,32(sp)
-    14e4:	14600015 	bnez	v1,153c <_ZN7float3212roundAndPackEbij.1531+0x74>
-    14e8:	00808021 	move	s0,a0
-    14ec:	28a300fe 	slti	v1,a1,254
-    14f0:	10600006 	beqz	v1,150c <_ZN7float3212roundAndPackEbij.1531+0x44>
-    14f4:	240300fd 	li	v1,253
-    14f8:	14a30008 	bne	a1,v1,151c <_ZN7float3212roundAndPackEbij.1531+0x54>
-    14fc:	00000000 	nop
-    1500:	24c60040 	addiu	a2,a2,64
-    1504:	04c1000d 	bgez	a2,153c <_ZN7float3212roundAndPackEbij.1531+0x74>
-    1508:	00000000 	nop
-    150c:	001087c0 	sll	s0,s0,0x1f
-    1510:	3c027f80 	lui	v0,0x7f80
-    1514:	0800055d 	j	1574 <_ZN7float3212roundAndPackEbij.1531+0xac>
-    1518:	02021021 	addu	v0,s0,v0
-    151c:	04a10007 	bgez	a1,153c <_ZN7float3212roundAndPackEbij.1531+0x74>
-    1520:	00c02021 	move	a0,a2
-    1524:	00052823 	negu	a1,a1
-    1528:	0c000526 	jal	1498 <_ZN7float3219shift32RightJammingEjiPj.1536>
-    152c:	27a60020 	addiu	a2,sp,32
-    1530:	8fa20020 	lw	v0,32(sp)
-    1534:	00002821 	move	a1,zero
-    1538:	3042007f 	andi	v0,v0,0x7f
-    153c:	8fa30020 	lw	v1,32(sp)
-    1540:	38420040 	xori	v0,v0,0x40
-    1544:	2c420001 	sltiu	v0,v0,1
-    1548:	24630040 	addiu	v1,v1,64
-    154c:	000319c2 	srl	v1,v1,0x7
-    1550:	00021027 	nor	v0,zero,v0
-    1554:	00431024 	and	v0,v0,v1
-    1558:	0002182b 	sltu	v1,zero,v0
-    155c:	00031823 	negu	v1,v1
-    1560:	00a32824 	and	a1,a1,v1
-    1564:	001087c0 	sll	s0,s0,0x1f
-    1568:	00501021 	addu	v0,v0,s0
-    156c:	00052dc0 	sll	a1,a1,0x17
-    1570:	00451021 	addu	v0,v0,a1
-    1574:	8fbf0014 	lw	ra,20(sp)
-    1578:	8fb00010 	lw	s0,16(sp)
-    157c:	03e00008 	jr	ra
-    1580:	27bd0018 	addiu	sp,sp,24
-
-00001584 <_ZN7float327addSigsEjjb.1526>:
-    1584:	27bdffd8 	addiu	sp,sp,-40
-    1588:	00801021 	move	v0,a0
-    158c:	afb00018 	sw	s0,24(sp)
-    1590:	000485c2 	srl	s0,a0,0x17
-    1594:	3c04007f 	lui	a0,0x7f
-    1598:	3484ffff 	ori	a0,a0,0xffff
-    159c:	afb1001c 	sw	s1,28(sp)
-    15a0:	00058dc2 	srl	s1,a1,0x17
-    15a4:	321000ff 	andi	s0,s0,0xff
-    15a8:	323100ff 	andi	s1,s1,0xff
-    15ac:	00443824 	and	a3,v0,a0
-    15b0:	00a42824 	and	a1,a1,a0
-    15b4:	00073980 	sll	a3,a3,0x6
-    15b8:	00052980 	sll	a1,a1,0x6
-    15bc:	02111823 	subu	v1,s0,s1
-    15c0:	afb20020 	sw	s2,32(sp)
-    15c4:	afbf0024 	sw	ra,36(sp)
-    15c8:	00c09021 	move	s2,a2
-    15cc:	afa70014 	sw	a3,20(sp)
-    15d0:	18600010 	blez	v1,1614 <_ZN7float327addSigsEjjb.1526+0x90>
-    15d4:	afa50010 	sw	a1,16(sp)
-    15d8:	240400ff 	li	a0,255
-    15dc:	1204003d 	beq	s0,a0,16d4 <_ZN7float327addSigsEjjb.1526+0x150>
-    15e0:	00000000 	nop
-    15e4:	16200003 	bnez	s1,15f4 <_ZN7float327addSigsEjjb.1526+0x70>
-    15e8:	3c022000 	lui	v0,0x2000
-    15ec:	0800057f 	j	15fc <_ZN7float327addSigsEjjb.1526+0x78>
-    15f0:	2463ffff 	addiu	v1,v1,-1
-    15f4:	00a22825 	or	a1,a1,v0
-    15f8:	afa50010 	sw	a1,16(sp)
-    15fc:	8fa40010 	lw	a0,16(sp)
-    1600:	00602821 	move	a1,v1
-    1604:	0c000526 	jal	1498 <_ZN7float3219shift32RightJammingEjiPj.1536>
-    1608:	27a60010 	addiu	a2,sp,16
-    160c:	080005a8 	j	16a0 <_ZN7float327addSigsEjjb.1526+0x11c>
-    1610:	02002821 	move	a1,s0
-    1614:	10600014 	beqz	v1,1668 <_ZN7float327addSigsEjjb.1526+0xe4>
-    1618:	00000000 	nop
-    161c:	240200ff 	li	v0,255
-    1620:	16220004 	bne	s1,v0,1634 <_ZN7float327addSigsEjjb.1526+0xb0>
-    1624:	000617c0 	sll	v0,a2,0x1f
-    1628:	3c037f80 	lui	v1,0x7f80
-    162c:	080005b5 	j	16d4 <_ZN7float327addSigsEjjb.1526+0x150>
-    1630:	00431021 	addu	v0,v0,v1
-    1634:	16000003 	bnez	s0,1644 <_ZN7float327addSigsEjjb.1526+0xc0>
-    1638:	00000000 	nop
-    163c:	08000594 	j	1650 <_ZN7float327addSigsEjjb.1526+0xcc>
-    1640:	24630001 	addiu	v1,v1,1
-    1644:	3c052000 	lui	a1,0x2000
-    1648:	00e53825 	or	a3,a3,a1
-    164c:	afa70014 	sw	a3,20(sp)
-    1650:	8fa40014 	lw	a0,20(sp)
-    1654:	00032823 	negu	a1,v1
-    1658:	0c000526 	jal	1498 <_ZN7float3219shift32RightJammingEjiPj.1536>
-    165c:	27a60014 	addiu	a2,sp,20
-    1660:	080005a8 	j	16a0 <_ZN7float327addSigsEjjb.1526+0x11c>
-    1664:	02202821 	move	a1,s1
-    1668:	240300ff 	li	v1,255
-    166c:	12030019 	beq	s0,v1,16d4 <_ZN7float327addSigsEjjb.1526+0x150>
-    1670:	00000000 	nop
-    1674:	16000006 	bnez	s0,1690 <_ZN7float327addSigsEjjb.1526+0x10c>
-    1678:	3c034000 	lui	v1,0x4000
-    167c:	00a71021 	addu	v0,a1,a3
-    1680:	00021182 	srl	v0,v0,0x6
-    1684:	000697c0 	sll	s2,a2,0x1f
-    1688:	080005b5 	j	16d4 <_ZN7float327addSigsEjjb.1526+0x150>
-    168c:	00521021 	addu	v0,v0,s2
-    1690:	00e31821 	addu	v1,a3,v1
-    1694:	00653021 	addu	a2,v1,a1
-    1698:	080005b3 	j	16cc <_ZN7float327addSigsEjjb.1526+0x148>
-    169c:	02002821 	move	a1,s0
-    16a0:	8fa20014 	lw	v0,20(sp)
-    16a4:	3c032000 	lui	v1,0x2000
-    16a8:	00621825 	or	v1,v1,v0
-    16ac:	8fa20010 	lw	v0,16(sp)
-    16b0:	00000000 	nop
-    16b4:	00623021 	addu	a2,v1,v0
-    16b8:	00061040 	sll	v0,a2,0x1
-    16bc:	04400003 	bltz	v0,16cc <_ZN7float327addSigsEjjb.1526+0x148>
-    16c0:	afa30014 	sw	v1,20(sp)
-    16c4:	24a5ffff 	addiu	a1,a1,-1
-    16c8:	00403021 	move	a2,v0
-    16cc:	0c000532 	jal	14c8 <_ZN7float3212roundAndPackEbij.1531>
-    16d0:	02402021 	move	a0,s2
-    16d4:	8fbf0024 	lw	ra,36(sp)
-    16d8:	8fb20020 	lw	s2,32(sp)
-    16dc:	8fb1001c 	lw	s1,28(sp)
-    16e0:	8fb00018 	lw	s0,24(sp)
-    16e4:	03e00008 	jr	ra
-    16e8:	27bd0028 	addiu	sp,sp,40
-
-000016ec <_ZN7float3219countLeadingZeros32Ej.1541>:
-    16ec:	3c030001 	lui	v1,0x1
-    16f0:	0083182b 	sltu	v1,a0,v1
-    16f4:	10600003 	beqz	v1,1704 <_ZN7float3219countLeadingZeros32Ej.1541+0x18>
-    16f8:	00001021 	move	v0,zero
-    16fc:	00042400 	sll	a0,a0,0x10
-    1700:	24020010 	li	v0,16
-    1704:	3c030100 	lui	v1,0x100
-    1708:	0083182b 	sltu	v1,a0,v1
-    170c:	10600005 	beqz	v1,1724 <_ZN7float3219countLeadingZeros32Ej.1541+0x38>
-    1710:	3c038000 	lui	v1,0x8000
-    1714:	24420008 	addiu	v0,v0,8
-    1718:	00021600 	sll	v0,v0,0x18
-    171c:	00021603 	sra	v0,v0,0x18
-    1720:	00042200 	sll	a0,a0,0x8
-    1724:	24630000 	addiu	v1,v1,0
-    1728:	00042602 	srl	a0,a0,0x18
-    172c:	00832021 	addu	a0,a0,v1
-    1730:	90830000 	lbu	v1,0(a0)
-    1734:	00000000 	nop
-    1738:	00621021 	addu	v0,v1,v0
-    173c:	00021600 	sll	v0,v0,0x18
-    1740:	03e00008 	jr	ra
-    1744:	00021603 	sra	v0,v0,0x18
-
-00001748 <_ZN7float327subSigsEjjb.1521>:
-    1748:	27bdffd0 	addiu	sp,sp,-48
-    174c:	3c03007f 	lui	v1,0x7f
-    1750:	00a03821 	move	a3,a1
-    1754:	3463ffff 	ori	v1,v1,0xffff
-    1758:	afb10020 	sw	s1,32(sp)
-    175c:	afb0001c 	sw	s0,28(sp)
-    1760:	00058dc2 	srl	s1,a1,0x17
-    1764:	000485c2 	srl	s0,a0,0x17
-    1768:	00801021 	move	v0,a0
-    176c:	321000ff 	andi	s0,s0,0xff
-    1770:	00832024 	and	a0,a0,v1
-    1774:	323100ff 	andi	s1,s1,0xff
-    1778:	00e31824 	and	v1,a3,v1
-    177c:	000421c0 	sll	a0,a0,0x7
-    1780:	000319c0 	sll	v1,v1,0x7
-    1784:	02112823 	subu	a1,s0,s1
-    1788:	afb20024 	sw	s2,36(sp)
-    178c:	afbf002c 	sw	ra,44(sp)
-    1790:	afb30028 	sw	s3,40(sp)
-    1794:	00c09021 	move	s2,a2
-    1798:	afa40014 	sw	a0,20(sp)
-    179c:	1ca0002b 	bgtz	a1,184c <_ZN7float327subSigsEjjb.1521+0x104>
-    17a0:	afa30010 	sw	v1,16(sp)
-    17a4:	14a0000e 	bnez	a1,17e0 <_ZN7float327subSigsEjjb.1521+0x98>
-    17a8:	00000000 	nop
-    17ac:	240500ff 	li	a1,255
-    17b0:	12050044 	beq	s0,a1,18c4 <_ZN7float327subSigsEjjb.1521+0x17c>
-    17b4:	2402ffff 	li	v0,-1
-    17b8:	16000003 	bnez	s0,17c8 <_ZN7float327subSigsEjjb.1521+0x80>
-    17bc:	0064102b 	sltu	v0,v1,a0
-    17c0:	24110001 	li	s1,1
-    17c4:	24100001 	li	s0,1
-    17c8:	14400030 	bnez	v0,188c <_ZN7float327subSigsEjjb.1521+0x144>
-    17cc:	0083182b 	sltu	v1,a0,v1
-    17d0:	1060003c 	beqz	v1,18c4 <_ZN7float327subSigsEjjb.1521+0x17c>
-    17d4:	00001021 	move	v0,zero
-    17d8:	0800060d 	j	1834 <_ZN7float327subSigsEjjb.1521+0xec>
-    17dc:	00000000 	nop
-    17e0:	240200ff 	li	v0,255
-    17e4:	16220005 	bne	s1,v0,17fc <_ZN7float327subSigsEjjb.1521+0xb4>
-    17e8:	38c20001 	xori	v0,a2,0x1
-    17ec:	000217c0 	sll	v0,v0,0x1f
-    17f0:	3c037f80 	lui	v1,0x7f80
-    17f4:	08000631 	j	18c4 <_ZN7float327subSigsEjjb.1521+0x17c>
-    17f8:	00431021 	addu	v0,v0,v1
-    17fc:	16000003 	bnez	s0,180c <_ZN7float327subSigsEjjb.1521+0xc4>
-    1800:	3c034000 	lui	v1,0x4000
-    1804:	08000605 	j	1814 <_ZN7float327subSigsEjjb.1521+0xcc>
-    1808:	24a50001 	addiu	a1,a1,1
-    180c:	00832025 	or	a0,a0,v1
-    1810:	afa40014 	sw	a0,20(sp)
-    1814:	8fa40014 	lw	a0,20(sp)
-    1818:	00052823 	negu	a1,a1
-    181c:	0c000526 	jal	1498 <_ZN7float3219shift32RightJammingEjiPj.1536>
-    1820:	27a60014 	addiu	a2,sp,20
-    1824:	8fa30010 	lw	v1,16(sp)
-    1828:	3c024000 	lui	v0,0x4000
-    182c:	00621025 	or	v0,v1,v0
-    1830:	afa20010 	sw	v0,16(sp)
-    1834:	8fa20014 	lw	v0,20(sp)
-    1838:	8fb30010 	lw	s3,16(sp)
-    183c:	3a520001 	xori	s2,s2,0x1
-    1840:	02629823 	subu	s3,s3,v0
-    1844:	08000627 	j	189c <_ZN7float327subSigsEjjb.1521+0x154>
-    1848:	02208021 	move	s0,s1
-    184c:	240400ff 	li	a0,255
-    1850:	1204001c 	beq	s0,a0,18c4 <_ZN7float327subSigsEjjb.1521+0x17c>
-    1854:	00000000 	nop
-    1858:	16200003 	bnez	s1,1868 <_ZN7float327subSigsEjjb.1521+0x120>
-    185c:	3c024000 	lui	v0,0x4000
-    1860:	0800061c 	j	1870 <_ZN7float327subSigsEjjb.1521+0x128>
-    1864:	24a5ffff 	addiu	a1,a1,-1
-    1868:	00621825 	or	v1,v1,v0
-    186c:	afa30010 	sw	v1,16(sp)
-    1870:	8fa40010 	lw	a0,16(sp)
-    1874:	0c000526 	jal	1498 <_ZN7float3219shift32RightJammingEjiPj.1536>
-    1878:	27a60010 	addiu	a2,sp,16
-    187c:	8fa30014 	lw	v1,20(sp)
-    1880:	3c024000 	lui	v0,0x4000
-    1884:	00621025 	or	v0,v1,v0
-    1888:	afa20014 	sw	v0,20(sp)
-    188c:	8fa20010 	lw	v0,16(sp)
-    1890:	8fb30014 	lw	s3,20(sp)
-    1894:	00000000 	nop
-    1898:	02629823 	subu	s3,s3,v0
-    189c:	0c0005bb 	jal	16ec <_ZN7float3219countLeadingZeros32Ej.1541>
-    18a0:	02602021 	move	a0,s3
-    18a4:	2442ffff 	addiu	v0,v0,-1
-    18a8:	00023600 	sll	a2,v0,0x18
-    18ac:	00063603 	sra	a2,a2,0x18
-    18b0:	2605ffff 	addiu	a1,s0,-1
-    18b4:	00a62823 	subu	a1,a1,a2
-    18b8:	02402021 	move	a0,s2
-    18bc:	0c000532 	jal	14c8 <_ZN7float3212roundAndPackEbij.1531>
-    18c0:	00d33004 	sllv	a2,s3,a2
-    18c4:	8fbf002c 	lw	ra,44(sp)
-    18c8:	8fb30028 	lw	s3,40(sp)
-    18cc:	8fb20024 	lw	s2,36(sp)
-    18d0:	8fb10020 	lw	s1,32(sp)
-    18d4:	8fb0001c 	lw	s0,28(sp)
-    18d8:	03e00008 	jr	ra
-    18dc:	27bd0030 	addiu	sp,sp,48
-
-000018e0 <Radio::Digital::XBeeReadIdleTask::start()>:
-    18e0:	8c020018 	lw	v0,24(zero)
-    18e4:	03e00008 	jr	ra
-    18e8:	00000000 	nop
-
-000018ec <_ZN6System3Bus3I2CL2ioEcNS1_6IoTypeE.isra.0.2309.1577>:
-    18ec:	3c020002 	lui	v0,0x2
-    18f0:	00822025 	or	a0,a0,v0
-    18f4:	ac04000c 	sw	a0,12(zero)
-    18f8:	8c02000c 	lw	v0,12(zero)
-    18fc:	00000000 	nop
-    1900:	0440fffd 	bltz	v0,18f8 <_ZN6System3Bus3I2CL2ioEcNS1_6IoTypeE.isra.0.2309.1577+0xc>
-    1904:	00000000 	nop
-    1908:	8c02000c 	lw	v0,12(zero)
-    190c:	03e00008 	jr	ra
-    1910:	00000000 	nop
-
-00001914 <_ZN6System3Bus3I2C4readEv.1575>:
-    1914:	27bdffe8 	addiu	sp,sp,-24
-    1918:	afbf0014 	sw	ra,20(sp)
-    191c:	0c00063b 	jal	18ec <_ZN6System3Bus3I2CL2ioEcNS1_6IoTypeE.isra.0.2309.1577>
-    1920:	2404ffff 	li	a0,-1
-    1924:	8fbf0014 	lw	ra,20(sp)
-    1928:	00021600 	sll	v0,v0,0x18
-    192c:	00021603 	sra	v0,v0,0x18
-    1930:	03e00008 	jr	ra
-    1934:	27bd0018 	addiu	sp,sp,24
-
-00001938 <_ZN4MathL11sign_extendEi.2260.1580>:
-    1938:	3083ffff 	andi	v1,a0,0xffff
-    193c:	00031bc3 	sra	v1,v1,0xf
-    1940:	10600003 	beqz	v1,1950 <_ZN4MathL11sign_extendEi.2260.1580+0x18>
-    1944:	00801021 	move	v0,a0
-    1948:	3c03ffff 	lui	v1,0xffff
-    194c:	00831025 	or	v0,a0,v1
-    1950:	03e00008 	jr	ra
-    1954:	00000000 	nop
-
-00001958 <float32::operator*(float32 const&) const>:
-    1958:	27bdffd0 	addiu	sp,sp,-48
-    195c:	8ca20000 	lw	v0,0(a1)
-    1960:	afb3001c 	sw	s3,28(sp)
-    1964:	afb20018 	sw	s2,24(sp)
-    1968:	3c13007f 	lui	s3,0x7f
-    196c:	8cd20000 	lw	s2,0(a2)
-    1970:	afb40020 	sw	s4,32(sp)
-    1974:	3673ffff 	ori	s3,s3,0xffff
-    1978:	0002a5c2 	srl	s4,v0,0x17
-    197c:	afb50024 	sw	s5,36(sp)
-    1980:	afb10014 	sw	s1,20(sp)
-    1984:	0012adc2 	srl	s5,s2,0x17
-    1988:	02538824 	and	s1,s2,s3
-    198c:	329400ff 	andi	s4,s4,0xff
-    1990:	00529026 	xor	s2,v0,s2
-    1994:	240300ff 	li	v1,255
-    1998:	afb00010 	sw	s0,16(sp)
-    199c:	afbf002c 	sw	ra,44(sp)
-    19a0:	afb60028 	sw	s6,40(sp)
-    19a4:	00808021 	move	s0,a0
-    19a8:	32b500ff 	andi	s5,s5,0xff
-    19ac:	16830006 	bne	s4,v1,19c8 <float32::operator*(float32 const&) const+0x70>
-    19b0:	001297c2 	srl	s2,s2,0x1f
-    19b4:	02b18825 	or	s1,s5,s1
-    19b8:	12200039 	beqz	s1,1aa0 <float32::operator*(float32 const&) const+0x148>
-    19bc:	2402ffff 	li	v0,-1
-    19c0:	08000675 	j	19d4 <float32::operator*(float32 const&) const+0x7c>
-    19c4:	001297c0 	sll	s2,s2,0x1f
-    19c8:	16a30005 	bne	s5,v1,19e0 <float32::operator*(float32 const&) const+0x88>
-    19cc:	02a0b021 	move	s6,s5
-    19d0:	001297c0 	sll	s2,s2,0x1f
-    19d4:	3c027f80 	lui	v0,0x7f80
-    19d8:	0800068b 	j	1a2c <float32::operator*(float32 const&) const+0xd4>
-    19dc:	02429021 	addu	s2,s2,v0
-    19e0:	1680000d 	bnez	s4,1a18 <float32::operator*(float32 const&) const+0xc0>
-    19e4:	00539824 	and	s3,v0,s3
-    19e8:	16600003 	bnez	s3,19f8 <float32::operator*(float32 const&) const+0xa0>
-    19ec:	00000000 	nop
-    19f0:	0800068b 	j	1a2c <float32::operator*(float32 const&) const+0xd4>
-    19f4:	001297c0 	sll	s2,s2,0x1f
-    19f8:	0c0005bb 	jal	16ec <_ZN7float3219countLeadingZeros32Ej.1541>
-    19fc:	02602021 	move	a0,s3
-    1a00:	2442fff8 	addiu	v0,v0,-8
-    1a04:	0002a600 	sll	s4,v0,0x18
-    1a08:	0014a603 	sra	s4,s4,0x18
-    1a0c:	24020001 	li	v0,1
-    1a10:	02939804 	sllv	s3,s3,s4
-    1a14:	0054a023 	subu	s4,v0,s4
-    1a18:	16a0000f 	bnez	s5,1a58 <float32::operator*(float32 const&) const+0x100>
-    1a1c:	3c020080 	lui	v0,0x80
-    1a20:	16200004 	bnez	s1,1a34 <float32::operator*(float32 const&) const+0xdc>
-    1a24:	00000000 	nop
-    1a28:	001297c0 	sll	s2,s2,0x1f
-    1a2c:	080006a9 	j	1aa4 <float32::operator*(float32 const&) const+0x14c>
-    1a30:	ae120000 	sw	s2,0(s0)
-    1a34:	0c0005bb 	jal	16ec <_ZN7float3219countLeadingZeros32Ej.1541>
-    1a38:	02202021 	move	a0,s1
-    1a3c:	2442fff8 	addiu	v0,v0,-8
-    1a40:	0002b600 	sll	s6,v0,0x18
-    1a44:	0016b603 	sra	s6,s6,0x18
-    1a48:	24020001 	li	v0,1
-    1a4c:	02d18804 	sllv	s1,s1,s6
-    1a50:	0056b023 	subu	s6,v0,s6
-    1a54:	3c020080 	lui	v0,0x80
-    1a58:	02629825 	or	s3,s3,v0
-    1a5c:	02223025 	or	a2,s1,v0
-    1a60:	00063200 	sll	a2,a2,0x8
-    1a64:	001399c0 	sll	s3,s3,0x7
-    1a68:	00d30019 	multu	a2,s3
-    1a6c:	00003812 	mflo	a3
-    1a70:	0007102b 	sltu	v0,zero,a3
-    1a74:	00003010 	mfhi	a2
-    1a78:	00463025 	or	a2,v0,a2
-    1a7c:	00061040 	sll	v0,a2,0x1
-    1a80:	04410003 	bgez	v0,1a90 <float32::operator*(float32 const&) const+0x138>
-    1a84:	02962821 	addu	a1,s4,s6
-    1a88:	080006a6 	j	1a98 <float32::operator*(float32 const&) const+0x140>
-    1a8c:	24a5ff81 	addiu	a1,a1,-127
-    1a90:	24a5ff80 	addiu	a1,a1,-128
-    1a94:	00403021 	move	a2,v0
-    1a98:	0c000532 	jal	14c8 <_ZN7float3212roundAndPackEbij.1531>
-    1a9c:	02402021 	move	a0,s2
-    1aa0:	ae020000 	sw	v0,0(s0)
-    1aa4:	8fbf002c 	lw	ra,44(sp)
-    1aa8:	02001021 	move	v0,s0
-    1aac:	8fb60028 	lw	s6,40(sp)
-    1ab0:	8fb50024 	lw	s5,36(sp)
-    1ab4:	8fb40020 	lw	s4,32(sp)
-    1ab8:	8fb3001c 	lw	s3,28(sp)
-    1abc:	8fb20018 	lw	s2,24(sp)
-    1ac0:	8fb10014 	lw	s1,20(sp)
-    1ac4:	8fb00010 	lw	s0,16(sp)
-    1ac8:	03e00008 	jr	ra
-    1acc:	27bd0030 	addiu	sp,sp,48
-
-00001ad0 <float32::operator*=(float32 const&)>:
-    1ad0:	27bdffe0 	addiu	sp,sp,-32
-    1ad4:	afb00018 	sw	s0,24(sp)
-    1ad8:	00808021 	move	s0,a0
-    1adc:	00a03021 	move	a2,a1
-    1ae0:	27a40010 	addiu	a0,sp,16
-    1ae4:	afbf001c 	sw	ra,28(sp)
-    1ae8:	0c000656 	jal	1958 <float32::operator*(float32 const&) const>
-    1aec:	02002821 	move	a1,s0
-    1af0:	8fa20010 	lw	v0,16(sp)
-    1af4:	8fbf001c 	lw	ra,28(sp)
-    1af8:	ae020000 	sw	v0,0(s0)
-    1afc:	02001021 	move	v0,s0
-    1b00:	8fb00018 	lw	s0,24(sp)
-    1b04:	03e00008 	jr	ra
-    1b08:	27bd0020 	addiu	sp,sp,32
-
-00001b0c <float32::float32(int)>:
-    1b0c:	27bdffe0 	addiu	sp,sp,-32
-    1b10:	afb10014 	sw	s1,20(sp)
-    1b14:	afbf001c 	sw	ra,28(sp)
-    1b18:	afb20018 	sw	s2,24(sp)
-    1b1c:	afb00010 	sw	s0,16(sp)
-    1b20:	14a00003 	bnez	a1,1b30 <float32::float32(int)+0x24>
-    1b24:	00808821 	move	s1,a0
-    1b28:	080006df 	j	1b7c <float32::float32(int)+0x70>
-    1b2c:	ac800000 	sw	zero,0(a0)
-    1b30:	3c028000 	lui	v0,0x8000
-    1b34:	14a20003 	bne	a1,v0,1b44 <float32::float32(int)+0x38>
-    1b38:	000597c2 	srl	s2,a1,0x1f
-    1b3c:	080006de 	j	1b78 <float32::float32(int)+0x6c>
-    1b40:	3c02cf00 	lui	v0,0xcf00
-    1b44:	12400002 	beqz	s2,1b50 <float32::float32(int)+0x44>
-    1b48:	00a08021 	move	s0,a1
-    1b4c:	00058023 	negu	s0,a1
-    1b50:	0c0005bb 	jal	16ec <_ZN7float3219countLeadingZeros32Ej.1541>
-    1b54:	02002021 	move	a0,s0
-    1b58:	2442ffff 	addiu	v0,v0,-1
-    1b5c:	00023600 	sll	a2,v0,0x18
-    1b60:	00063603 	sra	a2,a2,0x18
-    1b64:	2405009c 	li	a1,156
-    1b68:	00a62823 	subu	a1,a1,a2
-    1b6c:	02402021 	move	a0,s2
-    1b70:	0c000532 	jal	14c8 <_ZN7float3212roundAndPackEbij.1531>
-    1b74:	00d03004 	sllv	a2,s0,a2
-    1b78:	ae220000 	sw	v0,0(s1)
-    1b7c:	8fbf001c 	lw	ra,28(sp)
-    1b80:	8fb20018 	lw	s2,24(sp)
-    1b84:	8fb10014 	lw	s1,20(sp)
-    1b88:	8fb00010 	lw	s0,16(sp)
-    1b8c:	03e00008 	jr	ra
-    1b90:	27bd0020 	addiu	sp,sp,32
-
-00001b94 <_ZN6System8Registry8instanceEv.local.1>:
-    1b94:	3c028000 	lui	v0,0x8000
-    1b98:	80430140 	lb	v1,320(v0)
-    1b9c:	00402021 	move	a0,v0
-    1ba0:	14600010 	bnez	v1,1be4 <_ZN6System8Registry8instanceEv.local.1+0x50>
-    1ba4:	3c028000 	lui	v0,0x8000
-    1ba8:	3c038000 	lui	v1,0x8000
-    1bac:	24450148 	addiu	a1,v0,328
-    1bb0:	24630158 	addiu	v1,v1,344
-    1bb4:	24a50074 	addiu	a1,a1,116
-    1bb8:	ac600000 	sw	zero,0(v1)
-    1bbc:	24630004 	addiu	v1,v1,4
-    1bc0:	1465fffd 	bne	v1,a1,1bb8 <_ZN6System8Registry8instanceEv.local.1+0x24>
+00001bb4 <CODE_ENDS>:
+    1bb4:	00000000 	nop
+    1bb8:	00000000 	nop
+    1bbc:	00000000 	nop
+    1bc0:	00000000 	nop
     1bc4:	00000000 	nop
-    1bc8:	24430148 	addiu	v1,v0,328
-    1bcc:	ac600004 	sw	zero,4(v1)
-    1bd0:	ac600008 	sw	zero,8(v1)
-    1bd4:	ac60000c 	sw	zero,12(v1)
-    1bd8:	24030001 	li	v1,1
-    1bdc:	ac400148 	sw	zero,328(v0)
-    1be0:	a0830140 	sb	v1,320(a0)
-    1be4:	03e00008 	jr	ra
-    1be8:	24420148 	addiu	v0,v0,328
-
-00001bec <Sensors::IMU::MPU6050::updateAccelerometerAndGyro()>:
-    1bec:	3c020004 	lui	v0,0x4
-    1bf0:	244200ff 	addiu	v0,v0,255
-    1bf4:	ac02000c 	sw	v0,12(zero)
-    1bf8:	8c02000c 	lw	v0,12(zero)
+    1bc8:	00000000 	nop
+    1bcc:	00000000 	nop
+    1bd0:	00000000 	nop
+    1bd4:	00000000 	nop
+    1bd8:	00000000 	nop
+    1bdc:	00000000 	nop
+    1be0:	00000000 	nop
+    1be4:	00000000 	nop
+    1be8:	00000000 	nop
+    1bec:	00000000 	nop
+    1bf0:	00000000 	nop
+    1bf4:	00000000 	nop
+    1bf8:	00000000 	nop
     1bfc:	00000000 	nop
-    1c00:	0440fffd 	bltz	v0,1bf8 <Sensors::IMU::MPU6050::updateAccelerometerAndGyro()+0xc>
-    1c04:	2404ffd0 	li	a0,-48
-    1c08:	27bdffc0 	addiu	sp,sp,-64
-    1c0c:	afbf003c 	sw	ra,60(sp)
-    1c10:	afbe0038 	sw	s8,56(sp)
-    1c14:	afb70034 	sw	s7,52(sp)
-    1c18:	afb60030 	sw	s6,48(sp)
-    1c1c:	afb5002c 	sw	s5,44(sp)
-    1c20:	afb40028 	sw	s4,40(sp)
-    1c24:	afb30024 	sw	s3,36(sp)
-    1c28:	afb20020 	sw	s2,32(sp)
-    1c2c:	afb1001c 	sw	s1,28(sp)
-    1c30:	0c00063b 	jal	18ec <_ZN6System3Bus3I2CL2ioEcNS1_6IoTypeE.isra.0.2309.1577>
-    1c34:	afb00018 	sw	s0,24(sp)
-    1c38:	0c00063b 	jal	18ec <_ZN6System3Bus3I2CL2ioEcNS1_6IoTypeE.isra.0.2309.1577>
-    1c3c:	2404003b 	li	a0,59
-    1c40:	3c020001 	lui	v0,0x1
-    1c44:	244200ff 	addiu	v0,v0,255
-    1c48:	ac02000c 	sw	v0,12(zero)
-    1c4c:	8c02000c 	lw	v0,12(zero)
+    1c00:	00000000 	nop
+    1c04:	00000000 	nop
+    1c08:	00000000 	nop
+    1c0c:	00000000 	nop
+    1c10:	00000000 	nop
+    1c14:	00000000 	nop
+    1c18:	00000000 	nop
+    1c1c:	00000000 	nop
+    1c20:	00000000 	nop
+    1c24:	00000000 	nop
+    1c28:	00000000 	nop
+    1c2c:	00000000 	nop
+    1c30:	00000000 	nop
+    1c34:	00000000 	nop
+    1c38:	00000000 	nop
+    1c3c:	00000000 	nop
+    1c40:	00000000 	nop
+    1c44:	00000000 	nop
+    1c48:	00000000 	nop
+    1c4c:	00000000 	nop
     1c50:	00000000 	nop
-    1c54:	0440fffd 	bltz	v0,1c4c <Sensors::IMU::MPU6050::updateAccelerometerAndGyro()+0x60>
-    1c58:	3c020004 	lui	v0,0x4
-    1c5c:	244200ff 	addiu	v0,v0,255
-    1c60:	ac02000c 	sw	v0,12(zero)
-    1c64:	8c02000c 	lw	v0,12(zero)
+    1c54:	00000000 	nop
+    1c58:	00000000 	nop
+    1c5c:	00000000 	nop
+    1c60:	00000000 	nop
+    1c64:	00000000 	nop
     1c68:	00000000 	nop
-    1c6c:	0440fffd 	bltz	v0,1c64 <Sensors::IMU::MPU6050::updateAccelerometerAndGyro()+0x78>
+    1c6c:	00000000 	nop
     1c70:	00000000 	nop
-    1c74:	0c00063b 	jal	18ec <_ZN6System3Bus3I2CL2ioEcNS1_6IoTypeE.isra.0.2309.1577>
-    1c78:	2404ffd1 	li	a0,-47
-    1c7c:	0c000645 	jal	1914 <_ZN6System3Bus3I2C4readEv.1575>
+    1c74:	00000000 	nop
+    1c78:	00000000 	nop
+    1c7c:	00000000 	nop
     1c80:	00000000 	nop
-    1c84:	0c000645 	jal	1914 <_ZN6System3Bus3I2C4readEv.1575>
-    1c88:	afa20010 	sw	v0,16(sp)
-    1c8c:	0c000645 	jal	1914 <_ZN6System3Bus3I2C4readEv.1575>
-    1c90:	afa20014 	sw	v0,20(sp)
-    1c94:	0c000645 	jal	1914 <_ZN6System3Bus3I2C4readEv.1575>
-    1c98:	0040f021 	move	s8,v0
-    1c9c:	0c000645 	jal	1914 <_ZN6System3Bus3I2C4readEv.1575>
-    1ca0:	0040b821 	move	s7,v0
-    1ca4:	0c000645 	jal	1914 <_ZN6System3Bus3I2C4readEv.1575>
-    1ca8:	0040b021 	move	s6,v0
-    1cac:	0c000645 	jal	1914 <_ZN6System3Bus3I2C4readEv.1575>
-    1cb0:	0040a821 	move	s5,v0
-    1cb4:	0c000645 	jal	1914 <_ZN6System3Bus3I2C4readEv.1575>
+    1c84:	00000000 	nop
+    1c88:	00000000 	nop
+    1c8c:	00000000 	nop
+    1c90:	00000000 	nop
+    1c94:	00000000 	nop
+    1c98:	00000000 	nop
+    1c9c:	00000000 	nop
+    1ca0:	00000000 	nop
+    1ca4:	00000000 	nop
+    1ca8:	00000000 	nop
+    1cac:	00000000 	nop
+    1cb0:	00000000 	nop
+    1cb4:	00000000 	nop
     1cb8:	00000000 	nop
-    1cbc:	0c000645 	jal	1914 <_ZN6System3Bus3I2C4readEv.1575>
+    1cbc:	00000000 	nop
     1cc0:	00000000 	nop
-    1cc4:	0c000645 	jal	1914 <_ZN6System3Bus3I2C4readEv.1575>
-    1cc8:	0040a021 	move	s4,v0
-    1ccc:	0c000645 	jal	1914 <_ZN6System3Bus3I2C4readEv.1575>
-    1cd0:	00409821 	move	s3,v0
-    1cd4:	0c000645 	jal	1914 <_ZN6System3Bus3I2C4readEv.1575>
-    1cd8:	00409021 	move	s2,v0
-    1cdc:	0c000645 	jal	1914 <_ZN6System3Bus3I2C4readEv.1575>
-    1ce0:	00408821 	move	s1,v0
-    1ce4:	0c000645 	jal	1914 <_ZN6System3Bus3I2C4readEv.1575>
-    1ce8:	00408021 	move	s0,v0
-    1cec:	00402821 	move	a1,v0
-    1cf0:	3c020001 	lui	v0,0x1
-    1cf4:	244200ff 	addiu	v0,v0,255
-    1cf8:	8fa40010 	lw	a0,16(sp)
-    1cfc:	8fa30014 	lw	v1,20(sp)
-    1d00:	ac02000c 	sw	v0,12(zero)
-    1d04:	8c02000c 	lw	v0,12(zero)
+    1cc4:	00000000 	nop
+    1cc8:	00000000 	nop
+    1ccc:	00000000 	nop
+    1cd0:	00000000 	nop
+    1cd4:	00000000 	nop
+    1cd8:	00000000 	nop
+    1cdc:	00000000 	nop
+    1ce0:	00000000 	nop
+    1ce4:	00000000 	nop
+    1ce8:	00000000 	nop
+    1cec:	00000000 	nop
+    1cf0:	00000000 	nop
+    1cf4:	00000000 	nop
+    1cf8:	00000000 	nop
+    1cfc:	00000000 	nop
+    1d00:	00000000 	nop
+    1d04:	00000000 	nop
     1d08:	00000000 	nop
-    1d0c:	0440fffd 	bltz	v0,1d04 <Sensors::IMU::MPU6050::updateAccelerometerAndGyro()+0x118>
+    1d0c:	00000000 	nop
     1d10:	00000000 	nop
-    1d14:	00042200 	sll	a0,a0,0x8
-    1d18:	00832025 	or	a0,a0,v1
-    1d1c:	0c00064e 	jal	1938 <_ZN4MathL11sign_extendEi.2260.1580>
-    1d20:	afa50010 	sw	a1,16(sp)
-    1d24:	001e2200 	sll	a0,s8,0x8
-    1d28:	00972025 	or	a0,a0,s7
-    1d2c:	0c00064e 	jal	1938 <_ZN4MathL11sign_extendEi.2260.1580>
-    1d30:	afa20014 	sw	v0,20(sp)
-    1d34:	00162200 	sll	a0,s6,0x8
-    1d38:	00952025 	or	a0,a0,s5
-    1d3c:	0c00064e 	jal	1938 <_ZN4MathL11sign_extendEi.2260.1580>
-    1d40:	0040b821 	move	s7,v0
-    1d44:	00142200 	sll	a0,s4,0x8
-    1d48:	00932025 	or	a0,a0,s3
-    1d4c:	0c00064e 	jal	1938 <_ZN4MathL11sign_extendEi.2260.1580>
-    1d50:	0040a821 	move	s5,v0
-    1d54:	00122200 	sll	a0,s2,0x8
-    1d58:	00912025 	or	a0,a0,s1
-    1d5c:	0c00064e 	jal	1938 <_ZN4MathL11sign_extendEi.2260.1580>
-    1d60:	00409821 	move	s3,v0
-    1d64:	8fa50010 	lw	a1,16(sp)
-    1d68:	00102200 	sll	a0,s0,0x8
-    1d6c:	00852025 	or	a0,a0,a1
-    1d70:	0c00064e 	jal	1938 <_ZN4MathL11sign_extendEi.2260.1580>
-    1d74:	00408821 	move	s1,v0
-    1d78:	0c0006e5 	jal	1b94 <_ZN6System8Registry8instanceEv.local.1>
-    1d7c:	00408021 	move	s0,v0
-    1d80:	8fa30014 	lw	v1,20(sp)
-    1d84:	0c0006e5 	jal	1b94 <_ZN6System8Registry8instanceEv.local.1>
-    1d88:	ac430010 	sw	v1,16(v0)
-    1d8c:	0c0006e5 	jal	1b94 <_ZN6System8Registry8instanceEv.local.1>
-    1d90:	ac570014 	sw	s7,20(v0)
-    1d94:	0c0006e5 	jal	1b94 <_ZN6System8Registry8instanceEv.local.1>
-    1d98:	ac550018 	sw	s5,24(v0)
-    1d9c:	0c0006e5 	jal	1b94 <_ZN6System8Registry8instanceEv.local.1>
-    1da0:	ac530028 	sw	s3,40(v0)
-    1da4:	0c0006e5 	jal	1b94 <_ZN6System8Registry8instanceEv.local.1>
-    1da8:	ac51002c 	sw	s1,44(v0)
-    1dac:	8fbf003c 	lw	ra,60(sp)
-    1db0:	ac500030 	sw	s0,48(v0)
-    1db4:	8fbe0038 	lw	s8,56(sp)
-    1db8:	8fb70034 	lw	s7,52(sp)
-    1dbc:	8fb60030 	lw	s6,48(sp)
-    1dc0:	8fb5002c 	lw	s5,44(sp)
-    1dc4:	8fb40028 	lw	s4,40(sp)
-    1dc8:	8fb30024 	lw	s3,36(sp)
-    1dcc:	8fb20020 	lw	s2,32(sp)
-    1dd0:	8fb1001c 	lw	s1,28(sp)
-    1dd4:	8fb00018 	lw	s0,24(sp)
-    1dd8:	03e00008 	jr	ra
-    1ddc:	27bd0040 	addiu	sp,sp,64
-
-00001de0 <Control::StabilizationAndEngineUpdateTask::start()>:
-    1de0:	27bdffd8 	addiu	sp,sp,-40
-    1de4:	afbf0024 	sw	ra,36(sp)
-    1de8:	afb00014 	sw	s0,20(sp)
-    1dec:	afb30020 	sw	s3,32(sp)
-    1df0:	afb2001c 	sw	s2,28(sp)
-    1df4:	0c0006fb 	jal	1bec <Sensors::IMU::MPU6050::updateAccelerometerAndGyro()>
-    1df8:	afb10018 	sw	s1,24(sp)
-    1dfc:	0c0006e5 	jal	1b94 <_ZN6System8Registry8instanceEv.local.1>
+    1d14:	00000000 	nop
+    1d18:	00000000 	nop
+    1d1c:	00000000 	nop
+    1d20:	00000000 	nop
+    1d24:	00000000 	nop
+    1d28:	00000000 	nop
+    1d2c:	00000000 	nop
+    1d30:	00000000 	nop
+    1d34:	00000000 	nop
+    1d38:	00000000 	nop
+    1d3c:	00000000 	nop
+    1d40:	00000000 	nop
+    1d44:	00000000 	nop
+    1d48:	00000000 	nop
+    1d4c:	00000000 	nop
+    1d50:	00000000 	nop
+    1d54:	00000000 	nop
+    1d58:	00000000 	nop
+    1d5c:	00000000 	nop
+    1d60:	00000000 	nop
+    1d64:	00000000 	nop
+    1d68:	00000000 	nop
+    1d6c:	00000000 	nop
+    1d70:	00000000 	nop
+    1d74:	00000000 	nop
+    1d78:	00000000 	nop
+    1d7c:	00000000 	nop
+    1d80:	00000000 	nop
+    1d84:	00000000 	nop
+    1d88:	00000000 	nop
+    1d8c:	00000000 	nop
+    1d90:	00000000 	nop
+    1d94:	00000000 	nop
+    1d98:	00000000 	nop
+    1d9c:	00000000 	nop
+    1da0:	00000000 	nop
+    1da4:	00000000 	nop
+    1da8:	00000000 	nop
+    1dac:	00000000 	nop
+    1db0:	00000000 	nop
+    1db4:	00000000 	nop
+    1db8:	00000000 	nop
+    1dbc:	00000000 	nop
+    1dc0:	00000000 	nop
+    1dc4:	00000000 	nop
+    1dc8:	00000000 	nop
+    1dcc:	00000000 	nop
+    1dd0:	00000000 	nop
+    1dd4:	00000000 	nop
+    1dd8:	00000000 	nop
+    1ddc:	00000000 	nop
+    1de0:	00000000 	nop
+    1de4:	00000000 	nop
+    1de8:	00000000 	nop
+    1dec:	00000000 	nop
+    1df0:	00000000 	nop
+    1df4:	00000000 	nop
+    1df8:	00000000 	nop
+    1dfc:	00000000 	nop
     1e00:	00000000 	nop
-    1e04:	8c500048 	lw	s0,72(v0)
+    1e04:	00000000 	nop
     1e08:	00000000 	nop
-    1e0c:	2e0200c9 	sltiu	v0,s0,201
-    1e10:	1440000f 	bnez	v0,1e50 <Control::StabilizationAndEngineUpdateTask::start()+0x70>
+    1e0c:	00000000 	nop
+    1e10:	00000000 	nop
     1e14:	00000000 	nop
-    1e18:	0c0006e5 	jal	1b94 <_ZN6System8Registry8instanceEv.local.1>
+    1e18:	00000000 	nop
     1e1c:	00000000 	nop
-    1e20:	8c530058 	lw	s3,88(v0)
-    1e24:	0c0006e5 	jal	1b94 <_ZN6System8Registry8instanceEv.local.1>
-    1e28:	02139821 	addu	s3,s0,s3
-    1e2c:	8c51005c 	lw	s1,92(v0)
-    1e30:	0c0006e5 	jal	1b94 <_ZN6System8Registry8instanceEv.local.1>
-    1e34:	02118823 	subu	s1,s0,s1
-    1e38:	8c520058 	lw	s2,88(v0)
-    1e3c:	0c0006e5 	jal	1b94 <_ZN6System8Registry8instanceEv.local.1>
-    1e40:	02129023 	subu	s2,s0,s2
-    1e44:	8c42005c 	lw	v0,92(v0)
-    1e48:	08000797 	j	1e5c <Control::StabilizationAndEngineUpdateTask::start()+0x7c>
-    1e4c:	02028021 	addu	s0,s0,v0
-    1e50:	02009021 	move	s2,s0
-    1e54:	02008821 	move	s1,s0
-    1e58:	02009821 	move	s3,s0
-    1e5c:	00139c00 	sll	s3,s3,0x10
-    1e60:	00118c00 	sll	s1,s1,0x10
-    1e64:	8fbf0024 	lw	ra,36(sp)
-    1e68:	02729025 	or	s2,s3,s2
-    1e6c:	02308025 	or	s0,s1,s0
-    1e70:	ac12001c 	sw	s2,28(zero)
-    1e74:	8fb30020 	lw	s3,32(sp)
-    1e78:	ac100020 	sw	s0,32(zero)
-    1e7c:	8fb2001c 	lw	s2,28(sp)
-    1e80:	8fb10018 	lw	s1,24(sp)
-    1e84:	8fb00014 	lw	s0,20(sp)
-    1e88:	03e00008 	jr	ra
-    1e8c:	27bd0028 	addiu	sp,sp,40
-
-00001e90 <System::Tasking::TaskScheduler::selectNextTask(unsigned int)>:
-    1e90:	27bdfff8 	addiu	sp,sp,-8
-    1e94:	24820004 	addiu	v0,a0,4
-    1e98:	afa20000 	sw	v0,0(sp)
-    1e9c:	24820008 	addiu	v0,a0,8
-    1ea0:	afa20004 	sw	v0,4(sp)
-    1ea4:	00001821 	move	v1,zero
-    1ea8:	00004021 	move	t0,zero
-    1eac:	2409ffff 	li	t1,-1
-    1eb0:	00003021 	move	a2,zero
-    1eb4:	240b0008 	li	t3,8
-    1eb8:	03a31021 	addu	v0,sp,v1
-    1ebc:	8c420000 	lw	v0,0(v0)
+    1e20:	00000000 	nop
+    1e24:	00000000 	nop
+    1e28:	00000000 	nop
+    1e2c:	00000000 	nop
+    1e30:	00000000 	nop
+    1e34:	00000000 	nop
+    1e38:	00000000 	nop
+    1e3c:	00000000 	nop
+    1e40:	00000000 	nop
+    1e44:	00000000 	nop
+    1e48:	00000000 	nop
+    1e4c:	00000000 	nop
+    1e50:	00000000 	nop
+    1e54:	00000000 	nop
+    1e58:	00000000 	nop
+    1e5c:	00000000 	nop
+    1e60:	00000000 	nop
+    1e64:	00000000 	nop
+    1e68:	00000000 	nop
+    1e6c:	00000000 	nop
+    1e70:	00000000 	nop
+    1e74:	00000000 	nop
+    1e78:	00000000 	nop
+    1e7c:	00000000 	nop
+    1e80:	00000000 	nop
+    1e84:	00000000 	nop
+    1e88:	00000000 	nop
+    1e8c:	00000000 	nop
+    1e90:	00000000 	nop
+    1e94:	00000000 	nop
+    1e98:	00000000 	nop
+    1e9c:	00000000 	nop
+    1ea0:	00000000 	nop
+    1ea4:	00000000 	nop
+    1ea8:	00000000 	nop
+    1eac:	00000000 	nop
+    1eb0:	00000000 	nop
+    1eb4:	00000000 	nop
+    1eb8:	00000000 	nop
+    1ebc:	00000000 	nop
     1ec0:	00000000 	nop
-    1ec4:	8c470000 	lw	a3,0(v0)
+    1ec4:	00000000 	nop
     1ec8:	00000000 	nop
-    1ecc:	10e0000e 	beqz	a3,1f08 <System::Tasking::TaskScheduler::selectNextTask(unsigned int)+0x78>
-    1ed0:	00e01021 	move	v0,a3
-    1ed4:	8c4a0004 	lw	t2,4(v0)
+    1ecc:	00000000 	nop
+    1ed0:	00000000 	nop
+    1ed4:	00000000 	nop
     1ed8:	00000000 	nop
-    1edc:	01455023 	subu	t2,t2,a1
-    1ee0:	0149602b 	sltu	t4,t2,t1
-    1ee4:	11800004 	beqz	t4,1ef8 <System::Tasking::TaskScheduler::selectNextTask(unsigned int)+0x68>
+    1edc:	00000000 	nop
+    1ee0:	00000000 	nop
+    1ee4:	00000000 	nop
     1ee8:	00000000 	nop
-    1eec:	00e04021 	move	t0,a3
-    1ef0:	01404821 	move	t1,t2
-    1ef4:	00403021 	move	a2,v0
-    1ef8:	8c42000c 	lw	v0,12(v0)
+    1eec:	00000000 	nop
+    1ef0:	00000000 	nop
+    1ef4:	00000000 	nop
+    1ef8:	00000000 	nop
     1efc:	00000000 	nop
-    1f00:	1440fff4 	bnez	v0,1ed4 <System::Tasking::TaskScheduler::selectNextTask(unsigned int)+0x44>
+    1f00:	00000000 	nop
     1f04:	00000000 	nop
-    1f08:	24630004 	addiu	v1,v1,4
-    1f0c:	146bffeb 	bne	v1,t3,1ebc <System::Tasking::TaskScheduler::selectNextTask(unsigned int)+0x2c>
-    1f10:	03a31021 	addu	v0,sp,v1
-    1f14:	8cc20004 	lw	v0,4(a2)
-    1f18:	ac860010 	sw	a2,16(a0)
-    1f1c:	ac820014 	sw	v0,20(a0)
-    1f20:	8c820004 	lw	v0,4(a0)
-    1f24:	27bd0008 	addiu	sp,sp,8
-    1f28:	01024026 	xor	t0,t0,v0
-    1f2c:	0008402b 	sltu	t0,zero,t0
-    1f30:	03e00008 	jr	ra
-    1f34:	ac880018 	sw	t0,24(a0)
-
-00001f38 <float32::operator+(float32 const&) const>:
-    1f38:	27bdffe8 	addiu	sp,sp,-24
-    1f3c:	afb00010 	sw	s0,16(sp)
-    1f40:	00808021 	move	s0,a0
-    1f44:	8ca40000 	lw	a0,0(a1)
-    1f48:	8cc50000 	lw	a1,0(a2)
-    1f4c:	000417c2 	srl	v0,a0,0x1f
-    1f50:	00051fc2 	srl	v1,a1,0x1f
-    1f54:	afbf0014 	sw	ra,20(sp)
-    1f58:	14430005 	bne	v0,v1,1f70 <float32::operator+(float32 const&) const+0x38>
-    1f5c:	00403021 	move	a2,v0
-    1f60:	0c000561 	jal	1584 <_ZN7float327addSigsEjjb.1526>
+    1f08:	00000000 	nop
+    1f0c:	00000000 	nop
+    1f10:	00000000 	nop
+    1f14:	00000000 	nop
+    1f18:	00000000 	nop
+    1f1c:	00000000 	nop
+    1f20:	00000000 	nop
+    1f24:	00000000 	nop
+    1f28:	00000000 	nop
+    1f2c:	00000000 	nop
+    1f30:	00000000 	nop
+    1f34:	00000000 	nop
+    1f38:	00000000 	nop
+    1f3c:	00000000 	nop
+    1f40:	00000000 	nop
+    1f44:	00000000 	nop
+    1f48:	00000000 	nop
+    1f4c:	00000000 	nop
+    1f50:	00000000 	nop
+    1f54:	00000000 	nop
+    1f58:	00000000 	nop
+    1f5c:	00000000 	nop
+    1f60:	00000000 	nop
     1f64:	00000000 	nop
-    1f68:	080007de 	j	1f78 <float32::operator+(float32 const&) const+0x40>
+    1f68:	00000000 	nop
     1f6c:	00000000 	nop
-    1f70:	0c0005d2 	jal	1748 <_ZN7float327subSigsEjjb.1521>
+    1f70:	00000000 	nop
     1f74:	00000000 	nop
-    1f78:	8fbf0014 	lw	ra,20(sp)
-    1f7c:	ae020000 	sw	v0,0(s0)
-    1f80:	02001021 	move	v0,s0
-    1f84:	8fb00010 	lw	s0,16(sp)
-    1f88:	03e00008 	jr	ra
-    1f8c:	27bd0018 	addiu	sp,sp,24
-
-00001f90 <float32::operator+=(float32 const&)>:
-    1f90:	27bdffe0 	addiu	sp,sp,-32
-    1f94:	afb00018 	sw	s0,24(sp)
-    1f98:	00808021 	move	s0,a0
-    1f9c:	00a03021 	move	a2,a1
-    1fa0:	27a40010 	addiu	a0,sp,16
-    1fa4:	afbf001c 	sw	ra,28(sp)
-    1fa8:	0c0007ce 	jal	1f38 <float32::operator+(float32 const&) const>
-    1fac:	02002821 	move	a1,s0
-    1fb0:	8fa20010 	lw	v0,16(sp)
-    1fb4:	8fbf001c 	lw	ra,28(sp)
-    1fb8:	ae020000 	sw	v0,0(s0)
-    1fbc:	02001021 	move	v0,s0
-    1fc0:	8fb00018 	lw	s0,24(sp)
-    1fc4:	03e00008 	jr	ra
-    1fc8:	27bd0020 	addiu	sp,sp,32
-
-00001fcc <float32::operator-(float32 const&) const>:
-    1fcc:	27bdffe8 	addiu	sp,sp,-24
-    1fd0:	afb00010 	sw	s0,16(sp)
-    1fd4:	00808021 	move	s0,a0
-    1fd8:	8ca40000 	lw	a0,0(a1)
-    1fdc:	8cc50000 	lw	a1,0(a2)
-    1fe0:	000437c2 	srl	a2,a0,0x1f
-    1fe4:	000517c2 	srl	v0,a1,0x1f
-    1fe8:	14c20005 	bne	a2,v0,2000 <float32::operator-(float32 const&) const+0x34>
-    1fec:	afbf0014 	sw	ra,20(sp)
-    1ff0:	0c0005d2 	jal	1748 <_ZN7float327subSigsEjjb.1521>
+    1f78:	00000000 	nop
+    1f7c:	00000000 	nop
+    1f80:	00000000 	nop
+    1f84:	00000000 	nop
+    1f88:	00000000 	nop
+    1f8c:	00000000 	nop
+    1f90:	00000000 	nop
+    1f94:	00000000 	nop
+    1f98:	00000000 	nop
+    1f9c:	00000000 	nop
+    1fa0:	00000000 	nop
+    1fa4:	00000000 	nop
+    1fa8:	00000000 	nop
+    1fac:	00000000 	nop
+    1fb0:	00000000 	nop
+    1fb4:	00000000 	nop
+    1fb8:	00000000 	nop
+    1fbc:	00000000 	nop
+    1fc0:	00000000 	nop
+    1fc4:	00000000 	nop
+    1fc8:	00000000 	nop
+    1fcc:	00000000 	nop
+    1fd0:	00000000 	nop
+    1fd4:	00000000 	nop
+    1fd8:	00000000 	nop
+    1fdc:	00000000 	nop
+    1fe0:	00000000 	nop
+    1fe4:	00000000 	nop
+    1fe8:	00000000 	nop
+    1fec:	00000000 	nop
+    1ff0:	00000000 	nop
     1ff4:	00000000 	nop
-    1ff8:	08000802 	j	2008 <float32::operator-(float32 const&) const+0x3c>
+    1ff8:	00000000 	nop
     1ffc:	00000000 	nop
-    2000:	0c000561 	jal	1584 <_ZN7float327addSigsEjjb.1526>
+    2000:	00000000 	nop
     2004:	00000000 	nop
-    2008:	8fbf0014 	lw	ra,20(sp)
-    200c:	ae020000 	sw	v0,0(s0)
-    2010:	02001021 	move	v0,s0
-    2014:	8fb00010 	lw	s0,16(sp)
-    2018:	03e00008 	jr	ra
-    201c:	27bd0018 	addiu	sp,sp,24
-
-00002020 <rsqrt(float32 const&)>:
-    2020:	8ca20000 	lw	v0,0(a1)
-    2024:	27bdffc8 	addiu	sp,sp,-56
-    2028:	afbf0034 	sw	ra,52(sp)
-    202c:	afb00030 	sw	s0,48(sp)
-    2030:	00808021 	move	s0,a0
-    2034:	ac820000 	sw	v0,0(a0)
-    2038:	3c023fc0 	lui	v0,0x3fc0
-    203c:	afa20018 	sw	v0,24(sp)
-    2040:	27a40010 	addiu	a0,sp,16
-    2044:	3c023f00 	lui	v0,0x3f00
-    2048:	27a50014 	addiu	a1,sp,20
-    204c:	02003021 	move	a2,s0
-    2050:	0c000656 	jal	1958 <float32::operator*(float32 const&) const>
-    2054:	afa20014 	sw	v0,20(sp)
-    2058:	8e030000 	lw	v1,0(s0)
-    205c:	3c025f37 	lui	v0,0x5f37
-    2060:	00031843 	sra	v1,v1,0x1
-    2064:	24425a86 	addiu	v0,v0,23174
-    2068:	00431023 	subu	v0,v0,v1
-    206c:	ae020000 	sw	v0,0(s0)
-    2070:	27a4001c 	addiu	a0,sp,28
-    2074:	27a50010 	addiu	a1,sp,16
-    2078:	0c000656 	jal	1958 <float32::operator*(float32 const&) const>
-    207c:	02003021 	move	a2,s0
-    2080:	27a40020 	addiu	a0,sp,32
-    2084:	27a5001c 	addiu	a1,sp,28
-    2088:	0c000656 	jal	1958 <float32::operator*(float32 const&) const>
-    208c:	02003021 	move	a2,s0
-    2090:	27a40024 	addiu	a0,sp,36
-    2094:	27a50018 	addiu	a1,sp,24
-    2098:	0c0007f3 	jal	1fcc <float32::operator-(float32 const&) const>
-    209c:	27a60020 	addiu	a2,sp,32
-    20a0:	27a40028 	addiu	a0,sp,40
-    20a4:	02002821 	move	a1,s0
-    20a8:	0c000656 	jal	1958 <float32::operator*(float32 const&) const>
-    20ac:	27a60024 	addiu	a2,sp,36
-    20b0:	8fa20028 	lw	v0,40(sp)
-    20b4:	8fbf0034 	lw	ra,52(sp)
-    20b8:	ae020000 	sw	v0,0(s0)
-    20bc:	02001021 	move	v0,s0
-    20c0:	8fb00030 	lw	s0,48(sp)
-    20c4:	03e00008 	jr	ra
-    20c8:	27bd0038 	addiu	sp,sp,56
-
-000020cc <float32::operator-=(float32 const&)>:
-    20cc:	27bdffe0 	addiu	sp,sp,-32
-    20d0:	afb00018 	sw	s0,24(sp)
-    20d4:	00808021 	move	s0,a0
-    20d8:	00a03021 	move	a2,a1
-    20dc:	27a40010 	addiu	a0,sp,16
-    20e0:	afbf001c 	sw	ra,28(sp)
-    20e4:	0c0007f3 	jal	1fcc <float32::operator-(float32 const&) const>
-    20e8:	02002821 	move	a1,s0
-    20ec:	8fa20010 	lw	v0,16(sp)
-    20f0:	8fbf001c 	lw	ra,28(sp)
-    20f4:	ae020000 	sw	v0,0(s0)
-    20f8:	02001021 	move	v0,s0
-    20fc:	8fb00018 	lw	s0,24(sp)
-    2100:	03e00008 	jr	ra
-    2104:	27bd0020 	addiu	sp,sp,32
-
-00002108 <global constructors keyed to 65535_0_RESPONSE_OK.2838.1328>:
-    2108:	3c048000 	lui	a0,0x8000
-    210c:	3c038000 	lui	v1,0x8000
-    2110:	24840138 	addiu	a0,a0,312
-    2114:	ac6401cc 	sw	a0,460(v1)
-    2118:	3c048000 	lui	a0,0x8000
-    211c:	246201cc 	addiu	v0,v1,460
-    2120:	24840118 	addiu	a0,a0,280
-    2124:	3c038000 	lui	v1,0x8000
-    2128:	ac64020c 	sw	a0,524(v1)
-    212c:	3c048000 	lui	a0,0x8000
-    2130:	ac400004 	sw	zero,4(v0)
-    2134:	ac400008 	sw	zero,8(v0)
-    2138:	ac40000c 	sw	zero,12(v0)
-    213c:	a0400038 	sb	zero,56(v0)
-    2140:	ac400034 	sw	zero,52(v0)
-    2144:	ac40003c 	sw	zero,60(v0)
-    2148:	24840108 	addiu	a0,a0,264
-    214c:	2462020c 	addiu	v0,v1,524
-    2150:	3c038000 	lui	v1,0x8000
-    2154:	ac400004 	sw	zero,4(v0)
-    2158:	ac400008 	sw	zero,8(v0)
-    215c:	ac40000c 	sw	zero,12(v0)
-    2160:	ac400014 	sw	zero,20(v0)
-    2164:	ac400018 	sw	zero,24(v0)
-    2168:	ac40001c 	sw	zero,28(v0)
-    216c:	ac400020 	sw	zero,32(v0)
-    2170:	ac640230 	sw	a0,560(v1)
-    2174:	24620230 	addiu	v0,v1,560
-    2178:	3c033f80 	lui	v1,0x3f80
-    217c:	ac430038 	sw	v1,56(v0)
-    2180:	ac430048 	sw	v1,72(v0)
-    2184:	3c033a83 	lui	v1,0x3a83
-    2188:	2463126f 	addiu	v1,v1,4719
-    218c:	ac400004 	sw	zero,4(v0)
-    2190:	ac400008 	sw	zero,8(v0)
-    2194:	ac40000c 	sw	zero,12(v0)
-    2198:	3c028000 	lui	v0,0x8000
-    219c:	ac4301c8 	sw	v1,456(v0)
-    21a0:	3c033db2 	lui	v1,0x3db2
-    21a4:	3463b8c2 	ori	v1,v1,0xb8c2
-    21a8:	3c028000 	lui	v0,0x8000
-    21ac:	ac43028c 	sw	v1,652(v0)
-    21b0:	3c033b64 	lui	v1,0x3b64
-    21b4:	3463c388 	ori	v1,v1,0xc388
-    21b8:	3c028000 	lui	v0,0x8000
-    21bc:	ac430290 	sw	v1,656(v0)
-    21c0:	3c033d9a 	lui	v1,0x3d9a
-    21c4:	3463c70d 	ori	v1,v1,0xc70d
-    21c8:	3c028000 	lui	v0,0x8000
-    21cc:	ac4301c4 	sw	v1,452(v0)
-    21d0:	3c033b46 	lui	v1,0x3b46
-    21d4:	24631d82 	addiu	v1,v1,7554
-    21d8:	3c028000 	lui	v0,0x8000
-    21dc:	ac430294 	sw	v1,660(v0)
-    21e0:	3c03364a 	lui	v1,0x364a
-    21e4:	3463deba 	ori	v1,v1,0xdeba
-    21e8:	3c028000 	lui	v0,0x8000
-    21ec:	03e00008 	jr	ra
-    21f0:	ac4301c0 	sw	v1,448(v0)
-
-000021f4 <main>:
-    21f4:	3c060001 	lui	a2,0x1
-    21f8:	00001021 	move	v0,zero
-    21fc:	24050001 	li	a1,1
-    2200:	34c6e848 	ori	a2,a2,0xe848
-    2204:	24040008 	li	a0,8
-    2208:	00451804 	sllv	v1,a1,v0
-    220c:	306300ff 	andi	v1,v1,0xff
-    2210:	ac030004 	sw	v1,4(zero)
-    2214:	00c01821 	move	v1,a2
-    2218:	2463ffff 	addiu	v1,v1,-1
-    221c:	1460fffe 	bnez	v1,2218 <main+0x24>
+    2008:	00000000 	nop
+    200c:	00000000 	nop
+    2010:	00000000 	nop
+    2014:	00000000 	nop
+    2018:	00000000 	nop
+    201c:	00000000 	nop
+    2020:	00000000 	nop
+    2024:	00000000 	nop
+    2028:	00000000 	nop
+    202c:	00000000 	nop
+    2030:	00000000 	nop
+    2034:	00000000 	nop
+    2038:	00000000 	nop
+    203c:	00000000 	nop
+    2040:	00000000 	nop
+    2044:	00000000 	nop
+    2048:	00000000 	nop
+    204c:	00000000 	nop
+    2050:	00000000 	nop
+    2054:	00000000 	nop
+    2058:	00000000 	nop
+    205c:	00000000 	nop
+    2060:	00000000 	nop
+    2064:	00000000 	nop
+    2068:	00000000 	nop
+    206c:	00000000 	nop
+    2070:	00000000 	nop
+    2074:	00000000 	nop
+    2078:	00000000 	nop
+    207c:	00000000 	nop
+    2080:	00000000 	nop
+    2084:	00000000 	nop
+    2088:	00000000 	nop
+    208c:	00000000 	nop
+    2090:	00000000 	nop
+    2094:	00000000 	nop
+    2098:	00000000 	nop
+    209c:	00000000 	nop
+    20a0:	00000000 	nop
+    20a4:	00000000 	nop
+    20a8:	00000000 	nop
+    20ac:	00000000 	nop
+    20b0:	00000000 	nop
+    20b4:	00000000 	nop
+    20b8:	00000000 	nop
+    20bc:	00000000 	nop
+    20c0:	00000000 	nop
+    20c4:	00000000 	nop
+    20c8:	00000000 	nop
+    20cc:	00000000 	nop
+    20d0:	00000000 	nop
+    20d4:	00000000 	nop
+    20d8:	00000000 	nop
+    20dc:	00000000 	nop
+    20e0:	00000000 	nop
+    20e4:	00000000 	nop
+    20e8:	00000000 	nop
+    20ec:	00000000 	nop
+    20f0:	00000000 	nop
+    20f4:	00000000 	nop
+    20f8:	00000000 	nop
+    20fc:	00000000 	nop
+    2100:	00000000 	nop
+    2104:	00000000 	nop
+    2108:	00000000 	nop
+    210c:	00000000 	nop
+    2110:	00000000 	nop
+    2114:	00000000 	nop
+    2118:	00000000 	nop
+    211c:	00000000 	nop
+    2120:	00000000 	nop
+    2124:	00000000 	nop
+    2128:	00000000 	nop
+    212c:	00000000 	nop
+    2130:	00000000 	nop
+    2134:	00000000 	nop
+    2138:	00000000 	nop
+    213c:	00000000 	nop
+    2140:	00000000 	nop
+    2144:	00000000 	nop
+    2148:	00000000 	nop
+    214c:	00000000 	nop
+    2150:	00000000 	nop
+    2154:	00000000 	nop
+    2158:	00000000 	nop
+    215c:	00000000 	nop
+    2160:	00000000 	nop
+    2164:	00000000 	nop
+    2168:	00000000 	nop
+    216c:	00000000 	nop
+    2170:	00000000 	nop
+    2174:	00000000 	nop
+    2178:	00000000 	nop
+    217c:	00000000 	nop
+    2180:	00000000 	nop
+    2184:	00000000 	nop
+    2188:	00000000 	nop
+    218c:	00000000 	nop
+    2190:	00000000 	nop
+    2194:	00000000 	nop
+    2198:	00000000 	nop
+    219c:	00000000 	nop
+    21a0:	00000000 	nop
+    21a4:	00000000 	nop
+    21a8:	00000000 	nop
+    21ac:	00000000 	nop
+    21b0:	00000000 	nop
+    21b4:	00000000 	nop
+    21b8:	00000000 	nop
+    21bc:	00000000 	nop
+    21c0:	00000000 	nop
+    21c4:	00000000 	nop
+    21c8:	00000000 	nop
+    21cc:	00000000 	nop
+    21d0:	00000000 	nop
+    21d4:	00000000 	nop
+    21d8:	00000000 	nop
+    21dc:	00000000 	nop
+    21e0:	00000000 	nop
+    21e4:	00000000 	nop
+    21e8:	00000000 	nop
+    21ec:	00000000 	nop
+    21f0:	00000000 	nop
+    21f4:	00000000 	nop
+    21f8:	00000000 	nop
+    21fc:	00000000 	nop
+    2200:	00000000 	nop
+    2204:	00000000 	nop
+    2208:	00000000 	nop
+    220c:	00000000 	nop
+    2210:	00000000 	nop
+    2214:	00000000 	nop
+    2218:	00000000 	nop
+    221c:	00000000 	nop
     2220:	00000000 	nop
-    2224:	24420001 	addiu	v0,v0,1
-    2228:	1444fff8 	bne	v0,a0,220c <main+0x18>
-    222c:	00451804 	sllv	v1,a1,v0
-    2230:	3c060001 	lui	a2,0x1
-    2234:	00001021 	move	v0,zero
-    2238:	24050080 	li	a1,128
-    223c:	34c6e848 	ori	a2,a2,0xe848
-    2240:	24040009 	li	a0,9
-    2244:	00451807 	srav	v1,a1,v0
-    2248:	ac030004 	sw	v1,4(zero)
-    224c:	00c01821 	move	v1,a2
-    2250:	2463ffff 	addiu	v1,v1,-1
-    2254:	1460fffe 	bnez	v1,2250 <main+0x5c>
+    2224:	00000000 	nop
+    2228:	00000000 	nop
+    222c:	00000000 	nop
+    2230:	00000000 	nop
+    2234:	00000000 	nop
+    2238:	00000000 	nop
+    223c:	00000000 	nop
+    2240:	00000000 	nop
+    2244:	00000000 	nop
+    2248:	00000000 	nop
+    224c:	00000000 	nop
+    2250:	00000000 	nop
+    2254:	00000000 	nop
     2258:	00000000 	nop
-    225c:	24420001 	addiu	v0,v0,1
-    2260:	1444fff9 	bne	v0,a0,2248 <main+0x54>
-    2264:	00451807 	srav	v1,a1,v0
-    2268:	3c028000 	lui	v0,0x8000
-    226c:	27bdffb0 	addiu	sp,sp,-80
-    2270:	244201cc 	addiu	v0,v0,460
-    2274:	afb40048 	sw	s4,72(sp)
-    2278:	afb30044 	sw	s3,68(sp)
-    227c:	afb20040 	sw	s2,64(sp)
-    2280:	afb1003c 	sw	s1,60(sp)
-    2284:	afb00038 	sw	s0,56(sp)
-    2288:	afbf004c 	sw	ra,76(sp)
-    228c:	afa00024 	sw	zero,36(sp)
-    2290:	afa00028 	sw	zero,40(sp)
-    2294:	ac400008 	sw	zero,8(v0)
-    2298:	8c030010 	lw	v1,16(zero)
-    229c:	27b00010 	addiu	s0,sp,16
-    22a0:	ac500010 	sw	s0,16(v0)
-    22a4:	ac430004 	sw	v1,4(v0)
-    22a8:	02002021 	move	a0,s0
-    22ac:	00002821 	move	a1,zero
-    22b0:	3c12b2d0 	lui	s2,0xb2d0
-    22b4:	afa00014 	sw	zero,20(sp)
-    22b8:	afa00018 	sw	zero,24(sp)
-    22bc:	afa0001c 	sw	zero,28(sp)
-    22c0:	afa00020 	sw	zero,32(sp)
-    22c4:	afa20010 	sw	v0,16(sp)
-    22c8:	0c0007a4 	jal	1e90 <System::Tasking::TaskScheduler::selectNextTask(unsigned int)>
-    22cc:	26525e00 	addiu	s2,s2,24064
-    22d0:	02008821 	move	s1,s0
-    22d4:	27b30014 	addiu	s3,sp,20
-    22d8:	27b40018 	addiu	s4,sp,24
-    22dc:	8fa40020 	lw	a0,32(sp)
-    22e0:	8c100010 	lw	s0,16(zero)
-    22e4:	1080003f 	beqz	a0,23e4 <main+0x1f0>
+    225c:	00000000 	nop
+    2260:	00000000 	nop
+    2264:	00000000 	nop
+    2268:	00000000 	nop
+    226c:	00000000 	nop
+    2270:	00000000 	nop
+    2274:	00000000 	nop
+    2278:	00000000 	nop
+    227c:	00000000 	nop
+    2280:	00000000 	nop
+    2284:	00000000 	nop
+    2288:	00000000 	nop
+    228c:	00000000 	nop
+    2290:	00000000 	nop
+    2294:	00000000 	nop
+    2298:	00000000 	nop
+    229c:	00000000 	nop
+    22a0:	00000000 	nop
+    22a4:	00000000 	nop
+    22a8:	00000000 	nop
+    22ac:	00000000 	nop
+    22b0:	00000000 	nop
+    22b4:	00000000 	nop
+    22b8:	00000000 	nop
+    22bc:	00000000 	nop
+    22c0:	00000000 	nop
+    22c4:	00000000 	nop
+    22c8:	00000000 	nop
+    22cc:	00000000 	nop
+    22d0:	00000000 	nop
+    22d4:	00000000 	nop
+    22d8:	00000000 	nop
+    22dc:	00000000 	nop
+    22e0:	00000000 	nop
+    22e4:	00000000 	nop
     22e8:	00000000 	nop
-    22ec:	8fa20024 	lw	v0,36(sp)
+    22ec:	00000000 	nop
     22f0:	00000000 	nop
-    22f4:	0202182b 	sltu	v1,s0,v0
-    22f8:	1460003a 	bnez	v1,23e4 <main+0x1f0>
-    22fc:	02021023 	subu	v0,s0,v0
-    2300:	0052102b 	sltu	v0,v0,s2
-    2304:	10400037 	beqz	v0,23e4 <main+0x1f0>
+    22f4:	00000000 	nop
+    22f8:	00000000 	nop
+    22fc:	00000000 	nop
+    2300:	00000000 	nop
+    2304:	00000000 	nop
     2308:	00000000 	nop
-    230c:	8c820000 	lw	v0,0(a0)
+    230c:	00000000 	nop
     2310:	00000000 	nop
-    2314:	8c420000 	lw	v0,0(v0)
+    2314:	00000000 	nop
     2318:	00000000 	nop
-    231c:	0040f809 	jalr	v0
+    231c:	00000000 	nop
     2320:	00000000 	nop
-    2324:	8fa40028 	lw	a0,40(sp)
-    2328:	24030001 	li	v1,1
-    232c:	8fa20020 	lw	v0,32(sp)
-    2330:	14830023 	bne	a0,v1,23c0 <main+0x1cc>
-    2334:	00002821 	move	a1,zero
-    2338:	afb1002c 	sw	s1,44(sp)
-    233c:	afb30030 	sw	s3,48(sp)
-    2340:	afb40034 	sw	s4,52(sp)
-    2344:	2406000c 	li	a2,12
-    2348:	27a4002c 	addiu	a0,sp,44
-    234c:	00851821 	addu	v1,a0,a1
-    2350:	8c640000 	lw	a0,0(v1)
+    2324:	00000000 	nop
+    2328:	00000000 	nop
+    232c:	00000000 	nop
+    2330:	00000000 	nop
+    2334:	00000000 	nop
+    2338:	00000000 	nop
+    233c:	00000000 	nop
+    2340:	00000000 	nop
+    2344:	00000000 	nop
+    2348:	00000000 	nop
+    234c:	00000000 	nop
+    2350:	00000000 	nop
     2354:	00000000 	nop
-    2358:	8c830000 	lw	v1,0(a0)
+    2358:	00000000 	nop
     235c:	00000000 	nop
-    2360:	10600012 	beqz	v1,23ac <main+0x1b8>
+    2360:	00000000 	nop
     2364:	00000000 	nop
-    2368:	14620005 	bne	v1,v0,2380 <main+0x18c>
+    2368:	00000000 	nop
     236c:	00000000 	nop
-    2370:	8c43000c 	lw	v1,12(v0)
-    2374:	080008ee 	j	23b8 <main+0x1c4>
-    2378:	ac830000 	sw	v1,0(a0)
-    237c:	00801821 	move	v1,a0
-    2380:	8c64000c 	lw	a0,12(v1)
+    2370:	00000000 	nop
+    2374:	00000000 	nop
+    2378:	00000000 	nop
+    237c:	00000000 	nop
+    2380:	00000000 	nop
     2384:	00000000 	nop
-    2388:	10800006 	beqz	a0,23a4 <main+0x1b0>
+    2388:	00000000 	nop
     238c:	00000000 	nop
-    2390:	1482fffa 	bne	a0,v0,237c <main+0x188>
+    2390:	00000000 	nop
     2394:	00000000 	nop
-    2398:	8c44000c 	lw	a0,12(v0)
-    239c:	080008ee 	j	23b8 <main+0x1c4>
-    23a0:	ac64000c 	sw	a0,12(v1)
-    23a4:	1040fffc 	beqz	v0,2398 <main+0x1a4>
+    2398:	00000000 	nop
+    239c:	00000000 	nop
+    23a0:	00000000 	nop
+    23a4:	00000000 	nop
     23a8:	00000000 	nop
-    23ac:	24a50004 	addiu	a1,a1,4
-    23b0:	14a6ffe6 	bne	a1,a2,234c <main+0x158>
-    23b4:	27a4002c 	addiu	a0,sp,44
-    23b8:	080008f4 	j	23d0 <main+0x1dc>
-    23bc:	ac400010 	sw	zero,16(v0)
-    23c0:	8c430008 	lw	v1,8(v0)
+    23ac:	00000000 	nop
+    23b0:	00000000 	nop
+    23b4:	00000000 	nop
+    23b8:	00000000 	nop
+    23bc:	00000000 	nop
+    23c0:	00000000 	nop
     23c4:	00000000 	nop
-    23c8:	02031821 	addu	v1,s0,v1
-    23cc:	ac430004 	sw	v1,4(v0)
-    23d0:	02202021 	move	a0,s1
-    23d4:	0c0007a4 	jal	1e90 <System::Tasking::TaskScheduler::selectNextTask(unsigned int)>
-    23d8:	02002821 	move	a1,s0
-    23dc:	080008b7 	j	22dc <main+0xe8>
+    23c8:	00000000 	nop
+    23cc:	00000000 	nop
+    23d0:	00000000 	nop
+    23d4:	00000000 	nop
+    23d8:	00000000 	nop
+    23dc:	00000000 	nop
     23e0:	00000000 	nop
-    23e4:	8fa2001c 	lw	v0,28(sp)
+    23e4:	00000000 	nop
     23e8:	00000000 	nop
-    23ec:	10400006 	beqz	v0,2408 <main+0x214>
+    23ec:	00000000 	nop
     23f0:	00000000 	nop
-    23f4:	8c42000c 	lw	v0,12(v0)
+    23f4:	00000000 	nop
     23f8:	00000000 	nop
-    23fc:	afa2001c 	sw	v0,28(sp)
-    2400:	8fa2001c 	lw	v0,28(sp)
+    23fc:	00000000 	nop
+    2400:	00000000 	nop
     2404:	00000000 	nop
-    2408:	14400004 	bnez	v0,241c <main+0x228>
+    2408:	00000000 	nop
     240c:	00000000 	nop
-    2410:	8fa20010 	lw	v0,16(sp)
+    2410:	00000000 	nop
     2414:	00000000 	nop
-    2418:	afa2001c 	sw	v0,28(sp)
-    241c:	8fa4001c 	lw	a0,28(sp)
+    2418:	00000000 	nop
+    241c:	00000000 	nop
     2420:	00000000 	nop
-    2424:	1080ffad 	beqz	a0,22dc <main+0xe8>
+    2424:	00000000 	nop
     2428:	00000000 	nop
-    242c:	8c820000 	lw	v0,0(a0)
+    242c:	00000000 	nop
     2430:	00000000 	nop
-    2434:	8c420000 	lw	v0,0(v0)
+    2434:	00000000 	nop
     2438:	00000000 	nop
-    243c:	0040f809 	jalr	v0
+    243c:	00000000 	nop
     2440:	00000000 	nop
-    2444:	080008b7 	j	22dc <main+0xe8>
+    2444:	00000000 	nop
     2448:	00000000 	nop
-
-0000244c <CODE_ENDS>:
     244c:	00000000 	nop
     2450:	00000000 	nop
     2454:	00000000 	nop

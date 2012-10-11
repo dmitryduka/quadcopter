@@ -22,6 +22,16 @@ float32::float32(int a) {
     data = normalizeRoundAndPack(zSign, 0x9C, zSign ? - a : a);
 }
 
+float32::float32(unsigned int a) {
+    flag zSign;
+
+    if(a == 0) {
+	data = 0;
+	return;
+    }
+    data = normalizeRoundAndPack(zSign, 0x9C, a);
+}
+
 float32::float32(const float32& other) : data(other.data) {}
 
 const float32 float32::operator+(const float32& other) const {

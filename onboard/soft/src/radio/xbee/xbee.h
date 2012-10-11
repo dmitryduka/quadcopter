@@ -11,7 +11,7 @@ class XBeeReadIdleTask : public System::Tasking::IdleTask {
 private:
     char message_buffer[Messages::MAX_MESSAGE_LENGTH];
     unsigned int bytesSoFar;
-    Messages::EntryType handler;
+    Messages::EntryType current_message;
 public:
     XBeeReadIdleTask();
     void start();

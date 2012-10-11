@@ -1,6 +1,7 @@
 #include "task_pool.h"
 
 #include <radio/xbee/xbee.h>
+#include <radio/messages/telemetry.h>
 #include <sensors/imu/mpu6050.h>
 #include <control/stabilization.h>
 #include <control/marg.h>
@@ -11,6 +12,7 @@ namespace Pool {
 
 /* All task instances go here */
 Radio::Digital::XBeeReadIdleTask xbeeReadIdleTask;
+Radio::Digital::TelemetryTask telemetryTask;
 Control::StabilizationAndEngineUpdateTask stabilizationAndEngineUpdateTask;
 Control::MARG margTask;
 
@@ -19,6 +21,7 @@ Control::MARG margTask;
 Task* const tasks[asIntegral<unsigned int>(TaskType::TASK_TYPE_COUNT)] = {
     [TaskType::StabilizationAndEngineUpdateTask] = &stabilizationAndEngineUpdateTask,
     [TaskType::XBeeReadIdleTask] = &xbeeReadIdleTask,
+    [TaskType::TelemetryTask] = &telemetryTask,
     [TaskType::MARGTask] = &margTask,
 };
 

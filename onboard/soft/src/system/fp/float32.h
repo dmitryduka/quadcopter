@@ -43,6 +43,7 @@ public:
     float32();
     explicit float32(float);
     explicit float32(int);
+    explicit float32(unsigned int);
     float32(const float32&);
 
     float32& operator=(float);

@@ -10,6 +10,7 @@ enum class TaskType {
     TASK_TYPE_BEGIN = 0,
     StabilizationAndEngineUpdateTask = 0,
     XBeeReadIdleTask,
+    TelemetryTask,
     MARGTask,
     TASK_TYPE_COUNT
 };
