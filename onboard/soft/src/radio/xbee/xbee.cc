@@ -34,7 +34,10 @@ void XBeeReadIdleTask::start() {
 	    else reset_entry = true;
 	    if(current_message.handler == Radio::Messages::consoleHandler) {
 		/* Await for \r and call console handler */
-		if(ch == '\r' || ch == '\n') call_handler = true;
+		if(ch == '\r' || ch == '\n') {
+		    //message_buffer[bytesSoFar] = '\0';
+		    call_handler = true;
+		}
 	    } else {
 		/* other message, wait while receive enough bytes and then call message handler */
 		if(bytesSoFar == current_message.size) call_handler = true;
