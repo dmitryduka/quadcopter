@@ -28,7 +28,7 @@ In order to add new message:
 
 */
 
-enum class To : char {
+enum class To : int {
     MESSAGES_BEGIN = 0,
     Throttle = 1, /* This starts with 1, just to be on the safe side in case somebody sends bunch of zeroes */
     Pitch,
@@ -39,13 +39,13 @@ enum class To : char {
     MESSAGES_COUNT = 5
 };
 
-enum class From : unsigned char {
+enum class From : unsigned int {
     MESSAGES_BEGIN = 128,
-    QuatData,
+    QuatData = 128,
     IMUData,
     PIDValues,
-    ConsoleResponse = '<', // 62
-    MESSAGES_COUNT = 3
+    MESSAGES_END,
+    MESSAGES_COUNT = MESSAGES_END - MESSAGES_BEGIN
 };
 
 /* Each message should contain it's type stored inside the first byte */
@@ -92,9 +92,6 @@ struct Pitch : Message<To, To::Pitch> { short int value; };
 struct Yaw : Message<To, To::Yaw> { short int value; };
 struct Roll : Message<To, To::Roll> { short int value; };
 
-/* Console request message */
-struct ConsoleRequest : Message<To, To::ConsoleRequest> { const char command[31]; };
-
 /* ==============================================================
 		Messages handlers definitions 
    ============================================================== */
@@ -119,8 +116,7 @@ const EntryType handlers[asIntegral<unsigned char, To>(To::MESSAGES_COUNT)] = {
     DEFINE_MESSAGE_HANDLER(Throttle,		defaultHandler),
     DEFINE_MESSAGE_HANDLER(Pitch,		defaultHandler),
     DEFINE_MESSAGE_HANDLER(Yaw,			defaultHandler),
-    DEFINE_MESSAGE_HANDLER(Roll,		defaultHandler),
-    DEFINE_MESSAGE_HANDLER(ConsoleRequest,	consoleHandler),
+    DEFINE_MESSAGE_HANDLER(Roll,		defaultHandler)
 };
 
 #undef DEFINE_MESSAGE_HANDLER

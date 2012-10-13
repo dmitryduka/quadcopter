@@ -16,11 +16,11 @@ void XBeeReadIdleTask::start() {
 	char ch = System::Bus::UART::read();
 	/* awaiting for the first character that could be interpreted as a message header/type */
 	if(!current_message.handler) {
-	    if(ch == asIntegral<char, Radio::Messages::To>(Radio::Messages::To::ConsoleRequest)) {
+	    if(ch == asIntegral<int, Radio::Messages::To>(Radio::Messages::To::ConsoleRequest)) {
 		current_message.size = 0;
 		current_message.handler = Radio::Messages::consoleHandler;
 	    } else {
-		if(ch > 0 && ch < asIntegral<char, Radio::Messages::To>(Radio::Messages::To::BINARY_MESSAGES_COUNT)) {
+		if(ch > 0 && ch < asIntegral<int, Radio::Messages::To>(Radio::Messages::To::BINARY_MESSAGES_COUNT)) {
 		    const Radio::Messages::EntryType entry = Radio::Messages::handlers[ch];
 		    current_message.size = entry.size;
 		    current_message.handler = entry.handler;
@@ -35,7 +35,7 @@ void XBeeReadIdleTask::start() {
 	    if(current_message.handler == Radio::Messages::consoleHandler) {
 		/* Await for \r and call console handler */
 		if(ch == '\r' || ch == '\n') {
-		    //message_buffer[bytesSoFar] = '\0';
+		    message_buffer[bytesSoFar] = '\0';
 		    call_handler = true;
 		}
 	    } else {
@@ -47,8 +47,8 @@ void XBeeReadIdleTask::start() {
 		    reset_entry = true;
 	    }
 	    if(reset_entry) {
-		    current_message.size = 0;
-		    current_message.handler = 0;
+		    bytesSoFar = 0;
+		    current_message = {0, 0};
 	    }
 	}
     }
