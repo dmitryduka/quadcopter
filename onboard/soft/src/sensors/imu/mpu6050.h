@@ -38,6 +38,7 @@ namespace MPU6050 {
     /* Power management setup register */
     constexpr unsigned char MPU6050_PWR_MGMT	= 0x6B;
     constexpr unsigned char MPU6050_PWR_MGMT_SLEEP_DISABLE	= 0x0;
+    constexpr unsigned char MPU6050_PWR_MGMT_RESET		= 0x80;
 
     void init();
     /* Updates the SystemRegistry with new data from the IMU */

@@ -18,7 +18,7 @@ static void mpu6050_setup(char reg, char byte) {
 }
 
 void init() {
-    mpu6050_setup(MPU6050_PWR_MGMT, 0x80); //Device reset
+    mpu6050_setup(MPU6050_PWR_MGMT, MPU6050_PWR_MGMT_RESET); //Device reset
     System::delay(5_ms); //approx 5ms grace period
     mpu6050_setup(MPU6050_PWR_MGMT, MPU6050_PWR_MGMT_SLEEP_DISABLE);
     mpu6050_setup(MPU6050_SETUP_DLPF, MPU6050_DLPF_44HZ_DELAY_5MS);
@@ -53,7 +53,7 @@ void updateAccelerometerAndGyro() {
     int gy  = I2C::read();
     int gyL = I2C::read();
     int gz  = I2C::read();
-    int gzL = I2C::read();
+    int gzL = I2C::write(0xFF) & 0xFF; /* End of transaction */
 
     I2C::stop();
 

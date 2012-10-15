@@ -17,16 +17,16 @@ void stop() {
 
 enum IoType { Read, Write };
 
-static int io(char b, IoType io) {
-    int x = b;
+static int io(unsigned char b, IoType io) {
+    unsigned int x = b;
     if(io == Write) x |= 0x100;
-    *DEV_I2C = 0x00020000 | b;
+    *DEV_I2C = 0x00020000 | x;
     while (*DEV_I2C < 0);
     return *DEV_I2C;
 }
 
 char read() {  return io(0xFF, Read) & 0xFF; }
-void write(char x) { io(x, Write); }
+int write(char x) { io(x, Write); }
 
 }
 }

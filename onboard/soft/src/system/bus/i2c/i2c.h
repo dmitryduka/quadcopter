@@ -9,7 +9,7 @@ void start();
 void stop();
 
 char read();
-void write(char);
+int write(char);
 
 }
 }
