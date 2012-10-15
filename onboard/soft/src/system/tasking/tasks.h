@@ -97,8 +97,8 @@ public:
     void		removeTask(Task* t);
 };
 
-#define ADD_IDLE_TASK(scheduler, task) scheduler.addTask(static_cast<System::Tasking::IdleTask*>(System::Tasking::Pool::getTask(task)))
-#define ADD_CONTINUOUS_TASK(scheduler, task, freq) scheduler.addTask(static_cast<System::Tasking::ContinuousTask*>(System::Tasking::Pool::getTask(task)), freq)
+#define ADD_IDLE_TASK(scheduler, task) scheduler.addTask(static_cast<System::Tasking::IdleTask*>(System::Tasking::Pool::getTask(System::Tasking::Pool::task)))
+#define ADD_CONTINUOUS_TASK(scheduler, task, freq) scheduler.addTask(static_cast<System::Tasking::ContinuousTask*>(System::Tasking::Pool::getTask(System::Tasking::Pool::task)), freq)
 
 }
 }

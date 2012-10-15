@@ -2,8 +2,6 @@
 #include <system>
 #include <control>
 
-using namespace Pool;
-
 int main() {
     System::init();
     Tasks::TaskScheduler scheduler;
