@@ -1,7 +1,5 @@
 #include "marg.h"
-#include <system/devices.hpp>
-#include <system/registry.hpp>
-#include <sensors/imu/mpu6050.h>
+#include <sensors>
 
 namespace Control {
 

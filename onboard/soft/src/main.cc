@@ -1,22 +1,20 @@
-#include <common/ct-utility.hpp>
-#include <system/tasking/task_pool.h>
-#include <system/util.h>
-#include <system/fp/float32.h>
-#include <control/marg.h>
+#include <common>
+#include <system>
+#include <control>
 
-namespace Tasks = System::Tasking::Pool;
+using namespace Pool;
 
 int main() {
-    System::Util::init();
-    System::Tasking::TaskScheduler scheduler;
+    System::init();
+    Tasks::TaskScheduler scheduler;
 
-    scheduler.addTask(static_cast<System::Tasking::IdleTask*>(Tasks::getTask(Tasks::TaskType::XBeeReadIdleTask)));
-    scheduler.addTask(static_cast<System::Tasking::ContinuousTask*>(Tasks::getTask(Tasks::TaskType::MARGTask)), 100_hz);
-    scheduler.addTask(static_cast<System::Tasking::ContinuousTask*>(Tasks::getTask(Tasks::TaskType::TelemetryTask)), 10_hz);
+    ADD_IDLE_TASK(scheduler, XBeeReadIdleTask);
+    ADD_CONTINUOUS_TASK(scheduler, MARGTask, 100_hz);
+    ADD_CONTINUOUS_TASK(scheduler, TelemetryTask, 100_hz);
 
     /* Forever */
     scheduler.start();
-    while(1) { System::Util::delay(10); }
+    while(1) { System::delay(10); }
 }
 
 //=====================================================//

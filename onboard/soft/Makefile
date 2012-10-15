@@ -13,6 +13,7 @@ NM = $(XTOOLS_LOCATION)/$(XTOOLS_TRIPLE)/bin/$(XTOOLS_TRIPLE)-nm
 READELF = $(XTOOLS_LOCATION)/$(XTOOLS_TRIPLE)/bin/$(XTOOLS_TRIPLE)-readelf
 STRIP = $(XTOOLS_LOCATION)/$(XTOOLS_TRIPLE)/bin/$(XTOOLS_TRIPLE)-strip
 
+INCDIR = include
 SRCDIR = src
 OBJDIR = obj
 LISTINGSDIR = listings
@@ -47,7 +48,7 @@ DEPS = $(wildcard $(OBJDIR)/*.d)
 STACK_SIZE = 2000
 INCLUDEDIRS = $(addprefix -I, $(DIRS))
 CCOPTS =  -c -std=c++11 -mno-gpopt -G0 $(INCLUDEDIRS)
-CCOPTS += -Os
+CCOPTS += -Os -I$(INCDIR)
 CCOPTS += -Wcast-align -Wstack-usage=$(STACK_SIZE) 
 CCOPTS += -flto -fdata-sections -ffunction-sections -fno-threadsafe-statics -fstack-usage -fno-strict-aliasing -fno-exceptions -fno-rtti
 LDOPTS = -Os -flto -Wl,--gc-sections -nostdlib -nostartfiles -fwhole-program -lgcc

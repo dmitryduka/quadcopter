@@ -1,10 +1,9 @@
-#include <common/ct-utility.hpp>
-#include <system/devices.hpp>
-#include <sensors/imu/mpu6050.h>
 #include "util.h"
+#include <common>
+#include <system>
+#include <sensors>
 
 namespace System {
-namespace Util {
 
 void delay(unsigned int value) { value >>= 2; do { asm("");  } while (--value);  }
 
@@ -14,10 +13,9 @@ static void winkleds() {
 }
 
 void init() {
-    //Sensors::IMU::MPU6050::init();
+    Sensors::IMU::MPU6050::init();
     winkleds();
 }
 
-}
 }
 

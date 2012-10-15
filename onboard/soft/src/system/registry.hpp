@@ -1,8 +1,8 @@
 #ifndef REGISTRY_HPP
 #define REGISTRY_HPP
 
-#include <common/ct-utility.hpp>
-#include <system/fp/float32.h>
+#include <common>
+#include <system>
 
 namespace System {
 

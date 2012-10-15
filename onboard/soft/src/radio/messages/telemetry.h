@@ -1,7 +1,7 @@
 #ifndef TELEMETRY_H
 #define TELEMETRY_H
 
-#include <system/tasking/tasks.h>
+#include <system>
 
 namespace Radio {
 namespace Digital {

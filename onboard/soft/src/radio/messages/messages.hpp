@@ -1,9 +1,8 @@
 #ifndef MESSAGES_HPP
 #define MESSAGES_HPP
 
-#include <common/ct-utility.hpp>
-#include <system/bus/uart/uart.h>
-#include <system/fp/float32.h>
+#include <common>
+#include <system>
 
 namespace Radio {
 

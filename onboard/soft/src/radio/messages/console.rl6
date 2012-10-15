@@ -1,7 +1,6 @@
 #include "console.h"
-#include <common/string.h>
-#include <system/bus/uart/uart.h>
-#include <system/registry.hpp>
+#include <common>
+#include <system>
 
 /* ---------- actions implementation ----------- */
 

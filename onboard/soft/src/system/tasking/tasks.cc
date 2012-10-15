@@ -1,5 +1,5 @@
 #include "tasks.h"
-#include <common/ct-utility.hpp>
+#include <common>
 
 namespace System {
 namespace Tasking {

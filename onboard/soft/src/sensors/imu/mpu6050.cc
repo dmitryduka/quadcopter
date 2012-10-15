@@ -1,22 +1,20 @@
 #include "mpu6050.h"
-#include <common/ct-utility.hpp>
-#include <common/math/maths.hpp>
+#include <common>
 #include <system/bus/i2c/i2c.h>
-#include <system/devices.hpp>
-#include <system/util.h>
 #include <system/registry.hpp>
 
 namespace Sensors {
 namespace IMU {
 namespace MPU6050 {
 
+namespace I2C = System::Bus::I2C;
 
 static void mpu6050_setup(char reg, char byte) {
-    System::Bus::I2C::start();
-    System::Bus::I2C::write(MPU6050_ADDRESS_W);
-    System::Bus::I2C::write(reg);
-    System::Bus::I2C::write(byte);
-    System::Bus::I2C::stop();
+    I2C::start();
+    I2C::write(MPU6050_ADDRESS_W);
+    I2C::write(reg);
+    I2C::write(byte);
+    I2C::stop();
 }
 
 void init() {
@@ -24,37 +22,38 @@ void init() {
     mpu6050_setup(MPU6050_SETUP_GYRO, MPU6050_GYRO_RANGE_2000DEG);
     mpu6050_setup(MPU6050_SETUP_ACC, MPU6050_ACC_RANGE_16G);
     mpu6050_setup(MPU6050_PWR_MGMT, MPU6050_PWR_MGMT_SLEEP_DISABLE);
-    System::Util::delay(1_ms);
+    System::delay(1_ms);
 }
 
 /* Whole operation takes ~400us, so no need for separate I2C tasks */
 void updateAccelerometerAndGyro() {
-    System::Bus::I2C::start();
-    System::Bus::I2C::write(MPU6050_ADDRESS_W);
-    System::Bus::I2C::write(MPU6050_ACC_ADDR);
-    System::Bus::I2C::stop();
+    I2C::start();
+    I2C::write(MPU6050_ADDRESS_W);
+    I2C::write(MPU6050_ACC_ADDR);
+    I2C::stop();
 
-    System::Bus::I2C::start();
-    System::Bus::I2C::write(MPU6050_ADDRESS_R);
+    I2C::start();
+    I2C::write(MPU6050_ADDRESS_R);
 
-    int ax  = System::Bus::I2C::read();
-    int axL = System::Bus::I2C::read();
-    int ay  = System::Bus::I2C::read();
-    int ayL = System::Bus::I2C::read();
-    int az  = System::Bus::I2C::read();
-    int azL = System::Bus::I2C::read();
+    int ax  = I2C::read();
+    int axL = I2C::read();
+    int ay  = I2C::read();
+    int ayL = I2C::read();
+    int az  = I2C::read();
+    int azL = I2C::read();
 
     /* Skip TEMP_OUT_H & TEMP_OUT_L */
-    System::Bus::I2C::read();
-    System::Bus::I2C::read();
+    I2C::read();
+    I2C::read();
 
-    int gx  = System::Bus::I2C::read();
-    int gxL = System::Bus::I2C::read();
-    int gy  = System::Bus::I2C::read();
-    int gyL = System::Bus::I2C::read();
-    int gz  = System::Bus::I2C::read();
-    int gzL = System::Bus::I2C::read();
-    System::Bus::I2C::stop();
+    int gx  = I2C::read();
+    int gxL = I2C::read();
+    int gy  = I2C::read();
+    int gyL = I2C::read();
+    int gz  = I2C::read();
+    int gzL = I2C::read();
+
+    I2C::stop();
 
     ax = Math::sign_extend((ax << 8) | axL);
     ay = Math::sign_extend((ay << 8) | ayL);

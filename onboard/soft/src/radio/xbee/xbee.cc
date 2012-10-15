@@ -1,9 +1,7 @@
 #include "xbee.h"
-#include <common/ct-utility.hpp>
-#include <system/bus/uart/uart.h>
-#include <system/devices.hpp>
-#include <system/util.h>
-#include <radio/messages/console.h>
+#include <common>
+#include <system>
+#include <radio>
 
 namespace Radio {
 

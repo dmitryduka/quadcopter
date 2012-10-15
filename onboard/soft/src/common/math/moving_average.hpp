@@ -1,6 +1,8 @@
 #ifndef MOVING_AVERAGE_HPP
 #define MOVING_AVERAGE_HPP
 
+#include <common>
+
 namespace Math {
 /* N is window width, should be power of 2 */
 template<int N>

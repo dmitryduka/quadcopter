@@ -1,10 +1,8 @@
 #include "task_pool.h"
 
-#include <radio/xbee/xbee.h>
-#include <radio/messages/telemetry.h>
-#include <sensors/imu/mpu6050.h>
-#include <control/stabilization.h>
-#include <control/marg.h>
+#include <radio>
+#include <sensors>
+#include <control>
 
 namespace System {
 namespace Tasking {

@@ -1,7 +1,5 @@
 #include "telemetry.h"
-#include <radio/messages/messages.hpp>
-#include <system/bus/uart/uart.h>
-#include <system/registry.hpp>
+#include <radio>
 
 namespace Radio {
 namespace Digital {

@@ -1,0 +1,7 @@
+#ifndef SENSORS_HEADER
+#define SENSORS_HEADER
+
+#include <sensors/imu/mpu6050.h>
+using namespace Sensors::IMU;
+
+#endif

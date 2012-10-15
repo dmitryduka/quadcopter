@@ -6,7 +6,7 @@ namespace System {
 namespace Tasking {
 namespace Pool {
 
-enum class TaskType {
+enum TaskType {
     TASK_TYPE_BEGIN = 0,
     StabilizationAndEngineUpdateTask = 0,
     XBeeReadIdleTask,

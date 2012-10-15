@@ -1,8 +1,7 @@
 #ifndef MARG_H
 #define MARG_H
 
-#include <system/tasking/tasks.h>
-#include <system/fp/float32.h>
+#include <system>
 
 namespace Control {
 

@@ -1,7 +1,4 @@
 #include "stabilization.h"
-#include <system/devices.hpp>
-#include <system/registry.hpp>
-#include <sensors/imu/mpu6050.h>
 
 namespace Control {
 
@@ -9,7 +6,6 @@ StabilizationAndEngineUpdateTask::StabilizationAndEngineUpdateTask() : ix(0), iy
 
 /* Calculate all corrections and apply them to motors */
 void StabilizationAndEngineUpdateTask::start() {
-    Sensors::IMU::MPU6050::updateAccelerometerAndGyro();
     /* Calculate engine corrections */
     horizontalStabilization();
     /* Also azimuth control here */
