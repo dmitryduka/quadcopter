@@ -18,10 +18,12 @@ static void mpu6050_setup(char reg, char byte) {
 }
 
 void init() {
+    mpu6050_setup(MPU6050_PWR_MGMT, 0x80); //Device reset
+    System::delay(5_ms); //approx 5ms grace period
+    mpu6050_setup(MPU6050_PWR_MGMT, MPU6050_PWR_MGMT_SLEEP_DISABLE);
     mpu6050_setup(MPU6050_SETUP_DLPF, MPU6050_DLPF_44HZ_DELAY_5MS);
     mpu6050_setup(MPU6050_SETUP_GYRO, MPU6050_GYRO_RANGE_2000DEG);
     mpu6050_setup(MPU6050_SETUP_ACC, MPU6050_ACC_RANGE_16G);
-    mpu6050_setup(MPU6050_PWR_MGMT, MPU6050_PWR_MGMT_SLEEP_DISABLE);
     System::delay(1_ms);
 }
 
@@ -81,4 +83,3 @@ void updatePressure() {
 }
 }
 }
-
