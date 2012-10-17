@@ -1,6 +1,6 @@
-#include "mpu6050.h"
+#include "imu.h"
 #include <common>
-#include <system/bus/i2c/i2c.h>
+#include <system/i2c.h>
 #include <system/registry.hpp>
 
 namespace Sensors {

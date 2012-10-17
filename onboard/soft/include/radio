@@ -1,10 +1,10 @@
 #ifndef RADIO_HEADER
 #define RADIO_HEADER
 
-#include <radio/messages/messages.hpp>
-#include <radio/messages/telemetry.h>
-#include <radio/messages/console.h>
-#include <radio/xbee/xbee.h>
+#include <radio/messages.hpp>
+#include <radio/telemetry.h>
+#include <radio/console.h>
+#include <radio/xbee.h>
 
 namespace XBee = Radio::Digital;
 using namespace Radio;

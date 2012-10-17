@@ -1,5 +1,5 @@
-#ifndef MPU6050_H
-#define MPU6050_H
+#ifndef IMU_H
+#define IMU_H
 
 namespace Sensors {
 

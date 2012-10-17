@@ -9,13 +9,15 @@ unsigned int strlen(const char* str) {
     return size;
 }
 
-const char* b32tohex(unsigned int x) {
-    static char result[9] = {};
-    const char* hex_digits = "0123456789ABCDEF";
-    for(int i = 0; i < sizeof(int) << 2; ++i) {
-	result[i] = hex_digits[x & 0xF];
-	x >>= 4;
+long long int b32tohex(unsigned int x) {
+    union {
+	long long int ll;
+	unsigned char q[8];
+    };
+    const char* hex = "0123456789ABCDEF";
+    for(int i = 0; i  < 8; ++i) {
+	q[i] = hex[x >> 28];
+	x <<= 4;
     }
-    result[8] = '\0';
-    return result;
+    return ll;
 }

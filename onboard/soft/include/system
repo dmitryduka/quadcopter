@@ -1,15 +1,15 @@
 #ifndef SYSTEM_HEADER
 #define SYSTEM_HEADER
 
-#include <system/bus/uart/uart.h>
-#include <system/bus/i2c/i2c.h>
+#include <system/uart.h>
+#include <system/i2c.h>
 #include <system/devices.hpp>
-#include <system/fp/float32.h>
+#include <system/float32.h>
 #include <system/registry.hpp>
 #include <system/util.h>
-#include <system/bus/i2c/i2c.h>
-#include <system/tasking/task_pool.h>
-#include <system/tasking/tasks.h>
+#include <system/i2c.h>
+#include <system/task_pool.h>
+#include <system/tasks.h>
 
 namespace Tasks = System::Tasking;
 using namespace System::Tasking;

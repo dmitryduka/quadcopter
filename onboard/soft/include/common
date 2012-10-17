@@ -3,8 +3,8 @@
 
 #include <common/ct-utility.hpp>
 #include <common/string.h>
-#include <common/math/maths.hpp>
-#include <common/math/moving_average.hpp>
+#include <common/maths.hpp>
+#include <common/moving_average.hpp>
 
 using namespace Math;
 

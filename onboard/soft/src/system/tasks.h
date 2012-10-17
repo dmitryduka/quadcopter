@@ -1,7 +1,7 @@
 #ifndef TASKS_HPP
 #define TASKS_HPP
 
-#include <system/devices.hpp>
+#include "devices.hpp"
 
 namespace System {
 namespace Tasking {
