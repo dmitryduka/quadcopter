@@ -9,9 +9,10 @@ unsigned int strlen(const char* str) {
     return size;
 }
 
-long long int b32tohex(unsigned int x) {
+/* 32 bit binary -> 64 bit hex */
+ustring b32tohex(unsigned int x) {
     union {
-	long long int ll;
+	ustring ll;
 	unsigned char q[8];
     };
     const char* hex = "0123456789ABCDEF";

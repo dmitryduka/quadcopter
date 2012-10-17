@@ -3,18 +3,8 @@
 
 namespace Control {
 
-// System constants
-static const float32 cpu_tick_time(1.0f / CPU_FREQUENCY_HZ);
-static const float32 gyroMeasError(0.08726646259971647884618453842443f); // gyroscope measurement error in rad/s (shown as 5 deg/s)
-static const float32 gyroMeasDrift(0.00349065850398865915384738153698f); // gyroscope measurement error in rad/s/s (shown as 0.2f deg/s/s)
-static const float32 beta(0.07557497350239041509830947509372f); // compute beta
-static const float32 zeta(0.00302299894009561660393237900375f); // compute zeta
-static const float32 deltatzeta(3.02299894009561660393237900375e-6f);
 
 /* TODO: convert using sensors setup */
-static const float32 GYRO_FACTOR(0.06103515625f); // [-2000:2000] / 65536
-static const float32 ACC_FACTOR(0.00048828125f); // [-16:16] / 65536
-static const float32 COMPASS_FACTOR(0.00091743f); // http://www.soc-robotics.com/pdfs/HMC5883L.pdf : page 12, GN0 = 1, GN1 = 0, GN2 = 0, +-1.3Ga, 1090LSB/Gauss, [-2048, 2047] => 1 / 1090.0f
 
 MARG::MARG() : deltat(*DEV_RTC), SEq_1(1.0f), b_x(1.0f) {
 }
@@ -24,6 +14,10 @@ void MARG::start() {
     /* TODO: update magnetometer as well */
     Sensors::IMU::MPU6050::updateAccelerometerAndGyro();
     /* Convert to SI */
+    const float32 GYRO_FACTOR(0.06103515625f); // [-2000:2000] / 65536
+    const float32 ACC_FACTOR(0.00048828125f); // [-16:16] / 65536
+    const float32 COMPASS_FACTOR(0.00091743f); // http://www.soc-robotics.com/pdfs/HMC5883L.pdf : page 12, GN0 = 1, GN1 = 0, GN2 = 0, +-1.3Ga, 1090LSB/Gauss, [-2048, 2047] => 1 / 1090.0f
+    const float32 cpu_tick_time(1.0f / CPU_FREQUENCY_HZ);
 
     /* Measure deltat */
     unsigned int rtc = *DEV_RTC;
@@ -56,6 +50,13 @@ void MARG::start() {
 
 void MARG::filterUpdateIMU(float32 w_x, float32 w_y, float32 w_z, float32 a_x, float32 a_y, float32 a_z)
 {
+    // System constants
+    const float32 gyroMeasError(0.08726646259971647884618453842443f); // gyroscope measurement error in rad/s (shown as 5 deg/s)
+    const float32 gyroMeasDrift(0.00349065850398865915384738153698f); // gyroscope measurement error in rad/s/s (shown as 0.2f deg/s/s)
+    const float32 beta(0.07557497350239041509830947509372f); // compute beta
+    const float32 zeta(0.00302299894009561660393237900375f); // compute zeta
+    const float32 deltatzeta(3.02299894009561660393237900375e-6f);
+
 	// Local system variables
 	float32 norm; // vector norm
 	float32 SEqDot_omega_1, SEqDot_omega_2, SEqDot_omega_3, SEqDot_omega_4; // quaternion derrivative from gyroscopes elements
@@ -159,6 +160,13 @@ void MARG::filterUpdateIMU(float32 w_x, float32 w_y, float32 w_z, float32 a_x, f
 
 void MARG::filterUpdateMARG(float32 w_x, float32 w_y, float32 w_z, float32 a_x, float32 a_y, float32 a_z, float32 m_x, float32 m_y, float32 m_z)
 {
+    // System constants
+    const float32 gyroMeasError(0.08726646259971647884618453842443f); // gyroscope measurement error in rad/s (shown as 5 deg/s)
+    const float32 gyroMeasDrift(0.00349065850398865915384738153698f); // gyroscope measurement error in rad/s/s (shown as 0.2f deg/s/s)
+    const float32 beta(0.07557497350239041509830947509372f); // compute beta
+    const float32 zeta(0.00302299894009561660393237900375f); // compute zeta
+    const float32 deltatzeta(3.02299894009561660393237900375e-6f);
+
 	// local system variables
 	float32 norm; // vector norm
 	float32 SEqDot_omega_1(0.0f), SEqDot_omega_2, SEqDot_omega_3, SEqDot_omega_4; // quaternion rate from gyroscopes elements

@@ -17,15 +17,23 @@ char read() {
 }
 
 /* TODO: Comment all this */
-void write_waiting(char x) {
+void write_waiting(const char x) {
     while(UART_TX_BUFFER_LENGTH - *DEV_UART_TX == 0) { asm("nop");  }
     *DEV_UART_TX = x;
 }
 
-bool write(char x) {
+bool write(const char x) {
     if(*DEV_UART_TX == 0) return false;
     *DEV_UART_TX = x;
     return true;
+}
+
+void write_waiting(const ustring x) {
+    write_waiting(reinterpret_cast<const char*>(&x), sizeof(ustring));
+}
+
+bool write(const ustring x) {
+    write(reinterpret_cast<const char*>(&x), sizeof(ustring));
 }
 
 void write_loop(const char* x, unsigned int size) {

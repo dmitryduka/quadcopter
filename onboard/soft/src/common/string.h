@@ -1,7 +1,9 @@
 #ifndef STRING_H
 #define STRING_H
 
+#include <system/types.h>
+
 unsigned int strlen(const char*);
-long long int b32tohex(unsigned int) __attribute__ ((noinline));
+ustring b32tohex(unsigned int);
 
 #endif

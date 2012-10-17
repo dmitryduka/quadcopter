@@ -51,7 +51,7 @@ CCOPTS =  -c -std=c++11 -mno-gpopt -G0 $(INCLUDEDIRS)
 CCOPTS += -Os -I$(INCDIR)
 CCOPTS += -Wcast-align -Wstack-usage=$(STACK_SIZE) 
 CCOPTS += -flto -fdata-sections -ffunction-sections -fno-threadsafe-statics -fstack-usage -fno-strict-aliasing -fno-exceptions -fno-rtti
-LDOPTS = -Os -flto -Wl,--gc-sections -nostdlib -nostartfiles -fwhole-program -lgcc
+LDOPTS = -flto -Os -Wl,--gc-sections -nostdlib -nostartfiles -fwhole-program -lgcc
 
 all: clean_errors dirs $(IMEMFILE) $(DMEMFILE)
 	@$(eval CE := $(shell $(NM) ./main | grep CODE_ENDS | cut -f 1 -d ' ' | tr '[:lower:]' '[:upper:]'))
