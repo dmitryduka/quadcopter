@@ -1,3 +1,6 @@
+#===========================================================#
+#    Basic JTAG-related functions. These are generic.
+#===========================================================#
 
 proc jtag_open {} {
 	set hw_name [lindex [get_hardware_names] 0]
@@ -27,56 +30,6 @@ proc jtag_hex_32 {d} {
 proc jtag_bin {d len} {
 	device_virtual_dr_shift -instance_index 0 -dr_value $d -length $len
 	}
-
-#===========================================================#
-#  Symbol dereferencing, using objdump-generated disassembly
-#===========================================================#
-
-# use "symbols <filename> to load symbols "
-proc symbols {fname} {
-    global addrs
-    # open file (objdump disassemble output)
-    set fp [open $fname r]
-    set file_data [read $fp]
-    close $fp
-    # split into lines
-    set lines [split $file_data "\n"]
-    # find, using regexp and add pairs {addr, symbol} to the global list
-    foreach line $lines {
-	# search for strings like '00000000 <_start>:'
-	set re {^([0-9a-fA-F]{8})\s+<(.*)>:}
-	set addr ""
-	set symbol ""
-	regexp $re $line -> addr symbol
-	# if matched put addr/symbol pair into the global list
-	if {$addr != "" && $symbol != ""} {
-	    lappend addrs [list $addr $symbol]
-	}
-    }
-    set addrs_len [llength $addrs]
-    puts "$addrs_len symbols loaded."
-}
-
-# go through the list ("addrs") and find the 
-# last symbol which address is <= of the input argument
-proc deref_addr {addr} {
-    global addrs
-    set iaddr [expr 0x$addr]
-    set last_possible_addr ""
-    set last_possible_symb ""
-    foreach pair $addrs {
-	set saddr [expr 0x[lindex $pair 0]]
-	set symbol [lindex $pair 1]
-	if {$iaddr >= $saddr} {
-	    set last_possible_addr $saddr
-	    set last_possible_symb $symbol
-	} else {
-	    return $last_possible_symb
-	}
-    }
-    return $addr
-}
-
 
 #===========================================================#
 #    Instruction generation
@@ -155,8 +108,7 @@ proc cpu_trace {{n 1}} {
 		set str [jtag_hex 0000000000000000 64]
 		set addr [string range $str 0 7]
 		set inst [string range $str 8 15]
-		set symbol [deref_addr $addr]
-		puts [format "%-50s : %10s (%s)" $symbol $inst $i]
+		puts "   $addr: $inst ($i)" 
 		}
 	}
 
@@ -247,10 +199,9 @@ proc upload_data {{fname "data.txt"}} {
 	}
 
 proc upload {} {
+	cpu_resetp
 	upload_code
 	upload_data
 	cpu_reset
 	puts "Done"
 	}
-
-#symbols "listings/program-listing.txt"

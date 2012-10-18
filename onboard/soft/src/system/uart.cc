@@ -6,7 +6,7 @@ namespace System {
 namespace Bus {
 namespace UART {
 
-const unsigned int UART_TX_BUFFER_LENGTH = 32;
+const unsigned int UART_TX_BUFFER_LENGTH = 31;
 
 bool can_read() { return ((*DEV_UART_RX >> 16) != 0); }
 
@@ -28,8 +28,15 @@ bool write(const char x) {
     return true;
 }
 
-void write_waiting(const ustring x) {
-    write_waiting(reinterpret_cast<const char*>(&x), sizeof(ustring));
+void write_waiting(ustring x) {
+	for(int i = 0; i < 8; ++i) {
+		char c = (x >> 56);
+		if(c) write_waiting(c);
+		else break;
+		x <<= 8;
+	}
+	write_waiting('h');
+    //write_waiting(reinterpret_cast<const char*>(&x), sizeof(ustring));
 }
 
 bool write(const ustring x) {

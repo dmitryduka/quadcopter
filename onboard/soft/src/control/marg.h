@@ -5,7 +5,8 @@
 
 namespace Control {
 
-class MARG : public System::Tasking::ContinuousTask {
+//class MARG : public System::Tasking::ContinuousTask {
+class MARG : public System::Tasking::IdleTask {
 private:
     // Global system variables
     unsigned int old_rtc;
