@@ -11,7 +11,7 @@ Disassembly of section .text:
        c:	00000000 	nop
       10:	0040f809 	jalr	v0
       14:	00000000 	nop
-      18:	0c000d31 	jal	34c4 <main>
+      18:	0c000d45 	jal	3514 <main>
       1c:	00000000 	nop
 
 00000020 <Control::MARG::start()>:
@@ -162,7 +162,7 @@ Disassembly of section .text:
      260:	0c000552 	jal	1548 <_ZN6System8Registry8instanceEv.local.8>
      264:	ae620018 	sw	v0,24(s3)
      268:	8c450034 	lw	a1,52(v0)
-     26c:	0c000cdb 	jal	336c <float32::float32(int)>
+     26c:	0c000cef 	jal	33bc <float32::float32(int)>
      270:	27a40010 	addiu	a0,sp,16
      274:	27a600c0 	addiu	a2,sp,192
      278:	27a400b0 	addiu	a0,sp,176
@@ -171,7 +171,7 @@ Disassembly of section .text:
      284:	0c000552 	jal	1548 <_ZN6System8Registry8instanceEv.local.8>
      288:	26710040 	addiu	s1,s3,64
      28c:	8c450038 	lw	a1,56(v0)
-     290:	0c000cdb 	jal	336c <float32::float32(int)>
+     290:	0c000cef 	jal	33bc <float32::float32(int)>
      294:	27a40010 	addiu	a0,sp,16
      298:	27a600c0 	addiu	a2,sp,192
      29c:	27a400ac 	addiu	a0,sp,172
@@ -180,7 +180,7 @@ Disassembly of section .text:
      2a8:	0c000552 	jal	1548 <_ZN6System8Registry8instanceEv.local.8>
      2ac:	26720044 	addiu	s2,s3,68
      2b0:	8c45003c 	lw	a1,60(v0)
-     2b4:	0c000cdb 	jal	336c <float32::float32(int)>
+     2b4:	0c000cef 	jal	33bc <float32::float32(int)>
      2b8:	27a40010 	addiu	a0,sp,16
      2bc:	27a600c0 	addiu	a2,sp,192
      2c0:	27a400a8 	addiu	a0,sp,168
@@ -189,7 +189,7 @@ Disassembly of section .text:
      2cc:	0c000552 	jal	1548 <_ZN6System8Registry8instanceEv.local.8>
      2d0:	3c164000 	lui	s6,0x4000
      2d4:	8c45001c 	lw	a1,28(v0)
-     2d8:	0c000cdb 	jal	336c <float32::float32(int)>
+     2d8:	0c000cef 	jal	33bc <float32::float32(int)>
      2dc:	27a40010 	addiu	a0,sp,16
      2e0:	27a600bc 	addiu	a2,sp,188
      2e4:	27a400a4 	addiu	a0,sp,164
@@ -198,7 +198,7 @@ Disassembly of section .text:
      2f0:	0c000552 	jal	1548 <_ZN6System8Registry8instanceEv.local.8>
      2f4:	26740048 	addiu	s4,s3,72
      2f8:	8c450020 	lw	a1,32(v0)
-     2fc:	0c000cdb 	jal	336c <float32::float32(int)>
+     2fc:	0c000cef 	jal	33bc <float32::float32(int)>
      300:	27a40010 	addiu	a0,sp,16
      304:	27a600bc 	addiu	a2,sp,188
      308:	27a400a0 	addiu	a0,sp,160
@@ -207,7 +207,7 @@ Disassembly of section .text:
      314:	0c000552 	jal	1548 <_ZN6System8Registry8instanceEv.local.8>
      318:	2670004c 	addiu	s0,s3,76
      31c:	8c450024 	lw	a1,36(v0)
-     320:	0c000cdb 	jal	336c <float32::float32(int)>
+     320:	0c000cef 	jal	33bc <float32::float32(int)>
      324:	27a40010 	addiu	a0,sp,16
      328:	27a600bc 	addiu	a2,sp,188
      32c:	27a4009c 	addiu	a0,sp,156
@@ -216,7 +216,7 @@ Disassembly of section .text:
      338:	0c000552 	jal	1548 <_ZN6System8Registry8instanceEv.local.8>
      33c:	3c173f80 	lui	s7,0x3f80
      340:	8c450040 	lw	a1,64(v0)
-     344:	0c000cdb 	jal	336c <float32::float32(int)>
+     344:	0c000cef 	jal	33bc <float32::float32(int)>
      348:	27a40010 	addiu	a0,sp,16
      34c:	27a600b8 	addiu	a2,sp,184
      350:	27a40098 	addiu	a0,sp,152
@@ -225,7 +225,7 @@ Disassembly of section .text:
      35c:	0c000552 	jal	1548 <_ZN6System8Registry8instanceEv.local.8>
      360:	26750018 	addiu	s5,s3,24
      364:	8c450044 	lw	a1,68(v0)
-     368:	0c000cdb 	jal	336c <float32::float32(int)>
+     368:	0c000cef 	jal	33bc <float32::float32(int)>
      36c:	27a40010 	addiu	a0,sp,16
      370:	27a600b8 	addiu	a2,sp,184
      374:	27a40094 	addiu	a0,sp,148
@@ -234,7 +234,7 @@ Disassembly of section .text:
      380:	0c000552 	jal	1548 <_ZN6System8Registry8instanceEv.local.8>
      384:	00000000 	nop
      388:	8c450048 	lw	a1,72(v0)
-     38c:	0c000cdb 	jal	336c <float32::float32(int)>
+     38c:	0c000cef 	jal	33bc <float32::float32(int)>
      390:	27a40010 	addiu	a0,sp,16
      394:	27a40090 	addiu	a0,sp,144
      398:	27a50010 	addiu	a1,sp,16
@@ -899,7 +899,7 @@ Disassembly of section .text:
      ddc:	14430006 	bne	v0,v1,df8 <Radio::Digital::XBeeReadIdleTask::start()+0x60>
      de0:	00000000 	nop
      de4:	3c020000 	lui	v0,0x0
-     de8:	244222e0 	addiu	v0,v0,8928
+     de8:	24422330 	addiu	v0,v0,9008
      dec:	a080003c 	sb	zero,60(a0)
      df0:	080003b3 	j	ecc <Radio::Digital::XBeeReadIdleTask::start()+0x134>
      df4:	ac820040 	sw	v0,64(a0)
@@ -920,7 +920,7 @@ Disassembly of section .text:
      e30:	ae040038 	sw	a0,56(s0)
      e34:	00002821 	move	a1,zero
      e38:	3c040000 	lui	a0,0x0
-     e3c:	248422e0 	addiu	a0,a0,8928
+     e3c:	24842330 	addiu	a0,a0,9008
      e40:	1464000a 	bne	v1,a0,e6c <Radio::Digital::XBeeReadIdleTask::start()+0xd4>
      e44:	2404000d 	li	a0,13
      e48:	10440003 	beq	v0,a0,e58 <Radio::Digital::XBeeReadIdleTask::start()+0xc0>
@@ -1165,7 +1165,7 @@ Disassembly of section .text:
     11f4:	00005010 	mfhi	t2
     11f8:	024a5023 	subu	t2,s2,t2
     11fc:	0142b823 	subu	s7,t2,v0
-    1200:	0c000cf1 	jal	33c4 <__ashldi3>
+    1200:	0c000d05 	jal	3414 <__ashldi3>
     1204:	afb60014 	sw	s6,20(sp)
     1208:	8fa70010 	lw	a3,16(sp)
     120c:	8fa80014 	lw	t0,20(sp)
@@ -1642,7 +1642,7 @@ Disassembly of section .text:
     1900:	03e00008 	jr	ra
     1904:	00000000 	nop
 
-00001908 <_ZN7Sensors3IMU7MPU6050L13mpu6050_setupEcc.2471>:
+00001908 <_ZN7Sensors3IMU7MPU6050L13mpu6050_setupEcc.2467>:
     1908:	27bdffe0 	addiu	sp,sp,-32
     190c:	afbf001c 	sw	ra,28(sp)
     1910:	afb10018 	sw	s1,24(sp)
@@ -2247,7 +2247,7 @@ Disassembly of section .text:
     220c:	00a22821 	addu	a1,a1,v0
     2210:	00052e00 	sll	a1,a1,0x18
     2214:	00052e03 	sra	a1,a1,0x18
-    2218:	0c000cf1 	jal	33c4 <__ashldi3>
+    2218:	0c000d05 	jal	3414 <__ashldi3>
     221c:	000527c3 	sra	a0,a1,0x1f
     2220:	00501025 	or	v0,v0,s0
     2224:	02231825 	or	v1,s1,v1
@@ -2262,7 +2262,7 @@ Disassembly of section .text:
     2248:	00002021 	move	a0,zero
     224c:	2405002d 	li	a1,45
     2250:	00002021 	move	a0,zero
-    2254:	0c000cf1 	jal	33c4 <__ashldi3>
+    2254:	0c000d05 	jal	3414 <__ashldi3>
     2258:	001530c0 	sll	a2,s5,0x3
     225c:	00509025 	or	s2,v0,s0
     2260:	00719825 	or	s3,v1,s1
@@ -2282,1391 +2282,1391 @@ Disassembly of section .text:
     2298:	27bd0040 	addiu	sp,sp,64
 
 0000229c <b32tohex(unsigned int)>:
-    229c:	3c078000 	lui	a3,0x8000
-    22a0:	00001021 	move	v0,zero
-    22a4:	24e70000 	addiu	a3,a3,0
-    22a8:	24030008 	li	v1,8
-    22ac:	27bdfff8 	addiu	sp,sp,-8
-    22b0:	00043702 	srl	a2,a0,0x1c
-    22b4:	00e63021 	addu	a2,a3,a2
-    22b8:	90c60000 	lbu	a2,0(a2)
-    22bc:	03a22821 	addu	a1,sp,v0
-    22c0:	24420001 	addiu	v0,v0,1
-    22c4:	a0a60000 	sb	a2,0(a1)
-    22c8:	1443fff9 	bne	v0,v1,22b0 <b32tohex(unsigned int)+0x14>
-    22cc:	00042100 	sll	a0,a0,0x4
-    22d0:	8fa20000 	lw	v0,0(sp)
-    22d4:	8fa30004 	lw	v1,4(sp)
-    22d8:	03e00008 	jr	ra
-    22dc:	27bd0008 	addiu	sp,sp,8
+    229c:	27bdffd0 	addiu	sp,sp,-48
+    22a0:	afb50028 	sw	s5,40(sp)
+    22a4:	3c158000 	lui	s5,0x8000
+    22a8:	afb40024 	sw	s4,36(sp)
+    22ac:	afb30020 	sw	s3,32(sp)
+    22b0:	afb2001c 	sw	s2,28(sp)
+    22b4:	afb10018 	sw	s1,24(sp)
+    22b8:	afb00014 	sw	s0,20(sp)
+    22bc:	afbf002c 	sw	ra,44(sp)
+    22c0:	00809821 	move	s3,a0
+    22c4:	24120038 	li	s2,56
+    22c8:	00008821 	move	s1,zero
+    22cc:	00008021 	move	s0,zero
+    22d0:	26b50000 	addiu	s5,s5,0
+    22d4:	2414fff8 	li	s4,-8
+    22d8:	00131702 	srl	v0,s3,0x1c
+    22dc:	02a21021 	addu	v0,s5,v0
+    22e0:	80450000 	lb	a1,0(v0)
+    22e4:	02403021 	move	a2,s2
+    22e8:	0c000d05 	jal	3414 <__ashldi3>
+    22ec:	000527c3 	sra	a0,a1,0x1f
+    22f0:	00501025 	or	v0,v0,s0
+    22f4:	02231825 	or	v1,s1,v1
+    22f8:	2652fff8 	addiu	s2,s2,-8
+    22fc:	00408021 	move	s0,v0
+    2300:	00608821 	move	s1,v1
+    2304:	1654fff4 	bne	s2,s4,22d8 <b32tohex(unsigned int)+0x3c>
+    2308:	00139900 	sll	s3,s3,0x4
+    230c:	8fbf002c 	lw	ra,44(sp)
+    2310:	8fb50028 	lw	s5,40(sp)
+    2314:	8fb40024 	lw	s4,36(sp)
+    2318:	8fb30020 	lw	s3,32(sp)
+    231c:	8fb2001c 	lw	s2,28(sp)
+    2320:	8fb10018 	lw	s1,24(sp)
+    2324:	8fb00014 	lw	s0,20(sp)
+    2328:	03e00008 	jr	ra
+    232c:	27bd0030 	addiu	sp,sp,48
 
-000022e0 <Radio::Messages::consoleHandler(char*)>:
-    22e0:	27bdffa8 	addiu	sp,sp,-88
-    22e4:	00801021 	move	v0,a0
-    22e8:	afb10034 	sw	s1,52(sp)
-    22ec:	afbf0054 	sw	ra,84(sp)
-    22f0:	afbe0050 	sw	s8,80(sp)
-    22f4:	afb7004c 	sw	s7,76(sp)
-    22f8:	afb60048 	sw	s6,72(sp)
-    22fc:	afb50044 	sw	s5,68(sp)
-    2300:	afb40040 	sw	s4,64(sp)
-    2304:	afb3003c 	sw	s3,60(sp)
-    2308:	afb20038 	sw	s2,56(sp)
-    230c:	afb00030 	sw	s0,48(sp)
-    2310:	00808821 	move	s1,a0
-    2314:	afa00010 	sw	zero,16(sp)
-    2318:	afa00014 	sw	zero,20(sp)
-    231c:	080008ca 	j	2328 <Radio::Messages::consoleHandler(char*)+0x48>
-    2320:	afa00018 	sw	zero,24(sp)
-    2324:	24420001 	addiu	v0,v0,1
-    2328:	80430000 	lb	v1,0(v0)
-    232c:	00000000 	nop
-    2330:	1460fffc 	bnez	v1,2324 <Radio::Messages::consoleHandler(char*)+0x44>
-    2334:	0051b023 	subu	s6,v0,s1
-    2338:	26d60001 	addiu	s6,s6,1
-    233c:	0236b021 	addu	s6,s1,s6
-    2340:	123603fe 	beq	s1,s6,333c <Radio::Messages::consoleHandler(char*)+0x105c>
-    2344:	3c178000 	lui	s7,0x8000
-    2348:	3c158000 	lui	s5,0x8000
-    234c:	24100001 	li	s0,1
-    2350:	2413002b 	li	s3,43
-    2354:	00009021 	move	s2,zero
-    2358:	26f70148 	addiu	s7,s7,328
-    235c:	26b50144 	addiu	s5,s5,324
-    2360:	3c148000 	lui	s4,0x8000
-    2364:	2602ffff 	addiu	v0,s0,-1
-    2368:	2c430050 	sltiu	v1,v0,80
-    236c:	106003f3 	beqz	v1,333c <Radio::Messages::consoleHandler(char*)+0x105c>
-    2370:	00021080 	sll	v0,v0,0x2
-    2374:	02e21021 	addu	v0,s7,v0
-    2378:	8c420000 	lw	v0,0(v0)
+00002330 <Radio::Messages::consoleHandler(char*)>:
+    2330:	27bdffa8 	addiu	sp,sp,-88
+    2334:	00801021 	move	v0,a0
+    2338:	afb10034 	sw	s1,52(sp)
+    233c:	afbf0054 	sw	ra,84(sp)
+    2340:	afbe0050 	sw	s8,80(sp)
+    2344:	afb7004c 	sw	s7,76(sp)
+    2348:	afb60048 	sw	s6,72(sp)
+    234c:	afb50044 	sw	s5,68(sp)
+    2350:	afb40040 	sw	s4,64(sp)
+    2354:	afb3003c 	sw	s3,60(sp)
+    2358:	afb20038 	sw	s2,56(sp)
+    235c:	afb00030 	sw	s0,48(sp)
+    2360:	00808821 	move	s1,a0
+    2364:	afa00010 	sw	zero,16(sp)
+    2368:	afa00014 	sw	zero,20(sp)
+    236c:	080008de 	j	2378 <Radio::Messages::consoleHandler(char*)+0x48>
+    2370:	afa00018 	sw	zero,24(sp)
+    2374:	24420001 	addiu	v0,v0,1
+    2378:	80430000 	lb	v1,0(v0)
     237c:	00000000 	nop
-    2380:	00400008 	jr	v0
-    2384:	00000000 	nop
-    2388:	82220000 	lb	v0,0(s1)
-    238c:	24030068 	li	v1,104
-    2390:	1043034f 	beq	v0,v1,30d0 <Radio::Messages::consoleHandler(char*)+0xdf0>
-    2394:	28430069 	slti	v1,v0,105
-    2398:	10600008 	beqz	v1,23bc <Radio::Messages::consoleHandler(char*)+0xdc>
-    239c:	24030073 	li	v1,115
-    23a0:	24030020 	li	v1,32
-    23a4:	104303e2 	beq	v0,v1,3330 <Radio::Messages::consoleHandler(char*)+0x1050>
-    23a8:	24030067 	li	v1,103
-    23ac:	144303e3 	bne	v0,v1,333c <Radio::Messages::consoleHandler(char*)+0x105c>
-    23b0:	24100002 	li	s0,2
-    23b4:	08000ccd 	j	3334 <Radio::Messages::consoleHandler(char*)+0x1054>
-    23b8:	26310001 	addiu	s1,s1,1
-    23bc:	144303df 	bne	v0,v1,333c <Radio::Messages::consoleHandler(char*)+0x105c>
-    23c0:	24100024 	li	s0,36
-    23c4:	08000ccd 	j	3334 <Radio::Messages::consoleHandler(char*)+0x1054>
-    23c8:	26310001 	addiu	s1,s1,1
-    23cc:	82230000 	lb	v1,0(s1)
-    23d0:	24020065 	li	v0,101
-    23d4:	146203d9 	bne	v1,v0,333c <Radio::Messages::consoleHandler(char*)+0x105c>
-    23d8:	24100003 	li	s0,3
-    23dc:	08000ccd 	j	3334 <Radio::Messages::consoleHandler(char*)+0x1054>
-    23e0:	26310001 	addiu	s1,s1,1
-    23e4:	82230000 	lb	v1,0(s1)
-    23e8:	24020074 	li	v0,116
-    23ec:	146203d3 	bne	v1,v0,333c <Radio::Messages::consoleHandler(char*)+0x105c>
-    23f0:	24100004 	li	s0,4
-    23f4:	08000ccd 	j	3334 <Radio::Messages::consoleHandler(char*)+0x1054>
-    23f8:	26310001 	addiu	s1,s1,1
-    23fc:	82230000 	lb	v1,0(s1)
-    2400:	2402005f 	li	v0,95
-    2404:	146203cd 	bne	v1,v0,333c <Radio::Messages::consoleHandler(char*)+0x105c>
-    2408:	24100005 	li	s0,5
-    240c:	08000ccd 	j	3334 <Radio::Messages::consoleHandler(char*)+0x1054>
-    2410:	26310001 	addiu	s1,s1,1
-    2414:	82220000 	lb	v0,0(s1)
-    2418:	2403006d 	li	v1,109
-    241c:	10430326 	beq	v0,v1,30b8 <Radio::Messages::consoleHandler(char*)+0xdd8>
-    2420:	2843006e 	slti	v1,v0,110
-    2424:	10600008 	beqz	v1,2448 <Radio::Messages::consoleHandler(char*)+0x168>
-    2428:	24030071 	li	v1,113
-    242c:	24030061 	li	v1,97
-    2430:	1043000d 	beq	v0,v1,2468 <Radio::Messages::consoleHandler(char*)+0x188>
-    2434:	24030067 	li	v1,103
-    2438:	144303c0 	bne	v0,v1,333c <Radio::Messages::consoleHandler(char*)+0x105c>
-    243c:	2410000e 	li	s0,14
-    2440:	08000ccd 	j	3334 <Radio::Messages::consoleHandler(char*)+0x1054>
-    2444:	26310001 	addiu	s1,s1,1
-    2448:	1043031d 	beq	v0,v1,30c0 <Radio::Messages::consoleHandler(char*)+0xde0>
-    244c:	24030074 	li	v1,116
-    2450:	1043031d 	beq	v0,v1,30c8 <Radio::Messages::consoleHandler(char*)+0xde8>
-    2454:	24030070 	li	v1,112
-    2458:	144303b8 	bne	v0,v1,333c <Radio::Messages::consoleHandler(char*)+0x105c>
-    245c:	24100014 	li	s0,20
-    2460:	08000ccd 	j	3334 <Radio::Messages::consoleHandler(char*)+0x1054>
-    2464:	26310001 	addiu	s1,s1,1
-    2468:	08000ccc 	j	3330 <Radio::Messages::consoleHandler(char*)+0x1050>
-    246c:	24100006 	li	s0,6
-    2470:	82220000 	lb	v0,0(s1)
-    2474:	2403006c 	li	v1,108
-    2478:	104303a8 	beq	v0,v1,331c <Radio::Messages::consoleHandler(char*)+0x103c>
-    247c:	2403006e 	li	v1,110
-    2480:	1043030b 	beq	v0,v1,30b0 <Radio::Messages::consoleHandler(char*)+0xdd0>
-    2484:	24030063 	li	v1,99
-    2488:	144303ac 	bne	v0,v1,333c <Radio::Messages::consoleHandler(char*)+0x105c>
-    248c:	24100007 	li	s0,7
-    2490:	08000ccd 	j	3334 <Radio::Messages::consoleHandler(char*)+0x1054>
+    2380:	1460fffc 	bnez	v1,2374 <Radio::Messages::consoleHandler(char*)+0x44>
+    2384:	0051b023 	subu	s6,v0,s1
+    2388:	26d60001 	addiu	s6,s6,1
+    238c:	0236b021 	addu	s6,s1,s6
+    2390:	123603fe 	beq	s1,s6,338c <Radio::Messages::consoleHandler(char*)+0x105c>
+    2394:	3c178000 	lui	s7,0x8000
+    2398:	3c158000 	lui	s5,0x8000
+    239c:	24100001 	li	s0,1
+    23a0:	2413002b 	li	s3,43
+    23a4:	00009021 	move	s2,zero
+    23a8:	26f70148 	addiu	s7,s7,328
+    23ac:	26b50144 	addiu	s5,s5,324
+    23b0:	3c148000 	lui	s4,0x8000
+    23b4:	2602ffff 	addiu	v0,s0,-1
+    23b8:	2c430050 	sltiu	v1,v0,80
+    23bc:	106003f3 	beqz	v1,338c <Radio::Messages::consoleHandler(char*)+0x105c>
+    23c0:	00021080 	sll	v0,v0,0x2
+    23c4:	02e21021 	addu	v0,s7,v0
+    23c8:	8c420000 	lw	v0,0(v0)
+    23cc:	00000000 	nop
+    23d0:	00400008 	jr	v0
+    23d4:	00000000 	nop
+    23d8:	82220000 	lb	v0,0(s1)
+    23dc:	24030068 	li	v1,104
+    23e0:	1043034f 	beq	v0,v1,3120 <Radio::Messages::consoleHandler(char*)+0xdf0>
+    23e4:	28430069 	slti	v1,v0,105
+    23e8:	10600008 	beqz	v1,240c <Radio::Messages::consoleHandler(char*)+0xdc>
+    23ec:	24030073 	li	v1,115
+    23f0:	24030020 	li	v1,32
+    23f4:	104303e2 	beq	v0,v1,3380 <Radio::Messages::consoleHandler(char*)+0x1050>
+    23f8:	24030067 	li	v1,103
+    23fc:	144303e3 	bne	v0,v1,338c <Radio::Messages::consoleHandler(char*)+0x105c>
+    2400:	24100002 	li	s0,2
+    2404:	08000ce1 	j	3384 <Radio::Messages::consoleHandler(char*)+0x1054>
+    2408:	26310001 	addiu	s1,s1,1
+    240c:	144303df 	bne	v0,v1,338c <Radio::Messages::consoleHandler(char*)+0x105c>
+    2410:	24100024 	li	s0,36
+    2414:	08000ce1 	j	3384 <Radio::Messages::consoleHandler(char*)+0x1054>
+    2418:	26310001 	addiu	s1,s1,1
+    241c:	82230000 	lb	v1,0(s1)
+    2420:	24020065 	li	v0,101
+    2424:	146203d9 	bne	v1,v0,338c <Radio::Messages::consoleHandler(char*)+0x105c>
+    2428:	24100003 	li	s0,3
+    242c:	08000ce1 	j	3384 <Radio::Messages::consoleHandler(char*)+0x1054>
+    2430:	26310001 	addiu	s1,s1,1
+    2434:	82230000 	lb	v1,0(s1)
+    2438:	24020074 	li	v0,116
+    243c:	146203d3 	bne	v1,v0,338c <Radio::Messages::consoleHandler(char*)+0x105c>
+    2440:	24100004 	li	s0,4
+    2444:	08000ce1 	j	3384 <Radio::Messages::consoleHandler(char*)+0x1054>
+    2448:	26310001 	addiu	s1,s1,1
+    244c:	82230000 	lb	v1,0(s1)
+    2450:	2402005f 	li	v0,95
+    2454:	146203cd 	bne	v1,v0,338c <Radio::Messages::consoleHandler(char*)+0x105c>
+    2458:	24100005 	li	s0,5
+    245c:	08000ce1 	j	3384 <Radio::Messages::consoleHandler(char*)+0x1054>
+    2460:	26310001 	addiu	s1,s1,1
+    2464:	82220000 	lb	v0,0(s1)
+    2468:	2403006d 	li	v1,109
+    246c:	10430326 	beq	v0,v1,3108 <Radio::Messages::consoleHandler(char*)+0xdd8>
+    2470:	2843006e 	slti	v1,v0,110
+    2474:	10600008 	beqz	v1,2498 <Radio::Messages::consoleHandler(char*)+0x168>
+    2478:	24030071 	li	v1,113
+    247c:	24030061 	li	v1,97
+    2480:	1043000d 	beq	v0,v1,24b8 <Radio::Messages::consoleHandler(char*)+0x188>
+    2484:	24030067 	li	v1,103
+    2488:	144303c0 	bne	v0,v1,338c <Radio::Messages::consoleHandler(char*)+0x105c>
+    248c:	2410000e 	li	s0,14
+    2490:	08000ce1 	j	3384 <Radio::Messages::consoleHandler(char*)+0x1054>
     2494:	26310001 	addiu	s1,s1,1
-    2498:	82230000 	lb	v1,0(s1)
-    249c:	24020063 	li	v0,99
-    24a0:	146203a6 	bne	v1,v0,333c <Radio::Messages::consoleHandler(char*)+0x105c>
-    24a4:	00000000 	nop
-    24a8:	08000b63 	j	2d8c <Radio::Messages::consoleHandler(char*)+0xaac>
-    24ac:	00000000 	nop
-    24b0:	82220000 	lb	v0,0(s1)
-    24b4:	2403000a 	li	v1,10
-    24b8:	1043039a 	beq	v0,v1,3324 <Radio::Messages::consoleHandler(char*)+0x1044>
-    24bc:	2843000b 	slti	v1,v0,11
-    24c0:	10600005 	beqz	v1,24d8 <Radio::Messages::consoleHandler(char*)+0x1f8>
-    24c4:	00000000 	nop
-    24c8:	10400399 	beqz	v0,3330 <Radio::Messages::consoleHandler(char*)+0x1050>
-    24cc:	24100051 	li	s0,81
-    24d0:	08000ccf 	j	333c <Radio::Messages::consoleHandler(char*)+0x105c>
-    24d4:	00000000 	nop
-    24d8:	2403000d 	li	v1,13
-    24dc:	10430391 	beq	v0,v1,3324 <Radio::Messages::consoleHandler(char*)+0x1044>
-    24e0:	24030020 	li	v1,32
-    24e4:	14430395 	bne	v0,v1,333c <Radio::Messages::consoleHandler(char*)+0x105c>
-    24e8:	26310001 	addiu	s1,s1,1
-    24ec:	08000ccd 	j	3334 <Radio::Messages::consoleHandler(char*)+0x1054>
-    24f0:	00000000 	nop
-    24f4:	82230000 	lb	v1,0(s1)
-    24f8:	24020074 	li	v0,116
-    24fc:	1462038f 	bne	v1,v0,333c <Radio::Messages::consoleHandler(char*)+0x105c>
-    2500:	00000000 	nop
-    2504:	08000b7e 	j	2df8 <Radio::Messages::consoleHandler(char*)+0xb18>
-    2508:	00000000 	nop
-    250c:	82230000 	lb	v1,0(s1)
-    2510:	24020067 	li	v0,103
-    2514:	14620389 	bne	v1,v0,333c <Radio::Messages::consoleHandler(char*)+0x105c>
-    2518:	2410000b 	li	s0,11
-    251c:	08000ccd 	j	3334 <Radio::Messages::consoleHandler(char*)+0x1054>
-    2520:	26310001 	addiu	s1,s1,1
-    2524:	82230000 	lb	v1,0(s1)
-    2528:	2402006c 	li	v0,108
-    252c:	14620383 	bne	v1,v0,333c <Radio::Messages::consoleHandler(char*)+0x105c>
-    2530:	2410000c 	li	s0,12
-    2534:	08000ccd 	j	3334 <Radio::Messages::consoleHandler(char*)+0x1054>
+    2498:	1043031d 	beq	v0,v1,3110 <Radio::Messages::consoleHandler(char*)+0xde0>
+    249c:	24030074 	li	v1,116
+    24a0:	1043031d 	beq	v0,v1,3118 <Radio::Messages::consoleHandler(char*)+0xde8>
+    24a4:	24030070 	li	v1,112
+    24a8:	144303b8 	bne	v0,v1,338c <Radio::Messages::consoleHandler(char*)+0x105c>
+    24ac:	24100014 	li	s0,20
+    24b0:	08000ce1 	j	3384 <Radio::Messages::consoleHandler(char*)+0x1054>
+    24b4:	26310001 	addiu	s1,s1,1
+    24b8:	08000ce0 	j	3380 <Radio::Messages::consoleHandler(char*)+0x1050>
+    24bc:	24100006 	li	s0,6
+    24c0:	82220000 	lb	v0,0(s1)
+    24c4:	2403006c 	li	v1,108
+    24c8:	104303a8 	beq	v0,v1,336c <Radio::Messages::consoleHandler(char*)+0x103c>
+    24cc:	2403006e 	li	v1,110
+    24d0:	1043030b 	beq	v0,v1,3100 <Radio::Messages::consoleHandler(char*)+0xdd0>
+    24d4:	24030063 	li	v1,99
+    24d8:	144303ac 	bne	v0,v1,338c <Radio::Messages::consoleHandler(char*)+0x105c>
+    24dc:	24100007 	li	s0,7
+    24e0:	08000ce1 	j	3384 <Radio::Messages::consoleHandler(char*)+0x1054>
+    24e4:	26310001 	addiu	s1,s1,1
+    24e8:	82230000 	lb	v1,0(s1)
+    24ec:	24020063 	li	v0,99
+    24f0:	146203a6 	bne	v1,v0,338c <Radio::Messages::consoleHandler(char*)+0x105c>
+    24f4:	00000000 	nop
+    24f8:	08000b77 	j	2ddc <Radio::Messages::consoleHandler(char*)+0xaac>
+    24fc:	00000000 	nop
+    2500:	82220000 	lb	v0,0(s1)
+    2504:	2403000a 	li	v1,10
+    2508:	1043039a 	beq	v0,v1,3374 <Radio::Messages::consoleHandler(char*)+0x1044>
+    250c:	2843000b 	slti	v1,v0,11
+    2510:	10600005 	beqz	v1,2528 <Radio::Messages::consoleHandler(char*)+0x1f8>
+    2514:	00000000 	nop
+    2518:	10400399 	beqz	v0,3380 <Radio::Messages::consoleHandler(char*)+0x1050>
+    251c:	24100051 	li	s0,81
+    2520:	08000ce3 	j	338c <Radio::Messages::consoleHandler(char*)+0x105c>
+    2524:	00000000 	nop
+    2528:	2403000d 	li	v1,13
+    252c:	10430391 	beq	v0,v1,3374 <Radio::Messages::consoleHandler(char*)+0x1044>
+    2530:	24030020 	li	v1,32
+    2534:	14430395 	bne	v0,v1,338c <Radio::Messages::consoleHandler(char*)+0x105c>
     2538:	26310001 	addiu	s1,s1,1
-    253c:	82230000 	lb	v1,0(s1)
-    2540:	24020065 	li	v0,101
-    2544:	1462037d 	bne	v1,v0,333c <Radio::Messages::consoleHandler(char*)+0x105c>
-    2548:	2410000d 	li	s0,13
-    254c:	08000ccd 	j	3334 <Radio::Messages::consoleHandler(char*)+0x1054>
-    2550:	26310001 	addiu	s1,s1,1
-    2554:	82230000 	lb	v1,0(s1)
-    2558:	24020073 	li	v0,115
-    255c:	14620377 	bne	v1,v0,333c <Radio::Messages::consoleHandler(char*)+0x105c>
-    2560:	00000000 	nop
-    2564:	08000b8b 	j	2e2c <Radio::Messages::consoleHandler(char*)+0xb4c>
-    2568:	00000000 	nop
-    256c:	82230000 	lb	v1,0(s1)
-    2570:	24020079 	li	v0,121
-    2574:	14620371 	bne	v1,v0,333c <Radio::Messages::consoleHandler(char*)+0x105c>
-    2578:	2410000f 	li	s0,15
-    257c:	08000ccd 	j	3334 <Radio::Messages::consoleHandler(char*)+0x1054>
-    2580:	26310001 	addiu	s1,s1,1
-    2584:	82230000 	lb	v1,0(s1)
-    2588:	24020072 	li	v0,114
-    258c:	1462036b 	bne	v1,v0,333c <Radio::Messages::consoleHandler(char*)+0x105c>
-    2590:	24100010 	li	s0,16
-    2594:	08000ccd 	j	3334 <Radio::Messages::consoleHandler(char*)+0x1054>
-    2598:	26310001 	addiu	s1,s1,1
-    259c:	82230000 	lb	v1,0(s1)
-    25a0:	2402006f 	li	v0,111
-    25a4:	14620365 	bne	v1,v0,333c <Radio::Messages::consoleHandler(char*)+0x105c>
-    25a8:	00000000 	nop
-    25ac:	08000bab 	j	2eac <Radio::Messages::consoleHandler(char*)+0xbcc>
+    253c:	08000ce1 	j	3384 <Radio::Messages::consoleHandler(char*)+0x1054>
+    2540:	00000000 	nop
+    2544:	82230000 	lb	v1,0(s1)
+    2548:	24020074 	li	v0,116
+    254c:	1462038f 	bne	v1,v0,338c <Radio::Messages::consoleHandler(char*)+0x105c>
+    2550:	00000000 	nop
+    2554:	08000b92 	j	2e48 <Radio::Messages::consoleHandler(char*)+0xb18>
+    2558:	00000000 	nop
+    255c:	82230000 	lb	v1,0(s1)
+    2560:	24020067 	li	v0,103
+    2564:	14620389 	bne	v1,v0,338c <Radio::Messages::consoleHandler(char*)+0x105c>
+    2568:	2410000b 	li	s0,11
+    256c:	08000ce1 	j	3384 <Radio::Messages::consoleHandler(char*)+0x1054>
+    2570:	26310001 	addiu	s1,s1,1
+    2574:	82230000 	lb	v1,0(s1)
+    2578:	2402006c 	li	v0,108
+    257c:	14620383 	bne	v1,v0,338c <Radio::Messages::consoleHandler(char*)+0x105c>
+    2580:	2410000c 	li	s0,12
+    2584:	08000ce1 	j	3384 <Radio::Messages::consoleHandler(char*)+0x1054>
+    2588:	26310001 	addiu	s1,s1,1
+    258c:	82230000 	lb	v1,0(s1)
+    2590:	24020065 	li	v0,101
+    2594:	1462037d 	bne	v1,v0,338c <Radio::Messages::consoleHandler(char*)+0x105c>
+    2598:	2410000d 	li	s0,13
+    259c:	08000ce1 	j	3384 <Radio::Messages::consoleHandler(char*)+0x1054>
+    25a0:	26310001 	addiu	s1,s1,1
+    25a4:	82230000 	lb	v1,0(s1)
+    25a8:	24020073 	li	v0,115
+    25ac:	14620377 	bne	v1,v0,338c <Radio::Messages::consoleHandler(char*)+0x105c>
     25b0:	00000000 	nop
-    25b4:	82230000 	lb	v1,0(s1)
-    25b8:	24020061 	li	v0,97
-    25bc:	1462035f 	bne	v1,v0,333c <Radio::Messages::consoleHandler(char*)+0x105c>
-    25c0:	24100012 	li	s0,18
-    25c4:	08000ccd 	j	3334 <Radio::Messages::consoleHandler(char*)+0x1054>
-    25c8:	26310001 	addiu	s1,s1,1
-    25cc:	82230000 	lb	v1,0(s1)
-    25d0:	24020067 	li	v0,103
-    25d4:	14620359 	bne	v1,v0,333c <Radio::Messages::consoleHandler(char*)+0x105c>
-    25d8:	24100013 	li	s0,19
-    25dc:	08000ccd 	j	3334 <Radio::Messages::consoleHandler(char*)+0x1054>
-    25e0:	26310001 	addiu	s1,s1,1
-    25e4:	82230000 	lb	v1,0(s1)
-    25e8:	2402006e 	li	v0,110
-    25ec:	14620353 	bne	v1,v0,333c <Radio::Messages::consoleHandler(char*)+0x105c>
-    25f0:	00000000 	nop
-    25f4:	08000bc6 	j	2f18 <Radio::Messages::consoleHandler(char*)+0xc38>
+    25b4:	08000b9f 	j	2e7c <Radio::Messages::consoleHandler(char*)+0xb4c>
+    25b8:	00000000 	nop
+    25bc:	82230000 	lb	v1,0(s1)
+    25c0:	24020079 	li	v0,121
+    25c4:	14620371 	bne	v1,v0,338c <Radio::Messages::consoleHandler(char*)+0x105c>
+    25c8:	2410000f 	li	s0,15
+    25cc:	08000ce1 	j	3384 <Radio::Messages::consoleHandler(char*)+0x1054>
+    25d0:	26310001 	addiu	s1,s1,1
+    25d4:	82230000 	lb	v1,0(s1)
+    25d8:	24020072 	li	v0,114
+    25dc:	1462036b 	bne	v1,v0,338c <Radio::Messages::consoleHandler(char*)+0x105c>
+    25e0:	24100010 	li	s0,16
+    25e4:	08000ce1 	j	3384 <Radio::Messages::consoleHandler(char*)+0x1054>
+    25e8:	26310001 	addiu	s1,s1,1
+    25ec:	82230000 	lb	v1,0(s1)
+    25f0:	2402006f 	li	v0,111
+    25f4:	14620365 	bne	v1,v0,338c <Radio::Messages::consoleHandler(char*)+0x105c>
     25f8:	00000000 	nop
-    25fc:	82230000 	lb	v1,0(s1)
-    2600:	24020069 	li	v0,105
-    2604:	1462034d 	bne	v1,v0,333c <Radio::Messages::consoleHandler(char*)+0x105c>
-    2608:	24100015 	li	s0,21
-    260c:	08000ccd 	j	3334 <Radio::Messages::consoleHandler(char*)+0x1054>
-    2610:	26310001 	addiu	s1,s1,1
-    2614:	82230000 	lb	v1,0(s1)
-    2618:	24020064 	li	v0,100
-    261c:	14620347 	bne	v1,v0,333c <Radio::Messages::consoleHandler(char*)+0x105c>
-    2620:	00000000 	nop
-    2624:	08000be1 	j	2f84 <Radio::Messages::consoleHandler(char*)+0xca4>
-    2628:	00000000 	nop
-    262c:	82230000 	lb	v1,0(s1)
-    2630:	24020075 	li	v0,117
-    2634:	14620341 	bne	v1,v0,333c <Radio::Messages::consoleHandler(char*)+0x105c>
-    2638:	24100017 	li	s0,23
-    263c:	08000ccd 	j	3334 <Radio::Messages::consoleHandler(char*)+0x1054>
-    2640:	26310001 	addiu	s1,s1,1
-    2644:	82230000 	lb	v1,0(s1)
-    2648:	24020061 	li	v0,97
-    264c:	1462033b 	bne	v1,v0,333c <Radio::Messages::consoleHandler(char*)+0x105c>
-    2650:	24100018 	li	s0,24
-    2654:	08000ccd 	j	3334 <Radio::Messages::consoleHandler(char*)+0x1054>
-    2658:	26310001 	addiu	s1,s1,1
-    265c:	82230000 	lb	v1,0(s1)
-    2660:	24020074 	li	v0,116
-    2664:	14620335 	bne	v1,v0,333c <Radio::Messages::consoleHandler(char*)+0x105c>
-    2668:	00000000 	nop
-    266c:	08000bfc 	j	2ff0 <Radio::Messages::consoleHandler(char*)+0xd10>
+    25fc:	08000bbf 	j	2efc <Radio::Messages::consoleHandler(char*)+0xbcc>
+    2600:	00000000 	nop
+    2604:	82230000 	lb	v1,0(s1)
+    2608:	24020061 	li	v0,97
+    260c:	1462035f 	bne	v1,v0,338c <Radio::Messages::consoleHandler(char*)+0x105c>
+    2610:	24100012 	li	s0,18
+    2614:	08000ce1 	j	3384 <Radio::Messages::consoleHandler(char*)+0x1054>
+    2618:	26310001 	addiu	s1,s1,1
+    261c:	82230000 	lb	v1,0(s1)
+    2620:	24020067 	li	v0,103
+    2624:	14620359 	bne	v1,v0,338c <Radio::Messages::consoleHandler(char*)+0x105c>
+    2628:	24100013 	li	s0,19
+    262c:	08000ce1 	j	3384 <Radio::Messages::consoleHandler(char*)+0x1054>
+    2630:	26310001 	addiu	s1,s1,1
+    2634:	82230000 	lb	v1,0(s1)
+    2638:	2402006e 	li	v0,110
+    263c:	14620353 	bne	v1,v0,338c <Radio::Messages::consoleHandler(char*)+0x105c>
+    2640:	00000000 	nop
+    2644:	08000bda 	j	2f68 <Radio::Messages::consoleHandler(char*)+0xc38>
+    2648:	00000000 	nop
+    264c:	82230000 	lb	v1,0(s1)
+    2650:	24020069 	li	v0,105
+    2654:	1462034d 	bne	v1,v0,338c <Radio::Messages::consoleHandler(char*)+0x105c>
+    2658:	24100015 	li	s0,21
+    265c:	08000ce1 	j	3384 <Radio::Messages::consoleHandler(char*)+0x1054>
+    2660:	26310001 	addiu	s1,s1,1
+    2664:	82230000 	lb	v1,0(s1)
+    2668:	24020064 	li	v0,100
+    266c:	14620347 	bne	v1,v0,338c <Radio::Messages::consoleHandler(char*)+0x105c>
     2670:	00000000 	nop
-    2674:	82220000 	lb	v0,0(s1)
-    2678:	24030065 	li	v1,101
-    267c:	10430005 	beq	v0,v1,2694 <Radio::Messages::consoleHandler(char*)+0x3b4>
-    2680:	24030068 	li	v1,104
-    2684:	1443032d 	bne	v0,v1,333c <Radio::Messages::consoleHandler(char*)+0x105c>
-    2688:	2410001c 	li	s0,28
-    268c:	08000ccd 	j	3334 <Radio::Messages::consoleHandler(char*)+0x1054>
+    2674:	08000bf5 	j	2fd4 <Radio::Messages::consoleHandler(char*)+0xca4>
+    2678:	00000000 	nop
+    267c:	82230000 	lb	v1,0(s1)
+    2680:	24020075 	li	v0,117
+    2684:	14620341 	bne	v1,v0,338c <Radio::Messages::consoleHandler(char*)+0x105c>
+    2688:	24100017 	li	s0,23
+    268c:	08000ce1 	j	3384 <Radio::Messages::consoleHandler(char*)+0x1054>
     2690:	26310001 	addiu	s1,s1,1
-    2694:	08000ccc 	j	3330 <Radio::Messages::consoleHandler(char*)+0x1050>
-    2698:	2410001a 	li	s0,26
-    269c:	82230000 	lb	v1,0(s1)
-    26a0:	2402006d 	li	v0,109
-    26a4:	14620325 	bne	v1,v0,333c <Radio::Messages::consoleHandler(char*)+0x105c>
-    26a8:	2410001b 	li	s0,27
-    26ac:	08000ccd 	j	3334 <Radio::Messages::consoleHandler(char*)+0x1054>
-    26b0:	26310001 	addiu	s1,s1,1
-    26b4:	82230000 	lb	v1,0(s1)
-    26b8:	24020070 	li	v0,112
-    26bc:	1462031f 	bne	v1,v0,333c <Radio::Messages::consoleHandler(char*)+0x105c>
+    2694:	82230000 	lb	v1,0(s1)
+    2698:	24020061 	li	v0,97
+    269c:	1462033b 	bne	v1,v0,338c <Radio::Messages::consoleHandler(char*)+0x105c>
+    26a0:	24100018 	li	s0,24
+    26a4:	08000ce1 	j	3384 <Radio::Messages::consoleHandler(char*)+0x1054>
+    26a8:	26310001 	addiu	s1,s1,1
+    26ac:	82230000 	lb	v1,0(s1)
+    26b0:	24020074 	li	v0,116
+    26b4:	14620335 	bne	v1,v0,338c <Radio::Messages::consoleHandler(char*)+0x105c>
+    26b8:	00000000 	nop
+    26bc:	08000c10 	j	3040 <Radio::Messages::consoleHandler(char*)+0xd10>
     26c0:	00000000 	nop
-    26c4:	08000c22 	j	3088 <Radio::Messages::consoleHandler(char*)+0xda8>
-    26c8:	00000000 	nop
-    26cc:	82230000 	lb	v1,0(s1)
-    26d0:	24020072 	li	v0,114
-    26d4:	14620319 	bne	v1,v0,333c <Radio::Messages::consoleHandler(char*)+0x105c>
-    26d8:	2410001d 	li	s0,29
-    26dc:	08000ccd 	j	3334 <Radio::Messages::consoleHandler(char*)+0x1054>
+    26c4:	82220000 	lb	v0,0(s1)
+    26c8:	24030065 	li	v1,101
+    26cc:	10430005 	beq	v0,v1,26e4 <Radio::Messages::consoleHandler(char*)+0x3b4>
+    26d0:	24030068 	li	v1,104
+    26d4:	1443032d 	bne	v0,v1,338c <Radio::Messages::consoleHandler(char*)+0x105c>
+    26d8:	2410001c 	li	s0,28
+    26dc:	08000ce1 	j	3384 <Radio::Messages::consoleHandler(char*)+0x1054>
     26e0:	26310001 	addiu	s1,s1,1
-    26e4:	82230000 	lb	v1,0(s1)
-    26e8:	2402006f 	li	v0,111
-    26ec:	14620313 	bne	v1,v0,333c <Radio::Messages::consoleHandler(char*)+0x105c>
-    26f0:	2410001e 	li	s0,30
-    26f4:	08000ccd 	j	3334 <Radio::Messages::consoleHandler(char*)+0x1054>
-    26f8:	26310001 	addiu	s1,s1,1
-    26fc:	82230000 	lb	v1,0(s1)
-    2700:	24020074 	li	v0,116
-    2704:	1462030d 	bne	v1,v0,333c <Radio::Messages::consoleHandler(char*)+0x105c>
-    2708:	2410001f 	li	s0,31
-    270c:	08000ccd 	j	3334 <Radio::Messages::consoleHandler(char*)+0x1054>
-    2710:	26310001 	addiu	s1,s1,1
-    2714:	82230000 	lb	v1,0(s1)
-    2718:	24020074 	li	v0,116
-    271c:	14620307 	bne	v1,v0,333c <Radio::Messages::consoleHandler(char*)+0x105c>
-    2720:	24100020 	li	s0,32
-    2724:	08000ccd 	j	3334 <Radio::Messages::consoleHandler(char*)+0x1054>
-    2728:	26310001 	addiu	s1,s1,1
-    272c:	82230000 	lb	v1,0(s1)
-    2730:	2402006c 	li	v0,108
-    2734:	14620301 	bne	v1,v0,333c <Radio::Messages::consoleHandler(char*)+0x105c>
-    2738:	24100021 	li	s0,33
-    273c:	08000ccd 	j	3334 <Radio::Messages::consoleHandler(char*)+0x1054>
-    2740:	26310001 	addiu	s1,s1,1
-    2744:	82230000 	lb	v1,0(s1)
-    2748:	24020065 	li	v0,101
-    274c:	146202fb 	bne	v1,v0,333c <Radio::Messages::consoleHandler(char*)+0x105c>
-    2750:	00000000 	nop
-    2754:	08000c27 	j	309c <Radio::Messages::consoleHandler(char*)+0xdbc>
-    2758:	00000000 	nop
-    275c:	82230000 	lb	v1,0(s1)
-    2760:	24020065 	li	v0,101
-    2764:	146202f5 	bne	v1,v0,333c <Radio::Messages::consoleHandler(char*)+0x105c>
-    2768:	24100023 	li	s0,35
-    276c:	08000ccd 	j	3334 <Radio::Messages::consoleHandler(char*)+0x1054>
-    2770:	26310001 	addiu	s1,s1,1
-    2774:	82230000 	lb	v1,0(s1)
-    2778:	24020079 	li	v0,121
-    277c:	146202ef 	bne	v1,v0,333c <Radio::Messages::consoleHandler(char*)+0x105c>
-    2780:	02a02021 	move	a0,s5
-    2784:	08000b87 	j	2e1c <Radio::Messages::consoleHandler(char*)+0xb3c>
-    2788:	00000000 	nop
-    278c:	82230000 	lb	v1,0(s1)
-    2790:	24020065 	li	v0,101
-    2794:	146202e9 	bne	v1,v0,333c <Radio::Messages::consoleHandler(char*)+0x105c>
-    2798:	24100025 	li	s0,37
-    279c:	08000ccd 	j	3334 <Radio::Messages::consoleHandler(char*)+0x1054>
-    27a0:	26310001 	addiu	s1,s1,1
-    27a4:	82230000 	lb	v1,0(s1)
-    27a8:	24020074 	li	v0,116
-    27ac:	146202e3 	bne	v1,v0,333c <Radio::Messages::consoleHandler(char*)+0x105c>
-    27b0:	24100026 	li	s0,38
-    27b4:	08000ccd 	j	3334 <Radio::Messages::consoleHandler(char*)+0x1054>
-    27b8:	26310001 	addiu	s1,s1,1
-    27bc:	82230000 	lb	v1,0(s1)
-    27c0:	2402005f 	li	v0,95
-    27c4:	146202dd 	bne	v1,v0,333c <Radio::Messages::consoleHandler(char*)+0x105c>
-    27c8:	24100027 	li	s0,39
-    27cc:	08000ccd 	j	3334 <Radio::Messages::consoleHandler(char*)+0x1054>
-    27d0:	26310001 	addiu	s1,s1,1
-    27d4:	82220000 	lb	v0,0(s1)
-    27d8:	24030072 	li	v1,114
-    27dc:	104302d3 	beq	v0,v1,332c <Radio::Messages::consoleHandler(char*)+0x104c>
-    27e0:	28430073 	slti	v1,v0,115
-    27e4:	10600006 	beqz	v1,2800 <Radio::Messages::consoleHandler(char*)+0x520>
-    27e8:	24030074 	li	v1,116
-    27ec:	24030070 	li	v1,112
-    27f0:	144302d2 	bne	v0,v1,333c <Radio::Messages::consoleHandler(char*)+0x105c>
-    27f4:	24100028 	li	s0,40
-    27f8:	08000ccd 	j	3334 <Radio::Messages::consoleHandler(char*)+0x1054>
-    27fc:	26310001 	addiu	s1,s1,1
-    2800:	10430235 	beq	v0,v1,30d8 <Radio::Messages::consoleHandler(char*)+0xdf8>
-    2804:	24030079 	li	v1,121
-    2808:	144302cc 	bne	v0,v1,333c <Radio::Messages::consoleHandler(char*)+0x105c>
-    280c:	2410004b 	li	s0,75
-    2810:	08000ccd 	j	3334 <Radio::Messages::consoleHandler(char*)+0x1054>
-    2814:	26310001 	addiu	s1,s1,1
-    2818:	82230000 	lb	v1,0(s1)
-    281c:	24020069 	li	v0,105
-    2820:	146202c6 	bne	v1,v0,333c <Radio::Messages::consoleHandler(char*)+0x105c>
-    2824:	24100029 	li	s0,41
-    2828:	08000ccd 	j	3334 <Radio::Messages::consoleHandler(char*)+0x1054>
-    282c:	26310001 	addiu	s1,s1,1
-    2830:	82220000 	lb	v0,0(s1)
-    2834:	24030064 	li	v1,100
-    2838:	10430005 	beq	v0,v1,2850 <Radio::Messages::consoleHandler(char*)+0x570>
-    283c:	24030074 	li	v1,116
-    2840:	144302be 	bne	v0,v1,333c <Radio::Messages::consoleHandler(char*)+0x105c>
-    2844:	24100034 	li	s0,52
-    2848:	08000ccd 	j	3334 <Radio::Messages::consoleHandler(char*)+0x1054>
+    26e4:	08000ce0 	j	3380 <Radio::Messages::consoleHandler(char*)+0x1050>
+    26e8:	2410001a 	li	s0,26
+    26ec:	82230000 	lb	v1,0(s1)
+    26f0:	2402006d 	li	v0,109
+    26f4:	14620325 	bne	v1,v0,338c <Radio::Messages::consoleHandler(char*)+0x105c>
+    26f8:	2410001b 	li	s0,27
+    26fc:	08000ce1 	j	3384 <Radio::Messages::consoleHandler(char*)+0x1054>
+    2700:	26310001 	addiu	s1,s1,1
+    2704:	82230000 	lb	v1,0(s1)
+    2708:	24020070 	li	v0,112
+    270c:	1462031f 	bne	v1,v0,338c <Radio::Messages::consoleHandler(char*)+0x105c>
+    2710:	00000000 	nop
+    2714:	08000c36 	j	30d8 <Radio::Messages::consoleHandler(char*)+0xda8>
+    2718:	00000000 	nop
+    271c:	82230000 	lb	v1,0(s1)
+    2720:	24020072 	li	v0,114
+    2724:	14620319 	bne	v1,v0,338c <Radio::Messages::consoleHandler(char*)+0x105c>
+    2728:	2410001d 	li	s0,29
+    272c:	08000ce1 	j	3384 <Radio::Messages::consoleHandler(char*)+0x1054>
+    2730:	26310001 	addiu	s1,s1,1
+    2734:	82230000 	lb	v1,0(s1)
+    2738:	2402006f 	li	v0,111
+    273c:	14620313 	bne	v1,v0,338c <Radio::Messages::consoleHandler(char*)+0x105c>
+    2740:	2410001e 	li	s0,30
+    2744:	08000ce1 	j	3384 <Radio::Messages::consoleHandler(char*)+0x1054>
+    2748:	26310001 	addiu	s1,s1,1
+    274c:	82230000 	lb	v1,0(s1)
+    2750:	24020074 	li	v0,116
+    2754:	1462030d 	bne	v1,v0,338c <Radio::Messages::consoleHandler(char*)+0x105c>
+    2758:	2410001f 	li	s0,31
+    275c:	08000ce1 	j	3384 <Radio::Messages::consoleHandler(char*)+0x1054>
+    2760:	26310001 	addiu	s1,s1,1
+    2764:	82230000 	lb	v1,0(s1)
+    2768:	24020074 	li	v0,116
+    276c:	14620307 	bne	v1,v0,338c <Radio::Messages::consoleHandler(char*)+0x105c>
+    2770:	24100020 	li	s0,32
+    2774:	08000ce1 	j	3384 <Radio::Messages::consoleHandler(char*)+0x1054>
+    2778:	26310001 	addiu	s1,s1,1
+    277c:	82230000 	lb	v1,0(s1)
+    2780:	2402006c 	li	v0,108
+    2784:	14620301 	bne	v1,v0,338c <Radio::Messages::consoleHandler(char*)+0x105c>
+    2788:	24100021 	li	s0,33
+    278c:	08000ce1 	j	3384 <Radio::Messages::consoleHandler(char*)+0x1054>
+    2790:	26310001 	addiu	s1,s1,1
+    2794:	82230000 	lb	v1,0(s1)
+    2798:	24020065 	li	v0,101
+    279c:	146202fb 	bne	v1,v0,338c <Radio::Messages::consoleHandler(char*)+0x105c>
+    27a0:	00000000 	nop
+    27a4:	08000c3b 	j	30ec <Radio::Messages::consoleHandler(char*)+0xdbc>
+    27a8:	00000000 	nop
+    27ac:	82230000 	lb	v1,0(s1)
+    27b0:	24020065 	li	v0,101
+    27b4:	146202f5 	bne	v1,v0,338c <Radio::Messages::consoleHandler(char*)+0x105c>
+    27b8:	24100023 	li	s0,35
+    27bc:	08000ce1 	j	3384 <Radio::Messages::consoleHandler(char*)+0x1054>
+    27c0:	26310001 	addiu	s1,s1,1
+    27c4:	82230000 	lb	v1,0(s1)
+    27c8:	24020079 	li	v0,121
+    27cc:	146202ef 	bne	v1,v0,338c <Radio::Messages::consoleHandler(char*)+0x105c>
+    27d0:	02a02021 	move	a0,s5
+    27d4:	08000b9b 	j	2e6c <Radio::Messages::consoleHandler(char*)+0xb3c>
+    27d8:	00000000 	nop
+    27dc:	82230000 	lb	v1,0(s1)
+    27e0:	24020065 	li	v0,101
+    27e4:	146202e9 	bne	v1,v0,338c <Radio::Messages::consoleHandler(char*)+0x105c>
+    27e8:	24100025 	li	s0,37
+    27ec:	08000ce1 	j	3384 <Radio::Messages::consoleHandler(char*)+0x1054>
+    27f0:	26310001 	addiu	s1,s1,1
+    27f4:	82230000 	lb	v1,0(s1)
+    27f8:	24020074 	li	v0,116
+    27fc:	146202e3 	bne	v1,v0,338c <Radio::Messages::consoleHandler(char*)+0x105c>
+    2800:	24100026 	li	s0,38
+    2804:	08000ce1 	j	3384 <Radio::Messages::consoleHandler(char*)+0x1054>
+    2808:	26310001 	addiu	s1,s1,1
+    280c:	82230000 	lb	v1,0(s1)
+    2810:	2402005f 	li	v0,95
+    2814:	146202dd 	bne	v1,v0,338c <Radio::Messages::consoleHandler(char*)+0x105c>
+    2818:	24100027 	li	s0,39
+    281c:	08000ce1 	j	3384 <Radio::Messages::consoleHandler(char*)+0x1054>
+    2820:	26310001 	addiu	s1,s1,1
+    2824:	82220000 	lb	v0,0(s1)
+    2828:	24030072 	li	v1,114
+    282c:	104302d3 	beq	v0,v1,337c <Radio::Messages::consoleHandler(char*)+0x104c>
+    2830:	28430073 	slti	v1,v0,115
+    2834:	10600006 	beqz	v1,2850 <Radio::Messages::consoleHandler(char*)+0x520>
+    2838:	24030074 	li	v1,116
+    283c:	24030070 	li	v1,112
+    2840:	144302d2 	bne	v0,v1,338c <Radio::Messages::consoleHandler(char*)+0x105c>
+    2844:	24100028 	li	s0,40
+    2848:	08000ce1 	j	3384 <Radio::Messages::consoleHandler(char*)+0x1054>
     284c:	26310001 	addiu	s1,s1,1
-    2850:	08000ccc 	j	3330 <Radio::Messages::consoleHandler(char*)+0x1050>
-    2854:	2410002a 	li	s0,42
-    2858:	82230000 	lb	v1,0(s1)
-    285c:	24020020 	li	v0,32
-    2860:	146202b6 	bne	v1,v0,333c <Radio::Messages::consoleHandler(char*)+0x105c>
-    2864:	2410002b 	li	s0,43
-    2868:	08000ccd 	j	3334 <Radio::Messages::consoleHandler(char*)+0x1054>
-    286c:	26310001 	addiu	s1,s1,1
-    2870:	82220000 	lb	v0,0(s1)
-    2874:	2403002b 	li	v1,43
-    2878:	10430234 	beq	v0,v1,314c <Radio::Messages::consoleHandler(char*)+0xe6c>
-    287c:	2403002d 	li	v1,45
-    2880:	10430232 	beq	v0,v1,314c <Radio::Messages::consoleHandler(char*)+0xe6c>
-    2884:	24030020 	li	v1,32
-    2888:	08000a26 	j	2898 <Radio::Messages::consoleHandler(char*)+0x5b8>
-    288c:	00000000 	nop
-    2890:	82220000 	lb	v0,0(s1)
-    2894:	24030020 	li	v1,32
-    2898:	104302a5 	beq	v0,v1,3330 <Radio::Messages::consoleHandler(char*)+0x1050>
-    289c:	2442ffd0 	addiu	v0,v0,-48
-    28a0:	304200ff 	andi	v0,v0,0xff
-    28a4:	2c42000a 	sltiu	v0,v0,10
-    28a8:	1440020d 	bnez	v0,30e0 <Radio::Messages::consoleHandler(char*)+0xe00>
-    28ac:	2410002d 	li	s0,45
-    28b0:	08000ccf 	j	333c <Radio::Messages::consoleHandler(char*)+0x105c>
-    28b4:	00000000 	nop
-    28b8:	82220000 	lb	v0,0(s1)
-    28bc:	24030020 	li	v1,32
-    28c0:	10430214 	beq	v0,v1,3114 <Radio::Messages::consoleHandler(char*)+0xe34>
-    28c4:	2442ffd0 	addiu	v0,v0,-48
-    28c8:	08000b5e 	j	2d78 <Radio::Messages::consoleHandler(char*)+0xa98>
-    28cc:	304200ff 	andi	v0,v0,0xff
-    28d0:	82220000 	lb	v0,0(s1)
-    28d4:	2403002b 	li	v1,43
-    28d8:	1043021e 	beq	v0,v1,3154 <Radio::Messages::consoleHandler(char*)+0xe74>
-    28dc:	2403002d 	li	v1,45
-    28e0:	1043021c 	beq	v0,v1,3154 <Radio::Messages::consoleHandler(char*)+0xe74>
+    2850:	10430235 	beq	v0,v1,3128 <Radio::Messages::consoleHandler(char*)+0xdf8>
+    2854:	24030079 	li	v1,121
+    2858:	144302cc 	bne	v0,v1,338c <Radio::Messages::consoleHandler(char*)+0x105c>
+    285c:	2410004b 	li	s0,75
+    2860:	08000ce1 	j	3384 <Radio::Messages::consoleHandler(char*)+0x1054>
+    2864:	26310001 	addiu	s1,s1,1
+    2868:	82230000 	lb	v1,0(s1)
+    286c:	24020069 	li	v0,105
+    2870:	146202c6 	bne	v1,v0,338c <Radio::Messages::consoleHandler(char*)+0x105c>
+    2874:	24100029 	li	s0,41
+    2878:	08000ce1 	j	3384 <Radio::Messages::consoleHandler(char*)+0x1054>
+    287c:	26310001 	addiu	s1,s1,1
+    2880:	82220000 	lb	v0,0(s1)
+    2884:	24030064 	li	v1,100
+    2888:	10430005 	beq	v0,v1,28a0 <Radio::Messages::consoleHandler(char*)+0x570>
+    288c:	24030074 	li	v1,116
+    2890:	144302be 	bne	v0,v1,338c <Radio::Messages::consoleHandler(char*)+0x105c>
+    2894:	24100034 	li	s0,52
+    2898:	08000ce1 	j	3384 <Radio::Messages::consoleHandler(char*)+0x1054>
+    289c:	26310001 	addiu	s1,s1,1
+    28a0:	08000ce0 	j	3380 <Radio::Messages::consoleHandler(char*)+0x1050>
+    28a4:	2410002a 	li	s0,42
+    28a8:	82230000 	lb	v1,0(s1)
+    28ac:	24020020 	li	v0,32
+    28b0:	146202b6 	bne	v1,v0,338c <Radio::Messages::consoleHandler(char*)+0x105c>
+    28b4:	2410002b 	li	s0,43
+    28b8:	08000ce1 	j	3384 <Radio::Messages::consoleHandler(char*)+0x1054>
+    28bc:	26310001 	addiu	s1,s1,1
+    28c0:	82220000 	lb	v0,0(s1)
+    28c4:	2403002b 	li	v1,43
+    28c8:	10430234 	beq	v0,v1,319c <Radio::Messages::consoleHandler(char*)+0xe6c>
+    28cc:	2403002d 	li	v1,45
+    28d0:	10430232 	beq	v0,v1,319c <Radio::Messages::consoleHandler(char*)+0xe6c>
+    28d4:	24030020 	li	v1,32
+    28d8:	08000a3a 	j	28e8 <Radio::Messages::consoleHandler(char*)+0x5b8>
+    28dc:	00000000 	nop
+    28e0:	82220000 	lb	v0,0(s1)
     28e4:	24030020 	li	v1,32
-    28e8:	08000a3e 	j	28f8 <Radio::Messages::consoleHandler(char*)+0x618>
-    28ec:	00000000 	nop
-    28f0:	82220000 	lb	v0,0(s1)
-    28f4:	24030020 	li	v1,32
-    28f8:	1043028d 	beq	v0,v1,3330 <Radio::Messages::consoleHandler(char*)+0x1050>
-    28fc:	2442ffd0 	addiu	v0,v0,-48
-    2900:	304200ff 	andi	v0,v0,0xff
-    2904:	2c42000a 	sltiu	v0,v0,10
-    2908:	144001f5 	bnez	v0,30e0 <Radio::Messages::consoleHandler(char*)+0xe00>
-    290c:	24100030 	li	s0,48
-    2910:	08000ccf 	j	333c <Radio::Messages::consoleHandler(char*)+0x105c>
-    2914:	00000000 	nop
-    2918:	82220000 	lb	v0,0(s1)
-    291c:	24030020 	li	v1,32
-    2920:	104301fe 	beq	v0,v1,311c <Radio::Messages::consoleHandler(char*)+0xe3c>
-    2924:	2442ffd0 	addiu	v0,v0,-48
-    2928:	08000b5e 	j	2d78 <Radio::Messages::consoleHandler(char*)+0xa98>
-    292c:	304200ff 	andi	v0,v0,0xff
-    2930:	82220000 	lb	v0,0(s1)
-    2934:	2403002b 	li	v1,43
-    2938:	10430208 	beq	v0,v1,315c <Radio::Messages::consoleHandler(char*)+0xe7c>
-    293c:	2403002d 	li	v1,45
-    2940:	10430206 	beq	v0,v1,315c <Radio::Messages::consoleHandler(char*)+0xe7c>
+    28e8:	104302a5 	beq	v0,v1,3380 <Radio::Messages::consoleHandler(char*)+0x1050>
+    28ec:	2442ffd0 	addiu	v0,v0,-48
+    28f0:	304200ff 	andi	v0,v0,0xff
+    28f4:	2c42000a 	sltiu	v0,v0,10
+    28f8:	1440020d 	bnez	v0,3130 <Radio::Messages::consoleHandler(char*)+0xe00>
+    28fc:	2410002d 	li	s0,45
+    2900:	08000ce3 	j	338c <Radio::Messages::consoleHandler(char*)+0x105c>
+    2904:	00000000 	nop
+    2908:	82220000 	lb	v0,0(s1)
+    290c:	24030020 	li	v1,32
+    2910:	10430214 	beq	v0,v1,3164 <Radio::Messages::consoleHandler(char*)+0xe34>
+    2914:	2442ffd0 	addiu	v0,v0,-48
+    2918:	08000b72 	j	2dc8 <Radio::Messages::consoleHandler(char*)+0xa98>
+    291c:	304200ff 	andi	v0,v0,0xff
+    2920:	82220000 	lb	v0,0(s1)
+    2924:	2403002b 	li	v1,43
+    2928:	1043021e 	beq	v0,v1,31a4 <Radio::Messages::consoleHandler(char*)+0xe74>
+    292c:	2403002d 	li	v1,45
+    2930:	1043021c 	beq	v0,v1,31a4 <Radio::Messages::consoleHandler(char*)+0xe74>
+    2934:	24030020 	li	v1,32
+    2938:	08000a52 	j	2948 <Radio::Messages::consoleHandler(char*)+0x618>
+    293c:	00000000 	nop
+    2940:	82220000 	lb	v0,0(s1)
     2944:	24030020 	li	v1,32
-    2948:	08000a56 	j	2958 <Radio::Messages::consoleHandler(char*)+0x678>
-    294c:	00000000 	nop
-    2950:	82220000 	lb	v0,0(s1)
-    2954:	24030020 	li	v1,32
-    2958:	10430275 	beq	v0,v1,3330 <Radio::Messages::consoleHandler(char*)+0x1050>
-    295c:	2442ffd0 	addiu	v0,v0,-48
-    2960:	304200ff 	andi	v0,v0,0xff
-    2964:	2c42000a 	sltiu	v0,v0,10
-    2968:	144001dd 	bnez	v0,30e0 <Radio::Messages::consoleHandler(char*)+0xe00>
-    296c:	24100033 	li	s0,51
-    2970:	08000ccf 	j	333c <Radio::Messages::consoleHandler(char*)+0x105c>
-    2974:	00000000 	nop
-    2978:	82220000 	lb	v0,0(s1)
-    297c:	2403000a 	li	v1,10
-    2980:	10430205 	beq	v0,v1,3198 <Radio::Messages::consoleHandler(char*)+0xeb8>
-    2984:	2843000b 	slti	v1,v0,11
-    2988:	10600005 	beqz	v1,29a0 <Radio::Messages::consoleHandler(char*)+0x6c0>
-    298c:	00000000 	nop
-    2990:	10400201 	beqz	v0,3198 <Radio::Messages::consoleHandler(char*)+0xeb8>
-    2994:	2442ffd0 	addiu	v0,v0,-48
-    2998:	08000b5e 	j	2d78 <Radio::Messages::consoleHandler(char*)+0xa98>
-    299c:	304200ff 	andi	v0,v0,0xff
-    29a0:	2403000d 	li	v1,13
-    29a4:	104301fc 	beq	v0,v1,3198 <Radio::Messages::consoleHandler(char*)+0xeb8>
-    29a8:	24030020 	li	v1,32
-    29ac:	104301f8 	beq	v0,v1,3190 <Radio::Messages::consoleHandler(char*)+0xeb0>
-    29b0:	2442ffd0 	addiu	v0,v0,-48
-    29b4:	08000b5e 	j	2d78 <Radio::Messages::consoleHandler(char*)+0xa98>
-    29b8:	304200ff 	andi	v0,v0,0xff
-    29bc:	82230000 	lb	v1,0(s1)
-    29c0:	24020063 	li	v0,99
-    29c4:	1462025d 	bne	v1,v0,333c <Radio::Messages::consoleHandler(char*)+0x105c>
-    29c8:	24100035 	li	s0,53
-    29cc:	08000ccd 	j	3334 <Radio::Messages::consoleHandler(char*)+0x1054>
-    29d0:	26310001 	addiu	s1,s1,1
-    29d4:	82230000 	lb	v1,0(s1)
-    29d8:	24020068 	li	v0,104
-    29dc:	14620257 	bne	v1,v0,333c <Radio::Messages::consoleHandler(char*)+0x105c>
-    29e0:	24100036 	li	s0,54
-    29e4:	08000ccd 	j	3334 <Radio::Messages::consoleHandler(char*)+0x1054>
-    29e8:	26310001 	addiu	s1,s1,1
-    29ec:	82230000 	lb	v1,0(s1)
-    29f0:	24020020 	li	v0,32
-    29f4:	14620251 	bne	v1,v0,333c <Radio::Messages::consoleHandler(char*)+0x105c>
-    29f8:	24100037 	li	s0,55
-    29fc:	08000ccd 	j	3334 <Radio::Messages::consoleHandler(char*)+0x1054>
-    2a00:	26310001 	addiu	s1,s1,1
-    2a04:	82220000 	lb	v0,0(s1)
-    2a08:	2403002b 	li	v1,43
-    2a0c:	104301d5 	beq	v0,v1,3164 <Radio::Messages::consoleHandler(char*)+0xe84>
-    2a10:	2403002d 	li	v1,45
-    2a14:	104301d3 	beq	v0,v1,3164 <Radio::Messages::consoleHandler(char*)+0xe84>
-    2a18:	24030020 	li	v1,32
-    2a1c:	08000a8b 	j	2a2c <Radio::Messages::consoleHandler(char*)+0x74c>
-    2a20:	00000000 	nop
-    2a24:	82220000 	lb	v0,0(s1)
-    2a28:	24030020 	li	v1,32
-    2a2c:	10430240 	beq	v0,v1,3330 <Radio::Messages::consoleHandler(char*)+0x1050>
-    2a30:	2442ffd0 	addiu	v0,v0,-48
-    2a34:	304200ff 	andi	v0,v0,0xff
-    2a38:	2c42000a 	sltiu	v0,v0,10
-    2a3c:	144001a8 	bnez	v0,30e0 <Radio::Messages::consoleHandler(char*)+0xe00>
-    2a40:	24100039 	li	s0,57
-    2a44:	08000ccf 	j	333c <Radio::Messages::consoleHandler(char*)+0x105c>
-    2a48:	00000000 	nop
-    2a4c:	82220000 	lb	v0,0(s1)
-    2a50:	2403000a 	li	v1,10
-    2a54:	10430200 	beq	v0,v1,3258 <Radio::Messages::consoleHandler(char*)+0xf78>
-    2a58:	2843000b 	slti	v1,v0,11
-    2a5c:	10600005 	beqz	v1,2a74 <Radio::Messages::consoleHandler(char*)+0x794>
-    2a60:	00000000 	nop
-    2a64:	104001fc 	beqz	v0,3258 <Radio::Messages::consoleHandler(char*)+0xf78>
-    2a68:	2442ffd0 	addiu	v0,v0,-48
-    2a6c:	08000b5e 	j	2d78 <Radio::Messages::consoleHandler(char*)+0xa98>
-    2a70:	304200ff 	andi	v0,v0,0xff
-    2a74:	2403000d 	li	v1,13
-    2a78:	104301f7 	beq	v0,v1,3258 <Radio::Messages::consoleHandler(char*)+0xf78>
-    2a7c:	24030020 	li	v1,32
-    2a80:	104301f3 	beq	v0,v1,3250 <Radio::Messages::consoleHandler(char*)+0xf70>
-    2a84:	2442ffd0 	addiu	v0,v0,-48
-    2a88:	08000b5e 	j	2d78 <Radio::Messages::consoleHandler(char*)+0xa98>
-    2a8c:	304200ff 	andi	v0,v0,0xff
-    2a90:	82230000 	lb	v1,0(s1)
-    2a94:	2402006f 	li	v0,111
-    2a98:	14620228 	bne	v1,v0,333c <Radio::Messages::consoleHandler(char*)+0x105c>
-    2a9c:	2410003b 	li	s0,59
-    2aa0:	08000ccd 	j	3334 <Radio::Messages::consoleHandler(char*)+0x1054>
-    2aa4:	26310001 	addiu	s1,s1,1
-    2aa8:	82230000 	lb	v1,0(s1)
-    2aac:	2402006c 	li	v0,108
-    2ab0:	14620222 	bne	v1,v0,333c <Radio::Messages::consoleHandler(char*)+0x105c>
-    2ab4:	2410003c 	li	s0,60
-    2ab8:	08000ccd 	j	3334 <Radio::Messages::consoleHandler(char*)+0x1054>
-    2abc:	26310001 	addiu	s1,s1,1
-    2ac0:	82230000 	lb	v1,0(s1)
-    2ac4:	2402006c 	li	v0,108
-    2ac8:	1462021c 	bne	v1,v0,333c <Radio::Messages::consoleHandler(char*)+0x105c>
-    2acc:	2410003d 	li	s0,61
-    2ad0:	08000ccd 	j	3334 <Radio::Messages::consoleHandler(char*)+0x1054>
-    2ad4:	26310001 	addiu	s1,s1,1
-    2ad8:	82230000 	lb	v1,0(s1)
-    2adc:	24020020 	li	v0,32
-    2ae0:	14620216 	bne	v1,v0,333c <Radio::Messages::consoleHandler(char*)+0x105c>
-    2ae4:	2410003e 	li	s0,62
-    2ae8:	08000ccd 	j	3334 <Radio::Messages::consoleHandler(char*)+0x1054>
-    2aec:	26310001 	addiu	s1,s1,1
-    2af0:	82220000 	lb	v0,0(s1)
-    2af4:	2403002b 	li	v1,43
-    2af8:	1043019c 	beq	v0,v1,316c <Radio::Messages::consoleHandler(char*)+0xe8c>
-    2afc:	2403002d 	li	v1,45
-    2b00:	1043019a 	beq	v0,v1,316c <Radio::Messages::consoleHandler(char*)+0xe8c>
-    2b04:	24030020 	li	v1,32
-    2b08:	08000ac6 	j	2b18 <Radio::Messages::consoleHandler(char*)+0x838>
-    2b0c:	00000000 	nop
-    2b10:	82220000 	lb	v0,0(s1)
-    2b14:	24030020 	li	v1,32
-    2b18:	10430205 	beq	v0,v1,3330 <Radio::Messages::consoleHandler(char*)+0x1050>
-    2b1c:	2442ffd0 	addiu	v0,v0,-48
-    2b20:	304200ff 	andi	v0,v0,0xff
-    2b24:	2c42000a 	sltiu	v0,v0,10
-    2b28:	1440016d 	bnez	v0,30e0 <Radio::Messages::consoleHandler(char*)+0xe00>
-    2b2c:	24100040 	li	s0,64
-    2b30:	08000ccf 	j	333c <Radio::Messages::consoleHandler(char*)+0x105c>
-    2b34:	00000000 	nop
-    2b38:	82220000 	lb	v0,0(s1)
-    2b3c:	2403000a 	li	v1,10
-    2b40:	104301e7 	beq	v0,v1,32e0 <Radio::Messages::consoleHandler(char*)+0x1000>
-    2b44:	2843000b 	slti	v1,v0,11
-    2b48:	10600005 	beqz	v1,2b60 <Radio::Messages::consoleHandler(char*)+0x880>
-    2b4c:	00000000 	nop
-    2b50:	104001e3 	beqz	v0,32e0 <Radio::Messages::consoleHandler(char*)+0x1000>
-    2b54:	2442ffd0 	addiu	v0,v0,-48
-    2b58:	08000b5e 	j	2d78 <Radio::Messages::consoleHandler(char*)+0xa98>
-    2b5c:	304200ff 	andi	v0,v0,0xff
-    2b60:	2403000d 	li	v1,13
-    2b64:	104301de 	beq	v0,v1,32e0 <Radio::Messages::consoleHandler(char*)+0x1000>
-    2b68:	24030020 	li	v1,32
-    2b6c:	104301da 	beq	v0,v1,32d8 <Radio::Messages::consoleHandler(char*)+0xff8>
-    2b70:	2442ffd0 	addiu	v0,v0,-48
-    2b74:	08000b5e 	j	2d78 <Radio::Messages::consoleHandler(char*)+0xa98>
-    2b78:	304200ff 	andi	v0,v0,0xff
-    2b7c:	82230000 	lb	v1,0(s1)
-    2b80:	24020068 	li	v0,104
-    2b84:	146201ed 	bne	v1,v0,333c <Radio::Messages::consoleHandler(char*)+0x105c>
-    2b88:	24100042 	li	s0,66
-    2b8c:	08000ccd 	j	3334 <Radio::Messages::consoleHandler(char*)+0x1054>
-    2b90:	26310001 	addiu	s1,s1,1
-    2b94:	82230000 	lb	v1,0(s1)
-    2b98:	24020072 	li	v0,114
-    2b9c:	146201e7 	bne	v1,v0,333c <Radio::Messages::consoleHandler(char*)+0x105c>
-    2ba0:	24100043 	li	s0,67
-    2ba4:	08000ccd 	j	3334 <Radio::Messages::consoleHandler(char*)+0x1054>
-    2ba8:	26310001 	addiu	s1,s1,1
-    2bac:	82230000 	lb	v1,0(s1)
-    2bb0:	2402006f 	li	v0,111
-    2bb4:	146201e1 	bne	v1,v0,333c <Radio::Messages::consoleHandler(char*)+0x105c>
-    2bb8:	24100044 	li	s0,68
-    2bbc:	08000ccd 	j	3334 <Radio::Messages::consoleHandler(char*)+0x1054>
-    2bc0:	26310001 	addiu	s1,s1,1
-    2bc4:	82230000 	lb	v1,0(s1)
-    2bc8:	24020074 	li	v0,116
-    2bcc:	146201db 	bne	v1,v0,333c <Radio::Messages::consoleHandler(char*)+0x105c>
-    2bd0:	24100045 	li	s0,69
-    2bd4:	08000ccd 	j	3334 <Radio::Messages::consoleHandler(char*)+0x1054>
-    2bd8:	26310001 	addiu	s1,s1,1
-    2bdc:	82230000 	lb	v1,0(s1)
-    2be0:	24020074 	li	v0,116
-    2be4:	146201d5 	bne	v1,v0,333c <Radio::Messages::consoleHandler(char*)+0x105c>
-    2be8:	24100046 	li	s0,70
-    2bec:	08000ccd 	j	3334 <Radio::Messages::consoleHandler(char*)+0x1054>
-    2bf0:	26310001 	addiu	s1,s1,1
-    2bf4:	82230000 	lb	v1,0(s1)
-    2bf8:	2402006c 	li	v0,108
-    2bfc:	146201cf 	bne	v1,v0,333c <Radio::Messages::consoleHandler(char*)+0x105c>
-    2c00:	24100047 	li	s0,71
-    2c04:	08000ccd 	j	3334 <Radio::Messages::consoleHandler(char*)+0x1054>
-    2c08:	26310001 	addiu	s1,s1,1
-    2c0c:	82230000 	lb	v1,0(s1)
-    2c10:	24020065 	li	v0,101
-    2c14:	146201c9 	bne	v1,v0,333c <Radio::Messages::consoleHandler(char*)+0x105c>
-    2c18:	24100048 	li	s0,72
-    2c1c:	08000ccd 	j	3334 <Radio::Messages::consoleHandler(char*)+0x1054>
-    2c20:	26310001 	addiu	s1,s1,1
-    2c24:	82230000 	lb	v1,0(s1)
-    2c28:	24020020 	li	v0,32
-    2c2c:	146201c3 	bne	v1,v0,333c <Radio::Messages::consoleHandler(char*)+0x105c>
-    2c30:	24100049 	li	s0,73
-    2c34:	08000ccd 	j	3334 <Radio::Messages::consoleHandler(char*)+0x1054>
-    2c38:	26310001 	addiu	s1,s1,1
-    2c3c:	82220000 	lb	v0,0(s1)
-    2c40:	24030020 	li	v1,32
-    2c44:	104301ba 	beq	v0,v1,3330 <Radio::Messages::consoleHandler(char*)+0x1050>
-    2c48:	2442ffd0 	addiu	v0,v0,-48
-    2c4c:	304200ff 	andi	v0,v0,0xff
-    2c50:	2c42000a 	sltiu	v0,v0,10
-    2c54:	14400122 	bnez	v0,30e0 <Radio::Messages::consoleHandler(char*)+0xe00>
-    2c58:	2410004a 	li	s0,74
-    2c5c:	08000ccf 	j	333c <Radio::Messages::consoleHandler(char*)+0x105c>
-    2c60:	00000000 	nop
-    2c64:	82220000 	lb	v0,0(s1)
-    2c68:	2403000a 	li	v1,10
-    2c6c:	10430165 	beq	v0,v1,3204 <Radio::Messages::consoleHandler(char*)+0xf24>
-    2c70:	2843000b 	slti	v1,v0,11
-    2c74:	10600005 	beqz	v1,2c8c <Radio::Messages::consoleHandler(char*)+0x9ac>
-    2c78:	00000000 	nop
-    2c7c:	10400161 	beqz	v0,3204 <Radio::Messages::consoleHandler(char*)+0xf24>
-    2c80:	2442ffd0 	addiu	v0,v0,-48
-    2c84:	08000b5e 	j	2d78 <Radio::Messages::consoleHandler(char*)+0xa98>
-    2c88:	304200ff 	andi	v0,v0,0xff
-    2c8c:	2403000d 	li	v1,13
-    2c90:	1043015c 	beq	v0,v1,3204 <Radio::Messages::consoleHandler(char*)+0xf24>
-    2c94:	24030020 	li	v1,32
-    2c98:	10430158 	beq	v0,v1,31fc <Radio::Messages::consoleHandler(char*)+0xf1c>
-    2c9c:	2442ffd0 	addiu	v0,v0,-48
-    2ca0:	08000b5e 	j	2d78 <Radio::Messages::consoleHandler(char*)+0xa98>
-    2ca4:	304200ff 	andi	v0,v0,0xff
-    2ca8:	82230000 	lb	v1,0(s1)
-    2cac:	24020061 	li	v0,97
-    2cb0:	146201a2 	bne	v1,v0,333c <Radio::Messages::consoleHandler(char*)+0x105c>
-    2cb4:	2410004c 	li	s0,76
-    2cb8:	08000ccd 	j	3334 <Radio::Messages::consoleHandler(char*)+0x1054>
-    2cbc:	26310001 	addiu	s1,s1,1
-    2cc0:	82230000 	lb	v1,0(s1)
-    2cc4:	24020077 	li	v0,119
-    2cc8:	1462019c 	bne	v1,v0,333c <Radio::Messages::consoleHandler(char*)+0x105c>
-    2ccc:	2410004d 	li	s0,77
-    2cd0:	08000ccd 	j	3334 <Radio::Messages::consoleHandler(char*)+0x1054>
-    2cd4:	26310001 	addiu	s1,s1,1
-    2cd8:	82230000 	lb	v1,0(s1)
-    2cdc:	24020020 	li	v0,32
-    2ce0:	14620196 	bne	v1,v0,333c <Radio::Messages::consoleHandler(char*)+0x105c>
-    2ce4:	2410004e 	li	s0,78
-    2ce8:	08000ccd 	j	3334 <Radio::Messages::consoleHandler(char*)+0x1054>
-    2cec:	26310001 	addiu	s1,s1,1
-    2cf0:	82220000 	lb	v0,0(s1)
-    2cf4:	2403002b 	li	v1,43
-    2cf8:	1043011e 	beq	v0,v1,3174 <Radio::Messages::consoleHandler(char*)+0xe94>
-    2cfc:	2403002d 	li	v1,45
-    2d00:	1043011c 	beq	v0,v1,3174 <Radio::Messages::consoleHandler(char*)+0xe94>
-    2d04:	24030020 	li	v1,32
-    2d08:	08000b46 	j	2d18 <Radio::Messages::consoleHandler(char*)+0xa38>
-    2d0c:	00000000 	nop
-    2d10:	82220000 	lb	v0,0(s1)
-    2d14:	24030020 	li	v1,32
-    2d18:	10430185 	beq	v0,v1,3330 <Radio::Messages::consoleHandler(char*)+0x1050>
-    2d1c:	2442ffd0 	addiu	v0,v0,-48
-    2d20:	304200ff 	andi	v0,v0,0xff
-    2d24:	2c42000a 	sltiu	v0,v0,10
-    2d28:	144000ed 	bnez	v0,30e0 <Radio::Messages::consoleHandler(char*)+0xe00>
-    2d2c:	24100050 	li	s0,80
-    2d30:	08000ccf 	j	333c <Radio::Messages::consoleHandler(char*)+0x105c>
-    2d34:	00000000 	nop
-    2d38:	82220000 	lb	v0,0(s1)
-    2d3c:	2403000a 	li	v1,10
-    2d40:	10430156 	beq	v0,v1,329c <Radio::Messages::consoleHandler(char*)+0xfbc>
-    2d44:	2843000b 	slti	v1,v0,11
-    2d48:	10600005 	beqz	v1,2d60 <Radio::Messages::consoleHandler(char*)+0xa80>
-    2d4c:	00000000 	nop
-    2d50:	10400152 	beqz	v0,329c <Radio::Messages::consoleHandler(char*)+0xfbc>
-    2d54:	2442ffd0 	addiu	v0,v0,-48
-    2d58:	08000b5e 	j	2d78 <Radio::Messages::consoleHandler(char*)+0xa98>
-    2d5c:	304200ff 	andi	v0,v0,0xff
-    2d60:	2403000d 	li	v1,13
-    2d64:	1043014d 	beq	v0,v1,329c <Radio::Messages::consoleHandler(char*)+0xfbc>
-    2d68:	24030020 	li	v1,32
-    2d6c:	10430149 	beq	v0,v1,3294 <Radio::Messages::consoleHandler(char*)+0xfb4>
-    2d70:	2442ffd0 	addiu	v0,v0,-48
-    2d74:	304200ff 	andi	v0,v0,0xff
-    2d78:	2c42000a 	sltiu	v0,v0,10
-    2d7c:	144000d9 	bnez	v0,30e4 <Radio::Messages::consoleHandler(char*)+0xe04>
-    2d80:	27a30010 	addiu	v1,sp,16
-    2d84:	08000ccf 	j	333c <Radio::Messages::consoleHandler(char*)+0x105c>
-    2d88:	00000000 	nop
-    2d8c:	0c000552 	jal	1548 <_ZN6System8Registry8instanceEv.local.8>
-    2d90:	3c108000 	lui	s0,0x8000
-    2d94:	8c44001c 	lw	a0,28(v0)
-    2d98:	0c0008a7 	jal	229c <b32tohex(unsigned int)>
+    2948:	1043028d 	beq	v0,v1,3380 <Radio::Messages::consoleHandler(char*)+0x1050>
+    294c:	2442ffd0 	addiu	v0,v0,-48
+    2950:	304200ff 	andi	v0,v0,0xff
+    2954:	2c42000a 	sltiu	v0,v0,10
+    2958:	144001f5 	bnez	v0,3130 <Radio::Messages::consoleHandler(char*)+0xe00>
+    295c:	24100030 	li	s0,48
+    2960:	08000ce3 	j	338c <Radio::Messages::consoleHandler(char*)+0x105c>
+    2964:	00000000 	nop
+    2968:	82220000 	lb	v0,0(s1)
+    296c:	24030020 	li	v1,32
+    2970:	104301fe 	beq	v0,v1,316c <Radio::Messages::consoleHandler(char*)+0xe3c>
+    2974:	2442ffd0 	addiu	v0,v0,-48
+    2978:	08000b72 	j	2dc8 <Radio::Messages::consoleHandler(char*)+0xa98>
+    297c:	304200ff 	andi	v0,v0,0xff
+    2980:	82220000 	lb	v0,0(s1)
+    2984:	2403002b 	li	v1,43
+    2988:	10430208 	beq	v0,v1,31ac <Radio::Messages::consoleHandler(char*)+0xe7c>
+    298c:	2403002d 	li	v1,45
+    2990:	10430206 	beq	v0,v1,31ac <Radio::Messages::consoleHandler(char*)+0xe7c>
+    2994:	24030020 	li	v1,32
+    2998:	08000a6a 	j	29a8 <Radio::Messages::consoleHandler(char*)+0x678>
+    299c:	00000000 	nop
+    29a0:	82220000 	lb	v0,0(s1)
+    29a4:	24030020 	li	v1,32
+    29a8:	10430275 	beq	v0,v1,3380 <Radio::Messages::consoleHandler(char*)+0x1050>
+    29ac:	2442ffd0 	addiu	v0,v0,-48
+    29b0:	304200ff 	andi	v0,v0,0xff
+    29b4:	2c42000a 	sltiu	v0,v0,10
+    29b8:	144001dd 	bnez	v0,3130 <Radio::Messages::consoleHandler(char*)+0xe00>
+    29bc:	24100033 	li	s0,51
+    29c0:	08000ce3 	j	338c <Radio::Messages::consoleHandler(char*)+0x105c>
+    29c4:	00000000 	nop
+    29c8:	82220000 	lb	v0,0(s1)
+    29cc:	2403000a 	li	v1,10
+    29d0:	10430205 	beq	v0,v1,31e8 <Radio::Messages::consoleHandler(char*)+0xeb8>
+    29d4:	2843000b 	slti	v1,v0,11
+    29d8:	10600005 	beqz	v1,29f0 <Radio::Messages::consoleHandler(char*)+0x6c0>
+    29dc:	00000000 	nop
+    29e0:	10400201 	beqz	v0,31e8 <Radio::Messages::consoleHandler(char*)+0xeb8>
+    29e4:	2442ffd0 	addiu	v0,v0,-48
+    29e8:	08000b72 	j	2dc8 <Radio::Messages::consoleHandler(char*)+0xa98>
+    29ec:	304200ff 	andi	v0,v0,0xff
+    29f0:	2403000d 	li	v1,13
+    29f4:	104301fc 	beq	v0,v1,31e8 <Radio::Messages::consoleHandler(char*)+0xeb8>
+    29f8:	24030020 	li	v1,32
+    29fc:	104301f8 	beq	v0,v1,31e0 <Radio::Messages::consoleHandler(char*)+0xeb0>
+    2a00:	2442ffd0 	addiu	v0,v0,-48
+    2a04:	08000b72 	j	2dc8 <Radio::Messages::consoleHandler(char*)+0xa98>
+    2a08:	304200ff 	andi	v0,v0,0xff
+    2a0c:	82230000 	lb	v1,0(s1)
+    2a10:	24020063 	li	v0,99
+    2a14:	1462025d 	bne	v1,v0,338c <Radio::Messages::consoleHandler(char*)+0x105c>
+    2a18:	24100035 	li	s0,53
+    2a1c:	08000ce1 	j	3384 <Radio::Messages::consoleHandler(char*)+0x1054>
+    2a20:	26310001 	addiu	s1,s1,1
+    2a24:	82230000 	lb	v1,0(s1)
+    2a28:	24020068 	li	v0,104
+    2a2c:	14620257 	bne	v1,v0,338c <Radio::Messages::consoleHandler(char*)+0x105c>
+    2a30:	24100036 	li	s0,54
+    2a34:	08000ce1 	j	3384 <Radio::Messages::consoleHandler(char*)+0x1054>
+    2a38:	26310001 	addiu	s1,s1,1
+    2a3c:	82230000 	lb	v1,0(s1)
+    2a40:	24020020 	li	v0,32
+    2a44:	14620251 	bne	v1,v0,338c <Radio::Messages::consoleHandler(char*)+0x105c>
+    2a48:	24100037 	li	s0,55
+    2a4c:	08000ce1 	j	3384 <Radio::Messages::consoleHandler(char*)+0x1054>
+    2a50:	26310001 	addiu	s1,s1,1
+    2a54:	82220000 	lb	v0,0(s1)
+    2a58:	2403002b 	li	v1,43
+    2a5c:	104301d5 	beq	v0,v1,31b4 <Radio::Messages::consoleHandler(char*)+0xe84>
+    2a60:	2403002d 	li	v1,45
+    2a64:	104301d3 	beq	v0,v1,31b4 <Radio::Messages::consoleHandler(char*)+0xe84>
+    2a68:	24030020 	li	v1,32
+    2a6c:	08000a9f 	j	2a7c <Radio::Messages::consoleHandler(char*)+0x74c>
+    2a70:	00000000 	nop
+    2a74:	82220000 	lb	v0,0(s1)
+    2a78:	24030020 	li	v1,32
+    2a7c:	10430240 	beq	v0,v1,3380 <Radio::Messages::consoleHandler(char*)+0x1050>
+    2a80:	2442ffd0 	addiu	v0,v0,-48
+    2a84:	304200ff 	andi	v0,v0,0xff
+    2a88:	2c42000a 	sltiu	v0,v0,10
+    2a8c:	144001a8 	bnez	v0,3130 <Radio::Messages::consoleHandler(char*)+0xe00>
+    2a90:	24100039 	li	s0,57
+    2a94:	08000ce3 	j	338c <Radio::Messages::consoleHandler(char*)+0x105c>
+    2a98:	00000000 	nop
+    2a9c:	82220000 	lb	v0,0(s1)
+    2aa0:	2403000a 	li	v1,10
+    2aa4:	10430200 	beq	v0,v1,32a8 <Radio::Messages::consoleHandler(char*)+0xf78>
+    2aa8:	2843000b 	slti	v1,v0,11
+    2aac:	10600005 	beqz	v1,2ac4 <Radio::Messages::consoleHandler(char*)+0x794>
+    2ab0:	00000000 	nop
+    2ab4:	104001fc 	beqz	v0,32a8 <Radio::Messages::consoleHandler(char*)+0xf78>
+    2ab8:	2442ffd0 	addiu	v0,v0,-48
+    2abc:	08000b72 	j	2dc8 <Radio::Messages::consoleHandler(char*)+0xa98>
+    2ac0:	304200ff 	andi	v0,v0,0xff
+    2ac4:	2403000d 	li	v1,13
+    2ac8:	104301f7 	beq	v0,v1,32a8 <Radio::Messages::consoleHandler(char*)+0xf78>
+    2acc:	24030020 	li	v1,32
+    2ad0:	104301f3 	beq	v0,v1,32a0 <Radio::Messages::consoleHandler(char*)+0xf70>
+    2ad4:	2442ffd0 	addiu	v0,v0,-48
+    2ad8:	08000b72 	j	2dc8 <Radio::Messages::consoleHandler(char*)+0xa98>
+    2adc:	304200ff 	andi	v0,v0,0xff
+    2ae0:	82230000 	lb	v1,0(s1)
+    2ae4:	2402006f 	li	v0,111
+    2ae8:	14620228 	bne	v1,v0,338c <Radio::Messages::consoleHandler(char*)+0x105c>
+    2aec:	2410003b 	li	s0,59
+    2af0:	08000ce1 	j	3384 <Radio::Messages::consoleHandler(char*)+0x1054>
+    2af4:	26310001 	addiu	s1,s1,1
+    2af8:	82230000 	lb	v1,0(s1)
+    2afc:	2402006c 	li	v0,108
+    2b00:	14620222 	bne	v1,v0,338c <Radio::Messages::consoleHandler(char*)+0x105c>
+    2b04:	2410003c 	li	s0,60
+    2b08:	08000ce1 	j	3384 <Radio::Messages::consoleHandler(char*)+0x1054>
+    2b0c:	26310001 	addiu	s1,s1,1
+    2b10:	82230000 	lb	v1,0(s1)
+    2b14:	2402006c 	li	v0,108
+    2b18:	1462021c 	bne	v1,v0,338c <Radio::Messages::consoleHandler(char*)+0x105c>
+    2b1c:	2410003d 	li	s0,61
+    2b20:	08000ce1 	j	3384 <Radio::Messages::consoleHandler(char*)+0x1054>
+    2b24:	26310001 	addiu	s1,s1,1
+    2b28:	82230000 	lb	v1,0(s1)
+    2b2c:	24020020 	li	v0,32
+    2b30:	14620216 	bne	v1,v0,338c <Radio::Messages::consoleHandler(char*)+0x105c>
+    2b34:	2410003e 	li	s0,62
+    2b38:	08000ce1 	j	3384 <Radio::Messages::consoleHandler(char*)+0x1054>
+    2b3c:	26310001 	addiu	s1,s1,1
+    2b40:	82220000 	lb	v0,0(s1)
+    2b44:	2403002b 	li	v1,43
+    2b48:	1043019c 	beq	v0,v1,31bc <Radio::Messages::consoleHandler(char*)+0xe8c>
+    2b4c:	2403002d 	li	v1,45
+    2b50:	1043019a 	beq	v0,v1,31bc <Radio::Messages::consoleHandler(char*)+0xe8c>
+    2b54:	24030020 	li	v1,32
+    2b58:	08000ada 	j	2b68 <Radio::Messages::consoleHandler(char*)+0x838>
+    2b5c:	00000000 	nop
+    2b60:	82220000 	lb	v0,0(s1)
+    2b64:	24030020 	li	v1,32
+    2b68:	10430205 	beq	v0,v1,3380 <Radio::Messages::consoleHandler(char*)+0x1050>
+    2b6c:	2442ffd0 	addiu	v0,v0,-48
+    2b70:	304200ff 	andi	v0,v0,0xff
+    2b74:	2c42000a 	sltiu	v0,v0,10
+    2b78:	1440016d 	bnez	v0,3130 <Radio::Messages::consoleHandler(char*)+0xe00>
+    2b7c:	24100040 	li	s0,64
+    2b80:	08000ce3 	j	338c <Radio::Messages::consoleHandler(char*)+0x105c>
+    2b84:	00000000 	nop
+    2b88:	82220000 	lb	v0,0(s1)
+    2b8c:	2403000a 	li	v1,10
+    2b90:	104301e7 	beq	v0,v1,3330 <Radio::Messages::consoleHandler(char*)+0x1000>
+    2b94:	2843000b 	slti	v1,v0,11
+    2b98:	10600005 	beqz	v1,2bb0 <Radio::Messages::consoleHandler(char*)+0x880>
+    2b9c:	00000000 	nop
+    2ba0:	104001e3 	beqz	v0,3330 <Radio::Messages::consoleHandler(char*)+0x1000>
+    2ba4:	2442ffd0 	addiu	v0,v0,-48
+    2ba8:	08000b72 	j	2dc8 <Radio::Messages::consoleHandler(char*)+0xa98>
+    2bac:	304200ff 	andi	v0,v0,0xff
+    2bb0:	2403000d 	li	v1,13
+    2bb4:	104301de 	beq	v0,v1,3330 <Radio::Messages::consoleHandler(char*)+0x1000>
+    2bb8:	24030020 	li	v1,32
+    2bbc:	104301da 	beq	v0,v1,3328 <Radio::Messages::consoleHandler(char*)+0xff8>
+    2bc0:	2442ffd0 	addiu	v0,v0,-48
+    2bc4:	08000b72 	j	2dc8 <Radio::Messages::consoleHandler(char*)+0xa98>
+    2bc8:	304200ff 	andi	v0,v0,0xff
+    2bcc:	82230000 	lb	v1,0(s1)
+    2bd0:	24020068 	li	v0,104
+    2bd4:	146201ed 	bne	v1,v0,338c <Radio::Messages::consoleHandler(char*)+0x105c>
+    2bd8:	24100042 	li	s0,66
+    2bdc:	08000ce1 	j	3384 <Radio::Messages::consoleHandler(char*)+0x1054>
+    2be0:	26310001 	addiu	s1,s1,1
+    2be4:	82230000 	lb	v1,0(s1)
+    2be8:	24020072 	li	v0,114
+    2bec:	146201e7 	bne	v1,v0,338c <Radio::Messages::consoleHandler(char*)+0x105c>
+    2bf0:	24100043 	li	s0,67
+    2bf4:	08000ce1 	j	3384 <Radio::Messages::consoleHandler(char*)+0x1054>
+    2bf8:	26310001 	addiu	s1,s1,1
+    2bfc:	82230000 	lb	v1,0(s1)
+    2c00:	2402006f 	li	v0,111
+    2c04:	146201e1 	bne	v1,v0,338c <Radio::Messages::consoleHandler(char*)+0x105c>
+    2c08:	24100044 	li	s0,68
+    2c0c:	08000ce1 	j	3384 <Radio::Messages::consoleHandler(char*)+0x1054>
+    2c10:	26310001 	addiu	s1,s1,1
+    2c14:	82230000 	lb	v1,0(s1)
+    2c18:	24020074 	li	v0,116
+    2c1c:	146201db 	bne	v1,v0,338c <Radio::Messages::consoleHandler(char*)+0x105c>
+    2c20:	24100045 	li	s0,69
+    2c24:	08000ce1 	j	3384 <Radio::Messages::consoleHandler(char*)+0x1054>
+    2c28:	26310001 	addiu	s1,s1,1
+    2c2c:	82230000 	lb	v1,0(s1)
+    2c30:	24020074 	li	v0,116
+    2c34:	146201d5 	bne	v1,v0,338c <Radio::Messages::consoleHandler(char*)+0x105c>
+    2c38:	24100046 	li	s0,70
+    2c3c:	08000ce1 	j	3384 <Radio::Messages::consoleHandler(char*)+0x1054>
+    2c40:	26310001 	addiu	s1,s1,1
+    2c44:	82230000 	lb	v1,0(s1)
+    2c48:	2402006c 	li	v0,108
+    2c4c:	146201cf 	bne	v1,v0,338c <Radio::Messages::consoleHandler(char*)+0x105c>
+    2c50:	24100047 	li	s0,71
+    2c54:	08000ce1 	j	3384 <Radio::Messages::consoleHandler(char*)+0x1054>
+    2c58:	26310001 	addiu	s1,s1,1
+    2c5c:	82230000 	lb	v1,0(s1)
+    2c60:	24020065 	li	v0,101
+    2c64:	146201c9 	bne	v1,v0,338c <Radio::Messages::consoleHandler(char*)+0x105c>
+    2c68:	24100048 	li	s0,72
+    2c6c:	08000ce1 	j	3384 <Radio::Messages::consoleHandler(char*)+0x1054>
+    2c70:	26310001 	addiu	s1,s1,1
+    2c74:	82230000 	lb	v1,0(s1)
+    2c78:	24020020 	li	v0,32
+    2c7c:	146201c3 	bne	v1,v0,338c <Radio::Messages::consoleHandler(char*)+0x105c>
+    2c80:	24100049 	li	s0,73
+    2c84:	08000ce1 	j	3384 <Radio::Messages::consoleHandler(char*)+0x1054>
+    2c88:	26310001 	addiu	s1,s1,1
+    2c8c:	82220000 	lb	v0,0(s1)
+    2c90:	24030020 	li	v1,32
+    2c94:	104301ba 	beq	v0,v1,3380 <Radio::Messages::consoleHandler(char*)+0x1050>
+    2c98:	2442ffd0 	addiu	v0,v0,-48
+    2c9c:	304200ff 	andi	v0,v0,0xff
+    2ca0:	2c42000a 	sltiu	v0,v0,10
+    2ca4:	14400122 	bnez	v0,3130 <Radio::Messages::consoleHandler(char*)+0xe00>
+    2ca8:	2410004a 	li	s0,74
+    2cac:	08000ce3 	j	338c <Radio::Messages::consoleHandler(char*)+0x105c>
+    2cb0:	00000000 	nop
+    2cb4:	82220000 	lb	v0,0(s1)
+    2cb8:	2403000a 	li	v1,10
+    2cbc:	10430165 	beq	v0,v1,3254 <Radio::Messages::consoleHandler(char*)+0xf24>
+    2cc0:	2843000b 	slti	v1,v0,11
+    2cc4:	10600005 	beqz	v1,2cdc <Radio::Messages::consoleHandler(char*)+0x9ac>
+    2cc8:	00000000 	nop
+    2ccc:	10400161 	beqz	v0,3254 <Radio::Messages::consoleHandler(char*)+0xf24>
+    2cd0:	2442ffd0 	addiu	v0,v0,-48
+    2cd4:	08000b72 	j	2dc8 <Radio::Messages::consoleHandler(char*)+0xa98>
+    2cd8:	304200ff 	andi	v0,v0,0xff
+    2cdc:	2403000d 	li	v1,13
+    2ce0:	1043015c 	beq	v0,v1,3254 <Radio::Messages::consoleHandler(char*)+0xf24>
+    2ce4:	24030020 	li	v1,32
+    2ce8:	10430158 	beq	v0,v1,324c <Radio::Messages::consoleHandler(char*)+0xf1c>
+    2cec:	2442ffd0 	addiu	v0,v0,-48
+    2cf0:	08000b72 	j	2dc8 <Radio::Messages::consoleHandler(char*)+0xa98>
+    2cf4:	304200ff 	andi	v0,v0,0xff
+    2cf8:	82230000 	lb	v1,0(s1)
+    2cfc:	24020061 	li	v0,97
+    2d00:	146201a2 	bne	v1,v0,338c <Radio::Messages::consoleHandler(char*)+0x105c>
+    2d04:	2410004c 	li	s0,76
+    2d08:	08000ce1 	j	3384 <Radio::Messages::consoleHandler(char*)+0x1054>
+    2d0c:	26310001 	addiu	s1,s1,1
+    2d10:	82230000 	lb	v1,0(s1)
+    2d14:	24020077 	li	v0,119
+    2d18:	1462019c 	bne	v1,v0,338c <Radio::Messages::consoleHandler(char*)+0x105c>
+    2d1c:	2410004d 	li	s0,77
+    2d20:	08000ce1 	j	3384 <Radio::Messages::consoleHandler(char*)+0x1054>
+    2d24:	26310001 	addiu	s1,s1,1
+    2d28:	82230000 	lb	v1,0(s1)
+    2d2c:	24020020 	li	v0,32
+    2d30:	14620196 	bne	v1,v0,338c <Radio::Messages::consoleHandler(char*)+0x105c>
+    2d34:	2410004e 	li	s0,78
+    2d38:	08000ce1 	j	3384 <Radio::Messages::consoleHandler(char*)+0x1054>
+    2d3c:	26310001 	addiu	s1,s1,1
+    2d40:	82220000 	lb	v0,0(s1)
+    2d44:	2403002b 	li	v1,43
+    2d48:	1043011e 	beq	v0,v1,31c4 <Radio::Messages::consoleHandler(char*)+0xe94>
+    2d4c:	2403002d 	li	v1,45
+    2d50:	1043011c 	beq	v0,v1,31c4 <Radio::Messages::consoleHandler(char*)+0xe94>
+    2d54:	24030020 	li	v1,32
+    2d58:	08000b5a 	j	2d68 <Radio::Messages::consoleHandler(char*)+0xa38>
+    2d5c:	00000000 	nop
+    2d60:	82220000 	lb	v0,0(s1)
+    2d64:	24030020 	li	v1,32
+    2d68:	10430185 	beq	v0,v1,3380 <Radio::Messages::consoleHandler(char*)+0x1050>
+    2d6c:	2442ffd0 	addiu	v0,v0,-48
+    2d70:	304200ff 	andi	v0,v0,0xff
+    2d74:	2c42000a 	sltiu	v0,v0,10
+    2d78:	144000ed 	bnez	v0,3130 <Radio::Messages::consoleHandler(char*)+0xe00>
+    2d7c:	24100050 	li	s0,80
+    2d80:	08000ce3 	j	338c <Radio::Messages::consoleHandler(char*)+0x105c>
+    2d84:	00000000 	nop
+    2d88:	82220000 	lb	v0,0(s1)
+    2d8c:	2403000a 	li	v1,10
+    2d90:	10430156 	beq	v0,v1,32ec <Radio::Messages::consoleHandler(char*)+0xfbc>
+    2d94:	2843000b 	slti	v1,v0,11
+    2d98:	10600005 	beqz	v1,2db0 <Radio::Messages::consoleHandler(char*)+0xa80>
     2d9c:	00000000 	nop
-    2da0:	00602821 	move	a1,v1
-    2da4:	0c0005d1 	jal	1744 <System::Bus::UART::write_waiting(long long)>
-    2da8:	00402021 	move	a0,v0
-    2dac:	00002821 	move	a1,zero
-    2db0:	0c000594 	jal	1650 <System::Bus::UART::write_waiting(char const*, unsigned int)>
-    2db4:	2604013c 	addiu	a0,s0,316
-    2db8:	0c000552 	jal	1548 <_ZN6System8Registry8instanceEv.local.8>
-    2dbc:	00000000 	nop
-    2dc0:	8c440020 	lw	a0,32(v0)
-    2dc4:	0c0008a7 	jal	229c <b32tohex(unsigned int)>
-    2dc8:	00000000 	nop
-    2dcc:	00602821 	move	a1,v1
-    2dd0:	0c0005d1 	jal	1744 <System::Bus::UART::write_waiting(long long)>
-    2dd4:	00402021 	move	a0,v0
-    2dd8:	2604013c 	addiu	a0,s0,316
-    2ddc:	0c000594 	jal	1650 <System::Bus::UART::write_waiting(char const*, unsigned int)>
-    2de0:	00002821 	move	a1,zero
-    2de4:	0c000552 	jal	1548 <_ZN6System8Registry8instanceEv.local.8>
-    2de8:	00000000 	nop
-    2dec:	8c440024 	lw	a0,36(v0)
-    2df0:	08000b81 	j	2e04 <Radio::Messages::consoleHandler(char*)+0xb24>
-    2df4:	00000000 	nop
-    2df8:	0c000552 	jal	1548 <_ZN6System8Registry8instanceEv.local.8>
-    2dfc:	00000000 	nop
-    2e00:	8c440050 	lw	a0,80(v0)
-    2e04:	0c0008a7 	jal	229c <b32tohex(unsigned int)>
-    2e08:	00000000 	nop
-    2e0c:	00402021 	move	a0,v0
-    2e10:	0c0005d1 	jal	1744 <System::Bus::UART::write_waiting(long long)>
-    2e14:	00602821 	move	a1,v1
-    2e18:	26840140 	addiu	a0,s4,320
-    2e1c:	0c000594 	jal	1650 <System::Bus::UART::write_waiting(char const*, unsigned int)>
-    2e20:	00002821 	move	a1,zero
-    2e24:	08000ccc 	j	3330 <Radio::Messages::consoleHandler(char*)+0x1050>
-    2e28:	24100008 	li	s0,8
-    2e2c:	0c000552 	jal	1548 <_ZN6System8Registry8instanceEv.local.8>
-    2e30:	3c108000 	lui	s0,0x8000
-    2e34:	0c00081a 	jal	2068 <float32::operator int() const>
-    2e38:	24440010 	addiu	a0,v0,16
-    2e3c:	0c00084f 	jal	213c <b32todec(int)>
-    2e40:	00402021 	move	a0,v0
-    2e44:	00602821 	move	a1,v1
-    2e48:	0c0005d1 	jal	1744 <System::Bus::UART::write_waiting(long long)>
-    2e4c:	00402021 	move	a0,v0
-    2e50:	00002821 	move	a1,zero
-    2e54:	0c000594 	jal	1650 <System::Bus::UART::write_waiting(char const*, unsigned int)>
-    2e58:	2604013c 	addiu	a0,s0,316
-    2e5c:	0c000552 	jal	1548 <_ZN6System8Registry8instanceEv.local.8>
-    2e60:	00000000 	nop
-    2e64:	0c00081a 	jal	2068 <float32::operator int() const>
-    2e68:	24440014 	addiu	a0,v0,20
-    2e6c:	0c00084f 	jal	213c <b32todec(int)>
-    2e70:	00402021 	move	a0,v0
-    2e74:	00602821 	move	a1,v1
-    2e78:	0c0005d1 	jal	1744 <System::Bus::UART::write_waiting(long long)>
-    2e7c:	00402021 	move	a0,v0
-    2e80:	2604013c 	addiu	a0,s0,316
-    2e84:	0c000594 	jal	1650 <System::Bus::UART::write_waiting(char const*, unsigned int)>
-    2e88:	00002821 	move	a1,zero
-    2e8c:	0c000552 	jal	1548 <_ZN6System8Registry8instanceEv.local.8>
-    2e90:	00000000 	nop
-    2e94:	0c00081a 	jal	2068 <float32::operator int() const>
-    2e98:	24440018 	addiu	a0,v0,24
-    2e9c:	0c00084f 	jal	213c <b32todec(int)>
-    2ea0:	00402021 	move	a0,v0
-    2ea4:	08000b84 	j	2e10 <Radio::Messages::consoleHandler(char*)+0xb30>
-    2ea8:	00402021 	move	a0,v0
+    2da0:	10400152 	beqz	v0,32ec <Radio::Messages::consoleHandler(char*)+0xfbc>
+    2da4:	2442ffd0 	addiu	v0,v0,-48
+    2da8:	08000b72 	j	2dc8 <Radio::Messages::consoleHandler(char*)+0xa98>
+    2dac:	304200ff 	andi	v0,v0,0xff
+    2db0:	2403000d 	li	v1,13
+    2db4:	1043014d 	beq	v0,v1,32ec <Radio::Messages::consoleHandler(char*)+0xfbc>
+    2db8:	24030020 	li	v1,32
+    2dbc:	10430149 	beq	v0,v1,32e4 <Radio::Messages::consoleHandler(char*)+0xfb4>
+    2dc0:	2442ffd0 	addiu	v0,v0,-48
+    2dc4:	304200ff 	andi	v0,v0,0xff
+    2dc8:	2c42000a 	sltiu	v0,v0,10
+    2dcc:	144000d9 	bnez	v0,3134 <Radio::Messages::consoleHandler(char*)+0xe04>
+    2dd0:	27a30010 	addiu	v1,sp,16
+    2dd4:	08000ce3 	j	338c <Radio::Messages::consoleHandler(char*)+0x105c>
+    2dd8:	00000000 	nop
+    2ddc:	0c000552 	jal	1548 <_ZN6System8Registry8instanceEv.local.8>
+    2de0:	3c108000 	lui	s0,0x8000
+    2de4:	8c44001c 	lw	a0,28(v0)
+    2de8:	0c0008a7 	jal	229c <b32tohex(unsigned int)>
+    2dec:	00000000 	nop
+    2df0:	00602821 	move	a1,v1
+    2df4:	0c0005d1 	jal	1744 <System::Bus::UART::write_waiting(long long)>
+    2df8:	00402021 	move	a0,v0
+    2dfc:	00002821 	move	a1,zero
+    2e00:	0c000594 	jal	1650 <System::Bus::UART::write_waiting(char const*, unsigned int)>
+    2e04:	2604013c 	addiu	a0,s0,316
+    2e08:	0c000552 	jal	1548 <_ZN6System8Registry8instanceEv.local.8>
+    2e0c:	00000000 	nop
+    2e10:	8c440020 	lw	a0,32(v0)
+    2e14:	0c0008a7 	jal	229c <b32tohex(unsigned int)>
+    2e18:	00000000 	nop
+    2e1c:	00602821 	move	a1,v1
+    2e20:	0c0005d1 	jal	1744 <System::Bus::UART::write_waiting(long long)>
+    2e24:	00402021 	move	a0,v0
+    2e28:	2604013c 	addiu	a0,s0,316
+    2e2c:	0c000594 	jal	1650 <System::Bus::UART::write_waiting(char const*, unsigned int)>
+    2e30:	00002821 	move	a1,zero
+    2e34:	0c000552 	jal	1548 <_ZN6System8Registry8instanceEv.local.8>
+    2e38:	00000000 	nop
+    2e3c:	8c440024 	lw	a0,36(v0)
+    2e40:	08000b95 	j	2e54 <Radio::Messages::consoleHandler(char*)+0xb24>
+    2e44:	00000000 	nop
+    2e48:	0c000552 	jal	1548 <_ZN6System8Registry8instanceEv.local.8>
+    2e4c:	00000000 	nop
+    2e50:	8c440050 	lw	a0,80(v0)
+    2e54:	0c0008a7 	jal	229c <b32tohex(unsigned int)>
+    2e58:	00000000 	nop
+    2e5c:	00402021 	move	a0,v0
+    2e60:	0c0005d1 	jal	1744 <System::Bus::UART::write_waiting(long long)>
+    2e64:	00602821 	move	a1,v1
+    2e68:	26840140 	addiu	a0,s4,320
+    2e6c:	0c000594 	jal	1650 <System::Bus::UART::write_waiting(char const*, unsigned int)>
+    2e70:	00002821 	move	a1,zero
+    2e74:	08000ce0 	j	3380 <Radio::Messages::consoleHandler(char*)+0x1050>
+    2e78:	24100008 	li	s0,8
+    2e7c:	0c000552 	jal	1548 <_ZN6System8Registry8instanceEv.local.8>
+    2e80:	3c108000 	lui	s0,0x8000
+    2e84:	0c00081a 	jal	2068 <float32::operator int() const>
+    2e88:	24440010 	addiu	a0,v0,16
+    2e8c:	0c00084f 	jal	213c <b32todec(int)>
+    2e90:	00402021 	move	a0,v0
+    2e94:	00602821 	move	a1,v1
+    2e98:	0c0005d1 	jal	1744 <System::Bus::UART::write_waiting(long long)>
+    2e9c:	00402021 	move	a0,v0
+    2ea0:	00002821 	move	a1,zero
+    2ea4:	0c000594 	jal	1650 <System::Bus::UART::write_waiting(char const*, unsigned int)>
+    2ea8:	2604013c 	addiu	a0,s0,316
     2eac:	0c000552 	jal	1548 <_ZN6System8Registry8instanceEv.local.8>
-    2eb0:	3c108000 	lui	s0,0x8000
-    2eb4:	8c440034 	lw	a0,52(v0)
-    2eb8:	0c0008a7 	jal	229c <b32tohex(unsigned int)>
-    2ebc:	00000000 	nop
-    2ec0:	00602821 	move	a1,v1
-    2ec4:	0c0005d1 	jal	1744 <System::Bus::UART::write_waiting(long long)>
-    2ec8:	00402021 	move	a0,v0
-    2ecc:	00002821 	move	a1,zero
-    2ed0:	0c000594 	jal	1650 <System::Bus::UART::write_waiting(char const*, unsigned int)>
-    2ed4:	2604013c 	addiu	a0,s0,316
-    2ed8:	0c000552 	jal	1548 <_ZN6System8Registry8instanceEv.local.8>
-    2edc:	00000000 	nop
-    2ee0:	8c440038 	lw	a0,56(v0)
-    2ee4:	0c0008a7 	jal	229c <b32tohex(unsigned int)>
-    2ee8:	00000000 	nop
-    2eec:	00602821 	move	a1,v1
-    2ef0:	0c0005d1 	jal	1744 <System::Bus::UART::write_waiting(long long)>
-    2ef4:	00402021 	move	a0,v0
-    2ef8:	2604013c 	addiu	a0,s0,316
-    2efc:	0c000594 	jal	1650 <System::Bus::UART::write_waiting(char const*, unsigned int)>
-    2f00:	00002821 	move	a1,zero
-    2f04:	0c000552 	jal	1548 <_ZN6System8Registry8instanceEv.local.8>
-    2f08:	00000000 	nop
-    2f0c:	8c44003c 	lw	a0,60(v0)
-    2f10:	08000b81 	j	2e04 <Radio::Messages::consoleHandler(char*)+0xb24>
-    2f14:	00000000 	nop
-    2f18:	0c000552 	jal	1548 <_ZN6System8Registry8instanceEv.local.8>
-    2f1c:	3c108000 	lui	s0,0x8000
-    2f20:	8c440040 	lw	a0,64(v0)
-    2f24:	0c0008a7 	jal	229c <b32tohex(unsigned int)>
-    2f28:	00000000 	nop
-    2f2c:	00602821 	move	a1,v1
-    2f30:	0c0005d1 	jal	1744 <System::Bus::UART::write_waiting(long long)>
-    2f34:	00402021 	move	a0,v0
-    2f38:	00002821 	move	a1,zero
-    2f3c:	0c000594 	jal	1650 <System::Bus::UART::write_waiting(char const*, unsigned int)>
-    2f40:	2604013c 	addiu	a0,s0,316
-    2f44:	0c000552 	jal	1548 <_ZN6System8Registry8instanceEv.local.8>
-    2f48:	00000000 	nop
-    2f4c:	8c440044 	lw	a0,68(v0)
-    2f50:	0c0008a7 	jal	229c <b32tohex(unsigned int)>
-    2f54:	00000000 	nop
-    2f58:	00602821 	move	a1,v1
-    2f5c:	0c0005d1 	jal	1744 <System::Bus::UART::write_waiting(long long)>
-    2f60:	00402021 	move	a0,v0
-    2f64:	2604013c 	addiu	a0,s0,316
-    2f68:	0c000594 	jal	1650 <System::Bus::UART::write_waiting(char const*, unsigned int)>
-    2f6c:	00002821 	move	a1,zero
-    2f70:	0c000552 	jal	1548 <_ZN6System8Registry8instanceEv.local.8>
-    2f74:	00000000 	nop
-    2f78:	8c440048 	lw	a0,72(v0)
-    2f7c:	08000b81 	j	2e04 <Radio::Messages::consoleHandler(char*)+0xb24>
-    2f80:	00000000 	nop
-    2f84:	0c000552 	jal	1548 <_ZN6System8Registry8instanceEv.local.8>
-    2f88:	3c108000 	lui	s0,0x8000
-    2f8c:	8c440058 	lw	a0,88(v0)
-    2f90:	0c0008a7 	jal	229c <b32tohex(unsigned int)>
-    2f94:	00000000 	nop
-    2f98:	00602821 	move	a1,v1
-    2f9c:	0c0005d1 	jal	1744 <System::Bus::UART::write_waiting(long long)>
-    2fa0:	00402021 	move	a0,v0
-    2fa4:	00002821 	move	a1,zero
-    2fa8:	0c000594 	jal	1650 <System::Bus::UART::write_waiting(char const*, unsigned int)>
-    2fac:	2604013c 	addiu	a0,s0,316
-    2fb0:	0c000552 	jal	1548 <_ZN6System8Registry8instanceEv.local.8>
-    2fb4:	00000000 	nop
-    2fb8:	8c44005c 	lw	a0,92(v0)
-    2fbc:	0c0008a7 	jal	229c <b32tohex(unsigned int)>
-    2fc0:	00000000 	nop
-    2fc4:	00602821 	move	a1,v1
-    2fc8:	0c0005d1 	jal	1744 <System::Bus::UART::write_waiting(long long)>
-    2fcc:	00402021 	move	a0,v0
-    2fd0:	2604013c 	addiu	a0,s0,316
-    2fd4:	0c000594 	jal	1650 <System::Bus::UART::write_waiting(char const*, unsigned int)>
-    2fd8:	00002821 	move	a1,zero
-    2fdc:	0c000552 	jal	1548 <_ZN6System8Registry8instanceEv.local.8>
-    2fe0:	00000000 	nop
-    2fe4:	8c440060 	lw	a0,96(v0)
-    2fe8:	08000b81 	j	2e04 <Radio::Messages::consoleHandler(char*)+0xb24>
-    2fec:	00000000 	nop
-    2ff0:	0c000552 	jal	1548 <_ZN6System8Registry8instanceEv.local.8>
-    2ff4:	3c108000 	lui	s0,0x8000
-    2ff8:	8c440000 	lw	a0,0(v0)
-    2ffc:	0c0008a7 	jal	229c <b32tohex(unsigned int)>
-    3000:	00000000 	nop
-    3004:	00602821 	move	a1,v1
-    3008:	0c0005d1 	jal	1744 <System::Bus::UART::write_waiting(long long)>
-    300c:	00402021 	move	a0,v0
-    3010:	00002821 	move	a1,zero
-    3014:	0c000594 	jal	1650 <System::Bus::UART::write_waiting(char const*, unsigned int)>
-    3018:	2604013c 	addiu	a0,s0,316
-    301c:	0c000552 	jal	1548 <_ZN6System8Registry8instanceEv.local.8>
-    3020:	00000000 	nop
-    3024:	8c440004 	lw	a0,4(v0)
-    3028:	0c0008a7 	jal	229c <b32tohex(unsigned int)>
-    302c:	00000000 	nop
-    3030:	00602821 	move	a1,v1
-    3034:	0c0005d1 	jal	1744 <System::Bus::UART::write_waiting(long long)>
-    3038:	00402021 	move	a0,v0
-    303c:	00002821 	move	a1,zero
-    3040:	0c000594 	jal	1650 <System::Bus::UART::write_waiting(char const*, unsigned int)>
-    3044:	2604013c 	addiu	a0,s0,316
-    3048:	0c000552 	jal	1548 <_ZN6System8Registry8instanceEv.local.8>
-    304c:	00000000 	nop
-    3050:	8c440008 	lw	a0,8(v0)
-    3054:	0c0008a7 	jal	229c <b32tohex(unsigned int)>
-    3058:	00000000 	nop
-    305c:	00602821 	move	a1,v1
-    3060:	0c0005d1 	jal	1744 <System::Bus::UART::write_waiting(long long)>
-    3064:	00402021 	move	a0,v0
+    2eb0:	00000000 	nop
+    2eb4:	0c00081a 	jal	2068 <float32::operator int() const>
+    2eb8:	24440014 	addiu	a0,v0,20
+    2ebc:	0c00084f 	jal	213c <b32todec(int)>
+    2ec0:	00402021 	move	a0,v0
+    2ec4:	00602821 	move	a1,v1
+    2ec8:	0c0005d1 	jal	1744 <System::Bus::UART::write_waiting(long long)>
+    2ecc:	00402021 	move	a0,v0
+    2ed0:	2604013c 	addiu	a0,s0,316
+    2ed4:	0c000594 	jal	1650 <System::Bus::UART::write_waiting(char const*, unsigned int)>
+    2ed8:	00002821 	move	a1,zero
+    2edc:	0c000552 	jal	1548 <_ZN6System8Registry8instanceEv.local.8>
+    2ee0:	00000000 	nop
+    2ee4:	0c00081a 	jal	2068 <float32::operator int() const>
+    2ee8:	24440018 	addiu	a0,v0,24
+    2eec:	0c00084f 	jal	213c <b32todec(int)>
+    2ef0:	00402021 	move	a0,v0
+    2ef4:	08000b98 	j	2e60 <Radio::Messages::consoleHandler(char*)+0xb30>
+    2ef8:	00402021 	move	a0,v0
+    2efc:	0c000552 	jal	1548 <_ZN6System8Registry8instanceEv.local.8>
+    2f00:	3c108000 	lui	s0,0x8000
+    2f04:	8c440034 	lw	a0,52(v0)
+    2f08:	0c0008a7 	jal	229c <b32tohex(unsigned int)>
+    2f0c:	00000000 	nop
+    2f10:	00602821 	move	a1,v1
+    2f14:	0c0005d1 	jal	1744 <System::Bus::UART::write_waiting(long long)>
+    2f18:	00402021 	move	a0,v0
+    2f1c:	00002821 	move	a1,zero
+    2f20:	0c000594 	jal	1650 <System::Bus::UART::write_waiting(char const*, unsigned int)>
+    2f24:	2604013c 	addiu	a0,s0,316
+    2f28:	0c000552 	jal	1548 <_ZN6System8Registry8instanceEv.local.8>
+    2f2c:	00000000 	nop
+    2f30:	8c440038 	lw	a0,56(v0)
+    2f34:	0c0008a7 	jal	229c <b32tohex(unsigned int)>
+    2f38:	00000000 	nop
+    2f3c:	00602821 	move	a1,v1
+    2f40:	0c0005d1 	jal	1744 <System::Bus::UART::write_waiting(long long)>
+    2f44:	00402021 	move	a0,v0
+    2f48:	2604013c 	addiu	a0,s0,316
+    2f4c:	0c000594 	jal	1650 <System::Bus::UART::write_waiting(char const*, unsigned int)>
+    2f50:	00002821 	move	a1,zero
+    2f54:	0c000552 	jal	1548 <_ZN6System8Registry8instanceEv.local.8>
+    2f58:	00000000 	nop
+    2f5c:	8c44003c 	lw	a0,60(v0)
+    2f60:	08000b95 	j	2e54 <Radio::Messages::consoleHandler(char*)+0xb24>
+    2f64:	00000000 	nop
+    2f68:	0c000552 	jal	1548 <_ZN6System8Registry8instanceEv.local.8>
+    2f6c:	3c108000 	lui	s0,0x8000
+    2f70:	8c440040 	lw	a0,64(v0)
+    2f74:	0c0008a7 	jal	229c <b32tohex(unsigned int)>
+    2f78:	00000000 	nop
+    2f7c:	00602821 	move	a1,v1
+    2f80:	0c0005d1 	jal	1744 <System::Bus::UART::write_waiting(long long)>
+    2f84:	00402021 	move	a0,v0
+    2f88:	00002821 	move	a1,zero
+    2f8c:	0c000594 	jal	1650 <System::Bus::UART::write_waiting(char const*, unsigned int)>
+    2f90:	2604013c 	addiu	a0,s0,316
+    2f94:	0c000552 	jal	1548 <_ZN6System8Registry8instanceEv.local.8>
+    2f98:	00000000 	nop
+    2f9c:	8c440044 	lw	a0,68(v0)
+    2fa0:	0c0008a7 	jal	229c <b32tohex(unsigned int)>
+    2fa4:	00000000 	nop
+    2fa8:	00602821 	move	a1,v1
+    2fac:	0c0005d1 	jal	1744 <System::Bus::UART::write_waiting(long long)>
+    2fb0:	00402021 	move	a0,v0
+    2fb4:	2604013c 	addiu	a0,s0,316
+    2fb8:	0c000594 	jal	1650 <System::Bus::UART::write_waiting(char const*, unsigned int)>
+    2fbc:	00002821 	move	a1,zero
+    2fc0:	0c000552 	jal	1548 <_ZN6System8Registry8instanceEv.local.8>
+    2fc4:	00000000 	nop
+    2fc8:	8c440048 	lw	a0,72(v0)
+    2fcc:	08000b95 	j	2e54 <Radio::Messages::consoleHandler(char*)+0xb24>
+    2fd0:	00000000 	nop
+    2fd4:	0c000552 	jal	1548 <_ZN6System8Registry8instanceEv.local.8>
+    2fd8:	3c108000 	lui	s0,0x8000
+    2fdc:	8c440058 	lw	a0,88(v0)
+    2fe0:	0c0008a7 	jal	229c <b32tohex(unsigned int)>
+    2fe4:	00000000 	nop
+    2fe8:	00602821 	move	a1,v1
+    2fec:	0c0005d1 	jal	1744 <System::Bus::UART::write_waiting(long long)>
+    2ff0:	00402021 	move	a0,v0
+    2ff4:	00002821 	move	a1,zero
+    2ff8:	0c000594 	jal	1650 <System::Bus::UART::write_waiting(char const*, unsigned int)>
+    2ffc:	2604013c 	addiu	a0,s0,316
+    3000:	0c000552 	jal	1548 <_ZN6System8Registry8instanceEv.local.8>
+    3004:	00000000 	nop
+    3008:	8c44005c 	lw	a0,92(v0)
+    300c:	0c0008a7 	jal	229c <b32tohex(unsigned int)>
+    3010:	00000000 	nop
+    3014:	00602821 	move	a1,v1
+    3018:	0c0005d1 	jal	1744 <System::Bus::UART::write_waiting(long long)>
+    301c:	00402021 	move	a0,v0
+    3020:	2604013c 	addiu	a0,s0,316
+    3024:	0c000594 	jal	1650 <System::Bus::UART::write_waiting(char const*, unsigned int)>
+    3028:	00002821 	move	a1,zero
+    302c:	0c000552 	jal	1548 <_ZN6System8Registry8instanceEv.local.8>
+    3030:	00000000 	nop
+    3034:	8c440060 	lw	a0,96(v0)
+    3038:	08000b95 	j	2e54 <Radio::Messages::consoleHandler(char*)+0xb24>
+    303c:	00000000 	nop
+    3040:	0c000552 	jal	1548 <_ZN6System8Registry8instanceEv.local.8>
+    3044:	3c108000 	lui	s0,0x8000
+    3048:	8c440000 	lw	a0,0(v0)
+    304c:	0c0008a7 	jal	229c <b32tohex(unsigned int)>
+    3050:	00000000 	nop
+    3054:	00602821 	move	a1,v1
+    3058:	0c0005d1 	jal	1744 <System::Bus::UART::write_waiting(long long)>
+    305c:	00402021 	move	a0,v0
+    3060:	00002821 	move	a1,zero
+    3064:	0c000594 	jal	1650 <System::Bus::UART::write_waiting(char const*, unsigned int)>
     3068:	2604013c 	addiu	a0,s0,316
-    306c:	0c000594 	jal	1650 <System::Bus::UART::write_waiting(char const*, unsigned int)>
-    3070:	00002821 	move	a1,zero
-    3074:	0c000552 	jal	1548 <_ZN6System8Registry8instanceEv.local.8>
-    3078:	00000000 	nop
-    307c:	8c44000c 	lw	a0,12(v0)
-    3080:	08000b81 	j	2e04 <Radio::Messages::consoleHandler(char*)+0xb24>
-    3084:	00000000 	nop
-    3088:	0c000552 	jal	1548 <_ZN6System8Registry8instanceEv.local.8>
-    308c:	00000000 	nop
-    3090:	8c44004c 	lw	a0,76(v0)
-    3094:	08000b81 	j	2e04 <Radio::Messages::consoleHandler(char*)+0xb24>
-    3098:	00000000 	nop
-    309c:	0c000552 	jal	1548 <_ZN6System8Registry8instanceEv.local.8>
-    30a0:	00000000 	nop
-    30a4:	8c440054 	lw	a0,84(v0)
-    30a8:	08000b81 	j	2e04 <Radio::Messages::consoleHandler(char*)+0xb24>
-    30ac:	00000000 	nop
-    30b0:	08000ccc 	j	3330 <Radio::Messages::consoleHandler(char*)+0x1050>
-    30b4:	2410000a 	li	s0,10
-    30b8:	08000ccc 	j	3330 <Radio::Messages::consoleHandler(char*)+0x1050>
-    30bc:	24100011 	li	s0,17
-    30c0:	08000ccc 	j	3330 <Radio::Messages::consoleHandler(char*)+0x1050>
-    30c4:	24100016 	li	s0,22
-    30c8:	08000ccc 	j	3330 <Radio::Messages::consoleHandler(char*)+0x1050>
-    30cc:	24100019 	li	s0,25
-    30d0:	08000ccc 	j	3330 <Radio::Messages::consoleHandler(char*)+0x1050>
-    30d4:	24100022 	li	s0,34
-    30d8:	08000ccc 	j	3330 <Radio::Messages::consoleHandler(char*)+0x1050>
-    30dc:	24100041 	li	s0,65
-    30e0:	27a30010 	addiu	v1,sp,16
-    30e4:	00121080 	sll	v0,s2,0x2
-    30e8:	00621021 	addu	v0,v1,v0
-    30ec:	8c430000 	lw	v1,0(v0)
-    30f0:	2404000a 	li	a0,10
-    30f4:	00830018 	mult	a0,v1
-    30f8:	82230000 	lb	v1,0(s1)
+    306c:	0c000552 	jal	1548 <_ZN6System8Registry8instanceEv.local.8>
+    3070:	00000000 	nop
+    3074:	8c440004 	lw	a0,4(v0)
+    3078:	0c0008a7 	jal	229c <b32tohex(unsigned int)>
+    307c:	00000000 	nop
+    3080:	00602821 	move	a1,v1
+    3084:	0c0005d1 	jal	1744 <System::Bus::UART::write_waiting(long long)>
+    3088:	00402021 	move	a0,v0
+    308c:	00002821 	move	a1,zero
+    3090:	0c000594 	jal	1650 <System::Bus::UART::write_waiting(char const*, unsigned int)>
+    3094:	2604013c 	addiu	a0,s0,316
+    3098:	0c000552 	jal	1548 <_ZN6System8Registry8instanceEv.local.8>
+    309c:	00000000 	nop
+    30a0:	8c440008 	lw	a0,8(v0)
+    30a4:	0c0008a7 	jal	229c <b32tohex(unsigned int)>
+    30a8:	00000000 	nop
+    30ac:	00602821 	move	a1,v1
+    30b0:	0c0005d1 	jal	1744 <System::Bus::UART::write_waiting(long long)>
+    30b4:	00402021 	move	a0,v0
+    30b8:	2604013c 	addiu	a0,s0,316
+    30bc:	0c000594 	jal	1650 <System::Bus::UART::write_waiting(char const*, unsigned int)>
+    30c0:	00002821 	move	a1,zero
+    30c4:	0c000552 	jal	1548 <_ZN6System8Registry8instanceEv.local.8>
+    30c8:	00000000 	nop
+    30cc:	8c44000c 	lw	a0,12(v0)
+    30d0:	08000b95 	j	2e54 <Radio::Messages::consoleHandler(char*)+0xb24>
+    30d4:	00000000 	nop
+    30d8:	0c000552 	jal	1548 <_ZN6System8Registry8instanceEv.local.8>
+    30dc:	00000000 	nop
+    30e0:	8c44004c 	lw	a0,76(v0)
+    30e4:	08000b95 	j	2e54 <Radio::Messages::consoleHandler(char*)+0xb24>
+    30e8:	00000000 	nop
+    30ec:	0c000552 	jal	1548 <_ZN6System8Registry8instanceEv.local.8>
+    30f0:	00000000 	nop
+    30f4:	8c440054 	lw	a0,84(v0)
+    30f8:	08000b95 	j	2e54 <Radio::Messages::consoleHandler(char*)+0xb24>
     30fc:	00000000 	nop
-    3100:	2463ffd0 	addiu	v1,v1,-48
-    3104:	00002812 	mflo	a1
-    3108:	00a31821 	addu	v1,a1,v1
-    310c:	08000ccc 	j	3330 <Radio::Messages::consoleHandler(char*)+0x1050>
-    3110:	ac430000 	sw	v1,0(v0)
-    3114:	08000c48 	j	3120 <Radio::Messages::consoleHandler(char*)+0xe40>
-    3118:	2410002e 	li	s0,46
-    311c:	24100031 	li	s0,49
-    3120:	2402002d 	li	v0,45
-    3124:	16620007 	bne	s3,v0,3144 <Radio::Messages::consoleHandler(char*)+0xe64>
-    3128:	27a30010 	addiu	v1,sp,16
-    312c:	00121080 	sll	v0,s2,0x2
-    3130:	00621021 	addu	v0,v1,v0
-    3134:	8c430000 	lw	v1,0(v0)
-    3138:	2413002b 	li	s3,43
-    313c:	00031823 	negu	v1,v1
-    3140:	ac430000 	sw	v1,0(v0)
-    3144:	08000ccc 	j	3330 <Radio::Messages::consoleHandler(char*)+0x1050>
-    3148:	26520001 	addiu	s2,s2,1
-    314c:	08000c5e 	j	3178 <Radio::Messages::consoleHandler(char*)+0xe98>
-    3150:	2410002c 	li	s0,44
-    3154:	08000c5e 	j	3178 <Radio::Messages::consoleHandler(char*)+0xe98>
-    3158:	2410002f 	li	s0,47
-    315c:	08000c5e 	j	3178 <Radio::Messages::consoleHandler(char*)+0xe98>
-    3160:	24100032 	li	s0,50
-    3164:	08000c5e 	j	3178 <Radio::Messages::consoleHandler(char*)+0xe98>
-    3168:	24100038 	li	s0,56
-    316c:	08000c5e 	j	3178 <Radio::Messages::consoleHandler(char*)+0xe98>
-    3170:	2410003f 	li	s0,63
-    3174:	2410004f 	li	s0,79
-    3178:	82230000 	lb	v1,0(s1)
-    317c:	2402002d 	li	v0,45
-    3180:	1462006b 	bne	v1,v0,3330 <Radio::Messages::consoleHandler(char*)+0x1050>
-    3184:	00000000 	nop
-    3188:	08000ccc 	j	3330 <Radio::Messages::consoleHandler(char*)+0x1050>
-    318c:	2413002d 	li	s3,45
-    3190:	08000c67 	j	319c <Radio::Messages::consoleHandler(char*)+0xebc>
-    3194:	24100008 	li	s0,8
-    3198:	24100051 	li	s0,81
-    319c:	2402002d 	li	v0,45
-    31a0:	16620007 	bne	s3,v0,31c0 <Radio::Messages::consoleHandler(char*)+0xee0>
-    31a4:	00121080 	sll	v0,s2,0x2
-    31a8:	27a40010 	addiu	a0,sp,16
-    31ac:	00821021 	addu	v0,a0,v0
-    31b0:	8c430000 	lw	v1,0(v0)
-    31b4:	2413002b 	li	s3,43
-    31b8:	00031823 	negu	v1,v1
-    31bc:	ac430000 	sw	v1,0(v0)
-    31c0:	8fa30014 	lw	v1,20(sp)
-    31c4:	8fa40010 	lw	a0,16(sp)
-    31c8:	afa30028 	sw	v1,40(sp)
-    31cc:	8fbe0018 	lw	s8,24(sp)
-    31d0:	0c000552 	jal	1548 <_ZN6System8Registry8instanceEv.local.8>
-    31d4:	afa40024 	sw	a0,36(sp)
-    31d8:	8fa40024 	lw	a0,36(sp)
-    31dc:	26520001 	addiu	s2,s2,1
-    31e0:	0c000552 	jal	1548 <_ZN6System8Registry8instanceEv.local.8>
-    31e4:	ac440058 	sw	a0,88(v0)
-    31e8:	8fa30028 	lw	v1,40(sp)
-    31ec:	0c000552 	jal	1548 <_ZN6System8Registry8instanceEv.local.8>
-    31f0:	ac43005c 	sw	v1,92(v0)
-    31f4:	08000c8f 	j	323c <Radio::Messages::consoleHandler(char*)+0xf5c>
-    31f8:	ac5e0060 	sw	s8,96(v0)
-    31fc:	08000c82 	j	3208 <Radio::Messages::consoleHandler(char*)+0xf28>
-    3200:	24100008 	li	s0,8
-    3204:	24100051 	li	s0,81
-    3208:	2402002d 	li	v0,45
-    320c:	16620007 	bne	s3,v0,322c <Radio::Messages::consoleHandler(char*)+0xf4c>
-    3210:	00121080 	sll	v0,s2,0x2
-    3214:	27a50010 	addiu	a1,sp,16
-    3218:	00a21021 	addu	v0,a1,v0
-    321c:	8c430000 	lw	v1,0(v0)
-    3220:	2413002b 	li	s3,43
-    3224:	00031823 	negu	v1,v1
-    3228:	ac430000 	sw	v1,0(v0)
-    322c:	8fbe0010 	lw	s8,16(sp)
+    3100:	08000ce0 	j	3380 <Radio::Messages::consoleHandler(char*)+0x1050>
+    3104:	2410000a 	li	s0,10
+    3108:	08000ce0 	j	3380 <Radio::Messages::consoleHandler(char*)+0x1050>
+    310c:	24100011 	li	s0,17
+    3110:	08000ce0 	j	3380 <Radio::Messages::consoleHandler(char*)+0x1050>
+    3114:	24100016 	li	s0,22
+    3118:	08000ce0 	j	3380 <Radio::Messages::consoleHandler(char*)+0x1050>
+    311c:	24100019 	li	s0,25
+    3120:	08000ce0 	j	3380 <Radio::Messages::consoleHandler(char*)+0x1050>
+    3124:	24100022 	li	s0,34
+    3128:	08000ce0 	j	3380 <Radio::Messages::consoleHandler(char*)+0x1050>
+    312c:	24100041 	li	s0,65
+    3130:	27a30010 	addiu	v1,sp,16
+    3134:	00121080 	sll	v0,s2,0x2
+    3138:	00621021 	addu	v0,v1,v0
+    313c:	8c430000 	lw	v1,0(v0)
+    3140:	2404000a 	li	a0,10
+    3144:	00830018 	mult	a0,v1
+    3148:	82230000 	lb	v1,0(s1)
+    314c:	00000000 	nop
+    3150:	2463ffd0 	addiu	v1,v1,-48
+    3154:	00002812 	mflo	a1
+    3158:	00a31821 	addu	v1,a1,v1
+    315c:	08000ce0 	j	3380 <Radio::Messages::consoleHandler(char*)+0x1050>
+    3160:	ac430000 	sw	v1,0(v0)
+    3164:	08000c5c 	j	3170 <Radio::Messages::consoleHandler(char*)+0xe40>
+    3168:	2410002e 	li	s0,46
+    316c:	24100031 	li	s0,49
+    3170:	2402002d 	li	v0,45
+    3174:	16620007 	bne	s3,v0,3194 <Radio::Messages::consoleHandler(char*)+0xe64>
+    3178:	27a30010 	addiu	v1,sp,16
+    317c:	00121080 	sll	v0,s2,0x2
+    3180:	00621021 	addu	v0,v1,v0
+    3184:	8c430000 	lw	v1,0(v0)
+    3188:	2413002b 	li	s3,43
+    318c:	00031823 	negu	v1,v1
+    3190:	ac430000 	sw	v1,0(v0)
+    3194:	08000ce0 	j	3380 <Radio::Messages::consoleHandler(char*)+0x1050>
+    3198:	26520001 	addiu	s2,s2,1
+    319c:	08000c72 	j	31c8 <Radio::Messages::consoleHandler(char*)+0xe98>
+    31a0:	2410002c 	li	s0,44
+    31a4:	08000c72 	j	31c8 <Radio::Messages::consoleHandler(char*)+0xe98>
+    31a8:	2410002f 	li	s0,47
+    31ac:	08000c72 	j	31c8 <Radio::Messages::consoleHandler(char*)+0xe98>
+    31b0:	24100032 	li	s0,50
+    31b4:	08000c72 	j	31c8 <Radio::Messages::consoleHandler(char*)+0xe98>
+    31b8:	24100038 	li	s0,56
+    31bc:	08000c72 	j	31c8 <Radio::Messages::consoleHandler(char*)+0xe98>
+    31c0:	2410003f 	li	s0,63
+    31c4:	2410004f 	li	s0,79
+    31c8:	82230000 	lb	v1,0(s1)
+    31cc:	2402002d 	li	v0,45
+    31d0:	1462006b 	bne	v1,v0,3380 <Radio::Messages::consoleHandler(char*)+0x1050>
+    31d4:	00000000 	nop
+    31d8:	08000ce0 	j	3380 <Radio::Messages::consoleHandler(char*)+0x1050>
+    31dc:	2413002d 	li	s3,45
+    31e0:	08000c7b 	j	31ec <Radio::Messages::consoleHandler(char*)+0xebc>
+    31e4:	24100008 	li	s0,8
+    31e8:	24100051 	li	s0,81
+    31ec:	2402002d 	li	v0,45
+    31f0:	16620007 	bne	s3,v0,3210 <Radio::Messages::consoleHandler(char*)+0xee0>
+    31f4:	00121080 	sll	v0,s2,0x2
+    31f8:	27a40010 	addiu	a0,sp,16
+    31fc:	00821021 	addu	v0,a0,v0
+    3200:	8c430000 	lw	v1,0(v0)
+    3204:	2413002b 	li	s3,43
+    3208:	00031823 	negu	v1,v1
+    320c:	ac430000 	sw	v1,0(v0)
+    3210:	8fa30014 	lw	v1,20(sp)
+    3214:	8fa40010 	lw	a0,16(sp)
+    3218:	afa30028 	sw	v1,40(sp)
+    321c:	8fbe0018 	lw	s8,24(sp)
+    3220:	0c000552 	jal	1548 <_ZN6System8Registry8instanceEv.local.8>
+    3224:	afa40024 	sw	a0,36(sp)
+    3228:	8fa40024 	lw	a0,36(sp)
+    322c:	26520001 	addiu	s2,s2,1
     3230:	0c000552 	jal	1548 <_ZN6System8Registry8instanceEv.local.8>
-    3234:	26520001 	addiu	s2,s2,1
-    3238:	ac5e0054 	sw	s8,84(v0)
-    323c:	02a02021 	move	a0,s5
-    3240:	0c000594 	jal	1650 <System::Bus::UART::write_waiting(char const*, unsigned int)>
-    3244:	00002821 	move	a1,zero
-    3248:	08000ccd 	j	3334 <Radio::Messages::consoleHandler(char*)+0x1054>
-    324c:	26310001 	addiu	s1,s1,1
-    3250:	08000c97 	j	325c <Radio::Messages::consoleHandler(char*)+0xf7c>
-    3254:	24100008 	li	s0,8
-    3258:	24100051 	li	s0,81
-    325c:	2402002d 	li	v0,45
-    3260:	16620007 	bne	s3,v0,3280 <Radio::Messages::consoleHandler(char*)+0xfa0>
-    3264:	27a30010 	addiu	v1,sp,16
-    3268:	00121080 	sll	v0,s2,0x2
-    326c:	00621021 	addu	v0,v1,v0
-    3270:	8c430000 	lw	v1,0(v0)
-    3274:	2413002b 	li	s3,43
-    3278:	00031823 	negu	v1,v1
-    327c:	ac430000 	sw	v1,0(v0)
-    3280:	8fbe0010 	lw	s8,16(sp)
-    3284:	0c000552 	jal	1548 <_ZN6System8Registry8instanceEv.local.8>
-    3288:	26520001 	addiu	s2,s2,1
-    328c:	08000c8f 	j	323c <Radio::Messages::consoleHandler(char*)+0xf5c>
-    3290:	ac5e0074 	sw	s8,116(v0)
-    3294:	08000ca8 	j	32a0 <Radio::Messages::consoleHandler(char*)+0xfc0>
-    3298:	24100008 	li	s0,8
-    329c:	24100051 	li	s0,81
-    32a0:	2402002d 	li	v0,45
-    32a4:	16620007 	bne	s3,v0,32c4 <Radio::Messages::consoleHandler(char*)+0xfe4>
-    32a8:	00121080 	sll	v0,s2,0x2
-    32ac:	27a40010 	addiu	a0,sp,16
-    32b0:	00821021 	addu	v0,a0,v0
-    32b4:	8c430000 	lw	v1,0(v0)
-    32b8:	2413002b 	li	s3,43
-    32bc:	00031823 	negu	v1,v1
-    32c0:	ac430000 	sw	v1,0(v0)
-    32c4:	8fbe0010 	lw	s8,16(sp)
-    32c8:	0c000552 	jal	1548 <_ZN6System8Registry8instanceEv.local.8>
-    32cc:	26520001 	addiu	s2,s2,1
-    32d0:	08000c8f 	j	323c <Radio::Messages::consoleHandler(char*)+0xf5c>
-    32d4:	ac5e0078 	sw	s8,120(v0)
-    32d8:	08000cb9 	j	32e4 <Radio::Messages::consoleHandler(char*)+0x1004>
-    32dc:	24100008 	li	s0,8
-    32e0:	24100051 	li	s0,81
-    32e4:	2402002d 	li	v0,45
-    32e8:	16620007 	bne	s3,v0,3308 <Radio::Messages::consoleHandler(char*)+0x1028>
-    32ec:	00121080 	sll	v0,s2,0x2
-    32f0:	27a50010 	addiu	a1,sp,16
-    32f4:	00a21021 	addu	v0,a1,v0
-    32f8:	8c430000 	lw	v1,0(v0)
-    32fc:	2413002b 	li	s3,43
-    3300:	00031823 	negu	v1,v1
-    3304:	ac430000 	sw	v1,0(v0)
-    3308:	8fbe0010 	lw	s8,16(sp)
-    330c:	0c000552 	jal	1548 <_ZN6System8Registry8instanceEv.local.8>
-    3310:	26520001 	addiu	s2,s2,1
-    3314:	08000c8f 	j	323c <Radio::Messages::consoleHandler(char*)+0xf5c>
-    3318:	ac5e007c 	sw	s8,124(v0)
-    331c:	08000ccc 	j	3330 <Radio::Messages::consoleHandler(char*)+0x1050>
-    3320:	24100009 	li	s0,9
-    3324:	08000ccc 	j	3330 <Radio::Messages::consoleHandler(char*)+0x1050>
-    3328:	24100051 	li	s0,81
-    332c:	2410003a 	li	s0,58
-    3330:	26310001 	addiu	s1,s1,1
-    3334:	16d1fc0c 	bne	s6,s1,2368 <Radio::Messages::consoleHandler(char*)+0x88>
-    3338:	2602ffff 	addiu	v0,s0,-1
-    333c:	8fbf0054 	lw	ra,84(sp)
-    3340:	8fbe0050 	lw	s8,80(sp)
-    3344:	8fb7004c 	lw	s7,76(sp)
-    3348:	8fb60048 	lw	s6,72(sp)
-    334c:	8fb50044 	lw	s5,68(sp)
-    3350:	8fb40040 	lw	s4,64(sp)
-    3354:	8fb3003c 	lw	s3,60(sp)
-    3358:	8fb20038 	lw	s2,56(sp)
-    335c:	8fb10034 	lw	s1,52(sp)
-    3360:	8fb00030 	lw	s0,48(sp)
-    3364:	03e00008 	jr	ra
-    3368:	27bd0058 	addiu	sp,sp,88
+    3234:	ac440058 	sw	a0,88(v0)
+    3238:	8fa30028 	lw	v1,40(sp)
+    323c:	0c000552 	jal	1548 <_ZN6System8Registry8instanceEv.local.8>
+    3240:	ac43005c 	sw	v1,92(v0)
+    3244:	08000ca3 	j	328c <Radio::Messages::consoleHandler(char*)+0xf5c>
+    3248:	ac5e0060 	sw	s8,96(v0)
+    324c:	08000c96 	j	3258 <Radio::Messages::consoleHandler(char*)+0xf28>
+    3250:	24100008 	li	s0,8
+    3254:	24100051 	li	s0,81
+    3258:	2402002d 	li	v0,45
+    325c:	16620007 	bne	s3,v0,327c <Radio::Messages::consoleHandler(char*)+0xf4c>
+    3260:	00121080 	sll	v0,s2,0x2
+    3264:	27a50010 	addiu	a1,sp,16
+    3268:	00a21021 	addu	v0,a1,v0
+    326c:	8c430000 	lw	v1,0(v0)
+    3270:	2413002b 	li	s3,43
+    3274:	00031823 	negu	v1,v1
+    3278:	ac430000 	sw	v1,0(v0)
+    327c:	8fbe0010 	lw	s8,16(sp)
+    3280:	0c000552 	jal	1548 <_ZN6System8Registry8instanceEv.local.8>
+    3284:	26520001 	addiu	s2,s2,1
+    3288:	ac5e0054 	sw	s8,84(v0)
+    328c:	02a02021 	move	a0,s5
+    3290:	0c000594 	jal	1650 <System::Bus::UART::write_waiting(char const*, unsigned int)>
+    3294:	00002821 	move	a1,zero
+    3298:	08000ce1 	j	3384 <Radio::Messages::consoleHandler(char*)+0x1054>
+    329c:	26310001 	addiu	s1,s1,1
+    32a0:	08000cab 	j	32ac <Radio::Messages::consoleHandler(char*)+0xf7c>
+    32a4:	24100008 	li	s0,8
+    32a8:	24100051 	li	s0,81
+    32ac:	2402002d 	li	v0,45
+    32b0:	16620007 	bne	s3,v0,32d0 <Radio::Messages::consoleHandler(char*)+0xfa0>
+    32b4:	27a30010 	addiu	v1,sp,16
+    32b8:	00121080 	sll	v0,s2,0x2
+    32bc:	00621021 	addu	v0,v1,v0
+    32c0:	8c430000 	lw	v1,0(v0)
+    32c4:	2413002b 	li	s3,43
+    32c8:	00031823 	negu	v1,v1
+    32cc:	ac430000 	sw	v1,0(v0)
+    32d0:	8fbe0010 	lw	s8,16(sp)
+    32d4:	0c000552 	jal	1548 <_ZN6System8Registry8instanceEv.local.8>
+    32d8:	26520001 	addiu	s2,s2,1
+    32dc:	08000ca3 	j	328c <Radio::Messages::consoleHandler(char*)+0xf5c>
+    32e0:	ac5e0074 	sw	s8,116(v0)
+    32e4:	08000cbc 	j	32f0 <Radio::Messages::consoleHandler(char*)+0xfc0>
+    32e8:	24100008 	li	s0,8
+    32ec:	24100051 	li	s0,81
+    32f0:	2402002d 	li	v0,45
+    32f4:	16620007 	bne	s3,v0,3314 <Radio::Messages::consoleHandler(char*)+0xfe4>
+    32f8:	00121080 	sll	v0,s2,0x2
+    32fc:	27a40010 	addiu	a0,sp,16
+    3300:	00821021 	addu	v0,a0,v0
+    3304:	8c430000 	lw	v1,0(v0)
+    3308:	2413002b 	li	s3,43
+    330c:	00031823 	negu	v1,v1
+    3310:	ac430000 	sw	v1,0(v0)
+    3314:	8fbe0010 	lw	s8,16(sp)
+    3318:	0c000552 	jal	1548 <_ZN6System8Registry8instanceEv.local.8>
+    331c:	26520001 	addiu	s2,s2,1
+    3320:	08000ca3 	j	328c <Radio::Messages::consoleHandler(char*)+0xf5c>
+    3324:	ac5e0078 	sw	s8,120(v0)
+    3328:	08000ccd 	j	3334 <Radio::Messages::consoleHandler(char*)+0x1004>
+    332c:	24100008 	li	s0,8
+    3330:	24100051 	li	s0,81
+    3334:	2402002d 	li	v0,45
+    3338:	16620007 	bne	s3,v0,3358 <Radio::Messages::consoleHandler(char*)+0x1028>
+    333c:	00121080 	sll	v0,s2,0x2
+    3340:	27a50010 	addiu	a1,sp,16
+    3344:	00a21021 	addu	v0,a1,v0
+    3348:	8c430000 	lw	v1,0(v0)
+    334c:	2413002b 	li	s3,43
+    3350:	00031823 	negu	v1,v1
+    3354:	ac430000 	sw	v1,0(v0)
+    3358:	8fbe0010 	lw	s8,16(sp)
+    335c:	0c000552 	jal	1548 <_ZN6System8Registry8instanceEv.local.8>
+    3360:	26520001 	addiu	s2,s2,1
+    3364:	08000ca3 	j	328c <Radio::Messages::consoleHandler(char*)+0xf5c>
+    3368:	ac5e007c 	sw	s8,124(v0)
+    336c:	08000ce0 	j	3380 <Radio::Messages::consoleHandler(char*)+0x1050>
+    3370:	24100009 	li	s0,9
+    3374:	08000ce0 	j	3380 <Radio::Messages::consoleHandler(char*)+0x1050>
+    3378:	24100051 	li	s0,81
+    337c:	2410003a 	li	s0,58
+    3380:	26310001 	addiu	s1,s1,1
+    3384:	16d1fc0c 	bne	s6,s1,23b8 <Radio::Messages::consoleHandler(char*)+0x88>
+    3388:	2602ffff 	addiu	v0,s0,-1
+    338c:	8fbf0054 	lw	ra,84(sp)
+    3390:	8fbe0050 	lw	s8,80(sp)
+    3394:	8fb7004c 	lw	s7,76(sp)
+    3398:	8fb60048 	lw	s6,72(sp)
+    339c:	8fb50044 	lw	s5,68(sp)
+    33a0:	8fb40040 	lw	s4,64(sp)
+    33a4:	8fb3003c 	lw	s3,60(sp)
+    33a8:	8fb20038 	lw	s2,56(sp)
+    33ac:	8fb10034 	lw	s1,52(sp)
+    33b0:	8fb00030 	lw	s0,48(sp)
+    33b4:	03e00008 	jr	ra
+    33b8:	27bd0058 	addiu	sp,sp,88
 
-0000336c <float32::float32(int)>:
-    336c:	27bdffe8 	addiu	sp,sp,-24
-    3370:	afb00010 	sw	s0,16(sp)
-    3374:	afbf0014 	sw	ra,20(sp)
-    3378:	14a00003 	bnez	a1,3388 <float32::float32(int)+0x1c>
-    337c:	00808021 	move	s0,a0
-    3380:	08000ced 	j	33b4 <float32::float32(int)+0x48>
-    3384:	ac800000 	sw	zero,0(a0)
-    3388:	3c028000 	lui	v0,0x8000
-    338c:	14a20003 	bne	a1,v0,339c <float32::float32(int)+0x30>
-    3390:	000527c2 	srl	a0,a1,0x1f
-    3394:	08000cec 	j	33b0 <float32::float32(int)+0x44>
-    3398:	3c02cf00 	lui	v0,0xcf00
-    339c:	10800002 	beqz	a0,33a8 <float32::float32(int)+0x3c>
-    33a0:	00a03021 	move	a2,a1
-    33a4:	00053023 	negu	a2,a1
-    33a8:	0c000654 	jal	1950 <float32::normalizeRoundAndPack(bool, int, unsigned int)>
-    33ac:	2405009c 	li	a1,156
-    33b0:	ae020000 	sw	v0,0(s0)
-    33b4:	8fbf0014 	lw	ra,20(sp)
-    33b8:	8fb00010 	lw	s0,16(sp)
-    33bc:	03e00008 	jr	ra
-    33c0:	27bd0018 	addiu	sp,sp,24
+000033bc <float32::float32(int)>:
+    33bc:	27bdffe8 	addiu	sp,sp,-24
+    33c0:	afb00010 	sw	s0,16(sp)
+    33c4:	afbf0014 	sw	ra,20(sp)
+    33c8:	14a00003 	bnez	a1,33d8 <float32::float32(int)+0x1c>
+    33cc:	00808021 	move	s0,a0
+    33d0:	08000d01 	j	3404 <float32::float32(int)+0x48>
+    33d4:	ac800000 	sw	zero,0(a0)
+    33d8:	3c028000 	lui	v0,0x8000
+    33dc:	14a20003 	bne	a1,v0,33ec <float32::float32(int)+0x30>
+    33e0:	000527c2 	srl	a0,a1,0x1f
+    33e4:	08000d00 	j	3400 <float32::float32(int)+0x44>
+    33e8:	3c02cf00 	lui	v0,0xcf00
+    33ec:	10800002 	beqz	a0,33f8 <float32::float32(int)+0x3c>
+    33f0:	00a03021 	move	a2,a1
+    33f4:	00053023 	negu	a2,a1
+    33f8:	0c000654 	jal	1950 <float32::normalizeRoundAndPack(bool, int, unsigned int)>
+    33fc:	2405009c 	li	a1,156
+    3400:	ae020000 	sw	v0,0(s0)
+    3404:	8fbf0014 	lw	ra,20(sp)
+    3408:	8fb00010 	lw	s0,16(sp)
+    340c:	03e00008 	jr	ra
+    3410:	27bd0018 	addiu	sp,sp,24
 
-000033c4 <__ashldi3>:
-    33c4:	10c0000a 	beqz	a2,33f0 <__ashldi3+0x2c>
-    33c8:	00801021 	move	v0,a0
-    33cc:	24030020 	li	v1,32
-    33d0:	00661823 	subu	v1,v1,a2
-    33d4:	18600008 	blez	v1,33f8 <__ashldi3+0x34>
-    33d8:	00000000 	nop
-    33dc:	00651806 	srlv	v1,a1,v1
-    33e0:	00c41004 	sllv	v0,a0,a2
-    33e4:	00c53004 	sllv	a2,a1,a2
-    33e8:	00621025 	or	v0,v1,v0
-    33ec:	00c02821 	move	a1,a2
-    33f0:	03e00008 	jr	ra
-    33f4:	00a01821 	move	v1,a1
-    33f8:	00031023 	negu	v0,v1
-    33fc:	00003021 	move	a2,zero
-    3400:	00451004 	sllv	v0,a1,v0
-    3404:	08000cfc 	j	33f0 <__ashldi3+0x2c>
-    3408:	00c02821 	move	a1,a2
+00003414 <__ashldi3>:
+    3414:	10c0000a 	beqz	a2,3440 <__ashldi3+0x2c>
+    3418:	00801021 	move	v0,a0
+    341c:	24030020 	li	v1,32
+    3420:	00661823 	subu	v1,v1,a2
+    3424:	18600008 	blez	v1,3448 <__ashldi3+0x34>
+    3428:	00000000 	nop
+    342c:	00651806 	srlv	v1,a1,v1
+    3430:	00c41004 	sllv	v0,a0,a2
+    3434:	00c53004 	sllv	a2,a1,a2
+    3438:	00621025 	or	v0,v1,v0
+    343c:	00c02821 	move	a1,a2
+    3440:	03e00008 	jr	ra
+    3444:	00a01821 	move	v1,a1
+    3448:	00031023 	negu	v0,v1
+    344c:	00003021 	move	a2,zero
+    3450:	00451004 	sllv	v0,a1,v0
+    3454:	08000d10 	j	3440 <__ashldi3+0x2c>
+    3458:	00c02821 	move	a1,a2
 
-0000340c <_GLOBAL__sub_I__ZN6System7Tasking4Pool16xbeeReadIdleTaskE.2936.1318>:
-    340c:	3c048000 	lui	a0,0x8000
-    3410:	3c038000 	lui	v1,0x8000
-    3414:	248402c0 	addiu	a0,a0,704
-    3418:	24620350 	addiu	v0,v1,848
-    341c:	ac640350 	sw	a0,848(v1)
-    3420:	3c038000 	lui	v1,0x8000
-    3424:	ac400004 	sw	zero,4(v0)
-    3428:	ac400008 	sw	zero,8(v0)
-    342c:	ac40000c 	sw	zero,12(v0)
-    3430:	ac400040 	sw	zero,64(v0)
-    3434:	ac400038 	sw	zero,56(v0)
-    3438:	a040003c 	sb	zero,60(v0)
-    343c:	24620394 	addiu	v0,v1,916
-    3440:	ac400004 	sw	zero,4(v0)
-    3444:	ac400008 	sw	zero,8(v0)
-    3448:	ac40000c 	sw	zero,12(v0)
-    344c:	3c028000 	lui	v0,0x8000
-    3450:	244202b0 	addiu	v0,v0,688
-    3454:	3c048000 	lui	a0,0x8000
-    3458:	ac620394 	sw	v0,916(v1)
-    345c:	248402a0 	addiu	a0,a0,672
+0000345c <_GLOBAL__sub_I__ZN6System7Tasking4Pool16xbeeReadIdleTaskE.2932.1318>:
+    345c:	3c048000 	lui	a0,0x8000
     3460:	3c038000 	lui	v1,0x8000
-    3464:	ac6403a8 	sw	a0,936(v1)
-    3468:	3c048000 	lui	a0,0x8000
-    346c:	246203a8 	addiu	v0,v1,936
-    3470:	24840290 	addiu	a0,a0,656
-    3474:	3c038000 	lui	v1,0x8000
-    3478:	ac400004 	sw	zero,4(v0)
-    347c:	ac400008 	sw	zero,8(v0)
-    3480:	ac40000c 	sw	zero,12(v0)
-    3484:	ac400018 	sw	zero,24(v0)
-    3488:	ac400014 	sw	zero,20(v0)
-    348c:	ac40001c 	sw	zero,28(v0)
-    3490:	ac400020 	sw	zero,32(v0)
-    3494:	ac6403cc 	sw	a0,972(v1)
-    3498:	246203cc 	addiu	v0,v1,972
-    349c:	3c033a83 	lui	v1,0x3a83
-    34a0:	2463126f 	addiu	v1,v1,4719
-    34a4:	ac430018 	sw	v1,24(v0)
-    34a8:	3c033f80 	lui	v1,0x3f80
-    34ac:	ac400004 	sw	zero,4(v0)
-    34b0:	ac400008 	sw	zero,8(v0)
-    34b4:	ac40000c 	sw	zero,12(v0)
-    34b8:	ac430040 	sw	v1,64(v0)
-    34bc:	03e00008 	jr	ra
-    34c0:	ac430050 	sw	v1,80(v0)
+    3464:	248402c0 	addiu	a0,a0,704
+    3468:	24620350 	addiu	v0,v1,848
+    346c:	ac640350 	sw	a0,848(v1)
+    3470:	3c038000 	lui	v1,0x8000
+    3474:	ac400004 	sw	zero,4(v0)
+    3478:	ac400008 	sw	zero,8(v0)
+    347c:	ac40000c 	sw	zero,12(v0)
+    3480:	ac400040 	sw	zero,64(v0)
+    3484:	ac400038 	sw	zero,56(v0)
+    3488:	a040003c 	sb	zero,60(v0)
+    348c:	24620394 	addiu	v0,v1,916
+    3490:	ac400004 	sw	zero,4(v0)
+    3494:	ac400008 	sw	zero,8(v0)
+    3498:	ac40000c 	sw	zero,12(v0)
+    349c:	3c028000 	lui	v0,0x8000
+    34a0:	244202b0 	addiu	v0,v0,688
+    34a4:	3c048000 	lui	a0,0x8000
+    34a8:	ac620394 	sw	v0,916(v1)
+    34ac:	248402a0 	addiu	a0,a0,672
+    34b0:	3c038000 	lui	v1,0x8000
+    34b4:	ac6403a8 	sw	a0,936(v1)
+    34b8:	3c048000 	lui	a0,0x8000
+    34bc:	246203a8 	addiu	v0,v1,936
+    34c0:	24840290 	addiu	a0,a0,656
+    34c4:	3c038000 	lui	v1,0x8000
+    34c8:	ac400004 	sw	zero,4(v0)
+    34cc:	ac400008 	sw	zero,8(v0)
+    34d0:	ac40000c 	sw	zero,12(v0)
+    34d4:	ac400018 	sw	zero,24(v0)
+    34d8:	ac400014 	sw	zero,20(v0)
+    34dc:	ac40001c 	sw	zero,28(v0)
+    34e0:	ac400020 	sw	zero,32(v0)
+    34e4:	ac6403cc 	sw	a0,972(v1)
+    34e8:	246203cc 	addiu	v0,v1,972
+    34ec:	3c033a83 	lui	v1,0x3a83
+    34f0:	2463126f 	addiu	v1,v1,4719
+    34f4:	ac430018 	sw	v1,24(v0)
+    34f8:	3c033f80 	lui	v1,0x3f80
+    34fc:	ac400004 	sw	zero,4(v0)
+    3500:	ac400008 	sw	zero,8(v0)
+    3504:	ac40000c 	sw	zero,12(v0)
+    3508:	ac430040 	sw	v1,64(v0)
+    350c:	03e00008 	jr	ra
+    3510:	ac430050 	sw	v1,80(v0)
 
-000034c4 <main>:
-    34c4:	27bdffb0 	addiu	sp,sp,-80
-    34c8:	2404006b 	li	a0,107
-    34cc:	2405ff80 	li	a1,-128
-    34d0:	afbf004c 	sw	ra,76(sp)
-    34d4:	afb40048 	sw	s4,72(sp)
-    34d8:	afb30044 	sw	s3,68(sp)
-    34dc:	afb20040 	sw	s2,64(sp)
-    34e0:	afb1003c 	sw	s1,60(sp)
-    34e4:	0c000642 	jal	1908 <_ZN7Sensors3IMU7MPU6050L13mpu6050_setupEcc.2471>
-    34e8:	afb00038 	sw	s0,56(sp)
-    34ec:	3402f424 	li	v0,0xf424
-    34f0:	2442ffff 	addiu	v0,v0,-1
-    34f4:	1440fffe 	bnez	v0,34f0 <main+0x2c>
-    34f8:	2404006b 	li	a0,107
-    34fc:	0c000642 	jal	1908 <_ZN7Sensors3IMU7MPU6050L13mpu6050_setupEcc.2471>
-    3500:	00002821 	move	a1,zero
-    3504:	2404001a 	li	a0,26
-    3508:	0c000642 	jal	1908 <_ZN7Sensors3IMU7MPU6050L13mpu6050_setupEcc.2471>
-    350c:	24050003 	li	a1,3
-    3510:	2404001b 	li	a0,27
-    3514:	0c000642 	jal	1908 <_ZN7Sensors3IMU7MPU6050L13mpu6050_setupEcc.2471>
-    3518:	24050018 	li	a1,24
-    351c:	2404001c 	li	a0,28
-    3520:	0c000642 	jal	1908 <_ZN7Sensors3IMU7MPU6050L13mpu6050_setupEcc.2471>
-    3524:	24050018 	li	a1,24
-    3528:	240230d4 	li	v0,12500
-    352c:	2442ffff 	addiu	v0,v0,-1
-    3530:	1440fffe 	bnez	v0,352c <main+0x68>
-    3534:	3c060001 	lui	a2,0x1
-    3538:	24050001 	li	a1,1
-    353c:	34c6e848 	ori	a2,a2,0xe848
-    3540:	24040008 	li	a0,8
-    3544:	00451804 	sllv	v1,a1,v0
-    3548:	306300ff 	andi	v1,v1,0xff
-    354c:	ac030004 	sw	v1,4(zero)
-    3550:	00c01821 	move	v1,a2
-    3554:	2463ffff 	addiu	v1,v1,-1
-    3558:	1460fffe 	bnez	v1,3554 <main+0x90>
-    355c:	00000000 	nop
-    3560:	24420001 	addiu	v0,v0,1
-    3564:	1444fff8 	bne	v0,a0,3548 <main+0x84>
-    3568:	00451804 	sllv	v1,a1,v0
-    356c:	3c060001 	lui	a2,0x1
-    3570:	00001021 	move	v0,zero
-    3574:	24050080 	li	a1,128
-    3578:	34c6e848 	ori	a2,a2,0xe848
-    357c:	24040009 	li	a0,9
-    3580:	00451807 	srav	v1,a1,v0
-    3584:	ac030004 	sw	v1,4(zero)
-    3588:	00c01821 	move	v1,a2
-    358c:	2463ffff 	addiu	v1,v1,-1
-    3590:	1460fffe 	bnez	v1,358c <main+0xc8>
-    3594:	00000000 	nop
-    3598:	24420001 	addiu	v0,v0,1
-    359c:	1444fff9 	bne	v0,a0,3584 <main+0xc0>
-    35a0:	00451807 	srav	v1,a1,v0
-    35a4:	3c053435 	lui	a1,0x3435
-    35a8:	3c043031 	lui	a0,0x3031
-    35ac:	34a53637 	ori	a1,a1,0x3637
-    35b0:	0c0005d1 	jal	1744 <System::Bus::UART::write_waiting(long long)>
-    35b4:	34843233 	ori	a0,a0,0x3233
-    35b8:	3c028000 	lui	v0,0x8000
-    35bc:	24420350 	addiu	v0,v0,848
-    35c0:	afa00024 	sw	zero,36(sp)
-    35c4:	afa00028 	sw	zero,40(sp)
-    35c8:	27a30010 	addiu	v1,sp,16
-    35cc:	ac400008 	sw	zero,8(v0)
-    35d0:	ac430010 	sw	v1,16(v0)
-    35d4:	8c030010 	lw	v1,16(zero)
-    35d8:	3c048000 	lui	a0,0x8000
-    35dc:	ac430004 	sw	v1,4(v0)
-    35e0:	248303cc 	addiu	v1,a0,972
-    35e4:	27a50010 	addiu	a1,sp,16
-    35e8:	ac600008 	sw	zero,8(v1)
-    35ec:	ac650010 	sw	a1,16(v1)
-    35f0:	8c050010 	lw	a1,16(zero)
-    35f4:	afa00014 	sw	zero,20(sp)
-    35f8:	afa00018 	sw	zero,24(sp)
-    35fc:	afa0001c 	sw	zero,28(sp)
-    3600:	afa00020 	sw	zero,32(sp)
-    3604:	afa20010 	sw	v0,16(sp)
-    3608:	08000d85 	j	3614 <main+0x150>
-    360c:	ac650004 	sw	a1,4(v1)
-    3610:	00601021 	move	v0,v1
-    3614:	8c43000c 	lw	v1,12(v0)
-    3618:	00000000 	nop
-    361c:	1460fffc 	bnez	v1,3610 <main+0x14c>
-    3620:	27b10010 	addiu	s1,sp,16
-    3624:	248403cc 	addiu	a0,a0,972
-    3628:	ac44000c 	sw	a0,12(v0)
-    362c:	00002821 	move	a1,zero
-    3630:	02202021 	move	a0,s1
-    3634:	0c0005ee 	jal	17b8 <System::Tasking::TaskScheduler::selectNextTask(unsigned int)>
-    3638:	3c12b2d0 	lui	s2,0xb2d0
-    363c:	26525e00 	addiu	s2,s2,24064
-    3640:	27b30014 	addiu	s3,sp,20
-    3644:	27b40018 	addiu	s4,sp,24
-    3648:	8fa40020 	lw	a0,32(sp)
-    364c:	8c100010 	lw	s0,16(zero)
-    3650:	10800041 	beqz	a0,3758 <main+0x294>
-    3654:	00000000 	nop
-    3658:	8fa20024 	lw	v0,36(sp)
-    365c:	00000000 	nop
-    3660:	0202182b 	sltu	v1,s0,v0
-    3664:	1460003c 	bnez	v1,3758 <main+0x294>
-    3668:	02021023 	subu	v0,s0,v0
-    366c:	0052102b 	sltu	v0,v0,s2
-    3670:	10400039 	beqz	v0,3758 <main+0x294>
-    3674:	00000000 	nop
-    3678:	8c820000 	lw	v0,0(a0)
-    367c:	00000000 	nop
-    3680:	8c420000 	lw	v0,0(v0)
-    3684:	00000000 	nop
-    3688:	0040f809 	jalr	v0
-    368c:	00000000 	nop
-    3690:	8fa40028 	lw	a0,40(sp)
-    3694:	24030001 	li	v1,1
-    3698:	8fa20020 	lw	v0,32(sp)
-    369c:	14830025 	bne	a0,v1,3734 <main+0x270>
-    36a0:	00002821 	move	a1,zero
-    36a4:	afb1002c 	sw	s1,44(sp)
-    36a8:	afb30030 	sw	s3,48(sp)
-    36ac:	afb40034 	sw	s4,52(sp)
-    36b0:	2406000c 	li	a2,12
-    36b4:	27a4002c 	addiu	a0,sp,44
-    36b8:	00851821 	addu	v1,a0,a1
-    36bc:	8c640000 	lw	a0,0(v1)
-    36c0:	00000000 	nop
-    36c4:	8c830000 	lw	v1,0(a0)
-    36c8:	00000000 	nop
-    36cc:	10600014 	beqz	v1,3720 <main+0x25c>
-    36d0:	00000000 	nop
-    36d4:	14620005 	bne	v1,v0,36ec <main+0x228>
-    36d8:	00000000 	nop
-    36dc:	8c43000c 	lw	v1,12(v0)
-    36e0:	08000dcb 	j	372c <main+0x268>
-    36e4:	ac830000 	sw	v1,0(a0)
-    36e8:	00801821 	move	v1,a0
-    36ec:	8c64000c 	lw	a0,12(v1)
-    36f0:	00000000 	nop
-    36f4:	10800005 	beqz	a0,370c <main+0x248>
-    36f8:	00000000 	nop
-    36fc:	1444fffa 	bne	v0,a0,36e8 <main+0x224>
-    3700:	00000000 	nop
-    3704:	08000dc5 	j	3714 <main+0x250>
-    3708:	00000000 	nop
-    370c:	14400005 	bnez	v0,3724 <main+0x260>
-    3710:	24a50004 	addiu	a1,a1,4
-    3714:	8c44000c 	lw	a0,12(v0)
-    3718:	08000dcb 	j	372c <main+0x268>
-    371c:	ac64000c 	sw	a0,12(v1)
-    3720:	24a50004 	addiu	a1,a1,4
-    3724:	14a6ffe4 	bne	a1,a2,36b8 <main+0x1f4>
-    3728:	27a4002c 	addiu	a0,sp,44
-    372c:	08000dd1 	j	3744 <main+0x280>
-    3730:	ac400010 	sw	zero,16(v0)
-    3734:	8c430008 	lw	v1,8(v0)
-    3738:	00000000 	nop
-    373c:	02031821 	addu	v1,s0,v1
-    3740:	ac430004 	sw	v1,4(v0)
-    3744:	02202021 	move	a0,s1
-    3748:	0c0005ee 	jal	17b8 <System::Tasking::TaskScheduler::selectNextTask(unsigned int)>
-    374c:	02002821 	move	a1,s0
-    3750:	08000d92 	j	3648 <main+0x184>
-    3754:	00000000 	nop
-    3758:	8fa2001c 	lw	v0,28(sp)
-    375c:	00000000 	nop
-    3760:	10400006 	beqz	v0,377c <main+0x2b8>
-    3764:	00000000 	nop
-    3768:	8c42000c 	lw	v0,12(v0)
-    376c:	00000000 	nop
-    3770:	afa2001c 	sw	v0,28(sp)
-    3774:	8fa2001c 	lw	v0,28(sp)
-    3778:	00000000 	nop
-    377c:	14400004 	bnez	v0,3790 <main+0x2cc>
-    3780:	00000000 	nop
-    3784:	8fa20010 	lw	v0,16(sp)
+00003514 <main>:
+    3514:	27bdffb0 	addiu	sp,sp,-80
+    3518:	2404006b 	li	a0,107
+    351c:	2405ff80 	li	a1,-128
+    3520:	afbf004c 	sw	ra,76(sp)
+    3524:	afb40048 	sw	s4,72(sp)
+    3528:	afb30044 	sw	s3,68(sp)
+    352c:	afb20040 	sw	s2,64(sp)
+    3530:	afb1003c 	sw	s1,60(sp)
+    3534:	0c000642 	jal	1908 <_ZN7Sensors3IMU7MPU6050L13mpu6050_setupEcc.2467>
+    3538:	afb00038 	sw	s0,56(sp)
+    353c:	3402f424 	li	v0,0xf424
+    3540:	2442ffff 	addiu	v0,v0,-1
+    3544:	1440fffe 	bnez	v0,3540 <main+0x2c>
+    3548:	2404006b 	li	a0,107
+    354c:	0c000642 	jal	1908 <_ZN7Sensors3IMU7MPU6050L13mpu6050_setupEcc.2467>
+    3550:	00002821 	move	a1,zero
+    3554:	2404001a 	li	a0,26
+    3558:	0c000642 	jal	1908 <_ZN7Sensors3IMU7MPU6050L13mpu6050_setupEcc.2467>
+    355c:	24050003 	li	a1,3
+    3560:	2404001b 	li	a0,27
+    3564:	0c000642 	jal	1908 <_ZN7Sensors3IMU7MPU6050L13mpu6050_setupEcc.2467>
+    3568:	24050018 	li	a1,24
+    356c:	2404001c 	li	a0,28
+    3570:	0c000642 	jal	1908 <_ZN7Sensors3IMU7MPU6050L13mpu6050_setupEcc.2467>
+    3574:	24050018 	li	a1,24
+    3578:	240230d4 	li	v0,12500
+    357c:	2442ffff 	addiu	v0,v0,-1
+    3580:	1440fffe 	bnez	v0,357c <main+0x68>
+    3584:	3c060001 	lui	a2,0x1
+    3588:	24050001 	li	a1,1
+    358c:	34c6e848 	ori	a2,a2,0xe848
+    3590:	24040008 	li	a0,8
+    3594:	00451804 	sllv	v1,a1,v0
+    3598:	306300ff 	andi	v1,v1,0xff
+    359c:	ac030004 	sw	v1,4(zero)
+    35a0:	00c01821 	move	v1,a2
+    35a4:	2463ffff 	addiu	v1,v1,-1
+    35a8:	1460fffe 	bnez	v1,35a4 <main+0x90>
+    35ac:	00000000 	nop
+    35b0:	24420001 	addiu	v0,v0,1
+    35b4:	1444fff8 	bne	v0,a0,3598 <main+0x84>
+    35b8:	00451804 	sllv	v1,a1,v0
+    35bc:	3c060001 	lui	a2,0x1
+    35c0:	00001021 	move	v0,zero
+    35c4:	24050080 	li	a1,128
+    35c8:	34c6e848 	ori	a2,a2,0xe848
+    35cc:	24040009 	li	a0,9
+    35d0:	00451807 	srav	v1,a1,v0
+    35d4:	ac030004 	sw	v1,4(zero)
+    35d8:	00c01821 	move	v1,a2
+    35dc:	2463ffff 	addiu	v1,v1,-1
+    35e0:	1460fffe 	bnez	v1,35dc <main+0xc8>
+    35e4:	00000000 	nop
+    35e8:	24420001 	addiu	v0,v0,1
+    35ec:	1444fff9 	bne	v0,a0,35d4 <main+0xc0>
+    35f0:	00451807 	srav	v1,a1,v0
+    35f4:	3c053435 	lui	a1,0x3435
+    35f8:	3c043031 	lui	a0,0x3031
+    35fc:	34a53637 	ori	a1,a1,0x3637
+    3600:	0c0005d1 	jal	1744 <System::Bus::UART::write_waiting(long long)>
+    3604:	34843233 	ori	a0,a0,0x3233
+    3608:	3c028000 	lui	v0,0x8000
+    360c:	24420350 	addiu	v0,v0,848
+    3610:	afa00024 	sw	zero,36(sp)
+    3614:	afa00028 	sw	zero,40(sp)
+    3618:	27a30010 	addiu	v1,sp,16
+    361c:	ac400008 	sw	zero,8(v0)
+    3620:	ac430010 	sw	v1,16(v0)
+    3624:	8c030010 	lw	v1,16(zero)
+    3628:	3c048000 	lui	a0,0x8000
+    362c:	ac430004 	sw	v1,4(v0)
+    3630:	248303cc 	addiu	v1,a0,972
+    3634:	27a50010 	addiu	a1,sp,16
+    3638:	ac600008 	sw	zero,8(v1)
+    363c:	ac650010 	sw	a1,16(v1)
+    3640:	8c050010 	lw	a1,16(zero)
+    3644:	afa00014 	sw	zero,20(sp)
+    3648:	afa00018 	sw	zero,24(sp)
+    364c:	afa0001c 	sw	zero,28(sp)
+    3650:	afa00020 	sw	zero,32(sp)
+    3654:	afa20010 	sw	v0,16(sp)
+    3658:	08000d99 	j	3664 <main+0x150>
+    365c:	ac650004 	sw	a1,4(v1)
+    3660:	00601021 	move	v0,v1
+    3664:	8c43000c 	lw	v1,12(v0)
+    3668:	00000000 	nop
+    366c:	1460fffc 	bnez	v1,3660 <main+0x14c>
+    3670:	27b10010 	addiu	s1,sp,16
+    3674:	248403cc 	addiu	a0,a0,972
+    3678:	ac44000c 	sw	a0,12(v0)
+    367c:	00002821 	move	a1,zero
+    3680:	02202021 	move	a0,s1
+    3684:	0c0005ee 	jal	17b8 <System::Tasking::TaskScheduler::selectNextTask(unsigned int)>
+    3688:	3c12b2d0 	lui	s2,0xb2d0
+    368c:	26525e00 	addiu	s2,s2,24064
+    3690:	27b30014 	addiu	s3,sp,20
+    3694:	27b40018 	addiu	s4,sp,24
+    3698:	8fa40020 	lw	a0,32(sp)
+    369c:	8c100010 	lw	s0,16(zero)
+    36a0:	10800041 	beqz	a0,37a8 <main+0x294>
+    36a4:	00000000 	nop
+    36a8:	8fa20024 	lw	v0,36(sp)
+    36ac:	00000000 	nop
+    36b0:	0202182b 	sltu	v1,s0,v0
+    36b4:	1460003c 	bnez	v1,37a8 <main+0x294>
+    36b8:	02021023 	subu	v0,s0,v0
+    36bc:	0052102b 	sltu	v0,v0,s2
+    36c0:	10400039 	beqz	v0,37a8 <main+0x294>
+    36c4:	00000000 	nop
+    36c8:	8c820000 	lw	v0,0(a0)
+    36cc:	00000000 	nop
+    36d0:	8c420000 	lw	v0,0(v0)
+    36d4:	00000000 	nop
+    36d8:	0040f809 	jalr	v0
+    36dc:	00000000 	nop
+    36e0:	8fa40028 	lw	a0,40(sp)
+    36e4:	24030001 	li	v1,1
+    36e8:	8fa20020 	lw	v0,32(sp)
+    36ec:	14830025 	bne	a0,v1,3784 <main+0x270>
+    36f0:	00002821 	move	a1,zero
+    36f4:	afb1002c 	sw	s1,44(sp)
+    36f8:	afb30030 	sw	s3,48(sp)
+    36fc:	afb40034 	sw	s4,52(sp)
+    3700:	2406000c 	li	a2,12
+    3704:	27a4002c 	addiu	a0,sp,44
+    3708:	00851821 	addu	v1,a0,a1
+    370c:	8c640000 	lw	a0,0(v1)
+    3710:	00000000 	nop
+    3714:	8c830000 	lw	v1,0(a0)
+    3718:	00000000 	nop
+    371c:	10600014 	beqz	v1,3770 <main+0x25c>
+    3720:	00000000 	nop
+    3724:	14620005 	bne	v1,v0,373c <main+0x228>
+    3728:	00000000 	nop
+    372c:	8c43000c 	lw	v1,12(v0)
+    3730:	08000ddf 	j	377c <main+0x268>
+    3734:	ac830000 	sw	v1,0(a0)
+    3738:	00801821 	move	v1,a0
+    373c:	8c64000c 	lw	a0,12(v1)
+    3740:	00000000 	nop
+    3744:	10800005 	beqz	a0,375c <main+0x248>
+    3748:	00000000 	nop
+    374c:	1444fffa 	bne	v0,a0,3738 <main+0x224>
+    3750:	00000000 	nop
+    3754:	08000dd9 	j	3764 <main+0x250>
+    3758:	00000000 	nop
+    375c:	14400005 	bnez	v0,3774 <main+0x260>
+    3760:	24a50004 	addiu	a1,a1,4
+    3764:	8c44000c 	lw	a0,12(v0)
+    3768:	08000ddf 	j	377c <main+0x268>
+    376c:	ac64000c 	sw	a0,12(v1)
+    3770:	24a50004 	addiu	a1,a1,4
+    3774:	14a6ffe4 	bne	a1,a2,3708 <main+0x1f4>
+    3778:	27a4002c 	addiu	a0,sp,44
+    377c:	08000de5 	j	3794 <main+0x280>
+    3780:	ac400010 	sw	zero,16(v0)
+    3784:	8c430008 	lw	v1,8(v0)
     3788:	00000000 	nop
-    378c:	afa2001c 	sw	v0,28(sp)
-    3790:	8fa4001c 	lw	a0,28(sp)
-    3794:	00000000 	nop
-    3798:	1080ffab 	beqz	a0,3648 <main+0x184>
-    379c:	00000000 	nop
-    37a0:	8c820000 	lw	v0,0(a0)
+    378c:	02031821 	addu	v1,s0,v1
+    3790:	ac430004 	sw	v1,4(v0)
+    3794:	02202021 	move	a0,s1
+    3798:	0c0005ee 	jal	17b8 <System::Tasking::TaskScheduler::selectNextTask(unsigned int)>
+    379c:	02002821 	move	a1,s0
+    37a0:	08000da6 	j	3698 <main+0x184>
     37a4:	00000000 	nop
-    37a8:	8c420000 	lw	v0,0(v0)
+    37a8:	8fa2001c 	lw	v0,28(sp)
     37ac:	00000000 	nop
-    37b0:	0040f809 	jalr	v0
+    37b0:	10400006 	beqz	v0,37cc <main+0x2b8>
     37b4:	00000000 	nop
-    37b8:	08000d92 	j	3648 <main+0x184>
+    37b8:	8c42000c 	lw	v0,12(v0)
     37bc:	00000000 	nop
-
-000037c0 <CODE_ENDS>:
-    37c0:	00000000 	nop
-    37c4:	00000000 	nop
+    37c0:	afa2001c 	sw	v0,28(sp)
+    37c4:	8fa2001c 	lw	v0,28(sp)
     37c8:	00000000 	nop
-    37cc:	00000000 	nop
+    37cc:	14400004 	bnez	v0,37e0 <main+0x2cc>
     37d0:	00000000 	nop
-    37d4:	00000000 	nop
+    37d4:	8fa20010 	lw	v0,16(sp)
     37d8:	00000000 	nop
-    37dc:	00000000 	nop
-    37e0:	00000000 	nop
+    37dc:	afa2001c 	sw	v0,28(sp)
+    37e0:	8fa4001c 	lw	a0,28(sp)
     37e4:	00000000 	nop
-    37e8:	00000000 	nop
+    37e8:	1080ffab 	beqz	a0,3698 <main+0x184>
     37ec:	00000000 	nop
-    37f0:	00000000 	nop
+    37f0:	8c820000 	lw	v0,0(a0)
     37f4:	00000000 	nop
-    37f8:	00000000 	nop
+    37f8:	8c420000 	lw	v0,0(v0)
     37fc:	00000000 	nop
-    3800:	00000000 	nop
+    3800:	0040f809 	jalr	v0
     3804:	00000000 	nop
-    3808:	00000000 	nop
+    3808:	08000da6 	j	3698 <main+0x184>
     380c:	00000000 	nop
+
+00003810 <CODE_ENDS>:
     3810:	00000000 	nop
     3814:	00000000 	nop
     3818:	00000000 	nop
