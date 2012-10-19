@@ -40,7 +40,7 @@ ustring b32todec(int y) {
 	result |= (ustring)(y < 0 ? '-' : '+') << (8 * counter);
 	return result;
     } else {
-	if(x < 0) return tobig_n;
+	if(y < 0) return tobig_n;
 	else return tobig_p;
     }
 }
