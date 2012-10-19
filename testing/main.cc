@@ -1,7 +1,6 @@
 #include <iostream>
 #include <math.h>
-
-#include "float32.h"
+#include "marg.h"
 
 template<typename Func1, typename Func2>
 void test(Func1 func1, Func2 func2, float x1, float x2, float inc) {
@@ -33,9 +32,8 @@ float rsqrt(float x) { return 1.0f / sqrt(x); }
 float atan2_deg(float x, float y) { return atan2(x, y) * 180.0f / M_PI; }
 
 int main() {
-    //std::cout << "sin: ";
-    //test(f32::sin, sin, -M_PI, M_PI, 0.1f);
-    std::cout << "atan2: ";
-    test2(f32::atan2_deg, atan2_deg, 0.0001f, 1.0f, 0.0001f, 1.0f, 0.01f);
+    Control::MARG m;
+    while(1)
+	m.start();
 }
 

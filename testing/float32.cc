@@ -733,5 +733,12 @@ float32 atan2_deg(const float32& x, const float32& y) {
     }
 }
 
+float32 asin(const float32& x) {
+    const float32 scale_factor(0.391f);   //empirical
+    float32 x5 = x * x;     //x^2
+    x5 *= x5;           //x^4
+    x5 *= x;            //x^5
+    return x + scale_factor*x5;
+}
 }
 
