@@ -92,12 +92,14 @@ float32 operator+(float, float32);
 float32 operator-(float, float32);
 float32 operator*(float, float32);
 float32 operator/(float, float32);
+namespace f32 {
 
 /* Math functions for the float32 type */
 float32 abs(const float32);
 float32 sin(const float32&);
-float32 atan2_deg(const float32&, const float32&);
+float32 asin(const float32&);
+float32 atan2(const float32&, const float32&);
 float32 sqrt(const float32&);
 float32 rsqrt(const float32&);
-
+}
 #endif

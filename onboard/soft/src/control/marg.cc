@@ -1,12 +1,13 @@
-#include "marg.h"
+#include <common>
+#include <system>
 #include <sensors>
+#include "marg.h"
 
 namespace Control {
 
+#define SR System::Registry
 
-/* TODO: convert using sensors setup */
-
-MARG::MARG() : deltat(*DEV_RTC), SEq_1(1.0f), b_x(1.0f) {
+MARG::MARG() : deltat(0.001f), SEq_1(1.0f), b_x(1.0f) {
 }
 
 void MARG::start() {
@@ -14,27 +15,28 @@ void MARG::start() {
     /* TODO: update magnetometer as well */
     Sensors::IMU::MPU6050::updateAccelerometerAndGyro();
     /* Convert to SI */
-    const float32 GYRO_FACTOR(0.06103515625f); // [-2000:2000] / 65536
-    const float32 ACC_FACTOR(0.00048828125f); // [-16:16] / 65536
+    /* TODO: convert using sensors setup */
+#define G 9.80665f	// assuming we're flying on Earth
+    const float32 GYRO_FACTOR(0.06103515625f * 3.14159f / 180.0f); // [-2000:2000] / 65536
+    const float32 ACC_FACTOR(0.00048828125f * G); // [-16:16] / 65536
     const float32 COMPASS_FACTOR(0.00091743f); // http://www.soc-robotics.com/pdfs/HMC5883L.pdf : page 12, GN0 = 1, GN1 = 0, GN2 = 0, +-1.3Ga, 1090LSB/Gauss, [-2048, 2047] => 1 / 1090.0f
     const float32 cpu_tick_time(1.0f / CPU_FREQUENCY_HZ);
 
     /* Measure deltat */
     unsigned int rtc = *DEV_RTC;
-    /* WARNING: test that float32(unsigned int) ctor is correct */
     deltat = float32(rtc - old_rtc) * cpu_tick_time;
     old_rtc = rtc;
 
-    float32 w_x = float32(System::Registry::value(System::Registry::GYRO_X)) * GYRO_FACTOR,
-	    w_y = float32(System::Registry::value(System::Registry::GYRO_Y)) * GYRO_FACTOR,
-	    w_z = float32(System::Registry::value(System::Registry::GYRO_Z)) * GYRO_FACTOR,
-	    a_x = float32(System::Registry::value(System::Registry::ACCELEROMETER1_X)) * ACC_FACTOR,
-	    a_y = float32(System::Registry::value(System::Registry::ACCELEROMETER1_Y)) * ACC_FACTOR,
-	    a_z = float32(System::Registry::value(System::Registry::ACCELEROMETER1_Z)) * ACC_FACTOR,
+    float32 w_x = float32(SR::value(SR::GYRO_X)) * GYRO_FACTOR,
+	    w_y = float32(SR::value(SR::GYRO_Y)) * GYRO_FACTOR,
+	    w_z = float32(SR::value(SR::GYRO_Z)) * GYRO_FACTOR,
+	    a_x = float32(SR::value(SR::ACCELEROMETER1_X)) * ACC_FACTOR,
+	    a_y = float32(SR::value(SR::ACCELEROMETER1_Y)) * ACC_FACTOR,
+	    a_z = float32(SR::value(SR::ACCELEROMETER1_Z)) * ACC_FACTOR,
 	    /* These will be optimized out in case we don't use them */
-	    m_x = float32(System::Registry::value(System::Registry::COMPASS_X)) * COMPASS_FACTOR,
-	    m_y = float32(System::Registry::value(System::Registry::COMPASS_Y)) * COMPASS_FACTOR,
-	    m_z = float32(System::Registry::value(System::Registry::COMPASS_Z)) * COMPASS_FACTOR;
+	    m_x = float32(SR::value(SR::COMPASS_X)) * COMPASS_FACTOR,
+	    m_y = float32(SR::value(SR::COMPASS_Y)) * COMPASS_FACTOR,
+	    m_z = float32(SR::value(SR::COMPASS_Z)) * COMPASS_FACTOR;
 
     /* Do not use magnetometer */
     filterUpdateIMU(w_x, w_y, w_z, a_x, a_y, a_z);
@@ -48,26 +50,30 @@ void MARG::start() {
     System::Registry::set(System::Registry::ORIENTATION_Q4, SEq_4);
 
     /* Convert quaternion to euler angles, in degrees */
-    const float32 zero(0.0f), one(1.0f), two(2.0f);
-    const float32 psi = atan2_deg(two * SEq_2 * SEq_3 - two * SEq_1 * SEq_4, 
-			    two * SEq_1 * SEq_1 + two * SEq_2 * SEq_2 - one);
+    const float32 to_deg(57.295779513f);
+    const float32 zero(0.0f), one(1.0f), two(2.0f), minus_two(-2.0f);
+    
+    // psi - yaw
 
-    const float32 theta = (zero - one / sin(two * SEq_2 * SEq_4 + two * SEq_1 * SEq_3)) * float32(57.295779513f);
-    const float32 phi = atan2_deg(two * SEq_3 * SEq_4 - two * SEq_1 * SEq_2, two * SEq_1 * SEq_1 + two * SEq_4 * SEq_4 - one);
+    const float32 psi = f32::atan2((two * SEq_2 * SEq_3 - two * SEq_1 * SEq_4), 
+			    (two * SEq_1 * SEq_1 + two * SEq_2 * SEq_2 - one)) * to_deg;
+
+    const float32 theta = f32::asin(two * (SEq_2 * SEq_4 + SEq_1 * SEq_3)) * to_deg;
+    const float32 phi = f32::atan2((two * SEq_3 * SEq_4 - two * SEq_1 * SEq_2), 
+				(two * SEq_1 * SEq_1 + two * SEq_4 * SEq_4 - one)) * to_deg;
 
     System::Registry::set(System::Registry::ANGLE_PSI, psi);
     System::Registry::set(System::Registry::ANGLE_THETA, theta);
     System::Registry::set(System::Registry::ANGLE_PHI, phi);
 }
-
 void MARG::filterUpdateIMU(float32 w_x, float32 w_y, float32 w_z, float32 a_x, float32 a_y, float32 a_z)
 {
+
     // System constants
-    const float32 gyroMeasError(0.08726646259971647884618453842443f); // gyroscope measurement error in rad/s (shown as 5 deg/s)
-    const float32 gyroMeasDrift(0.00349065850398865915384738153698f); // gyroscope measurement error in rad/s/s (shown as 0.2f deg/s/s)
-    const float32 beta(0.07557497350239041509830947509372f); // compute beta
-    const float32 zeta(0.00302299894009561660393237900375f); // compute zeta
-    const float32 deltatzeta(3.02299894009561660393237900375e-6f);
+#define gyroMeasErrorDef 3.14159265358979f * (15.0f / 180.0f)
+#define betaDef 0.866025404f * gyroMeasErrorDef
+    const float32 gyroMeasError(gyroMeasErrorDef); // gyroscope measurement error in rad/s (shown as 0.5 deg/s)
+    const float32 beta(betaDef); // compute beta
 
 	// Local system variables
 	float32 norm; // vector norm
@@ -90,7 +96,7 @@ void MARG::filterUpdateIMU(float32 w_x, float32 w_y, float32 w_z, float32 a_x, f
 	float32 norm_squared(a_x * a_x);
 	norm_squared += a_y * a_y;
 	norm_squared += a_z * a_z;
-	norm = rsqrt(norm_squared);
+	norm = f32::rsqrt(norm_squared);
 	a_x *= norm;
 	a_y *= norm;
 	a_z *= norm;
@@ -131,7 +137,7 @@ void MARG::filterUpdateIMU(float32 w_x, float32 w_y, float32 w_z, float32 a_x, f
 	norm_squared += SEqHatDot_2 * SEqHatDot_2;
 	norm_squared += SEqHatDot_3 * SEqHatDot_3;
 	norm_squared += SEqHatDot_4 * SEqHatDot_4;
-	norm = rsqrt(norm_squared);
+	norm = f32::rsqrt(norm_squared);
 	SEqHatDot_1 *= norm;
 	SEqHatDot_2 *= norm;
 	SEqHatDot_3 *= norm;
@@ -163,7 +169,7 @@ void MARG::filterUpdateIMU(float32 w_x, float32 w_y, float32 w_z, float32 a_x, f
 	norm_squared += SEq_2 * SEq_2;
 	norm_squared += SEq_3 * SEq_3;
 	norm_squared += SEq_4 * SEq_4;
-	norm = rsqrt(norm_squared);
+	norm = f32::rsqrt(norm_squared);
 	SEq_1 *= norm;
 	SEq_2 *= norm;
 	SEq_3 *= norm;
@@ -172,6 +178,7 @@ void MARG::filterUpdateIMU(float32 w_x, float32 w_y, float32 w_z, float32 a_x, f
 
 void MARG::filterUpdateMARG(float32 w_x, float32 w_y, float32 w_z, float32 a_x, float32 a_y, float32 a_z, float32 m_x, float32 m_y, float32 m_z)
 {
+/*
     // System constants
     const float32 gyroMeasError(0.08726646259971647884618453842443f); // gyroscope measurement error in rad/s (shown as 5 deg/s)
     const float32 gyroMeasDrift(0.00349065850398865915384738153698f); // gyroscope measurement error in rad/s/s (shown as 0.2f deg/s/s)
@@ -223,7 +230,7 @@ void MARG::filterUpdateMARG(float32 w_x, float32 w_y, float32 w_z, float32 a_x, 
 	float32 norm_squared = a_x * a_x;
 	norm_squared += a_y * a_y;
 	norm_squared += a_z * a_z;
-	norm = rsqrt(norm_squared);
+	norm = f32::rsqrt(norm_squared);
 	a_x *= norm;
 	a_y *= norm;
 	a_z *= norm;
@@ -232,7 +239,7 @@ void MARG::filterUpdateMARG(float32 w_x, float32 w_y, float32 w_z, float32 a_x, 
 	norm_squared = m_x * m_x;
 	norm_squared += m_y * m_y;
 	norm_squared += m_z * m_z;
-	norm = rsqrt(norm_squared);
+	norm = f32::rsqrt(norm_squared);
 	m_x *= norm;
 	m_y *= norm;
 	m_z *= norm;
@@ -310,7 +317,7 @@ void MARG::filterUpdateMARG(float32 w_x, float32 w_y, float32 w_z, float32 a_x, 
 	SEqHatDotVectorSquared += SEqHatDot_2 * SEqHatDot_2;
 	SEqHatDotVectorSquared += SEqHatDot_3 * SEqHatDot_3; 
 	SEqHatDotVectorSquared += SEqHatDot_4 * SEqHatDot_4;
-	norm = rsqrt(SEqHatDotVectorSquared);
+	norm = f32::rsqrt(SEqHatDotVectorSquared);
 	SEqHatDot_1 = SEqHatDot_1 * norm;
 	SEqHatDot_2 = SEqHatDot_2 * norm;
 	SEqHatDot_3 = SEqHatDot_3 * norm;
@@ -364,7 +371,7 @@ void MARG::filterUpdateMARG(float32 w_x, float32 w_y, float32 w_z, float32 a_x, 
 	SEq_squared += SEq_2 * SEq_2;
 	SEq_squared += SEq_3 * SEq_3;
 	SEq_squared += SEq_4 * SEq_4;
-	norm = rsqrt(SEq_squared);
+	norm = f32::rsqrt(SEq_squared);
 	SEq_1 *= norm;
 	SEq_2 *= norm;
 	SEq_3 *= norm;
@@ -393,6 +400,7 @@ void MARG::filterUpdateMARG(float32 w_x, float32 w_y, float32 w_z, float32 a_x, 
 	// normalise the flux vector to have only components in the x and z
 	b_x = sqrt((h_x * h_x) + (h_y * h_y));
 	b_z = h_z;
+*/
 }
 
 }

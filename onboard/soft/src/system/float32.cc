@@ -664,6 +664,7 @@ float32 operator*(float a, float32 b) {  return float32(a) * b; }
 float32 operator/(float a, float32 b) {  return float32(a) / b; }
 
 /* Math functions for the float32 type */
+namespace f32 {
 /* Quake3 sqrt implementation */
 float32 sqrt(const float32& x) {
 #define SQRT_MAGIC_F 0x5f3759df 
@@ -716,6 +717,27 @@ float32 sin(const float32& x) {
 #endif
 }
 
+
+float32 atan2(const float32& y, const float32& x)
+{
+   float32 angle;
+   const float32 coeff_1(0.785398163f);
+   const float32 coeff_2(2.35619449f);
+   const float32 abs_y = abs(y) + 1e-10f;      // kludge to prevent 0/0 condition
+   if (x >= 0.0f)
+   {
+      const float32 r = (x - abs_y) / (x + abs_y);
+      angle = coeff_1 - coeff_1 * r;
+   }
+   else
+   {
+      const float32 r = (x + abs_y) / (abs_y - x);
+      angle = coeff_2 - coeff_1 * r;
+   }
+
+    return  y < 0.0f ? (float32(0) - angle) : angle;     // negate if in quad III or IV
+}
+
 /* http://robots-everywhere.com/portfolio/math/fastatan2.htm */
 float32 atan2_deg(const float32& x, const float32& y) {
     const float PI = 3.14159265f;
@@ -730,5 +752,14 @@ float32 atan2_deg(const float32& x, const float32& y) {
 	const float32 xy = x * y;
 	return (xy < 0.0f ? c3 : c3n) + (x < 0.0f ? c3n : c3) + (c2 * xy) / (y * y + c1 * x * x);
     }
+}
+
+float32 asin(const float32& x) {
+    const float32 scale_factor(0.391f);   //empirical
+    float32 x5 = x * x;     //x^2
+    x5 *= x5;           //x^4
+    x5 *= x;            //x^5
+    return x + scale_factor*x5;
+}
 }
 
