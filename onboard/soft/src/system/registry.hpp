@@ -15,6 +15,9 @@ public:
         ORIENTATION_Q2,
         ORIENTATION_Q3,
         ORIENTATION_Q4,
+        ANGLE_PSI,
+        ANGLE_THETA,
+        ANGLE_PHI,
         FLOAT_VALUES_END
     };
     enum IntegerValue {

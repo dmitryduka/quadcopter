@@ -692,3 +692,41 @@ float32 rsqrt(const float32& y) {
     return x;
 }
 
+float32 abs(const float32& x) {
+    unsigned int *xx;
+    xx = (unsigned int*)&x;
+    *(xx) &= 2147483647u;
+    return x;
+}
+
+/* http://devmaster.net/forums/topic/4648-fast-and-accurate-sinecosine/ */
+float32 sin(const float32& x) {
+    const float PI = 3.14159265f;
+    const float32 B(4.0f / PI);
+    const float32 C(-4.0f / (PI * PI));
+    float32 y = B * x + C * x * abs(x);
+#define EXTRA_PRECISION
+#ifdef EXTRA_PRECISION
+//  const float Q = 0.775;
+    const float32 P(0.225f);
+    y = P * (y * abs(y) - y) + y;   // Q * y + P * y * abs(y)
+#endif
+    return y;
+}
+
+/* http://robots-everywhere.com/portfolio/math/fastatan2.htm */
+float32 atan2_deg(const float32& x, const float32& y) {
+    const float PI = 3.14159265f;
+    const float32 c1(0.28088f); // empirical
+    const float32 c2(180.0f / PI); // change const2 to 1.0 to get result in radians (I personally prefer working in degrees)
+    const float32 c3(90.0f); // this one here just means "quarter circle" so pi/4 or 90 degrees
+    const float32 c3n(-90.0f); // this one here just means "quarter circle" so pi/4 or 90 degrees
+    if(abs(x) > abs(y)) {
+	return ((x * y * c2 * float32(-1.0f)) / (x * x - c1 * y * y)) + (x < 0.0f ? c3n : c3);
+    } else {
+	const float32 xy = x * y;
+	return (xy < 0.0f ? c3 : c3n) + (x < 0.0f ? c3n : c3) + (c2 * xy) / (y * y + c1 * x * x);
+    }
+}
+
+

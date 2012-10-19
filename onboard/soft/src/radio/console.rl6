@@ -21,6 +21,15 @@ void quat() {
     System::Bus::UART::write_waiting("\n");
 }
 
+void angles() {
+    System::Bus::UART::write_waiting(b32todec(System::Registry::value(System::Registry::ANGLE_PSI)));
+    System::Bus::UART::write_waiting(" ");
+    System::Bus::UART::write_waiting(b32todec(System::Registry::value(System::Registry::ANGLE_THETA)));
+    System::Bus::UART::write_waiting(" ");
+    System::Bus::UART::write_waiting(b32todec(System::Registry::value(System::Registry::ANGLE_PHI)));
+    System::Bus::UART::write_waiting("\n");
+}
+
 void acc() {
     System::Bus::UART::write_waiting(b32tohex(System::Registry::value(System::Registry::ACCELEROMETER1_X)));
     System::Bus::UART::write_waiting(" ");
@@ -124,6 +133,7 @@ void parseConsoleMessage(const char* str) {
 	action arg_sign { if(fc == '-') arg_sign = '-'; }
 	action hey { hey(); }
 	action quat { quat(); }
+	action angles { angles(); }
 	action acc { acc(); }
 	action alt { alt(); }
 	action temp { temp(); }
@@ -145,6 +155,7 @@ void parseConsoleMessage(const char* str) {
 	main := 	' '*
 			('hey' @hey |
 			 'get_quat' @quat|
+			 'get_angles' @angles|
 			 'get_acc' @acc |
 			 'get_alt' @alt |
 			 'get_throttle' @get_throttle |

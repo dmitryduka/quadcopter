@@ -46,6 +46,18 @@ void MARG::start() {
     System::Registry::set(System::Registry::ORIENTATION_Q2, SEq_2);
     System::Registry::set(System::Registry::ORIENTATION_Q3, SEq_3);
     System::Registry::set(System::Registry::ORIENTATION_Q4, SEq_4);
+
+    /* Convert quaternion to euler angles, in degrees */
+    const float32 zero(0.0f), one(1.0f), two(2.0f);
+    const float32 psi = atan2_deg(two * SEq_2 * SEq_3 - two * SEq_1 * SEq_4, 
+			    two * SEq_1 * SEq_1 + two * SEq_2 * SEq_2 - one);
+
+    const float32 theta = (zero - one / sin(two * SEq_2 * SEq_4 + two * SEq_1 * SEq_3)) * float32(57.295779513f);
+    const float32 phi = atan2_deg(two * SEq_3 * SEq_4 - two * SEq_1 * SEq_2, two * SEq_1 * SEq_1 + two * SEq_4 * SEq_4 - one);
+
+    System::Registry::set(System::Registry::ANGLE_PSI, psi);
+    System::Registry::set(System::Registry::ANGLE_THETA, theta);
+    System::Registry::set(System::Registry::ANGLE_PHI, phi);
 }
 
 void MARG::filterUpdateIMU(float32 w_x, float32 w_y, float32 w_z, float32 a_x, float32 a_y, float32 a_z)

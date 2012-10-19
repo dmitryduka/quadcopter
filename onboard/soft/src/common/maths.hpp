@@ -1,6 +1,8 @@
 #ifndef MATHS_HPP
 #define MATHS_HPP
 
+#include <system/float32.h>
+
 namespace Math {
 
 static int sign_extend(int halfword) { return  ((halfword & 0xFFFF) >> 15) ? (0xFFFF0000 | halfword) : halfword; }
