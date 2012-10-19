@@ -3,7 +3,7 @@
 
 #define float32_default_nan 0xFFFFFFFF
 
-float32::float32() : data(0) {}
+float32::float32() {}
 
 float32::float32(float a) { data = *reinterpret_cast<float_type*>(&a); }
 
@@ -22,9 +22,19 @@ float32::float32(int a) {
     data = normalizeRoundAndPack(zSign, 0x9C, zSign ? - a : a);
 }
 
+float32::float32(unsigned int a) {
+    flag zSign;
+
+    if(a == 0) {
+	data = 0;
+	return;
+    }
+    data = normalizeRoundAndPack(zSign, 0x9C, a);
+}
+
 float32::float32(const float32& other) : data(other.data) {}
 
-float32 float32::operator+(float32 other) const {
+const float32 float32::operator+(const float32& other) const {
     float32 result;
     flag aSign, bSign;
     float_type a = data;
@@ -41,7 +51,7 @@ float32 float32::operator+(float32 other) const {
     return result;
 }
 
-float32 float32::operator-(float32 other) const {
+const float32 float32::operator-(const float32& other) const {
     float32 result;
     flag aSign, bSign;
     float_type a = data;
@@ -58,7 +68,7 @@ float32 float32::operator-(float32 other) const {
     return result;
 }
 
-float32 float32::operator*(float32 other) const {
+const float32 float32::operator*(const float32& other) const {
     float32 result;
     float_type a = data;
     float_type b = other.data;
@@ -117,7 +127,7 @@ float32 float32::operator*(float32 other) const {
     return result;
 }
 
-float32 float32::operator/(float32 other) const {
+const float32 float32::operator/(const float32& other) const {
     float32 result;
     float_type a = data;
     float_type b = other.data;
@@ -193,15 +203,15 @@ float32 float32::operator/(float32 other) const {
     return result;
 }
 
-float32& float32::operator=(float32 other) { data = other.data; return *this; }
+float32& float32::operator=(const float32& other) { data = other.data; return *this; }
 float32& float32::operator=(float other) { return *this = float32(other); }
 
-float32& float32::operator+=(float32 other) { return *this = this->operator+(other); }
-float32& float32::operator-=(float32 other) { return *this = this->operator-(other); }
-float32& float32::operator*=(float32 other) { return *this = this->operator*(other); }
-float32& float32::operator/=(float32 other) { return *this = this->operator/(other); }
+float32& float32::operator+=(const float32& other) { return *this = this->operator+(other); }
+float32& float32::operator-=(const float32& other) { return *this = this->operator-(other); }
+float32& float32::operator*=(const float32& other) { return *this = this->operator*(other); }
+float32& float32::operator/=(const float32& other) { return *this = this->operator/(other); }
 
-bool float32::operator==(float32 other) const {
+bool float32::operator==(const float32& other) const {
 	float_type a = data;
 	float_type b = other.data;
 	if (((extractExp(a) == 0xFF) && extractFrac(a)) || 
@@ -209,11 +219,11 @@ bool float32::operator==(float32 other) const {
     return ( a == b ) || ( (bits32) ( ( a | b )<<1 ) == 0 );
 }
 
-bool float32::operator!=(float32 other) const { return !this->operator==(other); }
+bool float32::operator!=(const float32& other) const { return !this->operator==(other); }
 
-bool float32::operator>(float32 other) const { return !this->operator<=(other); }
+bool float32::operator>(const float32& other) const { return !this->operator<=(other); }
 
-bool float32::operator<(float32 other) const {
+bool float32::operator<(const float32& other) const {
     flag aSign, bSign;
     float_type a = data;
     float_type b = other.data;
@@ -226,9 +236,9 @@ bool float32::operator<(float32 other) const {
     return ( a != b ) && ( aSign ^ ( a < b ) );	
 }
 
-bool float32::operator>=(float32 other) const { return !this->operator<(other); }
+bool float32::operator>=(const float32& other) const { return !this->operator<(other); }
 
-bool float32::operator<=(float32 other) const {
+bool float32::operator<=(const float32& other) const {
 	flag aSign, bSign;
 	float_type a = data;
 	float_type b = other.data;
@@ -285,6 +295,8 @@ float32::operator int() const {
     }
     return z;
 }
+
+float32::float_type float32::internals() const { return data; }
 
 /*
 -------------------------------------------------------------------------------
@@ -643,5 +655,83 @@ float32::bits32 float32::estimateDiv64To32( bits32 a0, bits32 a1, bits32 b )
     rem0 = (rem0 << 16) | (rem1 >> 16);
     z |= (b0 << 16 <= rem0) ? 0xFFFF : Math::divide(rem0, b0);
     return z;
+}
+
+/* operators to support builtin float */
+float32 operator+(float a, float32 b) {  return float32(a) + b; }
+float32 operator-(float a, float32 b) {  return float32(a) - b; }
+float32 operator*(float a, float32 b) {  return float32(a) * b; }
+float32 operator/(float a, float32 b) {  return float32(a) / b; }
+
+/* Math functions for the float32 type */
+namespace f32 {
+/* Quake3 sqrt implementation */
+float32 sqrt(const float32& x) {
+#define SQRT_MAGIC_F 0x5f3759df 
+    const float32 xhalf = 0.5f * x;
+    union // get bits for floating value
+    {
+	float x;
+	int i;
+    } u;
+    u.x = x;
+    u.i = SQRT_MAGIC_F - (u.i >> 1);  // gives initial guess y0
+    return float32(x) * u.x * (1.5f - xhalf * u.x * u.x);// Newton step, repeating increases accuracy 
+}
+
+/* http://en.wikipedia.org/wiki/Fast_inverse_square_root */
+float32 rsqrt(const float32& y) {
+    float32 x(y);
+    const float32 threehalves(1.5f), half(0.5f);
+    const float32 xhalf = half * x;
+    int i = *(int *)&x;          // View x as an int.
+    i = 0x5f375a86 - (i >> 1);   // Initial guess (slightly better).
+    x = *(float *)&i;            // View i as float.
+    x = x * (threehalves - xhalf * x * x);    // Newton step.
+    //x = x * (threehalves - xhalf * x * x);    // Once more too increase accuracy
+    return x;
+}
+
+float32 abs(const float32 x) {
+    unsigned int *xx;
+    xx = (unsigned int*)&x;
+    *(xx) &= 2147483647u;
+    return x;
+}
+
+/* http://devmaster.net/forums/topic/4648-fast-and-accurate-sinecosine/ */
+/* Works only in [-PI; PI], precision ~ 0.001
+ */
+float32 sin(const float32& x) {
+    const float PI = 3.14159265f;
+    const float32 B(4.0f / PI);
+    const float32 C(-4.0f / (PI * PI));
+#define EXTRA_PRECISION
+#ifdef EXTRA_PRECISION
+//  const float Q = 0.775;
+    const float32 P(0.225f);
+    float32 y = B * x + C * x * abs(x);
+    return P * (y * abs(y) - y) + y;   // Q * y + P * y * abs(y)
+#else
+    return B * x + C * x * abs(x);
+#endif
+}
+
+/* http://robots-everywhere.com/portfolio/math/fastatan2.htm */
+float32 atan2_deg(const float32& x, const float32& y) {
+    const float PI = 3.14159265f;
+    const float32 c1(0.28088f); // empirical
+    const float32 c2(180.0f / PI); // change const2 to 1.0 to get result in radians (I personally prefer working in degrees)
+    const float32 c2n(-180.0f / PI); // change const2 to 1.0 to get result in radians (I personally prefer working in degrees)
+    const float32 c3(90.0f); // this one here just means "quarter circle" so pi/4 or 90 degrees
+    const float32 c3n(-90.0f); // this one here just means "quarter circle" so pi/4 or 90 degrees
+    if(abs(x) > abs(y)) {
+	return (x * y * c2n) / (x * x - c1 * y * y) + (x < 0.0f ? c3n : c3);
+    } else {
+	const float32 xy = x * y;
+	return (xy < 0.0f ? c3 : c3n) + (x < 0.0f ? c3n : c3) + (c2 * xy) / (y * y + c1 * x * x);
+    }
+}
+
 }
 

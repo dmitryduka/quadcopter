@@ -43,29 +43,64 @@ public:
     float32();
     explicit float32(float);
     explicit float32(int);
+    explicit float32(unsigned int);
     float32(const float32&);
 
     float32& operator=(float);
-    float32& operator=(float32);
+    float32& operator=(const float32&);
 
-    float32 operator+(float32) const;
-    float32 operator-(float32) const;
-    float32 operator*(float32) const;
-    float32 operator/(float32) const;
-    float32& operator+=(float32);
-    float32& operator-=(float32);
-    float32& operator*=(float32);
-    float32& operator/=(float32);
+    const float32 operator+(const float32&) const;
+    const float32 operator-(const float32&) const;
+    const float32 operator*(const float32&) const;
+    const float32 operator/(const float32&) const;
+    float32& operator+=(const float32&);
+    float32& operator-=(const float32&);
+    float32& operator*=(const float32&);
+    float32& operator/=(const float32&);
 
-    bool operator==(float32) const;
-    bool operator!=(float32) const;
-    bool operator>(float32) const;
-    bool operator<(float32) const;
-    bool operator>=(float32) const;
-    bool operator<=(float32) const;
+    inline float32 operator+(float x) const { return this->operator+(float32(x)); }
+    inline float32 operator-(float x) const { return this->operator-(float32(x)); }
+    inline float32 operator*(float x) const { return this->operator*(float32(x)); }
+    inline float32 operator/(float x) const { return this->operator/(float32(x)); }
+    inline float32& operator+=(float x) { return this->operator+=(float32(x)); }
+    inline float32& operator-=(float x) { return this->operator-=(float32(x)); }
+    inline float32& operator*=(float x) { return this->operator*=(float32(x)); }
+    inline float32& operator/=(float x) { return this->operator/=(float32(x)); };
+
+    bool operator==(const float32&) const;
+    bool operator!=(const float32&) const;
+    bool operator>(const float32&) const;
+    bool operator<(const float32&) const;
+    bool operator>=(const float32&) const;
+    bool operator<=(const float32&) const;
+
+    inline bool operator==(float x) const { return this->operator==(float32(x)); }
+    inline bool operator!=(float x) const { return this->operator!=(float32(x)); }
+    inline bool operator>(float x) const { return this->operator>(float32(x)); }
+    inline bool operator<(float x) const { return this->operator<(float32(x)); }
+    inline bool operator>=(float x) const { return this->operator>=(float32(x)); }
+    inline bool operator<=(float x) const { return this->operator<=(float32(x)); }
 
     operator int() const;
     operator float() const;
+
+    float_type internals() const;
 };
 
+/* Global operators to support builtin float */
+float32 operator+(float, float32);
+float32 operator-(float, float32);
+float32 operator*(float, float32);
+float32 operator/(float, float32);
+
+namespace f32 {
+
+/* Math functions for the float32 type */
+float32 abs(const float32);
+float32 sin(const float32&);
+float32 atan2_deg(const float32&, const float32&);
+float32 sqrt(const float32&);
+float32 rsqrt(const float32&);
+
+}
 #endif

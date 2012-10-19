@@ -1,4 +1,4 @@
-CC = g++-4.7 -std=c++11 -g3 -c
+CC = g++-4.7 -std=c++11 -g3 -O0 -c
 LD = g++-4.7
 CCSOURCES = main.cc float32.cc
 OBJECTS += $(CCSOURCES:.cc=.o)
