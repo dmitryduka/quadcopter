@@ -11,6 +11,10 @@ MARG::MARG() : deltat(0.001f), SEq_1(1.0f), b_x(1.0f) {
 }
 
 void MARG::start() {
+    /* NOTE: Getting IMU data (0.64 ms),
+	computing one iteration of MARG (0.22 ms),
+	converting quaternion to Euler angles (0.11 ms)
+	totally takes 0.97 ms or ~48.5k cycles */
     /* Update IMU data */
     /* TODO: update magnetometer as well */
     Sensors::IMU::MPU6050::updateAccelerometerAndGyro();
