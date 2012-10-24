@@ -1,4 +1,5 @@
 #include "tasks.h"
+#include "uart.h"
 #include <common>
 
 namespace System {
@@ -10,7 +11,7 @@ void Task::start() {}
 TaskScheduler::TaskScheduler() : idleTasks(0), continuousTasks(0), oneShotTasks(0), currentIdleTask(0), nextTask {0, 0, 0} {}
 
 void TaskScheduler::start() {
-    selectNextTask(0);
+    selectNextTask(*DEV_RTC);
     forever {
         unsigned int rtc = *DEV_RTC;
         /* Check if RTC value is equal or higher than nextTask' execution time,

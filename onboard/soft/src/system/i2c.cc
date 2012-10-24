@@ -25,8 +25,8 @@ static int io(unsigned char b, IoType io) {
     return *DEV_I2C;
 }
 
-char read() {  return io(0xFF, Read) & 0xFF; }
-char write(char x) { return io(x, Write) & 0xFF; }
+unsigned char read() {  return io(0xFF, Read) & 0xFF; }
+unsigned char write(unsigned char x) { return io(x, Write) & 0xFF; }
 
 }
 }

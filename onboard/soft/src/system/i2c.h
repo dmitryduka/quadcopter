@@ -8,8 +8,8 @@ namespace I2C {
 void start();
 void stop();
 
-char read();
-char write(char);
+unsigned char read();
+unsigned char write(unsigned char);
 
 }
 }

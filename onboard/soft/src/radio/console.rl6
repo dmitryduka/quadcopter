@@ -22,11 +22,11 @@ void quat() {
 }
 
 void angles() {
-    System::Bus::UART::write_waiting(b32todec(System::Registry::value(System::Registry::ANGLE_PSI)));
+    System::Bus::UART::write_waiting(b32todec((int)System::Registry::value(System::Registry::ANGLE_PSI)));
     System::Bus::UART::write_waiting(" ");
-    System::Bus::UART::write_waiting(b32todec(System::Registry::value(System::Registry::ANGLE_THETA)));
+    System::Bus::UART::write_waiting(b32todec((int)System::Registry::value(System::Registry::ANGLE_THETA)));
     System::Bus::UART::write_waiting(" ");
-    System::Bus::UART::write_waiting(b32todec(System::Registry::value(System::Registry::ANGLE_PHI)));
+    System::Bus::UART::write_waiting(b32todec((int)System::Registry::value(System::Registry::ANGLE_PHI)));
     System::Bus::UART::write_waiting("\n");
 }
 

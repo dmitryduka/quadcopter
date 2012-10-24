@@ -45,3 +45,23 @@ ustring b32todec(int y) {
 	else return tobig_p;
     }
 }
+
+ustring b32todec(unsigned int y) {
+    const ustring tobig = 0x202020544F424947; // '  +TOBIG'
+    /* check if return tobig_p/n or not */
+    /* '-9999999' */
+    int x = Math::abs(y);
+    if(x <= 99999999) {
+	int counter = 0;
+	ustring result = 0x2020202020202020; // '        '
+	if(x == 0) return result |= (ustring)'0';
+	while(x != 0) {
+	    int x10 = Math::divide(x, 10);
+	    char digit = x - x10 * 10 + '0';
+	    x = x10;
+	    /* Space characters will not affect |=, because '0'-'9' use same bits */
+	    result |= (ustring)digit << (8 * counter++);
+	}
+	return result;
+    } else return tobig;
+}

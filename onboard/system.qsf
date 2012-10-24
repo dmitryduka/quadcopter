@@ -91,6 +91,7 @@ set_location_assignment PIN_T12 -to ENGINE_CONTROL[2]
 set_location_assignment PIN_T11 -to ENGINE_CONTROL[3]
 set_location_assignment PIN_N14 -to UART_TX
 set_location_assignment PIN_P14 -to UART_RX
+set_global_assignment -name SYSTEMVERILOG_FILE hard/cp0.sv
 set_global_assignment -name SDC_FILE system.sdc
 set_global_assignment -name QIP_FILE wiz/vji.qip
 set_global_assignment -name QIP_FILE wiz/pll.qip
@@ -117,4 +118,5 @@ set_global_assignment -name SYSTEMVERILOG_FILE hard/bus_controller.sv
 set_global_assignment -name VERILOG_FILE hard/alu.v
 set_global_assignment -name SYSTEMVERILOG_FILE hard/io6.sv
 set_global_assignment -name SYSTEMVERILOG_FILE hard/rtc.sv
+set_location_assignment PIN_L13 -to XBEE_RESETN
 set_instance_assignment -name PARTITION_HIERARCHY root_partition -to | -section_id Top
