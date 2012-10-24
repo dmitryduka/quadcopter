@@ -35,17 +35,14 @@ void write_waiting(ustring x) {
 		else break;
 		x <<= 8;
 	}
-	write_waiting('h');
-    //write_waiting(reinterpret_cast<const char*>(&x), sizeof(ustring));
 }
 
 bool write(const ustring x) {
-    write(reinterpret_cast<const char*>(&x), sizeof(ustring));
+    return write(reinterpret_cast<const char*>(&x), sizeof(ustring));
 }
 
 void write_loop(const char* x, unsigned int size) {
-    unsigned int counter = 0;
-    for(int i = 0; i < UART_TX_BUFFER_LENGTH; ++i) {
+    for(unsigned int i = 0; i < UART_TX_BUFFER_LENGTH; ++i) {
 	if(size) {
 	    if(i < size) *DEV_UART_TX = x[i];
 	    else break;

@@ -26,7 +26,7 @@ static int io(unsigned char b, IoType io) {
 }
 
 char read() {  return io(0xFF, Read) & 0xFF; }
-int write(char x) { io(x, Write); }
+char write(char x) { return io(x, Write) & 0xFF; }
 
 }
 }

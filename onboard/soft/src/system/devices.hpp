@@ -1,7 +1,7 @@
 #ifndef DEVICES_HPP
 #define DEVICES_HPP
 
-#define DEFINE_EXTERNAL_DEVICE(NAME, ADDR) volatile int * const NAME = reinterpret_cast<volatile int * const>(ADDR);
+#define DEFINE_EXTERNAL_DEVICE(NAME, ADDR) volatile int * const NAME = reinterpret_cast<volatile int * const>(ADDR)
 
 DEFINE_EXTERNAL_DEVICE(DEV_JTAG,	0x00000000);
 DEFINE_EXTERNAL_DEVICE(DEV_LEDS,	0x00000004);

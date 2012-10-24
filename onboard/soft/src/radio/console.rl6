@@ -117,7 +117,7 @@ void parseConsoleMessage(const char* str) {
     int arg_idx = 0;
     int arg[MAX_ARGS] = {0};
     char arg_sign = '+';
-    const char *p = str, *pe = str + strlen(str) + 1; // +1 is to have trailing zero for parser
+    const char *p = str;
     int cs;
     %%{
 	action arg {  
@@ -170,10 +170,12 @@ void parseConsoleMessage(const char* str) {
 			 ('set_roll' snumarg) %set_roll
 			)
 			' '*
-			(0 | '\n' | '\r');
+			(0 | '\n' | '\r') @{fbreak;};
 	# Initialize and execute.
-        write data;
+        write data noerror;
 	write init;
-	write exec;
+	write exec noend;
     }%%
+    if (cs < parseConsoleMessage_first_final) 
+	System::Bus::UART::write_waiting(":?\n");
 }

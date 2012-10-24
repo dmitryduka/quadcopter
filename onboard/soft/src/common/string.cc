@@ -30,6 +30,7 @@ ustring b32todec(int y) {
     if(x <= 9999999) {
 	int counter = 0;
 	ustring result = 0x2020202020202020; // '        '
+	if(x == 0) return result |= (ustring)'0';
 	while(x != 0) {
 	    int x10 = Math::divide(x, 10);
 	    char digit = x - x10 * 10 + '0';

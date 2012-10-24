@@ -49,7 +49,7 @@ STACK_SIZE = 2000
 INCLUDEDIRS = $(addprefix -I, $(DIRS))
 CCOPTS =  -c -std=c++11 -mno-gpopt -G0 $(INCLUDEDIRS)
 CCOPTS += -O2 -I$(INCDIR)
-CCOPTS += -Wcast-align -Wstack-usage=$(STACK_SIZE) 
+CCOPTS += -pedantic -Wall -Wno-unused-function -Wcast-align -Wstack-usage=$(STACK_SIZE)
 CCOPTS += -flto -fdata-sections -ffunction-sections -fno-threadsafe-statics -fstack-usage -fno-strict-aliasing -fno-exceptions -fno-rtti
 LDOPTS = -flto -Os -Wl,--gc-sections -nostdlib -nostartfiles -fwhole-program -lgcc
 

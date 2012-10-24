@@ -49,7 +49,8 @@ enum class From : unsigned int {
 
 /* Each message should contain it's type stored inside the first byte */
 template<typename Type, Type TYPE> struct Message { 
-    const Type type = TYPE; 
+    const Type type;
+    Message() : type(TYPE) {}
     inline operator const char*() const { return reinterpret_cast<const char*>(this); }
 };
 

@@ -53,7 +53,7 @@ void updateAccelerometerAndGyro() {
     int gy  = I2C::read();
     int gyL = I2C::read();
     int gz  = I2C::read();
-    int gzL = I2C::write(0xFF) & 0xFF; /* End of transaction */
+    int gzL = I2C::write((char)0xFF); /* End of transaction */
 
     I2C::stop();
 

@@ -10,7 +10,7 @@ void StabilizationAndEngineUpdateTask::start() {
     horizontalStabilization();
     /* Also azimuth control here */
 
-    int throttle = System::Registry::value(System::Registry::THROTTLE);
+    unsigned int throttle = System::Registry::value(System::Registry::THROTTLE);
     int E1, E2, E3, E4;
     E1 = E2 = E3 = E4 = throttle;
     if (throttle > MINIMUM_THROTTLE_FOR_CORRECTIONS) {

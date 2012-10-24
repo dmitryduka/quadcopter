@@ -23,13 +23,11 @@ float32::float32(int a) {
 }
 
 float32::float32(unsigned int a) {
-    flag zSign;
-
     if(a == 0) {
 	data = 0;
 	return;
     }
-    data = normalizeRoundAndPack(zSign, 0x9C, a);
+    data = normalizeRoundAndPack(0, 0x9C, a);
 }
 
 float32::float32(const float32& other) : data(other.data) {}
@@ -37,8 +35,6 @@ float32::float32(const float32& other) : data(other.data) {}
 const float32 float32::operator+(const float32& other) const {
     float32 result;
     flag aSign, bSign;
-    float_type a = data;
-    float_type b = other.data;
 
     aSign = extractSign( data );
     bSign = extractSign( other.data );
@@ -182,8 +178,6 @@ const float32 float32::operator/(const float32& other) const {
     zSig = estimateDiv64To32( aSig, 0, bSig );
     if ( ( zSig & 0x3F ) <= 2 ) {
 	bits64 term = (bits64)bSig * (bits64)zSig;
-	bits32 term1 = (bits32)term;
-	bits32 term0 = (term >> 32);
 	bits64 aSig64 = ((bits64)aSig) << 32;
 	bits64 rem = aSig64 - term;
 	bits32 rem1 = (bits32)rem;
@@ -577,7 +571,6 @@ Binary Floating-Point Arithmetic.
 */
 float32::float_type float32::roundAndPack( flag zSign, int16 zExp, bits32 zSig )
 {
-    flag roundNearestEven;
     int8 roundIncrement, roundBits;
 
     roundIncrement = 0x40;
@@ -629,27 +622,23 @@ unsigned integer is returned.
 float32::bits32 float32::estimateDiv64To32( bits32 a0, bits32 a1, bits32 b )
 {
     bits32 b0, b1;
-    bits32 rem0, rem1, term0, term1;
+    bits32 rem0, rem1;
     bits32 z;
 
     if ( b <= a0 ) return 0xFFFFFFFF;
     b0 = b>>16;
     z = ( b0<<16 <= a0 ) ? 0xFFFF0000 : Math::divide(a0, b0) << 16;
     bits64 term = (bits64)b * (bits64)z;
-    term1 = (bits32)term;
-    term0 = (term >> 32);
-    //mul32To64( b, z, &term0, &term1 );
-    bits64 a = (bits64)a0 << 32 + a1;
+    bits64 a = ((bits64)a0 << 32) + a1;
     bits64 rem = a - term;
     rem1 = (bits32)rem;
-    rem0 = (rem >> 32);    
-    //sub64( a0, a1, term0, term1, &rem0, &rem1 );
+    rem0 = (rem >> 32);
     while ( ( (sbits32) rem0 ) < 0 ) {
         z -= 0x10000;
         b1 = b << 16;
-        rem += (bits64)b0 << 32 + b1;
+        rem += ((bits64)b0 << 32) + b1;
 	rem1 = (bits32)rem;
-	rem0 = (rem >> 32);    
+	rem0 = (rem >> 32);
         //add64( rem0, rem1, b0, b1, &rem0, &rem1 );
     }
     rem0 = (rem0 << 16) | (rem1 >> 16);

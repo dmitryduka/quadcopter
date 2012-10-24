@@ -32,11 +32,11 @@ void MARG::start() {
 	    w_z = float32(SR::value(SR::GYRO_Z)) * GYRO_FACTOR,
 	    a_x = float32(SR::value(SR::ACCELEROMETER1_X)) * ACC_FACTOR,
 	    a_y = float32(SR::value(SR::ACCELEROMETER1_Y)) * ACC_FACTOR,
-	    a_z = float32(SR::value(SR::ACCELEROMETER1_Z)) * ACC_FACTOR,
-	    /* These will be optimized out in case we don't use them */
+	    a_z = float32(SR::value(SR::ACCELEROMETER1_Z)) * ACC_FACTOR;
+	    /*
 	    m_x = float32(SR::value(SR::COMPASS_X)) * COMPASS_FACTOR,
 	    m_y = float32(SR::value(SR::COMPASS_Y)) * COMPASS_FACTOR,
-	    m_z = float32(SR::value(SR::COMPASS_Z)) * COMPASS_FACTOR;
+	    m_z = float32(SR::value(SR::COMPASS_Z)) * COMPASS_FACTOR;*/
 
     /* Do not use magnetometer */
     filterUpdateIMU(w_x, w_y, w_z, a_x, a_y, a_z);
