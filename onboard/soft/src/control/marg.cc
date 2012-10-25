@@ -59,12 +59,12 @@ void MARG::start() {
     
     // psi - yaw
 
-    const float32 psi = f32::atan2((two * SEq_2 * SEq_3 - two * SEq_1 * SEq_4), 
-			    (two * SEq_1 * SEq_1 + two * SEq_2 * SEq_2 - one)) * to_deg;
+    const float32 psi = f32::atan2(two * (SEq_1 * SEq_2 + SEq_3 * SEq_4), 
+			    one - two * (SEq_2 * SEq_2 + SEq_3 * SEq_3)) * to_deg;
 
-    const float32 theta = f32::asin(two * (SEq_2 * SEq_4 + SEq_1 * SEq_3)) * to_deg;
-    const float32 phi = f32::atan2((two * SEq_3 * SEq_4 - two * SEq_1 * SEq_2), 
-				(two * SEq_1 * SEq_1 + two * SEq_4 * SEq_4 - one)) * to_deg;
+    const float32 theta = f32::asin(two * (SEq_1 * SEq_3 - SEq_4 * SEq_2)) * to_deg;
+    const float32 phi = f32::atan2(two * (SEq_1 * SEq_4 + SEq_2 * SEq_3), 
+				one - two * (SEq_3 * SEq_3 + SEq_4 * SEq_4)) * to_deg;
 
     System::Registry::set(System::Registry::ANGLE_PSI, psi);
     System::Registry::set(System::Registry::ANGLE_THETA, theta);
@@ -74,7 +74,7 @@ void MARG::filterUpdateIMU(float32 w_x, float32 w_y, float32 w_z, float32 a_x, f
 {
 
     // System constants
-#define gyroMeasErrorDef 3.14159265358979f * (15.0f / 180.0f)
+#define gyroMeasErrorDef 3.14159265358979f * (5.0f / 180.0f)
 #define betaDef 0.866025404f * gyroMeasErrorDef
     const float32 gyroMeasError(gyroMeasErrorDef); // gyroscope measurement error in rad/s (shown as 0.5 deg/s)
     const float32 beta(betaDef); // compute beta

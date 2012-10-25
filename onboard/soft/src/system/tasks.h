@@ -77,6 +77,9 @@ private:
         int		queue;
     }		nextTask;
 
+    unsigned int timeToWait;
+    unsigned int lastRtc;
+
     /* Sets nextTask */
     void selectNextTask(unsigned int rtc);
     /* Sets up nextTask structure (which is used in the main loop of the scheduler) */

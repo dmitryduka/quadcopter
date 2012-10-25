@@ -1,4 +1,5 @@
 #include "tasks.h"
+#include "util.h"
 #include "uart.h"
 #include <common>
 
@@ -8,28 +9,34 @@ namespace Tasking {
 Task::Task() : executeAt(0), interval(0), nextTask(0) { }
 void Task::start() {}
 
-TaskScheduler::TaskScheduler() : idleTasks(0), continuousTasks(0), oneShotTasks(0), currentIdleTask(0), nextTask {0, 0, 0} {}
+TaskScheduler::TaskScheduler() : idleTasks(0), 
+				continuousTasks(0), 
+				oneShotTasks(0), 
+				currentIdleTask(0), 
+				nextTask {0, 0, 0}, 
+				timeToWait(0), 
+				lastRtc(0) {}
 
 void TaskScheduler::start() {
-    selectNextTask(*DEV_RTC);
+    selectNextTask(0);
     forever {
-        unsigned int rtc = *DEV_RTC;
+	unsigned int rtc = *DEV_RTC;
         /* Check if RTC value is equal or higher than nextTask' execution time,
         accounting that they could be on different sides of RTC overflow.
         MAX_TASK_INTERVAL_TICKS is defined in the devices.hpp and is 'once in a minute' */
-        if (nextTask.task && (rtc - nextTask.time) < MAX_TASK_INTERVAL_TICKS) {
+        if (nextTask.task && ((rtc - lastRtc) >= timeToWait)) {
             nextTask.task->start();
             if (nextTask.queue == ONE_SHOT_QUEUE) removeTask(nextTask.task);
             else nextTask.task->executeAt = rtc + nextTask.task->interval;
             selectNextTask(rtc);
         } else if(idleTasks) { /* If there are any idle tasks */
-    	/* Select next idle task */
-    	if(currentIdleTask) currentIdleTask = currentIdleTask->nextTask;
-    	/* If it was the last one, jump to the start */
-    	if(currentIdleTask == 0)
-    	    currentIdleTask = idleTasks;
-    	/* Execute selected task, if there is one */
-    	if(currentIdleTask) currentIdleTask->start();
+	    /* Select next idle task */
+	    if(currentIdleTask) currentIdleTask = currentIdleTask->nextTask;
+	    /* If it was the last one, jump to the start */
+	    if(currentIdleTask == 0)
+	        currentIdleTask = idleTasks;
+	    /* Execute selected task, if there is one */
+	    if(currentIdleTask) currentIdleTask->start();
         }
     }
 }
@@ -85,9 +92,9 @@ void		TaskScheduler::removeTask(Task* t) {
 void TaskScheduler::selectNextTask(unsigned int rtc) {
     /* find a task with minimum executeAt time */
     Task* nextTaskCandidate = 0;
-    unsigned int minimumExecuteAt = 0xFFFFFFFF;
     Task** queues[QUEUES_COUNT] = {&continuousTasks, &oneShotTasks};
     Task* queue = 0;
+    unsigned int minimumExecuteAt = 0xFFFFFFFF;
     for (int i = 0; i < QUEUES_COUNT; ++i) {
         Task* q = *(queues[i]);
         if (q) {
@@ -97,8 +104,10 @@ void TaskScheduler::selectNextTask(unsigned int rtc) {
             */
             while (cur) {
                 if (cur->executeAt - rtc < minimumExecuteAt) {
+            	    minimumExecuteAt = cur->executeAt - rtc;
+		    lastRtc = rtc;
+		    timeToWait = nextTask.time - lastRtc;
                     nextTaskCandidate = cur;
-                    minimumExecuteAt = cur->executeAt - rtc;
                     queue = q;
                 }
                 cur = cur->nextTask;
