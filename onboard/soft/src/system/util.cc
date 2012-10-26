@@ -13,8 +13,12 @@ static void winkleds() {
 }
 
 void init() {
-    Sensors::IMU::MPU6050::init();
     Sensors::Baro::init();
+    Sensors::Baro::startTemperatureConversion(MS561101BA_OSR_4096);
+    delay(30_ms);
+    Sensors::Baro::updateTemperature();
+    System::Bus::UART::write_waiting(b32todec(System::Registry::value(System::Registry::TEMPERATURE)));
+    Sensors::IMU::MPU6050::init();
     winkleds();
 }
 

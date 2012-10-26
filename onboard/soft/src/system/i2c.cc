@@ -15,9 +15,7 @@ void stop() {
     while (*DEV_I2C < 0);
 }
 
-enum IoType { Read, Write };
-
-static int io(unsigned char b, IoType io) {
+unsigned int io(unsigned char b, IoType io) {
     unsigned int x = b;
     if(io == Write) x |= 0x100;
     *DEV_I2C = 0x00020000 | x;

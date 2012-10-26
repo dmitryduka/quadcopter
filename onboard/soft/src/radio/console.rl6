@@ -67,8 +67,13 @@ void alt() {
     System::Bus::UART::write_waiting("\n");
 }
 
+void press() {
+    System::Bus::UART::write_waiting(b32todec(System::Registry::value(System::Registry::PRESSURE)));
+    System::Bus::UART::write_waiting("\n");
+}
+
 void temp() {
-    System::Bus::UART::write_waiting(b32tohex(System::Registry::value(System::Registry::TEMPERATURE)));
+    System::Bus::UART::write_waiting(b32todec(System::Registry::value(System::Registry::TEMPERATURE)));
     System::Bus::UART::write_waiting("\n");
 }
 
@@ -135,6 +140,7 @@ void parseConsoleMessage(const char* str) {
 	action quat { quat(); }
 	action angles { angles(); }
 	action acc { acc(); }
+	action press { press(); }
 	action alt { alt(); }
 	action temp { temp(); }
 	action get_throttle { get_throttle(); }
@@ -162,6 +168,7 @@ void parseConsoleMessage(const char* str) {
 			 'get_temp' @temp |
 			 'get_gyro' @gyro |
 			 'get_magn' @magn |
+			 'get_press' @press |
 			 'get_pid' @get_pid |
 			 ('set_pid' snumarg{3}) %set_pid |
 			 ('set_throttle' unumarg) %set_throttle |

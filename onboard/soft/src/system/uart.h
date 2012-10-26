@@ -1,5 +1,5 @@
-#ifndef I2C_H
-#define I2C_H
+#ifndef UART_H
+#define UART_H
 
 #include "types.h"
 
