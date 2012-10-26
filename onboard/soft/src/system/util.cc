@@ -14,6 +14,7 @@ static void winkleds() {
 
 void init() {
     Sensors::IMU::MPU6050::init();
+    Sensors::Baro::init();
     winkleds();
 }
 

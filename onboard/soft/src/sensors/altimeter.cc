@@ -1,13 +1,35 @@
 #include "altimeter.h"
-#include <system>
+#include <common>
+#include <system/i2c.h>
+#include <system/util.h>
 
 namespace Sensors {
 namespace Baro {
 
 unsigned short int _C[MS561101BA_PROM_REG_COUNT];
+namespace I2C = System::Bus::I2C;
 
 void init() {
-    /* TODO: read calibration from the sensor PROM */
+    /* reset the sensor */
+    I2C::start();
+    I2C::write(MS561101BA_ADDR_CSB_LOW);
+    I2C::write(MS561101BA_RESET);
+    I2C::stop();
+    /* wait while MS561101BA reloads PROM into its internal register */
+    System::delay(3_ms);
+
+    /* read calibration data from PROM */
+    for (int i = 0; i < MS561101BA_PROM_REG_COUNT; ++i) {
+	I2C::start();
+	I2C::write(MS561101BA_ADDR_CSB_LOW);
+	I2C::write(MS561101BA_PROM_BASE_ADDR + (i * MS561101BA_PROM_REG_SIZE));
+	I2C::stop();
+
+	I2C::start();
+	I2C::write(MS561101BA_ADDR_CSB_LOW);
+        _C[i] = ((unsigned short int)I2C::read() << 8) | I2C::read();
+        I2C::stop();
+    }
 }
 
 void startTemperatureConversion(unsigned char OSR) {
