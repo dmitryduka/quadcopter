@@ -9,6 +9,8 @@ namespace Baro {
 #define MS561101BA_ADDR_CSB_HIGH  0x76   //CBR=1 0x76 I2C address when CSB is connected to HIGH (VCC)
 #define MS561101BA_ADDR_CSB_LOW   0x77   //CBR=0 0x77 I2C address when CSB is connected to LOW (GND)
 
+#define MS561101BA_ADDRESS MS561101BA_ADDR_CSB_LOW
+
 // registers of the device
 #define MS561101BA_D1 0x40
 #define MS561101BA_D2 0x50

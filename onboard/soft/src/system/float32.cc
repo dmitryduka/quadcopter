@@ -654,6 +654,28 @@ float32 operator/(float a, float32 b) {  return float32(a) / b; }
 
 /* Math functions for the float32 type */
 namespace f32 {
+
+float32 log2(const float32& x) {
+    union { float f; unsigned int i; } vx = { x };
+    union { unsigned int i; float f; } mx = { (vx.i & 0x007FFFFF) | (0x7e << 23) };
+    float32 y(vx.i);
+    y *= float32(1.19209303e-7f);
+    return y - float32(124.22544637f) - float32(1.498030302f) * mx.f - float32(1.72587999f) / (float32(0.3520887068f) + mx.f);
+}
+
+float32 pow2(const float32& p)
+{
+    const float32 offset = (p < float32(0.0f)) ? float32(1.0f) : float32(0.0f);
+    const float32 clipp = (p < float32(-126.0f)) ? float32(-126.0f) : p;
+    const int w = clipp;
+    const float32 z = (clipp - float32(w)) + offset;
+    const float32 temp = clipp + float32(121.2740575f) + float32(27.7280233f) / (float32(4.84252568f) - z) - float32(1.49012907f) * z;
+    union { unsigned int i; float32 f; } v = { (1 << 23) * ((int)abs(temp)) };
+    return v.f;
+}
+
+float32 pow(const float32& x, const float32& p) { return pow2 (p * log2(x)); }
+
 /* Quake3 sqrt implementation */
 float32 sqrt(const float32& x) {
 #define SQRT_MAGIC_F 0x5f3759df 

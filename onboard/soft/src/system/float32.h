@@ -94,7 +94,10 @@ float32 operator*(float, float32);
 float32 operator/(float, float32);
 namespace f32 {
 
-/* Math functions for the float32 type */
+/* Math functions for the float32 type, almost all of them are approximations */
+float32 log2(const float32& x);
+float32 pow2(const float32& x);
+float32 pow(const float32& x, const float32& p);
 float32 abs(const float32);
 float32 sin(const float32&);
 float32 asin(const float32&);
