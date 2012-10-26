@@ -12,6 +12,7 @@ enum TaskType {
     XBeeReadIdleTask,
     TelemetryTask,
     MARGTask,
+    AltitudeTask,
     TASK_TYPE_COUNT
 };
 

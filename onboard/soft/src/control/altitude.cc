@@ -1,6 +1,8 @@
 #include "altitude.h"
 #include <sensors>
 
+namespace Control {
+
 AltitudeTask::AltitudeTask() : state(START_CONVERSION) {}
 
 void AltitudeTask::start() {
@@ -12,4 +14,6 @@ void AltitudeTask::start() {
 	//System::Registry::set(System::Registry::ALTITUDE, altitude);
 	state = START_CONVERSION;
     }
+}
+
 }

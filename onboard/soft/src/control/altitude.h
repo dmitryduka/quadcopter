@@ -3,6 +3,7 @@
 
 #include <system>
 
+namespace Control {
 /* This task is a simple 2-state state machine: it either requests barometer to 
     start conversion (which takes considerable amount of time) or requests it to
     read pressure/temperature values */
@@ -17,5 +18,6 @@ public:
     void start();
 };
 
+}
 
 #endif

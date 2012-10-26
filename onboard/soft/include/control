@@ -3,5 +3,6 @@
 
 #include <control/marg.h>
 #include <control/stabilization.h>
+#include <control/altitude.h>
 
 #endif
