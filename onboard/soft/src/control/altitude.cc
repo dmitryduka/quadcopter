@@ -3,17 +3,13 @@
 
 AltitudeTask::AltitudeTask() : state(START_CONVERSION) {}
 
-void AltitudeTask::calculateAltitude() {
-    /* TODO: implement this */
-}
-
 void AltitudeTask::start() {
     if(state == START_CONVERSION) {
-	Sensors::Baro::startConversion();
+	Sensors::Baro::startConversion(MS561101BA_OSR_4096);
     } else if(state == GET_PRESSURE) {
-	Sensors::Baro::updatePressure();
-	calculateAltitude();
-	System::Registry::setValue(System::Registry::ALTITUDE, altitude);
+	Sensors::Baro::update();
+	/* TODO: calculate altitude from pressure & temperature here */
+	//System::Registry::set(System::Registry::ALTITUDE, altitude);
 	state = START_CONVERSION;
     }
 }

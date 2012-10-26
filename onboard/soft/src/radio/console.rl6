@@ -63,7 +63,7 @@ void get_throttle() {
 }
 
 void alt() {
-    System::Bus::UART::write_waiting(b32tohex(System::Registry::value(System::Registry::ALTIMETER)));
+    System::Bus::UART::write_waiting(b32tohex(System::Registry::value(System::Registry::ALTITUDE)));
     System::Bus::UART::write_waiting("\n");
 }
 

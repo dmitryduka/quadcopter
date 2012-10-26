@@ -29,12 +29,9 @@ namespace Baro {
 #define MS561101BA_PROM_REG_COUNT 6 // number of registers in the PROM
 #define MS561101BA_PROM_REG_SIZE 2 // size in bytes of a prom registry.
 
-unsigned short int _C[MS561101BA_PROM_REG_COUNT];
-unsigned int pressure;
-
 void init();
 void startConversion(unsigned char OSR);
-unsigned int getPressure();
+void update();
 
 }
 

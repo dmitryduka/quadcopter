@@ -40,7 +40,8 @@ public:
         COMPASS_Z,
         /* Barometer */
         TEMPERATURE,
-        ALTIMETER,
+        PRESSURE,
+        ALTITUDE,
         /* Throttle */
         THROTTLE,
         /* PID values */

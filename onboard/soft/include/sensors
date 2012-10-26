@@ -2,6 +2,7 @@
 #define SENSORS_HEADER
 
 #include <sensors/imu.h>
+#include <sensors/altimeter.h>
 using namespace Sensors::IMU;
 
 #endif
