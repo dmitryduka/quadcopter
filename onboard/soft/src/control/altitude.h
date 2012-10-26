@@ -9,7 +9,7 @@ namespace Control {
     read pressure/temperature values */
 class AltitudeTask : public System::Tasking::ContinuousTask {
 private:
-    enum State { START_CONVERSION, GET_PRESSURE };
+    enum State { GET_PRESSURE_AND_START_TEMPERATURE_CONVERSION, GET_TEMPERATURE_AND_START_PRESSURE_CONVERSION };
     State state;
 
     void calculateAltitude();

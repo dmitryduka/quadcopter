@@ -3,16 +3,17 @@
 
 namespace Control {
 
-AltitudeTask::AltitudeTask() : state(START_CONVERSION) {}
+AltitudeTask::AltitudeTask() : state(GET_PRESSURE_AND_START_TEMPERATURE_CONVERSION) {}
 
 void AltitudeTask::start() {
-    if(state == START_CONVERSION) {
-	Sensors::Baro::startConversion(MS561101BA_OSR_4096);
-    } else if(state == GET_PRESSURE) {
-	Sensors::Baro::update();
-	/* TODO: calculate altitude from pressure & temperature here */
-	//System::Registry::set(System::Registry::ALTITUDE, altitude);
-	state = START_CONVERSION;
+    if(state == GET_PRESSURE_AND_START_TEMPERATURE_CONVERSION) {
+	Sensors::Baro::updatePressure();
+	Sensors::Baro::startTemperatureConversion(MS561101BA_OSR_4096);
+	state = GET_TEMPERATURE_AND_START_PRESSURE_CONVERSION;
+    } else if(state == GET_TEMPERATURE_AND_START_PRESSURE_CONVERSION) {
+	Sensors::Baro::updateTemperature();
+	Sensors::Baro::startPressureConversion(MS561101BA_OSR_4096);
+	state = GET_PRESSURE_AND_START_TEMPERATURE_CONVERSION;
     }
 }
 

@@ -10,14 +10,22 @@ void init() {
     /* TODO: read calibration from the sensor PROM */
 }
 
-void startConversion(unsigned char OSR) {
+void startTemperatureConversion(unsigned char OSR) {
     /* TODO: request sensor to start conversion */
 }
 
-void update() {
+void startPressureConversion(unsigned char OSR) {
+    /* TODO: request sensor to start conversion */
+}
+
+void updatePressure() {
     /* TODO: read values from the sensor and update registry */
     //System::Registry::set(System::Registry::PRESSURE, );
-    //System::Registry::set(System::Registry::TEMPERATURE, );
+}
+
+void updateTemperature() {
+    /* TODO: read values from the sensor and update registry */
+    //System::Registry::set(System::Registry::PRESSURE, );
 }
 
 }

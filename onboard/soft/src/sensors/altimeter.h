@@ -30,8 +30,10 @@ namespace Baro {
 #define MS561101BA_PROM_REG_SIZE 2 // size in bytes of a prom registry.
 
 void init();
-void startConversion(unsigned char OSR);
-void update();
+void startTemperatureConversion(unsigned char OSR);
+void startPressureConversion(unsigned char OSR);
+void updatePressure();
+void updateTemperature();
 
 }
 
