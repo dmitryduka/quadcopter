@@ -11,6 +11,8 @@ template<typename T> T max(T a, T b) { return a < b ? b : a; }
 
 static unsigned int abs(int x) { return x < 0 ? -x : x; }
 
+static unsigned long long int absl(long long int x) { return x < 0 ? -x : x; }
+
 // Approximates sqrt(x^2 + y^2) with a maximum error of 4%
 // Uses two squares shifted by 45 dg
 static unsigned int fastnorm2(int x, int y)

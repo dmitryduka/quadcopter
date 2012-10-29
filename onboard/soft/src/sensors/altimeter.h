@@ -33,7 +33,7 @@ void init();
 void startTemperatureConversion(unsigned char OSR);
 void startPressureConversion(unsigned char OSR);
 void updatePressure();
-void updateTemperature();
+void updateTemperature() __attribute__ ((noinline));
 
 }
 

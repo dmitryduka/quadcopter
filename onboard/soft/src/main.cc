@@ -7,9 +7,9 @@ int main() {
     Tasks::TaskScheduler scheduler;
 
     ADD_IDLE_TASK(scheduler, XBeeReadIdleTask);
-    ADD_CONTINUOUS_TASK(scheduler, MARGTask, 300_hz);
+    ADD_CONTINUOUS_TASK(scheduler, MARGTask, 100_hz);
     ADD_CONTINUOUS_TASK(scheduler, TelemetryTask, 10_hz);
-    ADD_CONTINUOUS_TASK(scheduler, AltitudeTask, 15_hz);
+    ADD_CONTINUOUS_TASK(scheduler, AltitudeTask, 25_hz);
 
     /* Forever */
     scheduler.start();

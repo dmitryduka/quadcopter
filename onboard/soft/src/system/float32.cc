@@ -655,6 +655,7 @@ float32 operator/(float a, float32 b) {  return float32(a) / b; }
 /* Math functions for the float32 type */
 namespace f32 {
 
+
 float32 log2(const float32& x) {
     union { float f; unsigned int i; } vx = { x };
     union { unsigned int i; float f; } mx = { (vx.i & 0x007FFFFF) | (0x7e << 23) };
@@ -665,16 +666,11 @@ float32 log2(const float32& x) {
 
 float32 pow2(const float32& p)
 {
-    const float32 offset = (p < float32(0.0f)) ? float32(1.0f) : float32(0.0f);
-    const float32 clipp = (p < float32(-126.0f)) ? float32(-126.0f) : p;
-    const int w = clipp;
-    const float32 z = (clipp - float32(w)) + offset;
-    const float32 temp = clipp + float32(121.2740575f) + float32(27.7280233f) / (float32(4.84252568f) - z) - float32(1.49012907f) * z;
-    union { unsigned int i; float32 f; } v = { (1 << 23) * ((int)abs(temp)) };
+    union { unsigned int i; float32 f; } v = { (int)((p + 126.94269504f) * float32(1 << 23)) };
     return v.f;
 }
 
-float32 pow(const float32& x, const float32& p) { return pow2 (p * log2(x)); }
+float32 pow(const float32& x, const float32& p) { return pow2(p * log2(x)); }
 
 /* Quake3 sqrt implementation */
 float32 sqrt(const float32& x) {
@@ -688,6 +684,10 @@ float32 sqrt(const float32& x) {
     u.x = x;
     u.i = SQRT_MAGIC_F - (u.i >> 1);  // gives initial guess y0
     return float32(x) * u.x * (1.5f - xhalf * u.x * u.x);// Newton step, repeating increases accuracy 
+}
+
+float32 log10(const float32& x) {
+    return log2(x) / float32(3.321928f);
 }
 
 /* http://en.wikipedia.org/wiki/Fast_inverse_square_root */

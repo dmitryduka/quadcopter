@@ -1,6 +1,7 @@
 #ifndef ALTITUDE_H
 #define ALTITUDE_H
 
+#include <common>
 #include <system>
 
 namespace Control {
@@ -11,6 +12,7 @@ class AltitudeTask : public System::Tasking::ContinuousTask {
 private:
     enum State { GET_PRESSURE_AND_START_TEMPERATURE_CONVERSION, GET_TEMPERATURE_AND_START_PRESSURE_CONVERSION };
     State state;
+    moving_average<int, 32> filter;
 
     void calculateAltitude();
 public:

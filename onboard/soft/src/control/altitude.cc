@@ -1,10 +1,22 @@
 #include "altitude.h"
+#include <common>
 #include <system>
 #include <sensors>
 
 #define SR System::Registry
 
 namespace Control {
+
+/* Hypsometric formula is used to convert current pressure to altitude.
+   (P0/P)^(1 / 5.2558797). It takes a lot of cycles to compule pow(x,y)
+   for floating point numbers, so here is special function which computes
+   specifically x^(1/5.2558797) using 4-order polynomial approximation with
+   error < 1.8e-5 in the region of [-600, 5500] meters */
+static float32 mypow(const float32& x) {
+    const float32 P[5] = { float32(-0.0105f), float32(0.0780f), float32(-0.2461f), float32(0.4903f), float32(0.6883f)};
+    const float32 xx = x * x;
+    return P[0] * xx * xx + P[1] * xx * x + P[2] * xx + P[3] * x + P[4];
+}
 
 AltitudeTask::AltitudeTask() : state(GET_PRESSURE_AND_START_TEMPERATURE_CONVERSION) {}
 
@@ -21,16 +33,14 @@ void AltitudeTask::start() {
 
     /* compute new altitude */
     /* TODO: Compute altitude, try avoiding floating point */
-    float32 press(SR::value(SR::PRESSURE)); /* altitude in cm */
+    float32 PF(SR::value(SR::PRESSURE)); /* altitude in cm */
     float32 temp(SR::value(SR::TEMPERATURE)); /* altitude in cm */
-    const float32 sea_press(101325.0f);
-    const float32 factor(0.19022256f);
-    const float32 one(1.0f);
-    const float32 zero_temp(27315.0f);
-    const float32 factor2(0.0065f);
-    /* altitude in meter */
-    float32 alt = ((f32::pow((sea_press / press), factor) - one) * (temp + zero_temp)) / factor2;
-    SR::set(SR::ALTITUDE, alt);
+    const float32 PS(101325.0f);
+
+    const float32 temp1 = mypow(PS / PF);
+    const float32 alt = (temp1 - float32(1.0f)) * (temp + float32(27315.0f)) / float32(0.0065f);
+    /* altitude in meters */
+    SR::set(SR::ALTITUDE, filter((int)alt));
 }
 
 }
