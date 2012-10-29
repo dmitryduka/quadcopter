@@ -77,19 +77,51 @@ void temp() {
     System::Bus::UART::write_waiting("\n");
 }
 
-void pid() {
-    System::Bus::UART::write_waiting(b32tohex(System::Registry::value(System::Registry::PID_P)));
+void pitchroll_pid() {
+    System::Bus::UART::write_waiting(b32tohex(System::Registry::value(System::Registry::PITCH_ROLL_PID_P)));
     System::Bus::UART::write_waiting(" ");
-    System::Bus::UART::write_waiting(b32tohex(System::Registry::value(System::Registry::PID_I)));
+    System::Bus::UART::write_waiting(b32tohex(System::Registry::value(System::Registry::PITCH_ROLL_PID_I)));
     System::Bus::UART::write_waiting(" ");
-    System::Bus::UART::write_waiting(b32tohex(System::Registry::value(System::Registry::PID_D)));
+    System::Bus::UART::write_waiting(b32tohex(System::Registry::value(System::Registry::PITCH_ROLL_PID_D)));
     System::Bus::UART::write_waiting("\n");
 }
 
-void set_pid(int P, int I, int D) {
-    System::Registry::set(System::Registry::PID_P, P);
-    System::Registry::set(System::Registry::PID_I, I);
-    System::Registry::set(System::Registry::PID_D, D);
+void set_pitchroll_pid(int P, int I, int D) {
+    System::Registry::set(System::Registry::PITCH_ROLL_PID_P, P);
+    System::Registry::set(System::Registry::PITCH_ROLL_PID_I, I);
+    System::Registry::set(System::Registry::PITCH_ROLL_PID_D, D);
+    System::Bus::UART::write_waiting(RESPONSE_OK);
+}
+
+void heading_pid() {
+    System::Bus::UART::write_waiting(b32tohex(System::Registry::value(System::Registry::HEADING_PID_P)));
+    System::Bus::UART::write_waiting(" ");
+    System::Bus::UART::write_waiting(b32tohex(System::Registry::value(System::Registry::HEADING_PID_I)));
+    System::Bus::UART::write_waiting(" ");
+    System::Bus::UART::write_waiting(b32tohex(System::Registry::value(System::Registry::HEADING_PID_D)));
+    System::Bus::UART::write_waiting("\n");
+}
+
+void set_heading_pid(int P, int I, int D) {
+    System::Registry::set(System::Registry::HEADING_PID_P, P);
+    System::Registry::set(System::Registry::HEADING_PID_I, I);
+    System::Registry::set(System::Registry::HEADING_PID_D, D);
+    System::Bus::UART::write_waiting(RESPONSE_OK);
+}
+
+void altitude_pid() {
+    System::Bus::UART::write_waiting(b32tohex(System::Registry::value(System::Registry::ALTITUDE_PID_P)));
+    System::Bus::UART::write_waiting(" ");
+    System::Bus::UART::write_waiting(b32tohex(System::Registry::value(System::Registry::ALTITUDE_PID_I)));
+    System::Bus::UART::write_waiting(" ");
+    System::Bus::UART::write_waiting(b32tohex(System::Registry::value(System::Registry::ALTITUDE_PID_D)));
+    System::Bus::UART::write_waiting("\n");
+}
+
+void set_altitude_pid(int P, int I, int D) {
+    System::Registry::set(System::Registry::ALTITUDE_PID_P, P);
+    System::Registry::set(System::Registry::ALTITUDE_PID_I, I);
+    System::Registry::set(System::Registry::ALTITUDE_PID_D, D);
     System::Bus::UART::write_waiting(RESPONSE_OK);
 }
 
@@ -146,8 +178,12 @@ void parseConsoleMessage(const char* str) {
 	action get_throttle { get_throttle(); }
 	action gyro { gyro(); }
 	action magn { magn(); }
-	action get_pid { pid(); }
-	action set_pid { set_pid(arg[0], arg[1], arg[2]); }
+	action get_pitchroll_pid { pitchroll_pid(); }
+	action set_pitchroll_pid { set_pitchroll_pid(arg[0], arg[1], arg[2]); }
+	action get_heading_pid { heading_pid(); }
+	action set_heading_pid { set_heading_pid(arg[0], arg[1], arg[2]); }
+	action get_altitude_pid { altitude_pid(); }
+	action set_altitude_pid { set_altitude_pid(arg[0], arg[1], arg[2]); }
 	action set_throttle { set_throttle(arg[0]); }
 	action set_pitch { set_pitch(arg[0]); }
 	action set_yaw { set_yaw(arg[0]); }
@@ -169,8 +205,12 @@ void parseConsoleMessage(const char* str) {
 			 'get_gyro' @gyro |
 			 'get_magn' @magn |
 			 'get_press' @press |
-			 'get_pid' @get_pid |
-			 ('set_pid' snumarg{3}) %set_pid |
+			 'get_pitchroll_pid' @get_pitchroll_pid |
+			 'get_heading_pid' @get_heading_pid |
+			 'get_altitude_pid' @get_altitude_pid |
+			 ('set_pitchroll_pid' snumarg{3}) %set_pitchroll_pid |
+			 ('set_heading_pid' snumarg{3}) %set_heading_pid |
+			 ('set_altitude_pid' snumarg{3}) %set_altitude_pid |
 			 ('set_throttle' unumarg) %set_throttle |
 			 ('set_pitch' snumarg) %set_pitch |
 			 ('set_yaw' snumarg) %set_yaw |

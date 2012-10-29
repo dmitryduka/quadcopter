@@ -10,8 +10,8 @@ namespace Baro {
 
 #define SR System::Registry
 
-unsigned int _C[MS561101BA_PROM_REG_COUNT];
-long long int dT, OFF2, SENS2;
+static unsigned int _C[MS561101BA_PROM_REG_COUNT];
+static long long int dT, OFF2, SENS2;
 
 namespace I2C = System::Bus::I2C;
 namespace UART = System::Bus::UART;

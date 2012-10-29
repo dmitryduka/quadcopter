@@ -42,22 +42,35 @@ public:
         TEMPERATURE,
         PRESSURE,
         ALTITUDE,
+        DESIRED_ALTITUDE,
         /* Throttle */
         THROTTLE,
+        /* Angles in millidegrees */
+        ANGLE_PITCH,
+        ANGLE_ROLL,
+        ANGLE_YAW,
+        /* Desired angles in millidegrees */
+        DESIRED_PITCH,
+        DESIRED_YAW,
+        DESIRED_ROLL,
         /* PID values */
-        PID_P,
-        PID_I,
-        PID_D,
+	PITCH_ROLL_PID_P,
+	PITCH_ROLL_PID_I,
+        PITCH_ROLL_PID_D,
+        PITCH_ROLL_PID_IMAX,
+        HEADING_PID_P,
+        HEADING_PID_I,
+        HEADING_PID_D,
+        HEADING_PID_IMAX,
+        ALTITUDE_PID_P,
+        ALTITUDE_PID_I,
+        ALTITUDE_PID_D,
+        ALTITUDE_PID_IMAX,
         /* PID corrections */
         PID_CORRECTION_X,
         PID_CORRECTION_Y,
         /* PID corrections */
-        AZIMUTH_CORRECTION_X,
-        AZIMUTH_CORRECTION_Y,
-        /* Desired angles */
-        DESIRED_PITCH,
-        DESIRED_YAW,
-        DESIRED_ROLL,
+        AZIMUTH_CORRECTION,
         /* etc */
         VALUES_END
     };

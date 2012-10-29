@@ -2,28 +2,26 @@
 #define STABILIZATION_HPP
 
 #include <system>
-
+#include "pid.hpp"
 namespace Control {
 
 /*  TODO: comments
     */
 class StabilizationAndEngineUpdateTask : public Tasks::ContinuousTask {
 private:
-    static constexpr unsigned int Kp = 160;
-    static constexpr unsigned int Ki = 3;
-    static constexpr unsigned int Kd = 300;
-    static constexpr unsigned int I_MAX = 2000;
+    constexpr static unsigned int MINIMUM_THROTTLE_FOR_CORRECTIONS = 200;
 
-    static constexpr unsigned int MINIMUM_THROTTLE = 100;
-    static constexpr unsigned int MINIMUM_THROTTLE_FOR_CORRECTIONS = 200;
-
-    int ix, iy, ox, oy;
+    PID<External<SR::GYRO_X>> rollPID;
+    PID<External<SR::GYRO_Y>> pitchPID;
+    PID<Internal> headingPID;
+    PID<Internal> altitudePID;
 public:
     StabilizationAndEngineUpdateTask();
-    /* Calculate all corrections and apply them to motors */
     virtual void start();
 
     void horizontalStabilization();
+    void headingStabilization();
+    void altitudeStabilization();
 };
 }
 #endif
