@@ -18,7 +18,7 @@ TaskScheduler::TaskScheduler() : idleTasks(0),
 				lastRtc(0) {}
 
 void TaskScheduler::start() {
-    selectNextTask(0);
+    selectNextTask(*DEV_RTC);
     forever {
 	unsigned int rtc = *DEV_RTC;
         /* Check if RTC value is equal or higher than nextTask' execution time,
@@ -26,6 +26,7 @@ void TaskScheduler::start() {
         MAX_TASK_INTERVAL_TICKS is defined in the devices.hpp and is 'once in a minute' */
         if (nextTask.task && ((rtc - lastRtc) >= timeToWait)) {
             nextTask.task->start();
+            lastRtc = rtc;
             if (nextTask.queue == ONE_SHOT_QUEUE) removeTask(nextTask.task);
             else nextTask.task->executeAt = rtc + nextTask.task->interval;
             selectNextTask(rtc);
@@ -105,20 +106,19 @@ void TaskScheduler::selectNextTask(unsigned int rtc) {
             while (cur) {
                 if (cur->executeAt - rtc < minimumExecuteAt) {
             	    minimumExecuteAt = cur->executeAt - rtc;
-		    lastRtc = rtc;
-		    timeToWait = nextTask.time - lastRtc;
                     nextTaskCandidate = cur;
-                    queue = q;
+        	    queue = q;
                 }
                 cur = cur->nextTask;
             }
         }
     }
-    return setNextTask(nextTaskCandidate, queue);
+    return setNextTask(nextTaskCandidate, queue, rtc);
 }
 
 /* Sets up nextTask structure (which is used in the main loop of the scheduler) */
-void TaskScheduler::setNextTask(Task* t, Task* list) {
+void TaskScheduler::setNextTask(Task* t, Task* list, unsigned int rtc) {
+    timeToWait = nextTask.time - rtc;
     nextTask.task = t;
     nextTask.time = t->executeAt;
     nextTask.queue = (list == continuousTasks) ? CONTINUOUS_QUEUE : ONE_SHOT_QUEUE;

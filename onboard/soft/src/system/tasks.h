@@ -83,7 +83,7 @@ private:
     /* Sets nextTask */
     void selectNextTask(unsigned int rtc);
     /* Sets up nextTask structure (which is used in the main loop of the scheduler) */
-    void setNextTask(Task* t, Task* list);
+    void setNextTask(Task* t, Task* list, unsigned int rtc);
     /* Adds Task t to the queue ('list') */
     void addTask(Task** list, Task* t, int delay);
 public:
