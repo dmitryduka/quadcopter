@@ -1,6 +1,7 @@
 #ifndef RADIO_HEADER
 #define RADIO_HEADER
 
+#include <config>
 #include <radio/messages.hpp>
 #include <radio/telemetry.h>
 #include <radio/console.h>

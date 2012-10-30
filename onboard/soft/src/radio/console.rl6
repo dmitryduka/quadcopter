@@ -1,8 +1,11 @@
+
 #include "console.h"
 #include <common>
 #include <system>
 
 /* ---------- actions implementation ----------- */
+
+#if CONSOLE_ENABLED == 1
 
 const char* RESPONSE_OK = ":)\n";
 
@@ -226,3 +229,5 @@ void parseConsoleMessage(const char* str) {
     if (cs < parseConsoleMessage_first_final) 
 	System::Bus::UART::write_waiting(":?\n");
 }
+
+#endif

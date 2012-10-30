@@ -1,6 +1,7 @@
 #ifndef SYSTEM_HEADER
 #define SYSTEM_HEADER
 
+#include <config>
 #include <system/uart.h>
 #include <system/i2c.h>
 #include <system/devices.hpp>

@@ -1,6 +1,7 @@
 #ifndef COMMON_HEADER
 #define COMMON_HEADER
 
+#include <config>
 #include <common/ct-utility.hpp>
 #include <common/string.h>
 #include <common/maths.hpp>

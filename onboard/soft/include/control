@@ -1,6 +1,7 @@
 #ifndef CONTROL_HEADER
 #define CONTROL_HEADER
 
+#include <config>
 #include <control/marg.h>
 #include <control/stabilization.h>
 #include <control/altitude.h>
