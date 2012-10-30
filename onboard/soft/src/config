@@ -1,1 +1,2 @@
 #define CONSOLE_ENABLED 1
+#define DEBUG_INFO_UART 0

@@ -118,7 +118,7 @@ void TaskScheduler::selectNextTask(unsigned int rtc) {
 
 /* Sets up nextTask structure (which is used in the main loop of the scheduler) */
 void TaskScheduler::setNextTask(Task* t, Task* list, unsigned int rtc) {
-    timeToWait = nextTask.time - rtc;
+    timeToWait = t->executeAt - rtc;
     nextTask.task = t;
     nextTask.time = t->executeAt;
     nextTask.queue = (list == continuousTasks) ? CONTINUOUS_QUEUE : ONE_SHOT_QUEUE;
