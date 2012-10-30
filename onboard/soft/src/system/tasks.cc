@@ -18,13 +18,16 @@ TaskScheduler::TaskScheduler() : idleTasks(0),
 				lastRtc(0) {}
 
 void TaskScheduler::start() {
-    selectNextTask(*DEV_RTC);
+    selectNextTask(0);
     forever {
 	unsigned int rtc = *DEV_RTC;
         /* Check if RTC value is equal or higher than nextTask' execution time,
         accounting that they could be on different sides of RTC overflow.
         MAX_TASK_INTERVAL_TICKS is defined in the devices.hpp and is 'once in a minute' */
         if (nextTask.task && ((rtc - lastRtc) >= timeToWait)) {
+	   /* System::Bus::UART::write_waiting("run: ");
+	    System::Bus::UART::write_waiting(b32tohex(rtc));
+	    System::Bus::UART::write_waiting('\n');*/
             nextTask.task->start();
             lastRtc = rtc;
             if (nextTask.queue == ONE_SHOT_QUEUE) removeTask(nextTask.task);
@@ -95,7 +98,10 @@ void TaskScheduler::selectNextTask(unsigned int rtc) {
     Task* nextTaskCandidate = 0;
     Task** queues[QUEUES_COUNT] = {&continuousTasks, &oneShotTasks};
     Task* queue = 0;
-    unsigned int minimumExecuteAt = 0xFFFFFFFF;
+    timeToWait = 0xFFFFFFFF;
+/*    System::Bus::UART::write_waiting("rtc: ");
+    System::Bus::UART::write_waiting(b32tohex(rtc));
+    System::Bus::UART::write_waiting('\n');*/
     for (int i = 0; i < QUEUES_COUNT; ++i) {
         Task* q = *(queues[i]);
         if (q) {
@@ -104,8 +110,15 @@ void TaskScheduler::selectNextTask(unsigned int rtc) {
             and some task' time to execute.
             */
             while (cur) {
-                if (cur->executeAt - rtc < minimumExecuteAt) {
-            	    minimumExecuteAt = cur->executeAt - rtc;
+/*		System::Bus::UART::write_waiting("cea: ");
+		System::Bus::UART::write_waiting(b32tohex(cur->executeAt));
+		System::Bus::UART::write_waiting('\n');*/
+		unsigned int diff = cur->executeAt - rtc;
+                if (diff < timeToWait) {
+            	    timeToWait = diff;
+/*		    System::Bus::UART::write_waiting("ttw: ");
+		    System::Bus::UART::write_waiting(b32tohex(timeToWait));
+		    System::Bus::UART::write_waiting('\n');*/
                     nextTaskCandidate = cur;
         	    queue = q;
                 }
@@ -119,6 +132,19 @@ void TaskScheduler::selectNextTask(unsigned int rtc) {
 /* Sets up nextTask structure (which is used in the main loop of the scheduler) */
 void TaskScheduler::setNextTask(Task* t, Task* list, unsigned int rtc) {
     timeToWait = t->executeAt - rtc;
+/*    System::Bus::UART::write_waiting("---\n");*/
+    /*System::Bus::UART::write_waiting("tea: ");
+    System::Bus::UART::write_waiting(b32tohex(t->executeAt));
+    System::Bus::UART::write_waiting('\n');
+    System::Bus::UART::write_waiting("ttw: ");
+    System::Bus::UART::write_waiting(b32tohex(timeToWait));
+    System::Bus::UART::write_waiting('\n');
+    System::Bus::UART::write_waiting("rtc: ");
+    System::Bus::UART::write_waiting(b32tohex(rtc));
+    System::Bus::UART::write_waiting('\n');
+    System::Bus::UART::write_waiting("lrtc: ");
+    System::Bus::UART::write_waiting(b32tohex(lastRtc));
+    System::Bus::UART::write_waiting('\n');*/
     nextTask.task = t;
     nextTask.time = t->executeAt;
     nextTask.queue = (list == continuousTasks) ? CONTINUOUS_QUEUE : ONE_SHOT_QUEUE;

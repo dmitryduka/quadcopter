@@ -666,7 +666,7 @@ float32 log2(const float32& x) {
 
 float32 pow2(const float32& p)
 {
-    union { unsigned int i; float32 f; } v = { (int)((p + 126.94269504f) * float32(1 << 23)) };
+    union { int i; float32 f; } v = { (int)((p + 126.94269504f) * float32(1 << 23)) };
     return v.f;
 }
 

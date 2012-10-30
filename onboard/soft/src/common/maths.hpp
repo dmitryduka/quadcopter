@@ -27,6 +27,31 @@ static unsigned int fastnorm2(int x, int y)
 
 static unsigned int fastnorm3(int x, int y, int z) { return fastnorm2(y, fastnorm2(x, z)); }
 
+static void swap(int& x, int& y) {
+    int t = x;
+    x = y;
+    y = t;
+}
+
+static void qsort(int array[], int start, int end){
+    if(start < end){
+        int l = start + 1, r = end, p = array[start];
+        while(l<r){
+            if(array[l] <= p) l++;
+            else if(array[r] >= p) r--;
+	    else swap(array[l],array[r]);
+        }
+        if(array[l] < p){
+            swap(array[l],array[start]);
+	    l--;
+        } else{
+    	    l--;
+            swap(array[l],array[start]);
+        }
+	qsort(array, start, l);
+	qsort(array, r, end);
+    }
+}
 
 static unsigned int isqrt(unsigned int x) {
     unsigned int op = x;

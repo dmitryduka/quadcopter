@@ -5,7 +5,8 @@
 #include <common/ct-utility.hpp>
 #include <common/string.h>
 #include <common/maths.hpp>
-#include <common/moving_average.hpp>
+#include <common/mean_filter.hpp>
+#include <common/median_filter.hpp>
 
 using namespace Math;
 
