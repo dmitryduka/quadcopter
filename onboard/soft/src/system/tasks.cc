@@ -6,6 +6,12 @@
 namespace System {
 namespace Tasking {
 
+static void debugInt(const char* str, unsigned int x) {
+    System::Bus::UART::write_waiting(str);
+    System::Bus::UART::write_waiting(b32tohex(x));
+    System::Bus::UART::write_waiting('\n');
+}
+
 Task::Task() : executeAt(0), interval(0), nextTask(0) { }
 void Task::start() {}
 
@@ -28,13 +34,13 @@ void TaskScheduler::start() {
         accounting that they could be on different sides of RTC overflow.
         MAX_TASK_INTERVAL_TICKS is defined in the devices.hpp and is 'once in a minute' */
         if (nextTask.task && ((rtc - lastRtc) >= timeToWait)) {
+    	    unsigned int currentTaskExecuteAt = nextTask.task->executeAt;
             nextTask.task->start();
             /* Either remove the task from the ONE_SHOT_QUEUE, or increment the execution time
             for the CONTINUOUS_QUEUE task */
             if (nextTask.queue == ONE_SHOT_QUEUE) removeTask(nextTask.task);
             else nextTask.task->executeAt = rtc + nextTask.task->interval;
-
-            selectNextTask(rtc);
+            selectNextTask(currentTaskExecuteAt);
             lastRtc = rtc;
         } else if(idleTasks) { /* If there are any idle tasks */
 	    /* Select next idle task */
@@ -121,8 +127,7 @@ void TaskScheduler::selectNextTask(unsigned int rtc) {
             and some task' time to execute.
             */
             while (cur) {
-		unsigned int diff = cur->executeAt - rtc;
-                if (diff < timeToWait) setNextTask(cur, q, rtc);
+                if (cur->executeAt - rtc < timeToWait) setNextTask(cur, q, rtc);
                 cur = cur->nextTask;
             }
         }
@@ -134,9 +139,7 @@ void TaskScheduler::setNextTask(Task* t, Task* list, unsigned int rtc) {
     if(t) {
 	nextTask.task = t;
 	nextTask.queue = (list == continuousTasks) ? CONTINUOUS_QUEUE : ONE_SHOT_QUEUE;
-	timeToWait = nextTask.task->executeAt - rtc;
-    } else {
-	/* TODO: print some message here */
+	timeToWait = t->executeAt - rtc;
     }
 }
 

@@ -75,8 +75,8 @@ Symbol table '.symtab' contains 90 entries:
     10: 00000000     0 SECTION LOCAL  DEFAULT   10 
     11: 00000000     0 SECTION LOCAL  DEFAULT   11 
     12: 00000000     0 SECTION LOCAL  DEFAULT   12 
-    13: 00000000     0 FILE    LOCAL  DEFAULT  ABS cc7Za1ku.ltrans0.o
-    14: 00000000     0 FILE    LOCAL  DEFAULT  ABS cc7Za1ku.ltrans1.o
+    13: 00000000     0 FILE    LOCAL  DEFAULT  ABS ccyJiPok.ltrans0.o
+    14: 00000000     0 FILE    LOCAL  DEFAULT  ABS ccyJiPok.ltrans1.o
     15: 8000040c    40 OBJECT  LOCAL  DEFAULT    2 _ZN5Radio8MessagesL8handlersE.2954.1800
     16: 00002358   176 FUNC    LOCAL  DEFAULT    1 _ZN7float3212roundAndPackEbij.1768
     17: 00002408   348 FUNC    LOCAL  DEFAULT    1 _ZN7float327addSigsEjjb.1763
@@ -88,10 +88,10 @@ Symbol table '.symtab' contains 90 entries:
     23: 8000030c   256 OBJECT  LOCAL  DEFAULT    2 _ZZN7float3219countLeadingZeros32EjE21countLeadingZerosHigh.3496.1796
     24: 00003408    88 FUNC    LOCAL  DEFAULT    1 _ZN7float32C2Ei.1344
     25: 00003460   344 FUNC    LOCAL  DEFAULT    1 _ZN7float327subSigsEjjb.1745
-    26: 00000000     0 FILE    LOCAL  DEFAULT  ABS cc7Za1ku.ltrans2.o
-    27: 00000000     0 FILE    LOCAL  DEFAULT  ABS cc7Za1ku.ltrans4.o
+    26: 00000000     0 FILE    LOCAL  DEFAULT  ABS ccyJiPok.ltrans2.o
+    27: 00000000     0 FILE    LOCAL  DEFAULT  ABS ccyJiPok.ltrans4.o
     28: 00000000     0 FILE    LOCAL  DEFAULT  ABS /srv/toolchain/build/src/gcc-4.7.1/libgcc/libgcc2.c
-    29: 00000000     0 FILE    LOCAL  DEFAULT  ABS cc7Za1ku.ltrans3.o
+    29: 00000000     0 FILE    LOCAL  DEFAULT  ABS ccyJiPok.ltrans3.o
     30: 00004ee0   532 FUNC    LOCAL  DEFAULT    1 _GLOBAL__sub_I__ZN6System7Tasking4Pool16xbeeReadIdleTaskE.3745.1318
     31: 80000570    68 OBJECT  LOCAL  DEFAULT    2 _ZN6System7Tasking4Pool16xbeeReadIdleTaskE.1749
     32: 80000488    12 OBJECT  LOCAL  DEFAULT    2 _ZTVN5Radio7Digital16XBeeReadIdleTaskE.local.30.1409
@@ -107,7 +107,7 @@ Symbol table '.symtab' contains 90 entries:
     42: 00002c5c   108 FUNC    GLOBAL HIDDEN     1 _ZN6System3Bus4UART13write_waitingEPKcj.constprop.34
     43: 00003b0c   212 FUNC    GLOBAL HIDDEN     1 _ZNK7float32cviEv
     44: 00004e98    72 FUNC    GLOBAL DEFAULT    1 __ashldi3
-    45: 000054e0     0 NOTYPE  GLOBAL DEFAULT    1 CODE_ENDS
+    45: 000054e8     0 NOTYPE  GLOBAL DEFAULT    1 CODE_ENDS
     46: 00002f80   164 FUNC    GLOBAL HIDDEN     1 _ZN6System7Tasking13TaskScheduler14selectNextTaskEj
     47: 00004ac8   976 FUNC    GLOBAL HIDDEN     1 _ZN7Control12AltitudeTask5startEv
     48: 00002620    28 FUNC    GLOBAL HIDDEN     1 _ZN6System7Tasking14ContinuousTaskC2Ev.local.3
@@ -141,7 +141,7 @@ Symbol table '.symtab' contains 90 entries:
     76: 80000558    24 OBJECT  GLOBAL HIDDEN     2 _ZN7Sensors4BaroL2_CE.3096
     77: 00000020  8688 FUNC    GLOBAL HIDDEN     1 _ZN5Radio8Messages14consoleHandlerEPc
     78: 00003068    44 FUNC    GLOBAL HIDDEN     1 _ZN6System3Bus3I2C5writeEh
-    79: 000050f4  1004 FUNC    GLOBAL DEFAULT    1 main
+    79: 000050f4  1012 FUNC    GLOBAL DEFAULT    1 main
     80: 80000788     8 OBJECT  GLOBAL HIDDEN     2 _ZN7Sensors4BaroL4OFF2E.3098
     81: 00003d70   148 FUNC    GLOBAL HIDDEN     1 _Z8b32tohexj
     82: 0000364c    84 FUNC    GLOBAL HIDDEN     1 _ZNK7float32miERKS_

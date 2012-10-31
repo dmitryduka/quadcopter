@@ -5328,261 +5328,261 @@ __ashldi3 (DWtype u, shift_count_type b)
     50f0:	27bd0018 	addiu	sp,sp,24
 
 000050f4 <main>:
-    50f4:	27bdffa8 	addiu	sp,sp,-88
-    50f8:	afbf0054 	sw	ra,84(sp)
-    50fc:	afb40050 	sw	s4,80(sp)
-    5100:	afb3004c 	sw	s3,76(sp)
-    5104:	afb20048 	sw	s2,72(sp)
-    5108:	afb10044 	sw	s1,68(sp)
-    510c:	0c000c38 	jal	30e0 <System::Bus::I2C::start()>
-    5110:	afb00040 	sw	s0,64(sp)
-    5114:	0c000c1a 	jal	3068 <System::Bus::I2C::write(unsigned char)>
-    5118:	240400ee 	li	a0,238
-    511c:	0c000c1a 	jal	3068 <System::Bus::I2C::write(unsigned char)>
-    5120:	2404001e 	li	a0,30
-    5124:	0c000c2f 	jal	30bc <System::Bus::I2C::stop()>
-    5128:	00000000 	nop
-    512c:	3402927c 	li	v0,0x927c
-    5130:	2442ffff 	addiu	v0,v0,-1
-    5134:	1440fffe 	bnez	v0,5130 <main+0x3c>
-    5138:	3c118000 	lui	s1,0x8000
-    513c:	241000a2 	li	s0,162
-    5140:	26310558 	addiu	s1,s1,1368
-    5144:	241200ae 	li	s2,174
-    5148:	0c000c38 	jal	30e0 <System::Bus::I2C::start()>
-    514c:	00000000 	nop
-    5150:	0c000c1a 	jal	3068 <System::Bus::I2C::write(unsigned char)>
-    5154:	240400ee 	li	a0,238
-    5158:	0c000c1a 	jal	3068 <System::Bus::I2C::write(unsigned char)>
-    515c:	02002021 	move	a0,s0
-    5160:	0c000c2f 	jal	30bc <System::Bus::I2C::stop()>
-    5164:	00000000 	nop
-    5168:	0c000c38 	jal	30e0 <System::Bus::I2C::start()>
-    516c:	00000000 	nop
-    5170:	0c000c1a 	jal	3068 <System::Bus::I2C::write(unsigned char)>
-    5174:	240400ef 	li	a0,239
-    5178:	0c000c25 	jal	3094 <System::Bus::I2C::read()>
-    517c:	00000000 	nop
-    5180:	00409821 	move	s3,v0
-    5184:	0c000c25 	jal	3094 <System::Bus::I2C::read()>
-    5188:	00139a00 	sll	s3,s3,0x8
-    518c:	00101840 	sll	v1,s0,0x1
-    5190:	02231821 	addu	v1,s1,v1
-    5194:	02621025 	or	v0,s3,v0
-    5198:	ac62febc 	sw	v0,-324(v1)
-    519c:	0c000c2f 	jal	30bc <System::Bus::I2C::stop()>
-    51a0:	26100002 	addiu	s0,s0,2
-    51a4:	1612ffe8 	bne	s0,s2,5148 <main+0x54>
-    51a8:	2404006b 	li	a0,107
-    51ac:	0c000cd5 	jal	3354 <_ZN7Sensors3IMU7MPU6050L13mpu6050_setupEcc.3183>
-    51b0:	2405ff80 	li	a1,-128
-    51b4:	3402f424 	li	v0,0xf424
-    51b8:	2442ffff 	addiu	v0,v0,-1
-    51bc:	1440fffe 	bnez	v0,51b8 <main+0xc4>
-    51c0:	2404006b 	li	a0,107
-    51c4:	0c000cd5 	jal	3354 <_ZN7Sensors3IMU7MPU6050L13mpu6050_setupEcc.3183>
-    51c8:	00002821 	move	a1,zero
-    51cc:	2404001a 	li	a0,26
-    51d0:	0c000cd5 	jal	3354 <_ZN7Sensors3IMU7MPU6050L13mpu6050_setupEcc.3183>
-    51d4:	24050003 	li	a1,3
-    51d8:	2404001b 	li	a0,27
-    51dc:	0c000cd5 	jal	3354 <_ZN7Sensors3IMU7MPU6050L13mpu6050_setupEcc.3183>
-    51e0:	24050018 	li	a1,24
-    51e4:	2404001c 	li	a0,28
-    51e8:	0c000cd5 	jal	3354 <_ZN7Sensors3IMU7MPU6050L13mpu6050_setupEcc.3183>
-    51ec:	24050018 	li	a1,24
-    51f0:	240230d4 	li	v0,12500
-    51f4:	2442ffff 	addiu	v0,v0,-1
-    51f8:	1440fffe 	bnez	v0,51f4 <main+0x100>
-    51fc:	3c060001 	lui	a2,0x1
-    5200:	24050001 	li	a1,1
-    5204:	34c6e848 	ori	a2,a2,0xe848
-    5208:	24040008 	li	a0,8
-    520c:	00451804 	sllv	v1,a1,v0
-    5210:	306300ff 	andi	v1,v1,0xff
-    5214:	ac030004 	sw	v1,4(zero)
-    5218:	00c01821 	move	v1,a2
-    521c:	2463ffff 	addiu	v1,v1,-1
-    5220:	1460fffe 	bnez	v1,521c <main+0x128>
-    5224:	00000000 	nop
-    5228:	24420001 	addiu	v0,v0,1
-    522c:	1444fff8 	bne	v0,a0,5210 <main+0x11c>
-    5230:	00451804 	sllv	v1,a1,v0
-    5234:	3c060001 	lui	a2,0x1
-    5238:	00001021 	move	v0,zero
-    523c:	24050080 	li	a1,128
-    5240:	34c6e848 	ori	a2,a2,0xe848
-    5244:	24040009 	li	a0,9
-    5248:	00451807 	srav	v1,a1,v0
-    524c:	ac030004 	sw	v1,4(zero)
-    5250:	00c01821 	move	v1,a2
-    5254:	2463ffff 	addiu	v1,v1,-1
-    5258:	1460fffe 	bnez	v1,5254 <main+0x160>
-    525c:	00000000 	nop
-    5260:	24420001 	addiu	v0,v0,1
-    5264:	1444fff9 	bne	v0,a0,524c <main+0x158>
-    5268:	00451807 	srav	v1,a1,v0
-    526c:	3c028000 	lui	v0,0x8000
-    5270:	24420570 	addiu	v0,v0,1392
-    5274:	afa00024 	sw	zero,36(sp)
-    5278:	afa00028 	sw	zero,40(sp)
-    527c:	afa0002c 	sw	zero,44(sp)
-    5280:	ac400008 	sw	zero,8(v0)
-    5284:	8c030010 	lw	v1,16(zero)
-    5288:	27b00010 	addiu	s0,sp,16
-    528c:	3c110007 	lui	s1,0x7
+    50f4:	27bdffa0 	addiu	sp,sp,-96
+    50f8:	afbf005c 	sw	ra,92(sp)
+    50fc:	afb50058 	sw	s5,88(sp)
+    5100:	afb40054 	sw	s4,84(sp)
+    5104:	afb30050 	sw	s3,80(sp)
+    5108:	afb2004c 	sw	s2,76(sp)
+    510c:	afb10048 	sw	s1,72(sp)
+    5110:	0c000c38 	jal	30e0 <System::Bus::I2C::start()>
+    5114:	afb00044 	sw	s0,68(sp)
+    5118:	0c000c1a 	jal	3068 <System::Bus::I2C::write(unsigned char)>
+    511c:	240400ee 	li	a0,238
+    5120:	0c000c1a 	jal	3068 <System::Bus::I2C::write(unsigned char)>
+    5124:	2404001e 	li	a0,30
+    5128:	0c000c2f 	jal	30bc <System::Bus::I2C::stop()>
+    512c:	00000000 	nop
+    5130:	3402927c 	li	v0,0x927c
+    5134:	2442ffff 	addiu	v0,v0,-1
+    5138:	1440fffe 	bnez	v0,5134 <main+0x40>
+    513c:	3c118000 	lui	s1,0x8000
+    5140:	241000a2 	li	s0,162
+    5144:	26310558 	addiu	s1,s1,1368
+    5148:	241200ae 	li	s2,174
+    514c:	0c000c38 	jal	30e0 <System::Bus::I2C::start()>
+    5150:	00000000 	nop
+    5154:	0c000c1a 	jal	3068 <System::Bus::I2C::write(unsigned char)>
+    5158:	240400ee 	li	a0,238
+    515c:	0c000c1a 	jal	3068 <System::Bus::I2C::write(unsigned char)>
+    5160:	02002021 	move	a0,s0
+    5164:	0c000c2f 	jal	30bc <System::Bus::I2C::stop()>
+    5168:	00000000 	nop
+    516c:	0c000c38 	jal	30e0 <System::Bus::I2C::start()>
+    5170:	00000000 	nop
+    5174:	0c000c1a 	jal	3068 <System::Bus::I2C::write(unsigned char)>
+    5178:	240400ef 	li	a0,239
+    517c:	0c000c25 	jal	3094 <System::Bus::I2C::read()>
+    5180:	00000000 	nop
+    5184:	00409821 	move	s3,v0
+    5188:	0c000c25 	jal	3094 <System::Bus::I2C::read()>
+    518c:	00139a00 	sll	s3,s3,0x8
+    5190:	00101840 	sll	v1,s0,0x1
+    5194:	02231821 	addu	v1,s1,v1
+    5198:	02621025 	or	v0,s3,v0
+    519c:	ac62febc 	sw	v0,-324(v1)
+    51a0:	0c000c2f 	jal	30bc <System::Bus::I2C::stop()>
+    51a4:	26100002 	addiu	s0,s0,2
+    51a8:	1612ffe8 	bne	s0,s2,514c <main+0x58>
+    51ac:	2404006b 	li	a0,107
+    51b0:	0c000cd5 	jal	3354 <_ZN7Sensors3IMU7MPU6050L13mpu6050_setupEcc.3183>
+    51b4:	2405ff80 	li	a1,-128
+    51b8:	3402f424 	li	v0,0xf424
+    51bc:	2442ffff 	addiu	v0,v0,-1
+    51c0:	1440fffe 	bnez	v0,51bc <main+0xc8>
+    51c4:	2404006b 	li	a0,107
+    51c8:	0c000cd5 	jal	3354 <_ZN7Sensors3IMU7MPU6050L13mpu6050_setupEcc.3183>
+    51cc:	00002821 	move	a1,zero
+    51d0:	2404001a 	li	a0,26
+    51d4:	0c000cd5 	jal	3354 <_ZN7Sensors3IMU7MPU6050L13mpu6050_setupEcc.3183>
+    51d8:	24050003 	li	a1,3
+    51dc:	2404001b 	li	a0,27
+    51e0:	0c000cd5 	jal	3354 <_ZN7Sensors3IMU7MPU6050L13mpu6050_setupEcc.3183>
+    51e4:	24050018 	li	a1,24
+    51e8:	2404001c 	li	a0,28
+    51ec:	0c000cd5 	jal	3354 <_ZN7Sensors3IMU7MPU6050L13mpu6050_setupEcc.3183>
+    51f0:	24050018 	li	a1,24
+    51f4:	240230d4 	li	v0,12500
+    51f8:	2442ffff 	addiu	v0,v0,-1
+    51fc:	1440fffe 	bnez	v0,51f8 <main+0x104>
+    5200:	3c060001 	lui	a2,0x1
+    5204:	24050001 	li	a1,1
+    5208:	34c6e848 	ori	a2,a2,0xe848
+    520c:	24040008 	li	a0,8
+    5210:	00451804 	sllv	v1,a1,v0
+    5214:	306300ff 	andi	v1,v1,0xff
+    5218:	ac030004 	sw	v1,4(zero)
+    521c:	00c01821 	move	v1,a2
+    5220:	2463ffff 	addiu	v1,v1,-1
+    5224:	1460fffe 	bnez	v1,5220 <main+0x12c>
+    5228:	00000000 	nop
+    522c:	24420001 	addiu	v0,v0,1
+    5230:	1444fff8 	bne	v0,a0,5214 <main+0x120>
+    5234:	00451804 	sllv	v1,a1,v0
+    5238:	3c060001 	lui	a2,0x1
+    523c:	00001021 	move	v0,zero
+    5240:	24050080 	li	a1,128
+    5244:	34c6e848 	ori	a2,a2,0xe848
+    5248:	24040009 	li	a0,9
+    524c:	00451807 	srav	v1,a1,v0
+    5250:	ac030004 	sw	v1,4(zero)
+    5254:	00c01821 	move	v1,a2
+    5258:	2463ffff 	addiu	v1,v1,-1
+    525c:	1460fffe 	bnez	v1,5258 <main+0x164>
+    5260:	00000000 	nop
+    5264:	24420001 	addiu	v0,v0,1
+    5268:	1444fff9 	bne	v0,a0,5250 <main+0x15c>
+    526c:	00451807 	srav	v1,a1,v0
+    5270:	3c028000 	lui	v0,0x8000
+    5274:	24420570 	addiu	v0,v0,1392
+    5278:	afa00024 	sw	zero,36(sp)
+    527c:	afa00028 	sw	zero,40(sp)
+    5280:	afa0002c 	sw	zero,44(sp)
+    5284:	ac400008 	sw	zero,8(v0)
+    5288:	8c030010 	lw	v1,16(zero)
+    528c:	27b00010 	addiu	s0,sp,16
     5290:	3c058000 	lui	a1,0x8000
-    5294:	ac430004 	sw	v1,4(v0)
-    5298:	02002021 	move	a0,s0
-    529c:	ac500010 	sw	s0,16(v0)
-    52a0:	24a5067c 	addiu	a1,a1,1660
-    52a4:	3626a120 	ori	a2,s1,0xa120
-    52a8:	afa00014 	sw	zero,20(sp)
-    52ac:	afa00018 	sw	zero,24(sp)
-    52b0:	afa0001c 	sw	zero,28(sp)
-    52b4:	afa00020 	sw	zero,32(sp)
-    52b8:	0c000c09 	jal	3024 <System::Tasking::TaskScheduler::addTask(System::Tasking::ContinuousTask*, int)>
-    52bc:	afa20010 	sw	v0,16(sp)
-    52c0:	3c058000 	lui	a1,0x8000
-    52c4:	3c06000f 	lui	a2,0xf
-    52c8:	02002021 	move	a0,s0
-    52cc:	24a505b4 	addiu	a1,a1,1460
-    52d0:	0c000c09 	jal	3024 <System::Tasking::TaskScheduler::addTask(System::Tasking::ContinuousTask*, int)>
-    52d4:	24c64240 	addiu	a2,a2,16960
-    52d8:	3c058000 	lui	a1,0x8000
-    52dc:	02002021 	move	a0,s0
-    52e0:	24a506e0 	addiu	a1,a1,1760
-    52e4:	0c000c09 	jal	3024 <System::Tasking::TaskScheduler::addTask(System::Tasking::ContinuousTask*, int)>
-    52e8:	3626a120 	ori	a2,s1,0xa120
-    52ec:	27a20014 	addiu	v0,sp,20
-    52f0:	8c100010 	lw	s0,16(zero)
-    52f4:	afa20030 	sw	v0,48(sp)
-    52f8:	27a20018 	addiu	v0,sp,24
-    52fc:	afa20034 	sw	v0,52(sp)
-    5300:	00001821 	move	v1,zero
-    5304:	24040008 	li	a0,8
-    5308:	27a50030 	addiu	a1,sp,48
-    530c:	00a31021 	addu	v0,a1,v1
-    5310:	8c420000 	lw	v0,0(v0)
-    5314:	00000000 	nop
+    5294:	3c060003 	lui	a2,0x3
+    5298:	ac430004 	sw	v1,4(v0)
+    529c:	02002021 	move	a0,s0
+    52a0:	ac500010 	sw	s0,16(v0)
+    52a4:	24a5067c 	addiu	a1,a1,1660
+    52a8:	34c6d090 	ori	a2,a2,0xd090
+    52ac:	afa00014 	sw	zero,20(sp)
+    52b0:	afa00018 	sw	zero,24(sp)
+    52b4:	afa0001c 	sw	zero,28(sp)
+    52b8:	afa00020 	sw	zero,32(sp)
+    52bc:	0c000c09 	jal	3024 <System::Tasking::TaskScheduler::addTask(System::Tasking::ContinuousTask*, int)>
+    52c0:	afa20010 	sw	v0,16(sp)
+    52c4:	3c058000 	lui	a1,0x8000
+    52c8:	3c060098 	lui	a2,0x98
+    52cc:	02002021 	move	a0,s0
+    52d0:	24a505b4 	addiu	a1,a1,1460
+    52d4:	0c000c09 	jal	3024 <System::Tasking::TaskScheduler::addTask(System::Tasking::ContinuousTask*, int)>
+    52d8:	34c69680 	ori	a2,a2,0x9680
+    52dc:	3c058000 	lui	a1,0x8000
+    52e0:	3c060007 	lui	a2,0x7
+    52e4:	02002021 	move	a0,s0
+    52e8:	24a506e0 	addiu	a1,a1,1760
+    52ec:	0c000c09 	jal	3024 <System::Tasking::TaskScheduler::addTask(System::Tasking::ContinuousTask*, int)>
+    52f0:	34c6a120 	ori	a2,a2,0xa120
+    52f4:	27a20014 	addiu	v0,sp,20
+    52f8:	8c100010 	lw	s0,16(zero)
+    52fc:	afa20030 	sw	v0,48(sp)
+    5300:	27a20018 	addiu	v0,sp,24
+    5304:	afa20034 	sw	v0,52(sp)
+    5308:	00001821 	move	v1,zero
+    530c:	24040008 	li	a0,8
+    5310:	27a50030 	addiu	a1,sp,48
+    5314:	00a31021 	addu	v0,a1,v1
     5318:	8c420000 	lw	v0,0(v0)
     531c:	00000000 	nop
-    5320:	14400006 	bnez	v0,533c <main+0x248>
+    5320:	8c420000 	lw	v0,0(v0)
     5324:	00000000 	nop
-    5328:	24630004 	addiu	v1,v1,4
-    532c:	1464fff7 	bne	v1,a0,530c <main+0x218>
-    5330:	27a50030 	addiu	a1,sp,48
-    5334:	080014d6 	j	5358 <main+0x264>
-    5338:	27b10010 	addiu	s1,sp,16
-    533c:	8c450008 	lw	a1,8(v0)
-    5340:	00000000 	nop
-    5344:	00b02821 	addu	a1,a1,s0
-    5348:	ac450004 	sw	a1,4(v0)
-    534c:	8c42000c 	lw	v0,12(v0)
-    5350:	080014c8 	j	5320 <main+0x22c>
-    5354:	00000000 	nop
-    5358:	02202021 	move	a0,s1
-    535c:	0c000be0 	jal	2f80 <System::Tasking::TaskScheduler::selectNextTask(unsigned int)>
-    5360:	02002821 	move	a1,s0
-    5364:	24120001 	li	s2,1
-    5368:	afb0002c 	sw	s0,44(sp)
-    536c:	27b30014 	addiu	s3,sp,20
-    5370:	27b40018 	addiu	s4,sp,24
-    5374:	8fa40020 	lw	a0,32(sp)
-    5378:	8c100010 	lw	s0,16(zero)
-    537c:	1080003c 	beqz	a0,5470 <main+0x37c>
-    5380:	00000000 	nop
-    5384:	8fa2002c 	lw	v0,44(sp)
-    5388:	8fa30028 	lw	v1,40(sp)
-    538c:	02021023 	subu	v0,s0,v0
-    5390:	0043102b 	sltu	v0,v0,v1
-    5394:	14400036 	bnez	v0,5470 <main+0x37c>
-    5398:	00000000 	nop
-    539c:	8c820000 	lw	v0,0(a0)
+    5328:	14400006 	bnez	v0,5344 <main+0x250>
+    532c:	00000000 	nop
+    5330:	24630004 	addiu	v1,v1,4
+    5334:	1464fff7 	bne	v1,a0,5314 <main+0x220>
+    5338:	27a50030 	addiu	a1,sp,48
+    533c:	080014d8 	j	5360 <main+0x26c>
+    5340:	27b10010 	addiu	s1,sp,16
+    5344:	8c450008 	lw	a1,8(v0)
+    5348:	00000000 	nop
+    534c:	00b02821 	addu	a1,a1,s0
+    5350:	ac450004 	sw	a1,4(v0)
+    5354:	8c42000c 	lw	v0,12(v0)
+    5358:	080014ca 	j	5328 <main+0x234>
+    535c:	00000000 	nop
+    5360:	02202021 	move	a0,s1
+    5364:	0c000be0 	jal	2f80 <System::Tasking::TaskScheduler::selectNextTask(unsigned int)>
+    5368:	02002821 	move	a1,s0
+    536c:	24120001 	li	s2,1
+    5370:	afb0002c 	sw	s0,44(sp)
+    5374:	27b30014 	addiu	s3,sp,20
+    5378:	27b40018 	addiu	s4,sp,24
+    537c:	8fa40020 	lw	a0,32(sp)
+    5380:	8c100010 	lw	s0,16(zero)
+    5384:	1080003c 	beqz	a0,5478 <main+0x384>
+    5388:	00000000 	nop
+    538c:	8fa2002c 	lw	v0,44(sp)
+    5390:	8fa30028 	lw	v1,40(sp)
+    5394:	02021023 	subu	v0,s0,v0
+    5398:	0043102b 	sltu	v0,v0,v1
+    539c:	14400036 	bnez	v0,5478 <main+0x384>
     53a0:	00000000 	nop
-    53a4:	8c420000 	lw	v0,0(v0)
-    53a8:	00000000 	nop
-    53ac:	0040f809 	jalr	v0
+    53a4:	8c820000 	lw	v0,0(a0)
+    53a8:	8c950004 	lw	s5,4(a0)
+    53ac:	8c420000 	lw	v0,0(v0)
     53b0:	00000000 	nop
-    53b4:	8fa30024 	lw	v1,36(sp)
-    53b8:	8fa20020 	lw	v0,32(sp)
-    53bc:	14720023 	bne	v1,s2,544c <main+0x358>
-    53c0:	2406000c 	li	a2,12
-    53c4:	afb10030 	sw	s1,48(sp)
-    53c8:	afb30034 	sw	s3,52(sp)
-    53cc:	afb40038 	sw	s4,56(sp)
-    53d0:	00002821 	move	a1,zero
-    53d4:	27a40030 	addiu	a0,sp,48
-    53d8:	00851821 	addu	v1,a0,a1
-    53dc:	8c640000 	lw	a0,0(v1)
-    53e0:	00000000 	nop
-    53e4:	8c830000 	lw	v1,0(a0)
+    53b4:	0040f809 	jalr	v0
+    53b8:	00000000 	nop
+    53bc:	8fa30024 	lw	v1,36(sp)
+    53c0:	8fa20020 	lw	v0,32(sp)
+    53c4:	14720023 	bne	v1,s2,5454 <main+0x360>
+    53c8:	00003021 	move	a2,zero
+    53cc:	afb10030 	sw	s1,48(sp)
+    53d0:	afb30034 	sw	s3,52(sp)
+    53d4:	afb40038 	sw	s4,56(sp)
+    53d8:	2405000c 	li	a1,12
+    53dc:	27a40030 	addiu	a0,sp,48
+    53e0:	00861821 	addu	v1,a0,a2
+    53e4:	8c640000 	lw	a0,0(v1)
     53e8:	00000000 	nop
-    53ec:	10600012 	beqz	v1,5438 <main+0x344>
+    53ec:	8c830000 	lw	v1,0(a0)
     53f0:	00000000 	nop
-    53f4:	14620005 	bne	v1,v0,540c <main+0x318>
+    53f4:	10600012 	beqz	v1,5440 <main+0x34c>
     53f8:	00000000 	nop
-    53fc:	8c43000c 	lw	v1,12(v0)
-    5400:	08001511 	j	5444 <main+0x350>
-    5404:	ac830000 	sw	v1,0(a0)
-    5408:	00801821 	move	v1,a0
-    540c:	8c64000c 	lw	a0,12(v1)
-    5410:	00000000 	nop
-    5414:	10800006 	beqz	a0,5430 <main+0x33c>
+    53fc:	14620005 	bne	v1,v0,5414 <main+0x320>
+    5400:	00000000 	nop
+    5404:	8c43000c 	lw	v1,12(v0)
+    5408:	08001513 	j	544c <main+0x358>
+    540c:	ac830000 	sw	v1,0(a0)
+    5410:	00801821 	move	v1,a0
+    5414:	8c64000c 	lw	a0,12(v1)
     5418:	00000000 	nop
-    541c:	1444fffa 	bne	v0,a0,5408 <main+0x314>
+    541c:	10800006 	beqz	a0,5438 <main+0x344>
     5420:	00000000 	nop
-    5424:	8c44000c 	lw	a0,12(v0)
-    5428:	08001511 	j	5444 <main+0x350>
-    542c:	ac64000c 	sw	a0,12(v1)
-    5430:	1040fffc 	beqz	v0,5424 <main+0x330>
-    5434:	00000000 	nop
-    5438:	24a50004 	addiu	a1,a1,4
-    543c:	14a6ffe6 	bne	a1,a2,53d8 <main+0x2e4>
-    5440:	27a40030 	addiu	a0,sp,48
-    5444:	08001517 	j	545c <main+0x368>
-    5448:	ac400010 	sw	zero,16(v0)
-    544c:	8c430008 	lw	v1,8(v0)
-    5450:	00000000 	nop
-    5454:	00701821 	addu	v1,v1,s0
-    5458:	ac430004 	sw	v1,4(v0)
-    545c:	02202021 	move	a0,s1
-    5460:	0c000be0 	jal	2f80 <System::Tasking::TaskScheduler::selectNextTask(unsigned int)>
-    5464:	02002821 	move	a1,s0
-    5468:	080014dd 	j	5374 <main+0x280>
-    546c:	afb0002c 	sw	s0,44(sp)
-    5470:	8fa20010 	lw	v0,16(sp)
-    5474:	00000000 	nop
-    5478:	1040ffbe 	beqz	v0,5374 <main+0x280>
+    5424:	1444fffa 	bne	v0,a0,5410 <main+0x31c>
+    5428:	00000000 	nop
+    542c:	8c44000c 	lw	a0,12(v0)
+    5430:	08001513 	j	544c <main+0x358>
+    5434:	ac64000c 	sw	a0,12(v1)
+    5438:	1040fffc 	beqz	v0,542c <main+0x338>
+    543c:	00000000 	nop
+    5440:	24c60004 	addiu	a2,a2,4
+    5444:	14c5ffe6 	bne	a2,a1,53e0 <main+0x2ec>
+    5448:	27a40030 	addiu	a0,sp,48
+    544c:	08001519 	j	5464 <main+0x370>
+    5450:	ac400010 	sw	zero,16(v0)
+    5454:	8c430008 	lw	v1,8(v0)
+    5458:	00000000 	nop
+    545c:	00701821 	addu	v1,v1,s0
+    5460:	ac430004 	sw	v1,4(v0)
+    5464:	02202021 	move	a0,s1
+    5468:	0c000be0 	jal	2f80 <System::Tasking::TaskScheduler::selectNextTask(unsigned int)>
+    546c:	02a02821 	move	a1,s5
+    5470:	080014df 	j	537c <main+0x288>
+    5474:	afb0002c 	sw	s0,44(sp)
+    5478:	8fa20010 	lw	v0,16(sp)
     547c:	00000000 	nop
-    5480:	8fa3001c 	lw	v1,28(sp)
+    5480:	1040ffbe 	beqz	v0,537c <main+0x288>
     5484:	00000000 	nop
-    5488:	10600006 	beqz	v1,54a4 <main+0x3b0>
+    5488:	8fa3001c 	lw	v1,28(sp)
     548c:	00000000 	nop
-    5490:	8c63000c 	lw	v1,12(v1)
+    5490:	10600006 	beqz	v1,54ac <main+0x3b8>
     5494:	00000000 	nop
-    5498:	afa3001c 	sw	v1,28(sp)
-    549c:	8fa3001c 	lw	v1,28(sp)
-    54a0:	00000000 	nop
-    54a4:	14600002 	bnez	v1,54b0 <main+0x3bc>
+    5498:	8c63000c 	lw	v1,12(v1)
+    549c:	00000000 	nop
+    54a0:	afa3001c 	sw	v1,28(sp)
+    54a4:	8fa3001c 	lw	v1,28(sp)
     54a8:	00000000 	nop
-    54ac:	afa2001c 	sw	v0,28(sp)
-    54b0:	8fa4001c 	lw	a0,28(sp)
-    54b4:	00000000 	nop
-    54b8:	1080ffae 	beqz	a0,5374 <main+0x280>
+    54ac:	14600002 	bnez	v1,54b8 <main+0x3c4>
+    54b0:	00000000 	nop
+    54b4:	afa2001c 	sw	v0,28(sp)
+    54b8:	8fa4001c 	lw	a0,28(sp)
     54bc:	00000000 	nop
-    54c0:	8c820000 	lw	v0,0(a0)
+    54c0:	1080ffae 	beqz	a0,537c <main+0x288>
     54c4:	00000000 	nop
-    54c8:	8c420000 	lw	v0,0(v0)
+    54c8:	8c820000 	lw	v0,0(a0)
     54cc:	00000000 	nop
-    54d0:	0040f809 	jalr	v0
+    54d0:	8c420000 	lw	v0,0(v0)
     54d4:	00000000 	nop
-    54d8:	080014dd 	j	5374 <main+0x280>
+    54d8:	0040f809 	jalr	v0
     54dc:	00000000 	nop
-
-000054e0 <CODE_ENDS>:
-    54e0:	00000000 	nop
+    54e0:	080014df 	j	537c <main+0x288>
     54e4:	00000000 	nop
+
+000054e8 <CODE_ENDS>:
     54e8:	00000000 	nop
     54ec:	00000000 	nop
     54f0:	00000000 	nop
