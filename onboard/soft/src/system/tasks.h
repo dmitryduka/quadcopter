@@ -73,7 +73,6 @@ private:
     /* holds a task to be executed */
     struct {
         Task*		task;
-        unsigned int	time;
         int		queue;
     }		nextTask;
 
@@ -86,6 +85,8 @@ private:
     void setNextTask(Task* t, Task* list, unsigned int rtc);
     /* Adds Task t to the queue ('list') */
     void addTask(Task** list, Task* t, int delay);
+    /* Initializes all tasks - sets their executeAt time */
+    void initializeTasks(unsigned int rtc);
 public:
     TaskScheduler();
 
