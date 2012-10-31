@@ -17,6 +17,19 @@ static void mpu6050_setup(char reg, char byte) {
     I2C::stop();
 }
 
+static char magn_read_reg(unsigned char reg) {
+    I2C::start();
+    I2C::write(0x3D);
+    I2C::write(reg);
+    I2C::stop();
+
+    I2C::start();
+    I2C::write(0x3D);
+    char id = I2C::read();
+    I2C::stop();
+    return id;
+}
+
 void init() {
     mpu6050_setup(MPU6050_PWR_MGMT, MPU6050_PWR_MGMT_RESET); //Device reset
     System::delay(5_ms); //approx 5ms grace period
@@ -25,6 +38,19 @@ void init() {
     mpu6050_setup(MPU6050_SETUP_GYRO, MPU6050_GYRO_RANGE_2000DEG);
     mpu6050_setup(MPU6050_SETUP_ACC, MPU6050_ACC_RANGE_16G);
     System::delay(1_ms);
+
+    /* Enable pass through */
+    //mpu6050_setup(0x6A, 0x00);
+    //mpu6050_setup(0x37, 0x02);
+
+    /*char id = magn_read_reg(0x0A);
+    System::Bus::UART::write_waiting("MID: ");
+    System::Bus::UART::write_waiting(id);
+    id = magn_read_reg(0x0B);
+    System::Bus::UART::write_waiting(id);
+    id = magn_read_reg(0x0C);
+    System::Bus::UART::write_waiting(id);
+    System::Bus::UART::write_waiting('\n');*/
 }
 
 /* Whole operation takes ~400us, so no need for separate I2C tasks */
@@ -44,9 +70,8 @@ void updateAccelerometerAndGyro() {
     int az  = I2C::read();
     int azL = I2C::read();
 
-    /* Skip TEMP_OUT_H & TEMP_OUT_L */
-    I2C::read();
-    I2C::read();
+    int t = I2C::read();
+    int tL = I2C::read();
 
     int gx  = I2C::read();
     int gxL = I2C::read();
@@ -64,6 +89,10 @@ void updateAccelerometerAndGyro() {
     gy = Math::sign_extend((gy << 8) | gyL);
     gz = Math::sign_extend((gz << 8) | gzL);
 
+    t = Math::sign_extend((t << 8) | tL);
+    t = Math::divide(t * 100, 340) + 3653;
+
+    System::Registry::set(System::Registry::MPU6050_TEMPERATURE, t);
     System::Registry::set(System::Registry::ACCELEROMETER1_X, ax);
     System::Registry::set(System::Registry::ACCELEROMETER1_Y, ay);
     System::Registry::set(System::Registry::ACCELEROMETER1_Z, az);

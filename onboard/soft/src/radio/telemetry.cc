@@ -22,9 +22,10 @@ void TelemetryTask::start() {
     System::Bus::UART::write_waiting(b32todec((int)System::Registry::value(System::Registry::ANGLE_PHI)));
     System::Bus::UART::write_waiting("\n");*/
 
+    /*
     System::Bus::UART::write_waiting("alt: ");
     System::Bus::UART::write_waiting(b32todec((unsigned int)SR::value(SR::ALTITUDE)));
-    System::Bus::UART::write_waiting("\n");
+    System::Bus::UART::write_waiting("\n");*/
 
     /*System::Bus::UART::write_waiting("press: ");
     System::Bus::UART::write_waiting(b32todec((unsigned int)SR::value(SR::PRESSURE)));

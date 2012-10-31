@@ -38,6 +38,8 @@ public:
         COMPASS_X,
         COMPASS_Y,
         COMPASS_Z,
+        /* MPU6050 temperature */
+        MPU6050_TEMPERATURE,
         /* Barometer */
         TEMPERATURE,
         PRESSURE,

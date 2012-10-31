@@ -43,8 +43,6 @@ namespace MPU6050 {
     void init();
     /* Updates the SystemRegistry with new data from the IMU */
     void updateAccelerometerAndGyro();
-    void updateTemperature();
-    void updatePressure();
 }
 
 }
