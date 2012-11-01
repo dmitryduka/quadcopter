@@ -21,9 +21,10 @@ void MARG::start() {
     /* Convert to SI */
     /* TODO: convert using sensors setup */
 #define G 9.80665f	// assuming we're flying on Earth
+
     const float32 GYRO_FACTOR(0.06103515625f * 3.14159f / 180.0f); // [-2000:2000] / 65536
     const float32 ACC_FACTOR(0.00048828125f * G); // [-16:16] / 65536
-    const float32 COMPASS_FACTOR(0.00091743f); // http://www.soc-robotics.com/pdfs/HMC5883L.pdf : page 12, GN0 = 1, GN1 = 0, GN2 = 0, +-1.3Ga, 1090LSB/Gauss, [-2048, 2047] => 1 / 1090.0f
+    const float32 COMPASS_FACTOR(9.174312e-4f); // http://www.soc-robotics.com/pdfs/HMC5883L.pdf : page 12, GN0 = 1, GN1 = 0, GN2 = 0, +-1.3Ga, 1090LSB/Gauss, [-2048, 2047] => 1 / 1090.0f
     const float32 cpu_tick_time(1.0f / CPU_FREQUENCY_HZ);
 
     /* Measure deltat */

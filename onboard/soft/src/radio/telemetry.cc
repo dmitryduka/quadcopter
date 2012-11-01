@@ -16,11 +16,11 @@ void TelemetryTask::start() {
     data.q4 = System::Registry::value(System::Registry::ORIENTATION_Q4);
     Messages::send(data);*/
 
-    System::Bus::UART::write_waiting(b32todec((int)System::Registry::value(System::Registry::ANGLE_PSI)));
+    System::Bus::UART::write_waiting(f32todec(System::Registry::value(System::Registry::ANGLE_PSI)));
     System::Bus::UART::write_waiting(" ");
-    System::Bus::UART::write_waiting(b32todec((int)System::Registry::value(System::Registry::ANGLE_THETA)));
+    System::Bus::UART::write_waiting(f32todec(System::Registry::value(System::Registry::ANGLE_THETA)));
     System::Bus::UART::write_waiting(" ");
-    System::Bus::UART::write_waiting(b32todec((int)System::Registry::value(System::Registry::ANGLE_PHI)));
+    System::Bus::UART::write_waiting(f32todec(System::Registry::value(System::Registry::ANGLE_PHI)));
     System::Bus::UART::write_waiting("\n");
     /*
     System::Bus::UART::write_waiting(b32todec(System::Registry::value(System::Registry::COMPASS_X)));

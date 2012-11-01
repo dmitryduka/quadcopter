@@ -35,7 +35,7 @@ ustring b32todec(int y) {
 	    int x10 = Math::divide(x, 10);
 	    char digit = x - x10 * 10 + '0';
 	    x = x10;
-	    /* Space characters will not affect |=, because '0'-'9' use same bits */
+	    /* Space characters will not affect |=, because '0'-'9' use the same bits */
 	    result |= (ustring)digit << (8 * counter++);
 	}
 	result |= (ustring)(y < 0 ? '-' : '+') << (8 * counter);
@@ -59,9 +59,42 @@ ustring b32todec(unsigned int y) {
 	    int x10 = Math::divide(x, 10);
 	    char digit = x - x10 * 10 + '0';
 	    x = x10;
-	    /* Space characters will not affect |=, because '0'-'9' use same bits */
+	    /* Space characters will not affect |=, because '0'-'9' use the same bits */
 	    result |= (ustring)digit << (8 * counter++);
 	}
 	return result;
     } else return tobig;
+}
+
+ustring f32todec(const float32& y) {
+    const float32 D(1000.0f);
+    const float32 x = f32::abs(y);
+    if(x > D) return 0x202020544F424947; // '  +TOBIG'
+    int bd = x;
+    int ad = x * D - float32(bd) * D;
+    if(ad < 0) {
+	bd -= 1;
+	ad = x * D - float32(bd) * D;
+    }
+    int counter = 0;
+    ustring result = 0x202020202E202020; // '        '
+    if((bd == 0) & (ad == 0)) return result |= (ustring)'0';
+    for(int i = 0; i < 3; ++i) {
+	int ad10 = Math::divide(ad, 10);
+	char digit = ad - ad10 * 10 + '0';
+	if(ad - ad10 * 10 < 0) digit = '0';
+	ad = ad10;
+	/* Space characters will not affect |=, because '0'-'9' use the same bits */
+	result |= (ustring)digit << (8 * counter++);
+    }
+    counter++;
+    while(bd != 0) {
+	int bd10 = Math::divide(bd, 10);
+	char digit = bd - bd10 * 10 + '0';
+	bd = bd10;
+	/* Space characters will not affect |=, because '0'-'9' use the same bits */
+	result |= (ustring)digit << (8 * counter++);
+    }
+    result |= (ustring)(y < float32(0) ? '-' : '+') << (8 * counter);
+    return result;
 }
