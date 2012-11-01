@@ -18,6 +18,7 @@ void init() {
 #endif
     Sensors::Baro::init();
     Sensors::IMU::MPU6050::init();
+    Sensors::IMU::HMC5883::init();
     winkleds();
 #if DEBUG_INFO_UART == 1
     System::Bus::UART::write_waiting(b32todec(Math::divide((unsigned int)*DEV_RTC, 50000)));

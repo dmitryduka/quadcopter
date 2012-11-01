@@ -4,6 +4,7 @@
 #include <config>
 #include <control/marg.h>
 #include <control/stabilization.h>
+#include <control/magnetometer.h>
 #include <control/altitude.h>
 
 #endif

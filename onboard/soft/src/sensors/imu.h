@@ -40,9 +40,19 @@ namespace MPU6050 {
     constexpr unsigned char MPU6050_PWR_MGMT_SLEEP_DISABLE	= 0x0;
     constexpr unsigned char MPU6050_PWR_MGMT_RESET		= 0x80;
 
+    /* Power management setup register */
+    constexpr unsigned char MPU6050_I2C_BYPASS	= 0x6A;
+    constexpr unsigned char MPU6050_I2C_BYPASS_DISABLE	= 0x00;
+    constexpr unsigned char MPU6050_I2C_BYPASS_ENABLE	= 0x02;
+
+    /* Power management setup register */
+    constexpr unsigned char MPU6050_I2C_MASTER	= 0x37;
+    constexpr unsigned char MPU6050_I2C_MASTER_DISABLE	= 0x02;
+    constexpr unsigned char MPU6050_I2C_MASTER_ENABLE  = 0x22;
+
     void init();
     /* Updates the SystemRegistry with new data from the IMU */
-    void updateAccelerometerAndGyro();
+    void update();
 }
 
 }

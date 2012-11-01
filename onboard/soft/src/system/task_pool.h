@@ -13,6 +13,7 @@ enum TaskType {
     TelemetryTask,
     MARGTask,
     AltitudeTask,
+    MagnetometerTask,
     TASK_TYPE_COUNT
 };
 

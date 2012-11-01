@@ -17,7 +17,7 @@ void MARG::start() {
 	totally takes 0.97 ms or ~48.5k cycles */
     /* Update IMU data */
     /* TODO: update magnetometer as well */
-    Sensors::IMU::MPU6050::updateAccelerometerAndGyro();
+    Sensors::IMU::MPU6050::update();
     /* Convert to SI */
     /* TODO: convert using sensors setup */
 #define G 9.80665f	// assuming we're flying on Earth
@@ -37,15 +37,14 @@ void MARG::start() {
 	    a_x = float32(SR::value(SR::ACCELEROMETER1_X)) * ACC_FACTOR,
 	    a_y = float32(SR::value(SR::ACCELEROMETER1_Y)) * ACC_FACTOR,
 	    a_z = float32(SR::value(SR::ACCELEROMETER1_Z)) * ACC_FACTOR;
-	    /*
 	    m_x = float32(SR::value(SR::COMPASS_X)) * COMPASS_FACTOR,
 	    m_y = float32(SR::value(SR::COMPASS_Y)) * COMPASS_FACTOR,
-	    m_z = float32(SR::value(SR::COMPASS_Z)) * COMPASS_FACTOR;*/
+	    m_z = float32(SR::value(SR::COMPASS_Z)) * COMPASS_FACTOR;
 
     /* Do not use magnetometer */
-    filterUpdateIMU(w_x, w_y, w_z, a_x, a_y, a_z);
+    //filterUpdateIMU(w_x, w_y, w_z, a_x, a_y, a_z);
     /* Use magnetometer */
-    //filterUpdateMARG(w_x, w_y, w_z, a_x, a_y, a_z, m_x, m_y, m_z);
+    filterUpdateMARG(w_x, w_y, w_z, a_x, a_y, a_z, m_x, m_y, m_z);
 
     /* Update System::Registry with the new attitude */
     System::Registry::set(System::Registry::ORIENTATION_Q1, SEq_1);
@@ -56,23 +55,27 @@ void MARG::start() {
     /* Convert quaternion to euler angles, in degrees */
     const float32 to_deg(57.295779513f);
     const float32 zero(0.0f), one(1.0f), two(2.0f), minus_two(-2.0f);
-    
+
     // psi - yaw
 
+    const float32 q1q1 = SEq_1 * SEq_1;
+    const float32 q2q2 = SEq_2 * SEq_2;
+    const float32 q3q3 = SEq_3 * SEq_3;
+    const float32 q4q4 = SEq_4 * SEq_4;
+
     const float32 psi = f32::atan2(two * (SEq_1 * SEq_2 + SEq_3 * SEq_4), 
-			    one - two * (SEq_2 * SEq_2 + SEq_3 * SEq_3)) * to_deg;
+			    q1q1 - q2q2 - q3q3 + q4q4) * to_deg;
 
     const float32 theta = f32::asin(two * (SEq_1 * SEq_3 - SEq_4 * SEq_2)) * to_deg;
     const float32 phi = f32::atan2(two * (SEq_1 * SEq_4 + SEq_2 * SEq_3), 
-				one - two * (SEq_3 * SEq_3 + SEq_4 * SEq_4)) * to_deg;
+				q1q1 + q2q2 - q3q3 - q4q4) * to_deg;
 
     System::Registry::set(System::Registry::ANGLE_PSI, psi);
     System::Registry::set(System::Registry::ANGLE_THETA, theta);
     System::Registry::set(System::Registry::ANGLE_PHI, phi);
 }
-void MARG::filterUpdateIMU(float32 w_x, float32 w_y, float32 w_z, float32 a_x, float32 a_y, float32 a_z)
-{
 
+void MARG::filterUpdateIMU(float32 w_x, float32 w_y, float32 w_z, float32 a_x, float32 a_y, float32 a_z) {
     // System constants
 #define gyroMeasErrorDef 3.14159265358979f * (5.0f / 180.0f)
 #define betaDef 0.866025404f * gyroMeasErrorDef
@@ -182,7 +185,6 @@ void MARG::filterUpdateIMU(float32 w_x, float32 w_y, float32 w_z, float32 a_x, f
 
 void MARG::filterUpdateMARG(float32 w_x, float32 w_y, float32 w_z, float32 a_x, float32 a_y, float32 a_z, float32 m_x, float32 m_y, float32 m_z)
 {
-/*
     // System constants
     const float32 gyroMeasError(0.08726646259971647884618453842443f); // gyroscope measurement error in rad/s (shown as 5 deg/s)
     const float32 gyroMeasDrift(0.00349065850398865915384738153698f); // gyroscope measurement error in rad/s/s (shown as 0.2f deg/s/s)
@@ -402,9 +404,8 @@ void MARG::filterUpdateMARG(float32 w_x, float32 w_y, float32 w_z, float32 a_x, 
 	h_z += twom_z * (half - SEq_2_squared - SEq_3_squared);
 
 	// normalise the flux vector to have only components in the x and z
-	b_x = sqrt((h_x * h_x) + (h_y * h_y));
+	b_x = f32::sqrt((h_x * h_x) + (h_y * h_y));
 	b_z = h_z;
-*/
 }
 
 }

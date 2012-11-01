@@ -14,6 +14,7 @@ Radio::Digital::TelemetryTask telemetryTask;
 Control::StabilizationAndEngineUpdateTask stabilizationAndEngineUpdateTask;
 Control::MARG margTask;
 Control::AltitudeTask altitudeTask;
+Control::MagnetometerTask magnetometerTask;
 
 /* All task instances end here */
 
@@ -23,6 +24,7 @@ Task* const tasks[asIntegral<unsigned int>(TaskType::TASK_TYPE_COUNT)] = {
     [TaskType::TelemetryTask] = &telemetryTask,
     [TaskType::MARGTask] = &margTask,
     [TaskType::AltitudeTask] = &altitudeTask,
+    [TaskType::MagnetometerTask] = &magnetometerTask,
 };
 
 Task*       const getTask(TaskType type) { return tasks[asIntegral<unsigned int>(type)]; }

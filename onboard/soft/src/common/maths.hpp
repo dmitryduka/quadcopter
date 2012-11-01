@@ -76,9 +76,6 @@ static unsigned int isqrt(unsigned int x) {
 static int divide(int num, int denom)
 {
     int a = 0, b = 0, i = 31;
-    bool result_negative = ((num < 0) && (denom > 0)) || ((num > 0) && (denom < 0));
-    if(num < 0) num = -num;
-    if(denom < 0) denom = -denom;
     /* Work from leftmost to rightmost bit in numerator */
     while(i >= 0) {
 	/* appends one bit from numerator to a */
@@ -90,7 +87,7 @@ static int divide(int num, int denom)
 	}
 	i--;
     }
-    return result_negative ? -b : b;
+    return b;
 }
 
 // Requirements:
