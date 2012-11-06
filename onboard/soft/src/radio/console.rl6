@@ -8,144 +8,44 @@
 #if CONSOLE_ENABLED == 1
 
 const char* RESPONSE_OK = ":)\n";
+const char* RESPONSE_FAIL = ":(\n";
+
+static void fail() { System::Bus::UART::write_waiting(RESPONSE_FAIL); }
 
 void hey() {
     System::Bus::UART::write_waiting(RESPONSE_OK);
 }
 
-void quat() {
-    System::Bus::UART::write_waiting(b32tohex(System::Registry::value(System::Registry::ORIENTATION_Q1).internals()));
-    System::Bus::UART::write_waiting(" ");
-    System::Bus::UART::write_waiting(b32tohex(System::Registry::value(System::Registry::ORIENTATION_Q2).internals()));
-    System::Bus::UART::write_waiting(" ");
-    System::Bus::UART::write_waiting(b32tohex(System::Registry::value(System::Registry::ORIENTATION_Q3).internals()));
-    System::Bus::UART::write_waiting(" ");
-    System::Bus::UART::write_waiting(b32tohex(System::Registry::value(System::Registry::ORIENTATION_Q4).internals()));
-    System::Bus::UART::write_waiting("\n");
+static void hex(unsigned int _index) {
+    System::Registry::IntegerValue index = static_cast<System::Registry::IntegerValue>(_index);
+    if(index < System::Registry::VALUES_END) {
+	System::Bus::UART::write_waiting(b32tohex(System::Registry::value(index)));
+	System::Bus::UART::write_waiting("\n");
+    } else fail();
 }
 
-void angles() {
-    System::Bus::UART::write_waiting(b32todec((int)System::Registry::value(System::Registry::ANGLE_PSI)));
-    System::Bus::UART::write_waiting(" ");
-    System::Bus::UART::write_waiting(b32todec((int)System::Registry::value(System::Registry::ANGLE_THETA)));
-    System::Bus::UART::write_waiting(" ");
-    System::Bus::UART::write_waiting(b32todec((int)System::Registry::value(System::Registry::ANGLE_PHI)));
-    System::Bus::UART::write_waiting("\n");
+static void dec(unsigned int _index) {
+    System::Registry::IntegerValue index = static_cast<System::Registry::IntegerValue>(_index);
+    if(index < System::Registry::VALUES_END) {
+	System::Bus::UART::write_waiting(b32todec(System::Registry::value(index)));
+	System::Bus::UART::write_waiting("\n");
+    } else fail();
 }
 
-void acc() {
-    System::Bus::UART::write_waiting(b32tohex(System::Registry::value(System::Registry::ACCELEROMETER1_X)));
-    System::Bus::UART::write_waiting(" ");
-    System::Bus::UART::write_waiting(b32tohex(System::Registry::value(System::Registry::ACCELEROMETER1_Y)));
-    System::Bus::UART::write_waiting(" ");
-    System::Bus::UART::write_waiting(b32tohex(System::Registry::value(System::Registry::ACCELEROMETER1_Z)));
-    System::Bus::UART::write_waiting("\n");
+static void fl32(unsigned int _index) {
+    System::Registry::FloatValue index = static_cast<System::Registry::FloatValue>(_index);
+    if(index < System::Registry::FLOAT_VALUES_END) {
+	System::Bus::UART::write_waiting(f32todec(System::Registry::value(index)));
+	System::Bus::UART::write_waiting("\n");
+    } else fail();
 }
 
-void gyro() {
-    System::Bus::UART::write_waiting(b32tohex(System::Registry::value(System::Registry::GYRO_X)));
-    System::Bus::UART::write_waiting(" ");
-    System::Bus::UART::write_waiting(b32tohex(System::Registry::value(System::Registry::GYRO_Y)));
-    System::Bus::UART::write_waiting(" ");
-    System::Bus::UART::write_waiting(b32tohex(System::Registry::value(System::Registry::GYRO_Z)));
-    System::Bus::UART::write_waiting("\n");
-}
-
-void magn() {
-    System::Bus::UART::write_waiting(b32tohex(System::Registry::value(System::Registry::COMPASS_X)));
-    System::Bus::UART::write_waiting(" ");
-    System::Bus::UART::write_waiting(b32tohex(System::Registry::value(System::Registry::COMPASS_Y)));
-    System::Bus::UART::write_waiting(" ");
-    System::Bus::UART::write_waiting(b32tohex(System::Registry::value(System::Registry::COMPASS_Z)));
-    System::Bus::UART::write_waiting("\n");
-}
-
-void get_throttle() {
-    System::Bus::UART::write_waiting(b32tohex(System::Registry::value(System::Registry::THROTTLE)));
-    System::Bus::UART::write_waiting("\n");
-}
-
-void alt() {
-    System::Bus::UART::write_waiting(b32todec(System::Registry::value(System::Registry::ALTITUDE)));
-    System::Bus::UART::write_waiting("\n");
-}
-
-void press() {
-    System::Bus::UART::write_waiting(b32todec(System::Registry::value(System::Registry::PRESSURE)));
-    System::Bus::UART::write_waiting("\n");
-}
-
-void temp() {
-    System::Bus::UART::write_waiting(b32todec(System::Registry::value(System::Registry::TEMPERATURE)));
-    System::Bus::UART::write_waiting("\n");
-}
-
-void pitchroll_pid() {
-    System::Bus::UART::write_waiting(b32tohex(System::Registry::value(System::Registry::PITCH_ROLL_PID_P)));
-    System::Bus::UART::write_waiting(" ");
-    System::Bus::UART::write_waiting(b32tohex(System::Registry::value(System::Registry::PITCH_ROLL_PID_I)));
-    System::Bus::UART::write_waiting(" ");
-    System::Bus::UART::write_waiting(b32tohex(System::Registry::value(System::Registry::PITCH_ROLL_PID_D)));
-    System::Bus::UART::write_waiting("\n");
-}
-
-void set_pitchroll_pid(int P, int I, int D) {
-    System::Registry::set(System::Registry::PITCH_ROLL_PID_P, P);
-    System::Registry::set(System::Registry::PITCH_ROLL_PID_I, I);
-    System::Registry::set(System::Registry::PITCH_ROLL_PID_D, D);
-    System::Bus::UART::write_waiting(RESPONSE_OK);
-}
-
-void heading_pid() {
-    System::Bus::UART::write_waiting(b32tohex(System::Registry::value(System::Registry::HEADING_PID_P)));
-    System::Bus::UART::write_waiting(" ");
-    System::Bus::UART::write_waiting(b32tohex(System::Registry::value(System::Registry::HEADING_PID_I)));
-    System::Bus::UART::write_waiting(" ");
-    System::Bus::UART::write_waiting(b32tohex(System::Registry::value(System::Registry::HEADING_PID_D)));
-    System::Bus::UART::write_waiting("\n");
-}
-
-void set_heading_pid(int P, int I, int D) {
-    System::Registry::set(System::Registry::HEADING_PID_P, P);
-    System::Registry::set(System::Registry::HEADING_PID_I, I);
-    System::Registry::set(System::Registry::HEADING_PID_D, D);
-    System::Bus::UART::write_waiting(RESPONSE_OK);
-}
-
-void altitude_pid() {
-    System::Bus::UART::write_waiting(b32tohex(System::Registry::value(System::Registry::ALTITUDE_PID_P)));
-    System::Bus::UART::write_waiting(" ");
-    System::Bus::UART::write_waiting(b32tohex(System::Registry::value(System::Registry::ALTITUDE_PID_I)));
-    System::Bus::UART::write_waiting(" ");
-    System::Bus::UART::write_waiting(b32tohex(System::Registry::value(System::Registry::ALTITUDE_PID_D)));
-    System::Bus::UART::write_waiting("\n");
-}
-
-void set_altitude_pid(int P, int I, int D) {
-    System::Registry::set(System::Registry::ALTITUDE_PID_P, P);
-    System::Registry::set(System::Registry::ALTITUDE_PID_I, I);
-    System::Registry::set(System::Registry::ALTITUDE_PID_D, D);
-    System::Bus::UART::write_waiting(RESPONSE_OK);
-}
-
-void set_throttle(int x) {
-    System::Registry::set(System::Registry::THROTTLE, x);
-    System::Bus::UART::write_waiting(RESPONSE_OK);
-}
-
-void set_pitch(int x) {
-    System::Registry::set(System::Registry::DESIRED_PITCH, x);
-    System::Bus::UART::write_waiting(RESPONSE_OK);
-}
-
-void set_yaw(int x) {
-    System::Registry::set(System::Registry::DESIRED_YAW, x);
-    System::Bus::UART::write_waiting(RESPONSE_OK);
-}
-
-void set_roll(int x) {
-    System::Registry::set(System::Registry::DESIRED_ROLL, x);
-    System::Bus::UART::write_waiting(RESPONSE_OK);
+static void set_dec(unsigned int _index, int value) {
+    System::Registry::IntegerValue index = static_cast<System::Registry::IntegerValue>(_index);
+    if(index < System::Registry::VALUES_END) {
+	System::Registry::set(index, value);
+	System::Bus::UART::write_waiting(RESPONSE_OK);
+    } else fail();
 }
 
 %%{
@@ -153,7 +53,7 @@ void set_roll(int x) {
 }%%
 
 void parseConsoleMessage(const char* str) {
-    const int MAX_ARGS = 3;
+    const int MAX_ARGS = 2;
     int arg_idx = 0;
     int arg[MAX_ARGS] = {0};
     char arg_sign = '+';
@@ -172,25 +72,11 @@ void parseConsoleMessage(const char* str) {
 	}
 	action arg_sign { if(fc == '-') arg_sign = '-'; }
 	action hey { hey(); }
-	action quat { quat(); }
-	action angles { angles(); }
-	action acc { acc(); }
-	action press { press(); }
-	action alt { alt(); }
-	action temp { temp(); }
-	action get_throttle { get_throttle(); }
-	action gyro { gyro(); }
-	action magn { magn(); }
-	action get_pitchroll_pid { pitchroll_pid(); }
-	action set_pitchroll_pid { set_pitchroll_pid(arg[0], arg[1], arg[2]); }
-	action get_heading_pid { heading_pid(); }
-	action set_heading_pid { set_heading_pid(arg[0], arg[1], arg[2]); }
-	action get_altitude_pid { altitude_pid(); }
-	action set_altitude_pid { set_altitude_pid(arg[0], arg[1], arg[2]); }
-	action set_throttle { set_throttle(arg[0]); }
-	action set_pitch { set_pitch(arg[0]); }
-	action set_yaw { set_yaw(arg[0]); }
-	action set_roll { set_roll(arg[0]); }
+	action hex { hex(arg[0]); }
+	action set_hex { set_hex(arg[0], arg[1]); }
+	action dec { dec(arg[0]); }
+	action set_dec { set_dec(arg[0], arg[1]); }
+	action f32 { fl32(arg[0]); }
 
 	# exactly one command followed by either \n or \r
 	signed_numeric = ('+' | '-')? @arg_sign ' '* digit+ @arg;
@@ -199,25 +85,10 @@ void parseConsoleMessage(const char* str) {
 	unumarg = ' '+ unsigned_numeric %arg_idx_inc;
 	main := 	' '*
 			('hey' @hey |
-			 'get_quat' @quat|
-			 'get_angles' @angles|
-			 'get_acc' @acc |
-			 'get_alt' @alt |
-			 'get_throttle' @get_throttle |
-			 'get_temp' @temp |
-			 'get_gyro' @gyro |
-			 'get_magn' @magn |
-			 'get_press' @press |
-			 'get_pitchroll_pid' @get_pitchroll_pid |
-			 'get_heading_pid' @get_heading_pid |
-			 'get_altitude_pid' @get_altitude_pid |
-			 ('set_pitchroll_pid' snumarg{3}) %set_pitchroll_pid |
-			 ('set_heading_pid' snumarg{3}) %set_heading_pid |
-			 ('set_altitude_pid' snumarg{3}) %set_altitude_pid |
-			 ('set_throttle' unumarg) %set_throttle |
-			 ('set_pitch' snumarg) %set_pitch |
-			 ('set_yaw' snumarg) %set_yaw |
-			 ('set_roll' snumarg) %set_roll
+			 ('get_f32' unumarg) %f32|
+			 ('get_hex' unumarg) %hex|
+			 ('get_dec' unumarg) %dec|
+			 ('set_dec' unumarg snumarg) %set_dec
 			)
 			' '*
 			(0 | '\n' | '\r') @{fbreak;};

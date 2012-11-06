@@ -37,7 +37,7 @@ OUTPUTDIRS = $(patsubst src/%, obj/%, $(DIRS))
 SRC_RL6 = $(foreach dir, $(DIRS), $(wildcard $(dir)/*.rl6))
 SRC_AS = $(foreach dir, $(DIRS), $(wildcard $(dir)/*.S))
 SRC_CC = $(foreach dir, $(DIRS), $(wildcard $(dir)/*.cc) $(wildcard $(dir)/*.cpp))
-SRC_C = $(foreach rl6, $(SRC_RL6), $(rl6:.rl6=.c)) $(foreach dir, $(DIRS), $(wildcard $(dir)/*.c))
+SRC_C = $(foreach rl6, $(SRC_RL6), $(rl6:.rl6=.cc)) $(foreach dir, $(DIRS), $(wildcard $(dir)/*.c))
 
 SRC_TO_OBJ = $(foreach file, $(1), $(patsubst src/%, obj/%, $(dir $(file)))$(notdir $(file)).o)
 
@@ -46,11 +46,12 @@ OBJECTS = $(sort $(call SRC_TO_OBJ, $(SRC_AS)) $(call SRC_TO_OBJ, $(SRC_C)) $(ca
 DEPS = $(wildcard $(OBJDIR)/*.d)
 
 STACK_SIZE = 2000
-INCLUDEDIRS = $(addprefix -I, $(DIRS))
+INCLUDEDIRS = -I$(INCDIR) $(addprefix -I, $(DIRS))
 CCOPTS =  -c -std=c++11 -mno-gpopt -G0 $(INCLUDEDIRS)
-CCOPTS += -O2 -I$(INCDIR)
+CCOPTS += -flto -Os
 CCOPTS += -pedantic -Wall -Wno-unused-function -Wcast-align -Wstack-usage=$(STACK_SIZE)
-CCOPTS += -flto -fdata-sections -ffunction-sections -fno-threadsafe-statics -fstack-usage -fno-strict-aliasing -fno-exceptions -fno-rtti
+CCOPTS += -fdata-sections -ffunction-sections -fno-threadsafe-statics -fno-strict-aliasing -fno-exceptions -fno-rtti
+CCOPTS += -fdump-ipa-cgraph -fstack-usage -fdump-statistics
 LDOPTS = -flto -Os -Wl,--gc-sections -nostdlib -nostartfiles -fwhole-program -lgcc
 
 all: clean_errors dirs $(IMEMFILE) $(DMEMFILE)
@@ -115,7 +116,7 @@ $(OBJDIR)/%.S.o: $(SRCDIR)/%.S
 	@$(call CHECK, $<)
 	@-$(RM) -f temp.errors temp.log
 
-$(SRCDIR)/%.c: $(SRCDIR)/%.rl6
+$(SRCDIR)/%.cc: $(SRCDIR)/%.rl6
 	@$(call BLD, '[ RAGEL ] ')
 	@$(call BLD, $<)
 	@$(RAGEL) $< -G1 -C -o $@

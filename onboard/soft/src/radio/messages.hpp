@@ -29,20 +29,15 @@ In order to add new message:
 
 enum class To : int {
     MESSAGES_BEGIN = 0,
-    Throttle = 1, /* This starts with 1, just to be on the safe side in case somebody sends bunch of zeroes */
-    Pitch,
-    Yaw,
-    Roll,
+    REGISTRY_SET,
     BINARY_MESSAGES_COUNT,
     ConsoleRequest = '>', // 60
-    MESSAGES_COUNT = 5
+    MESSAGES_COUNT = BINARY_MESSAGES_COUNT
 };
 
 enum class From : unsigned int {
     MESSAGES_BEGIN = 128,
-    QuatData = 128,
-    IMUData,
-    PIDValues,
+    REGISTRY_GET,
     MESSAGES_END,
     MESSAGES_COUNT = MESSAGES_END - MESSAGES_BEGIN
 };
@@ -62,35 +57,11 @@ void send(const T& x) {
 /* ==============================================================
 		Messages definitions 
    ============================================================== */
-/* Telemetry messages */
-struct QuatData : Message<From, From::QuatData> {
-    float32 q1, q2, q3, q4;
+
+struct RegistrySet : public Message<To, To::REGISTRY_SET> {
+    char offset;
+    int value;
 };
-
-struct IMUData : Message<From, From::IMUData> {
-    short int Ax;
-    short int Ay;
-    short int Az;
-    short int Gx;
-    short int Gy;
-    short int Gz;
-    short int Cx;
-    short int Cy;
-    short int Cz;
-    int P;
-    int T;
-};
-
-
-struct PIDValues : Message<From, From::PIDValues> {
-    short int P, I, D;
-};
-
-/* Control messages */
-struct Throttle : Message<To, To::Throttle> { short int value; };
-struct Pitch : Message<To, To::Pitch> { short int value; };
-struct Yaw : Message<To, To::Yaw> { short int value; };
-struct Roll : Message<To, To::Roll> { short int value; };
 
 /* ==============================================================
 		Messages handlers definitions 
@@ -113,10 +84,7 @@ const unsigned int MAX_MESSAGE_LENGTH = 32;
 
 /* It's vital to place handlers in the same order as in the Radio::Messages::To */
 const EntryType handlers[asIntegral<unsigned char, To>(To::MESSAGES_COUNT)] = {
-    DEFINE_MESSAGE_HANDLER(Throttle,		defaultHandler),
-    DEFINE_MESSAGE_HANDLER(Pitch,		defaultHandler),
-    DEFINE_MESSAGE_HANDLER(Yaw,			defaultHandler),
-    DEFINE_MESSAGE_HANDLER(Roll,		defaultHandler)
+    DEFINE_MESSAGE_HANDLER(To::REGISTRY_SET, defaultHandler)
 };
 
 #undef DEFINE_MESSAGE_HANDLER
