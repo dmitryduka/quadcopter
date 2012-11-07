@@ -35,6 +35,7 @@ TaskScheduler& TaskScheduler::instance() {
 
 void TaskScheduler::start() {
     unsigned int rtc = *DEV_RTC;
+    unsigned int cpuCurrentLoaded = 0, oldRtc = 0;
     initializeTasks(rtc);
     selectNextTask(rtc);
     lastRtc = rtc;
@@ -45,6 +46,7 @@ void TaskScheduler::start() {
         MAX_TASK_INTERVAL_TICKS is defined in the devices.hpp and is 'once in a minute' */
         if (nextTask.task && ((rtc - lastRtc) >= timeToWait)) {
     	    unsigned int currentTaskExecuteAt = nextTask.task->executeAt;
+    	    cpuCurrentLoaded += *DEV_RTC;
             nextTask.task->start();
             nextTask.task->trueInterval = rtc - nextTask.task->lastExecuteAt;
             nextTask.task->lastExecuteAt = rtc;
@@ -54,6 +56,7 @@ void TaskScheduler::start() {
             else nextTask.task->executeAt = rtc + nextTask.task->interval;
             selectNextTask(currentTaskExecuteAt);
             lastRtc = rtc;
+            cpuCurrentLoaded -= *DEV_RTC;
         } else if(idleTasks) { /* If there are any idle tasks */
 	    /* Select next idle task */
 	    if(currentIdleTask) currentIdleTask = currentIdleTask->nextTask;
@@ -62,6 +65,15 @@ void TaskScheduler::start() {
 	        currentIdleTask = idleTasks;
 	    /* Execute selected task, if there is one */
 	    if(currentIdleTask) currentIdleTask->start();
+	
+	    /* Calculate system load - 
+		monitor RTC overflow and  */
+	    if(rtc < oldRtc) {
+		cpuLoaded = cpuCurrentLoaded;
+		cpuCurrentLoaded = 0;
+	    }
+	
+	    oldRtc = rtc;
         }
     }
 }
@@ -186,6 +198,12 @@ void TaskScheduler::ps() {
 	}
     }
 }
+
+void TaskScheduler::top() {
+    	    System::Bus::UART::write_waiting(f32todec(float32(cpuLoaded) / float32(CPU_FREQUENCY_HZ)));
+    	    System::Bus::UART::write_waiting("%\n");
+}
+
 
 }
 }

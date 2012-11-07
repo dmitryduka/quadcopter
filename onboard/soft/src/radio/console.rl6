@@ -52,6 +52,10 @@ static void ps() {
     Tasks::TaskScheduler::instance().ps();
 }
 
+static void top() {
+    Tasks::TaskScheduler::instance().top();
+}
+
 %%{
     machine parseConsoleMessage;
 }%%
@@ -77,6 +81,7 @@ void parseConsoleMessage(const char* str) {
 	action arg_sign { if(fc == '-') arg_sign = '-'; }
 	action hey { hey(); }
 	action ps { ps(); }
+	action top { top(); }
 	action hex { hex(arg[0]); }
 	action set_hex { set_hex(arg[0], arg[1]); }
 	action dec { dec(arg[0]); }
@@ -91,6 +96,7 @@ void parseConsoleMessage(const char* str) {
 	main := 	' '*
 			('hey' @hey |
 			 'ps' @ps |
+			 'top' @top |
 			 ('get_f32' unumarg) %f32 |
 			 ('get_hex' unumarg) %hex |
 			 ('get_dec' unumarg) %dec |

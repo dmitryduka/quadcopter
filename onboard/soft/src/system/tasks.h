@@ -82,6 +82,7 @@ private:
 
     unsigned int timeToWait;
     unsigned int lastRtc;
+    unsigned int cpuLoaded;
 
     /* Sets nextTask */
     void selectNextTask(unsigned int rtc);
@@ -107,6 +108,8 @@ public:
     void		removeTask(Task* t);
     /* Print tasks list */
     void		ps();
+    /* Print cpu load in percents */
+    void		top();
 };
 
 #define ADD_IDLE_TASK(task) Tasks::TaskScheduler::instance().addTask(static_cast<System::Tasking::IdleTask*>(System::Tasking::Pool::getTask(System::Tasking::Pool::task)))
