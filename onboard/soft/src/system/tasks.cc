@@ -35,7 +35,6 @@ TaskScheduler& TaskScheduler::instance() {
 
 void TaskScheduler::start() {
     unsigned int rtc = *DEV_RTC;
-    unsigned int cpuCurrentLoaded = 0, oldRtc = 0;
     initializeTasks(rtc);
     selectNextTask(rtc);
     lastRtc = rtc;
@@ -44,19 +43,19 @@ void TaskScheduler::start() {
         /* Check if RTC value is equal or higher than nextTask' execution time,
         accounting that they could be on different sides of RTC overflow.
         MAX_TASK_INTERVAL_TICKS is defined in the devices.hpp and is 'once in a minute' */
-        if (nextTask.task && ((rtc - lastRtc) >= timeToWait)) {
+        unsigned int timePassed = rtc - lastRtc;
+        if (nextTask.task && (timePassed >= timeToWait)) {
+    	    unsigned int overdue = timePassed - timeToWait;
     	    unsigned int currentTaskExecuteAt = nextTask.task->executeAt;
-    	    cpuCurrentLoaded += *DEV_RTC;
             nextTask.task->start();
             nextTask.task->trueInterval = rtc - nextTask.task->lastExecuteAt;
             nextTask.task->lastExecuteAt = rtc;
             /* Either remove the task from the ONE_SHOT_QUEUE, or increment the execution time
             for the CONTINUOUS_QUEUE task */
             if (nextTask.queue == ONE_SHOT_QUEUE) removeTask(nextTask.task);
-            else nextTask.task->executeAt = rtc + nextTask.task->interval;
+            else nextTask.task->executeAt = rtc + nextTask.task->interval - overdue;
             selectNextTask(currentTaskExecuteAt);
-            lastRtc = rtc;
-            cpuCurrentLoaded -= *DEV_RTC;
+            lastRtc = currentTaskExecuteAt;
         } else if(idleTasks) { /* If there are any idle tasks */
 	    /* Select next idle task */
 	    if(currentIdleTask) currentIdleTask = currentIdleTask->nextTask;
@@ -65,15 +64,6 @@ void TaskScheduler::start() {
 	        currentIdleTask = idleTasks;
 	    /* Execute selected task, if there is one */
 	    if(currentIdleTask) currentIdleTask->start();
-	
-	    /* Calculate system load - 
-		monitor RTC overflow and  */
-	    if(rtc < oldRtc) {
-		cpuLoaded = cpuCurrentLoaded;
-		cpuCurrentLoaded = 0;
-	    }
-	
-	    oldRtc = rtc;
         }
     }
 }
@@ -89,6 +79,9 @@ void TaskScheduler::initializeTasks(unsigned int rtc) {
             }
         }
     }
+#if DEBUG_INFO_UART == 1
+    System::Bus::UART::write_waiting("Tasks initialized\n");
+#endif
 }
 
 ContinuousTask*	TaskScheduler::addTask(ContinuousTask* t, int delay) {
@@ -187,21 +180,26 @@ void TaskScheduler::addTask(Task** list, Task* t, int delay) {
 
 void TaskScheduler::ps() {
     Task** queues[QUEUES_COUNT] = {&continuousTasks, &oneShotTasks};
-    timeToWait = 0xFFFFFFFF;
     for (int i = 0; i < QUEUES_COUNT; ++i) {
         Task* q = *(queues[i]);
-        if (q) {
+        while (q) {
     	    System::Bus::UART::write_waiting(q->_());
     	    System::Bus::UART::write_waiting(" : ");
     	    System::Bus::UART::write_waiting(f32todec(float32(CPU_FREQUENCY_HZ) / float32(q->trueInterval)));
     	    System::Bus::UART::write_waiting("hz\n");
+    	    q = q->nextTask;
 	}
     }
 }
 
 void TaskScheduler::top() {
-    	    System::Bus::UART::write_waiting(f32todec(float32(cpuLoaded) / float32(CPU_FREQUENCY_HZ)));
-    	    System::Bus::UART::write_waiting("%\n");
+    System::Bus::UART::write_waiting(f32todec(float32(cpuLoaded) / float32(CPU_FREQUENCY_HZ)));
+    System::Bus::UART::write_waiting("%\n");
+}
+
+void TaskScheduler::ttw() {
+    System::Bus::UART::write_waiting(b32todec(timeToWait));
+    System::Bus::UART::write_waiting('\n');
 }
 
 

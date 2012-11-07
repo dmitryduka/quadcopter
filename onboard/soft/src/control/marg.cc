@@ -40,12 +40,12 @@ void MARG::start() {
 	    a_z = float32(SR::value(SR::ACCELEROMETER1_Z)) * ACC_FACTOR;
 	    m_x = float32(SR::value(SR::COMPASS_X)) * COMPASS_FACTOR,
 	    m_y = float32(SR::value(SR::COMPASS_Y)) * COMPASS_FACTOR,
-	    m_z = float32(SR::value(SR::COMPASS_Z)) * COMPASS_FACTOR;
+	    m_z = float32(0.0f); //float32(SR::value(SR::COMPASS_Z)) * COMPASS_FACTOR;
 
     /* Do not use magnetometer */
-    //filterUpdateIMU(w_x, w_y, w_z, a_x, a_y, a_z);
+    filterUpdateIMU(w_x, w_y, w_z, a_x, a_y, a_z);
     /* Use magnetometer */
-    filterUpdateMARG(w_x, w_y, w_z, a_x, a_y, a_z, m_x, m_y, m_z);
+    //filterUpdateMARG(w_x, w_y, w_z, a_x, a_y, a_z, m_x, m_y, m_z);
 
     /* Update System::Registry with the new attitude */
     System::Registry::set(System::Registry::ORIENTATION_Q1, SEq_1);

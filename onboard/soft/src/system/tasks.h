@@ -110,6 +110,7 @@ public:
     void		ps();
     /* Print cpu load in percents */
     void		top();
+    void		ttw();
 };
 
 #define ADD_IDLE_TASK(task) Tasks::TaskScheduler::instance().addTask(static_cast<System::Tasking::IdleTask*>(System::Tasking::Pool::getTask(System::Tasking::Pool::task)))
