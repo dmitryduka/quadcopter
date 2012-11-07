@@ -18,6 +18,9 @@ public:
         ANGLE_PSI,
         ANGLE_THETA,
         ANGLE_PHI,
+        ANGLE_PSI_TRIM,
+        ANGLE_THETA_TRIM,
+        ANGLE_PHI_TRIM,
         FLOAT_VALUES_END
     };
     enum IntegerValue {
@@ -26,6 +29,9 @@ public:
         ACCELEROMETER1_X = 0,
         ACCELEROMETER1_Y,
         ACCELEROMETER1_Z,
+        ACCELEROMETER1_TRIM_X,
+        ACCELEROMETER1_TRIM_Y,
+        ACCELEROMETER1_TRIM_Z,
         /* Accelerometer 2 */
         ACCELEROMETER2_X,
         ACCELEROMETER2_Y,
@@ -34,23 +40,32 @@ public:
         GYRO_X,
         GYRO_Y,
         GYRO_Z,
+        GYRO_TRIM_X,
+        GYRO_TRIM_Y,
+        GYRO_TRIM_Z,
         /* Compass */
         COMPASS_X,
         COMPASS_Y,
         COMPASS_Z,
+        COMPASS_TRIM_X,
+        COMPASS_TRIM_Y,
+        COMPASS_TRIM_Z,
         /* MPU6050 temperature */
         MPU6050_TEMPERATURE,
         /* Barometer */
         TEMPERATURE,
+        TEMPERATURE_TRIM,
         PRESSURE,
+        PRESSURE_TRIM,
         ALTITUDE,
+        ALTITUDE_TRIM,
         DESIRED_ALTITUDE,
         /* Throttle */
         THROTTLE,
         /* Angles in millidegrees */
         ANGLE_PITCH,
-        ANGLE_ROLL,
         ANGLE_YAW,
+        ANGLE_ROLL,
         /* Desired angles in millidegrees */
         DESIRED_PITCH,
         DESIRED_YAW,
@@ -71,8 +86,7 @@ public:
         /* PID corrections */
         PID_CORRECTION_X,
         PID_CORRECTION_Y,
-        /* PID corrections */
-        AZIMUTH_CORRECTION,
+        HEADING_CORRECTION,
         /* etc */
         VALUES_END
     };

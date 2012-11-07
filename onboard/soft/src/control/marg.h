@@ -23,6 +23,7 @@ public:
     MARG();
 
     void start();
+    DEFINE_TASK_NAME("MARG");
 };
 
 }

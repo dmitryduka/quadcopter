@@ -18,6 +18,7 @@ private:
 public:
     AltitudeTask();
     void start();
+    DEFINE_TASK_NAME("Altitude");
 };
 
 }

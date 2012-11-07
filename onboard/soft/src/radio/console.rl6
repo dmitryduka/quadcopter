@@ -48,6 +48,10 @@ static void set_dec(unsigned int _index, int value) {
     } else fail();
 }
 
+static void ps() {
+    Tasks::TaskScheduler::instance().ps();
+}
+
 %%{
     machine parseConsoleMessage;
 }%%
@@ -72,6 +76,7 @@ void parseConsoleMessage(const char* str) {
 	}
 	action arg_sign { if(fc == '-') arg_sign = '-'; }
 	action hey { hey(); }
+	action ps { ps(); }
 	action hex { hex(arg[0]); }
 	action set_hex { set_hex(arg[0], arg[1]); }
 	action dec { dec(arg[0]); }
@@ -85,9 +90,10 @@ void parseConsoleMessage(const char* str) {
 	unumarg = ' '+ unsigned_numeric %arg_idx_inc;
 	main := 	' '*
 			('hey' @hey |
-			 ('get_f32' unumarg) %f32|
-			 ('get_hex' unumarg) %hex|
-			 ('get_dec' unumarg) %dec|
+			 'ps' @ps |
+			 ('get_f32' unumarg) %f32 |
+			 ('get_hex' unumarg) %hex |
+			 ('get_dec' unumarg) %dec |
 			 ('set_dec' unumarg snumarg) %set_dec
 			)
 			' '*

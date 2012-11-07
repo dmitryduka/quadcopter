@@ -14,12 +14,15 @@ class TaskScheduler;
 
     Do not inherit from this class - use either ContinuousTask, OneShotTask or IdleTask.
 */
+#define DEFINE_TASK_NAME(str) virtual const char* _() { return str; }
+
 class Task {
 private:
-    unsigned int		executeAt;
-    unsigned int		interval;
-    
-    Task*			nextTask;
+    unsigned int	executeAt;
+    unsigned int	lastExecuteAt;
+    unsigned int	interval;
+    unsigned int	trueInterval;
+    Task*		nextTask;
 protected:
     TaskScheduler*	scheduler;
 
@@ -29,6 +32,7 @@ public:
 
     Task();
     virtual void start();
+    DEFINE_TASK_NAME("Task");
 };
 
 /* Inherit from some of these classes and implement start() function as a task activity.
@@ -87,9 +91,11 @@ private:
     void addTask(Task** list, Task* t, int delay);
     /* Initializes all tasks - sets their executeAt time */
     void initializeTasks(unsigned int rtc);
-public:
+private:
     TaskScheduler();
 
+public:
+    static TaskScheduler& instance();
     /* The main loop - poll RTC, execute task if RTC > nextTask.time, execute next IdleTask otherwise */
     void start();
 
@@ -99,10 +105,12 @@ public:
 
     /* Remove the task from queue and delete it (even if it is not in any queue) */
     void		removeTask(Task* t);
+    /* Print tasks list */
+    void		ps();
 };
 
-#define ADD_IDLE_TASK(scheduler, task) scheduler.addTask(static_cast<System::Tasking::IdleTask*>(System::Tasking::Pool::getTask(System::Tasking::Pool::task)))
-#define ADD_CONTINUOUS_TASK(scheduler, task, freq) scheduler.addTask(static_cast<System::Tasking::ContinuousTask*>(System::Tasking::Pool::getTask(System::Tasking::Pool::task)), freq)
+#define ADD_IDLE_TASK(task) Tasks::TaskScheduler::instance().addTask(static_cast<System::Tasking::IdleTask*>(System::Tasking::Pool::getTask(System::Tasking::Pool::task)))
+#define ADD_CONTINUOUS_TASK(task, freq) Tasks::TaskScheduler::instance().addTask(static_cast<System::Tasking::ContinuousTask*>(System::Tasking::Pool::getTask(System::Tasking::Pool::task)), freq)
 
 }
 }

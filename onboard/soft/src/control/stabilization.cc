@@ -55,7 +55,7 @@ void StabilizationAndEngineUpdateTask::horizontalStabilization() {
 }
 
 void StabilizationAndEngineUpdateTask::headingStabilization() {
-    SR::set(SR::AZIMUTH_CORRECTION, headingPID());
+    SR::set(SR::HEADING_CORRECTION, headingPID());
 }
 
 void StabilizationAndEngineUpdateTask::altitudeStabilization() {

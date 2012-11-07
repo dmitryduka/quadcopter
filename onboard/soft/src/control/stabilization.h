@@ -22,6 +22,8 @@ public:
     void horizontalStabilization();
     void headingStabilization();
     void altitudeStabilization();
+
+    DEFINE_TASK_NAME("Stabilization");
 };
 }
 #endif

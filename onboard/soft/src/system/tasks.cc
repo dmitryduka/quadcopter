@@ -12,7 +12,12 @@ static void debugInt(const char* str, unsigned int x) {
     System::Bus::UART::write_waiting('\n');
 }
 
-Task::Task() : executeAt(0), interval(0), nextTask(0) { }
+Task::Task() : executeAt(0), 
+		lastExecuteAt(0), 
+		interval(0), 
+		trueInterval(0), 
+		nextTask(0) { }
+
 void Task::start() {}
 
 TaskScheduler::TaskScheduler() : idleTasks(0), 
@@ -22,6 +27,11 @@ TaskScheduler::TaskScheduler() : idleTasks(0),
 				nextTask {0, 0}, 
 				timeToWait(0), 
 				lastRtc(0) {}
+
+TaskScheduler& TaskScheduler::instance() {
+    static TaskScheduler inst;
+    return inst;
+}
 
 void TaskScheduler::start() {
     unsigned int rtc = *DEV_RTC;
@@ -36,6 +46,8 @@ void TaskScheduler::start() {
         if (nextTask.task && ((rtc - lastRtc) >= timeToWait)) {
     	    unsigned int currentTaskExecuteAt = nextTask.task->executeAt;
             nextTask.task->start();
+            nextTask.task->trueInterval = rtc - nextTask.task->lastExecuteAt;
+            nextTask.task->lastExecuteAt = rtc;
             /* Either remove the task from the ONE_SHOT_QUEUE, or increment the execution time
             for the CONTINUOUS_QUEUE task */
             if (nextTask.queue == ONE_SHOT_QUEUE) removeTask(nextTask.task);
@@ -158,6 +170,20 @@ void TaskScheduler::addTask(Task** list, Task* t, int delay) {
         TODO: Scheduler should know about the last task in both linked lists */
         while (last->nextTask) last = last->nextTask;
         last->nextTask = t;
+    }
+}
+
+void TaskScheduler::ps() {
+    Task** queues[QUEUES_COUNT] = {&continuousTasks, &oneShotTasks};
+    timeToWait = 0xFFFFFFFF;
+    for (int i = 0; i < QUEUES_COUNT; ++i) {
+        Task* q = *(queues[i]);
+        if (q) {
+    	    System::Bus::UART::write_waiting(q->_());
+    	    System::Bus::UART::write_waiting(" : ");
+    	    System::Bus::UART::write_waiting(f32todec(float32(CPU_FREQUENCY_HZ) / float32(q->trueInterval)));
+    	    System::Bus::UART::write_waiting("hz\n");
+	}
     }
 }
 

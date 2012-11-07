@@ -4,16 +4,15 @@
 
 int main() {
     System::init();
-    Tasks::TaskScheduler scheduler;
 
-    ADD_IDLE_TASK(scheduler, XBeeReadIdleTask);
-    ADD_CONTINUOUS_TASK(scheduler, MARGTask, 50_hz);
-    ADD_CONTINUOUS_TASK(scheduler, TelemetryTask, 50_hz);
-    ADD_CONTINUOUS_TASK(scheduler, MagnetometerTask, 70_hz);
-    ADD_CONTINUOUS_TASK(scheduler, AltitudeTask, 100_hz);
+    ADD_IDLE_TASK(XBeeReadIdleTask);
+    ADD_CONTINUOUS_TASK(MARGTask, 50_hz);
+    ADD_CONTINUOUS_TASK(TelemetryTask, 50_hz);
+    ADD_CONTINUOUS_TASK(MagnetometerTask, 70_hz);
+    ADD_CONTINUOUS_TASK(AltitudeTask, 100_hz);
 
     /* Forever */
-    scheduler.start();
+    Tasks::TaskScheduler::instance().start();
     while(1) { System::delay(10); }
 }
 
