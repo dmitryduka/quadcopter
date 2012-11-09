@@ -2,12 +2,14 @@
 #include <common>
 #include <system/i2c.h>
 #include <system/registry.hpp>
+#include <system/tasks.h>
 
 namespace Sensors {
 namespace IMU {
 namespace MPU6050 {
 
 namespace I2C = System::Bus::I2C;
+#define SR System::Registry
 
 static void mpu6050_setup(char reg, char byte) {
     I2C::start();
@@ -81,6 +83,66 @@ void update() {
     System::Registry::set(System::Registry::GYRO_X, gx);
     System::Registry::set(System::Registry::GYRO_Y, gy);
     System::Registry::set(System::Registry::GYRO_Z, gz);
+}
+
+static int signed_divide_shift(int a, unsigned int b) {
+    bool neg = false;
+    if(a < 0) {
+	neg = true;
+	a = -a;
+    }
+    a >>= b;
+    if(neg) a = -a;
+    return a;
+}
+
+CalibrationTask::CalibrationTask() : firstRun(true) {}
+
+void CalibrationTask::start() {
+    if(firstRun) {
+	acc_acc[0] = acc_acc[1] = acc_acc[2] = 
+	acc_gyro[0] = acc_gyro[1] = acc_gyro[2] = cur_sample = 0;
+	System::Bus::UART::write_waiting("Calibration started\n");
+	firstRun = false;
+    }
+
+    update();
+
+    acc_gyro[0] += SR::value(SR::GYRO_X);
+    acc_gyro[1] += SR::value(SR::GYRO_Y);
+    acc_gyro[2] += SR::value(SR::GYRO_Z);
+    /*acc_acc[0] += SR::value(SR::ACCELEROMETER1_X);
+    acc_acc[1] += SR::value(SR::ACCELEROMETER1_Y);
+    acc_acc[2] += SR::value(SR::ACCELEROMETER1_Z);*/
+
+    if(cur_sample >= SAMPLES_COUNT) {
+	acc_gyro[0] = signed_divide_shift(acc_gyro[0], log_<SAMPLES_COUNT>::value);
+	acc_gyro[1] = signed_divide_shift(acc_gyro[1], log_<SAMPLES_COUNT>::value);
+	acc_gyro[2] = signed_divide_shift(acc_gyro[2], log_<SAMPLES_COUNT>::value);
+	/*acc_acc[0] = signed_divide_shift(acc_acc[0], log_<SAMPLES_COUNT>::value);
+	acc_acc[1] = signed_divide_shift(acc_acc[1], log_<SAMPLES_COUNT>::value);
+	acc_acc[2] = signed_divide_shift(acc_acc[2], log_<SAMPLES_COUNT>::value);*/
+
+	/* report calibration values and set them in the System Registry */
+	SR::set(SR::GYRO_TRIM_X, acc_gyro[0]);
+	SR::set(SR::GYRO_TRIM_Y, acc_gyro[1]);
+	SR::set(SR::GYRO_TRIM_Z, acc_gyro[2]);
+	/*SR::set(ACCELEROMETER1_TRIM_X, acc_acc[0]);
+	SR::set(ACCELEROMETER1_TRIM_Y, acc_acc[1]);
+	SR::set(ACCELEROMETER1_TRIM_Z, acc_acc[2]);*/
+	System::Bus::UART::write_waiting("GX = ");
+	System::Bus::UART::write_waiting(b32todec(acc_gyro[0]));
+	System::Bus::UART::write_waiting('\n');
+	System::Bus::UART::write_waiting("GY = ");
+	System::Bus::UART::write_waiting(b32todec(acc_gyro[1]));
+	System::Bus::UART::write_waiting('\n');
+	System::Bus::UART::write_waiting("GZ = ");
+	System::Bus::UART::write_waiting(b32todec(acc_gyro[2]));
+	System::Bus::UART::write_waiting('\n');
+	System::Bus::UART::write_waiting("Calibration stopped\n");
+	firstRun = true;
+	System::Tasking::TaskScheduler::instance().removeTask(this);
+    } else cur_sample++;
 }
 
 }

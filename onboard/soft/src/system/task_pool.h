@@ -14,6 +14,7 @@ enum TaskType {
     MARGTask,
     AltitudeTask,
     MagnetometerTask,
+    IMUCalibrationTask,
     TASK_TYPE_COUNT
 };
 

@@ -1,6 +1,8 @@
 #ifndef IMU_H
 #define IMU_H
 
+#include <system>
+
 namespace Sensors {
 
 namespace IMU {
@@ -53,6 +55,20 @@ namespace MPU6050 {
     void init();
     /* Updates the SystemRegistry with new data from the IMU */
     void update();
+
+    /* Calibration task. It should be task instead of the simple function,
+	because it takes considerable time to calibrate sensor, and we might want
+	to do something else in parallel */
+    class CalibrationTask : public ContinuousTask {
+	constexpr static unsigned int SAMPLES_COUNT = 1024 * 16;
+	int acc_acc[3], acc_gyro[3];
+	unsigned int cur_sample;
+	bool firstRun;
+    public:
+	CalibrationTask();
+	void start();
+	DEFINE_TASK_NAME("IMU Calib.");
+    };
 }
 
 }

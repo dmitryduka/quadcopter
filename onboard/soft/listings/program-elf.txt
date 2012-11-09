@@ -35,8 +35,8 @@ Section Headers:
   [11] .debug_str        MIPS_DWARF      00000000 00a431 00014e 01  MS  0   0  1
   [12] .debug_frame      MIPS_DWARF      00000000 00a580 000020 00   o  0   0  4
   [13] .shstrtab         STRTAB          00000000 00a5a0 0000a1 00      0   0  1
-  [14] .symtab           SYMTAB          00000000 00a8c4 0006d0 10     15  49  4
-  [15] .strtab           STRTAB          00000000 00af94 000cea 00      0   0  1
+  [14] .symtab           SYMTAB          00000000 00a8c4 000740 10     15  53  4
+  [15] .strtab           STRTAB          00000000 00b004 000e19 00      0   0  1
 Key to Flags:
   W (write), A (alloc), X (execute), M (merge), S (strings)
   I (info), L (link order), G (group), T (TLS), E (exclude), x (unknown)
@@ -60,7 +60,7 @@ There are no relocations in this file.
 
 There are no unwind sections in this file.
 
-Symbol table '.symtab' contains 109 entries:
+Symbol table '.symtab' contains 116 entries:
    Num:    Value  Size Type    Bind   Vis      Ndx Name
      0: 00000000     0 NOTYPE  LOCAL  DEFAULT  UND 
      1: 00000000     0 SECTION LOCAL  DEFAULT    1 
@@ -75,102 +75,109 @@ Symbol table '.symtab' contains 109 entries:
     10: 00000000     0 SECTION LOCAL  DEFAULT   10 
     11: 00000000     0 SECTION LOCAL  DEFAULT   11 
     12: 00000000     0 SECTION LOCAL  DEFAULT   12 
-    13: 00000000     0 FILE    LOCAL  DEFAULT  ABS ccRit5Ty.ltrans0.o
-    14: 80000168    16 OBJECT  LOCAL  DEFAULT    2 _ZN5Radio8MessagesL8handlersE.3088.1922
-    15: 00000170    48 FUNC    LOCAL  DEFAULT    1 _ZN7float3219shift32RightJammingEjiPj.1821
-    16: 000001a0   188 FUNC    LOCAL  DEFAULT    1 _ZN7float3212roundAndPackEbij.1811
-    17: 0000025c   360 FUNC    LOCAL  DEFAULT    1 _ZN7float327addSigsEjjb.1806
-    18: 000003c4    92 FUNC    LOCAL  DEFAULT    1 _ZN7float3219countLeadingZeros32Ej.1826
-    19: 80000068   256 OBJECT  LOCAL  DEFAULT    2 _ZZN7float3219countLeadingZeros32EjE21countLeadingZerosHigh.3907.1924
-    20: 00000420    92 FUNC    LOCAL  DEFAULT    1 _ZN7float3218normalizeSubnormalEjPiPj.1816
-    21: 0000047c    80 FUNC    LOCAL  DEFAULT    1 _ZN4MathL6divideEii.3657.1836
-    22: 000004d8     8 FUNC    LOCAL  DEFAULT    1 _ZN5Radio8Messages14defaultHandlerEPc.1856
-    23: 800002b0     8 OBJECT  LOCAL  DEFAULT    2 _ZGVZN6System8Registry8instanceEvE4inst.local.35.1913
-    24: 800002b8   244 OBJECT  LOCAL  DEFAULT    2 _ZZN6System8Registry8instanceEvE4inst.local.34.1920
-    25: 800003b0     8 OBJECT  LOCAL  DEFAULT    2 _ZGVZN6System7Tasking13TaskScheduler8instanceEvE4inst.4370.1918
-    26: 800003b8    36 OBJECT  LOCAL  DEFAULT    2 _ZZN6System7Tasking13TaskScheduler8instanceEvE4inst.4369.1923
-    27: 80000178    16 OBJECT  LOCAL  DEFAULT    2 _ZTVN6System7Tasking14ContinuousTaskE.local.43.1438
-    28: 000014a4    88 FUNC    LOCAL  DEFAULT    1 _ZN7float32C2Ei.1342
-    29: 00001530   372 FUNC    LOCAL  DEFAULT    1 _ZN7float327subSigsEjjb.1788
-    30: 00000000     0 FILE    LOCAL  DEFAULT  ABS ccRit5Ty.ltrans1.o
-    31: 00000000     0 FILE    LOCAL  DEFAULT  ABS ccRit5Ty.ltrans2.o
-    32: 00002918   688 FUNC    LOCAL  DEFAULT    1 _Z8f32todecRK7float32.1501
-    33: 00002bc8    96 FUNC    LOCAL  DEFAULT    1 _ZL4fl32j.2569.1450
-    34: 00000000     0 FILE    LOCAL  DEFAULT  ABS /srv/toolchain/build/src/gcc-4.7.1/libgcc/libgcc2.c
-    35: 00000000     0 FILE    LOCAL  DEFAULT  ABS ccRit5Ty.ltrans3.o
-    36: 00003de0   560 FUNC    LOCAL  DEFAULT    1 _GLOBAL__sub_I__ZN6System7Tasking4Pool16xbeeReadIdleTaskE.4190.1318
-    37: 80000410    76 OBJECT  LOCAL  DEFAULT    2 _ZN6System7Tasking4Pool16xbeeReadIdleTaskE.1820
-    38: 800002a0    16 OBJECT  LOCAL  DEFAULT    2 _ZTVN5Radio7Digital16XBeeReadIdleTaskE.local.42.1418
-    39: 8000045c    28 OBJECT  LOCAL  DEFAULT    2 _ZN6System7Tasking4Pool13telemetryTaskE.1827
-    40: 80000280    16 OBJECT  LOCAL  DEFAULT    2 _ZTVN5Radio7Digital13TelemetryTaskE.local.40.1440
-    41: 80000478   188 OBJECT  LOCAL  DEFAULT    2 _ZN6System7Tasking4Pool32stabilizationAndEngineUpdateTaskE.1828
-    42: 80000270    16 OBJECT  LOCAL  DEFAULT    2 _ZTVN7Control32StabilizationAndEngineUpdateTaskE.local.39.1498
-    43: 80000534   108 OBJECT  LOCAL  DEFAULT    2 _ZN6System7Tasking4Pool8margTaskE.1836
-    44: 80000260    16 OBJECT  LOCAL  DEFAULT    2 _ZTVN7Control4MARGE.local.38.1655
-    45: 800005a0   168 OBJECT  LOCAL  DEFAULT    2 _ZN6System7Tasking4Pool12altitudeTaskE.1860
-    46: 80000250    16 OBJECT  LOCAL  DEFAULT    2 _ZTVN7Control12AltitudeTaskE.local.36.1687
-    47: 80000648    28 OBJECT  LOCAL  DEFAULT    2 _ZN6System7Tasking4Pool16magnetometerTaskE.1869
-    48: 80000240    16 OBJECT  LOCAL  DEFAULT    2 _ZTVN7Control16MagnetometerTaskE.local.37.1704
-    49: 00001404    72 FUNC    GLOBAL HIDDEN     1 _ZN7Sensors3IMU7MPU6050L13mpu6050_setupEcc.3387
-    50: 00001a08   212 FUNC    GLOBAL HIDDEN     1 _ZNK7float32cviEv
-    51: 00003d98    72 FUNC    GLOBAL DEFAULT    1 __ashldi3
-    52: 00000504    12 FUNC    GLOBAL HIDDEN     1 _ZN7Control12AltitudeTask1_Ev.local.33
-    53: 000044d0     0 NOTYPE  GLOBAL DEFAULT    1 CODE_ENDS
-    54: 00000f0c   164 FUNC    GLOBAL HIDDEN     1 _ZN6System7Tasking13TaskScheduler14selectNextTaskEj
-    55: 00003850   980 FUNC    GLOBAL HIDDEN     1 _ZN7Control12AltitudeTask5startEv
-    56: 80000290    16 OBJECT  GLOBAL HIDDEN     2 _ZTVN6System7Tasking4TaskE.local.44
-    57: 000004ec    12 FUNC    GLOBAL HIDDEN     1 _ZN7Control4MARG1_Ev.local.28
-    58: 80000664     0 NOTYPE  GLOBAL DEFAULT    2 CTORS_INIT
-    59: 800003e8     8 OBJECT  GLOBAL HIDDEN     2 _ZN7Sensors4BaroL4OFF2E.3279
-    60: 800003f8    24 OBJECT  GLOBAL HIDDEN     2 _ZN7Sensors4BaroL2_CE.3277
-    61: 000004f8    12 FUNC    GLOBAL HIDDEN     1 _ZN7Control16MagnetometerTask1_Ev.local.29
-    62: 0000106c    36 FUNC    GLOBAL HIDDEN     1 _ZN6System3Bus3I2C5startEv
-    63: 000017c8   344 FUNC    GLOBAL HIDDEN     1 _ZNK7float32mlERKS_
-    64: 000012e8   284 FUNC    GLOBAL HIDDEN     1 _ZN7Control16MagnetometerTask5startEv
-    65: 000016fc    60 FUNC    GLOBAL HIDDEN     1 _ZN7float32pLERKS_
-    66: 000005ec   660 FUNC    GLOBAL HIDDEN     1 _ZN7Control32StabilizationAndEngineUpdateTask5startEv
-    67: 800003f0     8 OBJECT  GLOBAL HIDDEN     2 _ZN7Sensors4BaroL2dTE.3278
-    68: 000016a4    88 FUNC    GLOBAL HIDDEN     1 _ZNK7float32plERKS_
-    69: 00000020   316 FUNC    GLOBAL HIDDEN     1 _ZN5Radio7Digital16XBeeReadIdleTask5startEv
-    70: 0000144c    88 FUNC    GLOBAL HIDDEN     1 _ZN7float3221normalizeRoundAndPackEbij
-    71: 000037c8   136 FUNC    GLOBAL HIDDEN     1 _ZN5Radio7Digital13TelemetryTask5startEv
-    72: 000008d0   656 FUNC    GLOBAL HIDDEN     1 _ZNK7float32dvERKS_
-    73: 00000538    84 FUNC    GLOBAL HIDDEN     1 _ZN6System3Bus4UART13write_waitingEx
-    74: 00001adc   184 FUNC    GLOBAL HIDDEN     1 _ZNK7float32ltERKS_
-    75: 00000bd8   232 FUNC    GLOBAL HIDDEN     1 _ZL3hexj.2563
-    76: 00000b60   108 FUNC    GLOBAL HIDDEN     1 _ZN6System3Bus4UART13write_waitingEPKcj.constprop.46
-    77: 000019cc    60 FUNC    GLOBAL HIDDEN     1 _ZN7float32mLERKS_
-    78: 000014a4    88 FUNC    GLOBAL HIDDEN     1 _ZN7float32C1Ei
-    79: 00000000     0 OBJECT  GLOBAL DEFAULT    1 _start
-    80: 00001090   120 FUNC    GLOBAL HIDDEN     1 _ZN7Sensors4BaroL11updateValueEv.3200
-    81: 00001048    36 FUNC    GLOBAL HIDDEN     1 _ZN6System3Bus3I2C4stopEv
-    82: 000004cc    12 FUNC    GLOBAL HIDDEN     1 _ZN5Radio7Digital13TelemetryTask1_Ev.local.16
-    83: 00000164    12 FUNC    GLOBAL HIDDEN     1 _ZN6System7Tasking4Task1_Ev.local.0
-    84: 00001bb4  3428 FUNC    GLOBAL HIDDEN     1 _ZN7Control4MARG5startEv
-    85: 00001920   172 FUNC    GLOBAL HIDDEN     1 _ZN3f325rsqrtERK7float32
-    86: 00001108   480 FUNC    GLOBAL HIDDEN     1 _ZN7Sensors4Baro17updateTemperatureEv
-    87: 00003c24   372 FUNC    GLOBAL HIDDEN     1 _ZN3f325atan2ERK7float32S2_
-    88: 00002c28  2976 FUNC    GLOBAL HIDDEN     1 _ZN5Radio8Messages14consoleHandlerEPc
-    89: 000004e0    12 FUNC    GLOBAL HIDDEN     1 _ZN7Control32StabilizationAndEngineUpdateTask1_Ev.local.26
-    90: 0000101c    44 FUNC    GLOBAL HIDDEN     1 _ZN6System3Bus3I2C5writeEh
-    91: 00004010  1216 FUNC    GLOBAL DEFAULT    1 main
-    92: 00001738    84 FUNC    GLOBAL HIDDEN     1 _ZNK7float32miERKS_
-    93: 80000238     4 OBJECT  GLOBAL HIDDEN     2 RESPONSE_OK
-    94: 00001b94    32 FUNC    GLOBAL HIDDEN     1 _ZN4MathL11sign_extendEi.3379
-    95: 0000178c    60 FUNC    GLOBAL HIDDEN     1 _ZN7float32mIERKS_
-    96: 00000e64   100 FUNC    GLOBAL HIDDEN     1 _ZL7set_decji.2572
-    97: 0000058c    96 FUNC    GLOBAL HIDDEN     1 _ZN6System8Registry8instanceEv.local.11
-    98: 00000fb0    72 FUNC    GLOBAL HIDDEN     1 _ZN6System7Tasking13TaskScheduler8instanceEv
-    99: 800003e0     8 OBJECT  GLOBAL HIDDEN     2 _ZN7Sensors4BaroL5SENS2E.3280
-   100: 0000015c     8 FUNC    GLOBAL HIDDEN     1 _ZN6System7Tasking4Task5startEv
-   101: 000014fc    52 FUNC    GLOBAL HIDDEN     1 _ZN7float32C2Ej.part.0.3817
-   102: 80000668     0 NOTYPE  GLOBAL DEFAULT    2 DATA_ENDS
-   103: 00000cc0   420 FUNC    GLOBAL HIDDEN     1 _ZL3decj.2566
-   104: 00000ec8    68 FUNC    GLOBAL HIDDEN     1 _ZN6System7Tasking13TaskScheduler7addTaskEPPNS0_4TaskES3_i
-   105: 00000510    40 FUNC    GLOBAL HIDDEN     1 _ZN6System3Bus3I2C4readEv
-   106: 00000880    80 FUNC    GLOBAL HIDDEN     1 _ZN4MathL6divideEii.1342.constprop.56
-   107: 00000bcc    12 FUNC    GLOBAL HIDDEN     1 _ZL4failv.2545
-   108: 00000ff8    36 FUNC    GLOBAL HIDDEN     1 _ZN6System7Tasking14ContinuousTaskC2Ev.local.6
+    13: 00000000     0 FILE    LOCAL  DEFAULT  ABS ccwICf0o.ltrans0.o
+    14: 800001d0    16 OBJECT  LOCAL  DEFAULT    2 _ZN5Radio8MessagesL8handlersE.3140.1949
+    15: 00000170    48 FUNC    LOCAL  DEFAULT    1 _ZN7float3219shift32RightJammingEjiPj.1846
+    16: 000001a0   188 FUNC    LOCAL  DEFAULT    1 _ZN7float3212roundAndPackEbij.1836
+    17: 0000025c   360 FUNC    LOCAL  DEFAULT    1 _ZN7float327addSigsEjjb.1831
+    18: 000003c4    92 FUNC    LOCAL  DEFAULT    1 _ZN7float3219countLeadingZeros32Ej.1851
+    19: 800000d0   256 OBJECT  LOCAL  DEFAULT    2 _ZZN7float3219countLeadingZeros32EjE21countLeadingZerosHigh.4012.1951
+    20: 00000420    92 FUNC    LOCAL  DEFAULT    1 _ZN7float3218normalizeSubnormalEjPiPj.1841
+    21: 0000047c    80 FUNC    LOCAL  DEFAULT    1 _ZN4MathL6divideEii.3762.1861
+    22: 000004d8    32 FUNC    LOCAL  DEFAULT    1 _ZN4MathL11sign_extendEi.3471.1869
+    23: 00000504     8 FUNC    LOCAL  DEFAULT    1 _ZN5Radio8Messages14defaultHandlerEPc.1883
+    24: 800000c0    16 OBJECT  LOCAL  DEFAULT    2 _ZTVN6System7Tasking14ContinuousTaskE.local.45.1432
+    25: 80000310     8 OBJECT  LOCAL  DEFAULT    2 _ZGVZN6System8Registry8instanceEvE4inst.local.36.1940
+    26: 80000318   244 OBJECT  LOCAL  DEFAULT    2 _ZZN6System8Registry8instanceEvE4inst.local.35.1947
+    27: 000008cc   328 FUNC    LOCAL  DEFAULT    1 _Z8b32todeci.1667
+    28: 80000410     8 OBJECT  LOCAL  DEFAULT    2 _ZGVZN6System7Tasking13TaskScheduler8instanceEvE4inst.4493.1945
+    29: 80000418    36 OBJECT  LOCAL  DEFAULT    2 _ZZN6System7Tasking13TaskScheduler8instanceEvE4inst.4492.1950
+    30: 000019ac    88 FUNC    LOCAL  DEFAULT    1 _ZN7float32C2Ei.1342
+    31: 00001a38   372 FUNC    LOCAL  DEFAULT    1 _ZN7float327subSigsEjjb.1813
+    32: 00000000     0 FILE    LOCAL  DEFAULT  ABS ccwICf0o.ltrans1.o
+    33: 00000000     0 FILE    LOCAL  DEFAULT  ABS ccwICf0o.ltrans2.o
+    34: 00002c14   688 FUNC    LOCAL  DEFAULT    1 _Z8f32todecRK7float32.1494
+    35: 00002ec4    96 FUNC    LOCAL  DEFAULT    1 _ZL4fl32j.2607.1443
+    36: 00000000     0 FILE    LOCAL  DEFAULT  ABS /srv/toolchain/build/src/gcc-4.7.1/libgcc/libgcc2.c
+    37: 00000000     0 FILE    LOCAL  DEFAULT  ABS ccwICf0o.ltrans3.o
+    38: 000040c0   596 FUNC    LOCAL  DEFAULT    1 _GLOBAL__sub_I__ZN6System7Tasking4Pool16xbeeReadIdleTaskE.4310.1318
+    39: 80000470    76 OBJECT  LOCAL  DEFAULT    2 _ZN6System7Tasking4Pool16xbeeReadIdleTaskE.1842
+    40: 80000300    16 OBJECT  LOCAL  DEFAULT    2 _ZTVN5Radio7Digital16XBeeReadIdleTaskE.local.43.1418
+    41: 800004bc    28 OBJECT  LOCAL  DEFAULT    2 _ZN6System7Tasking4Pool13telemetryTaskE.1849
+    42: 800002e0    16 OBJECT  LOCAL  DEFAULT    2 _ZTVN5Radio7Digital13TelemetryTaskE.local.41.1440
+    43: 800004d8   188 OBJECT  LOCAL  DEFAULT    2 _ZN6System7Tasking4Pool32stabilizationAndEngineUpdateTaskE.1850
+    44: 800002d0    16 OBJECT  LOCAL  DEFAULT    2 _ZTVN7Control32StabilizationAndEngineUpdateTaskE.local.40.1498
+    45: 80000594   108 OBJECT  LOCAL  DEFAULT    2 _ZN6System7Tasking4Pool8margTaskE.1858
+    46: 800002c0    16 OBJECT  LOCAL  DEFAULT    2 _ZTVN7Control4MARGE.local.39.1655
+    47: 80000600   168 OBJECT  LOCAL  DEFAULT    2 _ZN6System7Tasking4Pool12altitudeTaskE.1882
+    48: 800002b0    16 OBJECT  LOCAL  DEFAULT    2 _ZTVN7Control12AltitudeTaskE.local.37.1687
+    49: 800006a8    28 OBJECT  LOCAL  DEFAULT    2 _ZN6System7Tasking4Pool16magnetometerTaskE.1891
+    50: 800002a0    16 OBJECT  LOCAL  DEFAULT    2 _ZTVN7Control16MagnetometerTaskE.local.38.1704
+    51: 800006c4    60 OBJECT  LOCAL  DEFAULT    2 _ZN6System7Tasking4Pool18imuCalibrationTaskE.1892
+    52: 80000290    16 OBJECT  LOCAL  DEFAULT    2 _ZTVN7Sensors3IMU7MPU605015CalibrationTaskE.local.44.1730
+    53: 00001f10   212 FUNC    GLOBAL HIDDEN     1 _ZNK7float32cviEv
+    54: 00004078    72 FUNC    GLOBAL DEFAULT    1 __ashldi3
+    55: 00004764     0 NOTYPE  GLOBAL DEFAULT    1 CODE_ENDS
+    56: 00000f54   164 FUNC    GLOBAL HIDDEN     1 _ZN6System7Tasking13TaskScheduler14selectNextTaskEj
+    57: 80000448     8 OBJECT  GLOBAL HIDDEN     2 _ZN7Sensors4BaroL4OFF2E.3331
+    58: 00003b30   980 FUNC    GLOBAL HIDDEN     1 _ZN7Control12AltitudeTask5startEv
+    59: 00000d80    36 FUNC    GLOBAL HIDDEN     1 _ZN6System3Bus4UART13write_waitingEc
+    60: 80000700     0 NOTYPE  GLOBAL DEFAULT    2 CTORS_INIT
+    61: 00000524    12 FUNC    GLOBAL HIDDEN     1 _ZN7Control16MagnetometerTask1_Ev.local.30
+    62: 00001128    36 FUNC    GLOBAL HIDDEN     1 _ZN6System3Bus3I2C5startEv
+    63: 0000087c    80 FUNC    GLOBAL HIDDEN     1 _ZN4MathL6divideEii.1342.constprop.60
+    64: 000004f8    12 FUNC    GLOBAL HIDDEN     1 _ZN5Radio7Digital13TelemetryTask1_Ev.local.17
+    65: 00001cd0   344 FUNC    GLOBAL HIDDEN     1 _ZNK7float32mlERKS_
+    66: 000017f0   284 FUNC    GLOBAL HIDDEN     1 _ZN7Control16MagnetometerTask5startEv
+    67: 00000ff8   152 FUNC    GLOBAL HIDDEN     1 _ZN6System7Tasking13TaskScheduler10removeTaskEPNS0_4TaskE
+    68: 000004cc    12 FUNC    GLOBAL HIDDEN     1 _ZN7Sensors3IMU7MPU605015CalibrationTask1_Ev.local.14
+    69: 00001c04    60 FUNC    GLOBAL HIDDEN     1 _ZN7float32pLERKS_
+    70: 800002f0    16 OBJECT  GLOBAL HIDDEN     2 _ZTVN6System7Tasking4TaskE.local.46
+    71: 000005e8   660 FUNC    GLOBAL HIDDEN     1 _ZN7Control32StabilizationAndEngineUpdateTask5startEv
+    72: 00001bac    88 FUNC    GLOBAL HIDDEN     1 _ZNK7float32plERKS_
+    73: 80000458    24 OBJECT  GLOBAL HIDDEN     2 _ZN7Sensors4BaroL2_CE.3329
+    74: 00000020   316 FUNC    GLOBAL HIDDEN     1 _ZN5Radio7Digital16XBeeReadIdleTask5startEv
+    75: 00001954    88 FUNC    GLOBAL HIDDEN     1 _ZN7float3221normalizeRoundAndPackEbij
+    76: 00000ca4   108 FUNC    GLOBAL HIDDEN     1 _ZN6System3Bus4UART13write_waitingEPKcj.constprop.49
+    77: 00003aa8   136 FUNC    GLOBAL HIDDEN     1 _ZN5Radio7Digital13TelemetryTask5startEv
+    78: 00000a14   656 FUNC    GLOBAL HIDDEN     1 _ZNK7float32dvERKS_
+    79: 00000da4    96 FUNC    GLOBAL HIDDEN     1 _ZN6System3Bus4UART13write_waitingEx
+    80: 00001fe4   184 FUNC    GLOBAL HIDDEN     1 _ZNK7float32ltERKS_
+    81: 00001ed4    60 FUNC    GLOBAL HIDDEN     1 _ZN7float32mLERKS_
+    82: 000019ac    88 FUNC    GLOBAL HIDDEN     1 _ZN7float32C1Ei
+    83: 00000000     0 OBJECT  GLOBAL DEFAULT    1 _start
+    84: 0000050c    12 FUNC    GLOBAL HIDDEN     1 _ZN7Control32StabilizationAndEngineUpdateTask1_Ev.local.27
+    85: 00001104    36 FUNC    GLOBAL HIDDEN     1 _ZN6System3Bus3I2C4stopEv
+    86: 00001a04    52 FUNC    GLOBAL HIDDEN     1 _ZN7float32C2Ej.part.0.3922
+    87: 00000164    12 FUNC    GLOBAL HIDDEN     1 _ZN6System7Tasking4Task1_Ev.local.0
+    88: 0000209c  2936 FUNC    GLOBAL HIDDEN     1 _ZN7Control4MARG5startEv
+    89: 00001e28   172 FUNC    GLOBAL HIDDEN     1 _ZN3f325rsqrtERK7float32
+    90: 000011c4   480 FUNC    GLOBAL HIDDEN     1 _ZN7Sensors4Baro17updateTemperatureEv
+    91: 00003f04   372 FUNC    GLOBAL HIDDEN     1 _ZN3f325atan2ERK7float32S2_
+    92: 80000440     8 OBJECT  GLOBAL HIDDEN     2 _ZN7Sensors4BaroL5SENS2E.3332
+    93: 00002f24  2948 FUNC    GLOBAL HIDDEN     1 _ZN5Radio8Messages14consoleHandlerEPc
+    94: 000010d8    44 FUNC    GLOBAL HIDDEN     1 _ZN6System3Bus3I2C5writeEh
+    95: 00004314  1104 FUNC    GLOBAL DEFAULT    1 main
+    96: 00001c40    84 FUNC    GLOBAL HIDDEN     1 _ZNK7float32miERKS_
+    97: 8000028c     4 OBJECT  GLOBAL HIDDEN     2 RESPONSE_OK
+    98: 00000d1c   100 FUNC    GLOBAL HIDDEN     1 _ZL7set_decji.2610
+    99: 000015dc   532 FUNC    GLOBAL HIDDEN     1 _ZN7Sensors3IMU7MPU605015CalibrationTask5startEv
+   100: 00000530    12 FUNC    GLOBAL HIDDEN     1 _ZN7Control12AltitudeTask1_Ev.local.34
+   101: 00000e04   232 FUNC    GLOBAL HIDDEN     1 _ZL3hexj.2601
+   102: 0000190c    72 FUNC    GLOBAL HIDDEN     1 _ZN7Sensors3IMU7MPU6050L13mpu6050_setupEcc.3500
+   103: 00000eec   104 FUNC    GLOBAL HIDDEN     1 _ZL3decj.2604
+   104: 000013a4   568 FUNC    GLOBAL HIDDEN     1 _ZN7Sensors3IMU7MPU60506updateEv
+   105: 0000114c   120 FUNC    GLOBAL HIDDEN     1 _ZN7Sensors4BaroL11updateValueEv.3252
+   106: 00001c94    60 FUNC    GLOBAL HIDDEN     1 _ZN7float32mIERKS_
+   107: 00000588    96 FUNC    GLOBAL HIDDEN     1 _ZN6System8Registry8instanceEv.local.11
+   108: 00001090    72 FUNC    GLOBAL HIDDEN     1 _ZN6System7Tasking13TaskScheduler8instanceEv
+   109: 0000015c     8 FUNC    GLOBAL HIDDEN     1 _ZN6System7Tasking4Task5startEv
+   110: 80000704     0 NOTYPE  GLOBAL DEFAULT    2 DATA_ENDS
+   111: 00000518    12 FUNC    GLOBAL HIDDEN     1 _ZN7Control4MARG1_Ev.local.29
+   112: 80000450     8 OBJECT  GLOBAL HIDDEN     2 _ZN7Sensors4BaroL2dTE.3330
+   113: 00000d10    12 FUNC    GLOBAL HIDDEN     1 _ZL4failv.2583
+   114: 0000053c    40 FUNC    GLOBAL HIDDEN     1 _ZN6System3Bus3I2C4readEv
+   115: 00000564    36 FUNC    GLOBAL HIDDEN     1 _ZN6System7Tasking14ContinuousTaskC2Ev.local.6
 
 No version information found in this file.
 Attribute Section: gnu
