@@ -52,6 +52,11 @@ namespace MPU6050 {
     constexpr unsigned char MPU6050_I2C_MASTER_DISABLE	= 0x02;
     constexpr unsigned char MPU6050_I2C_MASTER_ENABLE  = 0x22;
 
+    /* Default gyroscope trim values */
+    constexpr unsigned int DEFAULT_GYRO_TRIM_X = -1;
+    constexpr unsigned int DEFAULT_GYRO_TRIM_Y = -25;
+    constexpr unsigned int DEFAULT_GYRO_TRIM_Z = -10;
+
     void init();
     /* Updates the SystemRegistry with new data from the IMU */
     void update();
@@ -60,7 +65,7 @@ namespace MPU6050 {
 	because it takes considerable time to calibrate sensor, and we might want
 	to do something else in parallel */
     class CalibrationTask : public ContinuousTask {
-	constexpr static unsigned int SAMPLES_COUNT = 1024 * 16;
+	constexpr static unsigned int SAMPLES_COUNT = 1024 * 8;
 	int acc_acc[3], acc_gyro[3];
 	unsigned int cur_sample;
 	bool firstRun;

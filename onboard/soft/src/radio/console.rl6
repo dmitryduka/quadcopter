@@ -52,6 +52,10 @@ static void ps() {
     Tasks::TaskScheduler::instance().ps();
 }
 
+static void cal() {
+    ADD_CONTINUOUS_TASK(IMUCalibrationTask, 1000_hz);
+}
+
 static void top() {
     Tasks::TaskScheduler::instance().top();
 }
@@ -87,6 +91,7 @@ void parseConsoleMessage(const char* str) {
 	action ps { ps(); }
 	action top { top(); }
 	action ttw { ttw(); }
+	action cal { cal(); }
 	action hex { hex(arg[0]); }
 	action set_hex { set_hex(arg[0], arg[1]); }
 	action dec { dec(arg[0]); }
@@ -103,6 +108,7 @@ void parseConsoleMessage(const char* str) {
 			 'ps' @ps |
 			 'top' @top |
 			 'ttw' @ttw |
+			 'cal' @cal |
 			 ('get_f32' unumarg) %f32 |
 			 ('get_hex' unumarg) %hex |
 			 ('get_dec' unumarg) %dec |

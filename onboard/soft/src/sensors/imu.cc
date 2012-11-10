@@ -31,6 +31,10 @@ void init() {
     mpu6050_setup(MPU6050_I2C_BYPASS, MPU6050_I2C_BYPASS_ENABLE);
     mpu6050_setup(MPU6050_I2C_MASTER, MPU6050_I2C_MASTER_DISABLE);
     System::delay(1_ms);
+
+    SR::set(SR::GYRO_TRIM_X, DEFAULT_GYRO_TRIM_X);
+    SR::set(SR::GYRO_TRIM_Y, DEFAULT_GYRO_TRIM_Y);
+    SR::set(SR::GYRO_TRIM_Z, DEFAULT_GYRO_TRIM_Z);
 }
 
 /* Whole operation takes ~400us, so no need for separate I2C tasks */
@@ -76,13 +80,13 @@ void update() {
     if(neg) t = -t;
     t += 3653;
 
-    System::Registry::set(System::Registry::MPU6050_TEMPERATURE, t);
-    System::Registry::set(System::Registry::ACCELEROMETER1_X, ax);
-    System::Registry::set(System::Registry::ACCELEROMETER1_Y, ay);
-    System::Registry::set(System::Registry::ACCELEROMETER1_Z, az);
-    System::Registry::set(System::Registry::GYRO_X, gx);
-    System::Registry::set(System::Registry::GYRO_Y, gy);
-    System::Registry::set(System::Registry::GYRO_Z, gz);
+    SR::set(SR::MPU6050_TEMPERATURE, t);
+    SR::set(SR::ACCELEROMETER1_X, ax);
+    SR::set(SR::ACCELEROMETER1_Y, ay);
+    SR::set(SR::ACCELEROMETER1_Z, az);
+    SR::set(SR::GYRO_X, gx - SR::value(SR::GYRO_TRIM_X));
+    SR::set(SR::GYRO_Y, gy - SR::value(SR::GYRO_TRIM_Y));
+    SR::set(SR::GYRO_Z, gz - SR::value(SR::GYRO_TRIM_Z));
 }
 
 static int signed_divide_shift(int a, unsigned int b) {
@@ -116,9 +120,8 @@ void CalibrationTask::start() {
     acc_acc[2] += SR::value(SR::ACCELEROMETER1_Z);*/
 
     if(cur_sample >= SAMPLES_COUNT) {
-	acc_gyro[0] = signed_divide_shift(acc_gyro[0], log_<SAMPLES_COUNT>::value);
-	acc_gyro[1] = signed_divide_shift(acc_gyro[1], log_<SAMPLES_COUNT>::value);
-	acc_gyro[2] = signed_divide_shift(acc_gyro[2], log_<SAMPLES_COUNT>::value);
+	for(int i = 0; i < 3; ++i)
+	    acc_gyro[i] = signed_divide_shift(acc_gyro[i], log_<SAMPLES_COUNT>::value);
 	/*acc_acc[0] = signed_divide_shift(acc_acc[0], log_<SAMPLES_COUNT>::value);
 	acc_acc[1] = signed_divide_shift(acc_acc[1], log_<SAMPLES_COUNT>::value);
 	acc_acc[2] = signed_divide_shift(acc_acc[2], log_<SAMPLES_COUNT>::value);*/

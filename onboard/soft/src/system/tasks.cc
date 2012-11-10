@@ -26,7 +26,8 @@ TaskScheduler::TaskScheduler() : idleTasks(0),
 				currentIdleTask(0), 
 				nextTask {0, 0}, 
 				timeToWait(0), 
-				lastRtc(0) {}
+				lastRtc(0),
+				currentTaskExecuteAt(0) {}
 
 TaskScheduler& TaskScheduler::instance() {
     static TaskScheduler inst;
@@ -46,7 +47,7 @@ void TaskScheduler::start() {
         unsigned int timePassed = rtc - lastRtc;
         if (nextTask.task && (timePassed >= timeToWait)) {
     	    unsigned int overdue = timePassed - timeToWait;
-    	    unsigned int currentTaskExecuteAt = nextTask.task->executeAt;
+    	    currentTaskExecuteAt = nextTask.task->executeAt;
             nextTask.task->start();
             nextTask.task->trueInterval = rtc - nextTask.task->lastExecuteAt;
             nextTask.task->lastExecuteAt = rtc;
@@ -176,6 +177,8 @@ void TaskScheduler::addTask(Task** list, Task* t, int delay) {
         while (last->nextTask) last = last->nextTask;
         last->nextTask = t;
     }
+
+    selectNextTask(currentTaskExecuteAt);
 }
 
 void TaskScheduler::ps() {

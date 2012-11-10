@@ -83,6 +83,7 @@ private:
     unsigned int timeToWait;
     unsigned int lastRtc;
     unsigned int cpuLoaded;
+    unsigned int currentTaskExecuteAt;
 
     /* Sets nextTask */
     void selectNextTask(unsigned int rtc);
