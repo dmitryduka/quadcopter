@@ -14,7 +14,7 @@ void XBeeReadIdleTask::start() {
 	unsigned char ch = System::Bus::UART::read();
 	/* awaiting for the first character that could be interpreted as a message header/type */
 	if(!current_message.handler) {
-	    if(ch == asIntegral<int, Radio::Messages::To>(Radio::Messages::To::ConsoleRequest)) {
+	    if(ch == asIntegral<int, Radio::Messages::To>(Radio::Messages::To::CONSOLE_REQUEST)) {
 		current_message.size = 0;
 		current_message.handler = Radio::Messages::consoleHandler;
 	    } else {

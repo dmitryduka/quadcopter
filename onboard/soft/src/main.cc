@@ -7,8 +7,8 @@ int main() {
 
     ADD_IDLE_TASK(XBeeReadIdleTask);
     //ADD_CONTINUOUS_TASK(MARGTask, 50_hz);
-    ADD_CONTINUOUS_TASK(TelemetryTask, 10_hz);
-    ADD_CONTINUOUS_TASK(MagnetometerTask, 10_hz);
+    ADD_CONTINUOUS_TASK(TelemetryTask, 1_hz);
+    ADD_CONTINUOUS_TASK(MagnetometerTask, 1_hz);
     //ADD_CONTINUOUS_TASK(AltitudeTask, 50_hz);
 
     /* Forever */

@@ -23,6 +23,7 @@ void TelemetryTask::start() {
     System::Bus::UART::write_waiting(f32todec(System::Registry::value(System::Registry::ANGLE_PHI)));
     System::Bus::UART::write_waiting("\n");
                                            */
+    System::Bus::UART::write_waiting(static_cast<char>(Radio::Messages::From::CONSOLE_RESPONSE));
     System::Bus::UART::write_waiting(b32todec(System::Registry::value(System::Registry::COMPASS_X)));
     System::Bus::UART::write_waiting(" ");
     System::Bus::UART::write_waiting(b32todec(System::Registry::value(System::Registry::COMPASS_Y)));
