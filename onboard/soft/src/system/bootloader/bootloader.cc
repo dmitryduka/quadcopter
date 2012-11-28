@@ -132,7 +132,7 @@ void bootloader_main()
                 unsigned int ptri = (unsigned int)data[0] | 
                                     (unsigned int)(data[1] << 8) | 
                                     (unsigned int)(data[2] << 16) | 
-                                    (unsigned int)(data[3] << 24);
+                                    (unsigned int)(data[3] < 24);
                 char * address = reinterpret_cast<char*>(ptri);
                 /* Entire message received now, calculate crc16 */
                 /* in case crc16 is ok, write data to memory */
@@ -152,7 +152,16 @@ void bootloader_main()
             }
         }
         else if(byte == READ) {
-            /* Wait */
+            unsigned char * ptr = reinterpret_cast<unsigned char*>(read_address());
+            unsigned short int data_length = read_2b();
+            if(data_length < MAX_DATA_LENGTH) data_length = MAX_DATA_LENGTH;
+            	/* Fill buffer with the data and sent it */
+            uart_write_waiting(READ);
+            unsigned short int crc = crc16(ptr, data_length);
+            for(int i = 0; i < data_length; ++i)
+            	uart_write_waiting(ptr[i]);
+            uart_write_waiting(crc & 0xFF);
+            uart_write_waiting(crc >> 8);
         }
         /* Illegal message type */
         else uart_write_waiting(DONT_UNDERSTAND);

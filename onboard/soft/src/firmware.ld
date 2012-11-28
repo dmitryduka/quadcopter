@@ -10,7 +10,7 @@ MEMORY
     dmem (rw)  : ORIGIN = 0x80000000, LENGTH = 4K
 }
 
-/*NOCROSSREFS ( .boot .text )*/
+NOCROSSREFS ( .boot .text )
 
 SECTIONS
 {
@@ -38,6 +38,7 @@ SECTIONS
   } > imem
 
   BOOTLOADER_ENDS = .;
+  BOOTLOADER_SIZE = SIZEOF(.boot) + SIZEOF(.tramp);
 
   .text BOOTLOADER_ENDS : {
     CODE_STARTS = .;
