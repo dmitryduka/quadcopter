@@ -7,8 +7,11 @@ namespace System {
 namespace Bus {
 namespace UART {
 
+const unsigned int TX_BUFFER_LENGTH = 31;
+
 bool can_read();
 char read();
+char read_waiting();
 bool write(const char);
 bool write(const ustring);
 void write_waiting(const char);

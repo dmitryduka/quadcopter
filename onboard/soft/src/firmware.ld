@@ -3,12 +3,15 @@ OUTPUT_FORMAT("elf32-bigmips", "elf32-bigmips",
 	      "elf32-littlemips")
 OUTPUT_ARCH(mips)
 ENTRY(_start)
-SEARCH_DIR("=/usr/local/lib"); SEARCH_DIR("=/lib"); SEARCH_DIR("=/usr/lib");
+SEARCH_DIR(".")
 MEMORY 
 {
-    imem (rx) : ORIGIN = 0, LENGTH = 32K
-    dmem (rw) : ORIGIN = 0x80000000, LENGTH = 4K
+    imem (rwx) : ORIGIN = 0, LENGTH = 32K
+    dmem (rw)  : ORIGIN = 0x80000000, LENGTH = 4K
 }
+
+/*NOCROSSREFS ( .boot .text )*/
+
 SECTIONS
 {
   /DISCARD/ : {
@@ -17,15 +20,33 @@ SECTIONS
     *(.eh_frame)
     *(.eh_frame.*)
   }
-  .text : {
-    *startup.S.o(.text)
+
+  .init 0: {
+    *(.codeinit)
   } > imem
-  .text : {
+
+  CODEINIT_ENDS = .;
+
+  .boot CODEINIT_ENDS : {
+    *(.bootloader)
+  } > imem
+
+  BOOTLOADER_MAIN_ENDS = .;
+
+  .tramp BOOTLOADER_MAIN_ENDS : {
+    *(.trampoline)
+  } > imem
+
+  BOOTLOADER_ENDS = .;
+
+  .text BOOTLOADER_ENDS : {
+    CODE_STARTS = .;
+    *(.text.startup)
     *(.text)
-    *(.text.*)
     CODE_ENDS = .;
-    . = LENGTH(imem);
+    . = LENGTH(imem) - BOOTLOADER_ENDS;
   } > imem = 0
+
   .data : {
     *(.rodata .rodata.* .gnu.linkonce.r.*)
     *(.data .data.* .gnu.linkonce.d.*)

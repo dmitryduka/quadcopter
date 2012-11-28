@@ -49,12 +49,14 @@ STACK_SIZE = 2000
 INCLUDEDIRS = -I$(INCDIR) $(addprefix -I, $(DIRS))
 CCOPTS =  -c -std=c++11 -mno-gpopt -G0 $(INCLUDEDIRS)
 CCOPTS += -flto -Os
-CCOPTS += -pedantic -Wall -Wno-unused-function -Wcast-align -Wstack-usage=$(STACK_SIZE)
+CCOPTS += -pedantic -Wall -Wno-unused-function -Wcast-align -Wstack-usage=$(STACK_SIZE) -Wno-comment -Wno-unused-variable
 CCOPTS += -fdata-sections -ffunction-sections -fno-threadsafe-statics -fno-strict-aliasing -fno-exceptions -fno-rtti
 CCOPTS += -fdump-ipa-cgraph -fstack-usage -fdump-statistics
 LDOPTS = -flto -Os -Wl,--gc-sections -nostdlib -nostartfiles -fwhole-program -lgcc
 
-all: clean_errors dirs $(IMEMFILE) $(DMEMFILE)
+default: firmware
+
+firmware: clean_errors dirs $(IMEMFILE) $(DMEMFILE)
 	@$(eval CE := $(shell $(NM) ./main | grep CODE_ENDS | cut -f 1 -d ' ' | tr '[:lower:]' '[:upper:]'))
 	@$(eval DE := $(shell $(NM) ./main | grep DATA_ENDS | cut -f 1 -d ' ' | tr '[:lower:]' '[:upper:]'))
 	@$(eval DESIZE := $(shell echo "ibase=16; $(DE)-80000000" | bc))
@@ -67,28 +69,28 @@ all: clean_errors dirs $(IMEMFILE) $(DMEMFILE)
 
 include $(DEPS)
 
-main: $(OBJECTS)
+$(PROGRAM): $(OBJECTS)
 	@$(call BLD, '[  LD   ] ')
 	@$(call BLD, 'Linking ')
-	@$(LD) -Wl,-T,$(SRCDIR)/ld.script -o $@ $(OBJECTS) $(LDOPTS) 2> temp.log || touch temp.errors
+	@$(LD) -Wl,-T,$(SRCDIR)/firmware.ld -o $@ $(OBJECTS) $(LDOPTS) 2> temp.log || touch temp.errors
 	@$(call CHECK, 'Linking ')
-	@$(READELF) -W -a main > $(LISTINGSDIR)/program-elf.txt
+	@$(READELF) -W -a $@ > $(LISTINGSDIR)/program-elf.txt
 	@-$(RM) -f temp.errors temp.log
 
-$(IMEMFILE): main
+$(IMEMFILE): $(PROGRAM)
 	@$(call BLD, '[ SREC  ] ')
 	@$(call BLD, 'Generating $@\n')
-	@$(DUMP) -S -C -Dz --section=.text main > $(LISTINGSDIR)/program-listing.txt
-	@cat $(LISTINGSDIR)/program-listing.txt | grep -P "^\s*[\d|abcdef]+:" | cut -f 2 > program.txt
+	@$(DUMP) -S -C -Dz --section=.init --section=.boot --section=.tramp --section=.text $(PROGRAM) > $(LISTINGSDIR)/$@.listing
+	@cat $(LISTINGSDIR)/$@.listing | grep -P "^\s*[\d|abcdef]+:" | cut -f 2 > $@
 #@$(OCOPY) -j .text -O binary main text.dump
 #@srec_cat text.dump -o program.txt -vmem 32
 #@rm text.dump
 
-$(DMEMFILE): main
+$(DMEMFILE): $(PROGRAM)
 	@$(call BLD, '[ SREC  ] ')
 	@$(call BLD, 'Generating $@\n')
-	@-$(DUMP) -S -C -Dz --section=.data main > $(LISTINGSDIR)/data-listing.txt
-	@-cat $(LISTINGSDIR)/data-listing.txt | grep -P "^\s*[\d|abcdef]+:" | cut -f 2 > data.txt
+	@-$(DUMP) -S -C -Dz --section=.data $(PROGRAM) > $(LISTINGSDIR)/$@.listing
+	@-cat $(LISTINGSDIR)/$@.listing | grep -P "^\s*[\d|abcdef]+:" | cut -f 2 > $@
 #@$(OCOPY) -j .data -O binary main data.dump
 #@srec_cat data.dump -o data.txt -vmem 32
 #@rm data.dump

@@ -6,8 +6,6 @@ namespace System {
 namespace Bus {
 namespace UART {
 
-const unsigned int UART_TX_BUFFER_LENGTH = 31;
-
 bool can_read() { return ((*DEV_UART_RX >> 16) != 0); }
 
 char read() {
@@ -16,9 +14,14 @@ char read() {
     return c;
 }
 
+char read_waiting() {
+    while(!can_read()) { asm("nop"); }
+    return read();
+}
+
 /* TODO: Comment all this */
 void write_waiting(const char x) {
-    while(UART_TX_BUFFER_LENGTH - *DEV_UART_TX == 0) { asm("nop");  }
+    while(TX_BUFFER_LENGTH - *DEV_UART_TX == 0) { asm("nop");  }
     *DEV_UART_TX = x;
 }
 
@@ -42,7 +45,7 @@ bool write(const ustring x) {
 }
 
 void write_loop(const char* x, unsigned int size) {
-    for(unsigned int i = 0; i < UART_TX_BUFFER_LENGTH; ++i) {
+    for(unsigned int i = 0; i < TX_BUFFER_LENGTH; ++i) {
 	if(size) {
 	    if(i < size) *DEV_UART_TX = x[i];
 	    else break;
@@ -65,7 +68,7 @@ void write_waiting(const char* x, unsigned int size) {
     unsigned int len = 0;
     if(size) len = size;
     else len = strlen(x);
-    while(UART_TX_BUFFER_LENGTH - *DEV_UART_TX < len) { asm("nop"); }
+    while(TX_BUFFER_LENGTH - *DEV_UART_TX < len) { asm("nop"); }
     write_loop(x, size);
 }
 

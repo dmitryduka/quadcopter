@@ -1,3 +1,4 @@
+.section .codeinit
 .globl _start
 
 _start:
