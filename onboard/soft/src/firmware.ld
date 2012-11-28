@@ -27,6 +27,7 @@ SECTIONS
 
   CODEINIT_ENDS = .;
 
+  BOOTLOADER_STARTS = .;
   .boot CODEINIT_ENDS : {
     *(.bootloader)
   } > imem

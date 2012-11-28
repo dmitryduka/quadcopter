@@ -47,8 +47,12 @@ constexpr static char DONT_UNDERSTAND = '?';
 unsigned short crc16(unsigned char *pcBlock, unsigned short len) BOOTLOADER;
 void uart_write_waiting(char x) BOOTLOADER;
 char uart_read_waiting() BOOTLOADER;
+void uart_write_write_message_response(unsigned short int size) BOOTLOADER;
 void * read_address() BOOTLOADER;
 unsigned short int read_2b() BOOTLOADER;
+
+extern char* BOOTLOADER_STARTS;
+extern char* BOOTLOADER_ENDS;
 
 unsigned short crc16(unsigned char *pcBlock, unsigned short len)
 {
@@ -99,6 +103,12 @@ unsigned short int read_2b()
     return dl;
 }
 
+void uart_write_write_message_response(unsigned short int size) {
+	uart_write_waiting(WRITE);
+	uart_write_waiting(size & 0xFF);
+	uart_write_waiting(size >> 8);
+}
+
 void bootloader_main()
 {
     unsigned char data[MAX_DATA_LENGTH + DATA_LENGTH_SIZE + ADDRESS_SIZE];
@@ -134,22 +144,29 @@ void bootloader_main()
                                     (unsigned int)(data[2] << 16) | 
                                     (unsigned int)(data[3] < 24);
                 char * address = reinterpret_cast<char*>(ptri);
-                /* Entire message received now, calculate crc16 */
-                /* in case crc16 is ok, write data to memory */
-                for(unsigned int i = ADDRESS_SIZE + DATA_LENGTH_SIZE; 
-                        i < data_length + ADDRESS_SIZE + DATA_LENGTH_SIZE; 
-                        ++i) 
-                    *address++ = data[i];
-                uart_write_waiting(WRITE);
-                uart_write_waiting(data[ADDRESS_SIZE]);
-                uart_write_waiting(data[ADDRESS_SIZE + 1]);
+                char * address_end = address + data_length;
+                /* Check that address range is not overlapping bootloader address range */
+                /* Start is in the bootloader address range */
+                if(address >= BOOTLOADER_STARTS && address <= BOOTLOADER_ENDS)
+                	uart_write_write_message_response(0);
+                /* End is in the bootloader address range */
+                else if(address_end >= BOOTLOADER_STARTS && address_end <= BOOTLOADER_ENDS)
+                	uart_write_write_message_response(0);
+                /* Address range contains bootloader address range */
+                else if(address <= BOOTLOADER_STARTS && address_end >= BOOTLOADER_ENDS)
+                	uart_write_write_message_response(0);
+                else {
+                	/* Entire message received now, calculate crc16 */
+                	/* in case crc16 is ok, write data to memory */
+                	for(unsigned int i = ADDRESS_SIZE + DATA_LENGTH_SIZE; 
+                        	i < data_length + ADDRESS_SIZE + DATA_LENGTH_SIZE; 
+                        	++i) 
+                    	*address++ = data[i];
+                	uart_write_write_message_response(data_length);
+                }
             }
             /* Corrupt data */
-            else {
-                uart_write_waiting(WRITE);
-                uart_write_waiting(0);
-                uart_write_waiting(0);
-            }
+            else uart_write_write_message_response(0);
         }
         else if(byte == READ) {
             unsigned char * ptr = reinterpret_cast<unsigned char*>(read_address());
