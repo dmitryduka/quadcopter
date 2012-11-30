@@ -48,7 +48,7 @@ DEPS = $(wildcard $(OBJDIR)/*.d)
 STACK_SIZE = 2000
 INCLUDEDIRS = -I$(INCDIR) $(addprefix -I, $(DIRS))
 CCOPTS =  -c -std=c++11 -mno-gpopt -G0 $(INCLUDEDIRS)
-CCOPTS += -flto -Os
+CCOPTS += -flto -Os -I../../common
 CCOPTS += -pedantic -Wall -Wno-unused-function -Wcast-align -Wstack-usage=$(STACK_SIZE) -Wno-comment -Wno-unused-variable
 CCOPTS += -fdata-sections -ffunction-sections -fno-threadsafe-statics -fno-strict-aliasing -fno-exceptions -fno-rtti
 CCOPTS += -fdump-ipa-cgraph -fstack-usage -fdump-statistics
