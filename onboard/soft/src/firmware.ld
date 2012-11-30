@@ -11,6 +11,7 @@ MEMORY
 }
 
 NOCROSSREFS ( .boot .text )
+NOCROSSREFS ( .boot .data )
 
 SECTIONS
 {
@@ -41,8 +42,8 @@ SECTIONS
   BOOTLOADER_ENDS = .;
   BOOTLOADER_SIZE = SIZEOF(.boot) + SIZEOF(.tramp);
 
+  CODE_STARTS = .;
   .text BOOTLOADER_ENDS : {
-    CODE_STARTS = .;
     *(.text.startup)
     *(.text)
     CODE_ENDS = .;
