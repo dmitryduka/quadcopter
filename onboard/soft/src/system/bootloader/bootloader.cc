@@ -66,7 +66,7 @@ unsigned short int read_2b() BOOTLOADER;
 
 extern unsigned char* BOOTLOADER_STARTS;
 extern unsigned char* BOOTLOADER_ENDS;
-extern unsigned char* CODE_STARTS;
+extern unsigned char CODE_STARTS;
 
 void uart_write_waiting(char x) 
 {
@@ -76,7 +76,7 @@ void uart_write_waiting(char x)
 
 char uart_read_waiting() 
 {
-    while((*DEV_UART_RX >> 16) != 0) { }
+    while((*DEV_UART_RX >> 16) == 0) { }
 	char c = *DEV_UART_RX & 0xFF;
 	*DEV_UART_RX = 0;
     return c;
@@ -113,7 +113,7 @@ void uart_write_write_message_response(unsigned short int size) {
 void bootloader_main()
 {
     unsigned char data[MAX_DATA_LENGTH + DATA_LENGTH_SIZE];
-	unsigned char* ptr = CODE_STARTS;
+	unsigned char* ptr = &CODE_STARTS;
 
     while(1) {
         /* Wait for the next byte */
@@ -121,20 +121,23 @@ void bootloader_main()
         /* Answer to the PING message immediately */
         if(byte == PING) uart_write_waiting(OK_RESPONSE);
         /* Leave bootloader immediately after EXIT message */
-        else if(byte == EXIT) _start();
+        else if(byte == EXIT) {
+            uart_write_waiting(OK_RESPONSE);
+            _start();
+        }
         /* Return CODE_STARTS symbol value */
         else if(byte == CODESTARTS) {
-        	unsigned int csi = reinterpret_cast<unsigned int>(CODE_STARTS);
-        	data[0] = csi & 0xFF;
-        	data[1] = (csi >> 8)  & 0xFF;
-        	data[2] = (csi >> 16) & 0xFF;
-        	data[3] = (csi >> 24) & 0xFF;
-        	unsigned short crc = crc16(data, 4);
-        	data[4] = crc & 0xFF;
-        	data[5] = (crc >> 8) & 0xFF;
-        	uart_write_waiting(CODESTARTS);
-        	for(int i = 0; i < 7; ++i)
-        		uart_write_waiting(data[i]);
+            unsigned int csi = reinterpret_cast<unsigned int>(&CODE_STARTS);
+            data[0] = csi & 0xFF;
+            data[1] = (csi >> 8)  & 0xFF;
+            data[2] = (csi >> 16) & 0xFF;
+            data[3] = (csi >> 24) & 0xFF;
+            unsigned short crc = crc16(data, 4);
+            data[4] = crc & 0xFF;
+            data[5] = (crc >> 8) & 0xFF;
+            uart_write_waiting(CODESTARTS);
+            for(int i = 0; i < 7; ++i)
+                uart_write_waiting(data[i]);
         }
         /* SETADDRESS message */
         else if(byte == SETADDRESS) {
@@ -172,7 +175,9 @@ void bootloader_main()
                     ++i) 
                 data[i] = uart_read_waiting();
 
-            unsigned short crc = read_2b();
+            unsigned short crc = read_2b(); 
+            /* Entire message received now, calculate crc16 */
+            /* in case crc16 is ok, write data to memory */
             if(crc == crc16(data, data_length + DATA_LENGTH_SIZE)) {
             	unsigned char *& address = ptr;
             	unsigned char * address_end = address + data_length;
@@ -187,8 +192,6 @@ void bootloader_main()
                 else if(address <= BOOTLOADER_STARTS && address_end >= BOOTLOADER_ENDS)
                 	uart_write_write_message_response(0);
                 else {
-                	/* Entire message received now, calculate crc16 */
-                	/* in case crc16 is ok, write data to memory */
                 	for(unsigned int i = DATA_LENGTH_SIZE; 
                         	i < data_length + DATA_LENGTH_SIZE; 
                         	++i) 
