@@ -113,7 +113,7 @@ void uart_write_write_message_response(unsigned short int size) {
 void bootloader_main()
 {
     unsigned char data[MAX_DATA_LENGTH + DATA_LENGTH_SIZE];
-	unsigned char* ptr = &CODE_STARTS;
+    unsigned char* ptr = &CODE_STARTS;
 
     while(1) {
         /* Wait for the next byte */
