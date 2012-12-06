@@ -3,8 +3,8 @@
 
 class io {
 public:
-    virtual void write(char) = 0;
-    virtual char read() = 0;
+    virtual void write(unsigned char) = 0;
+    virtual bool read(unsigned char& ch) = 0;
 };
 
 #endif

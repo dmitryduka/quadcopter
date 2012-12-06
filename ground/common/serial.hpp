@@ -37,10 +37,25 @@ public:
         read_start();
     }
 
-    void write(char) {
+    void write(unsigned char ch) {
+        boost::array<char, 1> a = { ch };
+        boost::system::error_code ec;
+        if(port.write_some(boost::asio::buffer(a), ec) == 0) {
+             cout << ec << endl;
+             throw std::runtime_error("Couldn't write to the serial device");
+        }
     }
 
-    char read() {
+    bool read(unsigned char& ch) {
+        boost::array<char, 1> a;
+        boost::system::error_code ec;
+        if(port.read_some(boost::asio::buffer(a), ec)) {
+            ch = a[0];
+            return true;
+        } else {
+            cout << ec << endl;
+            return false;
+        }
     }
 
     // pass the write data to the do_write function via the io service in the other thread

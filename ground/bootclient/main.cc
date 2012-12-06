@@ -110,40 +110,88 @@ struct bootloader_client {
         cout << "Set address to " << "0x" << std::setw(8) << std::setfill('0') << std::hex << x << std::dec << endl;
     }
 
-    void output_section(const std::vector<unsigned char>& c, char* address) {
+    void write_single_packet(const std::vector<unsigned char>& c) {
+        if(c.empty()) return;
+        std::vector<unsigned char> data = {0, static_cast<unsigned char>(c.size() & 0xFF),
+                                              static_cast<unsigned char>((c.size() >> 8) & 0xFF) };
+        data.insert(data.end(), c.begin(), c.end());
+        unsigned short int crc = crc16(&c[0], c.size());
+        data.push_back(crc & 0xFF);
+        data.push_back(crc >> 8);
+        for(int k = 0; k < data.size(); ++k)
+            output->write(data[k]);
+        /* Entire message is written, read response now */
+        unsigned char ch;
+        if(!output->read(ch))
+            throw std::runtime_error("Error reading response after the write message");
+        if(ch != 0 /*Write*/)
+            throw std::runtime_error("Bootloader response after the write message is invalid");
+        unsigned char d[2];
+        for(int k = 0; k < 2; ++k)
+            if(!output->read(d[k]))
+                throw std::runtime_error("Error reading response after the write message");
+        size_t writtenBytes = d[0] | (d[1] << 8);
+        crc = crc16(d, 2);
+        for(int k = 0; k < 2; ++k)
+            if(!output->read(d[k]))
+                throw std::runtime_error("Error reading response after the write message");
+        unsigned short crc_b = d[0] | (d[1] << 8);
+        if(crc != crc_b)
+            throw std::runtime_error("Error reading response after the write message: CRC is wrong");
+    }
+
+    void write_section(const std::vector<unsigned char>& c, char* address) {
         set_address(address);
         size_t chunks = c.size() / max_packet_size;
         size_t left = c.size() - chunks * max_packet_size;
-        std::vector<unsigned char> data = {0, static_cast<unsigned char>(max_packet_size & 0xFF),
-                                              static_cast<unsigned char>((max_packet_size >> 8) & 0xFF) };
-        for(int i = 0; i < chunks; ++i) {
-            data.resize(3);
-            for(int k = 0; k < max_packet_size; ++k)
-                data.push_back(c[max_packet_size * i + k]);
-            unsigned short int crc = crc16(&data[0], data.size());
-            data.push_back(crc & 0xFF);
-            data.push_back(crc >> 8);
-            for(int k = 0; k < data.size(); ++k)
-                output->write(data[k]);
-            /* Entire message is written, read response now */
-            unsigned char ch;
-            if(!output->read(ch))
+
+        for(int i = 0; i < chunks; ++i)
+            write_single_packet(std::vector<unsigned char>(c.begin() + i * max_packet_size, c.begin() + (i + 1) * max_packet_size));
+        if(left) 
+            write_single_packet(std::vector<unsigned char>(c.begin() + chunks * max_packet_size, c.end()));
+    }
+
+    std::vector<unsigned char> read_single_packet(size_t size) {
+        std::vector<unsigned char> r(size);
+        if(!size) return r;
+        std::vector<unsigned char> data = {1, static_cast<unsigned char>(size & 0xFF),
+                                              static_cast<unsigned char>((size >> 8) & 0xFF) };
+        unsigned short int crc = crc16(&data[1], 2);
+        data.push_back(crc & 0xFF);
+        data.push_back(crc >> 8);
+        for(int k = 0; k < data.size(); ++k)
+            output->write(data[k]);
+        /* Entire message is written, read response now */
+        unsigned char ch;
+        if(!output->read(ch))
+            throw std::runtime_error("Error reading response after the read message");
+        if(ch != 1 /*Read*/)
+            throw std::runtime_error("Bootloader response after the read message is invalid");
+        for(int k = 0; k < size; ++k)
+            if(!output->read(r[k]))
+                throw std::runtime_error("Error reading the data after the read message");
+        crc = crc16(&r[0], size);
+        for(int k = 0; k < 2; ++k)
+            if(!output->read(data[k]))
                 throw std::runtime_error("Error reading response after the write message");
-            if(ch != 0 /*Write*/)
-                throw std::runtime_error("Bootloader response after the write message is invalid");
-            unsigned char d[2];
-            for(int k = 0; k < 2; ++k)
-                if(!output->read(d[k]))
-                    throw std::runtime_error("Error reading response after the write message");
-            size_t writtenBytes = d[0] | (d[1] << 8);
-            crc = crc16(d, 2);
-            for(int k = 0; k < 2; ++k)
-                if(!output->read(d[k]))
-                    throw std::runtime_error("Error reading response after the write message");
-            unsigned short crc_b = d[0] | (d[1] << 8);
-            if(crc != crc_b)
-                throw std::runtime_error("Error reading response after the write message: CRC is wrong");
-        }
+        unsigned short crc_b = data[0] | (data[1] << 8);
+        if(crc != crc_b)
+            throw std::runtime_error("Error reading response after the read message: CRC is wrong");
+    }
+
+    std::vector<unsigned char> read_section(char * address, size_t size) {
+        std::vector<unsigned char> r(size);
+        set_address(address);
+        size_t chunks = size / max_packet_size;
+        size_t left = size - chunks * max_packet_size;
+
+        for(int i = 0; i < chunks; ++i) {
+            std::vector<unsigned char> t = read_single_packet(max_packet_size);
+            r.insert(r.end(), t.begin(), t.end());
+       }
+       std::vector<unsigned char> t = read_single_packet(left);
+       r.insert(r.end(), t.begin(), t.end());
+       return r;
     }
 
     char* get_code_starts() {
@@ -222,6 +270,8 @@ int main(int argc, char** argv) {
         std::vector<unsigned char> tramp = abfd.get_section(".tramp");
         std::vector<unsigned char> text = abfd.get_section(".text");
         std::vector<unsigned char> data = abfd.get_section(".data");*/
+        char * ptr = reinterpret_cast<char*>(0x40000000);
+        print_section(bc.read_section(ptr, 32));
         /* Open serial port */
     } catch (std::exception& e) {
         /* Errors */

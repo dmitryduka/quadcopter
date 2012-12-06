@@ -56,7 +56,7 @@ constexpr static char DONT_UNDERSTAND = '?';
 
 #define BOOTLOADER __attribute__((section(".bootloader")))
 
-unsigned short crc16(unsigned char *pcBlock, unsigned short len) BOOTLOADER;
+unsigned short crc16(const unsigned char *pcBlock, unsigned short len) BOOTLOADER;
 #include <crc16.hpp>
 void uart_write_waiting(char x) BOOTLOADER;
 char uart_read_waiting() BOOTLOADER;
@@ -209,7 +209,7 @@ void bootloader_main()
             uart_write_waiting(READ);
             unsigned short crc = crc16(ptr, data_length);
             for(int i = 0; i < data_length; ++i)
-            	uart_write_waiting(ptr[i]);
+            	uart_write_waiting(*ptr++);
             uart_write_waiting(crc & 0xFF);
             uart_write_waiting(crc >> 8);
         }

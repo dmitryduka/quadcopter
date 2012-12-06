@@ -1,7 +1,7 @@
 #ifndef CRC16_HPP
 #define CRC16_HPP
 
-unsigned short crc16(unsigned char *pcBlock, unsigned short len)
+unsigned short crc16(const unsigned char *pcBlock, unsigned short len)
 {
     unsigned short crc = 0xFFFF;
     unsigned char i;
