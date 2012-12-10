@@ -62,7 +62,7 @@ always_ff @(posedge CLK)
 sync syncronizer(CLK, RX, rx_sync);
 edetect edge_det(CLK, rx_sync, rx_posedge, rx_negedge);
 
-counter #(14) bit_cnt(CLK, idle | period | resync | rx_transition, 1'b1, bit_count_out );
+counter #(14) bit_cnt(CLK, idle | period | resync | ((state != ST_STOP_BIT) & rx_transition), 1'b1, bit_count_out );
 counter #(3) byte_cnt(CLK, idle, shift_in, byte_count_out);
 shift_reg_lf #(8) sreg(CLK, idle, rx_sync, shift_in, DATA);
                   
